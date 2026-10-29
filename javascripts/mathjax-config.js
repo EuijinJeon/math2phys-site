@@ -4,6 +4,20 @@ function m2pScrollToHash() {
   const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if (el) el.scrollIntoView();
 }
+// 수식·웹 글꼴이 늦게 그려지며 페이지 높이가 몇 차례 바뀐다. 렌더링 후 8초 동안 높이가 바뀔 때마다
+// 앵커로 다시 맞추고, 사용자가 직접 스크롤하면 즉시 멈춘다
+function m2pHoldHash() {
+  m2pScrollToHash();
+  if (!location.hash || typeof ResizeObserver === "undefined") return;
+  const ro = new ResizeObserver(m2pScrollToHash);
+  const stop = () => {
+    ro.disconnect();
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(e => removeEventListener(e, stop));
+  };
+  ["wheel", "touchstart", "keydown", "mousedown"].forEach(e => addEventListener(e, stop, { passive: true }));
+  ro.observe(document.body);
+  setTimeout(stop, 8000);
+}
 window.MathJax = {
   loader: { load: ["[tex]/boldsymbol", "[tex]/mathtools", "[tex]/cancel", "[tex]/braket", "[tex]/bbox", "[tex]/color", "[tex]/textmacros"] },
   tex: {
@@ -18,9 +32,7 @@ window.MathJax = {
     processHtmlClass: "arithmatex"
   },
   startup: {
-    // 웹 글꼴이 늦게 도착해도 페이지 높이가 바뀌므로 글꼴 로드 후 한 번 더
-    pageReady: () => MathJax.startup.defaultPageReady().then(m2pScrollToHash)
-      .then(() => document.fonts && document.fonts.ready).then(m2pScrollToHash)
+    pageReady: () => MathJax.startup.defaultPageReady().then(m2pHoldHash)
   }
 };
 // MkDocs Material 의 instant navigation 용. 첫 페이지 로드는 startup 이 처리하므로 건너뛴다
@@ -32,6 +44,6 @@ if (typeof document$ !== "undefined") {
     MathJax.startup.output.clearCache();
     MathJax.typesetClear();
     MathJax.texReset();
-    MathJax.typesetPromise().then(m2pScrollToHash);
+    MathJax.typesetPromise().then(m2pHoldHash);
   });
 }
