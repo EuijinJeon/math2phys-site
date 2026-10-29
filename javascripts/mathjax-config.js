@@ -18,7 +18,9 @@ window.MathJax = {
     processHtmlClass: "arithmatex"
   },
   startup: {
+    // 웹 글꼴이 늦게 도착해도 페이지 높이가 바뀌므로 글꼴 로드 후 한 번 더
     pageReady: () => MathJax.startup.defaultPageReady().then(m2pScrollToHash)
+      .then(() => document.fonts && document.fonts.ready).then(m2pScrollToHash)
   }
 };
 // MkDocs Material 의 instant navigation 용. 첫 페이지 로드는 startup 이 처리하므로 건너뛴다
