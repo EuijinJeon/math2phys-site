@@ -1,0 +1,2218 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/03-calculus-on-finite-trees.html">
+      
+      
+        <link rel="prev" href="02-the-model-and-the-variational-principle.html">
+      
+      
+        <link rel="next" href="04-the-interpolation-upper-bound.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§3 Calculus on finite trees - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-calculus-on-finite-trees" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §3 Calculus on finite trees
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-the-model-and-the-variational-principle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03-calculus-on-finite-trees.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-path-kernels-and-insertions" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.1 Path kernels and insertions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.1 Path kernels and insertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-31-insertion-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.1 (Insertion calculus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-the-two-expansion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.2 The two expansion rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.2 The two expansion rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-32-logarithmic-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.2 (Logarithmic expansion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-33-canceled-anchor-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.3 (Canceled-anchor expansion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-sums-of-extension-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.3 Sums of extension coefficients
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.3 Sums of extension coefficients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-34-reference-path-totals" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.4 (Reference-path totals)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-35-charging-fresh-splits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.5 (Charging fresh splits)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-the-distribution-of-branching-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.4 The distribution of branching depths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.4 The distribution of branching depths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-36-regular-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.6 (Regular shapes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 3.7
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-perturbed-cavity-reservoir.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-perturbations-and-identities-on-prescrib.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-decorrelation-on-prescribed-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-path-kernels-and-insertions" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.1 Path kernels and insertions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.1 Path kernels and insertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-31-insertion-calculus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.1 (Insertion calculus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-the-two-expansion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.2 The two expansion rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.2 The two expansion rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-32-logarithmic-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.2 (Logarithmic expansion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-33-canceled-anchor-expansion" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.3 (Canceled-anchor expansion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-sums-of-extension-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.3 Sums of extension coefficients
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.3 Sums of extension coefficients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-34-reference-path-totals" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.4 (Reference-path totals)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-35-charging-fresh-splits" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.5 (Charging fresh splits)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-the-distribution-of-branching-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      §3.4 The distribution of branching depths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§3.4 The distribution of branching depths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-36-regular-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 3.6 (Regular shapes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 3.7
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s3"></a></p>
+<h1 id="3-calculus-on-finite-trees">§3 Calculus on finite trees<a class="headerlink" href="#3-calculus-on-finite-trees" title="Permanent link">&para;</a></h1>
+<!-- TODO:제목번역 s3 -->
+
+<p><a href="02-the-model-and-the-variational-principle.html">← 이전: §2 The model and the variational principle</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="04-the-interpolation-upper-bound.html">다음: §4 The interpolation upper bound →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<!-- TODO:요약 s3 -->
+</details>
+<p><a id="s3-p1"></a></p>
+<h4 id="3-1">§3 ¶1<a class="headerlink" href="#3-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-p1-s1"></a><strong>s1</strong> A power-mean insertion admits two expansions.</p>
+<p><a id="s3-p1-s2"></a><strong>s2</strong> The logarithmic expansion will compare pressures; an expansion with one canceled replica factor will extract the perturbation identities.</p>
+<p><a id="s3-p1-s3"></a><strong>s3</strong> Both follow from one differentiation rule on trees.</p>
+<p><a id="s3-p1-s4"></a><strong>s4</strong> We also bound their coefficients and the probability of exceptional branching depths.</p>
+<p><a id="s3-p1-s5"></a><strong>s5</strong> Power-mean calculations for hierarchical trial laws appear in Mézard–Parisi [<a href="99-references.html#ref-MP01">12</a>, Appendix A] and Panchenko–Talagrand [<a href="99-references.html#ref-PT04">16</a>, Section 5]; the latter uses cascade weights introduced by Ruelle [<a href="99-references.html#ref-Ruelle87">17</a>].</p>
+<p><a id="s3-p1-s6"></a><strong>s6</strong> Here we derive the needed identities directly for finite sequences of arbitrary probability kernels, without assuming an infinite hierarchy.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-p1-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-p1 -->
+
+<hr />
+<p><a id="s3-1"></a></p>
+<h2 id="31-path-kernels-and-insertions">§3.1 Path kernels and insertions<a class="headerlink" href="#31-path-kernels-and-insertions" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s3-1 -->
+
+<p><a id="s3-1-p1"></a></p>
+<h4 id="31-1">§3.1 ¶1<a class="headerlink" href="#31-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p1-s1"></a><strong>s1</strong> Fix an integer <span class="arithmatex">\(L\geq1\)</span> and numbers</p>
+<p><a id="s3-1-p1-e1"></a></p>
+<div class="arithmatex">\[
+0=m_0\lt m_1\lt \cdots\lt m_{L-1}\lt m_L=1.
+\]</div>
+<p><a id="s3-1-p1-s2"></a><strong>s2</strong> A path has depths <span class="arithmatex">\(0,\ldots,L\)</span>.</p>
+<p><a id="s3-1-p1-s3"></a><strong>s3</strong> Its depth-zero variable is the root.</p>
+<p><a id="s3-1-p1-s4"></a><strong>s4</strong> For <span class="arithmatex">\(1\leq d\leq L\)</span>, the probability kernel <span class="arithmatex">\(K_d\)</span> draws the next variable given the whole prefix through depth <span class="arithmatex">\(d-1\)</span>; <span class="arithmatex">\(\mathscr F_d\)</span> is the prefix sigma-field.</p>
+<p><a id="s3-1-p1-s5"></a><strong>s5</strong> The root distribution is fixed throughout all insertions.</p>
+<p><a id="s3-1-p1-s6"></a><strong>s6</strong> In an <span class="arithmatex">\(r\)</span>-level application, <span class="arithmatex">\(L=r+1\)</span>: depths <span class="arithmatex">\(1,\ldots,r\)</span> carry auxiliary variables, and depth <span class="arithmatex">\(L\)</span> carries a Gibbs spin configuration.</p>
+<p><a id="s3-1-p1-s7"></a><strong>s7</strong> For the trial law <a href="02-the-model-and-the-variational-principle.html#eq-2-7">(2.7)</a> with <span class="arithmatex">\(r\ge1\)</span>, <span class="arithmatex">\(\eta_d\)</span> is the depth-<span class="arithmatex">\(d\)</span> variable for <span class="arithmatex">\(0\le d\lt r\)</span>, and <span class="arithmatex">\(x\)</span> is the depth-<span class="arithmatex">\(r\)</span> variable.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p1-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-1-p1-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p1 -->
+
+<p><strong>식 Eq. §3.1 ¶1 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-1-p1-e1 -->
+
+<hr />
+<p><a id="s3-1-p2"></a></p>
+<h4 id="31-2">§3.1 ¶2<a class="headerlink" href="#31-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p2-s1"></a><strong>s1</strong> A finite tree <span class="arithmatex">\(\mathcal T\)</span> consists of a common root and finitely many labeled paths, each ending at depth <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s3-1-p2-s2"></a><strong>s2</strong> Every internal vertex has at least one child; in particular, all unary portions of paths are retained.</p>
+<p><a id="s3-1-p2-s3"></a><strong>s3</strong> At each vertex, different children are drawn independently using the appropriate kernel.</p>
+<p><a id="s3-1-p2-s4"></a><strong>s4</strong> We write <span class="arithmatex">\(E_{\mathcal T}\)</span> for this sampling expectation conditional on the root.</p>
+<p><a id="s3-1-p2-s5"></a><strong>s5</strong> A split at depth <span class="arithmatex">\(d\)</span> means that the last common vertex is at depth <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s3-1-p2-s6"></a><strong>s6</strong> Replica positions at depth <span class="arithmatex">\(L\)</span> are distinct vertices, but the values sampled there need not differ.</p>
+<p><a id="s3-1-p2-s7"></a><strong>s7</strong> Thus independent spin replicas may be the same spin configuration.</p>
+<p><a id="s3-1-p2-s8"></a><strong>s8</strong> Removing some leaves and the portions of their paths unused by the remaining leaves preserves the sampling law of the remaining tree.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p2-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-1-p2-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-1-p2-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p2 -->
+
+<hr />
+<p><a id="s3-1-p3"></a></p>
+<h4 id="31-3">§3.1 ¶3<a class="headerlink" href="#31-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p3-s1"></a><strong>s1</strong> When the terminal variables are spin configurations <span class="arithmatex">\(\sigma^a\in\{-1,1\}^N\)</span>, the multioverlap on a subset <span class="arithmatex">\(S\)</span> of the replica leaves is</p>
+<p><a id="eq-3-1"></a></p>
+<div class="arithmatex">\[
+R_S=\frac1N\sum_{i=1}^N\prod_{a\in S}\sigma_i^a,
+ \qquad R_\varnothing=1. \tag{3.1}
+\]</div>
+<p><a id="s3-1-p3-s2"></a><strong>s2</strong> An unspecified expectation <span class="arithmatex">\(\mathbb E\)</span> below includes the root and the sampling of the indicated tree.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p3-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p3 -->
+
+<p><strong>식 (3.1) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-1 -->
+
+<hr />
+<p><a id="s3-1-p4"></a></p>
+<h4 id="31-4">§3.1 ¶4<a class="headerlink" href="#31-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p4-s1"></a><strong>s1</strong> Here is how the path kernels arise from a partition function.</p>
+<p><a id="s3-1-p4-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(P_d\)</span>, <span class="arithmatex">\(1\le d\lt L\)</span>, be the auxiliary prior kernels, put <span class="arithmatex">\(X_{L-1}=\log Z\)</span>, and recursively set</p>
+<p><a id="s3-1-p4-e1"></a></p>
+<div class="arithmatex">\[
+X_{d-1}=m_d^{-1}\log P_d e^{m_dX_d}\qquad(1\le d\lt L).
+\]</div>
+<p><a id="s3-1-p4-s3"></a><strong>s3</strong> The corresponding <em>tilted kernels</em> are</p>
+<p><a id="eq-3-2"></a></p>
+<div class="arithmatex">\[
+K_d(dz\mid\mathscr F_{d-1})
+ =e^{m_d(X_d(z)-X_{d-1})}P_d(dz\mid\mathscr F_{d-1}),
+ \qquad 1\le d\lt L. \tag{3.2}
+\]</div>
+<p><a id="s3-1-p4-s4"></a><strong>s4</strong> They are probability kernels by the recursion.</p>
+<p><a id="s3-1-p4-s5"></a><strong>s5</strong> The final kernel <span class="arithmatex">\(K_L\)</span> is the Gibbs distribution of the spin configuration conditional on its auxiliary prefix.</p>
+<p><a id="s3-1-p4-s6"></a><strong>s6</strong> When <span class="arithmatex">\(L=1\)</span>, only this final kernel is present.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p4-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p4 -->
+
+<p><strong>식 Eq. §3.1 ¶4 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-1-p4-e1 -->
+
+<p><strong>식 (3.2) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-2 -->
+
+<hr />
+<p><a id="s3-1-p5"></a></p>
+<h4 id="31-5">§3.1 ¶5<a class="headerlink" href="#31-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p5-s1"></a><strong>s1</strong> For a positive path function <span class="arithmatex">\(A\)</span>, define</p>
+<p><a id="eq-3-3"></a></p>
+<div class="arithmatex">\[
+Y_L=A,\qquad
+  Y_{d-1}=\bigl(K_dY_d^{m_d}\bigr)^{1/m_d},
+  \qquad d=L,\ldots,1. \tag{3.3}
+\]</div>
+<p><a id="s3-1-p5-s2"></a><strong>s2</strong> We initially suppose that <span class="arithmatex">\(A\)</span> is bounded above and away from zero, conditionally on the root.</p>
+<p><a id="s3-1-p5-s3"></a><strong>s3</strong> Every expression below is then well defined.</p>
+<p><a id="s3-1-p5-s4"></a><strong>s4</strong> Denote the kernels after insertion by</p>
+<p><a id="eq-3-4"></a></p>
+<div class="arithmatex">\[
+K_d^A(dz\mid\mathscr F_{d-1})
+  =\left(\frac{Y_d(z)}{Y_{d-1}}\right)^{m_d}
+     K_d(dz\mid\mathscr F_{d-1}). \tag{3.4}
+\]</div>
+<p><a id="s3-1-p5-s5"></a><strong>s5</strong> The recursion shows that these are probability kernels.</p>
+<p><a id="s3-1-p5-s6"></a><strong>s6</strong> Superscript <span class="arithmatex">\(A\)</span> on a tree expectation means that these kernels are used.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p5-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p5-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p5-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p5 -->
+
+<p><strong>식 (3.3) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-3 -->
+
+<p><strong>식 (3.4) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-4 -->
+
+<hr />
+<p><a id="s3-1-e1"></a></p>
+<h3 id="lemma-31-insertion-calculus">▸ Lemma 3.1 (Insertion calculus)<a class="headerlink" href="#lemma-31-insertion-calculus" title="Permanent link">&para;</a></h3>
+<p><a id="s3-1-p6"></a></p>
+<h4 id="31-6">§3.1 ¶6<a class="headerlink" href="#31-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p6-s1"></a><strong>s1</strong> Suppose a leaf partition function is iterated by power means, with exponents <span class="arithmatex">\(m_1,\ldots,m_{L-1}\)</span>, and <span class="arithmatex">\(K_1,\ldots,K_{L-1}\)</span> are its tilted kernels.</p>
+<p><a id="s3-1-p6-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(K_L\)</span> be its terminal Gibbs kernel.</p>
+<p><a id="s3-1-p6-s3"></a><strong>s3</strong> Multiplying each spin weight by <span class="arithmatex">\(A\)</span> changes the iterated root logarithm by <span class="arithmatex">\(\log Y_0\)</span>, where <a href="03-calculus-on-finite-trees.html#eq-3-3">(3.3)</a> uses the kernels before insertion.</p>
+<p><a id="s3-1-p6-s4"></a><strong>s4</strong> The new kernels are <a href="03-calculus-on-finite-trees.html#eq-3-4">(3.4)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p6-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p6 -->
+
+<hr />
+<p><a id="s3-1-p7"></a></p>
+<h4 id="31-7">§3.1 ¶7<a class="headerlink" href="#31-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p7-s1"></a><strong>s1</strong> For an internal vertex <span class="arithmatex">\(\beta\)</span> of a prescribed tree, let <span class="arithmatex">\(d_\beta\)</span> be its depth, let <span class="arithmatex">\(n_\beta\)</span> be its number of children, and put</p>
+<p><a id="s3-1-p7-e1"></a></p>
+<div class="arithmatex">\[
+\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}.
+\]</div>
+<p><a id="s3-1-p7-s2"></a><strong>s2</strong> The conditional joint density of its updated tree law is</p>
+<p><a id="eq-3-5"></a></p>
+<div class="arithmatex">\[
+W_{\mathcal T}(A)
+  :=\frac{dP_{\mathcal T}^A}{dP_{\mathcal T}}
+  =\prod_{a\in\operatorname{Leaves}(\mathcal T)}A^a
+       \prod_{\beta\in\operatorname{Int}(\mathcal T)}
+            Y_\beta^{\gamma_\beta}. \tag{3.5}
+\]</div>
+<p><a id="s3-1-p7-s3"></a><strong>s3</strong> Here <span class="arithmatex">\(Y_\beta\)</span> is <span class="arithmatex">\(Y_{d_\beta}\)</span> evaluated on the prefix at <span class="arithmatex">\(\beta\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p7-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p7 -->
+
+<p><strong>식 Eq. §3.1 ¶7 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-1-p7-e1 -->
+
+<p><strong>식 (3.5) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-5 -->
+
+<hr />
+<p><a id="s3-1-p8"></a></p>
+<h4 id="31-8">§3.1 ¶8<a class="headerlink" href="#31-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p8-s1"></a><strong>s1</strong> The recursion is monotone and homogeneous: if <span class="arithmatex">\(a\leq A\leq b\)</span>, for positive root-measurable <span class="arithmatex">\(a,b\)</span>, then <span class="arithmatex">\(a\leq Y_d\leq b\)</span> at every depth; and multiplying <span class="arithmatex">\(A\)</span> by a positive root-measurable constant multiplies every <span class="arithmatex">\(Y_d\)</span> by that constant.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p8-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p8 -->
+
+<hr />
+<p><em>(끝: s3-1-e1)</em></p>
+<p><a id="s3-1-e2"></a></p>
+<h3 id="proof">▸ <em>Proof.</em><a class="headerlink" href="#proof" title="Permanent link">&para;</a></h3>
+<p><a id="s3-1-p9"></a></p>
+<h4 id="31-9">§3.1 ¶9<a class="headerlink" href="#31-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p9-s1"></a><strong>s1</strong> At the terminal spin integration, the partition-function ratio is <span class="arithmatex">\(K_LA=Y_{L-1}\)</span>, because <span class="arithmatex">\(m_L=1\)</span>.</p>
+<p><a id="s3-1-p9-s2"></a><strong>s2</strong> If <span class="arithmatex">\(X_d\)</span> and <span class="arithmatex">\(X_d^A\)</span> are the old and new backward logarithms, substitution in the preceding power mean gives</p>
+<p><a id="s3-1-p9-e1"></a></p>
+<div class="arithmatex">\[
+\exp\bigl(m_d(X_{d-1}^A-X_{d-1})\bigr)
+  =K_d\exp\bigl(m_d(X_d^A-X_d)\bigr).
+\]</div>
+<p><a id="s3-1-p9-s3"></a><strong>s3</strong> Backward induction proves <span class="arithmatex">\(X_d^A-X_d=\log Y_d\)</span> and then gives <a href="03-calculus-on-finite-trees.html#eq-3-4">(3.4)</a>; the same formula at <span class="arithmatex">\(d=L\)</span> is the usual Gibbs density ratio.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p9-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p9-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p9-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p9 -->
+
+<p><strong>식 Eq. §3.1 ¶9 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-1-p9-e1 -->
+
+<hr />
+<p><a id="s3-1-p10"></a></p>
+<h4 id="31-10">§3.1 ¶10<a class="headerlink" href="#31-10" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p10-s1"></a><strong>s1</strong> Multiply the edge density ratios in <a href="03-calculus-on-finite-trees.html#eq-3-4">(3.4)</a> over the tree.</p>
+<p><a id="s3-1-p10-s2"></a><strong>s2</strong> An internal vertex at positive depth <span class="arithmatex">\(d\)</span> receives exponent <span class="arithmatex">\(m_d\)</span> from its incoming edge and exponent <span class="arithmatex">\(-n_\beta m_{d+1}\)</span> from its outgoing edges.</p>
+<p><a id="s3-1-p10-s3"></a><strong>s3</strong> At the root there is no incoming edge, which agrees with <span class="arithmatex">\(m_0=0\)</span>.</p>
+<p><a id="s3-1-p10-s4"></a><strong>s4</strong> Each terminal vertex receives exponent <span class="arithmatex">\(m_L=1\)</span>.</p>
+<p><a id="s3-1-p10-s5"></a><strong>s5</strong> This proves <a href="03-calculus-on-finite-trees.html#eq-3-5">(3.5)</a>.</p>
+<p><a id="s3-1-p10-s6"></a><strong>s6</strong> Monotonicity and homogeneity follow at once by backward induction in <a href="03-calculus-on-finite-trees.html#eq-3-3">(3.3)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p10-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p10-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p10-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p10-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p10-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p10-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p10 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-1-p11"></a></p>
+<h4 id="31-11">§3.1 ¶11<a class="headerlink" href="#31-11" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p11-s1"></a><strong>s1</strong> An insertion may use additional variables that were absent from the original model.</p>
+<p><a id="s3-1-p11-s2"></a><strong>s2</strong> Enlarge each path kernel by their independent prior kernels before applying the lemma.</p>
+<p><a id="s3-1-p11-s3"></a><strong>s3</strong> The original backward logarithms do not depend on these variables, so the original tilt leaves their conditional prior kernels unchanged.</p>
+<p><a id="s3-1-p11-s4"></a><strong>s4</strong> Additional root variables remain quenched.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p11-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p11-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p11-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p11-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p11 -->
+
+<hr />
+<p><a id="s3-1-p12"></a></p>
+<h4 id="31-12">§3.1 ¶12<a class="headerlink" href="#31-12" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p12-s1"></a><strong>s1</strong> We will use differentiation of <a href="03-calculus-on-finite-trees.html#eq-3-3">(3.3)</a>.</p>
+<p><a id="s3-1-p12-s2"></a><strong>s2</strong> For <span class="arithmatex">\(A_{\boldsymbol t}=1+\sum_{j=1}^k t_jD_j\)</span>, where the real path functions <span class="arithmatex">\(D_j\)</span> are bounded, differentiation on any real neighborhood where <span class="arithmatex">\(A_{\boldsymbol t}\)</span> is uniformly positive gives</p>
+<p><a id="eq-3-6"></a></p>
+<div class="arithmatex">\[
+\partial_{t_j}\log Y_d
+  =E^{A_{\boldsymbol t}}\left[
+       \left.\frac{D_j}{A_{\boldsymbol t}}\right|\mathscr F_d\right]. \tag{3.6}
+\]</div>
+<p><a id="s3-1-p12-s3"></a><strong>s3</strong> The conditional expectation on the right follows one new path below the specified prefix.</p>
+<p><a id="s3-1-p12-s4"></a><strong>s4</strong> Indeed, differentiating one power mean gives <span class="arithmatex">\(\partial_{t_j}\log Y_{d-1}=K_d^{A_{\boldsymbol t}} \partial_{t_j}\log Y_d\)</span>, and the terminal derivative is <span class="arithmatex">\(D_j/A\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p12-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p12-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p12-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p12-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p12 -->
+
+<p><strong>식 (3.6) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-6 -->
+
+<hr />
+<p><a id="s3-1-p13"></a></p>
+<h4 id="31-13">§3.1 ¶13<a class="headerlink" href="#31-13" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-1-p13-s1"></a><strong>s1</strong> <em>Analytic bounds.</em></p>
+<p><a id="s3-1-p13-s2"></a><strong>s2</strong> The expressions are analytic on the complex domain</p>
+<p><a id="s3-1-p13-e1"></a></p>
+<div class="arithmatex">\[
+\sum_j|t_j|\|D_j\|_\infty\lt 1,
+\]</div>
+<p>↳ with bounds uniform over the kernels.</p>
+<p><a id="s3-1-p13-s3"></a><strong>s3</strong> On a smaller closed domain with this sum at most <span class="arithmatex">\(\rho\lt 1\)</span>, <span class="arithmatex">\(A\)</span> has argument bounded by <span class="arithmatex">\(\vartheta=\arcsin\rho\lt \pi/2\)</span> and modulus between <span class="arithmatex">\(1-\rho\)</span> and <span class="arithmatex">\(1+\rho\)</span>.</p>
+<p><a id="s3-1-p13-s4"></a><strong>s4</strong> If <span class="arithmatex">\(Y_d\)</span> has argument in <span class="arithmatex">\([-\vartheta,\vartheta]\)</span>, then <span class="arithmatex">\(K_dY_d^{m_d}\)</span> has argument in <span class="arithmatex">\([-m_d\vartheta,m_d\vartheta]\)</span>, using the principal powers.</p>
+<p><a id="s3-1-p13-s5"></a><strong>s5</strong> It is nonzero, and taking its <span class="arithmatex">\(1/m_d\)</span> power gives the same argument bound for <span class="arithmatex">\(Y_{d-1}\)</span>.</p>
+<p><a id="s3-1-p13-s6"></a><strong>s6</strong> More quantitatively, a lower modulus bound <span class="arithmatex">\(a_d\gt 0\)</span> gives the lower bound <span class="arithmatex">\(a_{d-1}=a_d\cos(m_d\vartheta)^{1/m_d}\gt 0\)</span>, whereas the upper modulus bound <span class="arithmatex">\(1+\rho\)</span> is preserved.</p>
+<p><a id="s3-1-p13-s7"></a><strong>s7</strong> These bounds justify integration of analytic functions at each step and all subsequent differentiations.</p>
+<p><a id="s3-1-p13-s8"></a><strong>s8</strong> They also bound <a href="03-calculus-on-finite-trees.html#eq-3-5">(3.5)</a>, its canceled versions below, and their derivatives on smaller domains, uniformly over the kernels for fixed depth, exponents, tree size, and bounds on the inserted functions.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-1-p13-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-1-p13-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-1-p13-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-1-p13-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-1-p13-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-1-p13-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-1-p13-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-1-p13-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-1-p13 -->
+
+<p><strong>식 Eq. §3.1 ¶13 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-1-p13-e1 -->
+
+<hr />
+<p><a id="s3-2"></a></p>
+<h2 id="32-the-two-expansion-rules">§3.2 The two expansion rules<a class="headerlink" href="#32-the-two-expansion-rules" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s3-2 -->
+
+<p><a id="s3-2-p1"></a></p>
+<h4 id="32-1">§3.2 ¶1<a class="headerlink" href="#32-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p1-s1"></a><strong>s1</strong> Call a leaf <em>protected</em> if its factor <span class="arithmatex">\(A^a\)</span> in the tree density is canceled by a denominator <span class="arithmatex">\(A^a\)</span>.</p>
+<p><a id="s3-2-p1-s2"></a><strong>s2</strong> For a set <span class="arithmatex">\(C\)</span> of protected leaves and a bounded parameter-independent function <span class="arithmatex">\(G\)</span>, consider <span class="arithmatex">\(E_{\mathcal T}^A[G\prod_{a\in C}(A^a)^{-1}]\)</span>.</p>
+<p><a id="s3-2-p1-s3"></a><strong>s3</strong> Differentiating <a href="03-calculus-on-finite-trees.html#eq-3-5">(3.5)</a> shows that</p>
+<p><a id="s3-2-p1-e1"></a></p>
+<div class="arithmatex">\[
+\partial_{t_j}\log W_{\mathcal T}(A)
+   =\sum_{a\in\operatorname{Leaves}(\mathcal T)}\frac{D_j^a}{A^a}
+      +\sum_{\beta\in\operatorname{Int}(\mathcal T)}
+           \gamma_\beta\,\partial_{t_j}\log Y_\beta.
+\]</div>
+<p><a id="s3-2-p1-s4"></a><strong>s4</strong> In the derivative of <span class="arithmatex">\(E_{\mathcal T}^A[G\prod_{a\in C}(A^a)^{-1}]\)</span>, the leaf terms at <span class="arithmatex">\(a\in C\)</span> cancel exactly with differentiation of their denominators.</p>
+<p><a id="s3-2-p1-s5"></a><strong>s5</strong> Each remaining leaf term inserts <span class="arithmatex">\(D_j^a/A^a\)</span> and makes that leaf protected.</p>
+<p><a id="s3-2-p1-s6"></a><strong>s6</strong> By <a href="03-calculus-on-finite-trees.html#eq-3-6">(3.6)</a>, an internal-vertex term is the same expectation after adjoining an independent updated path below <span class="arithmatex">\(\beta\)</span>, with an additional factor <span class="arithmatex">\(D_j/A\)</span> at its terminal vertex.</p>
+<p><a id="s3-2-p1-s7"></a><strong>s7</strong> This is precisely a fresh path at <span class="arithmatex">\(\beta\)</span>, with coefficient <span class="arithmatex">\(\gamma_\beta\)</span>, and its new leaf is protected.</p>
+<p><a id="s3-2-p1-s8"></a><strong>s8</strong> Conditional independence of children and the projectivity of tree sampling justify this representation even when <span class="arithmatex">\(G\)</span> uses the other children of <span class="arithmatex">\(\beta\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-2-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-2-p1-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-2-p1-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-2-p1-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p1 -->
+
+<p><strong>식 Eq. §3.2 ¶1 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-2-p1-e1 -->
+
+<hr />
+<p><a id="s3-2-p2"></a></p>
+<h4 id="32-2">§3.2 ¶2<a class="headerlink" href="#32-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p2-s1"></a><strong>s1</strong> For a tree with <span class="arithmatex">\(n\)</span> leaves, telescoping gives the useful identity</p>
+<p><a id="eq-3-7"></a></p>
+<div class="arithmatex">\[
+\sum_{\beta\in\operatorname{Int}(\mathcal T)}
+       \bigl(n_\beta m_{d_\beta+1}-m_{d_\beta}\bigr)=n. \tag{3.7}
+\]</div>
+<p><a id="s3-2-p2-s2"></a><strong>s2</strong> All summands are positive.</p>
+<p><a id="s3-2-p2-s3"></a><strong>s3</strong> Define a probability law <span class="arithmatex">\(Q_k\)</span> on trees with leaves labeled <span class="arithmatex">\(1,\ldots,k\)</span> as follows.</p>
+<p><a id="s3-2-p2-s4"></a><strong>s4</strong> Start with a single path.</p>
+<p><a id="s3-2-p2-s5"></a><strong>s5</strong> When the current tree has <span class="arithmatex">\(n\)</span> leaves, choose an internal vertex <span class="arithmatex">\(\beta\)</span> with probability</p>
+<p><a id="eq-3-8"></a></p>
+<div class="arithmatex">\[
+\frac{n_\beta m_{d_\beta+1}-m_{d_\beta}}{n}, \tag{3.8}
+\]</div>
+<p>↳ create a fresh child there, and continue with a completely new path to depth <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s3-2-p2-s6"></a><strong>s6</strong> Give its terminal vertex label <span class="arithmatex">\(n+1\)</span>.</p>
+<p><a id="s3-2-p2-s7"></a><strong>s7</strong> Identity <a href="03-calculus-on-finite-trees.html#eq-3-7">(3.7)</a> verifies the normalization.</p>
+<p><a id="s3-2-p2-s8"></a><strong>s8</strong> The random tree is chosen independently of all variables subsequently sampled on it.</p>
+<p><a id="s3-2-p2-s9"></a><strong>s9</strong> For example, under <span class="arithmatex">\(Q_2\)</span> the two paths split at depth <span class="arithmatex">\(d\)</span> with probability <span class="arithmatex">\(m_{d+1}-m_d\)</span>, for <span class="arithmatex">\(0\le d\lt L\)</span>.</p>
+<p><a id="s3-2-p2-s10"></a><strong>s10</strong> This split is uniform on the depths when <span class="arithmatex">\(m_d=d/L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-2-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-2-p2-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-2-p2-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-2-p2-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s3-2-p2-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s3-2-p2-s10 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p2 -->
+
+<p><strong>식 (3.7) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-7 -->
+
+<p><strong>식 (3.8) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-8 -->
+
+<hr />
+<p><a id="s3-2-e3"></a></p>
+<h3 id="lemma-32-logarithmic-expansion">▸ Lemma 3.2 (Logarithmic expansion)<a class="headerlink" href="#lemma-32-logarithmic-expansion" title="Permanent link">&para;</a></h3>
+<p><a id="s3-2-p3"></a></p>
+<h4 id="32-3">§3.2 ¶3<a class="headerlink" href="#32-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p3-s1"></a><strong>s1</strong> For a bounded real path function <span class="arithmatex">\(D\)</span> and <span class="arithmatex">\(A=1+tD\)</span>,</p>
+<p><a id="eq-3-9"></a></p>
+<div class="arithmatex">\[
+\log Y_0
+   =\sum_{k\geq1}\frac{(-1)^{k-1}t^k}{k}
+       \mathbb E_{Q_k}E_{\mathcal T}
+          \prod_{a=1}^k D^a,
+       \qquad |t|\|D\|_\infty\lt 1. \tag{3.9}
+\]</div>
+<p><a id="s3-2-p3-s2"></a><strong>s2</strong> This identity is conditional on the root.</p>
+<p><a id="s3-2-p3-s3"></a><strong>s3</strong> If <span class="arithmatex">\(|t|\|D\|_\infty\leq c\lt 1\)</span>, the absolute value of the remainder after order <span class="arithmatex">\(K\)</span> is at most</p>
+<p><a id="eq-3-10"></a></p>
+<div class="arithmatex">\[
+\sum_{k\gt K}\frac{c^k}{k}. \tag{3.10}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p3-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p3 -->
+
+<p><strong>식 (3.9) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-9 -->
+
+<p><strong>식 (3.10) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-10 -->
+
+<hr />
+<p><em>(끝: s3-2-e3)</em></p>
+<p><a id="s3-2-e4"></a></p>
+<h3 id="proof_1">▸ <em>Proof.</em><a class="headerlink" href="#proof_1" title="Permanent link">&para;</a></h3>
+<p><a id="s3-2-p4"></a></p>
+<h4 id="32-4">§3.2 ¶4<a class="headerlink" href="#32-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p4-s1"></a><strong>s1</strong> The first derivative is, by <a href="03-calculus-on-finite-trees.html#eq-3-6">(3.6)</a>, the expectation of <span class="arithmatex">\(D/A\)</span> on one updated path.</p>
+<p><a id="s3-2-p4-s2"></a><strong>s2</strong> Protect that leaf.</p>
+<p><a id="s3-2-p4-s3"></a><strong>s3</strong> Every subsequent derivative can only add a fresh path, because all current leaves are protected.</p>
+<p><a id="s3-2-p4-s4"></a><strong>s4</strong> At order <span class="arithmatex">\(k\)</span>, all <span class="arithmatex">\(k-1\)</span> fresh coefficients are negative.</p>
+<p><a id="s3-2-p4-s5"></a><strong>s5</strong> After normalization by <a href="03-calculus-on-finite-trees.html#eq-3-7">(3.7)</a>, their absolute products are <span class="arithmatex">\((k-1)!\)</span> times the probabilities in <span class="arithmatex">\(Q_k\)</span>.</p>
+<p><a id="s3-2-p4-s6"></a><strong>s6</strong> Therefore</p>
+<p><a id="s3-2-p4-e1"></a></p>
+<div class="arithmatex">\[
+\left.\frac{d^k}{dt^k}\log Y_0\right|_{t=0}
+    =(-1)^{k-1}(k-1)!\,
+       \mathbb E_{Q_k}E_{\mathcal T}\prod_{a=1}^kD^a.
+\]</div>
+<p><a id="s3-2-p4-s7"></a><strong>s7</strong> Analyticity proves <a href="03-calculus-on-finite-trees.html#eq-3-9">(3.9)</a>; the coefficients have absolute value at most <span class="arithmatex">\(\|D\|_\infty^k/k\)</span>, which proves the stated convergence domain and <a href="03-calculus-on-finite-trees.html#eq-3-10">(3.10)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-2-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-2-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-2-p4-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p4 -->
+
+<p><strong>식 Eq. §3.2 ¶4 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-2-p4-e1 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-2-p5"></a></p>
+<h4 id="32-5">§3.2 ¶5<a class="headerlink" href="#32-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p5-s1"></a><strong>s1</strong> Here is the companion rule with old replicas.</p>
+<p><a id="s3-2-p5-s2"></a><strong>s2</strong> Fix a tree <span class="arithmatex">\(\mathcal T\)</span> with an anchor leaf <span class="arithmatex">\(a_*\)</span>.</p>
+<p><a id="s3-2-p5-s3"></a><strong>s3</strong> Starting from all its old paths, assign colors <span class="arithmatex">\(1,\ldots,k\)</span> in that order.</p>
+<p><a id="s3-2-p5-s4"></a><strong>s4</strong> For the next color, one may either</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p5-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p5 -->
+
+<hr />
+<p><a id="s3-2-p6"></a></p>
+<h4 id="32-6-i">§3.2 ¶6 · (i)<a class="headerlink" href="#32-6-i" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p6-s1"></a><strong>s1</strong> choose an unused old leaf other than <span class="arithmatex">\(a_*\)</span>, with coefficient <span class="arithmatex">\(1\)</span>; or</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p6-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p6 -->
+
+<hr />
+<p><a id="s3-2-p7"></a></p>
+<h4 id="32-7-ii">§3.2 ¶7 · (ii)<a class="headerlink" href="#32-7-ii" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p7-s1"></a><strong>s1</strong> create a fresh path from any internal vertex <span class="arithmatex">\(\beta\)</span> of the current tree, with coefficient <span class="arithmatex">\(\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p7-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p7 -->
+
+<hr />
+<p><a id="s3-2-p8"></a></p>
+<h4 id="32-8">§3.2 ¶8<a class="headerlink" href="#32-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p8-s1"></a><strong>s1</strong> Each fresh path uses a new child at its divergence vertex and new vertices at every greater depth.</p>
+<p><a id="s3-2-p8-s2"></a><strong>s2</strong> Every chosen leaf receives its color and cannot be chosen again.</p>
+<p><a id="s3-2-p8-s3"></a><strong>s3</strong> The current tree includes all old paths, including unused ones, and every path already added.</p>
+<p><a id="s3-2-p8-s4"></a><strong>s4</strong> An extension history <span class="arithmatex">\(E\)</span> records these choices; write <span class="arithmatex">\(a_j(E)\)</span> for the leaf carrying color <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(\mathcal T_E\)</span> for its final tree, and <span class="arithmatex">\(c_E\)</span> for the product of its coefficients.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p8-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p8-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p8-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p8-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p8 -->
+
+<hr />
+<p><a id="s3-2-e5"></a></p>
+<h3 id="lemma-33-canceled-anchor-expansion">▸ Lemma 3.3 (Canceled-anchor expansion)<a class="headerlink" href="#lemma-33-canceled-anchor-expansion" title="Permanent link">&para;</a></h3>
+<p><a id="s3-2-p9"></a></p>
+<h4 id="32-9">§3.2 ¶9<a class="headerlink" href="#32-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p9-s1"></a><strong>s1</strong> Let <span class="arithmatex">\(H\)</span> be a bounded function of the variables on the old tree, fixed as the insertion parameters vary.</p>
+<p><a id="s3-2-p9-s2"></a><strong>s2</strong> For <span class="arithmatex">\(A_{\boldsymbol t}=1+\sum_{j=1}^k t_jD_j\)</span>, with bounded real path functions <span class="arithmatex">\(D_j\)</span>, one has</p>
+<p><a id="eq-3-11"></a></p>
+<div class="arithmatex">\[
+\left.\partial_{t_1}\cdots\partial_{t_k}
+       E_{\mathcal T}^{A_{\boldsymbol t}}
+        \frac{H}{A_{\boldsymbol t}^{a_*}}
+  \right|_{\boldsymbol t=0}
+   =\sum_E c_E\,
+       E_{\mathcal T_E}
+          \left[H\prod_{j=1}^kD_j^{a_j(E)}\right]. \tag{3.11}
+\]</div>
+<p><a id="s3-2-p9-s3"></a><strong>s3</strong> The formula holds in any fixed order of the colors.</p>
+<p><a id="s3-2-p9-s4"></a><strong>s4</strong> For identical directions <span class="arithmatex">\(D_j=D\)</span>, the coefficient of <span class="arithmatex">\(t^k\)</span> is the right-hand side divided by <span class="arithmatex">\(k!\)</span>.</p>
+<p><a id="s3-2-p9-s5"></a><strong>s5</strong> The analytic bounds established above apply to its left-hand side, uniformly over the path kernels.</p>
+<p><a id="s3-2-p9-s6"></a><strong>s6</strong> The empty extension has weight <span class="arithmatex">\(1\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p9-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p9-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p9-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p9-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-2-p9-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-2-p9-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p9 -->
+
+<p><strong>식 (3.11) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-11 -->
+
+<hr />
+<p><em>(끝: s3-2-e5)</em></p>
+<p><a id="s3-2-e6"></a></p>
+<h3 id="proof_2">▸ <em>Proof.</em><a class="headerlink" href="#proof_2" title="Permanent link">&para;</a></h3>
+<p><a id="s3-2-p10"></a></p>
+<h4 id="32-10">§3.2 ¶10<a class="headerlink" href="#32-10" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-2-p10-s1"></a><strong>s1</strong> Begin with <span class="arithmatex">\(C=\{a_*\}\)</span> and <span class="arithmatex">\(G=H\)</span>.</p>
+<p><a id="s3-2-p10-s2"></a><strong>s2</strong> Apply the preceding rule successively, incorporating each new <span class="arithmatex">\(D_j\)</span> in <span class="arithmatex">\(G\)</span>.</p>
+<p><a id="s3-2-p10-s3"></a><strong>s3</strong> Fresh leaves are protected immediately, so the only unprotected leaves are unused old leaves.</p>
+<p><a id="s3-2-p10-s4"></a><strong>s4</strong> At zero all factors <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(Y\)</span> are <span class="arithmatex">\(1\)</span>, proving the claimed rule and its coefficients.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-2-p10-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-2-p10-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-2-p10-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-2-p10-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-2-p10 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-3"></a></p>
+<h2 id="33-sums-of-extension-coefficients">§3.3 Sums of extension coefficients<a class="headerlink" href="#33-sums-of-extension-coefficients" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s3-3 -->
+
+<p><a id="s3-3-p1"></a></p>
+<h4 id="33-1">§3.3 ¶1<a class="headerlink" href="#33-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p1-s1"></a><strong>s1</strong> We now control the signed normalization and the accumulated error in the prescribed-tree identities used for the lower bound.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p1-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p1 -->
+
+<hr />
+<p><a id="s3-3-p2"></a></p>
+<h4 id="33-2">§3.3 ¶2<a class="headerlink" href="#33-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p2-s1"></a><strong>s1</strong> In an extension history, the anchor and the already colored paths are called reference paths.</p>
+<p><a id="s3-3-p2-s2"></a><strong>s2</strong> Constraints on the new color will only specify its splitting depths with these paths.</p>
+<p><a id="s3-3-p2-s3"></a><strong>s3</strong> In particular, a constraint does not distinguish unused old paths with the same specified ancestry.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p2-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p2 -->
+
+<hr />
+<p><a id="s3-3-p3"></a></p>
+<h4 id="33-3">§3.3 ¶3<a class="headerlink" href="#33-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p3-s1"></a><strong>s1</strong> To see the cancellation that must be controlled, start with two old paths splitting at depth <span class="arithmatex">\(d\)</span>, and let the first be the anchor.</p>
+<p><a id="s3-3-p3-s2"></a><strong>s2</strong> Require one added color to split from the anchor exactly at <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s3-3-p3-s3"></a><strong>s3</strong> It may use the second old leaf, create a fresh path at the depth-<span class="arithmatex">\(d\)</span> vertex, or follow the second old path and leave it at a depth <span class="arithmatex">\(\ell\gt d\)</span>.</p>
+<p><a id="s3-3-p3-s4"></a><strong>s4</strong> The respective coefficients give the total</p>
+<p><a id="s3-3-p3-e1"></a></p>
+<div class="arithmatex">\[
+1+(m_d-2m_{d+1})
+       +\sum_{\ell=d+1}^{L-1}(m_\ell-m_{\ell+1})
+  =m_d-m_{d+1}.
+\]</div>
+<p><a id="s3-3-p3-s5"></a><strong>s5</strong> On the uniform mesh <span class="arithmatex">\(m_d=d/L\)</span>, with <span class="arithmatex">\(\delta=L^{-1}\)</span>, this signed total is <span class="arithmatex">\(-\delta\)</span>, but the sum of absolute coefficients is <span class="arithmatex">\(2+\delta\)</span>.</p>
+<p><a id="s3-3-p3-s6"></a><strong>s6</strong> If instead the required split is delayed to <span class="arithmatex">\(d+1\lt L\)</span>, the only allowed choice is a fresh split at the unary depth-<span class="arithmatex">\((d+1)\)</span> vertex on the anchor path.</p>
+<p><a id="s3-3-p3-s7"></a><strong>s7</strong> Its coefficient is <span class="arithmatex">\(-\delta\)</span>, so the absolute sum is now <span class="arithmatex">\(\delta\)</span>.</p>
+<p><a id="s3-3-p3-s8"></a><strong>s8</strong> The next two lemmas extend these two calculations: the first computes signed totals, and the second controls absolute sums when specified splits occur away from old branching depths.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p3-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-3-p3-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-3-p3-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-3-p3-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p3 -->
+
+<p><strong>식 Eq. §3.3 ¶3 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-3-p3-e1 -->
+
+<hr />
+<p><a id="s3-3-e7"></a></p>
+<h3 id="lemma-34-reference-path-totals">▸ Lemma 3.4 (Reference-path totals)<a class="headerlink" href="#lemma-34-reference-path-totals" title="Permanent link">&para;</a></h3>
+<p><a id="s3-3-p4"></a></p>
+<h4 id="33-4">§3.3 ¶4<a class="headerlink" href="#33-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p4-s1"></a><strong>s1</strong> Suppose the next color must follow a specified reference prefix to depth <span class="arithmatex">\(d\)</span> and then enter a child distinct from all <span class="arithmatex">\(j\geq1\)</span> children there that contain reference paths.</p>
+<p><a id="s3-3-p4-s2"></a><strong>s2</strong> Apart from these ancestry constraints its continuation is unrestricted.</p>
+<p><a id="s3-3-p4-s3"></a><strong>s3</strong> The sum of the coefficients of all allowed choices is</p>
+<p><a id="eq-3-12"></a></p>
+<div class="arithmatex">\[
+m_d-jm_{d+1}. \tag{3.12}
+\]</div>
+<p><a id="s3-3-p4-s4"></a><strong>s4</strong> Consequently, if the anchor and the colors must have a prescribed tree <span class="arithmatex">\(S\)</span>, the total coefficient over all compatible extensions of any old tree is</p>
+<p><a id="eq-3-13"></a></p>
+<div class="arithmatex">\[
+\kappa(S)=\prod_{v\in\operatorname{Br}(S)}
+           \prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}), \tag{3.13}
+\]</div>
+<p>↳ where <span class="arithmatex">\(a_v\)</span> and <span class="arithmatex">\(d_v\)</span> are the child count and depth of each branching vertex in the prescribed reference tree.</p>
+<p><a id="s3-3-p4-s5"></a><strong>s5</strong> More generally, the same one-step rule can be iterated starting from any already constructed set of references.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p4-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p4 -->
+
+<p><strong>식 (3.12) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-12 -->
+
+<p><strong>식 (3.13) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-13 -->
+
+<hr />
+<p><em>(끝: s3-3-e7)</em></p>
+<p><a id="s3-3-e8"></a></p>
+<h3 id="proof_3">▸ <em>Proof.</em><a class="headerlink" href="#proof_3" title="Permanent link">&para;</a></h3>
+<p><a id="s3-3-p5"></a></p>
+<h4 id="33-5">§3.3 ¶5<a class="headerlink" href="#33-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p5-s1"></a><strong>s1</strong> At the specified divergence vertex, let <span class="arithmatex">\(n\)</span> be the child count in the entire current tree.</p>
+<p><a id="s3-3-p5-s2"></a><strong>s2</strong> The <span class="arithmatex">\(j\)</span> excluded children contain all references passing through that vertex.</p>
+<p><a id="s3-3-p5-s3"></a><strong>s3</strong> Each of the other <span class="arithmatex">\(n-j\)</span> children roots a subtree containing no reference.</p>
+<p><a id="s3-3-p5-s4"></a><strong>s4</strong> Its terminal vertices are therefore unused old leaves.</p>
+<p><a id="s3-3-p5-s5"></a><strong>s5</strong> If such a subtree is rooted at depth <span class="arithmatex">\(d+1\)</span>, its permitted choices are an old leaf, with coefficient <span class="arithmatex">\(1\)</span>, or a fresh divergence at an internal vertex in the subtree.</p>
+<p><a id="s3-3-p5-s6"></a><strong>s6</strong> If it has <span class="arithmatex">\(q\)</span> leaves, telescoping within it gives</p>
+<p><a id="s3-3-p5-e1"></a></p>
+<div class="arithmatex">\[
+q+\sum_{\beta\text{ internal in the subtree}}
+       (m_{d_\beta}-n_\beta m_{d_\beta+1})=m_{d+1}.
+\]</div>
+<p><a id="s3-3-p5-s7"></a><strong>s7</strong> The formula includes the case of a terminal child, when both sides are <span class="arithmatex">\(1\)</span>.</p>
+<p><a id="s3-3-p5-s8"></a><strong>s8</strong> Adding these contributions to the fresh choice at the specified vertex gives <span class="arithmatex">\(m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p5-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p5-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-3-p5-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-3-p5-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-3-p5-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p5 -->
+
+<p><strong>식 Eq. §3.3 ¶5 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-3-p5-e1 -->
+
+<hr />
+<p><a id="s3-3-p6"></a></p>
+<h4 id="33-6">§3.3 ¶6<a class="headerlink" href="#33-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p6-s1"></a><strong>s1</strong> For consistent prescribed splitting depths with all reference paths, the deepest required common prefix determines the divergence vertex and its excluded reference children.</p>
+<p><a id="s3-3-p6-s2"></a><strong>s2</strong> Thus the one-step sum depends only on the current reference tree, not on which old paths or fresh paths realized it.</p>
+<p><a id="s3-3-p6-s3"></a><strong>s3</strong> Sum backwards over successive choices.</p>
+<p><a id="s3-3-p6-s4"></a><strong>s4</strong> At a branching vertex of the final prescribed tree, the numbers of excluded reference children when new child groups are first entered are exactly <span class="arithmatex">\(1,\ldots,a_v-1\)</span>.</p>
+<p><a id="s3-3-p6-s5"></a><strong>s5</strong> Their factors give <a href="03-calculus-on-finite-trees.html#eq-3-13">(3.13)</a>, independently of the color order.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p6-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p6 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-3-p7"></a></p>
+<h4 id="33-7">§3.3 ¶7<a class="headerlink" href="#33-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p7-s1"></a><strong>s1</strong> To control errors after division by a small reference coefficient, we also need an absolute bound.</p>
+<p><a id="s3-3-p7-s2"></a><strong>s2</strong> Moving a target branching depth away from all old branching depths forces a fresh unary split.</p>
+<p><a id="s3-3-p7-s3"></a><strong>s3</strong> The next estimate charges one small factor to each such vertex.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p7-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p7 -->
+
+<hr />
+<p><a id="s3-3-e9"></a></p>
+<h3 id="lemma-35-charging-fresh-splits">▸ Lemma 3.5 (Charging fresh splits)<a class="headerlink" href="#lemma-35-charging-fresh-splits" title="Permanent link">&para;</a></h3>
+<p><a id="s3-3-p8"></a></p>
+<h4 id="33-8">§3.3 ¶8<a class="headerlink" href="#33-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p8-s1"></a><strong>s1</strong> Assume <span class="arithmatex">\(m_d=d/L\)</span> and put <span class="arithmatex">\(\delta=L^{-1}\)</span>.</p>
+<p><a id="s3-3-p8-s2"></a><strong>s2</strong> Start with an old tree having <span class="arithmatex">\(q\)</span> leaves and assign <span class="arithmatex">\(k\)</span> colors by the canceled-anchor extension rule.</p>
+<p><a id="s3-3-p8-s3"></a><strong>s3</strong> Prescribe the reference shape of the anchor and the colors, possibly with additional restrictions on allowed extensions.</p>
+<p><a id="s3-3-p8-s4"></a><strong>s4</strong> Suppose <span class="arithmatex">\(b\)</span> specified branching vertices of that shape have depths which are not branching depths anywhere in the old tree.</p>
+<p><a id="s3-3-p8-s5"></a><strong>s5</strong> Then</p>
+<p><a id="eq-3-14"></a></p>
+<div class="arithmatex">\[
+\sum_{E\text{ allowed}}|c_E|\leq C_{q,k}\delta^b. \tag{3.14}
+\]</div>
+<p><a id="s3-3-p8-s6"></a><strong>s6</strong> The constant is independent of <span class="arithmatex">\(L\)</span>, the prescribed depths, and their coincidences at different vertices.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p8-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p8-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p8-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p8-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p8-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-3-p8-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p8 -->
+
+<p><strong>식 (3.14) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-14 -->
+
+<hr />
+<p><a id="s3-3-p9"></a></p>
+<h4 id="33-9">§3.3 ¶9<a class="headerlink" href="#33-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p9-s1"></a><strong>s1</strong> In particular, for these <span class="arithmatex">\(b\)</span> vertices let</p>
+<p><a id="s3-3-p9-e1"></a></p>
+<div class="arithmatex">\[
+J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
+\]</div>
+<p><a id="s3-3-p9-s2"></a><strong>s2</strong> If <span class="arithmatex">\(m_{d_v}\geq\eta\gt 0\)</span> at all of them, then <span class="arithmatex">\(J\ne0\)</span> and</p>
+<p><a id="eq-3-15"></a></p>
+<div class="arithmatex">\[
+\frac{1}{|J|}\sum_{E\text{ allowed}}|c_E|
+        \leq C_{q,k,\eta}. \tag{3.15}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p9-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p9-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p9 -->
+
+<p><strong>식 Eq. §3.3 ¶9 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-3-p9-e1 -->
+
+<p><strong>식 (3.15) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-15 -->
+
+<hr />
+<p><em>(끝: s3-3-e9)</em></p>
+<p><a id="s3-3-e10"></a></p>
+<h3 id="proof_4">▸ <em>Proof.</em><a class="headerlink" href="#proof_4" title="Permanent link">&para;</a></h3>
+<p><a id="s3-3-p10"></a></p>
+<h4 id="33-10">§3.3 ¶10<a class="headerlink" href="#33-10" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p10-s1"></a><strong>s1</strong> If the current tree has <span class="arithmatex">\(s\)</span> leaves, <a href="03-calculus-on-finite-trees.html#eq-3-7">(3.7)</a> says that the total absolute coefficient of all fresh choices is <span class="arithmatex">\(s\)</span>.</p>
+<p><a id="s3-3-p10-s2"></a><strong>s2</strong> There are at most <span class="arithmatex">\(s\)</span> eligible old choices.</p>
+<p><a id="s3-3-p10-s3"></a><strong>s3</strong> Hence the total absolute coefficient at an unrestricted step is at most <span class="arithmatex">\(2s\leq2(q+k)\)</span>.</p>
+<p><a id="s3-3-p10-s4"></a><strong>s4</strong> At any fixed depth there are at most <span class="arithmatex">\(s\)</span> vertices.</p>
+<p><a id="s3-3-p10-s5"></a><strong>s5</strong> Restricting a step to fresh divergences at unary vertices of a prescribed depth therefore gives total absolute coefficient at most <span class="arithmatex">\(s\delta\)</span>, because each such divergence has coefficient <span class="arithmatex">\(m_d-m_{d+1}=-\delta\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p10-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p10-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p10-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p10-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p10-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p10 -->
+
+<hr />
+<p><a id="s3-3-p11"></a></p>
+<h4 id="33-11">§3.3 ¶11<a class="headerlink" href="#33-11" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p11-s1"></a><strong>s1</strong> Consider an allowed history and one of its specified target branching vertices.</p>
+<p><a id="s3-3-p11-s2"></a><strong>s2</strong> That vertex cannot already be branching in the old tree.</p>
+<p><a id="s3-3-p11-s3"></a><strong>s3</strong> At the first step at which it became branching in the current tree, a fresh path must therefore have diverged there while it was unary.</p>
+<p><a id="s3-3-p11-s4"></a><strong>s4</strong> The vertex may itself have been created earlier as part of a new unary path; the same conclusion then applies.</p>
+<p><a id="s3-3-p11-s5"></a><strong>s5</strong> Distinct target vertices become branching at distinct steps, since a fresh path creates only one branching vertex.</p>
+<p><a id="s3-3-p11-s6"></a><strong>s6</strong> Assign each of the <span class="arithmatex">\(b\)</span> vertices to its creation step.</p>
+<p><a id="s3-3-p11-s7"></a><strong>s7</strong> There are at most <span class="arithmatex">\(k!/(k-b)!\)</span> possible assignments (and necessarily <span class="arithmatex">\(b\leq k\)</span>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p11-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p11-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p11-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p11-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-3-p11-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-3-p11-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-3-p11-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p11 -->
+
+<hr />
+<p><a id="s3-3-p12"></a></p>
+<h4 id="33-12">§3.3 ¶12<a class="headerlink" href="#33-12" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p12-s1"></a><strong>s1</strong> For each fixed assignment, enlarge the family of histories by discarding all constraints except that a designated step creates a unary split at its assigned depth.</p>
+<p><a id="s3-3-p12-s2"></a><strong>s2</strong> Bound its step sum by <span class="arithmatex">\((q+k)\delta\)</span> and every other step sum by <span class="arithmatex">\(2(q+k)\)</span>.</p>
+<p><a id="s3-3-p12-s3"></a><strong>s3</strong> Iterated summation over choices gives at most</p>
+<p><a id="s3-3-p12-e1"></a></p>
+<div class="arithmatex">\[
+\frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b.
+\]</div>
+<p><a id="s3-3-p12-s4"></a><strong>s4</strong> This proves <a href="03-calculus-on-finite-trees.html#eq-3-14">(3.14)</a>, including repeated assigned depths, because the designated steps remain distinct.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p12-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p12-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p12-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-3-p12-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p12 -->
+
+<p><strong>식 Eq. §3.3 ¶12 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-3-p12-e1 -->
+
+<hr />
+<p><a id="s3-3-p13"></a></p>
+<h4 id="33-13">§3.3 ¶13<a class="headerlink" href="#33-13" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-3-p13-s1"></a><strong>s1</strong> For the final assertion, the <span class="arithmatex">\(j=1\)</span> factor at each designated vertex has absolute value <span class="arithmatex">\(\delta\)</span>, whereas for <span class="arithmatex">\(j\geq2\)</span></p>
+<p><a id="s3-3-p13-e1"></a></p>
+<div class="arithmatex">\[
+|m_d-jm_{d+1}|=(j-1)m_d+j\delta\geq\eta.
+\]</div>
+<p><a id="s3-3-p13-s2"></a><strong>s2</strong> There are only a size-dependent number of the latter factors.</p>
+<p><a id="s3-3-p13-s3"></a><strong>s3</strong> Thus <span class="arithmatex">\(|J|\geq\delta^b\eta^{\sum_v(a_v-2)}\)</span>, and the result follows.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-3-p13-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-3-p13-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-3-p13-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-3-p13 -->
+
+<p><strong>식 Eq. §3.3 ¶13 #1 항별 표</strong></p>
+<!-- TODO:항표 s3-3-p13-e1 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-4"></a></p>
+<h2 id="34-the-distribution-of-branching-depths">§3.4 The distribution of branching depths<a class="headerlink" href="#34-the-distribution-of-branching-depths" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s3-4 -->
+
+<p><a id="s3-4-p1"></a></p>
+<h4 id="34-1">§3.4 ¶1<a class="headerlink" href="#34-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-4-p1-s1"></a><strong>s1</strong> Still take <span class="arithmatex">\(m_d=d/L\)</span>.</p>
+<p><a id="s3-4-p1-s2"></a><strong>s2</strong> Suppress unary stretches only for the purpose of describing a shape by a finite topology and its branching-depth coordinates.</p>
+<p><a id="s3-4-p1-s3"></a><strong>s3</strong> For <span class="arithmatex">\(0\lt \eta\lt 1/2\)</span>, call a shape <em>regular</em> if every branching depth divided by <span class="arithmatex">\(L\)</span> lies in <span class="arithmatex">\((\eta,1-\eta)\)</span> and any two distinct branching vertices have normalized depths differing by more than <span class="arithmatex">\(\eta\)</span>.</p>
+<p><a id="s3-4-p1-s4"></a><strong>s4</strong> A singleton is regular.</p>
+<p><a id="s3-4-p1-s5"></a><strong>s5</strong> This is the regularity used when sampling a single tree; later we also use two copies whose corresponding depth assignments are deliberately aligned.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-4-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-4-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-4-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-4-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-4-p1-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-4-p1 -->
+
+<hr />
+<p><a id="s3-4-e11"></a></p>
+<h3 id="lemma-36-regular-shapes">▸ Lemma 3.6 (Regular shapes)<a class="headerlink" href="#lemma-36-regular-shapes" title="Permanent link">&para;</a></h3>
+<p><a id="s3-4-p2"></a></p>
+<h4 id="34-2">§3.4 ¶2<a class="headerlink" href="#34-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-4-p2-s1"></a><strong>s1</strong> For every fixed <span class="arithmatex">\(k\)</span> there is <span class="arithmatex">\(C_k\lt \infty\)</span>, independent of <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(\eta\)</span>, such that</p>
+<p><a id="eq-3-16"></a></p>
+<div class="arithmatex">\[
+Q_k\{\mathcal T\text{ is not regular}\}
+        \leq C_k(\eta+L^{-1}). \tag{3.16}
+\]</div>
+<p><a id="s3-4-p2-s2"></a><strong>s2</strong> For any particular labeled topology with <span class="arithmatex">\(a\)</span> branching vertices and any consistent assignment of their depths,</p>
+<p><a id="eq-3-17"></a></p>
+<div class="arithmatex">\[
+Q_k\{\text{that topology and depth assignment}\}
+       \leq C_kL^{-a}. \tag{3.17}
+\]</div>
+<p><a id="s3-4-p2-s3"></a><strong>s3</strong> Deleting leaves from a regular tree produces a regular tree, after discarding branching vertices that become unary.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-4-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-4-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-4-p2-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-4-p2 -->
+
+<p><strong>식 (3.16) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-16 -->
+
+<p><strong>식 (3.17) 항별 표</strong></p>
+<!-- TODO:항표 eq-3-17 -->
+
+<hr />
+<p><em>(끝: s3-4-e11)</em></p>
+<p><a id="s3-4-e12"></a></p>
+<h3 id="proof_5">▸ <em>Proof.</em><a class="headerlink" href="#proof_5" title="Permanent link">&para;</a></h3>
+<p><a id="s3-4-p3"></a></p>
+<h4 id="34-3">§3.4 ¶3<a class="headerlink" href="#34-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-4-p3-s1"></a><strong>s1</strong> Suppose the current tree has <span class="arithmatex">\(n\)</span> leaves.</p>
+<p><a id="s3-4-p3-s2"></a><strong>s2</strong> A new branching vertex is created exactly when the next path diverges at a unary vertex.</p>
+<p><a id="s3-4-p3-s3"></a><strong>s3</strong> Each such choice has probability <span class="arithmatex">\(\delta/n\)</span> by <a href="03-calculus-on-finite-trees.html#eq-3-8">(3.8)</a>.</p>
+<p><a id="s3-4-p3-s4"></a><strong>s4</strong> At any depth there are at most <span class="arithmatex">\(n\)</span> vertices; hence for a set <span class="arithmatex">\(B\)</span> of depths the probability that the next path creates a branching vertex at a depth in <span class="arithmatex">\(B\)</span> is at most <span class="arithmatex">\(|B|\delta\)</span>.</p>
+<p><a id="s3-4-p3-s5"></a><strong>s5</strong> At each of the first <span class="arithmatex">\(k-1\)</span> steps, the boundary depths and the depths within normalized distance <span class="arithmatex">\(\eta\)</span> of any previous branching vertex form a set of cardinality at most <span class="arithmatex">\(C_k(\eta L+1)\)</span>.</p>
+<p><a id="s3-4-p3-s6"></a><strong>s6</strong> If none of these forbidden creation events occurs, the final tree is regular.</p>
+<p><a id="s3-4-p3-s7"></a><strong>s7</strong> A union bound proves <a href="03-calculus-on-finite-trees.html#eq-3-16">(3.16)</a>.</p>
+<p><a id="s3-4-p3-s8"></a><strong>s8</strong> Divergence at an already branching vertex does not create a new coordinate and requires no extra exclusion.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-4-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-4-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-4-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-4-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-4-p3-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-4-p3-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-4-p3-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s3-4-p3-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-4-p3 -->
+
+<hr />
+<p><a id="s3-4-p4"></a></p>
+<h4 id="34-4">§3.4 ¶4<a class="headerlink" href="#34-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-4-p4-s1"></a><strong>s1</strong> For <a href="03-calculus-on-finite-trees.html#eq-3-17">(3.17)</a>, restrict a specified final labeled tree to leaves <span class="arithmatex">\(1,\ldots,n\)</span>, retaining every unary stretch.</p>
+<p><a id="s3-4-p4-s2"></a><strong>s2</strong> These restrictions determine its successive histories under <a href="03-calculus-on-finite-trees.html#eq-3-8">(3.8)</a>.</p>
+<p><a id="s3-4-p4-s3"></a><strong>s3</strong> Each of its <span class="arithmatex">\(a\)</span> branching vertices is first created by a unary divergence, whose probability is at most <span class="arithmatex">\(\delta\)</span>; every other transition probability is at most <span class="arithmatex">\(1\)</span>.</p>
+<p><a id="s3-4-p4-s4"></a><strong>s4</strong> The probability of the specified history is therefore at most <span class="arithmatex">\(\delta^a\)</span>.</p>
+<p><a id="s3-4-p4-s5"></a><strong>s5</strong> If a topology description identifies equivalent child orderings, their number is bounded in terms of <span class="arithmatex">\(k\)</span> alone, which gives the stated version with <span class="arithmatex">\(C_k\)</span>.</p>
+<p><a id="s3-4-p4-s6"></a><strong>s6</strong> Finally, a retained branching vertex after deletion was already a branching vertex of the original tree, at the same depth.</p>
+<p><a id="s3-4-p4-s7"></a><strong>s7</strong> Its depth coordinates are a subset of the old ones, so regularity is preserved.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-4-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-4-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-4-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-4-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s3-4-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s3-4-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s3-4-p4-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-4-p4 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s3-4-e13"></a></p>
+<h3 id="remark-37">▸ Remark 3.7<a class="headerlink" href="#remark-37" title="Permanent link">&para;</a></h3>
+<p><a id="s3-4-p5"></a></p>
+<h4 id="34-5">§3.4 ¶5<a class="headerlink" href="#34-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s3-4-p5-s1"></a><strong>s1</strong> For fixed <span class="arithmatex">\(k\)</span> there are finitely many labeled topologies.</p>
+<p><a id="s3-4-p5-s2"></a><strong>s2</strong> Therefore <a href="03-calculus-on-finite-trees.html#eq-3-17">(3.17)</a> converts an unnormalized depth average <span class="arithmatex">\(L^{-a}\sum\)</span> for a topology with <span class="arithmatex">\(a\)</span> branching coordinates into a bound for its contribution under <span class="arithmatex">\(Q_k\)</span>.</p>
+<p><a id="s3-4-p5-s3"></a><strong>s3</strong> The same is true for errors on subshapes: summing over coordinates discarded by the subshape costs at most the corresponding power of <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s3-4-p5-s4"></a><strong>s4</strong> Together with <a href="03-calculus-on-finite-trees.html#eq-3-16">(3.16)</a>, this allows averaged estimates on regular depth assignments to be used in the logarithmic expansion.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s3-4-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s3-4-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s3-4-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s3-4-p5-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s3-4-p5 -->
+
+<hr />
+<p><em>(끝: s3-4-e13)</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="02-the-model-and-the-variational-principle.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §2 The model and the variational principle">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §2 The model and the variational principle
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="04-the-interpolation-upper-bound.html" class="md-footer__link md-footer__link--next" aria-label="다음: §4 The interpolation upper bound">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §4 The interpolation upper bound
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

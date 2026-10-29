@@ -1,0 +1,28 @@
+/* 원문/번역/해석 구분을 읽기 쉽게: 문단 헤더와 표만 약간 다듬는다 */
+.md-typeset h4 { margin-top: 2.2em; padding-top: .4em; border-top: 1px solid var(--md-default-fg-color--lightest); }
+.md-typeset details { margin: .8em 0; padding: .2em .8em; border-left: 3px solid var(--md-accent-fg-color); background: var(--md-code-bg-color); }
+.md-typeset details > summary { cursor: pointer; font-weight: 600; }
+.md-typeset table:not([class]) { font-size: .72rem; }
+.md-typeset .arithmatex { overflow-x: auto; overflow-y: hidden; }
+.md-typeset hr { margin: 2em 0; }
+/* 넓은 디스플레이 수식은 페이지가 아니라 수식 상자 안에서 가로 스크롤 */
+.md-typeset mjx-container[display="true"] { display: block; overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 2px 0; }
+.md-typeset div.arithmatex { overflow: hidden; max-width: 100%; }
+/* 항별 표: 좁은 화면에서 열을 짜부라뜨리지 말고 표 상자 안에서 가로 스크롤 */
+.md-typeset__table { width: 100%; }
+.md-typeset__scrollwrap { overflow-x: auto; }
+.md-typeset table:not([class]) { min-width: 40em; }
+.md-typeset table:not([class]) td:first-child { min-width: 9em; }
+@media (max-width: 600px) {
+  .md-typeset { font-size: .78rem; }
+  /* 긴 인라인 수식은 줄바꿈이 안 되므로 수식 안에서만 가로 스크롤 */
+  .md-typeset span.arithmatex > mjx-container { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
+  /* 표 → 카드: 행마다 상자, 칸마다 '열 이름: 내용' */
+  .md-typeset table:not([class]) { min-width: 0; display: block; border: 0; font-size: .74rem; }
+  .md-typeset table:not([class]) thead { display: none; }
+  .md-typeset table:not([class]) tbody, .md-typeset table:not([class]) tr { display: block; }
+  .md-typeset table:not([class]) tr { margin: 0 0 .8em; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 4px; }
+  .md-typeset table:not([class]) td { display: block; min-width: 0; border: 0; padding: .3em .6em; overflow-x: auto; }
+  .md-typeset table:not([class]) td::before { content: attr(data-label); display: block; font-weight: 600; font-size: .9em; color: var(--md-default-fg-color--light); }
+  .md-typeset table:not([class]) td:first-child { min-width: 0; background: var(--md-code-bg-color); }
+}

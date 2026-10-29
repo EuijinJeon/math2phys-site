@@ -1,0 +1,1770 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/02-the-model-and-the-variational-principle.html">
+      
+      
+        <link rel="prev" href="01-introduction.html">
+      
+      
+        <link rel="next" href="03-calculus-on-finite-trees.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§2 The model and the variational principle - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-the-model-and-the-variational-principle" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §2 The model and the variational principle
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02-the-model-and-the-variational-principle.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-hierarchical-cavity-functional" class="md-nav__link">
+    <span class="md-ellipsis">
+      §2.1 The hierarchical cavity functional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§2.1 The hierarchical cavity functional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 2.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-proof-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      §2.2 Proof strategy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-calculus-on-finite-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-perturbed-cavity-reservoir.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-perturbations-and-identities-on-prescrib.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-decorrelation-on-prescribed-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-hierarchical-cavity-functional" class="md-nav__link">
+    <span class="md-ellipsis">
+      §2.1 The hierarchical cavity functional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§2.1 The hierarchical cavity functional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 2.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-proof-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      §2.2 Proof strategy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s2"></a></p>
+<h1 id="2-the-model-and-the-variational-principle">§2 The model and the variational principle<a class="headerlink" href="#2-the-model-and-the-variational-principle" title="Permanent link">&para;</a></h1>
+<p><em>제목: 모형과 변분 원리</em></p>
+<p><a href="01-introduction.html">← 이전: §1 Introduction</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="03-calculus-on-finite-trees.html">다음: §3 Calculus on finite trees →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<ul>
+<li><strong>하는 일</strong>: (¶1–¶2) 모형을 정의한다 — Poisson 개수의 <span class="arithmatex">\(p\)</span>-body factor 와 random field 를 가진 Ising 계, 그리고 factor 의 loop 전개 형태(2.3)와 positivity(2.4) 가정. (§2.1) Mézard–Parisi 의 <span class="arithmatex">\(r\)</span>RSB Bethe free entropy functional <span class="arithmatex">\(\mathcal B_r\)</span> 를 power mean 형태로 정의하고, 주정리 Theorem 2.1: <span class="arithmatex">\(\lim_N F_N=\inf_r\Phi_r\)</span>. (§2.2) lower bound 증명의 4단계 지도.</li>
+<li><strong>물리적 의미</strong>: <span class="arithmatex">\(\mathcal B_r\)</span> = (site 항: 새 spin 을 <span class="arithmatex">\(\mathrm{Poisson}(\alpha p)\)</span> 개 factor 와 함께 삽입) − <span class="arithmatex">\(\alpha(p-1)\times\)</span>(factor 항: factor 하나를 cavity field 속 spin 들에 붙임). 상태들에 대한 평균은 Parisi parameter <span class="arithmatex">\(m_d\)</span> 를 지수로 하는 power mean 으로 들어간다 — Ruelle cascade 평균을 미리 적분한 형태(R13). 이 공식은 물리의 1RSB/rRSB cavity 공식과 같은 모양이고, 정리는 그 infimum 이 정확한 pressure 라는 것.</li>
+<li><strong>건너뛰어도 되는가</strong>: §2.1 ¶3 의 식 (2.7)–(2.11) 과 Theorem 2.1 은 이후 모든 섹션의 기준이라 읽기를 권한다. ¶2 의 positivity 세부와 §2.1 ¶4 의 유계성은 건너뛰어도 된다. §2.2 는 이후 섹션들의 지도.</li>
+</ul>
+</details>
+<p><a id="s2-p1"></a></p>
+<h4 id="2-1">§2 ¶1<a class="headerlink" href="#2-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-p1-s1"></a><strong>s1</strong> Fix an even integer <span class="arithmatex">\(p\ge2\)</span> and <span class="arithmatex">\(\alpha\gt 0\)</span>.</p>
+<p><a id="s2-p1-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(\theta\)</span> be a random real function on <span class="arithmatex">\(\{-1,1\}^p\)</span> and let <span class="arithmatex">\(h\)</span> be a real random variable.</p>
+<p><a id="s2-p1-s3"></a><strong>s3</strong> Write <span class="arithmatex">\(B(\theta)=\max_s\lvert{\theta(s)}\rvert\)</span> and assume</p>
+<p><a id="eq-2-1"></a></p>
+<div class="arithmatex">\[
+\mathbb E B(\theta)+\mathbb E\lvert{h}\rvert\lt \infty. \tag{2.1}
+\]</div>
+<p><a id="s2-p1-s4"></a><strong>s4</strong> For independent <span class="arithmatex">\(M_N\sim\operatorname{Poisson}(\alpha N)\)</span>, independent copies <span class="arithmatex">\(\theta_k\)</span> of <span class="arithmatex">\(\theta\)</span>, independent copies <span class="arithmatex">\(h_i\)</span> of <span class="arithmatex">\(h\)</span>, and independent uniform indices <span class="arithmatex">\(i_{\ell,k}\in[N]=\{1,\ldots,N\}\)</span>, set</p>
+<p><a id="eq-2-2"></a></p>
+<div class="arithmatex">\[
+\begin{gathered}
+ -H_N(\sigma)=\sum_{k=1}^{M_N}
+ \theta_k(\sigma_{i_{1,k}},\ldots,\sigma_{i_{p,k}})
+ +\sum_{i=1}^N h_i\sigma_i,\\
+ Z_N=\sum_{\sigma\in\{-1,1\}^N}e^{-H_N(\sigma)},
+ \qquad F_N=\frac1N\mathbb E\log Z_N.
+ \end{gathered} \tag{2.2}
+\]</div>
+<p><a id="s2-p1-s5"></a><strong>s5</strong> All families in this definition are mutually independent.</p>
+<p><a id="s2-p1-s6"></a><strong>s6</strong> In particular, indices are sampled with replacement.</p>
+<p><a id="s2-p1-s7"></a><strong>s7</strong> The model parameters and disorder laws are fixed as <span class="arithmatex">\(N\)</span> varies.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 짝수 정수 <span class="arithmatex">\(p\ge2\)</span> 와 <span class="arithmatex">\(\alpha\gt 0\)</span> 을 고정한다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(\theta\)</span> 를 <span class="arithmatex">\(\{-1,1\}^p\)</span> 위의 무작위 실함수, <span class="arithmatex">\(h\)</span> 를 실수 확률변수라 하자.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(B(\theta)=\max_s\lvert\theta(s)\rvert\)</span> 라 쓰고 다음을 가정한다.</p>
+<p><strong>s4</strong> 서로 독립인 <span class="arithmatex">\(M_N\sim\mathrm{Poisson}(\alpha N)\)</span>, <span class="arithmatex">\(\theta\)</span> 의 독립 사본 <span class="arithmatex">\(\theta_k\)</span>, <span class="arithmatex">\(h\)</span> 의 독립 사본 <span class="arithmatex">\(h_i\)</span>, 그리고 독립이고 균등한 index <span class="arithmatex">\(i_{\ell,k}\in[N]=\{1,\ldots,N\}\)</span> 에 대해 다음과 같이 둔다.</p>
+<p><strong>s5</strong> 이 정의의 모든 확률변수족은 서로 독립이다.</p>
+<p><strong>s6</strong> 특히 index 들은 복원추출로 뽑는다.</p>
+<p><strong>s7</strong> 모형의 parameter 와 disorder 법칙은 <span class="arithmatex">\(N\)</span> 이 변해도 고정된다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> <span class="arithmatex">\(p\)</span>: factor(상호작용) 하나가 묶는 spin 수(arity). 짝수여야 하는 이유는 upper bound(Guerra interpolation)의 부호 때문(R6). <span class="arithmatex">\(\alpha\)</span>: 상호작용 밀도(R3). <code>📚</code> §1 ¶2 s3</li>
+<li><strong>s2</strong> <span class="arithmatex">\(\theta\)</span>: factor 하나의 log Boltzmann weight, <span class="arithmatex">\(\beta\)</span> 를 흡수한 <span class="arithmatex">\(-\beta\varepsilon(s)\)</span> (R1). "무작위 함수" 이므로 coupling 의 disorder(예: VB 의 <span class="arithmatex">\(J\)</span>, K-SAT 의 literal 부호)가 <span class="arithmatex">\(\theta\)</span> 안에 들어 있다. <span class="arithmatex">\(h\)</span>: <span class="arithmatex">\(\beta\)</span> 를 흡수한 random field (R2). <code>📚</code> (2.2)</li>
+<li><strong>s3</strong> <span class="arithmatex">\(B(\theta)\)</span>: factor 의 최대 에너지 크기(<span class="arithmatex">\(\beta\)</span> 단위). (2.1) 은 "평균적으로" 유한하면 된다는 약한 가정 — <span class="arithmatex">\(\theta\)</span> 와 <span class="arithmatex">\(h\)</span> 의 분산이 무한해도 된다. <code>🔧</code></li>
+<li><strong>s4</strong> Hamiltonian (2.2) 의 구조: <span class="arithmatex">\(M_N\)</span> 개의 factor 각각이 <span class="arithmatex">\(p\)</span> 개 site 를 균등·독립으로 고른다 → Poisson random hypergraph. spin 하나의 degree 는 <span class="arithmatex">\(\mathrm{Bin}(pM_N,1/N)\)</span> 이고 <span class="arithmatex">\(N\to\infty\)</span> 에서 <span class="arithmatex">\(\mathrm{Poisson}(\alpha p)\)</span> (아래 전개). <span class="arithmatex">\(F_N\)</span> 은 quenched pressure(R4). <code>✅</code></li>
+<li><strong>s5–s6</strong> 복원추출: 한 factor 가 같은 spin 을 두 번 고를 수도 있다(확률 <span class="arithmatex">\(O(1/N)\)</span>). 물리적으로 무시할 수 있는 self-loop 이고, 수학적으로 index 의 독립성을 지키는 편의. <code>🔧</code></li>
+<li><strong>s7</strong> disorder 법칙이 <span class="arithmatex">\(N\)</span> 과 무관 → "thermodynamic limit" 이 같은 모형 족의 극한이라는 표준 설정. <code>🔧</code></li>
+</ul>
+<details>
+<summary>전개: spin 하나의 degree 분포 (s4)</summary>
+<p>factor <span class="arithmatex">\(k\)</span> 의 slot <span class="arithmatex">\(\ell\)</span> 이 site <span class="arithmatex">\(i\)</span> 를 고를 확률은 <span class="arithmatex">\(1/N\)</span>, 모두 독립. <span class="arithmatex">\(M_N\)</span> 이 주어지면 site <span class="arithmatex">\(i\)</span> 의 degree(slot 수)는 <span class="arithmatex">\(\mathrm{Bin}(pM_N,1/N)\)</span>.
+<span class="arithmatex">\(M_N\sim\mathrm{Poisson}(\alpha N)\)</span> 을 섞으면, Poisson thinning 에 의해 각 slot 묶음이 독립 Poisson 이므로 정확히 <span class="arithmatex">\(\mathrm{Poisson}(p\cdot\alpha N\cdot\tfrac1N)=\mathrm{Poisson}(\alpha p)\)</span>.
+(유한 <span class="arithmatex">\(N\)</span> 에서도 정확: <span class="arithmatex">\(\sum_{k}\)</span> Poisson(<span class="arithmatex">\(\alpha N\)</span>) 개 factor × <span class="arithmatex">\(p\)</span> slot, 각 slot 이 독립적으로 <span class="arithmatex">\(i\)</span> 를 칠 확률 <span class="arithmatex">\(1/N\)</span> → Poisson(<span class="arithmatex">\(\alpha N p/N\)</span>).)
+이것이 (2.8) 에서 새 spin 이 <span class="arithmatex">\(k\sim\mathrm{Poisson}(\alpha p)\)</span> 개 factor 를 받는 이유와 일치한다 ✓.</p>
+</details>
+<p><strong>식 (2.1) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E B(\theta)\)</span></td>
+<td>factor 당 <span class="arithmatex">\(\max_s\lvert\theta(s)\rvert\)</span> 의 평균</td>
+<td>factor 하나의 최대 에너지(<span class="arithmatex">\(\beta\)</span> 배)의 평균 유한성</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\lvert h\rvert\)</span></td>
+<td>field 크기의 평균</td>
+<td>random field(<span class="arithmatex">\(\beta\)</span> 배)의 평균 유한성</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td>조건 전체</td>
+<td>1차 moment 만</td>
+<td>분산 무한(heavy tail) disorder 도 허용하는 일반성</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (2.2) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(-H_N(\sigma)\)</span></td>
+<td><span class="arithmatex">\(\sum_k\theta_k(\cdot)+\sum_i h_i\sigma_i\)</span></td>
+<td><span class="arithmatex">\(-\beta\times\)</span>(에너지). 부호 관례: <span class="arithmatex">\(Z=\sum e^{-H}\)</span> 이므로 <span class="arithmatex">\(\theta\)</span> 가 큰 배치가 선호됨 (R1)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum_{k=1}^{M_N}\theta_k(\sigma_{i_{1,k}},\ldots,\sigma_{i_{p,k}})\)</span></td>
+<td>Poisson 개수의 <span class="arithmatex">\(p\)</span>-body 항</td>
+<td>Poisson random hypergraph 위의 factor 들. spin 당 평균 <span class="arithmatex">\(\alpha\)</span> 개 factor, degree 평균 <span class="arithmatex">\(\alpha p\)</span> (R3)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum_i h_i\sigma_i\)</span></td>
+<td>i.i.d. random field</td>
+<td>random external field (R2)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z_N\)</span></td>
+<td><span class="arithmatex">\(\sum_\sigma e^{-H_N(\sigma)}\)</span></td>
+<td>partition function</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(F_N=\frac1N\mathbb E\log Z_N\)</span></td>
+<td>disorder 평균한 log 의 spin 당 값</td>
+<td>quenched pressure <span class="arithmatex">\(=-\beta f\)</span> (R4)</td>
+<td><code>✅</code> (§1 ¶1 전개)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s2-p2"></a></p>
+<h4 id="2-2">§2 ¶2<a class="headerlink" href="#2-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-p2-s1"></a><strong>s1</strong> The interaction hypotheses are the existence of a representation</p>
+<p><a id="eq-2-3"></a></p>
+<div class="arithmatex">\[
+e^{\theta(s_1,\ldots,s_p)}
+ =a\left(1+b\prod_{\ell=1}^p f_\ell(s_\ell)\right),
+ \qquad
+ \lvert{b\prod_{\ell=1}^p f_\ell(s_\ell)}\rvert\lt 1\quad\text{a.s.}, \tag{2.3}
+\]</div>
+<p>↳ for every spin tuple, where <span class="arithmatex">\(a\gt 0\)</span> and <span class="arithmatex">\(b\)</span> are real random variables, the <span class="arithmatex">\(f_\ell:\{-1,1\}\to\mathbb R\)</span> are independent copies of one random function, <span class="arithmatex">\(b\)</span> is independent of them, and</p>
+<p><a id="eq-2-4"></a></p>
+<div class="arithmatex">\[
+\mathbb E[(-b)^n]\ge0\qquad(n\ge1). \tag{2.4}
+\]</div>
+<p><a id="s2-p2-s2"></a><strong>s2</strong> The expectations in <a href="02-the-model-and-the-variational-principle.html#eq-2-4">(2.4)</a> are interpreted as finite real expectations.</p>
+<p><a id="s2-p2-s3"></a><strong>s3</strong> This is automatic in the nondegenerate case: independence and the strict product bound force <span class="arithmatex">\(b\)</span> and <span class="arithmatex">\(\max_s|f_1(s)|\)</span> to be essentially bounded, as shown in Proposition <a href="04-the-interpolation-upper-bound.html#s4-e1">4.1</a>.</p>
+<p><a id="s2-p2-s4"></a><strong>s4</strong> If the product term vanishes identically, the interaction is spin independent and one may take <span class="arithmatex">\(b=0\)</span>.</p>
+<p><a id="s2-p2-s5"></a><strong>s5</strong> The multiplier <span class="arithmatex">\(a\)</span> may depend on all the other variables in the representation; no separate integrability of <span class="arithmatex">\(\log a\)</span> is assumed.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 상호작용 가설은, 모든 spin 조합에 대해 표현 (2.3) 이 존재한다는 것이다 — 여기서 <span class="arithmatex">\(a\gt 0\)</span> 과 <span class="arithmatex">\(b\)</span> 는 실수 확률변수, <span class="arithmatex">\(f_\ell:\{-1,1\}\to\mathbb R\)</span> 은 하나의 무작위 함수의 독립 사본들, <span class="arithmatex">\(b\)</span> 는 이들과 독립이다 — 그리고 (2.4) 가 성립한다는 것이다.</p>
+<p><strong>s2</strong> (2.4) 의 기댓값들은 유한한 실수 기댓값으로 해석한다.</p>
+<p><strong>s3</strong> 이는 nondegenerate(비퇴화) 경우에 자동으로 성립한다: 독립성과 곱의 엄격한 상한 때문에 <span class="arithmatex">\(b\)</span> 와 <span class="arithmatex">\(\max_s\lvert f_1(s)\rvert\)</span> 가 본질적으로 유계가 되며, 이는 Proposition <a href="04-the-interpolation-upper-bound.html#s4-e1">4.1</a> 에서 보인다.</p>
+<p><strong>s4</strong> 곱 항이 항등적으로 0 이면 상호작용은 spin 과 무관하고 <span class="arithmatex">\(b=0\)</span> 으로 둘 수 있다.</p>
+<p><strong>s5</strong> 곱인자 <span class="arithmatex">\(a\)</span> 는 표현의 다른 모든 변수에 의존해도 되며, <span class="arithmatex">\(\log a\)</span> 의 별도 적분가능성은 가정하지 않는다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1, (2.3)</strong> R5 (loop 전개): <span class="arithmatex">\(a\)</span> = spin 무관 상수(정규화, <span class="arithmatex">\(Z\)</span> 에 곱해질 뿐 Gibbs measure 에 영향 없음), <span class="arithmatex">\(b\)</span> = effective coupling(VB 에서 <span class="arithmatex">\(\tanh\beta J\)</span>), <span class="arithmatex">\(f_\ell\)</span> = 각 slot spin 의 국소 관측량(VB 에서 <span class="arithmatex">\(s\)</span>, K-SAT 에서 literal 거짓 indicator). "<span class="arithmatex">\(\lvert b\prod f\rvert\lt 1\)</span>" 은 <span class="arithmatex">\(1+b\prod f\gt 0\)</span> 을 보장해 <span class="arithmatex">\(\theta\)</span> 가 실수로 잘 정의되게 한다. <code>✅</code> (§1 ¶2·¶3 전개)</li>
+<li><strong>s1, (2.4)</strong> R6: positivity 는 Guerra/Franz–Leone interpolation 에서 <span class="arithmatex">\(\frac{d}{dt}\)</span> 의 나머지항이 <span class="arithmatex">\(\sum_n\frac{\mathbb E[(-b)^n]}{n}\times\)</span>(짝수 차 multioverlap 차이의 양의 형식) 꼴로 나와 부호가 정해지게 하는 조건이다. 물리적 직관: coupling 분포가 "강자성 쪽으로 치우치지 않음"(대칭이거나, K-SAT 처럼 <span class="arithmatex">\(b\lt 0\)</span>). <code>📚</code> [<a href="99-references.html#ref-FL03">9</a>], [<a href="99-references.html#ref-PT04">16</a>] — 나머지항의 정확한 형태는 §4 번역 때 <code>✅</code> 로 확인 예정</li>
+<li><strong>s3</strong> <code>🔧</code> 기술 단계: <span class="arithmatex">\(b\)</span> 의 moment 가 유한하다는 것이 (2.3) 의 엄격한 부등식과 독립성에서 따라 나온다는 수학적 정리 — 물리 대응 없음.</li>
+<li><strong>s4</strong> spin 무관 factor 는 <span class="arithmatex">\(Z\)</span> 에 상수 <span class="arithmatex">\(e^{\theta}\)</span> 만 곱한다. 아래 전개처럼 functional <span class="arithmatex">\(\mathcal B_r\)</span> 도 정확히 같은 상수 기여 <span class="arithmatex">\(\alpha\,\mathbb E\theta\)</span> 를 준다 — 공식의 정규화가 맞는지 보는 가장 간단한 점검. <code>✅</code></li>
+<li><strong>s5</strong> <span class="arithmatex">\(a\)</span> 는 Gibbs measure 를 바꾸지 않고 pressure 에 <span class="arithmatex">\(\alpha\,\mathbb E\log a\)</span> 만 더한다(spin 무관이므로). 그런데 <span class="arithmatex">\(\mathbb E\log a\)</span> 가 무한일 수 있어서, 논문은 §4 에서 정규화로 이를 피한다. 물리적으로는 "에너지 원점의 선택" 에 해당. <code>📚</code> §2.2 ¶1 s2</li>
+</ul>
+<details>
+<summary>전개: spin 무관 factor 에서 functional 의 정규화 점검 (s4)</summary>
+<p><span class="arithmatex">\(\theta\equiv c\)</span> (상수, 무작위여도 spin 무관), <span class="arithmatex">\(h=0\)</span> 이라 하자. 그러면 <span class="arithmatex">\(Z_N=2^Ne^{\sum_k c_k}\)</span>, <span class="arithmatex">\(F_N=\log2+\frac1N\mathbb E\sum_{k\le M_N}c_k=\log2+\alpha\,\mathbb E c\)</span>.
+functional 쪽: <span class="arithmatex">\(U_\theta(\cdot;\varepsilon)=\log\sum_s e^{c}\prod q=c\)</span>, 따라서 <span class="arithmatex">\(V_{\rm s}=\frac12\sum_\varepsilon e^{\sum_{j\le k}c_j}=e^{\sum_j c_j}\)</span> 는 message 와 무관 → <span class="arithmatex">\(T_0V_{\rm s}=V_{\rm s}\)</span>, <span class="arithmatex">\(\mathbb E\log T_0V_{\rm s}=\mathbb E k\cdot\mathbb Ec=\alpha p\,\mathbb Ec\)</span>.
+<span class="arithmatex">\(C_\theta=e^{c}\sum_s\prod q=e^{c}\)</span> → <span class="arithmatex">\(\mathbb E\log T_0V_{\rm e}=\mathbb Ec\)</span>.
+합: <span class="arithmatex">\(\mathcal B_r=\log2+\alpha p\,\mathbb Ec-\alpha(p-1)\mathbb Ec=\log2+\alpha\,\mathbb Ec=F_N\)</span> ✓ (모든 <span class="arithmatex">\(\zeta,\mathbf m\)</span> 에서).
+→ 계수 <span class="arithmatex">\(-\alpha(p-1)\)</span> 이 "site 항이 factor 를 <span class="arithmatex">\(p\)</span> 번 센 것"을 정확히 보정한다.</p>
+</details>
+<p><strong>식 (2.3) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(e^{\theta(s_1,\ldots,s_p)}\)</span></td>
+<td>factor 의 Boltzmann weight</td>
+<td><span class="arithmatex">\(e^{-\beta\varepsilon(s)}\)</span> (R1)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a\gt 0\)</span></td>
+<td>spin 무관 인자</td>
+<td>정규화 / 에너지 원점 (예: VB <span class="arithmatex">\(\cosh\beta J\)</span>)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(b\)</span></td>
+<td>실수 확률변수, <span class="arithmatex">\(f\)</span> 와 독립</td>
+<td>effective coupling, loop 전개의 전개 parameter (예: VB <span class="arithmatex">\(\tanh\beta J\)</span>) (R5)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\prod_{\ell=1}^p f_\ell(s_\ell)\)</span></td>
+<td>독립 사본 함수들의 곱</td>
+<td>각 slot spin 의 국소 관측량의 곱: 고온 전개의 "bond 항"</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lvert b\prod f_\ell\rvert\lt 1\)</span> a.s.</td>
+<td>엄격한 부등식</td>
+<td>weight 의 양수성 보장, 전개 <span class="arithmatex">\(\log(1+x)\)</span> 의 수렴 영역</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (2.4) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E[(-b)^n]\ge0\)</span>, <span class="arithmatex">\(n\ge1\)</span></td>
+<td><span class="arithmatex">\(-b\)</span> 의 모든 moment 가 비음</td>
+<td>interpolation 나머지항의 부호 조건 (R6). VB 대칭 coupling: 홀수 0·짝수 양 ✓, soft K-SAT: <span class="arithmatex">\(-b\gt 0\)</span> ✓</td>
+<td><code>✅</code> (§1 ¶2·¶3 전개)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s2-1"></a></p>
+<h2 id="21-the-hierarchical-cavity-functional">§2.1 The hierarchical cavity functional<a class="headerlink" href="#21-the-hierarchical-cavity-functional" title="Permanent link">&para;</a></h2>
+<p><em>제목: 계층적 cavity functional</em></p>
+<p><a id="s2-1-p1"></a></p>
+<h4 id="21-1">§2.1 ¶1<a class="headerlink" href="#21-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p1-s1"></a><strong>s1</strong> We give the power-mean form of the Panchenko–Talagrand functional [<a href="99-references.html#ref-PT04">16</a>, Section 5].</p>
+<p><a id="s2-1-p1-s2"></a><strong>s2</strong> A message <span class="arithmatex">\(x\)</span> specifies a probability distribution on one spin.</p>
+<p><a id="s2-1-p1-s3"></a><strong>s3</strong> The site term inserts a new spin with its incident interactions; the edge term corrects for interactions counted in that insertion.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> Panchenko–Talagrand functional [<a href="99-references.html#ref-PT04">16</a>, Section 5] 의 power-mean 형태를 제시한다.</p>
+<p><strong>s2</strong> message <span class="arithmatex">\(x\)</span> 는 spin 하나 위의 확률분포를 지정한다.</p>
+<p><strong>s3</strong> site 항은 새 spin 을 그에 붙는 상호작용들과 함께 삽입하고, edge 항은 그 삽입에서 (과다하게) 센 상호작용들을 보정한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> "power-mean 형태": 원래 Panchenko–Talagrand 는 Ruelle probability cascade 를 명시적으로 쓴 functional 을 주었고, 여기서는 cascade 평균을 미리 적분해 power mean <span class="arithmatex">\((\mathbb E X^m)^{1/m}\)</span> 의 반복으로 쓴다(R13). 두 형태가 같다는 것이 아래 §2.1 ¶3 의 RPC 항등식이다. <code>📚</code> [<a href="99-references.html#ref-PT04">16</a>], [<a href="99-references.html#ref-Ruelle87">17</a>]</li>
+<li><strong>s2</strong> message <span class="arithmatex">\(x\)</span> = cavity field (R7): spin 의 분포 <span class="arithmatex">\(q_x(s)\propto e^{xs}\)</span>, 즉 "다른 이웃을 떼어낸 상태에서 이 spin 이 느끼는 유효장". <code>📚</code> §2.1 ¶2</li>
+<li><strong>s3</strong> Bethe free entropy 의 site − edge 구조. "과다하게 센" 의 정량적 의미는 계수 <span class="arithmatex">\(\alpha(p-1)\)</span> (아래 전개, 그리고 §2 ¶2 의 정규화 점검). <code>✅</code></li>
+</ul>
+<details>
+<summary>전개: 왜 edge 항의 계수가 α(p−1) 인가 (s3, cavity counting)</summary>
+<p>물리의 cavity 논증: <span class="arithmatex">\(F\approx\mathbb E\log Z_{N+1}-\mathbb E\log Z_N\)</span>. 크기 <span class="arithmatex">\(N+1\)</span> 계는 평균 <span class="arithmatex">\(\alpha(N+1)\)</span> 개 factor 를 가지므로, <span class="arithmatex">\(N\)</span> 계에서 <strong>factor 를 평균 <span class="arithmatex">\(\alpha\)</span> 개 더</strong> 가져야 한다.
+새 spin 을 삽입하면서 붙이는 factor 는 <span class="arithmatex">\(k\sim\mathrm{Poisson}(\alpha p)\)</span> 개로 평균 <span class="arithmatex">\(\alpha p\)</span> 개 — 필요한 것보다 <span class="arithmatex">\(\alpha(p-1)\)</span> 개 많다. (새 spin 의 degree 는 <span class="arithmatex">\(\alpha p\)</span> 이지만, factor 하나가 <span class="arithmatex">\(p\)</span> 개 spin 에 공유되므로 spin 당 factor 수는 <span class="arithmatex">\(\alpha\)</span>.)
+초과분을 상쇄하려면 cavity field 속 spin 들에 붙은 factor 를 평균 <span class="arithmatex">\(\alpha(p-1)\)</span> 개 <strong>제거</strong>해야 하고, factor 하나를 제거할 때의 free entropy 변화가 <span class="arithmatex">\(-\log C_\theta\)</span> 이다. 따라서</p>
+<div class="arithmatex">\[
+F\approx\log2+\mathbb E\log V_{\rm s}-\alpha(p-1)\,\mathbb E\log V_{\rm e}
+\]</div>
+<p>(RS 형태; RSB 에서는 각 <span class="arithmatex">\(\log V\)</span> 가 <span class="arithmatex">\(\log T_0V\)</span> 로). 이는 (2.11) 의 구조와 일치한다 ✓. 정규화 점검은 §2 ¶2 의 전개(spin 무관 factor 에서 정확히 <span class="arithmatex">\(\log2+\alpha\,\mathbb E c\)</span>)에서 확인했다.
+이 counting 은 물리적 휴리스틱이고, 엄밀한 증명은 정리 자체(upper bound §4, lower bound §5–§9)가 한다.</p>
+</details>
+<hr />
+<p><a id="s2-1-p2"></a></p>
+<h4 id="21-2">§2.1 ¶2<a class="headerlink" href="#21-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p2-s1"></a><strong>s1</strong> For <span class="arithmatex">\(x\in\mathbb R\)</span> let <span class="arithmatex">\(q_x(s)=e^{xs}/(2\cosh x)\)</span>.</p>
+<p><a id="s2-1-p2-s2"></a><strong>s2</strong> Define</p>
+<p><a id="eq-2-5"></a><a id="eq-2-6"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+C_\theta(x_1,\ldots,x_p)
+ &amp;=\sum_{s\in\{-1,1\}^p}e^{\theta(s)}\prod_{\ell=1}^p q_{x_\ell}(s_\ell), \tag{2.5} \\
+U_\theta(x_1,\ldots,x_{p-1};\varepsilon)
+ &amp;=\log\sum_{s\in\{-1,1\}^{p-1}}
+ e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}
+ \prod_{\ell=1}^{p-1}q_{x_\ell}(s_\ell). \tag{2.6}
+\end{align*}
+\]</div>
+<p><a id="s2-1-p2-s3"></a><strong>s3</strong> Both <span class="arithmatex">\(\lvert{\log C_\theta}\rvert\)</span> and <span class="arithmatex">\(\lvert{U_\theta}\rvert\)</span> are bounded by <span class="arithmatex">\(B(\theta)\)</span>, uniformly in the messages.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <span class="arithmatex">\(x\in\mathbb R\)</span> 에 대해 <span class="arithmatex">\(q_x(s)=e^{xs}/(2\cosh x)\)</span> 로 둔다.</p>
+<p><strong>s2</strong> 다음을 정의한다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(\lvert\log C_\theta\rvert\)</span> 와 <span class="arithmatex">\(\lvert U_\theta\rvert\)</span> 는 모두 message 에 대해 균일하게 <span class="arithmatex">\(B(\theta)\)</span> 로 유계이다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> <span class="arithmatex">\(q_x\)</span> = field <span class="arithmatex">\(x\)</span> 속의 자유 spin 의 Gibbs 분포. 평균 <span class="arithmatex">\(\sum_s s\,q_x(s)=\tanh x\)</span> = cavity magnetization (R7). <code>✅</code> (자명: <span class="arithmatex">\((e^x-e^{-x})/(2\cosh x)\)</span>)</li>
+<li><strong>s2, (2.5)</strong> <span class="arithmatex">\(C_\theta\)</span> = factor 하나와, 각자 cavity field <span class="arithmatex">\(x_\ell\)</span> 속에 있는 <span class="arithmatex">\(p\)</span> 개 spin 으로 이루어진 작은 계의 partition function 을 자유 spin 들의 것으로 나눈 값, 즉 <span class="arithmatex">\(\langle e^{\theta}\rangle_{\prod q_{x_\ell}}\)</span> (R9). Bethe free entropy 에서 factor(edge) 항. <code>📚</code> [<a href="99-references.html#ref-MP01">12</a>]</li>
+<li><strong>s2, (2.6)</strong> <span class="arithmatex">\(U_\theta(\ldots;\varepsilon)\)</span> = 마지막 slot 을 새 spin <span class="arithmatex">\(\varepsilon\)</span> 에 고정하고 나머지 <span class="arithmatex">\(p-1\)</span> spin 을 cavity field 로 평균한 factor weight 의 log: factor → spin 의 cavity bias (R8). <span class="arithmatex">\(p=2\)</span> VB 에서 <span class="arithmatex">\(U=\log\cosh\beta J+\log(1+\tanh\beta J\tanh x\,\varepsilon)\)</span>, 즉 effective field <span class="arithmatex">\(u=\operatorname{artanh}(\tanh\beta J\tanh x)\)</span> 가 나온다 — 물리의 표준 cavity 재귀식. <code>✅</code></li>
+<li><strong>s3</strong> <span class="arithmatex">\(e^{\theta}\in[e^{-B},e^{B}]\)</span> 이고 <span class="arithmatex">\(C_\theta\)</span>, <span class="arithmatex">\(e^{U_\theta}\)</span> 는 확률분포에 대한 <span class="arithmatex">\(e^{\theta}\)</span> 의 평균이므로 같은 구간에 있다 → <span class="arithmatex">\(\lvert\log\rvert\le B\)</span>. 물리 의미: 한 factor 가 free entropy 에 기여하는 양은 그 factor 의 최대 에너지로 유계. <code>✅</code></li>
+</ul>
+<details>
+<summary>전개: VB 에서 U_θ 가 표준 cavity 재귀식이 됨 (s2, R8)</summary>
+<p><span class="arithmatex">\(p=2\)</span>, <span class="arithmatex">\(\theta(s_1,\varepsilon)=\beta J s_1\varepsilon\)</span>. <span class="arithmatex">\(e^{\beta Js_1\varepsilon}=\cosh\beta J(1+\tanh\beta J\,s_1\varepsilon)\)</span> 이고 <span class="arithmatex">\(\sum_{s_1}q_x(s_1)s_1=\tanh x\)</span> 이므로</p>
+<div class="arithmatex">\[
+e^{U_\theta(x;\varepsilon)}=\sum_{s_1}q_x(s_1)e^{\beta Js_1\varepsilon}=\cosh\beta J\,(1+\tanh\beta J\tanh x\;\varepsilon).
+\]</div>
+<p><span class="arithmatex">\(1+t\varepsilon=\dfrac{e^{u\varepsilon}}{\cosh u}\)</span> (<span class="arithmatex">\(t=\tanh u\)</span>) 를 쓰면 <span class="arithmatex">\(U_\theta(x;\varepsilon)=\log\cosh\beta J-\log\cosh u+u\varepsilon\)</span>, <span class="arithmatex">\(u=\operatorname{artanh}(\tanh\beta J\tanh x)\)</span>.
+즉 새 spin <span class="arithmatex">\(\varepsilon\)</span> 에 대한 의존은 effective field <span class="arithmatex">\(u\)</span> 뿐이고, 이것이 물리 문헌의 cavity bias <span class="arithmatex">\(u=\frac1\beta\operatorname{artanh}(\tanh\beta J\tanh\beta h)\)</span> 의 (<span class="arithmatex">\(\beta\)</span> 흡수) 형태다 ✓.</p>
+</details>
+<p><strong>식 (2.5), (2.6) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(2.5) <span class="arithmatex">\(C_\theta(x_1,\ldots,x_p)\)</span></td>
+<td><span class="arithmatex">\(\sum_s e^{\theta(s)}\prod_\ell q_{x_\ell}(s_\ell)\)</span></td>
+<td>factor 하나를 cavity field 속 <span class="arithmatex">\(p\)</span> spin 에 붙일 때의 (정규화된) partition function = Bethe 의 factor 항 (R9)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td>(2.5) <span class="arithmatex">\(\prod_\ell q_{x_\ell}(s_\ell)\)</span></td>
+<td>독립 곱측도</td>
+<td>이웃 spin 들이 서로 독립인 cavity field 를 가짐 (tree-like 가정의 수학적 형태)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td>(2.6) <span class="arithmatex">\(U_\theta(x_1..x_{p-1};\varepsilon)\)</span></td>
+<td><span class="arithmatex">\(\log\sum_{s}e^{\theta(s,\varepsilon)}\prod_{\ell\lt p}q_{x_\ell}(s_\ell)\)</span></td>
+<td>factor → 새 spin <span class="arithmatex">\(\varepsilon\)</span> 의 cavity bias (log-weight) (R8)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td>(2.6) 마지막 slot 에 <span class="arithmatex">\(\varepsilon\)</span></td>
+<td>새 spin 이 <span class="arithmatex">\(p\)</span> 번째 자리</td>
+<td>삽입되는 spin. <span class="arithmatex">\(\theta\)</span> 가 대칭이 아니어도 slot 위치는 독립·균등이라 일반성 손실 없음</td>
+<td><code>❓</code> (대칭성 가정 여부는 §4·§5 에서 확인)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s2-1-p3"></a></p>
+<h4 id="21-3">§2.1 ¶3<a class="headerlink" href="#21-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p3-s1"></a><strong>s1</strong> Write <span class="arithmatex">\(\mathcal P(E)\)</span> for the Borel probability measures on <span class="arithmatex">\(E\)</span>.</p>
+<p><a id="s2-1-p3-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(\mathcal M_1=\mathcal P(\mathbb R)\)</span> and <span class="arithmatex">\(\mathcal M_{j+1}=\mathcal P(\mathcal M_j)\)</span>, equipped with the topology of weak convergence and its Borel sigma-field.</p>
+<p><a id="s2-1-p3-s3"></a><strong>s3</strong> Fix <span class="arithmatex">\(r\ge1\)</span>, <span class="arithmatex">\(\zeta\in\mathcal M_{r+1}\)</span>, and <span class="arithmatex">\(0\lt m_1\lt \cdots\lt m_r\lt 1\)</span>.</p>
+<p><a id="s2-1-p3-s4"></a><strong>s4</strong> For each message label <span class="arithmatex">\(\omega\)</span> independently, draw</p>
+<p><a id="eq-2-7"></a></p>
+<div class="arithmatex">\[
+\eta_0^\omega\sim\zeta,\qquad
+ \eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\ (0\le d\le r-2),
+ \qquad x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega. \tag{2.7}
+\]</div>
+<p><a id="s2-1-p3-s5"></a><strong>s5</strong> At <span class="arithmatex">\(r=1\)</span>, this means that each label first draws a random probability measure <span class="arithmatex">\(\eta_0\)</span> with law <span class="arithmatex">\(\zeta\)</span>, then draws <span class="arithmatex">\(x\)</span> with law <span class="arithmatex">\(\eta_0\)</span>.</p>
+<p><a id="s2-1-p3-s6"></a><strong>s6</strong> Higher levels repeat this sampling of measures.</p>
+<p><a id="s2-1-p3-s7"></a><strong>s7</strong> All these variables are independent of the physical disorder.</p>
+<p><a id="s2-1-p3-s8"></a><strong>s8</strong> Use different labels for <span class="arithmatex">\(x_1,\ldots,x_p\)</span> and for <span class="arithmatex">\(x_\ell^j\)</span>, <span class="arithmatex">\(j\ge1\)</span>, <span class="arithmatex">\(1\le\ell\lt p\)</span>.</p>
+<p><a id="s2-1-p3-s9"></a><strong>s9</strong> Take independent <span class="arithmatex">\(k\sim\operatorname{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(\theta,\theta_1,\ldots\)</span>, and <span class="arithmatex">\(h\)</span>, and put</p>
+<p><a id="eq-2-8"></a><a id="eq-2-9"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+V_{\rm s}&amp;=\frac12\sum_{\varepsilon=\pm1}
+ \exp\left(h\varepsilon+\sum_{j=1}^k
+ U_{\theta_j}(x_1^j,\ldots,x_{p-1}^j;\varepsilon)\right), \tag{2.8} \\
+V_{\rm e}&amp;=C_\theta(x_1,\ldots,x_p). \tag{2.9}
+\end{align*}
+\]</div>
+<p><a id="s2-1-p3-s10"></a><strong>s10</strong> For <span class="arithmatex">\(0\le d\lt r\)</span>, let <span class="arithmatex">\(\mathscr F_d\)</span> be generated by all the physical disorder in these expressions and all <span class="arithmatex">\(\eta_j^\omega\)</span>, <span class="arithmatex">\(0\le j\le d\)</span>.</p>
+<p><a id="s2-1-p3-s11"></a><strong>s11</strong> Set</p>
+<p><a id="eq-2-10"></a></p>
+<div class="arithmatex">\[
+T_rV=V,\qquad
+ T_dV=\left(\mathbb E[(T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]\right)^{1/m_{d+1}}
+ \quad(d=r-1,\ldots,0). \tag{2.10}
+\]</div>
+<p><a id="s2-1-p3-s12"></a><strong>s12</strong> Only auxiliary messages are integrated in these conditional expectations.</p>
+<p><a id="s2-1-p3-s13"></a><strong>s13</strong> For example, at depth one, <span class="arithmatex">\(T_0V=(\mathbb E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}\)</span>.</p>
+<p><a id="s2-1-p3-s14"></a><strong>s14</strong> At depth two, each label draws <span class="arithmatex">\(\eta_0\sim\zeta\)</span>, then <span class="arithmatex">\(\eta_1\mid\eta_0\sim\eta_0\)</span>, and then <span class="arithmatex">\(x\mid\eta_1\sim\eta_1\)</span>, and</p>
+<p><a id="s2-1-p3-e1"></a></p>
+<div class="arithmatex">\[
+T_0V=\left(\mathbb E_{\boldsymbol\eta_1}
+   \left[\left(\mathbb E_{\boldsymbol x}
+      [V^{m_2}\mid\boldsymbol\eta_1]\right)^{m_1/m_2}
+      \,\middle|\,\boldsymbol\eta_0\right]\right)^{1/m_1}.
+\]</div>
+<p><a id="s2-1-p3-s15"></a><strong>s15</strong> Here bold symbols collect all message labels in <span class="arithmatex">\(V\)</span>; physical disorder is held fixed throughout, including in the two abbreviated displays.</p>
+<p><a id="s2-1-p3-s16"></a><strong>s16</strong> Define</p>
+<p><a id="eq-2-11"></a></p>
+<div class="arithmatex">\[
+\mathcal B_r(\zeta,\mathbf m)
+ =\log2+\mathbb E\log T_0V_{\rm s}
+ -\alpha(p-1)\mathbb E\log T_0V_{\rm e},
+ \qquad \Phi_r=\inf_{\zeta,\,\mathbf m}\mathcal B_r(\zeta,\mathbf m). \tag{2.11}
+\]</div>
+<p><a id="s2-1-p3-s17"></a><strong>s17</strong> At <span class="arithmatex">\(r=0\)</span>, the messages are independent with common law <span class="arithmatex">\(\zeta\in\mathcal P(\mathbb R)\)</span> and the operators <span class="arithmatex">\(T_d\)</span> are omitted; this defines <span class="arithmatex">\(\mathcal B_0(\zeta)\)</span> and <span class="arithmatex">\(\Phi_0\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <span class="arithmatex">\(E\)</span> 위의 Borel 확률측도 전체를 <span class="arithmatex">\(\mathcal P(E)\)</span> 라 쓴다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(\mathcal M_1=\mathcal P(\mathbb R)\)</span>, <span class="arithmatex">\(\mathcal M_{j+1}=\mathcal P(\mathcal M_j)\)</span> 로 두고, weak convergence(약수렴) 위상과 그 Borel sigma-field 를 준다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(r\ge1\)</span>, <span class="arithmatex">\(\zeta\in\mathcal M_{r+1}\)</span>, 그리고 <span class="arithmatex">\(0\lt m_1\lt\cdots\lt m_r\lt 1\)</span> 을 고정한다.</p>
+<p><strong>s4</strong> 각 message label <span class="arithmatex">\(\omega\)</span> 마다 독립적으로 다음을 뽑는다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(r=1\)</span> 에서 이는, 각 label 이 먼저 법칙 <span class="arithmatex">\(\zeta\)</span> 를 따르는 무작위 확률측도 <span class="arithmatex">\(\eta_0\)</span> 를 뽑고, 그 다음 법칙 <span class="arithmatex">\(\eta_0\)</span> 를 따르는 <span class="arithmatex">\(x\)</span> 를 뽑는다는 뜻이다.</p>
+<p><strong>s6</strong> 더 높은 단계는 이러한 측도의 표본추출을 반복한다.</p>
+<p><strong>s7</strong> 이 모든 변수는 물리적 disorder 와 독립이다.</p>
+<p><strong>s8</strong> <span class="arithmatex">\(x_1,\ldots,x_p\)</span> 와 <span class="arithmatex">\(x_\ell^j\)</span> (<span class="arithmatex">\(j\ge1\)</span>, <span class="arithmatex">\(1\le\ell\lt p\)</span>) 에는 서로 다른 label 을 쓴다.</p>
+<p><strong>s9</strong> 독립인 <span class="arithmatex">\(k\sim\mathrm{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(\theta,\theta_1,\ldots\)</span>, <span class="arithmatex">\(h\)</span> 를 잡고 다음과 같이 둔다.</p>
+<p><strong>s10</strong> <span class="arithmatex">\(0\le d\lt r\)</span> 에 대해, <span class="arithmatex">\(\mathscr F_d\)</span> 를 이 식들 안의 모든 물리적 disorder 와 모든 <span class="arithmatex">\(\eta_j^\omega\)</span> (<span class="arithmatex">\(0\le j\le d\)</span>) 로 생성되는 sigma-field 라 하자.</p>
+<p><strong>s11</strong> 다음과 같이 둔다.</p>
+<p><strong>s12</strong> 이 조건부 기댓값들에서 적분되는 것은 보조 message 들뿐이다.</p>
+<p><strong>s13</strong> 예를 들어 깊이 1 에서는 <span class="arithmatex">\(T_0V=(\mathbb E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}\)</span> 이다.</p>
+<p><strong>s14</strong> 깊이 2 에서는 각 label 이 <span class="arithmatex">\(\eta_0\sim\zeta\)</span>, 그 다음 <span class="arithmatex">\(\eta_1\mid\eta_0\sim\eta_0\)</span>, 그 다음 <span class="arithmatex">\(x\mid\eta_1\sim\eta_1\)</span> 을 뽑고, 다음과 같다.</p>
+<p><strong>s15</strong> 여기서 굵은 기호는 <span class="arithmatex">\(V\)</span> 안의 모든 message label 을 모은 것이다; 물리적 disorder 는 두 축약 표기를 포함해 내내 고정된다.</p>
+<p><strong>s16</strong> 다음을 정의한다.</p>
+<p><strong>s17</strong> <span class="arithmatex">\(r=0\)</span> 에서는 message 들이 공통 법칙 <span class="arithmatex">\(\zeta\in\mathcal P(\mathbb R)\)</span> 를 갖는 독립 변수이고 연산자 <span class="arithmatex">\(T_d\)</span> 는 생략된다; 이로써 <span class="arithmatex">\(\mathcal B_0(\zeta)\)</span> 와 <span class="arithmatex">\(\Phi_0\)</span> 가 정의된다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s3</strong> <span class="arithmatex">\(\mathcal M_{r+1}\)</span> = "실수 위 측도의 … 위의 측도" 를 <span class="arithmatex">\(r+1\)</span> 번 쌓은 공간: <span class="arithmatex">\(r\)</span>RSB order parameter (R11). <span class="arithmatex">\(r=0\)</span>: cavity field 분포 <span class="arithmatex">\(P(x)\)</span> (RS), <span class="arithmatex">\(r=1\)</span>: 상태마다 다른 <span class="arithmatex">\(P(x)\)</span> 들의 분포 (1RSB population of populations). <span class="arithmatex">\(m_d\)</span> = Parisi parameter (R12, 확정). <code>📚</code> spin-glass 사전 §3</li>
+<li><strong>s4–s6, (2.7)</strong> 계층적 표본추출: 깊이 0 에서 "가장 큰 상태 묶음" 의 field 분포를 고르고, 깊이가 내려갈수록 더 작은 상태(최종적으로 pure state)로 내려가 마지막에 그 상태 안의 cavity field <span class="arithmatex">\(x\)</span> 를 뽑는다. Ruelle cascade 의 tree 에서 root → leaf 로 내려가는 경로 하나에 해당한다. <code>📚</code> [<a href="99-references.html#ref-Ruelle87">17</a>]</li>
+<li><strong>s7–s8</strong> <code>🔧</code> message 는 물리적 disorder 와 독립인 보조 변수이고, 서로 다른 이웃(label)은 서로 독립인 계층 경로를 갖는다. 주의: 서로 다른 label 이 <strong>독립인 뿌리 <span class="arithmatex">\(\eta_0\)</span></strong> 를 갖는다는 것은, 이웃 spin 들이 모든 단계에서 독립이라는 RS-like 가정이 아니라, cascade 가중치로 다시 묶이는 구조(아래 <span class="arithmatex">\(T_d\)</span>)다.</li>
+<li><strong>s9, (2.8)–(2.9)</strong> <span class="arithmatex">\(V_{\rm s}\)</span> = 새 spin 삽입의 partition function (R10): <span class="arithmatex">\(k\sim\mathrm{Poisson}(\alpha p)\)</span> 개의 factor 각각이 <span class="arithmatex">\(p-1\)</span> 개의 cavity spin 과 새 spin <span class="arithmatex">\(\varepsilon\)</span> 를 잇는다. <span class="arithmatex">\(\frac12\sum_\varepsilon\)</span> 는 새 spin 의 자유 측도. <span class="arithmatex">\(V_{\rm e}=C_\theta\)</span> = factor 항 (R9). <code>✅</code> (§2 ¶2 정규화 전개)</li>
+<li><strong>s10–s13, (2.10)</strong> <span class="arithmatex">\(T_d\)</span>: 깊이 <span class="arithmatex">\(d+1\)</span> 의 변수를 <span class="arithmatex">\(m_{d+1}\)</span> power mean 으로 적분 (R13, 확정). Ruelle cascade 항등식: cascade 가중치 <span class="arithmatex">\(v_\alpha\)</span> (parameter <span class="arithmatex">\(m\)</span>) 로 독립 양수 <span class="arithmatex">\(X_\alpha\)</span> 를 평균하면 <span class="arithmatex">\(\mathbb E\log\sum_\alpha v_\alpha X_\alpha=\frac1m\log\mathbb EX^m\)</span>. 즉 <span class="arithmatex">\(\log T_dV\)</span> 는 "깊이 <span class="arithmatex">\(d+1\)</span> 상태들에 대해 Gibbs 가중치로 평균한 free entropy" 다. 극한 <span class="arithmatex">\(m\to1\)</span> 은 annealed 평균 <span class="arithmatex">\(\log\mathbb EX\)</span>, <span class="arithmatex">\(m\to0\)</span> 은 quenched <span class="arithmatex">\(\mathbb E\log X\)</span> — Parisi parameter 가 상태 가중치의 "얼마나 소수 상태에 집중되는가" 를 조절한다. <code>✅</code></li>
+<li><strong>s12, s15</strong> 중요: <span class="arithmatex">\(T_d\)</span> 의 조건부 기댓값은 <strong>message 만</strong> 적분하고 <span class="arithmatex">\(\theta\)</span>, <span class="arithmatex">\(h\)</span>, <span class="arithmatex">\(k\)</span> 같은 물리적 disorder 는 고정한다. 물리적 disorder 의 평균은 마지막에 <span class="arithmatex">\(\mathbb E\log T_0V\)</span> 의 바깥 <span class="arithmatex">\(\mathbb E\)</span> 에서만. 이것이 quenched 평균의 구조다. <code>📚</code> §2.1 ¶3 s15</li>
+<li><strong>s14, Eq. §2.1 ¶3 #1</strong> <span class="arithmatex">\(r=2\)</span> 의 명시적 형태: 안쪽부터 <span class="arithmatex">\(m_2\)</span>-power mean(가장 작은 상태), 그 다음 <span class="arithmatex">\(m_1\)</span>-power mean. <code>✅</code> ((2.10) 을 <span class="arithmatex">\(r=2\)</span> 로 펼친 것과 일치)</li>
+<li><strong>s16, (2.11)</strong> <span class="arithmatex">\(\mathcal B_r\)</span> = <span class="arithmatex">\(r\)</span>RSB Bethe free entropy (R15): <span class="arithmatex">\(\log2\)</span> (새 spin 의 자유 entropy) + site 항 − <span class="arithmatex">\(\alpha(p-1)\)</span> edge 항. <code>✅</code> (아래 VB 고온 점검, §2 ¶2 정규화 점검)</li>
+<li><strong>s16, <span class="arithmatex">\(\Phi_r\)</span></strong> 🧭 물리 직관과의 차이 (R16): 물리는 <span class="arithmatex">\(\zeta,\mathbf m\)</span> 에 대한 <strong>정류점</strong>(1RSB 에서 <span class="arithmatex">\(m\)</span> 에 대해서는 보통 max/min 이 섞임)을 고르지만, 여기서는 단순히 inf. 이는 Panchenko–Talagrand upper bound <span class="arithmatex">\(F_N\le\mathcal B_r(\zeta,\mathbf m)+o(1)\)</span> 가 <strong>모든</strong> <span class="arithmatex">\(\zeta,\mathbf m\)</span> 에 대해 성립하기 때문이다. <code>📚</code> [<a href="99-references.html#ref-PT04">16</a>]</li>
+<li><strong>s17</strong> <span class="arithmatex">\(r=0\)</span> = RS cavity 공식(Franz–Leone RS upper bound). <code>📚</code> [<a href="99-references.html#ref-FL03">9</a>]</li>
+</ul>
+<details>
+<summary>전개: power mean 의 극한과 Ruelle cascade 항등식 (s10–s13, R12·R13)</summary>
+<p><strong>극한.</strong> <span class="arithmatex">\(X\gt 0\)</span>, <span class="arithmatex">\(\mathbb E\lvert\log X\rvert\lt\infty\)</span> 일 때 <span class="arithmatex">\(X^m=e^{m\log X}=1+m\log X+O(m^2)\)</span> 이므로</p>
+<div class="arithmatex">\[
+\frac1m\log\mathbb E X^m=\frac1m\log\bigl(1+m\,\mathbb E\log X+O(m^2)\bigr)\xrightarrow[m\to0]{}\mathbb E\log X,
+\qquad
+\frac1m\log\mathbb EX^m\Big\vert_{m=1}=\log\mathbb EX.
+\]</div>
+<p>Hölder 에 의해 <span class="arithmatex">\(m\mapsto(\mathbb EX^m)^{1/m}\)</span> 은 증가하므로 <span class="arithmatex">\(\mathbb E\log X\le\frac1m\log\mathbb EX^m\le\log\mathbb EX\)</span>: quenched 와 annealed 사이 ✓.</p>
+<p><strong>Ruelle cascade 항등식 (1단계).</strong> <span class="arithmatex">\((u_k)\)</span> 를 강도 <span class="arithmatex">\(m x^{-1-m}dx\)</span> 인 Poisson 점과정(<span class="arithmatex">\(u_k=\Gamma_k^{-1/m}\)</span>, <span class="arithmatex">\(\Gamma_k\)</span> 는 rate 1 Poisson 도착시각), <span class="arithmatex">\(\xi_k\)</span> 를 <span class="arithmatex">\(u\)</span> 와 독립인 i.i.d. 양수라 하면 <span class="arithmatex">\(\sum_k u_k\xi_k\overset{d}{=}(\mathbb E\xi^m)^{1/m}\sum_k u_k\)</span> 이고 따라서</p>
+<div class="arithmatex">\[
+\mathbb E\Bigl[\log\sum_k u_k\xi_k-\log\sum_k u_k\Bigr]=\frac1m\log\mathbb E\xi^m .
+\]</div>
+<p>수치 확인 (python, <span class="arithmatex">\(m=0.4\)</span>, <span class="arithmatex">\(\xi\)</span> log-normal(<span class="arithmatex">\(0,1\)</span>), <span class="arithmatex">\(K=20000\)</span> 항, 4000 표본): Monte Carlo <span class="arithmatex">\(0.1994\)</span> vs 이론 <span class="arithmatex">\(\frac1m\log\mathbb E\xi^m=m/2=0.2000\)</span> ✓. (비교: quenched <span class="arithmatex">\(\mathbb E\log\xi=0\)</span>, annealed <span class="arithmatex">\(\log\mathbb E\xi=0.5\)</span>.)
+정규화된 가중치 <span class="arithmatex">\(v_k=u_k/\sum u\)</span> 가 1RSB 의 상태 가중치(Poisson–Dirichlet)이므로, <span class="arithmatex">\(\log T_0V\)</span> 는 "상태별 partition function <span class="arithmatex">\(V\)</span> 를 상태 Gibbs 가중치로 평균한 것의 log" 의 기댓값이다. 계층이 여러 단계면 이를 안쪽부터 반복 → (2.10).</p>
+</details>
+<details>
+<summary>전개: Viana–Bray 고온(RS, x≡0)에서 𝓑₀ (s16)</summary>
+<p><span class="arithmatex">\(p=2\)</span>, <span class="arithmatex">\(h=0\)</span>, <span class="arithmatex">\(\zeta=\delta_0\)</span> (모든 cavity field 0: paramagnet). <span class="arithmatex">\(q_0=\frac12\)</span>.
+<span class="arithmatex">\(C_\theta=\frac14\sum_{s_1,s_2}e^{\beta Js_1s_2}=\cosh\beta J\)</span>. <span class="arithmatex">\(U_\theta(0;\varepsilon)=\log\frac12\sum_{s}e^{\beta Js\varepsilon}=\log\cosh\beta J\)</span>.
+<span class="arithmatex">\(V_{\rm s}=\frac12\sum_\varepsilon\prod_{j\le k}\cosh\beta J_j=\prod_j\cosh\beta J_j\)</span>, <span class="arithmatex">\(k\sim\mathrm{Poisson}(2\alpha)\)</span>.</p>
+<div class="arithmatex">\[
+\mathcal B_0(\delta_0)=\log2+2\alpha\,\mathbb E\log\cosh\beta J-\alpha\,\mathbb E\log\cosh\beta J=\log2+\alpha\,\mathbb E\log\cosh\beta J .
+\]</div>
+<p>이는 Viana–Bray paramagnetic 해의 <span class="arithmatex">\(-\beta f\)</span> (tree-like 고온 전개에서 loop 기여가 사라진 결과)와 같다 ✓. 같은 모형의 annealed 값 <span class="arithmatex">\(\log2+\alpha(\mathbb E\cosh\beta J-1)\)</span> 보다 작다(Jensen; 수치 <span class="arithmatex">\(\beta=0.6\)</span>, <span class="arithmatex">\(J=\pm1\)</span>, <span class="arithmatex">\(\alpha=1.5\)</span>: <span class="arithmatex">\(0.9484\lt 0.9713\)</span>) — quenched <span class="arithmatex">\(\le\)</span> annealed 와 일치 ✓.</p>
+</details>
+<p><strong>식 (2.7) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\eta_0^\omega\sim\zeta\)</span></td>
+<td><span class="arithmatex">\(\mathcal M_r\)</span> 값 확률변수</td>
+<td>가장 큰 상태 묶음(깊이 0)의 선택</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\)</span></td>
+<td>조건부로 한 단계 아래 측도</td>
+<td>cascade tree 를 한 단계 내려감: 더 작은 상태 묶음</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega\)</span></td>
+<td>마지막에 실수 message</td>
+<td>pure state 안에서의 cavity field (R7)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td>label <span class="arithmatex">\(\omega\)</span> 별 독립</td>
+<td>이웃마다 독립 경로</td>
+<td>서로 다른 이웃의 cavity field. 상태 간 상관은 <span class="arithmatex">\(T_d\)</span> 가 넣음</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (2.8), (2.9) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(2.8) <span class="arithmatex">\(\frac12\sum_{\varepsilon=\pm1}\)</span></td>
+<td>새 spin 의 균등 합</td>
+<td>새 spin 의 자유 측도 (<span class="arithmatex">\(\log2\)</span> 와 짝)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td>(2.8) <span class="arithmatex">\(h\varepsilon\)</span></td>
+<td>field 항</td>
+<td>새 spin 의 random field (R2)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td>(2.8) <span class="arithmatex">\(\sum_{j=1}^kU_{\theta_j}(\ldots;\varepsilon)\)</span>, <span class="arithmatex">\(k\sim\mathrm{Poisson}(\alpha p)\)</span></td>
+<td><span class="arithmatex">\(k\)</span> 개 factor 의 cavity bias 합</td>
+<td>새 spin 이 받는 <span class="arithmatex">\(k\)</span> 개 이웃 factor 의 유효장 합: cavity field 재귀식의 우변 (R8, R10)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td>(2.9) <span class="arithmatex">\(V_{\rm e}=C_\theta(x_1..x_p)\)</span></td>
+<td>factor 항</td>
+<td>Bethe factor 항 (R9)</td>
+<td><code>📚</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (2.10) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(T_rV=V\)</span></td>
+<td>가장 깊은 단계는 그대로</td>
+<td>pure state 안의 partition function</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((T_{d+1}V)^{m_{d+1}}\)</span></td>
+<td><span class="arithmatex">\(m_{d+1}\)</span> 거듭제곱</td>
+<td>Ruelle cascade 가중치의 효과 (R13)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E[\cdot\mid\mathscr F_d]\)</span></td>
+<td>깊이 <span class="arithmatex">\(\le d\)</span> 와 disorder 고정, message 만 적분</td>
+<td>한 상태 묶음 안의 하위 상태들에 대한 평균</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\cdot)^{1/m_{d+1}}\)</span></td>
+<td>power mean 완성</td>
+<td><span class="arithmatex">\(\frac1m\log\mathbb EX^m\)</span> 형태 → <span class="arithmatex">\(m\to0\)</span> quenched, <span class="arithmatex">\(m=1\)</span> annealed (R12)</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 Eq. §2.1 ¶3 #1 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>안쪽 <span class="arithmatex">\(\mathbb E_{\boldsymbol x}[V^{m_2}\mid\boldsymbol\eta_1]\)</span></td>
+<td>깊이 2 message 적분</td>
+<td>가장 작은 상태들(pure state) 평균, parameter <span class="arithmatex">\(m_2\)</span></td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\cdot)^{m_1/m_2}\)</span></td>
+<td>power 변환</td>
+<td>한 단계 위 cascade 의 가중치로 넘김</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td>바깥 <span class="arithmatex">\(\mathbb E_{\boldsymbol\eta_1}[\cdot\mid\boldsymbol\eta_0]\)</span>, <span class="arithmatex">\((\cdot)^{1/m_1}\)</span></td>
+<td>깊이 1 적분</td>
+<td>더 큰 상태 묶음 평균, parameter <span class="arithmatex">\(m_1\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (2.11) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\log2\)</span></td>
+<td>상수</td>
+<td>새 spin 하나의 자유 entropy</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\log T_0V_{\rm s}\)</span></td>
+<td>site 항</td>
+<td>새 spin 을 <span class="arithmatex">\(\mathrm{Poisson}(\alpha p)\)</span> 개 factor 와 삽입할 때의 free entropy 증가 (R10)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(-\alpha(p-1)\mathbb E\log T_0V_{\rm e}\)</span></td>
+<td>edge 항</td>
+<td>site 항이 factor 를 <span class="arithmatex">\(p\)</span> 배 센 것을 보정: 필요한 증가량 <span class="arithmatex">\(\alpha\)</span> 개 factor 에 맞춤 (R9)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_r=\inf_{\zeta,\mathbf m}\mathcal B_r\)</span></td>
+<td>trial 에 대한 inf</td>
+<td>변분 원리. 물리의 정류점 대신 inf (R16)</td>
+<td><code>📚</code></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Q&amp;A Q1 (2026-10-29) — §2.1 ¶3 s3: 왜 0 &lt; m₁, m_r &lt; 1 처럼 끝점을 빼나? m_r = 1 이면 안 되나?</summary>
+<p><strong>질문</strong> <a href="02-the-model-and-the-variational-principle.html#s2-1-p3-s3">§2.1 ¶3 s3</a> 에서 <span class="arithmatex">\(0\lt m_1\lt\cdots\lt m_r\lt 1\)</span> 로 끝점을 빼는데, <span class="arithmatex">\(m_r=1\)</span> 이면 안 되는가?</p>
+<p><strong>답</strong> 안 되는 것이 아니라 <strong>새로운 것이 없어서</strong> 뺀다. 끝점은 계층의 한 단계가 사라지는 퇴화한 경우다. <code>✅</code>
+- <span class="arithmatex">\(m_r=1\)</span>: 가장 깊은 단계의 power mean 이 그냥 조건부 기댓값 <span class="arithmatex">\(T_{r-1}V=\mathbb E[V\mid\mathscr F_{r-1}]\)</span> 이 된다. <span class="arithmatex">\(V_{\rm s}\)</span>, <span class="arithmatex">\(V_{\rm e}\)</span> 는 각 message 의 <span class="arithmatex">\(q_x\)</span> 에 대해 <strong>다중선형</strong>이고 서로 다른 label 은 조건부 독립이므로, 이 기댓값은 각 <span class="arithmatex">\(x\)</span> 를 <span class="arithmatex">\(\tanh x'=\mathbb E[\tanh x\mid\eta_{r-1}]\)</span> 인 하나의 message <span class="arithmatex">\(x'\)</span> 로 바꾼 값과 같다. 즉 <span class="arithmatex">\(\mathcal B_r(\zeta;m_1,\ldots,m_{r-1},1)=\mathcal B_{r-1}(\zeta';m_1,\ldots,m_{r-1})\)</span> — 한 단계 낮은 trial. 물리적으로: 가장 작은 상태들을 Parisi parameter 1 로 평균하는 것은 그 상태들을 <strong>하나의 상태로 합치는 것</strong>(magnetization 만 평균)과 같다.
+- <span class="arithmatex">\(m_1\to0\)</span>: power mean 이 <span class="arithmatex">\(\exp\mathbb E\log\)</span> 가 되어, 깊이 0 의 무작위성 <span class="arithmatex">\(\eta_0\)</span> 가 물리적 disorder 와 같은 방식(quenched)으로 평균된다. 이 역시 단계 하나를 disorder 쪽으로 흡수하는 퇴화 경우다. <code>📚</code> (극한 계산은 §2.1 ¶3 의 power mean 전개)
+- 따라서 inf 를 모든 <span class="arithmatex">\(r\)</span> 에 대해 취하는 한, 끝점을 빼도 <span class="arithmatex">\(\inf_r\Phi_r\)</span> 는 변하지 않는다(끝점의 값은 더 낮은 <span class="arithmatex">\(r\)</span> 의 trial 로 이미 나온다). 물리 언어로는 Parisi 의 <span class="arithmatex">\(x(q)\)</span> 가 <span class="arithmatex">\([0,1]\)</span> 값을 갖고, 끝점 <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(x=1\)</span> 은 각각 <span class="arithmatex">\(q_{\min}\)</span> 아래, <span class="arithmatex">\(q_{\max}\)</span> 위의 자명한 구간에 해당한다.</p>
+<p><strong>근거</strong>
+- 논문: (2.10) 의 정의, (2.5)·(2.6) 의 다중선형 구조, §2.1 ¶3 s8 (label 독립).
+- 직접 전개: <span class="arithmatex">\(q_x(s)=\frac{1+s\tanh x}{2}\)</span> 이므로 <span class="arithmatex">\(\mathbb E[q_x(s)\mid\eta]=\frac{1+s\,\mathbb E[\tanh x\mid\eta]}{2}=q_{x'}(s)\)</span>. <span class="arithmatex">\(e^{U_\theta}\)</span> 와 <span class="arithmatex">\(C_\theta\)</span> 는 각 <span class="arithmatex">\(q_{x_\ell}\)</span> 에 대해 1차이고, <span class="arithmatex">\(V_{\rm s}=\frac12\sum_\varepsilon e^{h\varepsilon}\prod_je^{U_{\theta_j}}\)</span> 에서 서로 다른 <span class="arithmatex">\(j\)</span> 의 label 은 조건부 독립 → <span class="arithmatex">\(\mathbb E[V_{\rm s}\mid\mathscr F_{r-1}]=V_{\rm s}(x')\)</span> ✓.
+- 수치 확인 (python, VB <span class="arithmatex">\(p=2\)</span>, <span class="arithmatex">\(\beta=0.9\)</span>, <span class="arithmatex">\(h=0.3\)</span>, factor 3개, label 마다 4점 분포의 <span class="arithmatex">\(\eta\)</span>): 정확한 <span class="arithmatex">\(\mathbb E[V\mid\eta_0]\)</span> 와 <span class="arithmatex">\(V(x')\)</span> 가 세 번의 무작위 시행에서 <span class="arithmatex">\(10^{-12}\)</span> 까지 일치 ✓.</p>
+</details>
+<hr />
+<p><a id="s2-1-p4"></a></p>
+<h4 id="21-4">§2.1 ¶4<a class="headerlink" href="#21-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p4-s1"></a><strong>s1</strong> The quantities in <a href="02-the-model-and-the-variational-principle.html#eq-2-11">(2.11)</a> are finite without any moment assumption on the trial messages.</p>
+<p><a id="s2-1-p4-s2"></a><strong>s2</strong> Indeed, the power-mean operators preserve pointwise multiplicative bounds, and</p>
+<p><a id="eq-2-12"></a></p>
+<div class="arithmatex">\[
+\lvert{\log T_0V_{\rm s}}\rvert\le\lvert{h}\rvert+\sum_{j=1}^k B(\theta_j),
+ \qquad \lvert{\log T_0V_{\rm e}}\rvert\le B(\theta). \tag{2.12}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> (2.11) 의 양들은 trial message 에 대한 어떤 moment 가정 없이도 유한하다.</p>
+<p><strong>s2</strong> 실제로 power-mean 연산자는 점별 곱셈적 상·하한을 보존하며, 다음이 성립한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> cavity field 분포 <span class="arithmatex">\(\zeta\)</span> 에 heavy tail 이 있어도(<span class="arithmatex">\(x\)</span> 가 매우 커도) functional 이 잘 정의된다: <span class="arithmatex">\(q_x\)</span> 는 <span class="arithmatex">\(x\)</span> 가 아무리 커도 확률분포이고, <span class="arithmatex">\(C_\theta\)</span>, <span class="arithmatex">\(e^{U_\theta}\)</span> 는 <span class="arithmatex">\([e^{-B},e^{B}]\)</span> 안에 있기 때문. 물리적으로는 "frozen spin"(<span class="arithmatex">\(x=\pm\infty\)</span>, 1RSB 의 hard field)도 극한으로 허용된다는 뜻. <code>✅</code></li>
+<li>🧭 물리 직관과의 차이: 물리 계산에서는 functional 의 유한성을 따지지 않지만, inf 를 취하려면 모든 trial 에서 값이 정의되어야 한다. <code>🔧</code></li>
+</ul>
+<details>
+<summary>전개: (2.12) 의 상·하한 (s2)</summary>
+<p><span class="arithmatex">\(e^{-B(\theta_j)}\le e^{U_{\theta_j}}\le e^{B(\theta_j)}\)</span> (§2.1 ¶2 s3) 이므로 <span class="arithmatex">\(e^{-\lvert h\rvert-\sum_jB(\theta_j)}\le V_{\rm s}\le e^{\lvert h\rvert+\sum_jB(\theta_j)}\)</span>. 이 상·하한은 message 와 무관(물리적 disorder 만의 함수, <span class="arithmatex">\(\mathscr F_d\)</span>-가측)이다.
+<span class="arithmatex">\(c\le V\le C\)</span> (<span class="arithmatex">\(c,C\)</span> 는 <span class="arithmatex">\(\mathscr F_d\)</span>-가측) 이면 <span class="arithmatex">\(c\le(\mathbb E[V^m\mid\mathscr F_d])^{1/m}\le C\)</span> — power mean 은 단조이고 상수를 보존. 귀납으로 <span class="arithmatex">\(T_0V_{\rm s}\)</span> 도 같은 구간 → (2.12) 첫째 식 ✓. 둘째도 같다 ✓.</p>
+</details>
+<p><strong>식 (2.12) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert\log T_0V_{\rm s}\rvert\le\lvert h\rvert+\sum_jB(\theta_j)\)</span></td>
+<td>site 항의 균일 상한</td>
+<td>새 spin 삽입의 free entropy 변화는 field 와 붙는 factor 들의 최대 에너지 합으로 유계</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lvert\log T_0V_{\rm e}\rvert\le B(\theta)\)</span></td>
+<td>edge 항의 상한</td>
+<td>factor 하나의 기여는 그 최대 에너지로 유계</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s2-1-e1"></a></p>
+<h3 id="theorem-21">▸ Theorem 2.1<a class="headerlink" href="#theorem-21" title="Permanent link">&para;</a></h3>
+<p><a id="s2-1-p5"></a></p>
+<h4 id="21-5">§2.1 ¶5<a class="headerlink" href="#21-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p5-s1"></a><strong>s1</strong> Under <a href="02-the-model-and-the-variational-principle.html#eq-2-1">(2.1)</a>–<a href="02-the-model-and-the-variational-principle.html#eq-2-4">(2.4)</a>, the thermodynamic limit exists and</p>
+<p><a id="eq-2-13"></a></p>
+<div class="arithmatex">\[
+\lim_{N\to\infty}F_N=\inf_{r\ge0}\Phi_r. \tag{2.13}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> (2.1)–(2.4) 하에서, thermodynamic limit 이 존재하고 다음이 성립한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1, (2.13)</strong> 주정리. 물리 문장: "Poisson diluted 짝수-<span class="arithmatex">\(p\)</span> Ising spin glass 의 quenched free energy 는 Mézard–Parisi <span class="arithmatex">\(r\)</span>RSB cavity functional 을 모든 유한 <span class="arithmatex">\(r\)</span> 과 모든 order parameter 에 대해 최적화한 값이다." (2.1)–(2.4) 는 각각 적분가능성(R·🔧), 모형, loop 전개 형태(R5), positivity(R6). 극한의 <strong>존재</strong> 자체도 결론에 포함된다(diluted 모형에서 superadditivity 류 논증 없이). <code>📚</code> 정리 본문</li>
+<li>🧭 물리 직관과의 차이: 물리에서는 "어떤 <span class="arithmatex">\(r\)</span> 에서 정류점이 있고, 필요하면 <span class="arithmatex">\(r\to\infty\)</span> (full RSB)" 라고 생각하지만, 정리는 <span class="arithmatex">\(\inf_r\)</span> 만 말한다 — 어떤 유한 <span class="arithmatex">\(r\)</span> 에서 inf 가 <strong>도달되는지</strong>, 최적 <span class="arithmatex">\(\zeta\)</span> 가 <strong>존재하는지</strong>는 말하지 않는다(§2.1 ¶6). <code>📚</code> §2.1 ¶6</li>
+</ul>
+<p><strong>식 (2.13) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lim_{N\to\infty}F_N\)</span></td>
+<td>극한의 존재 포함</td>
+<td>thermodynamic limit 의 quenched pressure (R4)</td>
+<td><code>📚</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\inf_{r\ge0}\Phi_r\)</span></td>
+<td>모든 유한 RSB 단계에 대한 inf</td>
+<td>유한 단계 RSB 의 최적값; <span class="arithmatex">\(r\to\infty\)</span> 의 극한이 full RSB 에 해당 (R16)</td>
+<td><code>📚</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>(끝: s2-1-e1)</em></p>
+<p><a id="s2-1-p6"></a></p>
+<h4 id="21-6">§2.1 ¶6<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-1-p6-s1"></a><strong>s1</strong> The right side is an infimum over finite hierarchies.</p>
+<p><a id="s2-1-p6-s2"></a><strong>s2</strong> The theorem does not assume that a trial law attains it or that a limiting infinite-depth Gibbs state has been constructed.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 우변은 유한 계층들에 대한 infimum 이다.</p>
+<p><strong>s2</strong> 이 정리는 어떤 trial law 가 그것을 달성한다거나, 무한 깊이의 극한 Gibbs 상태가 구성되었다고 가정하지 않는다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> full RSB(무한 깊이) 대상을 직접 다루지 않고 유한 단계의 inf 로만 정식화했다는 점이 이 결과의 성격이다. 물리의 "Parisi 해가 존재하고 유일하다" 류의 진술은 포함되어 있지 않다. 🧭 물리 직관과의 차이: 물리에서는 최적 order parameter 가 곧 "물리적 상태" 로 해석되지만, 여기서 inf 를 달성하는 <span class="arithmatex">\(\zeta\)</span> 가 실제 Gibbs 상태의 기술이라는 주장은 없다. <code>📚</code> §2.1 ¶6 s2</li>
+</ul>
+<hr />
+<p><a id="s2-2"></a></p>
+<h2 id="22-proof-strategy">§2.2 Proof strategy<a class="headerlink" href="#22-proof-strategy" title="Permanent link">&para;</a></h2>
+<p><em>제목: 증명 전략</em></p>
+<p><a id="s2-2-p1"></a></p>
+<h4 id="22-1">§2.2 ¶1<a class="headerlink" href="#22-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p1-s1"></a><strong>s1</strong> The interpolation upper bound holds at every system size and every finite depth.</p>
+<p><a id="s2-2-p1-s2"></a><strong>s2</strong> We reproduce it in Section <a href="04-the-interpolation-upper-bound.html#s4">4</a>, including a normalization that avoids assuming integrability of the multiplier <span class="arithmatex">\(\log a\)</span>.</p>
+<p><a id="s2-2-p1-s3"></a><strong>s3</strong> The lower bound has four steps.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> interpolation upper bound 는 모든 계 크기와 모든 유한 깊이에서 성립한다.</p>
+<p><strong>s2</strong> 우리는 이를 Section <a href="04-the-interpolation-upper-bound.html#s4">4</a> 에서 재현하며, 곱인자의 <span class="arithmatex">\(\log a\)</span> 의 적분가능성을 가정하지 않아도 되는 정규화를 포함한다.</p>
+<p><strong>s3</strong> lower bound 는 네 단계로 이루어진다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> upper bound: 모든 <span class="arithmatex">\(N\)</span> 에서 <span class="arithmatex">\(F_N\le\mathcal B_r(\zeta,\mathbf m)+\)</span>(작은 오차 또는 0) — 유한 크기에서도 성립하는 부등식이라 극한 순서 문제가 없다. <code>📚</code> [<a href="99-references.html#ref-PT04">16</a>]</li>
+<li><strong>s2</strong> <code>🔧</code> <span class="arithmatex">\(\log a\)</span> 는 spin 무관 상수라 양변에서 상쇄되도록 정규화한다(§2 ¶2 s5 참고).</li>
+<li><strong>s3</strong> 어려운 쪽은 lower bound: <span class="arithmatex">\(\liminf F_N\ge\inf_r\Phi_r\)</span>. 아래 4단계. <code>📚</code> §2.2</li>
+</ul>
+<hr />
+<p><a id="s2-2-p2"></a></p>
+<h4 id="22-2-1">§2.2 ¶2 · 1.<a class="headerlink" href="#22-2-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p2-s1"></a><strong>s1</strong> <em>Select a cavity reservoir.</em></p>
+<p><a id="s2-2-p2-s2"></a><strong>s2</strong> A reservoir is a common Gibbs system on <span class="arithmatex">\(N\)</span> spins used to compare systems of sizes <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(N+1\)</span>.</p>
+<p><a id="s2-2-p2-s3"></a><strong>s3</strong> For bounded interaction and field laws, add bounded Poisson perturbations whose number is sublinear in the system size.</p>
+<p><a id="s2-2-p2-s4"></a><strong>s4</strong> Their effect on the pressure vanishes.</p>
+<p><a id="s2-2-p2-s5"></a><strong>s5</strong> At each fixed hierarchy depth, select system sizes and deterministic perturbation parameters for which the difference between successive expected logarithms after the auxiliary power-mean recursion is at most an arbitrarily small error above the original pressure liminf.</p>
+<p><a id="s2-2-p2-s6"></a><strong>s6</strong> The same choices give concentration of every perturbation score (Section <a href="05-a-perturbed-cavity-reservoir.html#s5">5</a> and Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>cavity reservoir 를 고른다.</em></p>
+<p><strong>s2</strong> reservoir 는 크기 <span class="arithmatex">\(N\)</span> 과 <span class="arithmatex">\(N+1\)</span> 의 계를 비교하는 데 쓰는, <span class="arithmatex">\(N\)</span> 개 spin 위의 공통 Gibbs 계이다.</p>
+<p><strong>s3</strong> 유계인 상호작용·field 법칙에 대해, 개수가 계 크기에 대해 sublinear 한 유계 Poisson perturbation 들을 더한다.</p>
+<p><strong>s4</strong> 이들이 pressure 에 주는 효과는 사라진다.</p>
+<p><strong>s5</strong> 각 고정된 계층 깊이에서, 보조 power-mean 재귀 후의 연속된 기대 log 들의 차이가 원래 pressure 의 liminf 보다 기껏해야 임의로 작은 오차만큼만 큰, 그런 계 크기와 결정론적 perturbation parameter 를 고른다.</p>
+<p><strong>s6</strong> 같은 선택이 모든 perturbation score 의 concentration을 준다 (Section <a href="05-a-perturbed-cavity-reservoir.html#s5">5</a> 와 Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>).</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> Aizenman–Sims–Starr 식 cavity: <span class="arithmatex">\(F=\lim(\mathbb E\log Z_{N+1}-\mathbb E\log Z_N)\)</span> 을 계산하려고, 두 계를 "<span class="arithmatex">\(N\)</span> spin 의 공통 계(reservoir) + 추가 부분" 으로 쓴다. 물리의 cavity method 에서 "<span class="arithmatex">\(N\)</span> spin 계에 spin 하나를 더한다" 와 같다. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>]</li>
+<li><strong>s3–s4</strong> perturbation 은 <span class="arithmatex">\(o(N)\)</span> 개라 pressure 극한을 바꾸지 않는다 — stochastic stability 의 수학적 구현. <code>📚</code> §1 ¶7 s3</li>
+<li><strong>s5</strong> <code>🔧</code> 기술 단계: 원래 <span class="arithmatex">\(\liminf F_N\)</span> 에 가까운 cavity 증분을 주는 "좋은" 부분수열 <span class="arithmatex">\(N\)</span> 과 perturbation 세기를 고른다(liminf 를 다루기 위한 표준 장치).</li>
+<li><strong>s6</strong> "perturbation score" 는 §6 에서 정의될 양이다. 지금은 "perturbation 항의 Gibbs 평균 같은 관측량이 요동하지 않는다(self-averaging)" 로 읽어 두면 된다. <code>❓</code> 정확한 정의는 §6 번역 때 확인</li>
+</ul>
+<hr />
+<p><a id="s2-2-p3"></a></p>
+<h4 id="22-3-2">§2.2 ¶3 · 2.<a class="headerlink" href="#22-3-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p3-s1"></a><strong>s1</strong> <em>Prescribe branching patterns.</em></p>
+<p><a id="s2-2-p3-s2"></a><strong>s2</strong> An elementary calculus for finite probability trees expands insertions into signed sums over added replica paths.</p>
+<p><a id="s2-2-p3-s3"></a><strong>s3</strong> Independent marks select any prescribed branching pattern.</p>
+<p><a id="s2-2-p3-s4"></a><strong>s4</strong> Score concentration then gives identities for these signed sums (Section <a href="03-calculus-on-finite-trees.html#s3">3</a> and Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>branching 패턴을 지정한다.</em></p>
+<p><strong>s2</strong> 유한 확률 tree 에 대한 기초적 계산법이 삽입을, 추가된 replica 경로들에 대한 부호 붙은 합으로 전개한다.</p>
+<p><strong>s3</strong> 독립인 표지(mark)들이 임의의 지정된 branching 패턴을 골라낸다.</p>
+<p><strong>s4</strong> 그러면 score 집중이 이 부호 붙은 합들에 대한 항등식을 준다 (Section <a href="03-calculus-on-finite-trees.html#s3">3</a> 과 Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a>).</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s2</strong> 물리 비유: <span class="arithmatex">\(\log Z\)</span> 의 cavity 증분을 replica 들의 상관함수 전개(cumulant/cluster 전개처럼)로 펼치는데, 각 항이 "replica 들이 계층 tree 의 어디에서 갈라지는가" 로 분류된다. <code>❓</code> 정확한 전개 형태는 §3 번역 때 확인</li>
+<li><strong>s3–s4</strong> Ghirlanda–Guerra 항등식의 일반화로 읽을 수 있다: perturbation 이 self-averaging 이면 replica 들 사이의 특정 상관 패턴에 대한 항등식이 나온다. 여기서는 그 패턴을 tree 의 branching 으로 지정. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>] (유사성만; 정확한 대응은 §6 에서 확인)</li>
+</ul>
+<hr />
+<p><a id="s2-2-p4"></a></p>
+<h4 id="22-4-3">§2.2 ¶4 · 3.<a class="headerlink" href="#22-4-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p4-s1"></a><strong>s1</strong> <em>Concentrate all multioverlaps.</em></p>
+<p><a id="s2-2-p4-s2"></a><strong>s2</strong> Move each internal branching depth of a target tree one step later.</p>
+<p><a id="s2-2-p4-s3"></a><strong>s3</strong> The first fresh split at each new depth supplies the same small factor as the normalizing coefficient.</p>
+<p><a id="s2-2-p4-s4"></a><strong>s4</strong> A relative bound on the sum of absolute coefficients preserves control of errors after division.</p>
+<p><a id="s2-2-p4-s5"></a><strong>s5</strong> Conditional covariance then decays by induction on the number of replicas.</p>
+<p><a id="s2-2-p4-s6"></a><strong>s6</strong> A second identity concentrates the remaining conditional mean (Section <a href="07-decorrelation-on-prescribed-trees.html#s7">7</a>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>모든 multioverlap 을 집중시킨다.</em></p>
+<p><strong>s2</strong> 목표 tree 의 각 내부 branching 깊이를 한 단계 뒤로 옮긴다.</p>
+<p><strong>s3</strong> 각 새 깊이에서의 첫 새로운 분기가, 정규화 계수와 같은 작은 인자를 공급한다.</p>
+<p><strong>s4</strong> 절대값 계수 합에 대한 상대적 상한이, 나눗셈 뒤에도 오차 제어를 유지시킨다.</p>
+<p><strong>s5</strong> 그러면 조건부 공분산이 replica 수에 대한 귀납으로 감소한다.</p>
+<p><strong>s6</strong> 두 번째 항등식이 남은 조건부 평균을 집중시킨다 (Section <a href="07-decorrelation-on-prescribed-trees.html#s7">7</a>).</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> 목표: 모든 multioverlap <span class="arithmatex">\(R_A\)</span> 가 (계층의 각 단계에서 조건부로) 요동하지 않게 하기 — 물리적으로 "각 상태 묶음 안에서 multioverlap 이 self-averaging" 이라는 RSB 그림의 핵심 가정을 증명하는 단계. 🧭 물리 직관과의 차이: 물리에서는 pure state 안의 clustering 으로 당연시하는 것을 수학은 귀납으로 증명해야 한다. <code>📚</code> §1 ¶6</li>
+<li><strong>s2–s4</strong> <code>🔧</code> 기술 단계: 깊이 이동, 작은 인자 <span class="arithmatex">\(\delta\)</span> 로 나누기, 계수 합 제어 — 항등식에서 원하는 항을 분리하기 위한 장치.</li>
+<li><strong>s5–s6</strong> replica 수 <span class="arithmatex">\(n\)</span> 에 대한 귀납: <span class="arithmatex">\(n\)</span> 개 replica 의 조건부 상관이 <span class="arithmatex">\(n-1\)</span> 개의 것으로 제어된다. 이후 조건부 평균 자체도 집중. <code>❓</code> 구조는 §7 번역 때 확인</li>
+</ul>
+<hr />
+<p><a id="s2-2-p5"></a></p>
+<h4 id="22-5-4">§2.2 ¶5 · 4.<a class="headerlink" href="#22-5-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p5-s1"></a><strong>s1</strong> <em>Recover independent cavity messages.</em></p>
+<p><a id="s2-2-p5-s2"></a><strong>s2</strong> Encode a uniformly chosen reservoir site's entire finite hierarchy by successive conditional laws.</p>
+<p><a id="s2-2-p5-s3"></a><strong>s3</strong> Multioverlap concentration permits different site labels to be replaced by independent copies of this process in the cavity insertion.</p>
+<p><a id="s2-2-p5-s4"></a><strong>s4</strong> This yields an admissible trial value close to the selected increment (Section <a href="08-independent-hierarchical-messages-and-th.html#s8">8</a>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>독립 cavity message 들을 되찾는다.</em></p>
+<p><strong>s2</strong> 균등하게 고른 reservoir site 의 유한 계층 전체를, 연속된 조건부 법칙들로 부호화한다.</p>
+<p><strong>s3</strong> multioverlap 집중 덕분에, cavity 삽입에서 서로 다른 site label 들을 이 과정의 독립 사본으로 바꿔 놓을 수 있다.</p>
+<p><strong>s4</strong> 이로써 선택된 증분에 가까운, 허용 가능한 trial 값이 얻어진다 (Section <a href="08-independent-hierarchical-messages-and-th.html#s8">8</a>).</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s2</strong> reservoir 의 한 site 가 계층의 각 단계에서 갖는 "조건부 magnetization 분포" 를 <span class="arithmatex">\(\eta_0\to\eta_1\to\dots\to x\)</span> 의 형태(식 (2.7))로 읽어 낸다 — 실제 Gibbs 계에서 order parameter <span class="arithmatex">\(\zeta\)</span> 를 <strong>구성</strong>하는 단계. 물리의 "population dynamics 로 <span class="arithmatex">\(\zeta\)</span> 를 얻는다" 의 수학판. <code>📚</code> §2.1 ¶3</li>
+<li><strong>s3</strong> cavity 삽입에서 새 spin 의 이웃들(서로 다른 site)이 독립 message 를 갖는다고 바꿔도 된다 — §1 ¶6 s5 의 "독립성" 이 여기서 정당화된다. <code>📚</code> §1 ¶6 s5</li>
+<li><strong>s4</strong> "허용 가능한 trial 값" = 어떤 <span class="arithmatex">\((\zeta,\mathbf m)\)</span> 에서의 <span class="arithmatex">\(\mathcal B_r\)</span>. 그 값이 cavity 증분(≈ <span class="arithmatex">\(\liminf F_N\)</span>)에 가까우므로 <span class="arithmatex">\(\inf_r\Phi_r\le\liminf F_N+\varepsilon\)</span> → lower bound. <code>✅</code> (논리 구조: 아래 s4 의 부등식 사슬)</li>
+</ul>
+<details>
+<summary>전개: lower bound 의 논리 사슬 (s4)</summary>
+<p>Step 1: 깊이 <span class="arithmatex">\(r\)</span> 고정. 부분수열과 perturbation 을 골라 "cavity 증분" <span class="arithmatex">\(\Delta\le\liminf_NF_N+\varepsilon\)</span>.
+Step 4: 어떤 trial <span class="arithmatex">\((\zeta,\mathbf m)\)</span> 에 대해 <span class="arithmatex">\(\lvert\mathcal B_r(\zeta,\mathbf m)-\Delta\rvert\le\varepsilon'\)</span> (Step 2–3 의 집중으로 오차 제어).
+그러면 <span class="arithmatex">\(\Phi_r\le\mathcal B_r(\zeta,\mathbf m)\le\Delta+\varepsilon'\le\liminf F_N+\varepsilon+\varepsilon'\)</span>.
+따라서 <span class="arithmatex">\(\inf_r\Phi_r\le\liminf F_N\)</span> (오차들을 <span class="arithmatex">\(r\to\infty\)</span> 등으로 보낸 뒤). upper bound <span class="arithmatex">\(\limsup F_N\le\inf_r\Phi_r\)</span> 와 합치면 극한 존재와 (2.13) ✓.
+주의: 이는 §2.2 의 서술을 논리적으로 정리한 것이고, 각 단계의 오차가 정말 그렇게 제어되는지는 §5–§9 에서 확인해야 한다.</p>
+</details>
+<hr />
+<p><a id="s2-2-p6"></a></p>
+<h4 id="22-6">§2.2 ¶6<a class="headerlink" href="#22-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s2-2-p6-s1"></a><strong>s1</strong> The estimates in Step 3 are averages over separated interior branching depths.</p>
+<p><a id="s2-2-p6-s2"></a><strong>s2</strong> The insertion expansion assigns vanishing probability to the exceptional trees, so these averages are sufficient for Step 4.</p>
+<p><a id="s2-2-p6-s3"></a><strong>s3</strong> No uniform concentration in the depth is needed.</p>
+<p><a id="s2-2-p6-s4"></a><strong>s4</strong> The resulting lower bound holds for every bounded interaction law invariant under permutations of its inputs, without factorization or positivity.</p>
+<p><a id="s2-2-p6-s5"></a><strong>s5</strong> Finally, normalization and estimates uniform over all trial laws remove boundedness and give Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> under the stated first moment assumption (Section <a href="09-normalization-truncation-and-completion-.html#s9">9</a>).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> Step 3 의 추정은 서로 떨어진 내부 branching 깊이들에 대한 평균이다.</p>
+<p><strong>s2</strong> 삽입 전개는 예외적 tree 들에 사라지는 확률을 부여하므로, 이 평균들로 Step 4 에 충분하다.</p>
+<p><strong>s3</strong> 깊이에 대해 균일한 집중은 필요하지 않다.</p>
+<p><strong>s4</strong> 그 결과 얻는 lower bound 는 입력의 순열에 대해 불변인 모든 유계 상호작용 법칙에 대해 성립하며, factorization 이나 positivity 가 필요 없다.</p>
+<p><strong>s5</strong> 마지막으로 정규화와 모든 trial law 에 대해 균일한 추정이 유계성 가정을 없애고, 명시된 1차 moment 가정 하에서 Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> 을 준다 (Section <a href="09-normalization-truncation-and-completion-.html#s9">9</a>).</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s3</strong> <code>🔧</code> 기술 단계 (§1 ¶7 s4–s5 와 같은 내용).</li>
+<li><strong>s4</strong> 중요한 구조적 사실: <strong>lower bound 는 positivity·짝수 arity 없이</strong> 성립한다. 즉 "Mézard–Parisi functional 의 inf 이하로 pressure 가 내려가지 않는다" 는 일반적이고, positivity 는 <strong>upper bound</strong>(Guerra interpolation)에만 필요하다. 물리적으로: 홀수 <span class="arithmatex">\(p\)</span> 나 강자성 쪽 치우친 coupling 에서는 RSB 공식이 upper bound 를 못 줄 수 있다는 뜻은 아니지만, 이 방법으로는 upper bound 증명이 안 된다. <code>📚</code> §2.2 ¶6 s4</li>
+<li><strong>s5</strong> <code>🔧</code> 유계 → 1차 moment 로의 확장은 truncation 과 균일 추정(§9).</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="01-introduction.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §1 Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §1 Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="03-calculus-on-finite-trees.html" class="md-footer__link md-footer__link--next" aria-label="다음: §3 Calculus on finite trees">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §3 Calculus on finite trees
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

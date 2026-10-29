@@ -1,0 +1,2149 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html">
+      
+      
+        <link rel="prev" href="05-a-perturbed-cavity-reservoir.html">
+      
+      
+        <link rel="next" href="07-decorrelation-on-prescribed-trees.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§6 Perturbations and identities on prescribed trees - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-perturbations-and-identities-on-prescribed-trees" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §6 Perturbations and identities on prescribed trees
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-the-model-and-the-variational-principle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-calculus-on-finite-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-perturbed-cavity-reservoir.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-perturbations-and-identities-on-prescrib.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-the-perturbation-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.1 The perturbation family
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-concentration-of-each-perturbation-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.2 Concentration of each perturbation score
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.2 Concentration of each perturbation score">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-61-averaged-score-concentration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.1 (Averaged score concentration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-one-sequence-for-low-increments-and-all-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.3 One sequence for low increments and all identities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.3 One sequence for low increments and all identities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-62-deterministic-parameter-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.2 (Deterministic parameter selection)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-poisson-insertion-and-analytic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.4 Poisson insertion and analytic extraction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.4 Poisson insertion and analytic extraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-63-palm-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.3 (Palm identity)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-64-vanishing-insertion-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.4 (Vanishing insertion coefficients)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-prescribing-the-colored-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.5 Prescribing the colored tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.5 Prescribing the colored tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-65-identity-on-prescribed-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 6.5 (Identity on prescribed trees)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-66-order-of-the-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 6.6 (Order of the choices)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-decorrelation-on-prescribed-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-the-perturbation-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.1 The perturbation family
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-concentration-of-each-perturbation-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.2 Concentration of each perturbation score
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.2 Concentration of each perturbation score">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-61-averaged-score-concentration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.1 (Averaged score concentration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-one-sequence-for-low-increments-and-all-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.3 One sequence for low increments and all identities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.3 One sequence for low increments and all identities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-62-deterministic-parameter-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.2 (Deterministic parameter selection)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-poisson-insertion-and-analytic-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.4 Poisson insertion and analytic extraction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.4 Poisson insertion and analytic extraction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-63-palm-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.3 (Palm identity)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-64-vanishing-insertion-coefficients" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 6.4 (Vanishing insertion coefficients)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-prescribing-the-colored-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      §6.5 Prescribing the colored tree
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§6.5 Prescribing the colored tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-65-identity-on-prescribed-trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 6.5 (Identity on prescribed trees)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-66-order-of-the-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 6.6 (Order of the choices)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s6"></a></p>
+<h1 id="6-perturbations-and-identities-on-prescribed-trees">§6 Perturbations and identities on prescribed trees<a class="headerlink" href="#6-perturbations-and-identities-on-prescribed-trees" title="Permanent link">&para;</a></h1>
+<!-- TODO:제목번역 s6 -->
+
+<p><a href="05-a-perturbed-cavity-reservoir.html">← 이전: §5 A perturbed cavity reservoir</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="07-decorrelation-on-prescribed-trees.html">다음: §7 Decorrelation on prescribed trees →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<!-- TODO:요약 s6 -->
+</details>
+<p><a id="s6-p1"></a></p>
+<h4 id="6-1">§6 ¶1<a class="headerlink" href="#6-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-p1-s1"></a><strong>s1</strong> Throughout this section the interaction and field are bounded, and the depth <span class="arithmatex">\(L\geq2\)</span> is fixed.</p>
+<p><a id="s6-p1-s2"></a><strong>s2</strong> The arguments apply both to the <span class="arithmatex">\(N\)</span>-spin system and to the reservoir in Lemma <a href="05-a-perturbed-cavity-reservoir.html#s5-e1">5.1</a>.</p>
+<p><a id="s6-p1-s3"></a><strong>s3</strong> Its physical disorder consists of independent bounded interactions with a Poisson count of mean <span class="arithmatex">\(O(N)\)</span>, together with <span class="arithmatex">\(N\)</span> independent bounded fields.</p>
+<p><a id="s6-p1-s4"></a><strong>s4</strong> All expectations in a statement at a specified parameter vector are taken with that vector held fixed.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-p1-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-p1 -->
+
+<hr />
+<p><a id="s6-p2"></a></p>
+<h4 id="6-2">§6 ¶2<a class="headerlink" href="#6-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-p2-s1"></a><strong>s1</strong> We choose perturbations whose derivatives concentrate, while selecting cavity increments at most an arbitrarily small error above the unperturbed liminf.</p>
+<p><a id="s6-p2-s2"></a><strong>s2</strong> A Poisson insertion then turns concentration into Taylor-coefficient identities.</p>
+<p><a id="s6-p2-s3"></a><strong>s3</strong> Independent signs along the inserted paths select the prescribed splitting depths.</p>
+<p><a id="s6-p2-s4"></a><strong>s4</strong> The use of concentration to obtain overlap identities has antecedents in the self-averaging argument of Ghirlanda–Guerra [<a href="99-references.html#ref-GG98">10</a>].</p>
+<p><a id="s6-p2-s5"></a><strong>s5</strong> Related antecedents are the stochastic-stability relations of Aizenman–Contucci [<a href="99-references.html#ref-AC98">1</a>] and their extensions to diluted multioverlaps by Barra and De Sanctis [<a href="99-references.html#ref-BarraDeSanctis07">3</a>].</p>
+<p><a id="s6-p2-s6"></a><strong>s6</strong> Panchenko's spin-distribution identities [<a href="99-references.html#ref-Pan13">14</a>] provide the cavity context.</p>
+<p><a id="s6-p2-s7"></a><strong>s7</strong> The bounded perturbation family and the identities on colored finite trees needed here are constructed and proved below.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-p2-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-p2-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-p2 -->
+
+<hr />
+<p><a id="s6-1"></a></p>
+<h2 id="61-the-perturbation-family">§6.1 The perturbation family<a class="headerlink" href="#61-the-perturbation-family" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s6-1 -->
+
+<p><a id="s6-1-p1"></a></p>
+<h4 id="61-1">§6.1 ¶1<a class="headerlink" href="#61-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-1-p1-s1"></a><strong>s1</strong> A <em>mark specification</em> consists of a finite number <span class="arithmatex">\(n\geq0\)</span> of labeled Rademacher coordinates, a depth in <span class="arithmatex">\(\{1,\ldots,L-1\}\)</span> assigned to each coordinate, two functions <span class="arithmatex">\(g,g_0:\{-1,1\}^n\to\mathbb Q\cap[-1,1]\)</span>, and a choice <span class="arithmatex">\(S_0=1\)</span> or <span class="arithmatex">\(S_0=\sigma_i\)</span>.</p>
+<p><a id="s6-1-p1-s2"></a><strong>s2</strong> Each coordinate is sampled at its assigned depth along an auxiliary path.</p>
+<p><a id="s6-1-p1-s3"></a><strong>s3</strong> Distinct coordinates are independent; the value of a coordinate is shared at a shared vertex and is independent at different vertices.</p>
+<p><a id="s6-1-p1-s4"></a><strong>s4</strong> The case <span class="arithmatex">\(n=0\)</span> includes constant functions.</p>
+<p><a id="s6-1-p1-s5"></a><strong>s5</strong> We use all such specifications, a countable collection because each sign domain is finite.</p>
+<p><a id="s6-1-p1-s6"></a><strong>s6</strong> Products of signs and their rational averages belong to this collection; these will select branching patterns.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-1-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-1-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-1-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-1-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-1-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-1-p1-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-1-p1 -->
+
+<hr />
+<p><a id="s6-1-p2"></a></p>
+<h4 id="61-2">§6.1 ¶2<a class="headerlink" href="#61-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-1-p2-s1"></a><strong>s1</strong> The two parameters have different roles: differentiation in <span class="arithmatex">\(u\)</span> produces a concentrated score, while the values of <span class="arithmatex">\(t\)</span> probe an insertion's Taylor expansion.</p>
+<p><a id="s6-1-p2-s2"></a><strong>s2</strong> Taking <span class="arithmatex">\(u\)</span> smaller than every fixed power of <span class="arithmatex">\(t\)</span> will force each limiting Taylor coefficient to vanish.</p>
+<p><a id="s6-1-p2-s3"></a><strong>s3</strong> For each specification include types indexed by all integers <span class="arithmatex">\(j\geq4\)</span>.</p>
+<p><a id="s6-1-p2-s4"></a><strong>s4</strong> The type <span class="arithmatex">\(\nu\)</span> corresponding to this specification and <span class="arithmatex">\(j\)</span> has</p>
+<p><a id="eq-6-1"></a></p>
+<div class="arithmatex">\[
+t_\nu=j^{-1},\qquad
+ I_\nu=[j^{-j},2j^{-j}],\qquad u_\nu\in I_\nu. \tag{6.1}
+\]</div>
+<p><a id="s6-1-p2-s5"></a><strong>s5</strong> Enumerate these types by <span class="arithmatex">\(\nu\in\mathbb N\)</span> and choose constants <span class="arithmatex">\(c_\nu\gt 0\)</span> with <span class="arithmatex">\(\sum_\nu c_\nu=1\)</span>.</p>
+<p><a id="s6-1-p2-s6"></a><strong>s6</strong> Independently for each type, put <span class="arithmatex">\(n_\nu\sim\operatorname{Poisson}(c_\nu s_N)\)</span>, where <span class="arithmatex">\(s_N=N^{3/4}\)</span>.</p>
+<p><a id="s6-1-p2-s7"></a><strong>s7</strong> Each term has an independent uniform site <span class="arithmatex">\(i\in[N]\)</span> and an independent copy of its mark process.</p>
+<p><a id="s6-1-p2-s8"></a><strong>s8</strong> At a leaf it multiplies the spin weight by</p>
+<p><a id="eq-6-2"></a></p>
+<div class="arithmatex">\[
+\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0. \tag{6.2}
+\]</div>
+<p><a id="s6-1-p2-s9"></a><strong>s9</strong> In particular <span class="arithmatex">\(1/2\lt \psi_\nu\lt 3/2\)</span>.</p>
+<p><a id="s6-1-p2-s10"></a><strong>s10</strong> Counts, types, and sites belong to the root; the mark variables are sampled with their product priors at their assigned auxiliary depths.</p>
+<p><a id="s6-1-p2-s11"></a><strong>s11</strong> Since the total count is <span class="arithmatex">\(\operatorname{Poisson}(s_N)\)</span>, this construction uses only finitely many terms almost surely.</p>
+<p><a id="s6-1-p2-s12"></a><strong>s12</strong> The factor bound permits termwise comparison through the power means, as in <a href="05-a-perturbed-cavity-reservoir.html#eq-5-3">(5.3)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-1-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-1-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-1-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-1-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-1-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-1-p2-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-1-p2-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-1-p2-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s6-1-p2-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s6-1-p2-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s6-1-p2-s11 --></p>
+<p><strong>s12</strong> <!-- TODO:번역 s6-1-p2-s12 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-1-p2 -->
+
+<p><strong>식 (6.1) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-1 -->
+
+<p><strong>식 (6.2) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-2 -->
+
+<hr />
+<p><a id="s6-1-p3"></a></p>
+<h4 id="61-3">§6.1 ¶3<a class="headerlink" href="#61-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-1-p3-s1"></a><strong>s1</strong> Write <span class="arithmatex">\(\pi\)</span> for the product of the uniform probability measures on the intervals <span class="arithmatex">\(I_\nu\)</span>, and <span class="arithmatex">\(\mathbf u=(u_\nu)_\nu\)</span>.</p>
+<p><a id="s6-1-p3-s2"></a><strong>s2</strong> We use <span class="arithmatex">\(\pi\)</span> to select deterministic parameter vectors, not as part of their quenched law.</p>
+<p><a id="s6-1-p3-s3"></a><strong>s3</strong> Each interval has fixed positive length for a fixed type; concentration estimates may therefore depend on its length.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-1-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-1-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-1-p3-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-1-p3 -->
+
+<hr />
+<p><a id="s6-2"></a></p>
+<h2 id="62-concentration-of-each-perturbation-score">§6.2 Concentration of each perturbation score<a class="headerlink" href="#62-concentration-of-each-perturbation-score" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s6-2 -->
+
+<p><a id="s6-2-p1"></a></p>
+<h4 id="62-1">§6.2 ¶1<a class="headerlink" href="#62-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p1-s1"></a><strong>s1</strong> For one type <span class="arithmatex">\(\nu\)</span>, define on a tilted path, including its terminal Gibbs configuration,</p>
+<p><a id="eq-6-3"></a></p>
+<div class="arithmatex">\[
+D_\nu=\sum_{q=1}^{n_\nu}
+ \frac{g_{0,q}S_{0,q}}
+ {1+t_\nu g_q\sigma_{i_q}+u_\nu g_{0,q}S_{0,q}}. \tag{6.3}
+\]</div>
+<p><a id="s6-2-p1-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(\langle\cdot\rangle\)</span> denote expectation along one tilted path conditional on the root, and let <span class="arithmatex">\(\mathbb E_{\mathbf u}\)</span> average the root at fixed <span class="arithmatex">\(\mathbf u\)</span>.</p>
+<p><a id="s6-2-p1-s3"></a><strong>s3</strong> Define</p>
+<p><a id="eq-6-4"></a></p>
+<div class="arithmatex">\[
+e_{\nu,N}(\mathbf u)
+ =\frac{1}{c_\nu s_N}
+ \mathbb E_{\mathbf u}\Big\langle
+ \big|D_\nu-\mathbb E_{\mathbf u}\langle D_\nu\rangle\big|
+ \Big\rangle. \tag{6.4}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p1-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p1 -->
+
+<p><strong>식 (6.3) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-3 -->
+
+<p><strong>식 (6.4) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-4 -->
+
+<hr />
+<p><a id="s6-2-e1"></a></p>
+<h3 id="lemma-61-averaged-score-concentration">▸ Lemma 6.1 (Averaged score concentration)<a class="headerlink" href="#lemma-61-averaged-score-concentration" title="Permanent link">&para;</a></h3>
+<p><a id="s6-2-p2"></a></p>
+<h4 id="62-2">§6.2 ¶2<a class="headerlink" href="#62-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p2-s1"></a><strong>s1</strong> For each fixed <span class="arithmatex">\(L\)</span> and each fixed type <span class="arithmatex">\(\nu\)</span>,</p>
+<p><a id="eq-6-5"></a></p>
+<div class="arithmatex">\[
+\int e_{\nu,N}(\mathbf u)\,\pi(d\mathbf u)\longrightarrow0. \tag{6.5}
+\]</div>
+<p><a id="s6-2-p2-s2"></a><strong>s2</strong> The assertion holds for the reservoir as well as for the original system.</p>
+<p><a id="s6-2-p2-s3"></a><strong>s3</strong> Constants need not be uniform in <span class="arithmatex">\(L\)</span> or <span class="arithmatex">\(\nu\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p2-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p2 -->
+
+<p><strong>식 (6.5) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-5 -->
+
+<hr />
+<p><em>(끝: s6-2-e1)</em></p>
+<p><a id="s6-2-e2"></a></p>
+<h3 id="proof">▸ <em>Proof.</em><a class="headerlink" href="#proof" title="Permanent link">&para;</a></h3>
+<p><a id="s6-2-p3"></a></p>
+<h4 id="62-3">§6.2 ¶3<a class="headerlink" href="#62-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p3-s1"></a><strong>s1</strong> Hold the other parameters fixed, write <span class="arithmatex">\(u=u_\nu\)</span>, <span class="arithmatex">\(n=n_\nu\)</span>, and put <span class="arithmatex">\(\lambda_\nu=c_\nu s_N\)</span>.</p>
+<p><a id="s6-2-p3-s2"></a><strong>s2</strong> Choose an open interval <span class="arithmatex">\(J_\nu\)</span> containing <span class="arithmatex">\(I_\nu\)</span> such that <span class="arithmatex">\(|t_\nu|+|u|\lt 1/2\)</span> throughout its closure.</p>
+<p><a id="s6-2-p3-s3"></a><strong>s3</strong> On this interval, pathwise,</p>
+<p><a id="eq-6-6"></a></p>
+<div class="arithmatex">\[
+|D_\nu|\leq2n,\qquad
+ -4n\leq\partial_uD_\nu
+ =-\sum_{q=1}^{n}
+ \frac{(g_{0,q}S_{0,q})^2}{\psi_{\nu,q}^{2}}
+ \leq0. \tag{6.6}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p3-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p3 -->
+
+<p><strong>식 (6.6) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-6 -->
+
+<hr />
+<p><a id="s6-2-p4"></a></p>
+<h4 id="62-4">§6.2 ¶4<a class="headerlink" href="#62-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p4-s1"></a><strong>s1</strong> <em>Fluctuations along a tilted path.</em></p>
+<p><a id="s6-2-p4-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(X_0(u)\)</span> be the random root log partition function before taking the root expectation.</p>
+<p><a id="s6-2-p4-s3"></a><strong>s3</strong> To include the last step in the differentiation, regard the logarithm of the spin weight as <span class="arithmatex">\(X_L\)</span> and the spin partition function as the step with exponent <span class="arithmatex">\(m_L=1\)</span>.</p>
+<p><a id="s6-2-p4-s4"></a><strong>s4</strong> Differentiation of one backward step gives</p>
+<p><a id="s6-2-p4-e1"></a></p>
+<div class="arithmatex">\[
+\partial_uX_{d-1}=K_d(\partial_uX_d),\qquad
+ \partial_u^2X_{d-1}
+ =K_d(\partial_u^2X_d)
+   +m_d\operatorname{Var}_{K_d}(\partial_uX_d).
+\]</div>
+<p><a id="s6-2-p4-s5"></a><strong>s5</strong> Thus, for <span class="arithmatex">\(M_d=\langle D_\nu\mid\mathscr F_d\rangle\)</span>,</p>
+<p><a id="eq-6-7"></a><a id="eq-6-8"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+X_0'(u)&amp;=\langle D_\nu\rangle, \tag{6.7} \\
+X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
+   +\sum_{d=1}^{L}m_d
+        \langle(M_d-M_{d-1})^2\rangle \\
+&amp;\geq m_1\operatorname{Var}(D_\nu\mid\mathscr F_0)-4n. \tag{6.8}
+\end{align*}
+\]</div>
+<p><a id="s6-2-p4-s6"></a><strong>s6</strong> Here the conditional expectations and variances use the tilted path law at the current <span class="arithmatex">\(u\)</span>.</p>
+<p><a id="s6-2-p4-s7"></a><strong>s7</strong> At fixed root all derivatives are justified by the bounded score and its derivatives; the finite recursion then justifies the displayed differentiation formulas.</p>
+<p><a id="s6-2-p4-s8"></a><strong>s8</strong> Their root expectations are justified by the finite moments of the Poisson counts.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-2-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-2-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-2-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-2-p4-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-2-p4-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p4 -->
+
+<p><strong>식 Eq. §6.2 ¶4 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p4-e1 -->
+
+<p><strong>식 (6.7), (6.8) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-7 -->
+
+<hr />
+<p><a id="s6-2-p5"></a></p>
+<h4 id="62-5">§6.2 ¶5<a class="headerlink" href="#62-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p5-s1"></a><strong>s1</strong> Integrating <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-8">(6.8)</a> over <span class="arithmatex">\(I_\nu=[a,b]\)</span> and using <span class="arithmatex">\(|X_0'|\leq2n\)</span> yields</p>
+<p><a id="eq-6-9"></a></p>
+<div class="arithmatex">\[
+\int_a^b\mathbb E_{\mathbf u}
+       \operatorname{Var}(D_\nu\mid\mathscr F_0)\,du
+ \leq\frac{4\lambda_\nu(1+b-a)}{m_1}. \tag{6.9}
+\]</div>
+<p><a id="s6-2-p5-s2"></a><strong>s2</strong> Consequently the interval-averaged thermal mean absolute deviation, divided by <span class="arithmatex">\(\lambda_\nu\)</span>, is at most</p>
+<p><a id="eq-6-10"></a></p>
+<div class="arithmatex">\[
+\left(\frac{4(1+|I_\nu|)}
+ {m_1|I_\nu|\lambda_\nu}\right)^{1/2}. \tag{6.10}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p5-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p5 -->
+
+<p><strong>식 (6.9) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-9 -->
+
+<p><strong>식 (6.10) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-10 -->
+
+<hr />
+<p><a id="s6-2-p6"></a></p>
+<h4 id="62-6">§6.2 ¶6<a class="headerlink" href="#62-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p6-s1"></a><strong>s1</strong> <em>Fluctuations of the root mean.</em></p>
+<p><a id="s6-2-p6-s2"></a><strong>s2</strong> It remains to concentrate <span class="arithmatex">\(X_0'\)</span> over the root.</p>
+<p><a id="s6-2-p6-s3"></a><strong>s3</strong> By <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-8">(6.8)</a>, the random function</p>
+<p><a id="s6-2-p6-e1"></a></p>
+<div class="arithmatex">\[
+G(u)=X_0(u)+2nu^2
+\]</div>
+<p>↳ is convex on <span class="arithmatex">\(J_\nu\)</span>.</p>
+<p><a id="s6-2-p6-s4"></a><strong>s4</strong> Uniformly for <span class="arithmatex">\(u\in J_\nu\)</span> and all the other parameters,</p>
+<p><a id="eq-6-11"></a></p>
+<div class="arithmatex">\[
+\operatorname{Var}(G(u))\leq C_\nu N,
+ \qquad |\mathbb E_{\mathbf u}G'(u)|\leq C_\nu\lambda_\nu. \tag{6.11}
+\]</div>
+<p><a id="s6-2-p6-s5"></a><strong>s5</strong> To prove the first estimate, condition on the physical and total perturbation counts.</p>
+<p><a id="s6-2-p6-s6"></a><strong>s6</strong> Conditional on the latter count, its types and sites are independent labels; changing a label replaces a single bounded factor.</p>
+<p><a id="s6-2-p6-s7"></a><strong>s7</strong> Apply the Efron–Stein variance inequality [<a href="99-references.html#ref-EfronStein">8</a>] <span class="arithmatex">\(\operatorname{Var} Z\le\frac12\sum_j\mathbb E(Z-Z^{(j)})^2\)</span>, where <span class="arithmatex">\(Z^{(j)}\)</span> is obtained by independently resampling the <span class="arithmatex">\(j\)</span>th input.</p>
+<p><a id="s6-2-p6-s8"></a><strong>s8</strong> For completeness, with independent inputs <span class="arithmatex">\(X_1,\ldots,X_k\)</span>, let <span class="arithmatex">\(E_j\)</span> integrate only <span class="arithmatex">\(X_j\)</span> and let <span class="arithmatex">\(\mathscr G_j=\sigma(X_1,\ldots,X_j)\)</span>.</p>
+<p><a id="s6-2-p6-s9"></a><strong>s9</strong> The Doob differences are <span class="arithmatex">\(D_j=\mathbb E[Z-E_jZ\mid\mathscr G_j]\)</span>.</p>
+<p><a id="s6-2-p6-s10"></a><strong>s10</strong> Orthogonality and Jensen give</p>
+<p><a id="s6-2-p6-e2"></a></p>
+<div class="arithmatex">\[
+\operatorname{Var} Z=\sum_j\mathbb E D_j^2
+ \le\sum_j\mathbb E(Z-E_jZ)^2
+ =\frac12\sum_j\mathbb E(Z-Z^{(j)})^2.
+\]</div>
+<p><a id="s6-2-p6-s11"></a><strong>s11</strong> This independent-input decomposition requires neither identical laws nor a symmetric statistic; see Efron–Stein [<a href="99-references.html#ref-EfronStein">8</a>, Section 2].</p>
+<p><a id="s6-2-p6-s12"></a><strong>s12</strong> Resampling one interaction, field, or perturbation term changes <span class="arithmatex">\(X_0\)</span> by a bounded amount: this is immediate for the spin weights and is preserved by each power mean.</p>
+<p><a id="s6-2-p6-s13"></a><strong>s13</strong> When a term is removed, its unused independent mark variables can be integrated out, so the same assertion holds for addition or deletion of a term.</p>
+<p><a id="s6-2-p6-s14"></a><strong>s14</strong> Conditional variances are therefore bounded by a constant times the number of root variables.</p>
+<p><a id="s6-2-p6-s15"></a><strong>s15</strong> Conditional means are Lipschitz functions of the counts, with bounded Lipschitz constants.</p>
+<p><a id="s6-2-p6-s16"></a><strong>s16</strong> If <span class="arithmatex">\(Q,Q'\)</span> are independent copies of a Poisson variable and <span class="arithmatex">\(b\)</span> is <span class="arithmatex">\(C\)</span>-Lipschitz, then</p>
+<p><a id="s6-2-p6-e3"></a></p>
+<div class="arithmatex">\[
+\operatorname{Var}(b(Q))
+ =\tfrac12\mathbb E(b(Q)-b(Q'))^2
+ \leq C^2\operatorname{Var}(Q).
+\]</div>
+<p><a id="s6-2-p6-s17"></a><strong>s17</strong> Applying this to the independent counts completes the <span class="arithmatex">\(O(N)\)</span> estimate.</p>
+<p><a id="s6-2-p6-s18"></a><strong>s18</strong> The correction <span class="arithmatex">\(2nu^2\)</span> obeys the same estimates.</p>
+<p><a id="s6-2-p6-s19"></a><strong>s19</strong> The derivative bound in <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-11">(6.11)</a> follows directly from <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-6">(6.6)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-2-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-2-p6-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-2-p6-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-2-p6-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-2-p6-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s6-2-p6-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s6-2-p6-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s6-2-p6-s11 --></p>
+<p><strong>s12</strong> <!-- TODO:번역 s6-2-p6-s12 --></p>
+<p><strong>s13</strong> <!-- TODO:번역 s6-2-p6-s13 --></p>
+<p><strong>s14</strong> <!-- TODO:번역 s6-2-p6-s14 --></p>
+<p><strong>s15</strong> <!-- TODO:번역 s6-2-p6-s15 --></p>
+<p><strong>s16</strong> <!-- TODO:번역 s6-2-p6-s16 --></p>
+<p><strong>s17</strong> <!-- TODO:번역 s6-2-p6-s17 --></p>
+<p><strong>s18</strong> <!-- TODO:번역 s6-2-p6-s18 --></p>
+<p><strong>s19</strong> <!-- TODO:번역 s6-2-p6-s19 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p6 -->
+
+<p><strong>식 Eq. §6.2 ¶6 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p6-e1 -->
+
+<p><strong>식 (6.11) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-11 -->
+
+<p><strong>식 Eq. §6.2 ¶6 #2 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p6-e2 -->
+
+<p><strong>식 Eq. §6.2 ¶6 #3 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p6-e3 -->
+
+<hr />
+<p><a id="s6-2-p7"></a></p>
+<h4 id="62-7">§6.2 ¶7<a class="headerlink" href="#62-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-2-p7-s1"></a><strong>s1</strong> <em>Passing from a convex function to its derivative.</em></p>
+<p><a id="s6-2-p7-s2"></a><strong>s2</strong> Put <span class="arithmatex">\(\bar G=\mathbb E_{\mathbf u}G\)</span> and <span class="arithmatex">\(Z=G-\bar G\)</span>.</p>
+<p><a id="s6-2-p7-s3"></a><strong>s3</strong> If <span class="arithmatex">\(u\pm\rho\)</span> lie in <span class="arithmatex">\(J_\nu\)</span>, forward and backward difference quotients imply</p>
+<p><a id="s6-2-p7-e1"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+|G'(u)-\bar G'(u)|
+ &amp;\leq\frac{|Z(u-\rho)|+2|Z(u)|+|Z(u+\rho)|}{\rho} \\
+&amp;\quad+\bar G'(u+\rho)-\bar G'(u-\rho).
+\end{align*}
+\]</div>
+<p><a id="s6-2-p7-s4"></a><strong>s4</strong> The monotonicity of <span class="arithmatex">\(\bar G'\)</span> gives</p>
+<p><a id="s6-2-p7-e2"></a></p>
+<div class="arithmatex">\[
+\int_a^b[\bar G'(u+\rho)-\bar G'(u-\rho)]\,du
+ \leq2\rho[\bar G'(b+\rho)-\bar G'(a-\rho)].
+\]</div>
+<p><a id="s6-2-p7-s5"></a><strong>s5</strong> Together with <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-11">(6.11)</a>, this proves</p>
+<p><a id="eq-6-12"></a></p>
+<div class="arithmatex">\[
+\frac1{|I_\nu|}\int_{I_\nu}
+ \mathbb E_{\mathbf u}|G'(u)-\mathbb E_{\mathbf u}G'(u)|\,du
+ \leq C_\nu\left(\frac{\sqrt N}{\rho}
+              +\frac{\rho\lambda_\nu}{|I_\nu|}\right). \tag{6.12}
+\]</div>
+<p><a id="s6-2-p7-s6"></a><strong>s6</strong> For all sufficiently large <span class="arithmatex">\(N\)</span>, take <span class="arithmatex">\(\rho=N^{-1/8}\)</span>, which lies within the fixed neighborhood margin.</p>
+<p><a id="s6-2-p7-s7"></a><strong>s7</strong> After division by <span class="arithmatex">\(\lambda_\nu=c_\nu N^{3/4}\)</span>, both terms tend to zero.</p>
+<p><a id="s6-2-p7-s8"></a><strong>s8</strong> Removing the correction to <span class="arithmatex">\(G'\)</span> costs at most <span class="arithmatex">\(C_\nu\mathbb E|n-\lambda_\nu|/\lambda_\nu \leq C_\nu\lambda_\nu^{-1/2}\)</span>.</p>
+<p><a id="s6-2-p7-s9"></a><strong>s9</strong> Thus the root contribution to <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-4">(6.4)</a> tends to zero.</p>
+<p><a id="s6-2-p7-s10"></a><strong>s10</strong> Combining it with <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-10">(6.10)</a> proves the result after integration over <span class="arithmatex">\(u_\nu\)</span>.</p>
+<p><a id="s6-2-p7-s11"></a><strong>s11</strong> All estimates are uniform in the other parameters, so their integration against the remaining product measure proves <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-5">(6.5)</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-2-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-2-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-2-p7-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-2-p7-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-2-p7-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-2-p7-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-2-p7-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-2-p7-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s6-2-p7-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s6-2-p7-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s6-2-p7-s11 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-2-p7 -->
+
+<p><strong>식 Eq. §6.2 ¶7 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p7-e1 -->
+
+<p><strong>식 Eq. §6.2 ¶7 #2 항별 표</strong></p>
+<!-- TODO:항표 s6-2-p7-e2 -->
+
+<p><strong>식 (6.12) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-12 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s6-3"></a></p>
+<h2 id="63-one-sequence-for-low-increments-and-all-identities">§6.3 One sequence for low increments and all identities<a class="headerlink" href="#63-one-sequence-for-low-increments-and-all-identities" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s6-3 -->
+
+<p><a id="s6-3-p1"></a></p>
+<h4 id="63-1">§6.3 ¶1<a class="headerlink" href="#63-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p1-s1"></a><strong>s1</strong> The parameter choices must satisfy concentration and a low cavity increment simultaneously.</p>
+<p><a id="s6-3-p1-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(\underline F=\liminf_NF_N\)</span> over all system sizes for the bounded model.</p>
+<p><a id="s6-3-p1-s3"></a><strong>s3</strong> Recall that <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> denotes the root-averaged perturbed log partition function, and put <span class="arithmatex">\(\Delta_N(\mathbf u)=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-3-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-3-p1-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p1 -->
+
+<hr />
+<p><a id="s6-3-e3"></a></p>
+<h3 id="lemma-62-deterministic-parameter-selection">▸ Lemma 6.2 (Deterministic parameter selection)<a class="headerlink" href="#lemma-62-deterministic-parameter-selection" title="Permanent link">&para;</a></h3>
+<p><a id="s6-3-p2"></a></p>
+<h4 id="63-2">§6.3 ¶2<a class="headerlink" href="#63-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p2-s1"></a><strong>s1</strong> For every fixed <span class="arithmatex">\(L\geq2\)</span> and <span class="arithmatex">\(\varepsilon\gt 0\)</span>, there are sizes <span class="arithmatex">\(N_j\uparrow\infty\)</span> and deterministic vectors <span class="arithmatex">\(\mathbf u_j\)</span> such that</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p2-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p2 -->
+
+<hr />
+<p><a id="s6-3-p3"></a></p>
+<h4 id="63-3-i">§6.3 ¶3 · (i)<a class="headerlink" href="#63-3-i" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p3-s1"></a><strong>s1</strong> <span class="arithmatex">\(\Delta_{N_j}(\mathbf u_j)\leq \underline F+2\varepsilon\)</span>;</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p3-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p3 -->
+
+<hr />
+<p><a id="s6-3-p4"></a></p>
+<h4 id="63-4-ii">§6.3 ¶4 · (ii)<a class="headerlink" href="#63-4-ii" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p4-s1"></a><strong>s1</strong> for every fixed type <span class="arithmatex">\(\nu\)</span>, <span class="arithmatex">\(e_{\nu,N_j}(\mathbf u_j)\longrightarrow0\)</span> in the reservoir;</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p4-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p4 -->
+
+<hr />
+<p><a id="s6-3-p5"></a></p>
+<h4 id="63-5-iii">§6.3 ¶5 · (iii)<a class="headerlink" href="#63-5-iii" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p5-s1"></a><strong>s1</strong> in the reservoir, the expectations of every finite product of multioverlaps on every fixed finite prescribed tree of depth <span class="arithmatex">\(L\)</span> converge along this sequence.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p5-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p5 -->
+
+<hr />
+<p><em>(끝: s6-3-e3)</em></p>
+<p><a id="s6-3-e4"></a></p>
+<h3 id="proof_1">▸ <em>Proof.</em><a class="headerlink" href="#proof_1" title="Permanent link">&para;</a></h3>
+<p><a id="s6-3-p6"></a></p>
+<h4 id="63-6">§6.3 ¶6<a class="headerlink" href="#63-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p6-s1"></a><strong>s1</strong> <em>Find low averaged increments.</em></p>
+<p><a id="s6-3-p6-s2"></a><strong>s2</strong> The uniform perturbation bound <a href="05-a-perturbed-cavity-reservoir.html#eq-5-3">(5.3)</a> gives</p>
+<p><a id="s6-3-p6-e1"></a></p>
+<div class="arithmatex">\[
+\liminf_N\frac1N\int P_N^{L,\mathbf u}\,\pi(d\mathbf u)=\underline F.
+\]</div>
+<p><a id="s6-3-p6-s3"></a><strong>s3</strong> Hence infinitely many <span class="arithmatex">\(N\)</span> satisfy <span class="arithmatex">\(\int\Delta_N\,d\pi\leq \underline F+\varepsilon\)</span>: otherwise telescoping the averaged increments would contradict this liminf.</p>
+<p><a id="s6-3-p6-s4"></a><strong>s4</strong> Lemma <a href="05-a-perturbed-cavity-reservoir.html#s5-e1">5.1</a> supplies a constant <span class="arithmatex">\(C\)</span> such that <span class="arithmatex">\(|\Delta_N(\mathbf u)|\leq C\)</span> uniformly.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-3-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-3-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-3-p6-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p6 -->
+
+<p><strong>식 Eq. §6.3 ¶6 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-3-p6-e1 -->
+
+<hr />
+<p><a id="s6-3-p7"></a></p>
+<h4 id="63-7">§6.3 ¶7<a class="headerlink" href="#63-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p7-s1"></a><strong>s1</strong> <em>Choose parameters with small score errors.</em></p>
+<p><a id="s6-3-p7-s2"></a><strong>s2</strong> For a finite collection of types, Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-2-e1">6.1</a> and Markov's inequality show that the set where all its errors are small has parameter measure tending to one.</p>
+<p><a id="s6-3-p7-s3"></a><strong>s3</strong> More explicitly, choose <span class="arithmatex">\(N_j\)</span> successively among the preceding infinite set so large that</p>
+<p><a id="s6-3-p7-e1"></a></p>
+<div class="arithmatex">\[
+\sum_{\nu\leq j}\int e_{\nu,N_j}(\mathbf u)\,\pi(d\mathbf u)
+ \leq j^{-3}.
+\]</div>
+<p><a id="s6-3-p7-s4"></a><strong>s4</strong> Then the set <span class="arithmatex">\(G_j\)</span> where <span class="arithmatex">\(e_{\nu,N_j}\leq j^{-1}\)</span> for all <span class="arithmatex">\(\nu\leq j\)</span> has complement of measure <span class="arithmatex">\(q_j\leq j^{-2}\)</span>.</p>
+<p><a id="s6-3-p7-s5"></a><strong>s5</strong> Its conditional mean increment is at most</p>
+<p><a id="s6-3-p7-e2"></a></p>
+<div class="arithmatex">\[
+\frac{\underline F+\varepsilon+Cq_j}{1-q_j}
+ \leq \underline F+2\varepsilon
+\]</div>
+<p>↳ for all sufficiently large <span class="arithmatex">\(j\)</span>.</p>
+<p><a id="s6-3-p7-s6"></a><strong>s6</strong> A vector in <span class="arithmatex">\(G_j\)</span> with increment at most <span class="arithmatex">\(\underline F+2\varepsilon\)</span> can therefore be chosen.</p>
+<p><a id="s6-3-p7-s7"></a><strong>s7</strong> Relabeling the tail proves (i) and (ii).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-3-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-3-p7-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-3-p7-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-3-p7-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-3-p7-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-3-p7-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p7 -->
+
+<p><strong>식 Eq. §6.3 ¶7 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-3-p7-e1 -->
+
+<p><strong>식 Eq. §6.3 ¶7 #2 항별 표</strong></p>
+<!-- TODO:항표 s6-3-p7-e2 -->
+
+<hr />
+<p><a id="s6-3-p8"></a></p>
+<h4 id="63-8">§6.3 ¶8<a class="headerlink" href="#63-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p8-s1"></a><strong>s1</strong> <em>Make all finite-tree moments converge.</em></p>
+<p><a id="s6-3-p8-s2"></a><strong>s2</strong> At fixed <span class="arithmatex">\(L\)</span> the finite labeled tree shapes and finite products of their multioverlaps form a countable collection.</p>
+<p><a id="s6-3-p8-s3"></a><strong>s3</strong> Each such product is bounded by one in absolute value.</p>
+<p><a id="s6-3-p8-s4"></a><strong>s4</strong> A diagonal subsequence gives (iii), without affecting (i) or (ii).</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p8-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-3-p8-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-3-p8-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-3-p8-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p8 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s6-3-p9"></a></p>
+<h4 id="63-9">§6.3 ¶9<a class="headerlink" href="#63-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-3-p9-s1"></a><strong>s1</strong> From now on <span class="arithmatex">\(L\)</span> is fixed and <span class="arithmatex">\(N\to\infty\)</span> means convergence along a sequence from Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>.</p>
+<p><a id="s6-3-p9-s2"></a><strong>s2</strong> Expectations below are evaluated at the selected deterministic vector, whose dependence on <span class="arithmatex">\(N\)</span> is suppressed.</p>
+<p><a id="s6-3-p9-s3"></a><strong>s3</strong> No uniformity in <span class="arithmatex">\(L\)</span>, in the number of paths, or in a perturbation type is asserted for these limits.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-3-p9-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-3-p9-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-3-p9-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-3-p9 -->
+
+<hr />
+<p><a id="s6-4"></a></p>
+<h2 id="64-poisson-insertion-and-analytic-extraction">§6.4 Poisson insertion and analytic extraction<a class="headerlink" href="#64-poisson-insertion-and-analytic-extraction" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s6-4 -->
+
+<p><a id="s6-4-p1"></a></p>
+<h4 id="64-1">§6.4 ¶1<a class="headerlink" href="#64-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p1-s1"></a><strong>s1</strong> Fix an old labeled tree <span class="arithmatex">\(\mathcal T\)</span>, a distinguished leaf <span class="arithmatex">\(a_*\)</span>, and a bounded polynomial <span class="arithmatex">\(f\)</span> in multioverlaps of its old replicas.</p>
+<p><a id="s6-4-p1-s2"></a><strong>s2</strong> The polynomial and its coefficients are fixed as <span class="arithmatex">\(N\)</span> and the insertion parameters vary.</p>
+<p><a id="s6-4-p1-s3"></a><strong>s3</strong> The root-averaged expectation on this tree is denoted simply by <span class="arithmatex">\(\mathbb E f\)</span>.</p>
+<p><a id="s6-4-p1-s4"></a><strong>s4</strong> The anchor marginal is always one tilted path.</p>
+<p><a id="s6-4-p1-s5"></a><strong>s5</strong> Therefore <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-4">(6.4)</a> implies, for each fixed type <span class="arithmatex">\(\nu\)</span>,</p>
+<p><a id="eq-6-13"></a></p>
+<div class="arithmatex">\[
+\left|\frac{\mathbb E[fD_\nu^{a_*}]
+       -\mathbb E f\,\mathbb E\langle D_\nu\rangle}
+       {c_\nu s_N}\right|
+ \leq\|f\|_\infty e_{\nu,N}\longrightarrow0. \tag{6.13}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-4-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-4-p1-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p1 -->
+
+<p><strong>식 (6.13) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-13 -->
+
+<hr />
+<p><a id="s6-4-p2"></a></p>
+<h4 id="64-2">§6.4 ¶2<a class="headerlink" href="#64-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p2-s1"></a><strong>s1</strong> For a fixed mark specification, introduce an independent new uniform site and an independent copy of its mark process, and set <span class="arithmatex">\(A=1+tg\sigma_i+ug_0S_0\)</span>.</p>
+<p><a id="s6-4-p2-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(Y\)</span> be its insertion recursion from Lemma <a href="03-calculus-on-finite-trees.html#s3-1-e1">3.1</a>, and let <span class="arithmatex">\(W_{\mathcal T}(A)\)</span> be the updated-tree density <a href="03-calculus-on-finite-trees.html#eq-3-5">(3.5)</a>.</p>
+<p><a id="s6-4-p2-s3"></a><strong>s3</strong> The expectations in the following display use the unmodified reservoir, extended by the independent insertion variables with their prior kernels:</p>
+<p><a id="eq-6-14"></a><a id="eq-6-15"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+J_{N,\mathcal T}(t,u)
+ &amp;=\mathbb E\left[
+ f\,\frac{g_0^{a_*}S_0^{a_*}}{A^{a_*}}
+          W_{\mathcal T}(A)\right], \tag{6.14} \\
+H_N(t,u)
+ &amp;=J_{N,\mathcal T}(t,u)
+   -\mathbb E f\,J_{N,\{a_*\}}(t,u). \tag{6.15}
+\end{align*}
+\]</div>
+<p><a id="s6-4-p2-s4"></a><strong>s4</strong> In the single-anchor expression <span class="arithmatex">\(J_{N,\{a_*\}}\)</span>, the test is <span class="arithmatex">\(1\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-4-p2-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p2 -->
+
+<p><strong>식 (6.14), (6.15) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-14 -->
+
+<hr />
+<p><a id="s6-4-e5"></a></p>
+<h3 id="lemma-63-palm-identity">▸ Lemma 6.3 (Palm identity)<a class="headerlink" href="#lemma-63-palm-identity" title="Permanent link">&para;</a></h3>
+<p><a id="s6-4-p3"></a></p>
+<h4 id="64-3">§6.4 ¶3<a class="headerlink" href="#64-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p3-s1"></a><strong>s1</strong> If <span class="arithmatex">\(\nu\)</span> is a type with the specified marks, then</p>
+<p><a id="eq-6-16"></a></p>
+<div class="arithmatex">\[
+|H_N(t_\nu,u_\nu)|\leq\|f\|_\infty e_{\nu,N}. \tag{6.16}
+\]</div>
+<p><a id="s6-4-p3-s2"></a><strong>s2</strong> For a fixed mark specification the function <span class="arithmatex">\(H_N(t,u)\)</span> is the same for all its types <span class="arithmatex">\(j\)</span>: its base reservoir contains the full original Poisson families, including all types.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p3-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p3 -->
+
+<p><strong>식 (6.16) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-16 -->
+
+<hr />
+<p><em>(끝: s6-4-e5)</em></p>
+<p><a id="s6-4-e6"></a></p>
+<h3 id="proof_2">▸ <em>Proof.</em><a class="headerlink" href="#proof_2" title="Permanent link">&para;</a></h3>
+<p><a id="s6-4-p4"></a></p>
+<h4 id="64-4">§6.4 ¶4<a class="headerlink" href="#64-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p4-s1"></a><strong>s1</strong> Apply the Poisson add-one identity to the sum over type-<span class="arithmatex">\(\nu\)</span> terms in <span class="arithmatex">\(D_\nu\)</span>.</p>
+<p><a id="s6-4-p4-s2"></a><strong>s2</strong> After division by its mean <span class="arithmatex">\(c_\nu s_N\)</span>, the remaining count is again Poisson with mean <span class="arithmatex">\(c_\nu s_N\)</span>, and all the other counts are unchanged.</p>
+<p><a id="s6-4-p4-s3"></a><strong>s3</strong> Thus the remaining model has exactly the original reservoir law.</p>
+<p><a id="s6-4-p4-s4"></a><strong>s4</strong> The distinguished term becomes an independent new insertion with parameters <span class="arithmatex">\(t_\nu,u_\nu\)</span>.</p>
+<p><a id="s6-4-p4-s5"></a><strong>s5</strong> Its score is <span class="arithmatex">\(g_0^{a_*}S_0^{a_*}/A^{a_*}\)</span>.</p>
+<p><a id="s6-4-p4-s6"></a><strong>s6</strong> The updated tree density is <a href="03-calculus-on-finite-trees.html#eq-3-5">(3.5)</a>, so the anchor factor <span class="arithmatex">\(A^{a_*}\)</span> cancels.</p>
+<p><a id="s6-4-p4-s7"></a><strong>s7</strong> This proves</p>
+<p><a id="s6-4-p4-e1"></a></p>
+<div class="arithmatex">\[
+\frac{\mathbb E[fD_\nu^{a_*}]}{c_\nu s_N}
+ =J_{N,\mathcal T}(t_\nu,u_\nu),\qquad
+ \frac{\mathbb E\langle D_\nu\rangle}{c_\nu s_N}
+ =J_{N,\{a_*\}}(t_\nu,u_\nu).
+\]</div>
+<p><a id="s6-4-p4-s8"></a><strong>s8</strong> Equation <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-16">(6.16)</a> now follows from <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-13">(6.13)</a>.</p>
+<p><a id="s6-4-p4-s9"></a><strong>s9</strong> In particular no type has been deleted from the law of the base reservoir.</p>
+<p><a id="s6-4-p4-s10"></a><strong>s10</strong> This proves the last assertion.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-4-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-4-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-4-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-4-p4-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-4-p4-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s6-4-p4-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s6-4-p4-s10 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p4 -->
+
+<p><strong>식 Eq. §6.4 ¶4 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-4-p4-e1 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s6-4-e7"></a></p>
+<h3 id="lemma-64-vanishing-insertion-coefficients">▸ Lemma 6.4 (Vanishing insertion coefficients)<a class="headerlink" href="#lemma-64-vanishing-insertion-coefficients" title="Permanent link">&para;</a></h3>
+<p><a id="s6-4-p5"></a></p>
+<h4 id="64-5">§6.4 ¶5<a class="headerlink" href="#64-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p5-s1"></a><strong>s1</strong> For every mark specification included in the perturbation family, old tree, anchor, and bounded overlap-polynomial test <span class="arithmatex">\(f\)</span>, every Taylor coefficient at <span class="arithmatex">\(t=0\)</span> of <span class="arithmatex">\(H_N(t,0)\)</span> tends to zero along the selected sequence.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p5-s1 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p5 -->
+
+<hr />
+<p><em>(끝: s6-4-e7)</em></p>
+<p><a id="s6-4-e8"></a></p>
+<h3 id="proof_3">▸ <em>Proof.</em><a class="headerlink" href="#proof_3" title="Permanent link">&para;</a></h3>
+<p><a id="s6-4-p6"></a></p>
+<h4 id="64-6">§6.4 ¶6<a class="headerlink" href="#64-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p6-s1"></a><strong>s1</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-2-e5">3.3</a> gives a complex neighborhood <span class="arithmatex">\(|t|,|u|\lt \rho\)</span> on which the functions in <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-15">(6.15)</a> are analytic and uniformly bounded in <span class="arithmatex">\(N\)</span> and in the selected parameter vector.</p>
+<p><a id="s6-4-p6-s2"></a><strong>s2</strong> Shrinking <span class="arithmatex">\(\rho\)</span> gives a uniform bound on their <span class="arithmatex">\(u\)</span>-derivatives as well.</p>
+<p><a id="s6-4-p6-s3"></a><strong>s3</strong> These constants may depend on the fixed tree, <span class="arithmatex">\(L\)</span>, and <span class="arithmatex">\(\|f\|_\infty\)</span>, but not on the type index <span class="arithmatex">\(j\)</span> in the mark specification.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p6-s3 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p6 -->
+
+<hr />
+<p><a id="s6-4-p7"></a></p>
+<h4 id="64-7">§6.4 ¶7<a class="headerlink" href="#64-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p7-s1"></a><strong>s1</strong> Each Taylor coefficient of <span class="arithmatex">\(H_N(t,0)\)</span> is a finite linear combination of multioverlap moments and products of two such moments on prescribed trees.</p>
+<p><a id="s6-4-p7-s2"></a><strong>s2</strong> Their coefficients are determined by the fixed tree, exponents, mark law, and polynomial test, and are independent of <span class="arithmatex">\(N\)</span>.</p>
+<p><a id="s6-4-p7-s3"></a><strong>s3</strong> Indeed the canceled anchor expansion supplies finitely many extensions at any fixed order; averaging the independent insertion site turns its spin product into a multioverlap.</p>
+<p><a id="s6-4-p7-s4"></a><strong>s4</strong> These coefficients converge by Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>(iii).</p>
+<p><a id="s6-4-p7-s5"></a><strong>s5</strong> The uniform analytic bound then implies, by the geometric bound on the Taylor tails, that <span class="arithmatex">\(H_N(t,0)\)</span> converges uniformly on each smaller disk to an analytic function <span class="arithmatex">\(H(t)\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p7-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-4-p7-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-4-p7-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p7 -->
+
+<hr />
+<p><a id="s6-4-p8"></a></p>
+<h4 id="64-8">§6.4 ¶8<a class="headerlink" href="#64-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-4-p8-s1"></a><strong>s1</strong> For every sufficiently large fixed <span class="arithmatex">\(j\)</span>, the corresponding type and Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-4-e5">6.3</a> give</p>
+<p><a id="s6-4-p8-e1"></a></p>
+<div class="arithmatex">\[
+\limsup_{N\to\infty}|H_N(j^{-1},0)|
+ \leq C\limsup_{N\to\infty}|u_{\nu,N}|
+ \leq2Cj^{-j}.
+\]</div>
+<p><a id="s6-4-p8-s2"></a><strong>s2</strong> Here the score error tends to zero with <span class="arithmatex">\(j\)</span> fixed, and the same function <span class="arithmatex">\(H_N\)</span> is used for every <span class="arithmatex">\(j\)</span>, by Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-4-e5">6.3</a>.</p>
+<p><a id="s6-4-p8-s3"></a><strong>s3</strong> Hence <span class="arithmatex">\(|H(j^{-1})|\leq2Cj^{-j}\)</span>.</p>
+<p><a id="s6-4-p8-s4"></a><strong>s4</strong> If the first nonzero Taylor coefficient of <span class="arithmatex">\(H\)</span> had degree <span class="arithmatex">\(q\)</span>, then <span class="arithmatex">\(|H(j^{-1})|\geq c j^{-q}\)</span> for all sufficiently large <span class="arithmatex">\(j\)</span>, a contradiction.</p>
+<p><a id="s6-4-p8-s5"></a><strong>s5</strong> Thus <span class="arithmatex">\(H\)</span> vanishes identically near zero, proving the claim coefficient by coefficient.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-4-p8-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-4-p8-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-4-p8-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-4-p8-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-4-p8-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-4-p8 -->
+
+<p><strong>식 Eq. §6.4 ¶8 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-4-p8-e1 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s6-5"></a></p>
+<h2 id="65-prescribing-the-colored-tree">§6.5 Prescribing the colored tree<a class="headerlink" href="#65-prescribing-the-colored-tree" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s6-5 -->
+
+<p><a id="s6-5-p1"></a></p>
+<h4 id="65-1">§6.5 ¶1<a class="headerlink" href="#65-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p1-s1"></a><strong>s1</strong> The anchor is called a <em>spin anchor</em> when <span class="arithmatex">\(S_0=\sigma_i\)</span>, and a <em>marker anchor</em> when <span class="arithmatex">\(S_0=1\)</span>.</p>
+<p><a id="s6-5-p1-s2"></a><strong>s2</strong> Added colors are ordered <span class="arithmatex">\(1,\ldots,k\)</span>; the anchor has color <span class="arithmatex">\(0\)</span>.</p>
+<p><a id="s6-5-p1-s3"></a><strong>s3</strong> They occupy distinct replica positions, none equal to the anchor, according to the canceled-anchor extension rule of Lemma <a href="03-calculus-on-finite-trees.html#s3-2-e5">3.3</a>.</p>
+<p><a id="s6-5-p1-s4"></a><strong>s4</strong> A constraint <span class="arithmatex">\(\mathcal C\)</span> prescribes any consistent collection of their pairwise split depths, involving only the added colors and the anchor.</p>
+<p><a id="s6-5-p1-s5"></a><strong>s5</strong> It imposes no extra restrictions involving the other old replicas.</p>
+<p><a id="s6-5-p1-s6"></a><strong>s6</strong> Let <span class="arithmatex">\(\mathfrak E(\mathcal T,a_*,\mathcal C)\)</span> be the allowed extension histories, with coefficients <span class="arithmatex">\(c_E\)</span> from that lemma.</p>
+<p><a id="s6-5-p1-s7"></a><strong>s7</strong> For a history <span class="arithmatex">\(E\)</span>, set</p>
+<p><a id="s6-5-p1-e1"></a></p>
+<div class="arithmatex">\[
+R_E=\frac1N\sum_{i=1}^N
+ \begin{cases}
+ \displaystyle\sigma_i^{a_*}\prod_{j=1}^k\sigma_i^{a_j(E)},
+       &amp;\text{spin anchor},\\[2pt]
+ \displaystyle\prod_{j=1}^k\sigma_i^{a_j(E)},
+       &amp;\text{marker anchor}.
+ \end{cases}
+\]</div>
+<p><a id="s6-5-p1-s8"></a><strong>s8</strong> For <span class="arithmatex">\(k=0\)</span> these are respectively <span class="arithmatex">\(R_{\{a_*\}}\)</span> and <span class="arithmatex">\(1\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-5-p1-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-5-p1-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-5-p1-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p1 -->
+
+<p><strong>식 Eq. §6.5 ¶1 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-5-p1-e1 -->
+
+<hr />
+<p><a id="s6-5-e9"></a></p>
+<h3 id="theorem-65-identity-on-prescribed-trees">▸ Theorem 6.5 (Identity on prescribed trees)<a class="headerlink" href="#theorem-65-identity-on-prescribed-trees" title="Permanent link">&para;</a></h3>
+<p><a id="s6-5-p2"></a></p>
+<h4 id="65-2">§6.5 ¶2<a class="headerlink" href="#65-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p2-s1"></a><strong>s1</strong> For the perturbation family defined above, along every sequence from Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>,</p>
+<p><a id="eq-6-17"></a></p>
+<div class="arithmatex">\[
+\sum_{E\in\mathfrak E(\mathcal T,a_*,\mathcal C)}
+       c_E\,\mathbb E[fR_E]
+ -\mathbb E f
+  \sum_{E\in\mathfrak E(\{a_*\},a_*,\mathcal C)}
+       c_E\,\mathbb E[R_E]
+ \longrightarrow0. \tag{6.17}
+\]</div>
+<p><a id="s6-5-p2-s2"></a><strong>s2</strong> This holds for every fixed old tree, either kind of anchor, every bounded polynomial <span class="arithmatex">\(f\)</span> in its multioverlaps, every finite number of ordered added colors, and every prescribed constraint <span class="arithmatex">\(\mathcal C\)</span>.</p>
+<p><a id="s6-5-p2-s3"></a><strong>s3</strong> The empty addition is allowed.</p>
+<p><a id="s6-5-p2-s4"></a><strong>s4</strong> The error is taken to zero at fixed <span class="arithmatex">\(L\)</span>, fixed tree, and fixed constraint, before any limit in <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p2-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p2 -->
+
+<p><strong>식 (6.17) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-17 -->
+
+<hr />
+<p><em>(끝: s6-5-e9)</em></p>
+<p><a id="s6-5-e10"></a></p>
+<h3 id="proof_4">▸ <em>Proof.</em><a class="headerlink" href="#proof_4" title="Permanent link">&para;</a></h3>
+<p><a id="s6-5-p3"></a></p>
+<h4 id="65-3">§6.5 ¶3<a class="headerlink" href="#65-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p3-s1"></a><strong>s1</strong> For <span class="arithmatex">\(k=0\)</span>, the claim is the vanishing constant coefficient from Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-4-e7">6.4</a>, using constant marks.</p>
+<p><a id="s6-5-p3-s2"></a><strong>s2</strong> For <span class="arithmatex">\(k\ge1\)</span>, we explain how to extract distinct colored marks.</p>
+<p><a id="s6-5-p3-s3"></a><strong>s3</strong> Fix rational-valued functions <span class="arithmatex">\(g_0,g_1,\ldots,g_k\)</span>, all bounded by one and constructed jointly from the same finite collection of auxiliary marks.</p>
+<p><a id="s6-5-p3-s4"></a><strong>s4</strong> The mixed insertion uses <span class="arithmatex">\(A=1+\sum_{j=1}^kz_jg_j\sigma_i\)</span>.</p>
+<p><a id="s6-5-p3-s5"></a><strong>s5</strong> Its mixed derivative in all <span class="arithmatex">\(z_j\)</span> is the symmetric multilinear form obtained by polarizing the degree-<span class="arithmatex">\(k\)</span> coefficient for a single <span class="arithmatex">\(g\)</span>.</p>
+<p><a id="s6-5-p3-s6"></a><strong>s6</strong> More explicitly, if <span class="arithmatex">\(Q_N(g)=k![t^k]H_N(t,0)\)</span>, then the mixed derivative is</p>
+<p><a id="s6-5-p3-e1"></a></p>
+<div class="arithmatex">\[
+\frac{k^k}{2^k k!}
+ \sum_{\epsilon\in\{-1,1\}^k}
+    \left(\prod_{j=1}^k\epsilon_j\right)
+ Q_N\left(k^{-1}\sum_{j=1}^k\epsilon_jg_j\right).
+\]</div>
+<p><a id="s6-5-p3-s7"></a><strong>s7</strong> Every argument of <span class="arithmatex">\(Q_N\)</span> is rational-valued and bounded by one, so each resulting pair <span class="arithmatex">\((g,g_0)\)</span> belongs to the fixed mark family.</p>
+<p><a id="s6-5-p3-s8"></a><strong>s8</strong> Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-4-e7">6.4</a> makes the displayed mixed derivative tend to zero.</p>
+<p><a id="s6-5-p3-s9"></a><strong>s9</strong> The mixed derivative expansion is precisely the ordered extension rule: there is no additional factorial in its coefficients.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p3-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-5-p3-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-5-p3-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s6-5-p3-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s6-5-p3-s9 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p3 -->
+
+<p><strong>식 Eq. §6.5 ¶3 #1 항별 표</strong></p>
+<!-- TODO:항표 s6-5-p3-e1 -->
+
+<hr />
+<p><a id="s6-5-p4"></a></p>
+<h4 id="65-4">§6.5 ¶4<a class="headerlink" href="#65-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p4-s1"></a><strong>s1</strong> It remains to arrange that the expectation over the marks selects exactly the extensions satisfying <span class="arithmatex">\(\mathcal C\)</span>.</p>
+<p><a id="s6-5-p4-s2"></a><strong>s2</strong> For a pair of colors <span class="arithmatex">\(a,b\in\{0,\ldots,k\}\)</span> and a depth <span class="arithmatex">\(1\leq d\leq L-1\)</span>, the event that their split depth is at least <span class="arithmatex">\(d\)</span> is the event that they share their vertex at depth <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s6-5-p4-s3"></a><strong>s3</strong> Introduce a new independent Rademacher coordinate at that depth and give both <span class="arithmatex">\(g_a\)</span> and <span class="arithmatex">\(g_b\)</span> its factor.</p>
+<p><a id="s6-5-p4-s4"></a><strong>s4</strong> Its contribution to their joint mark expectation is <span class="arithmatex">\(1\)</span> if the vertex is shared and <span class="arithmatex">\(0\)</span> otherwise.</p>
+<p><a id="s6-5-p4-s5"></a><strong>s5</strong> For a finite collection of such requirements, use different independent coordinates for the different requirements and define each <span class="arithmatex">\(g_a\)</span> as the product of its assigned factors.</p>
+<p><a id="s6-5-p4-s6"></a><strong>s6</strong> Then</p>
+<p><a id="eq-6-18"></a></p>
+<div class="arithmatex">\[
+\mathbb E_{\rm marks}
+       \left[g_0^{a_*}\prod_{j=1}^kg_j^{a_j(E)}\right]
+ =\prod_{(a,b,d)\ {\rm required}}
+       \mathbf1_{\{a,b\text{ share their depth-}d\text{ vertex}\}}. \tag{6.18}
+\]</div>
+<p><a id="s6-5-p4-s7"></a><strong>s7</strong> All marks in this calculation are independent of the base reservoir.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-5-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-5-p4-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p4 -->
+
+<p><strong>식 (6.18) 항별 표</strong></p>
+<!-- TODO:항표 eq-6-18 -->
+
+<hr />
+<p><a id="s6-5-p5"></a></p>
+<h4 id="65-5">§6.5 ¶5<a class="headerlink" href="#65-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p5-s1"></a><strong>s1</strong> Let <span class="arithmatex">\(H_d(a,b)\)</span> denote the sharing indicator in <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-18">(6.18)</a>, with <span class="arithmatex">\(H_0=1\)</span> and <span class="arithmatex">\(H_L=0\)</span> for distinct replica positions.</p>
+<p><a id="s6-5-p5-s2"></a><strong>s2</strong> These are positions in the sampled tree, even when their spin configurations happen to agree.</p>
+<p><a id="s6-5-p5-s3"></a><strong>s3</strong> Exact splitting at depth <span class="arithmatex">\(d\)</span> is expressed by <span class="arithmatex">\(H_d-H_{d+1}\)</span>, for <span class="arithmatex">\(0\leq d\leq L-1\)</span>.</p>
+<p><a id="s6-5-p5-s4"></a><strong>s4</strong> Products and finite linear combinations therefore select any prescribed consistent colored shape or collection of allowed shapes.</p>
+<p><a id="s6-5-p5-s5"></a><strong>s5</strong> For each term of this finite linear combination, the functions <span class="arithmatex">\(g_0,\ldots,g_k\)</span> are products of signs and hence take values in <span class="arithmatex">\(\{-1,1\}\)</span>.</p>
+<p><a id="s6-5-p5-s6"></a><strong>s6</strong> These functions and their polarization averages belong to the mark family fixed at the start of the section.</p>
+<p><a id="s6-5-p5-s7"></a><strong>s7</strong> Constant marks cover <span class="arithmatex">\(k=0\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p5-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p5-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s6-5-p5-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s6-5-p5-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p5 -->
+
+<hr />
+<p><a id="s6-5-p6"></a></p>
+<h4 id="65-6">§6.5 ¶6<a class="headerlink" href="#65-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p6-s1"></a><strong>s1</strong> Finally apply the mixed canceled-anchor expansion to the difference <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-15">(6.15)</a>, average the marks using the selector, and average the independent uniform insertion site.</p>
+<p><a id="s6-5-p6-s2"></a><strong>s2</strong> The latter average is exactly <span class="arithmatex">\(R_E\)</span>.</p>
+<p><a id="s6-5-p6-s3"></a><strong>s3</strong> Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-4-e7">6.4</a> and polarization make the coefficient difference tend to zero, yielding <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-17">(6.17)</a>.</p>
+<p><a id="s6-5-p6-s4"></a><strong>s4</strong> Finite linear combinations extend the conclusion from overlap monomials to the stated tests.</p>
+<p><a id="s6-5-p6-s5"></a><strong>s5</strong> The construction uses only marks through depth <span class="arithmatex">\(L-1\)</span>: the extension rule never reuses the anchor or an already used color, so no test of coincidence at depth <span class="arithmatex">\(L\)</span> is required.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p6-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p6 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s6-5-e11"></a></p>
+<h3 id="remark-66-order-of-the-choices">▸ Remark 6.6 (Order of the choices)<a class="headerlink" href="#remark-66-order-of-the-choices" title="Permanent link">&para;</a></h3>
+<p><a id="s6-5-p7"></a></p>
+<h4 id="65-7">§6.5 ¶7<a class="headerlink" href="#65-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s6-5-p7-s1"></a><strong>s1</strong> The mark specifications and their positive weights <span class="arithmatex">\(c_\nu\)</span> are fixed first, for a fixed <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s6-5-p7-s2"></a><strong>s2</strong> Parameter averaging then gives one selected sequence on which all types concentrate and all finite overlap moments converge.</p>
+<p><a id="s6-5-p7-s3"></a><strong>s3</strong> The analytic argument takes <span class="arithmatex">\(N\to\infty\)</span> with each <span class="arithmatex">\(j\)</span> fixed before sending <span class="arithmatex">\(j\to\infty\)</span>.</p>
+<p><a id="s6-5-p7-s4"></a><strong>s4</strong> Only after the resulting prescribed-tree identities have been established is <span class="arithmatex">\(L\)</span> allowed to increase.</p>
+<p><a id="s6-5-p7-s5"></a><strong>s5</strong> No concentration estimate uniform over the countable family is needed.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s6-5-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s6-5-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s6-5-p7-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s6-5-p7-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s6-5-p7-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s6-5-p7 -->
+
+<hr />
+<p><em>(끝: s6-5-e11)</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="05-a-perturbed-cavity-reservoir.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §5 A perturbed cavity reservoir">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §5 A perturbed cavity reservoir
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="07-decorrelation-on-prescribed-trees.html" class="md-footer__link md-footer__link--next" aria-label="다음: §7 Decorrelation on prescribed trees">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §7 Decorrelation on prescribed trees
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

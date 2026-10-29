@@ -1,0 +1,2160 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/07-decorrelation-on-prescribed-trees.html">
+      
+      
+        <link rel="prev" href="06-perturbations-and-identities-on-prescrib.html">
+      
+      
+        <link rel="next" href="08-independent-hierarchical-messages-and-th.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§7 Decorrelation on prescribed trees - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-decorrelation-on-prescribed-trees" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §7 Decorrelation on prescribed trees
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-the-model-and-the-variational-principle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-calculus-on-finite-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-perturbed-cavity-reservoir.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-perturbations-and-identities-on-prescrib.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07-decorrelation-on-prescribed-trees.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-averages-over-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.1 Averages over depths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.1 Averages over depths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 7.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-conditional-covariance-and-continuity-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.2 Conditional covariance and continuity in depth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.2 Conditional covariance and continuity in depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-72-contractions-and-three-copies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 7.2 (Contractions and three copies)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-73-averaged-continuity-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 7.3 (Averaged continuity in depth)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-conditional-decorrelation" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.3 Conditional decorrelation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.3 Conditional decorrelation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposition-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proposition 7.4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-concentration-of-every-multioverlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.4 Concentration of every multioverlap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.4 Concentration of every multioverlap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proof-of-theorem-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof of Theorem 7.1.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-75" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 7.5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-averages-over-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.1 Averages over depths
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.1 Averages over depths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theorem-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Theorem 7.1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-conditional-covariance-and-continuity-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.2 Conditional covariance and continuity in depth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.2 Conditional covariance and continuity in depth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lemma-72-contractions-and-three-copies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 7.2 (Contractions and three copies)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lemma-73-averaged-continuity-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 7.3 (Averaged continuity in depth)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-conditional-decorrelation" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.3 Conditional decorrelation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.3 Conditional decorrelation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposition-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proposition 7.4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-concentration-of-every-multioverlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      §7.4 Concentration of every multioverlap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§7.4 Concentration of every multioverlap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proof-of-theorem-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof of Theorem 7.1.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remark-75" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Remark 7.5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s7"></a></p>
+<h1 id="7-decorrelation-on-prescribed-trees">§7 Decorrelation on prescribed trees<a class="headerlink" href="#7-decorrelation-on-prescribed-trees" title="Permanent link">&para;</a></h1>
+<!-- TODO:제목번역 s7 -->
+
+<p><a href="06-perturbations-and-identities-on-prescrib.html">← 이전: §6 Perturbations and identities on prescribed trees</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="08-independent-hierarchical-messages-and-th.html">다음: §8 Independent hierarchical messages and the cavity comparison →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<!-- TODO:요약 s7 -->
+</details>
+<p><a id="s7-p1"></a></p>
+<h4 id="7-1">§7 ¶1<a class="headerlink" href="#7-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-p1-s1"></a><strong>s1</strong> Throughout this section <span class="arithmatex">\(m_d=d/L\)</span> and <span class="arithmatex">\(\delta=L^{-1}\)</span>.</p>
+<p><a id="s7-p1-s2"></a><strong>s2</strong> For each fixed <span class="arithmatex">\(L\)</span>, all limits in <span class="arithmatex">\(N\)</span> are along the sizes and parameter choices supplied by Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a>; they satisfy the identities of Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a>.</p>
+<p><a id="s7-p1-s3"></a><strong>s3</strong> Different values of <span class="arithmatex">\(L\)</span> may use different sequences.</p>
+<p><a id="s7-p1-s4"></a><strong>s4</strong> The argument uses only these identities and the tree sampling rules; in particular, it does not use the interaction factorization.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-p1-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-p1 -->
+
+<hr />
+<p><a id="s7-p2"></a></p>
+<h4 id="7-2">§7 ¶2<a class="headerlink" href="#7-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-p2-s1"></a><strong>s1</strong> Our goal is concentration of every finite multioverlap, averaged over separated interior branching depths.</p>
+<p><a id="s7-p2-s2"></a><strong>s2</strong> These are the averages needed for the comparison with independent messages in Section <a href="08-independent-hierarchical-messages-and-th.html#s8">8</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-p2-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-p2 -->
+
+<hr />
+<p><a id="s7-1"></a></p>
+<h2 id="71-averages-over-depths">§7.1 Averages over depths<a class="headerlink" href="#71-averages-over-depths" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s7-1 -->
+
+<p><a id="s7-1-p1"></a></p>
+<h4 id="71-1">§7.1 ¶1<a class="headerlink" href="#71-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p1-s1"></a><strong>s1</strong> A topology is a finite rooted tree on labeled leaves, with unary vertices suppressed.</p>
+<p><a id="s7-1-p1-s2"></a><strong>s2</strong> Each branching vertex is assigned an integer depth in <span class="arithmatex">\(\{0,\ldots,L-1\}\)</span>, increasing strictly along every branch.</p>
+<p><a id="s7-1-p1-s3"></a><strong>s3</strong> Write <span class="arithmatex">\(b(S)\)</span> for the number of branching vertices of a topology <span class="arithmatex">\(S\)</span>.</p>
+<p><a id="s7-1-p1-s4"></a><strong>s4</strong> Fix <span class="arithmatex">\(\eta\gt 0\)</span>.</p>
+<p><a id="s7-1-p1-s5"></a><strong>s5</strong> A depth assignment is <em><span class="arithmatex">\(\eta\)</span>-regular</em> if every assigned depth divided by <span class="arithmatex">\(L\)</span> lies in <span class="arithmatex">\((\eta,1-\eta)\)</span> and the normalized depths of distinct branching vertices differ by more than <span class="arithmatex">\(\eta\)</span>.</p>
+<p><a id="s7-1-p1-s6"></a><strong>s6</strong> When an additional prefix depth <span class="arithmatex">\(d\)</span> is specified, it must satisfy the same restrictions relative to all branching depths.</p>
+<p><a id="s7-1-p1-s7"></a><strong>s7</strong> When two copies of one topology use aligned depths, corresponding vertices share one depth coordinate; regularity is imposed on these distinct coordinates.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-1-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-1-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-1-p1-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-1-p1-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-1-p1-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p1 -->
+
+<hr />
+<p><a id="s7-1-p2"></a></p>
+<h4 id="71-2">§7.1 ¶2<a class="headerlink" href="#71-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p2-s1"></a><strong>s1</strong> For a nonnegative array <span class="arithmatex">\(z(\mathbf q)\)</span> on <span class="arithmatex">\(a\)</span> depth coordinates, put</p>
+<p><a id="eq-7-1"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}z
+   =L^{-a}\sum_{\mathbf q\;\eta\text{-regular}}z(\mathbf q). \tag{7.1}
+\]</div>
+<p><a id="s7-1-p2-s2"></a><strong>s2</strong> Additional ordering restrictions, such as <span class="arithmatex">\(d\lt \min_v q_v\)</span>, are included in the summation domain.</p>
+<p><a id="s7-1-p2-s3"></a><strong>s3</strong> These are unnormalized averages: their total mass is at most one.</p>
+<p><a id="s7-1-p2-s4"></a><strong>s4</strong> Consequently, for <span class="arithmatex">\(0\lt \gamma\le1\)</span>,</p>
+<p><a id="eq-7-2"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}(z^\gamma)
+       \le (\mathcal A_{L,\eta}z)^\gamma. \tag{7.2}
+\]</div>
+<p><a id="s7-1-p2-s5"></a><strong>s5</strong> Two elementary comparisons will recur.</p>
+<p><a id="s7-1-p2-s6"></a><strong>s6</strong> Summing over an unused coordinate costs at most <span class="arithmatex">\(L\)</span>, canceled by its normalization.</p>
+<p><a id="s7-1-p2-s7"></a><strong>s7</strong> A fixed integer shift of any subset of the coordinates maps <span class="arithmatex">\(\eta\)</span>-regular assignments injectively into <span class="arithmatex">\(\eta/2\)</span>-regular assignments for all sufficiently large <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-1-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-1-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-1-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-1-p2-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-1-p2-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p2 -->
+
+<p><strong>식 (7.1) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-1 -->
+
+<p><strong>식 (7.2) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-2 -->
+
+<hr />
+<p><a id="s7-1-p3"></a></p>
+<h4 id="71-3">§7.1 ¶3<a class="headerlink" href="#71-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p3-s1"></a><strong>s1</strong> There are only finitely many labeled topologies of any bounded size and, at fixed <span class="arithmatex">\(L\)</span>, only finitely many assignments of their depths.</p>
+<p><a id="s7-1-p3-s2"></a><strong>s2</strong> Thus errors in Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a> can be maximized over any of the finite collections used below before taking <span class="arithmatex">\(N\to\infty\)</span>.</p>
+<p><a id="s7-1-p3-s3"></a><strong>s3</strong> We denote such a maximum by <span class="arithmatex">\(\varepsilon_{N,L,k}\)</span>; for each fixed <span class="arithmatex">\(L,k\)</span>,</p>
+<p><a id="eq-7-3"></a></p>
+<div class="arithmatex">\[
+\varepsilon_{N,L,k}\longrightarrow0. \tag{7.3}
+\]</div>
+<p><a id="s7-1-p3-s4"></a><strong>s4</strong> Constants multiplying this error may depend arbitrarily on <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-1-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-1-p3-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p3 -->
+
+<p><strong>식 (7.3) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-3 -->
+
+<hr />
+<p><a id="s7-1-p4"></a></p>
+<h4 id="71-4">§7.1 ¶4<a class="headerlink" href="#71-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p4-s1"></a><strong>s1</strong> Recall that <span class="arithmatex">\(R_S\)</span> is the multioverlap of the sampled leaves of <span class="arithmatex">\(S\)</span>, defined in <a href="03-calculus-on-finite-trees.html#eq-3-1">(3.1)</a>.</p>
+<p><a id="s7-1-p4-s2"></a><strong>s2</strong> The result to be proved is the following.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p4-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p4 -->
+
+<hr />
+<p><a id="s7-1-e1"></a></p>
+<h3 id="theorem-71">▸ Theorem 7.1<a class="headerlink" href="#theorem-71" title="Permanent link">&para;</a></h3>
+<p><a id="s7-1-p5"></a></p>
+<h4 id="71-5">§7.1 ¶5<a class="headerlink" href="#71-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p5-s1"></a><strong>s1</strong> For every fixed labeled topology <span class="arithmatex">\(S\)</span>,</p>
+<p><a id="eq-7-4"></a></p>
+<div class="arithmatex">\[
+\lim_{L\to\infty}\limsup_{N\to\infty}
+       \mathcal A_{L,\eta}\operatorname{Var}(R_S)=0
+       \qquad(\eta\gt 0), \tag{7.4}
+\]</div>
+<p>↳ where only the <span class="arithmatex">\(b(S)\)</span> branching depths are averaged.</p>
+<p><a id="s7-1-p5-s2"></a><strong>s2</strong> For a singleton, whose average has no coordinates, <span class="arithmatex">\(\operatorname{Var}(R_S)\to0\)</span> as <span class="arithmatex">\(N\to\infty\)</span> at every fixed <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p5-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p5 -->
+
+<p><strong>식 (7.4) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-4 -->
+
+<hr />
+<p><em>(끝: s7-1-e1)</em></p>
+<p><a id="s7-1-p6"></a></p>
+<h4 id="71-6">§7.1 ¶6<a class="headerlink" href="#71-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-1-p6-s1"></a><strong>s1</strong> The proof has two parts.</p>
+<p><a id="s7-1-p6-s2"></a><strong>s2</strong> First we control the randomness below a sampled prefix through the squared conditional covariance of the spin-product vector.</p>
+<p><a id="s7-1-p6-s3"></a><strong>s3</strong> This is an induction on the number of leaves; delaying the target splits by one level will control its signed extension coefficients.</p>
+<p><a id="s7-1-p6-s4"></a><strong>s4</strong> We then use a marker anchor to concentrate the remaining conditional mean at each fixed depth.</p>
+<p><a id="s7-1-p6-s5"></a><strong>s5</strong> Averaging over depths is essential when combining the two estimates.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-1-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-1-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-1-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-1-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-1-p6-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-1-p6 -->
+
+<hr />
+<p><a id="s7-2"></a></p>
+<h2 id="72-conditional-covariance-and-continuity-in-depth">§7.2 Conditional covariance and continuity in depth<a class="headerlink" href="#72-conditional-covariance-and-continuity-in-depth" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s7-2 -->
+
+<p><a id="s7-2-p1"></a></p>
+<h4 id="72-1">§7.2 ¶1<a class="headerlink" href="#72-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p1-s1"></a><strong>s1</strong> For a sampled copy of <span class="arithmatex">\(S\)</span>, set</p>
+<p><a id="s7-2-p1-e1"></a></p>
+<div class="arithmatex">\[
+A_S=\left(\prod_{a\in S}\sigma_i^a\right)_{i\le N},
+ \qquad R_S=\mathbf1\cdot A_S,
+ \qquad x\cdot y=N^{-1}\sum_{i=1}^Nx_i y_i,
+ \qquad \|x\|_N^2=x\cdot x.
+\]</div>
+<p><a id="s7-2-p1-s2"></a><strong>s2</strong> At a depth <span class="arithmatex">\(d\)</span> on its initial stem, including its first branching depth, let <span class="arithmatex">\(\mathscr F_d\)</span> be generated by the root and the sampled prefix through <span class="arithmatex">\(d\)</span>, and define</p>
+<p><a id="eq-7-5"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+\mu_{d,S}&amp;=\mathbb E[A_S\mid\mathscr F_d], \\
+v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
+  \operatorname{Cov}(A_{S,i},A_{S,j}\mid\mathscr F_d)^2. \tag{7.5}
+\end{align*}
+\]</div>
+<p><a id="s7-2-p1-s3"></a><strong>s3</strong> The expectation includes the root.</p>
+<p><a id="s7-2-p1-s4"></a><strong>s4</strong> Every coordinate of <span class="arithmatex">\(A_S\)</span> and <span class="arithmatex">\(\mu_{d,S}\)</span> has absolute value at most one, and <span class="arithmatex">\(0\le v_N(S,d)\le1\)</span>.</p>
+<p><a id="s7-2-p1-s5"></a><strong>s5</strong> The next lemma explains why this squared covariance is the useful quantity to induct on.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p1-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p1-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p1-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-2-p1-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p1 -->
+
+<p><strong>식 Eq. §7.2 ¶1 #1 항별 표</strong></p>
+<!-- TODO:항표 s7-2-p1-e1 -->
+
+<p><strong>식 (7.5) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-5 -->
+
+<hr />
+<p><a id="s7-2-e2"></a></p>
+<h3 id="lemma-72-contractions-and-three-copies">▸ Lemma 7.2 (Contractions and three copies)<a class="headerlink" href="#lemma-72-contractions-and-three-copies" title="Permanent link">&para;</a></h3>
+<p><a id="s7-2-p2"></a></p>
+<h4 id="72-2">§7.2 ¶2<a class="headerlink" href="#72-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p2-s1"></a><strong>s1</strong> If a random vector <span class="arithmatex">\(B\in[-1,1]^N\)</span> is conditionally independent of <span class="arithmatex">\(A_S\)</span> given <span class="arithmatex">\(\mathscr F_d\)</span>, then</p>
+<p><a id="eq-7-6"></a></p>
+<div class="arithmatex">\[
+\bigl\|(A_S-\mu_{d,S})\cdot B\bigr\|_{L^2}
+        \le v_N(S,d)^{1/4}. \tag{7.6}
+\]</div>
+<p><a id="s7-2-p2-s2"></a><strong>s2</strong> If <span class="arithmatex">\(X,Y,Z\)</span> are conditionally independent copies of a bounded random vector given a sigma field <span class="arithmatex">\(\mathscr G\)</span>, and <span class="arithmatex">\(C\)</span> is its conditional covariance matrix, then</p>
+<p><a id="eq-7-7"></a></p>
+<div class="arithmatex">\[
+\mathbb E(X\cdot Y-X\cdot Z)^2
+       \ge \frac2{N^2}\mathbb E\sum_{i,j}C_{ij}^2. \tag{7.7}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p2-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p2 -->
+
+<p><strong>식 (7.6) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-6 -->
+
+<p><strong>식 (7.7) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-7 -->
+
+<hr />
+<p><em>(끝: s7-2-e2)</em></p>
+<p><a id="s7-2-e3"></a></p>
+<h3 id="proof">▸ <em>Proof.</em><a class="headerlink" href="#proof" title="Permanent link">&para;</a></h3>
+<p><a id="s7-2-p3"></a></p>
+<h4 id="72-3">§7.2 ¶3<a class="headerlink" href="#72-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p3-s1"></a><strong>s1</strong> Conditional on <span class="arithmatex">\(\mathscr F_d\)</span> and <span class="arithmatex">\(B\)</span>, the squared contraction has expectation <span class="arithmatex">\(N^{-2}\sum_{ij}C_{ij}B_iB_j\)</span>.</p>
+<p><a id="s7-2-p3-s2"></a><strong>s2</strong> Its absolute value is at most <span class="arithmatex">\(N^{-2}\sum_{ij}|C_{ij}|\)</span>.</p>
+<p><a id="s7-2-p3-s3"></a><strong>s3</strong> Cauchy–Schwarz, first over <span class="arithmatex">\(i,j\)</span> and then over the prefix, proves <a href="07-decorrelation-on-prescribed-trees.html#eq-7-6">(7.6)</a>.</p>
+<p><a id="s7-2-p3-s4"></a><strong>s4</strong> For the second assertion, write <span class="arithmatex">\(\mu=\mathbb E[X\mid\mathscr G]\)</span>.</p>
+<p><a id="s7-2-p3-s5"></a><strong>s5</strong> Conditional independence gives</p>
+<p><a id="s7-2-p3-e1"></a></p>
+<div class="arithmatex">\[
+\mathbb E[(X\cdot Y-X\cdot Z)^2\mid\mathscr G]
+ =\frac2{N^2}\operatorname{tr}\bigl((C+\mu\mu^{\mathsf T})C\bigr)
+ \ge\frac2{N^2}\operatorname{tr}(C^2),
+\]</div>
+<p>↳ since <span class="arithmatex">\(C\)</span> is positive semidefinite.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-2-p3-s5 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p3 -->
+
+<p><strong>식 Eq. §7.2 ¶3 #1 항별 표</strong></p>
+<!-- TODO:항표 s7-2-p3-e1 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s7-2-e4"></a></p>
+<h3 id="lemma-73-averaged-continuity-in-depth">▸ Lemma 7.3 (Averaged continuity in depth)<a class="headerlink" href="#lemma-73-averaged-continuity-in-depth" title="Permanent link">&para;</a></h3>
+<p><a id="s7-2-p4"></a></p>
+<h4 id="72-4">§7.2 ¶4<a class="headerlink" href="#72-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p4-s1"></a><strong>s1</strong> Fix a topology <span class="arithmatex">\(S\)</span> and a subset <span class="arithmatex">\(U\)</span> of its branching vertices.</p>
+<p><a id="s7-2-p4-s2"></a><strong>s2</strong> For each <span class="arithmatex">\(\eta\)</span>-regular depth assignment, let <span class="arithmatex">\(S^U\)</span> have the same topology with the depths of the vertices in <span class="arithmatex">\(U\)</span> increased by one.</p>
+<p><a id="s7-2-p4-s3"></a><strong>s3</strong> At an ancestral evaluation depth <span class="arithmatex">\(d\)</span>, compare the means using the same sampled prefix.</p>
+<p><a id="s7-2-p4-s4"></a><strong>s4</strong> Then, for all sufficiently large <span class="arithmatex">\(L\)</span>,</p>
+<p><a id="eq-7-8"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}\mathbb E
+       \|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L. \tag{7.8}
+\]</div>
+<p><a id="s7-2-p4-s5"></a><strong>s5</strong> The average ranges over all branching depths; the coordinate <span class="arithmatex">\(d\)</span> is also averaged if it ranges, and otherwise is held fixed.</p>
+<p><a id="s7-2-p4-s6"></a><strong>s6</strong> If <span class="arithmatex">\(d\)</span> ranges along an initial unary stretch of <span class="arithmatex">\(S\)</span>, then</p>
+<p><a id="eq-7-9"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}\mathbb E
+       \|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le C/L, \tag{7.9}
+\]</div>
+<p>↳ where this average includes <span class="arithmatex">\(d\)</span> and all branching depths, and the means are evaluated along the same sampled path.</p>
+<p><a id="s7-2-p4-s7"></a><strong>s7</strong> The constant depends only on the number of vertices and shifts, uniformly in <span class="arithmatex">\(N\)</span>, the evaluation depth, and the transition kernels.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-2-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-2-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-2-p4-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p4 -->
+
+<p><strong>식 (7.8) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-8 -->
+
+<p><strong>식 (7.9) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-9 -->
+
+<hr />
+<p><em>(끝: s7-2-e4)</em></p>
+<p><a id="s7-2-e5"></a></p>
+<h3 id="proof_1">▸ <em>Proof.</em><a class="headerlink" href="#proof_1" title="Permanent link">&para;</a></h3>
+<p><a id="s7-2-p5"></a></p>
+<h4 id="72-5">§7.2 ¶5<a class="headerlink" href="#72-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p5-s1"></a><strong>s1</strong> Keep the later branching depths of <span class="arithmatex">\(T\)</span> fixed and sample a single path along its initial stem.</p>
+<p><a id="s7-2-p5-s2"></a><strong>s2</strong> On this path, <span class="arithmatex">\(\mu_{t,T}\)</span> is a bounded vector martingale.</p>
+<p><a id="s7-2-p5-s3"></a><strong>s3</strong> Orthogonality of its increments gives</p>
+<p><a id="eq-7-10"></a></p>
+<div class="arithmatex">\[
+\sum_t\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2\le1. \tag{7.10}
+\]</div>
+<p><a id="s7-2-p5-s4"></a><strong>s4</strong> This proves the evaluation-depth assertion after summing over the ranged depth and dividing by <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p5-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p5 -->
+
+<p><strong>식 (7.10) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-10 -->
+
+<hr />
+<p><a id="s7-2-p6"></a></p>
+<h4 id="72-6">§7.2 ¶6<a class="headerlink" href="#72-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p6-s1"></a><strong>s1</strong> Consider a branching vertex at depth <span class="arithmatex">\(q\)</span> with child shapes <span class="arithmatex">\(T_1,\ldots,T_s\)</span>.</p>
+<p><a id="s7-2-p6-s2"></a><strong>s2</strong> Holding their later depths fixed, its original conditional mean is <span class="arithmatex">\(\prod_j \mu_{q,T_j}\)</span>, with products understood coordinatewise.</p>
+<p><a id="s7-2-p6-s3"></a><strong>s3</strong> If the split is delayed to <span class="arithmatex">\(q+1\)</span>, its conditional mean at the same prefix of depth <span class="arithmatex">\(q\)</span> is <span class="arithmatex">\(\mathbb E[\prod_j \mu_{q+1,T_j}\mid\mathscr F_q]\)</span>, where the child means are evaluated on a common one-step continuation.</p>
+<p><a id="s7-2-p6-s4"></a><strong>s4</strong> Jensen's inequality and the product difference inequality on <span class="arithmatex">\([-1,1]^s\)</span> yield</p>
+<p><a id="eq-7-11"></a></p>
+<div class="arithmatex">\[
+\mathbb E\left\|\prod_j \mu_{q,T_j}
+       -\mathbb E\left[\prod_j \mu_{q+1,T_j}\mid\mathscr F_q\right]
+       \right\|_N^2
+ \le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2. \tag{7.11}
+\]</div>
+<p><a id="s7-2-p6-s5"></a><strong>s5</strong> Summing over <span class="arithmatex">\(q\)</span> uses <a href="07-decorrelation-on-prescribed-trees.html#eq-7-10">(7.10)</a> with each child shape fixed.</p>
+<p><a id="s7-2-p6-s6"></a><strong>s6</strong> Propagating a changed subtree mean towards an ancestral evaluation consists of conditional expectations and multiplication by factors bounded by one.</p>
+<p><a id="s7-2-p6-s7"></a><strong>s7</strong> Both operations contract this squared norm.</p>
+<p><a id="s7-2-p6-s8"></a><strong>s8</strong> Averaging over all other depth coordinates therefore proves the claimed <span class="arithmatex">\(C/L\)</span> bound for one shift.</p>
+<p><a id="s7-2-p6-s9"></a><strong>s9</strong> For several shifts, change the vertices one at a time and use the squared triangle inequality with a factor equal to the number of shifts.</p>
+<p><a id="s7-2-p6-s10"></a><strong>s10</strong> Regularity ensures that the intermediate shapes have the same ancestry relations and, for large <span class="arithmatex">\(L\)</span>, lie in the enlarged <span class="arithmatex">\(\eta/2\)</span>-regular domain.</p>
+<p><a id="s7-2-p6-s11"></a><strong>s11</strong> All relevant one-prefix marginal laws are unchanged when other sampled branches are omitted, so these estimates hold in any larger sampled tree.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-2-p6-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-2-p6-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-2-p6-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-2-p6-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-2-p6-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-2-p6-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s7-2-p6-s11 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p6 -->
+
+<p><strong>식 (7.11) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-11 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s7-2-p7"></a></p>
+<h4 id="72-7">§7.2 ¶7<a class="headerlink" href="#72-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-2-p7-s1"></a><strong>s1</strong> Suppose now that <span class="arithmatex">\(S\)</span> first branches at depth <span class="arithmatex">\(e\)</span> into proper child shapes <span class="arithmatex">\(T_1,\ldots,T_s\)</span>.</p>
+<p><a id="s7-2-p7-s2"></a><strong>s2</strong> Conditional independence of the children gives <span class="arithmatex">\(\mu_{e,S}=\prod_j\mu_{e,T_j}\)</span>.</p>
+<p><a id="s7-2-p7-s3"></a><strong>s3</strong> Write</p>
+<p><a id="eq-7-12"></a></p>
+<div class="arithmatex">\[
+a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
+ \qquad p_N(S,e)=\sum_{j=1}^s v_N(T_j,e)^{1/4}. \tag{7.12}
+\]</div>
+<p><a id="s7-2-p7-s4"></a><strong>s4</strong> For any vector <span class="arithmatex">\(B\in[-1,1]^N\)</span> independent of the continuation of <span class="arithmatex">\(S\)</span> given its prefix at <span class="arithmatex">\(e\)</span>, successive replacement of the children, using <a href="07-decorrelation-on-prescribed-trees.html#eq-7-6">(7.6)</a>, gives</p>
+<p><a id="eq-7-13"></a></p>
+<div class="arithmatex">\[
+\|(A_S-a_{S,e})\cdot B\|_{L^2}\le p_N(S,e). \tag{7.13}
+\]</div>
+<p><a id="s7-2-p7-s5"></a><strong>s5</strong> At each replacement the other child vectors and the already replaced means form a bounded multiplier independent of the child being replaced, conditionally on <span class="arithmatex">\(\mathscr F_e\)</span>.</p>
+<p><a id="s7-2-p7-s6"></a><strong>s6</strong> In particular this applies to <span class="arithmatex">\(B=\mathbf1\)</span>, and to a vector sampled on another side separated before <span class="arithmatex">\(e\)</span>.</p>
+<p><a id="s7-2-p7-s7"></a><strong>s7</strong> For two such sides, both can be projected with total <span class="arithmatex">\(L^2\)</span> error at most <span class="arithmatex">\(2p_N(S,e)\)</span>.</p>
+<p><a id="s7-2-p7-s8"></a><strong>s8</strong> Multiplication of the contracted error by any scalar test <span class="arithmatex">\(f\)</span> with <span class="arithmatex">\(|f|\le1\)</span>, even a correlated one, does not increase its <span class="arithmatex">\(L^1\)</span> bound.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-2-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-2-p7-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-2-p7-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-2-p7-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-2-p7-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-2-p7-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-2-p7-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-2-p7-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-2-p7 -->
+
+<p><strong>식 (7.12) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-12 -->
+
+<p><strong>식 (7.13) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-13 -->
+
+<hr />
+<p><a id="s7-3"></a></p>
+<h2 id="73-conditional-decorrelation">§7.3 Conditional decorrelation<a class="headerlink" href="#73-conditional-decorrelation" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s7-3 -->
+
+<p><a id="s7-3-e6"></a></p>
+<h3 id="proposition-74">▸ Proposition 7.4<a class="headerlink" href="#proposition-74" title="Permanent link">&para;</a></h3>
+<p><a id="s7-3-p1"></a></p>
+<h4 id="73-1">§7.3 ¶1<a class="headerlink" href="#73-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p1-s1"></a><strong>s1</strong> For every fixed labeled topology <span class="arithmatex">\(S\)</span> and every <span class="arithmatex">\(\eta\gt 0\)</span>,</p>
+<p><a id="eq-7-14"></a></p>
+<div class="arithmatex">\[
+\lim_{L\to\infty}\limsup_{N\to\infty}
+       \mathcal A_{L,\eta}v_N(S,d)=0, \tag{7.14}
+\]</div>
+<p>↳ where the average ranges over all branching depths of <span class="arithmatex">\(S\)</span> and an additional regular depth <span class="arithmatex">\(d\)</span> strictly before its first split.</p>
+<p><a id="s7-3-p1-s2"></a><strong>s2</strong> For a singleton, the average ranges over <span class="arithmatex">\(d\)</span> alone.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p1-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p1 -->
+
+<p><strong>식 (7.14) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-14 -->
+
+<hr />
+<p><em>(끝: s7-3-e6)</em></p>
+<p><a id="s7-3-e7"></a></p>
+<h3 id="proof_2">▸ <em>Proof.</em><a class="headerlink" href="#proof_2" title="Permanent link">&para;</a></h3>
+<p><a id="s7-3-p2"></a></p>
+<h4 id="73-2">§7.3 ¶2<a class="headerlink" href="#73-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p2-s1"></a><strong>s1</strong> We induct on the number <span class="arithmatex">\(k\)</span> of leaves.</p>
+<p><a id="s7-3-p2-s2"></a><strong>s2</strong> The induction replaces each proper child by its conditional mean.</p>
+<p><a id="s7-3-p2-s3"></a><strong>s3</strong> It then applies the prescribed-tree identity to two copies with delayed branching depths; after summing the signed coefficients, this becomes a nonnegative three-copy estimate.</p>
+<p><a id="s7-3-p2-s4"></a><strong>s4</strong> To keep track of the depth averages, let</p>
+<p><a id="eq-7-15"></a></p>
+<div class="arithmatex">\[
+V_{k,L}(\eta)=\max_{1\le |S|\le k}
+       \limsup_{N\to\infty}\mathcal A_{L,\eta}v_N(S,d). \tag{7.15}
+\]</div>
+<p><a id="s7-3-p2-s5"></a><strong>s5</strong> The maximum is over finitely many labeled topologies.</p>
+<p><a id="s7-3-p2-s6"></a><strong>s6</strong> Averages of any lower-order covariance used below, including averages with extra unused coordinates or shifted depths, are bounded by the appropriate <span class="arithmatex">\(V_{k-1,L}(\eta/2)\)</span>, using <a href="07-decorrelation-on-prescribed-trees.html#eq-7-2">(7.2)</a> when fractional powers occur.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p2-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p2-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p2-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p2-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p2-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p2 -->
+
+<p><strong>식 (7.15) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-15 -->
+
+<hr />
+<p><a id="s7-3-p3"></a></p>
+<h4 id="73-3">§7.3 ¶3<a class="headerlink" href="#73-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p3-s1"></a><strong>s1</strong> <em>One leaf.</em></p>
+<p><a id="s7-3-p3-s2"></a><strong>s2</strong> Take two old paths splitting at <span class="arithmatex">\(d\)</span>, with path <span class="arithmatex">\(1\)</span> a spin anchor, and add one color required to split from the anchor exactly at <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p3-s3"></a><strong>s3</strong> The available old path <span class="arithmatex">\(2\)</span> has coefficient <span class="arithmatex">\(1\)</span>.</p>
+<p><a id="s7-3-p3-s4"></a><strong>s4</strong> A fresh path can split from both old paths at <span class="arithmatex">\(d\)</span>, with coefficient <span class="arithmatex">\(-c_d\)</span>, or follow path <span class="arithmatex">\(2\)</span> and leave it at <span class="arithmatex">\(\ell\gt d\)</span>, with coefficient <span class="arithmatex">\(-c_\ell\)</span>, where</p>
+<p><a id="eq-7-16"></a></p>
+<div class="arithmatex">\[
+c_d=2m_{d+1}-m_d=(d+2)\delta,
+ \qquad c_\ell=\delta\quad(d\lt \ell\le L-1). \tag{7.16}
+\]</div>
+<p><a id="s7-3-p3-s5"></a><strong>s5</strong> From the anchor alone the total coefficient is <span class="arithmatex">\(-\delta\)</span>.</p>
+<p><a id="s7-3-p3-s6"></a><strong>s6</strong> Write <span class="arithmatex">\(X=R_{12}\)</span> and <span class="arithmatex">\(X_\ell=R_{13}\)</span> for the corresponding fresh extension.</p>
+<p><a id="s7-3-p3-s7"></a><strong>s7</strong> Each <span class="arithmatex">\(X_\ell\)</span> has the marginal law of <span class="arithmatex">\(X\)</span>, and <span class="arithmatex">\(\sum_{\ell=d}^{L-1}c_\ell=1+\delta\)</span>.</p>
+<p><a id="s7-3-p3-s8"></a><strong>s8</strong> The prescribed-tree identity with <span class="arithmatex">\(f=X\)</span> therefore gives</p>
+<p><a id="eq-7-17"></a></p>
+<div class="arithmatex">\[
+\frac12\sum_{\ell=d}^{L-1}c_\ell
+      \mathbb E(X-X_\ell)^2
+       =\delta\operatorname{Var}(X)+o_N(1)
+       \le\delta+o_N(1). \tag{7.17}
+\]</div>
+<p><a id="s7-3-p3-s9"></a><strong>s9</strong> For <span class="arithmatex">\(\ell=d\)</span>, the three spin vectors are conditionally independent below <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p3-s10"></a><strong>s10</strong> Hence <a href="07-decorrelation-on-prescribed-trees.html#eq-7-7">(7.7)</a> and <span class="arithmatex">\(c_d\ge\eta\)</span> give <span class="arithmatex">\(v_N(S,d)\le\delta/\eta+o_N(1)\)</span> at each fixed <span class="arithmatex">\(L,d\)</span>.</p>
+<p><a id="s7-3-p3-s11"></a><strong>s11</strong> This proves <span class="arithmatex">\(V_{1,L}(\eta)\le\delta/\eta\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p3-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p3-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p3-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p3-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-3-p3-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-3-p3-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s7-3-p3-s11 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p3 -->
+
+<p><strong>식 (7.16) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-16 -->
+
+<p><strong>식 (7.17) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-17 -->
+
+<hr />
+<p><a id="s7-3-p4"></a></p>
+<h4 id="73-4">§7.3 ¶4<a class="headerlink" href="#73-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p4-s1"></a><strong>s1</strong> <em>Shifted copies and their coefficients.</em></p>
+<p><a id="s7-3-p4-s2"></a><strong>s2</strong> Let <span class="arithmatex">\(|S|=k\ge2\)</span>, its first split be <span class="arithmatex">\(e\gt d\)</span>, and its proper child shapes be <span class="arithmatex">\(T_1,\ldots,T_s\)</span>.</p>
+<p><a id="s7-3-p4-s3"></a><strong>s3</strong> Sample an old tree consisting of two copies of <span class="arithmatex">\(S\)</span>, denoted I and II, whose stems split at <span class="arithmatex">\(d\)</span> and whose internal depth assignments are aligned.</p>
+<p><a id="s7-3-p4-s4"></a><strong>s4</strong> Fix an old leaf in I as the spin anchor.</p>
+<p><a id="s7-3-p4-s5"></a><strong>s5</strong> Let <span class="arithmatex">\(S^+\)</span> be the topology <span class="arithmatex">\(S\)</span> with every internal branching depth increased by one.</p>
+<p><a id="s7-3-p4-s6"></a><strong>s6</strong> In the prescribed-tree identity require the anchor and the added colors to form two copies of <span class="arithmatex">\(S^+\)</span>, separated at <span class="arithmatex">\(d\)</span>, with the anchor in its original labeled position in the first copy.</p>
+<p><a id="s7-3-p4-s7"></a><strong>s7</strong> These constraints involve only the anchor and the added colors.</p>
+<p><a id="s7-3-p4-s8"></a><strong>s8</strong> Add all other colors of side I first, then those of side II.</p>
+<p><a id="s7-3-p4-s9"></a><strong>s9</strong> Figure <a href="07-decorrelation-on-prescribed-trees.html#fig-1">1</a> illustrates one local shift.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p4-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p4-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-3-p4-s9 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p4 -->
+
+<hr />
+<p><a id="fig-1"></a></p>
+<h4 id="figure-1">Figure 1<a class="headerlink" href="#figure-1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>그림 본체는 원문 PDF p.27 참조 (TikZ/표 원본은 source/flat.tex).</p>
+</blockquote>
+<p><strong>원문 (캡션)</strong></p>
+<p><a id="fig-1-s1"></a><strong>cap</strong> One local effect of delaying a target split. The old tree is solid; the dashed child creates a split at the previously unary depth-<span class="arithmatex">\(e+1\)</span> vertex, with coefficient <span class="arithmatex">\(m_{e+1}-m_{e+2}=-\delta\)</span>. The proof shifts every internal target depth and charges distinct vertices separately, even when their depths coincide. Later target colors may reuse eligible old leaves.</p>
+<p><strong>번역</strong></p>
+<p><strong>cap</strong> <!-- TODO:번역 fig-1-s1 --></p>
+<p><a id="s7-3-p5"></a></p>
+<h4 id="73-5">§7.3 ¶5<a class="headerlink" href="#73-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p5-s1"></a><strong>s1</strong> Let <span class="arithmatex">\(\kappa(T)\)</span> be the reference coefficient <a href="03-calculus-on-finite-trees.html#eq-3-13">(3.13)</a>, and put</p>
+<p><a id="eq-7-18"></a></p>
+<div class="arithmatex">\[
+J=\kappa(S^+)^2. \tag{7.18}
+\]</div>
+<p><a id="s7-3-p5-s2"></a><strong>s2</strong> At each vertex the <span class="arithmatex">\(j=1\)</span> factor is <span class="arithmatex">\(-\delta\)</span>; for <span class="arithmatex">\(j\ge2\)</span> its absolute value is at least <span class="arithmatex">\(\eta/2\)</span> for all sufficiently large <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s7-3-p5-s3"></a><strong>s3</strong> If <span class="arithmatex">\(b=b(S)\)</span>, then</p>
+<p><a id="eq-7-19"></a></p>
+<div class="arithmatex">\[
+|J|\ge c_{k,\eta}\delta^{2b}\gt 0. \tag{7.19}
+\]</div>
+<p><a id="s7-3-p5-s4"></a><strong>s4</strong> For large <span class="arithmatex">\(L\)</span>, regularity ensures that each shifted depth differs from every branching depth of the old tree, including <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p5-s5"></a><strong>s5</strong> Thus these <span class="arithmatex">\(2b\)</span> target branching vertices must be created by fresh unary splits.</p>
+<p><a id="s7-3-p5-s6"></a><strong>s6</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-3-e9">3.5</a> gives</p>
+<p><a id="eq-7-20"></a></p>
+<div class="arithmatex">\[
+\frac1{|J|}\sum_{\text{allowed extensions}}|c|
+        \le C_{k,\eta}. \tag{7.20}
+\]</div>
+<p><a id="s7-3-p5-s7"></a><strong>s7</strong> The two copies have aligned depths but distinct branching vertices: each vertex supplies its own factor <span class="arithmatex">\(\delta\)</span>.</p>
+<p><a id="s7-3-p5-s8"></a><strong>s8</strong> This is the reason for the shift.</p>
+<p><a id="s7-3-p5-s9"></a><strong>s9</strong> The full signed coefficient has an additional factor <span class="arithmatex">\(-\delta\)</span> from separation at <span class="arithmatex">\(d\)</span>; we divide by <span class="arithmatex">\(J\)</span> and leave that factor in the identity.</p>
+<p><a id="s7-3-p5-s10"></a><strong>s10</strong> Equation <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a> then controls every projection error after division.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p5-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p5-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p5-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p5-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p5-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-3-p5-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-3-p5-s10 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p5 -->
+
+<p><strong>식 (7.18) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-18 -->
+
+<p><strong>식 (7.19) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-19 -->
+
+<p><strong>식 (7.20) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-20 -->
+
+<hr />
+<p><a id="s7-3-p6"></a></p>
+<h4 id="73-6">§7.3 ¶6<a class="headerlink" href="#73-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p6-s1"></a><strong>s1</strong> <em>Projecting the two target sides.</em></p>
+<p><a id="s7-3-p6-s2"></a><strong>s2</strong> In every extension, the marginal target tree consists of two ordinary copies of <span class="arithmatex">\(S^+\)</span>, independent below their separation at <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p6-s3"></a><strong>s3</strong> By <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a> its multioverlap differs in <span class="arithmatex">\(L^2\)</span> from the contraction of its projected means at <span class="arithmatex">\(e+1\)</span> by at most <span class="arithmatex">\(2p_N(S^+,e+1)\)</span>.</p>
+<p><a id="s7-3-p6-s4"></a><strong>s4</strong> Change the proper child depths back by one, then change their evaluation depth from <span class="arithmatex">\(e+1\)</span> to <span class="arithmatex">\(e\)</span>.</p>
+<p><a id="s7-3-p6-s5"></a><strong>s5</strong> The product difference inequality and Lemma <a href="07-decorrelation-on-prescribed-trees.html#s7-2-e4">7.3</a> show that this adds an error at most <span class="arithmatex">\(h_N(S)\)</span> in <span class="arithmatex">\(L^2\)</span>, with</p>
+<p><a id="eq-7-21"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}h_N(S)^2\le C_k/L. \tag{7.21}
+\]</div>
+<p><a id="s7-3-p6-s6"></a><strong>s6</strong> One can take <span class="arithmatex">\(h_N(S)\)</span> to be the sum of the finitely many <span class="arithmatex">\(L^2(\|\cdot\|_N)\)</span> distances in these comparisons, multiplied by a size-dependent constant.</p>
+<p><a id="s7-3-p6-s7"></a><strong>s7</strong> This definition depends only on the single-copy marginal shapes, not on the particular extension.</p>
+<p><a id="s7-3-p6-s8"></a><strong>s8</strong> Thus <a href="07-decorrelation-on-prescribed-trees.html#eq-7-21">(7.21)</a> holds uniformly for the comparisons in the extension sum, even though the union of the old and target trees itself need not have regular depths.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p6-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p6-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p6-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p6-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p6-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p6-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p6-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p6-s8 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p6 -->
+
+<p><strong>식 (7.21) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-21 -->
+
+<hr />
+<p><a id="s7-3-p7"></a></p>
+<h4 id="73-7">§7.3 ¶7<a class="headerlink" href="#73-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p7-s1"></a><strong>s1</strong> Let <span class="arithmatex">\(a,b\)</span> denote the vectors <span class="arithmatex">\(a_{S,e}\)</span> on the old stems I and II.</p>
+<p><a id="s7-3-p7-s2"></a><strong>s2</strong> The target stem in I shares the old prefix through <span class="arithmatex">\(e\)</span> because it contains the anchor, so its final projected vector is <span class="arithmatex">\(a\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p7-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p7-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p7 -->
+
+<hr />
+<p><a id="s7-3-p8"></a></p>
+<h4 id="73-8">§7.3 ¶8<a class="headerlink" href="#73-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p8-s1"></a><strong>s1</strong> <em>The signed extension sum.</em></p>
+<p><a id="s7-3-p8-s2"></a><strong>s2</strong> Set <span class="arithmatex">\(f\)</span> to be the overlap of all <span class="arithmatex">\(2k\)</span> old leaves, an allowed fixed overlap monomial.</p>
+<p><a id="s7-3-p8-s3"></a><strong>s3</strong> All target-I additions stay in the anchor's branch below <span class="arithmatex">\(d\)</span>, so they leave the old-II stem and its child counts unchanged.</p>
+<p><a id="s7-3-p8-s4"></a><strong>s4</strong> Classify the first added path of target side II by its prefix through <span class="arithmatex">\(e\)</span>.</p>
+<p><a id="s7-3-p8-s5"></a><strong>s5</strong> It may diverge freshly at <span class="arithmatex">\(\ell=d\)</span>, with coefficient <span class="arithmatex">\(-c_d\)</span>, or follow the old II stem and diverge at <span class="arithmatex">\(d\lt \ell\lt e\)</span>, with coefficient <span class="arithmatex">\(-c_\ell=-\delta\)</span>.</p>
+<p><a id="s7-3-p8-s6"></a><strong>s6</strong> In such a class let <span class="arithmatex">\(b_\ell\)</span> be <span class="arithmatex">\(a_{S,e}\)</span> on the new stem; it shares the old II prefix through <span class="arithmatex">\(\ell\)</span>.</p>
+<p><a id="s7-3-p8-s7"></a><strong>s7</strong> At <span class="arithmatex">\(\ell=d\)</span> the stems carrying <span class="arithmatex">\(a,b,b_d\)</span> are conditionally independent below <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p8-s8"></a><strong>s8</strong> Every remaining possibility follows the old II prefix through <span class="arithmatex">\(e\)</span> and has final projected vector <span class="arithmatex">\(b\)</span>.</p>
+<p><a id="s7-3-p8-s9"></a><strong>s9</strong> All later target paths in side II follow its first path through <span class="arithmatex">\(e\)</span>, since their earliest split is <span class="arithmatex">\(e+1\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p8-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p8-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p8-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p8-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p8-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p8-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p8-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p8-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-3-p8-s9 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p8 -->
+
+<hr />
+<p><a id="s7-3-p9"></a></p>
+<h4 id="73-9">§7.3 ¶9<a class="headerlink" href="#73-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p9-s1"></a><strong>s1</strong> For a fixed extension history, retain every old path and the first target-II prefix through <span class="arithmatex">\(e\)</span>, and delete all other new branches.</p>
+<p><a id="s7-3-p9-s2"></a><strong>s2</strong> The target-I projection <span class="arithmatex">\(a\)</span> already depends only on the retained old anchor prefix.</p>
+<p><a id="s7-3-p9-s3"></a><strong>s3</strong> Each deleted subtree integrates to one under its probability kernels; a reused old leaf introduces no new variable.</p>
+<p><a id="s7-3-p9-s4"></a><strong>s4</strong> The retained tree depends only on the class: it is the old tree with a fresh stem attached at <span class="arithmatex">\(\ell\lt e\)</span>, or just the old tree in the remaining class.</p>
+<p><a id="s7-3-p9-s5"></a><strong>s5</strong> The history is a combinatorial choice, not a condition on sampled values.</p>
+<p><a id="s7-3-p9-s6"></a><strong>s6</strong> Thus the joint marginal of the old paths and projected prefixes is fixed within each class.</p>
+<p><a id="s7-3-p9-s7"></a><strong>s7</strong> In particular, the expectation of <span class="arithmatex">\(f\)</span> times the projected overlap is constant within a class and can be multiplied by its total signed coefficient.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p9-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p9-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p9-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p9-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p9-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p9-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p9-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p9 -->
+
+<hr />
+<p><a id="s7-3-p10"></a></p>
+<h4 id="73-10">§7.3 ¶10<a class="headerlink" href="#73-10" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p10-s1"></a><strong>s1</strong> By Lemma <a href="03-calculus-on-finite-trees.html#s3-3-e7">3.4</a>, summing later side-II colors backwards gives <span class="arithmatex">\(\kappa(S^+)\)</span> for each first-path choice.</p>
+<p><a id="s7-3-p10-s2"></a><strong>s2</strong> Summing the side-I choices gives the other factor <span class="arithmatex">\(\kappa(S^+)\)</span>.</p>
+<p><a id="s7-3-p10-s3"></a><strong>s3</strong> The fresh class at <span class="arithmatex">\(\ell\)</span> therefore has total coefficient <span class="arithmatex">\(-c_\ell J\)</span>.</p>
+<p><a id="s7-3-p10-s4"></a><strong>s4</strong> The total coefficient is <span class="arithmatex">\(-\delta J\)</span>, both from the old tree and from the anchor alone.</p>
+<p><a id="s7-3-p10-s5"></a><strong>s5</strong> Since</p>
+<p><a id="s7-3-p10-e1"></a></p>
+<div class="arithmatex">\[
+\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta=m_e+\delta,
+\]</div>
+<p>↳ the remaining prefix-through-<span class="arithmatex">\(e\)</span> class has coefficient <span class="arithmatex">\(m_eJ\)</span>.</p>
+<p><a id="s7-3-p10-s6"></a><strong>s6</strong> Thus the projected terms have the following coefficients:</p>
+<p><a id="s7-3-p10-e2"></a></p>
+<div class="arithmatex">\[
+\begin{array}{c|c|c}
+ \text{side-II prefix} &amp; \text{projected overlap}
+      &amp; \text{total coefficient}\\ \hline
+ \text{fresh divergence at }d\le\ell\lt e &amp; a\cdot b_\ell &amp; -c_\ell J\\
+ \text{old prefix through }e &amp; a\cdot b &amp; m_eJ
+ \end{array}
+\]</div>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p10-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p10-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p10-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p10-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p10-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p10-s6 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p10 -->
+
+<p><strong>식 Eq. §7.3 ¶10 #1 항별 표</strong></p>
+<!-- TODO:항표 s7-3-p10-e1 -->
+
+<p><strong>식 Eq. §7.3 ¶10 #2 항별 표</strong></p>
+<!-- TODO:항표 s7-3-p10-e2 -->
+
+<hr />
+<p><a id="s7-3-p11"></a></p>
+<h4 id="73-11">§7.3 ¶11<a class="headerlink" href="#73-11" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p11-s1"></a><strong>s1</strong> Multiply the projected overlap in each row by <span class="arithmatex">\(f\)</span> and divide the prescribed-tree identity by <span class="arithmatex">\(J\)</span>.</p>
+<p><a id="s7-3-p11-s2"></a><strong>s2</strong> Rearranging gives</p>
+<p><a id="eq-7-22"></a></p>
+<div class="arithmatex">\[
+\sum_{\ell=d}^{e-1}c_\ell
+   \mathbb E\bigl[f(a\cdot b-a\cdot b_\ell)\bigr]
+ =\delta\bigl(\mathbb E[f(a\cdot b)]
+          -\mathbb Ef\,\mathbb ER_{\mathrm{target}}\bigr)
+       +\rho_N(S,d), \tag{7.22}
+\]</div>
+<p>↳ where <span class="arithmatex">\(R_{\mathrm{target}}\)</span> on the right is the target overlap in the anchor-alone extension.</p>
+<p><a id="s7-3-p11-s3"></a><strong>s3</strong> Its absolute value is at most one.</p>
+<p><a id="s7-3-p11-s4"></a><strong>s4</strong> The error satisfies</p>
+<p><a id="eq-7-23"></a></p>
+<div class="arithmatex">\[
+|\rho_N(S,d)|\le C_{k,\eta}
+       \bigl(p_N(S^+,e+1)+h_N(S)\bigr)
+       +C_{L,k,\eta}\varepsilon_{N,L,k}. \tag{7.23}
+\]</div>
+<p><a id="s7-3-p11-s5"></a><strong>s5</strong> Indeed, multiplying a projection error by <span class="arithmatex">\(f\)</span>, even when correlated with it, costs at most its <span class="arithmatex">\(L^2\)</span> norm since <span class="arithmatex">\(|f|\le1\)</span>.</p>
+<p><a id="s7-3-p11-s6"></a><strong>s6</strong> Sum these errors with absolute coefficients and apply <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a>.</p>
+<p><a id="s7-3-p11-s7"></a><strong>s7</strong> The final term includes division of the original identity error by <span class="arithmatex">\(J\)</span> and tends to zero at fixed <span class="arithmatex">\(L\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p11-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p11-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p11-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p11-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p11-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p11-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p11-s7 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p11 -->
+
+<p><strong>식 (7.22) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-22 -->
+
+<p><strong>식 (7.23) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-23 -->
+
+<hr />
+<p><a id="s7-3-p12"></a></p>
+<h4 id="73-12">§7.3 ¶12<a class="headerlink" href="#73-12" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-3-p12-s1"></a><strong>s1</strong> <em>Closing the induction.</em></p>
+<p><a id="s7-3-p12-s2"></a><strong>s2</strong> Equation <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a> gives <span class="arithmatex">\(\|f-a\cdot b\|_{L^2}\le2p_N(S,e)\)</span>.</p>
+<p><a id="s7-3-p12-s3"></a><strong>s3</strong> Moreover <span class="arithmatex">\(\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1\)</span>.</p>
+<p><a id="s7-3-p12-s4"></a><strong>s4</strong> Replacing <span class="arithmatex">\(f\)</span> by <span class="arithmatex">\(a\cdot b\)</span> on the left of <a href="07-decorrelation-on-prescribed-trees.html#eq-7-22">(7.22)</a> therefore costs at most <span class="arithmatex">\(4p_N(S,e)\)</span>.</p>
+<p><a id="s7-3-p12-s5"></a><strong>s5</strong> Each <span class="arithmatex">\(a\cdot b_\ell\)</span> has the same marginal law as <span class="arithmatex">\(a\cdot b\)</span>, so that left side becomes</p>
+<p><a id="s7-3-p12-e1"></a></p>
+<div class="arithmatex">\[
+\frac12\sum_{\ell=d}^{e-1}c_\ell
+        \mathbb E(a\cdot b-a\cdot b_\ell)^2.
+\]</div>
+<p><a id="s7-3-p12-s6"></a><strong>s6</strong> Its summands are nonnegative and <span class="arithmatex">\(c_d\ge\eta\)</span>.</p>
+<p><a id="s7-3-p12-s7"></a><strong>s7</strong> The right side of <a href="07-decorrelation-on-prescribed-trees.html#eq-7-22">(7.22)</a> is bounded in absolute value by <span class="arithmatex">\(2\delta+|\rho_N(S,d)|\)</span>.</p>
+<p><a id="s7-3-p12-s8"></a><strong>s8</strong> Hence</p>
+<p><a id="eq-7-24"></a></p>
+<div class="arithmatex">\[
+\mathbb E(a\cdot b-a\cdot b_d)^2
+ \le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr). \tag{7.24}
+\]</div>
+<p><a id="s7-3-p12-s9"></a><strong>s9</strong> Sample three copies of <span class="arithmatex">\(A_S\)</span> conditionally independently below <span class="arithmatex">\(d\)</span>.</p>
+<p><a id="s7-3-p12-s10"></a><strong>s10</strong> Projecting each of the two contractions involving the first copy changes it in <span class="arithmatex">\(L^2\)</span> by at most <span class="arithmatex">\(2p_N(S,e)\)</span>.</p>
+<p><a id="s7-3-p12-s11"></a><strong>s11</strong> Using <a href="07-decorrelation-on-prescribed-trees.html#eq-7-7">(7.7)</a>, <a href="07-decorrelation-on-prescribed-trees.html#eq-7-24">(7.24)</a>, and <span class="arithmatex">\(p_N(S,e)\le k\)</span>, we obtain</p>
+<p><a id="eq-7-25"></a></p>
+<div class="arithmatex">\[
+v_N(S,d)\le C_{k,\eta}\bigl(
+       \delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S)\bigr)
+       +C_{L,k,\eta}\varepsilon_{N,L,k}. \tag{7.25}
+\]</div>
+<p><a id="s7-3-p12-s12"></a><strong>s12</strong> Each child in either <span class="arithmatex">\(p_N\)</span> has fewer than <span class="arithmatex">\(k\)</span> leaves.</p>
+<p><a id="s7-3-p12-s13"></a><strong>s13</strong> To make the averaging step explicit, the aligned construction has <span class="arithmatex">\(D=b(S)+1\)</span> distinct depth coordinates, including <span class="arithmatex">\(d\)</span> and <span class="arithmatex">\(e\)</span>.</p>
+<p><a id="s7-3-p12-s14"></a><strong>s14</strong> A term belonging to <span class="arithmatex">\(T_j\)</span> uses only <span class="arithmatex">\(D_j=b(T_j)+1\)</span> coordinates.</p>
+<p><a id="s7-3-p12-s15"></a><strong>s15</strong> For the shifted term these are <span class="arithmatex">\(\pi_j(\mathbf q)=(e+1,(q_v+1)_{v\in\operatorname{Br}(T_j)})\)</span>.</p>
+<p><a id="s7-3-p12-s16"></a><strong>s16</strong> Every retained assignment has at most <span class="arithmatex">\(L^{D-D_j}\)</span> preimages, and its coordinates are <span class="arithmatex">\(\eta/2\)</span>-regular for large <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s7-3-p12-s17"></a><strong>s17</strong> If <span class="arithmatex">\(w_j\)</span> is the child covariance as a function of these coordinates, then, for <span class="arithmatex">\(0\lt \gamma\le1\)</span>,</p>
+<p><a id="eq-7-26"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+L^{-D}\sum_{\mathbf q\;\eta\text{-regular}}
+       w_j(\pi_j(\mathbf q))^\gamma
+ &amp;\le L^{-D_j}\sum_{\mathbf y\;\eta/2\text{-regular}}w_j(\mathbf y)^\gamma \\
+&amp;\le\left(L^{-D_j}\sum_{\mathbf y\;\eta/2\text{-regular}}
+       w_j(\mathbf y)\right)^\gamma. \tag{7.26}
+\end{align*}
+\]</div>
+<p><a id="s7-3-p12-s18"></a><strong>s18</strong> The unshifted term has the same bound without translating the coordinates.</p>
+<p><a id="s7-3-p12-s19"></a><strong>s19</strong> Thus the two aligned copies use single-copy estimates; there is no restriction of an independently averaged pair of copies to a diagonal.</p>
+<p><a id="s7-3-p12-s20"></a><strong>s20</strong> Taking <span class="arithmatex">\(\gamma=1/4\)</span> and then <span class="arithmatex">\(\limsup_N\)</span>, and using <a href="07-decorrelation-on-prescribed-trees.html#eq-7-21">(7.21)</a> and <a href="07-decorrelation-on-prescribed-trees.html#eq-7-3">(7.3)</a>, gives, for sufficiently large <span class="arithmatex">\(L\)</span>,</p>
+<p><a id="eq-7-27"></a></p>
+<div class="arithmatex">\[
+V_{k,L}(\eta)\le C_{k,\eta}\left(
+       L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4}\right). \tag{7.27}
+\]</div>
+<p><a id="s7-3-p12-s21"></a><strong>s21</strong> The maximum over smaller topologies in <a href="07-decorrelation-on-prescribed-trees.html#eq-7-15">(7.15)</a> can be absorbed in the right side because these covariances are bounded by one.</p>
+<p><a id="s7-3-p12-s22"></a><strong>s22</strong> The base case and induction now imply <span class="arithmatex">\(V_{k,L}(\eta)\to0\)</span> for every fixed <span class="arithmatex">\(k,\eta\)</span>, proving the proposition.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-3-p12-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-3-p12-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-3-p12-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-3-p12-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-3-p12-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-3-p12-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-3-p12-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-3-p12-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-3-p12-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-3-p12-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s7-3-p12-s11 --></p>
+<p><strong>s12</strong> <!-- TODO:번역 s7-3-p12-s12 --></p>
+<p><strong>s13</strong> <!-- TODO:번역 s7-3-p12-s13 --></p>
+<p><strong>s14</strong> <!-- TODO:번역 s7-3-p12-s14 --></p>
+<p><strong>s15</strong> <!-- TODO:번역 s7-3-p12-s15 --></p>
+<p><strong>s16</strong> <!-- TODO:번역 s7-3-p12-s16 --></p>
+<p><strong>s17</strong> <!-- TODO:번역 s7-3-p12-s17 --></p>
+<p><strong>s18</strong> <!-- TODO:번역 s7-3-p12-s18 --></p>
+<p><strong>s19</strong> <!-- TODO:번역 s7-3-p12-s19 --></p>
+<p><strong>s20</strong> <!-- TODO:번역 s7-3-p12-s20 --></p>
+<p><strong>s21</strong> <!-- TODO:번역 s7-3-p12-s21 --></p>
+<p><strong>s22</strong> <!-- TODO:번역 s7-3-p12-s22 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-3-p12 -->
+
+<p><strong>식 Eq. §7.3 ¶12 #1 항별 표</strong></p>
+<!-- TODO:항표 s7-3-p12-e1 -->
+
+<p><strong>식 (7.24) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-24 -->
+
+<p><strong>식 (7.25) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-25 -->
+
+<p><strong>식 (7.26) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-26 -->
+
+<p><strong>식 (7.27) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-27 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s7-4"></a></p>
+<h2 id="74-concentration-of-every-multioverlap">§7.4 Concentration of every multioverlap<a class="headerlink" href="#74-concentration-of-every-multioverlap" title="Permanent link">&para;</a></h2>
+<!-- TODO:제목번역 s7-4 -->
+
+<p><a id="s7-4-p1"></a></p>
+<h4 id="74-1">§7.4 ¶1<a class="headerlink" href="#74-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-4-p1-s1"></a><strong>s1</strong> The covariance estimate controls fluctuations below a sampled prefix.</p>
+<p><a id="s7-4-p1-s2"></a><strong>s2</strong> We now use a marker anchor to concentrate the prefix projection, and combine this with the averaged continuity estimate.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-4-p1-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-4-p1-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-4-p1 -->
+
+<hr />
+<p><a id="s7-4-e8"></a></p>
+<h3 id="proof-of-theorem-71">▸ <em>Proof of Theorem <a href="07-decorrelation-on-prescribed-trees.html#s7-1-e1">7.1</a>.</em><a class="headerlink" href="#proof-of-theorem-71" title="Permanent link">&para;</a></h3>
+<p><a id="s7-4-p2"></a></p>
+<h4 id="74-2">§7.4 ¶2<a class="headerlink" href="#74-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-4-p2-s1"></a><strong>s1</strong> For a singleton, use the spin-anchor identity with no added colors and <span class="arithmatex">\(f=R_S\)</span>.</p>
+<p><a id="s7-4-p2-s2"></a><strong>s2</strong> It gives <span class="arithmatex">\(\mathbb ER_S^2=(\mathbb ER_S)^2+o_N(1)\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-4-p2-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-4-p2-s2 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-4-p2 -->
+
+<hr />
+<p><a id="s7-4-p3"></a></p>
+<h4 id="74-3">§7.4 ¶3<a class="headerlink" href="#74-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-4-p3-s1"></a><strong>s1</strong> Suppose <span class="arithmatex">\(S\)</span> first splits at <span class="arithmatex">\(e\)</span> and has proper child shapes <span class="arithmatex">\(T_1,\ldots,T_s\)</span>.</p>
+<p><a id="s7-4-p3-s2"></a><strong>s2</strong> We will condition one step before <span class="arithmatex">\(e\)</span>.</p>
+<p><a id="s7-4-p3-s3"></a><strong>s3</strong> Use <span class="arithmatex">\(S\)</span> as the old tree, designate one of its leaves as a marker anchor, and add a full copy of <span class="arithmatex">\(S\)</span> all of whose leaves split from the anchor at <span class="arithmatex">\(e-1\)</span>.</p>
+<p><a id="s7-4-p3-s4"></a><strong>s4</strong> Its first path must be fresh at <span class="arithmatex">\(e-1\)</span>, because the old tree has not yet branched there.</p>
+<p><a id="s7-4-p3-s5"></a><strong>s5</strong> All other target paths lie in the resulting fresh subtree.</p>
+<p><a id="s7-4-p3-s6"></a><strong>s6</strong> The extension coefficient on both sides of the prescribed-tree identity is the same nonzero number</p>
+<p><a id="eq-7-28"></a></p>
+<div class="arithmatex">\[
+C(S,e)=-\delta \kappa(S). \tag{7.28}
+\]</div>
+<p><a id="s7-4-p3-s7"></a><strong>s7</strong> The target and old copies are conditionally independent and identically distributed below <span class="arithmatex">\(\mathscr F_{e-1}\)</span>.</p>
+<p><a id="s7-4-p3-s8"></a><strong>s8</strong> With <span class="arithmatex">\(f=R_S\)</span> and <span class="arithmatex">\(M=\mathbb E[R_S\mid\mathscr F_{e-1}]\)</span>, their product has conditional expectation <span class="arithmatex">\(M^2\)</span>.</p>
+<p><a id="s7-4-p3-s9"></a><strong>s9</strong> On the anchor-alone side, deleting the marker's continuation below <span class="arithmatex">\(e-1\)</span> integrates a probability kernel to one and leaves the ordinary target law <span class="arithmatex">\(S\)</span>, with mean <span class="arithmatex">\(\mathbb E R_S\)</span>.</p>
+<p><a id="s7-4-p3-s10"></a><strong>s10</strong> The identity therefore gives</p>
+<p><a id="eq-7-29"></a></p>
+<div class="arithmatex">\[
+C(S,e)\bigl(\mathbb EM^2-(\mathbb E R_S)^2\bigr)
+ =C(S,e)\operatorname{Var}(M)=o_N(1), \tag{7.29}
+\]</div>
+<p>↳ and hence</p>
+<p><a id="eq-7-30"></a></p>
+<div class="arithmatex">\[
+\qquad \operatorname{Var}(M)\longrightarrow0
+ \quad\text{at each fixed }L,S,e. \tag{7.30}
+\]</div>
+<p><a id="s7-4-p3-s11"></a><strong>s11</strong> Division by <span class="arithmatex">\(C(S,e)\)</span> is made only at fixed <span class="arithmatex">\(L\)</span>; no uniform lower bound as <span class="arithmatex">\(L\to\infty\)</span> is needed.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-4-p3-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-4-p3-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-4-p3-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-4-p3-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-4-p3-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-4-p3-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-4-p3-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-4-p3-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-4-p3-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-4-p3-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s7-4-p3-s11 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-4-p3 -->
+
+<p><strong>식 (7.28) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-28 -->
+
+<p><strong>식 (7.29) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-29 -->
+
+<p><strong>식 (7.30) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-30 -->
+
+<hr />
+<p><a id="s7-4-p4"></a></p>
+<h4 id="74-4">§7.4 ¶4<a class="headerlink" href="#74-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-4-p4-s1"></a><strong>s1</strong> It remains to control the conditional variance below this prefix.</p>
+<p><a id="s7-4-p4-s2"></a><strong>s2</strong> The child covariances are evaluated at <span class="arithmatex">\(e\)</span>, which is separated from all their branching depths; the move to <span class="arithmatex">\(e-1\)</span> will use martingale continuity instead.</p>
+<p><a id="s7-4-p4-s3"></a><strong>s3</strong> Set</p>
+<p><a id="s7-4-p4-e1"></a></p>
+<div class="arithmatex">\[
+G=\mathbf1\cdot\prod_j \mu_{e,T_j},
+ \qquad G_-=\mathbf1\cdot\prod_j \mu_{e-1,T_j}.
+\]</div>
+<p><a id="s7-4-p4-s4"></a><strong>s4</strong> The latter is <span class="arithmatex">\(\mathscr F_{e-1}\)</span>-measurable.</p>
+<p><a id="s7-4-p4-s5"></a><strong>s5</strong> By <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a>, <span class="arithmatex">\(\mathbb E(R_S-G)^2\le p_N(S,e)^2\)</span>.</p>
+<p><a id="s7-4-p4-s6"></a><strong>s6</strong> Keeping all proper child depths fixed, the product difference inequality and <a href="07-decorrelation-on-prescribed-trees.html#eq-7-10">(7.10)</a> imply</p>
+<p><a id="eq-7-31"></a></p>
+<div class="arithmatex">\[
+\mathcal A_{L,\eta}\mathbb E(G-G_-)^2\le C_k/L. \tag{7.31}
+\]</div>
+<p><a id="s7-4-p4-s7"></a><strong>s7</strong> Here <span class="arithmatex">\(e\)</span> is itself a ranged coordinate, so the one-step increments are summed before division by <span class="arithmatex">\(L\)</span>.</p>
+<p><a id="s7-4-p4-s8"></a><strong>s8</strong> Since conditional expectation is the optimal <span class="arithmatex">\(L^2\)</span> projection,</p>
+<p><a id="s7-4-p4-e2"></a></p>
+<div class="arithmatex">\[
+\mathbb E(R_S-M)^2
+   \le\mathbb E(R_S-G_-)^2
+   \le2p_N(S,e)^2+2\mathbb E(G-G_-)^2.
+\]</div>
+<p><a id="s7-4-p4-s9"></a><strong>s9</strong> Variance decomposition and <a href="07-decorrelation-on-prescribed-trees.html#eq-7-30">(7.30)</a> now show</p>
+<p><a id="eq-7-32"></a></p>
+<div class="arithmatex">\[
+\limsup_{N\to\infty}
+      \mathcal A_{L,\eta}\operatorname{Var}(R_S)
+ \le C_k\left(L^{-1}+V_{k-1,L}(\eta/2)^{1/2}\right)
+ \quad\text{for all sufficiently large }L. \tag{7.32}
+\]</div>
+<p><a id="s7-4-p4-s10"></a><strong>s10</strong> In this estimate we used <span class="arithmatex">\(p_N(S,e)^2\le s\sum_jv_N(T_j,e)^{1/2}\)</span> and <a href="07-decorrelation-on-prescribed-trees.html#eq-7-26">(7.26)</a> with <span class="arithmatex">\(\gamma=1/2\)</span>: here the full average has <span class="arithmatex">\(D=b(S)\)</span> coordinates because <span class="arithmatex">\(d\)</span> is absent, while still <span class="arithmatex">\(D_j=b(T_j)+1\)</span>.</p>
+<p><a id="s7-4-p4-s11"></a><strong>s11</strong> Proposition <a href="07-decorrelation-on-prescribed-trees.html#s7-3-e6">7.4</a> finishes the proof.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-4-p4-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-4-p4-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-4-p4-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-4-p4-s4 --></p>
+<p><strong>s5</strong> <!-- TODO:번역 s7-4-p4-s5 --></p>
+<p><strong>s6</strong> <!-- TODO:번역 s7-4-p4-s6 --></p>
+<p><strong>s7</strong> <!-- TODO:번역 s7-4-p4-s7 --></p>
+<p><strong>s8</strong> <!-- TODO:번역 s7-4-p4-s8 --></p>
+<p><strong>s9</strong> <!-- TODO:번역 s7-4-p4-s9 --></p>
+<p><strong>s10</strong> <!-- TODO:번역 s7-4-p4-s10 --></p>
+<p><strong>s11</strong> <!-- TODO:번역 s7-4-p4-s11 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-4-p4 -->
+
+<p><strong>식 Eq. §7.4 ¶4 #1 항별 표</strong></p>
+<!-- TODO:항표 s7-4-p4-e1 -->
+
+<p><strong>식 (7.31) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-31 -->
+
+<p><strong>식 Eq. §7.4 ¶4 #2 항별 표</strong></p>
+<!-- TODO:항표 s7-4-p4-e2 -->
+
+<p><strong>식 (7.32) 항별 표</strong></p>
+<!-- TODO:항표 eq-7-32 -->
+
+<hr />
+<p>∎</p>
+<p><a id="s7-4-e9"></a></p>
+<h3 id="remark-75">▸ Remark 7.5<a class="headerlink" href="#remark-75" title="Permanent link">&para;</a></h3>
+<p><a id="s7-4-p5"></a></p>
+<h4 id="74-5">§7.4 ¶5<a class="headerlink" href="#74-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s7-4-p5-s1"></a><strong>s1</strong> All uncancelled small denominators in this section occur only in prescribed-tree identity errors.</p>
+<p><a id="s7-4-p5-s2"></a><strong>s2</strong> At fixed <span class="arithmatex">\(L\)</span> there are finitely many relevant trees, so those errors disappear before any depth average or <span class="arithmatex">\(L\)</span> limit is taken.</p>
+<p><a id="s7-4-p5-s3"></a><strong>s3</strong> Errors that survive the <span class="arithmatex">\(N\)</span> limit are controlled by the uniform relative absolute-cost bound <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a>, the lower-order covariance averages, and the martingale estimate <span class="arithmatex">\(C/L\)</span>.</p>
+<p><a id="s7-4-p5-s4"></a><strong>s4</strong> No rate of convergence in <span class="arithmatex">\(N\)</span> uniform in <span class="arithmatex">\(L\)</span> is used.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <!-- TODO:번역 s7-4-p5-s1 --></p>
+<p><strong>s2</strong> <!-- TODO:번역 s7-4-p5-s2 --></p>
+<p><strong>s3</strong> <!-- TODO:번역 s7-4-p5-s3 --></p>
+<p><strong>s4</strong> <!-- TODO:번역 s7-4-p5-s4 --></p>
+<p><strong>물리 해석</strong></p>
+<!-- TODO:해석 s7-4-p5 -->
+
+<hr />
+<p><em>(끝: s7-4-e9)</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="06-perturbations-and-identities-on-prescrib.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §6 Perturbations and identities on prescribed trees">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §6 Perturbations and identities on prescribed trees
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="08-independent-hierarchical-messages-and-th.html" class="md-footer__link md-footer__link--next" aria-label="다음: §8 Independent hierarchical messages and the cavity comparison">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §8 Independent hierarchical messages and the cavity comparison
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

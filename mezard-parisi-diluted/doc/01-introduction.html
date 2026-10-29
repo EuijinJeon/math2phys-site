@@ -1,0 +1,980 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/01-introduction.html">
+      
+      
+        <link rel="prev" href="00-abstract.html">
+      
+      
+        <link rel="next" href="02-the-model-and-the-variational-principle.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§1 Introduction - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduction" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §1 Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="01-introduction.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-the-model-and-the-variational-principle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-calculus-on-finite-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-a-perturbed-cavity-reservoir.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-perturbations-and-identities-on-prescrib.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-decorrelation-on-prescribed-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s1"></a></p>
+<h1 id="1-introduction">§1 Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h1>
+<p><em>제목: 서론</em></p>
+<p><a href="00-abstract.html">← 이전: §0 Abstract</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="02-the-model-and-the-variational-principle.html">다음: §2 The model and the variational principle →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<ul>
+<li><strong>하는 일</strong>: (¶1) 문제를 세운다 — diluted spin glass 에서 cavity field 분포의 계층(RSB order parameter)이 pressure 를 정확히 결정하는가. (¶2–¶5) 선행 연구를 정리한다: 물리(Viana–Bray, Mézard–Parisi), upper bound(Franz–Leone, Panchenko–Talagrand), 그리고 다른 형태의 정확한 변분 공식들(Aizenman–Sims–Starr, De Sanctis, Panchenko, Coja-Oghlan–Perkins). (¶6–¶7) 증명의 핵심 난점(multioverlap)과 전략(유한 보조 계층, branching 깊이 평균)을 예고한다.</li>
+<li><strong>물리적 의미</strong>: 이 논문의 기여는 "정확한 변분 공식이 <strong>있다</strong>" 가 아니라 "물리학자가 쓰는 <strong>바로 그 형태</strong>(유한 단계 RSB cavity functional)로 pressure 를 잃지 않고 내려갈 수 있다" 는 것이다(¶4 s6). pair overlap 만 다루는 SK 와 달리 diluted 모형에서는 모든 multioverlap 이 물리적 상태를 규정한다(¶6).</li>
+<li><strong>건너뛰어도 되는가</strong>: ¶1, ¶3, ¶6 은 읽기를 권한다. ¶2, ¶4, ¶5 는 문헌 지도라 건너뛰어도 된다. ¶7 의 전략은 §2.2 에서 더 자세히 나온다.</li>
+</ul>
+</details>
+<p><a id="s1-p1"></a></p>
+<h4 id="1-1">§1 ¶1<a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p1-s1"></a><strong>s1</strong> A diluted spin glass has a finite mean number of interactions per spin.</p>
+<p><a id="s1-p1-s2"></a><strong>s2</strong> Its local environment remains random as the system grows, and the cavity method describes that environment through a distribution of local fields.</p>
+<p><a id="s1-p1-s3"></a><strong>s3</strong> When many competing states contribute to the partition function, the proposed order parameter is a hierarchy of distributions of these fields.</p>
+<p><a id="s1-p1-s4"></a><strong>s4</strong> The thermodynamic question is whether this hierarchy determines the limiting expected log partition function per spin.</p>
+<p><a id="s1-p1-s5"></a><strong>s5</strong> We call this quantity <em>pressure</em>.</p>
+<p><a id="s1-p1-s6"></a><strong>s6</strong> At inverse temperature <span class="arithmatex">\(\beta\)</span>, the usual physical free energy per spin is its negative divided by <span class="arithmatex">\(\beta\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> diluted spin glass는 spin 하나당 상호작용 수의 평균이 유한하다.</p>
+<p><strong>s2</strong> 계가 커져도 그 국소 환경은 무작위로 남으며, cavity method 는 그 환경을 local field(국소장)들의 분포로 기술한다.</p>
+<p><strong>s3</strong> 경쟁하는 여러 상태가 partition function(분배함수)에 기여할 때, 제안되는 order parameter(질서 변수)는 이 field 들의 분포들의 계층이다.</p>
+<p><strong>s4</strong> 열역학적 질문은 이 계층이 spin 당 log partition function 기댓값의 극한을 결정하는가이다.</p>
+<p><strong>s5</strong> 우리는 이 양을 <em>pressure</em> 라고 부른다.</p>
+<p><strong>s6</strong> inverse temperature(역온도) <span class="arithmatex">\(\beta\)</span> 에서, 보통의 물리적 spin 당 free energy(자유에너지)는 이 양의 음수를 <span class="arithmatex">\(\beta\)</span> 로 나눈 것이다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> "diluted" = 상호작용 graph 의 평균 degree 가 <span class="arithmatex">\(N\)</span> 과 무관하게 유한(<span class="arithmatex">\(\alpha p\)</span>, R3). SK 같은 완전 연결 모형과 대비된다. 그래서 한 spin 의 이웃은 thermodynamic limit(열역학적 극한)에서도 유한 개이고, 이웃 구조 자체가 무작위다(s2 의 "국소 환경이 무작위로 남는다"). <code>📚</code> <a href="02-the-model-and-the-variational-principle.html#eq-2-2">(2.2)</a></li>
+<li><strong>s2</strong> cavity method — spin 하나(또는 factor 하나)를 떼어냈다 다시 붙이며 계를 재귀적으로 다루는 방법. 떼어낸 spin 의 이웃들이 느끼는 유효장이 cavity field(R7)다. 유한 연결 graph 는 국소적으로 tree 와 같으므로 이웃들의 cavity field 가 (RS 에서는) 서로 독립이라고 가정하고, 그 <strong>분포</strong> <span class="arithmatex">\(P(h)\)</span> 를 order parameter 로 삼는다. <code>📚</code> [<a href="99-references.html#ref-MP01">12</a>]</li>
+<li><strong>s3</strong> "경쟁하는 여러 상태" = 여러 pure state(RSB). 각 상태마다 cavity field 분포가 다르므로, 상태들에 걸친 "분포의 분포"(1RSB), 그 위의 분포(2RSB)… 가 order parameter 가 된다. 수학적으로 이것이 <span class="arithmatex">\(\zeta\in\mathcal M_{r+1}\)</span> 이다(R11). <code>📚</code> <a href="02-the-model-and-the-variational-principle.html#s2-1-p3">§2.1 ¶3</a></li>
+<li><strong>s4–s6</strong> pressure 는 수학 문헌의 관례로, <span class="arithmatex">\(\beta\)</span> 를 Hamiltonian 에 흡수한 quenched <span class="arithmatex">\(\frac1N\mathbb E\log Z_N\)</span> 이다(R4). 물리의 free energy density 와의 관계는 아래 전개와 같다. 부호가 반대이므로, 물리의 "free energy 최소화" 는 여기서 "pressure 최대화" 이고, Parisi 공식의 "max over order parameter"(SK 의 물리 관례)가 이 논문에서는 inf 로 나타나는 이유도 부호·방향 관례를 같이 따져야 한다(§2 에서 R16 으로 다룸). <code>✅</code></li>
+</ul>
+<details>
+<summary>전개: pressure 와 free energy 의 관계 (s6)</summary>
+<p>물리의 free energy density: <span class="arithmatex">\(f_N=-\dfrac{1}{\beta N}\mathbb E\log Z_N\)</span>. 이 논문의 Hamiltonian 은 <span class="arithmatex">\(\beta\)</span> 를 이미 흡수해 <span class="arithmatex">\(Z_N=\sum_\sigma e^{-H_N(\sigma)}\)</span> 이므로, 물리 Hamiltonian <span class="arithmatex">\(H^{\rm phys}\)</span> 로는 <span class="arithmatex">\(H_N=\beta H^{\rm phys}\)</span>.
+따라서</p>
+<div class="arithmatex">\[
+F_N=\frac1N\mathbb E\log Z_N=-\beta f_N
+\quad\Longleftrightarrow\quad
+f_N=-\frac{F_N}{\beta}.
+\]</div>
+<p>s6 "its negative divided by <span class="arithmatex">\(\beta\)</span>" 와 일치한다. 극한에서도 같은 관계가 성립한다(선형 관계이므로).</p>
+</details>
+<hr />
+<p><a id="s1-p2"></a></p>
+<h4 id="1-2">§1 ¶2<a class="headerlink" href="#1-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p2-s1"></a><strong>s1</strong> The Viana–Bray model is a classical diluted two-spin model [<a href="99-references.html#ref-VB85">18</a>].</p>
+<p><a id="s1-p2-s2"></a><strong>s2</strong> Mézard and Parisi [<a href="99-references.html#ref-MP01">12</a>] developed the hierarchical cavity picture for the fixed-connectivity Bethe-lattice spin glass, with an explicit one-step replica-symmetry-breaking functional.</p>
+<p><a id="s1-p2-s3"></a><strong>s3</strong> Franz and Leone [<a href="99-references.html#ref-FL03">9</a>] adapted Guerra's interpolation method [<a href="99-references.html#ref-Guerra03">11</a>] to diluted systems and obtained replica-symmetric and one-step pressure bounds for even-arity models.</p>
+<p><a id="s1-p2-s4"></a><strong>s4</strong> Panchenko and Talagrand [<a href="99-references.html#ref-PT04">16</a>] then proved the arbitrary finite-level hierarchical upper bounds considered here.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> Viana–Bray 모형은 고전적인 diluted two-spin 모형이다 [<a href="99-references.html#ref-VB85">18</a>].</p>
+<p><strong>s2</strong> Mézard 와 Parisi [<a href="99-references.html#ref-MP01">12</a>] 는 연결도가 고정된 Bethe-lattice spin glass 에 대해 계층적 cavity 그림을 발전시켰고, 명시적인 one-step replica-symmetry-breaking(1RSB) functional 을 주었다.</p>
+<p><strong>s3</strong> Franz 와 Leone [<a href="99-references.html#ref-FL03">9</a>] 은 Guerra 의 interpolation(보간) 방법 [<a href="99-references.html#ref-Guerra03">11</a>] 을 diluted 계로 옮겨, 짝수-arity 모형에 대한 replica-symmetric 및 one-step pressure upper bound 를 얻었다.</p>
+<p><strong>s4</strong> 그 뒤 Panchenko 와 Talagrand [<a href="99-references.html#ref-PT04">16</a>] 가 여기서 다루는 임의의 유한 단계 계층적 upper bound 를 증명했다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> Viana–Bray: <span class="arithmatex">\(p=2\)</span>, Poisson 개수의 bond, 대칭 분포의 coupling <span class="arithmatex">\(J\)</span>. 이 논문 틀에서는 <span class="arithmatex">\(\theta(s_1,s_2)=\beta J s_1s_2\)</span> 이고, factorization (2.3) 이 <span class="arithmatex">\(a=\cosh\beta J\)</span>, <span class="arithmatex">\(b=\tanh\beta J\)</span>, <span class="arithmatex">\(f(s)=s\)</span> 로 성립한다(R5, loop 전개). <code>✅</code></li>
+<li><strong>s2</strong> Bethe lattice 는 <strong>고정</strong> 연결도(random regular graph)이고, 이 논문은 <strong>Poisson</strong> 연결도(Erdős–Rényi 형)이다. 그래서 site 항 <span class="arithmatex">\(V_{\rm s}\)</span> 에서 붙는 factor 수 <span class="arithmatex">\(k\)</span> 가 고정값이 아니라 <span class="arithmatex">\(\mathrm{Poisson}(\alpha p)\)</span> 이다(<a href="02-the-model-and-the-variational-principle.html#eq-2-8">(2.8)</a>). 함수 형태(site 항 − edge 항, power mean 으로 상태 평균)는 Mézard–Parisi 와 같다. <code>📚</code> [<a href="99-references.html#ref-MP01">12</a>], [<a href="99-references.html#ref-PT04">16</a>]</li>
+<li><strong>s3</strong> Guerra interpolation: 실제 계와 "독립 cavity field 로 이루어진 보조 계" 사이를 <span class="arithmatex">\(t\in[0,1]\)</span> 로 잇고, <span class="arithmatex">\(\frac{d}{dt}\)</span> 가 부호가 정해진 나머지항을 갖게 해 upper bound 를 얻는다. diluted 계에서는 이 나머지항이 <span class="arithmatex">\(\mathbb E[(-b)^n]\)</span> 와 짝수 차수 multioverlap 의 곱으로 나타나므로, 짝수 arity 와 positivity 조건(R6)이 필요하다. 🧭 물리 직관과의 차이: 물리의 RSB ansatz 는 "이 형태가 정답" 이라고 가정하지만, 수학은 먼저 <strong>모든 trial 값이 upper bound</strong> 임을 보이고 나서, 그 inf 가 실제로 도달됨(lower bound)을 따로 증명해야 한다 — 이 논문의 일이 바로 그 lower bound 다. <code>📚</code> [<a href="99-references.html#ref-FL03">9</a>], [<a href="99-references.html#ref-Guerra03">11</a>]</li>
+<li><strong>s4</strong> "임의의 유한 단계" = 모든 <span class="arithmatex">\(r\)</span> 에 대해 <span class="arithmatex">\(F_N\le\mathcal B_r(\zeta,\mathbf m)\)</span> (적절한 극한에서). 이 논문은 §4 에서 이를 재현한다. <code>📚</code> [<a href="99-references.html#ref-PT04">16</a>]</li>
+</ul>
+<details>
+<summary>전개: Viana–Bray 의 factorization 확인 (s1, R5)</summary>
+<p><span class="arithmatex">\(s_1s_2\in\{\pm1\}\)</span> 이므로 <span class="arithmatex">\(e^{\beta J s_1s_2}=\cosh(\beta J)+s_1s_2\sinh(\beta J)=\cosh\beta J\,(1+\tanh\beta J\;s_1s_2)\)</span>.
+(2.3) 의 형태 <span class="arithmatex">\(a(1+b\,f_1(s_1)f_2(s_2))\)</span> 와 비교하면 <span class="arithmatex">\(a=\cosh\beta J\gt 0\)</span>, <span class="arithmatex">\(b=\tanh\beta J\)</span>, <span class="arithmatex">\(f_1=f_2=\mathrm{id}\)</span>, 그리고 <span class="arithmatex">\(\lvert b f_1f_2\rvert=\lvert\tanh\beta J\rvert\lt 1\)</span> (유한 <span class="arithmatex">\(\beta J\)</span>) ✓.
+positivity (2.4): <span class="arithmatex">\(J\)</span> 가 대칭 분포면 <span class="arithmatex">\(b=\tanh\beta J\)</span> 도 대칭이므로 <span class="arithmatex">\(\mathbb E[(-b)^n]=0\)</span> (<span class="arithmatex">\(n\)</span> 홀수), <span class="arithmatex">\(\mathbb E[b^n]\ge0\)</span> (<span class="arithmatex">\(n\)</span> 짝수) ✓.
+수치 확인: <span class="arithmatex">\(\beta J\in\{0.3,1.2,-0.7\}\)</span>, 네 spin 배치 모두에서 양변 차이 <span class="arithmatex">\(\lt 10^{-12}\)</span> (python).
+"loop 전개" 라는 이름의 이유: <span class="arithmatex">\(\prod_{\text{bonds}}(1+\tanh\beta J\,s_is_j)\)</span> 를 전개해 spin 합을 취하면 닫힌 loop 를 이루는 항만 살아남는다(고온 전개).</p>
+</details>
+<hr />
+<p><a id="s1-p3"></a></p>
+<h4 id="1-3">§1 ¶3<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p3-s1"></a><strong>s1</strong> We prove that the infimum of these bounds is the limiting pressure.</p>
+<p><a id="s1-p3-s2"></a><strong>s2</strong> This resolves the equality conjecture stated immediately after Theorem 4 of Panchenko–Talagrand [<a href="99-references.html#ref-PT04">16</a>], for their Poisson, even-arity Ising model class with factorized interactions and the specified positivity condition.</p>
+<p><a id="s1-p3-s3"></a><strong>s3</strong> Only first moments of the interaction and external field are required.</p>
+<p><a id="s1-p3-s4"></a><strong>s4</strong> The result includes the Viana–Bray model, diluted even-spin models with symmetric couplings, and soft random even-<span class="arithmatex">\(K\)</span> SAT at every positive temperature.</p>
+<p><a id="s1-p3-s5"></a><strong>s5</strong> The exact model and trial functional are defined in Section <a href="02-the-model-and-the-variational-principle.html#s2">2</a>; the named models and their expected ground-state limits are treated in Section <a href="10-named-models-and-the-zero-temperature-li.html#s10">10</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 우리는 이 upper bound 들의 infimum 이 극한 pressure 임을 증명한다.</p>
+<p><strong>s2</strong> 이로써 Panchenko–Talagrand [<a href="99-references.html#ref-PT04">16</a>] 의 Theorem 4 바로 뒤에 제시된 등식 추측이, 그들의 Poisson·짝수-arity Ising 모형 class(인수분해된 상호작용과 명시된 positivity 조건을 갖는)에 대해 해결된다.</p>
+<p><strong>s3</strong> 상호작용과 외부장에 대해서는 1차 moment 만 필요하다.</p>
+<p><strong>s4</strong> 결과는 Viana–Bray 모형, 대칭 coupling 을 갖는 diluted 짝수-spin 모형, 그리고 모든 양의 온도에서의 soft random 짝수-<span class="arithmatex">\(K\)</span> SAT 를 포함한다.</p>
+<p><strong>s5</strong> 정확한 모형과 trial functional 은 Section <a href="02-the-model-and-the-variational-principle.html#s2">2</a> 에서 정의하고, 이름 붙은 모형들과 그 바닥상태 극한의 예상값은 Section <a href="10-named-models-and-the-zero-temperature-li.html#s10">10</a> 에서 다룬다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> upper bound 는 이미 알려져 있었으므로, 새로운 것은 <strong>lower bound(하계)</strong>: <span class="arithmatex">\(\liminf_N F_N\ge\inf_r\Phi_r\)</span>. upper bound 와 합쳐 극한이 존재하고 그 값이 정해진다. <code>📚</code> Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a></li>
+<li><strong>s2</strong> "factorized interactions" = (2.3) 형태(R5), "positivity condition" = (2.4)(R6). 이 둘은 <strong>upper bound</strong> 증명에만 쓰이고, lower bound 는 더 일반적인 bounded 상호작용에서 성립한다(§2.2 ¶6 에서 논문이 직접 밝힘). <code>📚</code> <a href="02-the-model-and-the-variational-principle.html#s2-2-p6">§2.2 ¶6</a></li>
+<li><strong>s4</strong> soft random <span class="arithmatex">\(K\)</span>-SAT: clause 가 위반되면 <span class="arithmatex">\(e^{-\beta}\)</span> 의 벌점을 받는 모형(hard constraint 가 아니라 유한 온도). <span class="arithmatex">\(K\)</span> 짝수여야 하는 이유는 interpolation 의 부호 조건이다. "모든 양의 온도" 는 <span class="arithmatex">\(\beta\lt\infty\)</span> 에서 성립하고, <span class="arithmatex">\(\beta\to\infty\)</span>(바닥상태)는 §10 에서 별도로 다룬다는 뜻이다. <code>📚</code> <a href="01-introduction.html#s1-p3-s5">§1 ¶3 s5</a></li>
+<li><strong>s4</strong> (K-SAT 의 positivity 확인) clause 위반 indicator 를 <span class="arithmatex">\(\prod_\ell\frac{1-J_\ell s_\ell}{2}\)</span> (<span class="arithmatex">\(J_\ell=\pm1\)</span>: literal 부호)로 쓰면 <span class="arithmatex">\(e^{\theta}=1-(1-e^{-\beta})\prod_\ell\frac{1-J_\ell s_\ell}{2}\)</span> 이므로 <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=-(1-e^{-\beta})\lt 0\)</span>, <span class="arithmatex">\(f_\ell(s)=\frac{1-J_\ell s}{2}\)</span>. 그러면 <span class="arithmatex">\(-b\gt 0\)</span> 이라 <span class="arithmatex">\(\mathbb E[(-b)^n]\gt 0\)</span> ✓. 단 <span class="arithmatex">\(f_\ell\)</span> 가 "독립 사본"이려면 <span class="arithmatex">\(J_\ell\)</span> 이 i.i.d. 여야 한다(통상의 random K-SAT 와 일치). <code>✅</code></li>
+</ul>
+<details>
+<summary>전개: soft K-SAT 의 factorization (s4)</summary>
+<p>clause 하나: literal 부호 <span class="arithmatex">\(J_\ell\in\{\pm1\}\)</span>, clause 는 모든 <span class="arithmatex">\(\ell\)</span> 에 대해 <span class="arithmatex">\(s_\ell=-J_\ell\)</span> 일 때만 위반. <span class="arithmatex">\(\frac{1-J_\ell s_\ell}{2}\in\{0,1\}\)</span> 은 "literal <span class="arithmatex">\(\ell\)</span> 이 거짓" 의 indicator 이므로 위반 indicator <span class="arithmatex">\(=\prod_{\ell=1}^K\frac{1-J_\ell s_\ell}{2}\)</span>.
+벌점 <span class="arithmatex">\(e^{-\beta}\)</span>: <span class="arithmatex">\(e^{\theta}=1\cdot(1-\text{viol})+e^{-\beta}\,\text{viol}=1-(1-e^{-\beta})\,\text{viol}\)</span>.
+(2.3) 과 비교: <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=-(1-e^{-\beta})\in(-1,0)\)</span>, <span class="arithmatex">\(f_\ell=\frac{1-J_\ell s}{2}\in\{0,1\}\)</span>, <span class="arithmatex">\(\lvert b\prod f_\ell\rvert\le 1-e^{-\beta}\lt 1\)</span> ✓.
+(이것이 논문 §10 의 정의와 같은지는 §10 을 번역할 때 대조한다 — 그 전까지 이 항목은 "통상의 정의" 기준.)</p>
+</details>
+<hr />
+<p><a id="s1-p4"></a></p>
+<h4 id="1-4">§1 ¶4<a class="headerlink" href="#1-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p4-s1"></a><strong>s1</strong> An exact variational description and reduction to a prescribed trial class are distinct problems.</p>
+<p><a id="s1-p4-s2"></a><strong>s2</strong> The cavity variational principle of Aizenman, Sims and Starr [<a href="99-references.html#ref-ASS03">2</a>] for the Sherrington–Kirkpatrick model has a Viana–Bray counterpart in De Sanctis's formulation over random multioverlap structures [<a href="99-references.html#ref-DeSanctis04">7</a>].</p>
+<p><a id="s1-p4-s3"></a><strong>s3</strong> Panchenko's spin-distribution approach [<a href="99-references.html#ref-Pan13">14</a>, Theorems 1–2] gives an exact variational formula over invariant exchangeable spin distributions.</p>
+<p><a id="s1-p4-s4"></a><strong>s4</strong> Under their positivity condition, Coja-Oghlan and Perkins [<a href="99-references.html#ref-COP19">5</a>] obtain an invariant-kernel variational formula for random regular factor graphs.</p>
+<p><a id="s1-p4-s5"></a><strong>s5</strong> These results use different descriptions of the state from the finite hierarchy of message laws optimized here.</p>
+<p><a id="s1-p4-s6"></a><strong>s6</strong> The additional task is to recover the specific hierarchical cavity functional without losing the pressure.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 정확한 변분 기술(記述)과, 미리 정한 trial class 로의 환원은 서로 다른 문제다.</p>
+<p><strong>s2</strong> Sherrington–Kirkpatrick 모형에 대한 Aizenman, Sims, Starr [<a href="99-references.html#ref-ASS03">2</a>] 의 cavity 변분 원리는, random multioverlap structure 위에서 정식화한 De Sanctis 의 Viana–Bray 판 [<a href="99-references.html#ref-DeSanctis04">7</a>] 을 대응물로 갖는다.</p>
+<p><strong>s3</strong> Panchenko 의 spin-distribution 접근 [<a href="99-references.html#ref-Pan13">14</a>, Theorems 1–2] 은 invariant exchangeable spin 분포들 위에서의 정확한 변분 공식을 준다.</p>
+<p><strong>s4</strong> Coja-Oghlan 과 Perkins [<a href="99-references.html#ref-COP19">5</a>] 는 그들의 positivity 조건 하에서 random regular factor graph 에 대한 invariant-kernel 변분 공식을 얻는다.</p>
+<p><strong>s5</strong> 이 결과들은 여기서 최적화하는 message law 의 유한 계층과는 다른 방식으로 상태를 기술한다.</p>
+<p><strong>s6</strong> 추가로 해야 할 일은 pressure 를 잃지 않으면서 특정한 계층적 cavity functional 을 되찾는 것이다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> 비유: "정확한 free energy 가 어떤 거대한 공간(모든 가능한 상태 기술) 위의 변분으로 쓰인다" 와 "물리학자가 쓰는 유한 단계 RSB ansatz 공간만으로 충분하다" 는 다른 주장이다. 후자는 ansatz 의 <strong>완전성</strong> 주장이다. <code>🔧</code></li>
+<li><strong>s2</strong> Aizenman–Sims–Starr(ASS): <span class="arithmatex">\(\mathbb E\log Z_{N+1}-\mathbb E\log Z_N\)</span> 을 cavity 계산으로 다루어 free energy 를 "모든 random overlap structure 위의 inf" 로 쓴 것. De Sanctis 는 diluted 계라 overlap 대신 multioverlap structure 를 썼다. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>], [<a href="99-references.html#ref-DeSanctis04">7</a>]</li>
+<li><strong>s3</strong> "invariant exchangeable spin distribution": spin 배열 <span class="arithmatex">\((\sigma_i^\ell)\)</span> (site <span class="arithmatex">\(i\)</span>, replica <span class="arithmatex">\(\ell\)</span>)의 분포로, site·replica 교환에 대해 대칭이고 cavity 연산에 대해 불변인 것. 물리적으로는 "thermodynamic limit 의 Gibbs 상태를 replica 들의 spin 통계로 통째로 기술" 하는 것에 해당하며, 계층(RSB) 구조를 가정하지 않는다. <code>📚</code> [<a href="99-references.html#ref-Pan13">14</a>]</li>
+<li><strong>s5–s6</strong> 핵심 문장. 정확한 공식은 이미 (다른 언어로) 있었고, 이 논문은 그것을 Mézard–Parisi 의 <strong>유한 계층 message law</strong> 언어로 "pressure 손실 없이" 번역해 내는 것이 일이다. 물리적으로: 임의의 Gibbs 상태를 유한 단계 RSB cavity 구조로 <strong>근사</strong>할 수 있고, 그 근사 오차가 pressure 에 남지 않는다는 것. <code>📚</code> §1 ¶4 s6</li>
+</ul>
+<hr />
+<p><a id="s1-p5"></a></p>
+<h4 id="1-5">§1 ¶5<a class="headerlink" href="#1-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p5-s1"></a><strong>s1</strong> Panchenko [<a href="99-references.html#ref-Pan16">15</a>, Theorem 2] established a hierarchical single-site representation for finite-RSB asymptotic Gibbs measures of suitably modified models; approximation of general states by that class remains a separate step.</p>
+<p><a id="s1-p5-s2"></a><strong>s2</strong> Biswas, Chen and Sen [<a href="99-references.html#ref-BCS25">4</a>, Theorem 1.1 and Proposition 1.4] obtain exact replica-symmetric pressure formulas in high-temperature and critical or subcritical regimes for compact real spin spaces under moment and regularity assumptions.</p>
+<p><a id="s1-p5-s3"></a><strong>s3</strong> For the zero-field Ising spin glass with Rademacher couplings on random regular graphs, Concetti [<a href="99-references.html#ref-Concetti25">6</a>, Theorem 1.3] gives a full-replica-symmetry-breaking pressure bound no larger than each optimized finite-level bound; equality with that functional is conjectural in that work.</p>
+<p><a id="s1-p5-s4"></a><strong>s4</strong> The result here identifies the finite-depth Panchenko–Talagrand infimum at arbitrary density in its stated interaction class.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> Panchenko [<a href="99-references.html#ref-Pan16">15</a>, Theorem 2] 는 적절히 수정된 모형들의 finite-RSB 점근 Gibbs measure 에 대해 계층적 single-site 표현을 세웠다; 일반적인 상태를 그 class 로 근사하는 것은 별개의 단계로 남는다.</p>
+<p><strong>s2</strong> Biswas, Chen, Sen [<a href="99-references.html#ref-BCS25">4</a>, Theorem 1.1 and Proposition 1.4] 은 moment 와 정칙성 가정 하에, compact 한 실수 spin 공간에 대해 고온 영역과 임계 또는 아임계(subcritical) 영역에서 정확한 replica-symmetric pressure 공식을 얻는다.</p>
+<p><strong>s3</strong> random regular graph 위의 Rademacher coupling 을 가진 무장(zero-field) Ising spin glass 에 대해, Concetti [<a href="99-references.html#ref-Concetti25">6</a>, Theorem 1.3] 은 최적화된 각 유한 단계 upper bound 보다 크지 않은 full-replica-symmetry-breaking pressure upper bound 를 준다; 그 functional 과의 등식은 그 연구에서 추측으로 남아 있다.</p>
+<p><strong>s4</strong> 여기서의 결과는 명시된 상호작용 class 에서 임의의 밀도에 대해 유한 깊이 Panchenko–Talagrand infimum 을 (극한 pressure 로) 확정한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> "finite-RSB 인 Gibbs measure 라면 cavity 표현이 있다" 까지는 알려져 있었다. 남은 것은 "실제 Gibbs measure 가 finite-RSB 가 아닐 수도 있을 때, finite-RSB 로 근사해도 pressure 가 맞는가" — 이 논문이 채우는 부분. <code>📚</code> [<a href="99-references.html#ref-Pan16">15</a>]</li>
+<li><strong>s2</strong> "임계 또는 아임계": 상호작용 graph 의 percolation(거대 연결성분) 관점의 밀도 영역으로 보인다. 원문만으로는 "critical/subcritical" 이 무엇의 임계인지 확정할 수 없다. <code>❓</code> [4] 원문 확인 필요</li>
+<li><strong>s3</strong> Rademacher coupling = <span class="arithmatex">\(J=\pm1\)</span> 등확률. full RSB upper bound 가 각 유한 단계 최적값 이하라는 것은, 물리적으로 "단계를 늘릴수록 (pressure 관점에서) 좋아지는 극한이 full RSB" 라는 기대와 일치한다. <code>📚</code> [<a href="99-references.html#ref-Concetti25">6</a>]</li>
+<li><strong>s4</strong> "임의의 밀도": 고온·저밀도에 국한되지 않고 <span class="arithmatex">\(\alpha\)</span> 와 <span class="arithmatex">\(\beta\)</span> 전 영역(RSB 가 실제로 필요한 저온 영역 포함)에서 성립한다는 강조. <code>📚</code> Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a></li>
+</ul>
+<hr />
+<p><a id="s1-p6"></a></p>
+<h4 id="1-6">§1 ¶6<a class="headerlink" href="#1-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p6-s1"></a><strong>s1</strong> The main obstacle is the distribution of spins seen across several replicas, that is, several samples from the same Gibbs system.</p>
+<p><a id="s1-p6-s2"></a><strong>s2</strong> The probability of each replica-spin pattern depends on products of every subset of those spins.</p>
+<p><a id="s1-p6-s3"></a><strong>s3</strong> The spatial average of such a product is a <em>multioverlap</em>; pair overlaps alone do not determine all these patterns.</p>
+<p><a id="s1-p6-s4"></a><strong>s4</strong> This is the information isolated by the spin-distribution approach [<a href="99-references.html#ref-Pan13">14</a>].</p>
+<p><a id="s1-p6-s5"></a><strong>s5</strong> To compare a cavity insertion with independent hierarchical messages, we must control all finite multioverlaps before redrawing the message roots independently.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 주된 장애물은 여러 replica, 즉 같은 Gibbs 계에서 뽑은 여러 표본에 걸쳐 보이는 spin 들의 분포다.</p>
+<p><strong>s2</strong> replica-spin 패턴 각각의 확률은 그 spin 들의 모든 부분집합의 곱에 의존한다.</p>
+<p><strong>s3</strong> 그런 곱의 공간 평균이 <em>multioverlap</em> 이다; pair overlap(중첩)만으로는 이 패턴들이 모두 정해지지 않는다.</p>
+<p><strong>s4</strong> 이것이 spin-distribution 접근 [<a href="99-references.html#ref-Pan13">14</a>] 이 분리해 낸 정보다.</p>
+<p><strong>s5</strong> cavity 삽입을 독립적인 계층적 message 들과 비교하려면, message 의 뿌리(root)를 독립적으로 다시 뽑기 전에 모든 유한 multioverlap 을 제어해야 한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> replica = 같은 disorder 아래 Gibbs measure 에서 독립으로 뽑은 표본(물리의 <span class="arithmatex">\(n\to0\)</span> replica trick 과 다름). <code>📚</code> spin-glass 사전 §1</li>
+<li><strong>s2–s3</strong> <span class="arithmatex">\(\pm1\)</span> spin 의 함수는 부분집합 곱 <span class="arithmatex">\(\prod_{a\in A}\sigma^a\)</span> 들의 선형결합(Fourier–Walsh 전개)이므로, 한 site 에서 <span class="arithmatex">\(n\)</span> 개 replica 의 spin 패턴 분포는 모든 <span class="arithmatex">\(A\subseteq\{1..n\}\)</span> 에 대한 <span class="arithmatex">\(\langle\prod_{a\in A}\sigma_i^a\rangle\)</span> 로 결정된다. site 평균을 취하면 multioverlap <span class="arithmatex">\(R_A=\frac1N\sum_i\prod_{a\in A}\sigma_i^a\)</span>. SK 같은 Gaussian dense 모형에서는 Hamiltonian 의 공분산이 pair overlap 의 함수라 <span class="arithmatex">\(R_{12}\)</span> 만으로 충분하지만, diluted 모형의 cavity 계산에는 유한 연결 이웃들의 <strong>결합 분포</strong>가 들어가므로 모든 <span class="arithmatex">\(R_A\)</span> 가 필요하다. <code>✅</code></li>
+<li><strong>s5</strong> 물리 그림: cavity 계산에서 새 spin 의 이웃들이 "서로 독립인 cavity field 를 갖는다" 는 가정(물리에서는 tree-like 구조로 정당화)을 수학적으로 정당화하려면, 이웃들 사이의 상관(multioverlap 의 요동)이 사라진다는 것을 보여야 한다. 🧭 물리 직관과의 차이: 물리의 cavity method 는 이 독립성을 "국소적으로 tree" 라는 이유로 가정하지만, RSB 상태에서는 각 pure state 안에서만 독립이고 상태들에 걸쳐서는 상관이 있다. 그 상관 구조가 정확히 계층(Ruelle cascade)으로 주어진다는 것을 증명하는 것이 어려운 부분이다. <code>📚</code> §2.2 Step 3–4</li>
+</ul>
+<details>
+<summary>전개: replica-spin 패턴 분포가 부분집합 곱으로 정해짐 (s2)</summary>
+<p>site <span class="arithmatex">\(i\)</span> 에서 replica <span class="arithmatex">\(1..n\)</span> 의 spin 벡터 <span class="arithmatex">\(s=(s^1,\dots,s^n)\in\{\pm1\}^n\)</span>. 임의의 패턴 <span class="arithmatex">\(\epsilon\in\{\pm1\}^n\)</span> 에 대해</p>
+<div class="arithmatex">\[
+\mathbf 1(s=\epsilon)=\prod_{a=1}^n\frac{1+\epsilon^a s^a}{2}=2^{-n}\sum_{A\subseteq\{1,\dots,n\}}\Big(\prod_{a\in A}\epsilon^a\Big)\Big(\prod_{a\in A}s^a\Big).
+\]</div>
+<p>따라서 패턴 확률 <span class="arithmatex">\(P(s=\epsilon)=2^{-n}\sum_A\epsilon^A\,\mathbb E\prod_{a\in A}s^a\)</span> 로, 모든 부분집합 곱의 기댓값이 필요하다. <span class="arithmatex">\(n=2\)</span> 이면 <span class="arithmatex">\(A=\{1,2\}\)</span> 의 기댓값이 pair overlap 에 해당하지만, <span class="arithmatex">\(n\ge3\)</span> 이면 <span class="arithmatex">\(\{1,2,3\}\)</span> 같은 고차 곱이 새 정보다. ✓</p>
+</details>
+<hr />
+<p><a id="s1-p7"></a></p>
+<h4 id="1-7">§1 ¶7<a class="headerlink" href="#1-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s1-p7-s1"></a><strong>s1</strong> We work with finite auxiliary hierarchies before taking the thermodynamic limit.</p>
+<p><a id="s1-p7-s2"></a><strong>s2</strong> Their branching is part of the construction; no ultrametric organization of the physical Gibbs states is assumed.</p>
+<p><a id="s1-p7-s3"></a><strong>s3</strong> Bounded perturbations yield identities for prescribed replica branching patterns.</p>
+<p><a id="s1-p7-s4"></a><strong>s4</strong> Delaying each branching depth by one level permits an induction that concentrates multioverlaps <em>on average over branching depths</em>.</p>
+<p><a id="s1-p7-s5"></a><strong>s5</strong> The cavity insertion itself has an expansion averaging over finite trees, so this averaged control is sufficient.</p>
+<p><a id="s1-p7-s6"></a><strong>s6</strong> The system size tends to infinity at each fixed depth; only then does the depth increase.</p>
+<p><a id="s1-p7-s7"></a><strong>s7</strong> The proof strategy following Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> explains how the finite-tree calculus, concentration and independent-message comparison fit together.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 우리는 thermodynamic limit 을 취하기 전에 유한한 보조 계층을 가지고 작업한다.</p>
+<p><strong>s2</strong> 그 branching 은 구성의 일부이다; 물리적 Gibbs 상태들의 ultrametric(초거리) 구조는 가정하지 않는다.</p>
+<p><strong>s3</strong> 유계 perturbation 들은 미리 정한 replica branching 패턴에 대한 항등식을 낳는다.</p>
+<p><strong>s4</strong> 각 branching 깊이를 한 단계씩 늦추면, multioverlap 을 <em>branching 깊이에 대해 평균적으로</em> 집중시키는 귀납이 가능해진다.</p>
+<p><strong>s5</strong> cavity 삽입 자체가 유한 tree 들에 대한 평균 형태의 전개를 가지므로, 이 평균적 제어로 충분하다.</p>
+<p><strong>s6</strong> 각 고정된 깊이에서 계의 크기가 무한대로 가고, 그 다음에야 깊이가 증가한다.</p>
+<p><strong>s7</strong> Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> 뒤의 증명 전략이 유한-tree 계산, concentration, 독립-message 비교가 어떻게 맞물리는지 설명한다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> 🧭 물리 직관과의 차이: 물리의 Parisi 그림은 Gibbs 상태들이 ultrametric 하게 조직된다고 <strong>가정</strong>하고 그 위에 cavity 를 쌓는다. 이 논문은 반대로, 계층(branching)을 <strong>보조 장치로 직접 만들어</strong> 넣고(Ruelle cascade 를 외부에서 붙이는 것에 해당, R13), 물리적 상태의 ultrametricity 는 증명도 가정도 하지 않는다. 결과(pressure 공식)만 물리 예측과 일치한다. <code>📚</code> §1 ¶7 s2</li>
+<li><strong>s3</strong> perturbation: Hamiltonian 에 <span class="arithmatex">\(o(N)\)</span> 크기의 작은 항을 더해 pressure 극한은 바꾸지 않으면서 Gibbs measure 가 특정 항등식(Ghirlanda–Guerra 류)을 만족하도록 강제하는 표준 기법. 물리의 "stochastic stability" 에 대응. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>], [<a href="99-references.html#ref-AC98">1</a>]</li>
+<li><strong>s4–s5</strong> <code>🔧</code> 기술 단계: 깊이마다 균일한 집중 대신 깊이에 대한 <strong>평균</strong> 집중만 얻고, cavity 전개가 깊이에 대해 평균을 취하는 형태라 그것으로 충분하다는 논리. 물리 대응은 없고, 증명을 닫기 위한 장치다.</li>
+<li><strong>s6</strong> 극한 순서: <span class="arithmatex">\(\lim_{r\to\infty}\lim_{N\to\infty}\)</span> (계층 깊이 고정 → 계 크기 무한 → 깊이 증가). 물리의 RSB 계산도 "유한 <span class="arithmatex">\(r\)</span> 에서 풀고 <span class="arithmatex">\(r\)</span> 을 늘린다" 와 같은 순서라 자연스럽다. <code>📚</code> §1 ¶7 s6</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="00-abstract.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §0 Abstract">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §0 Abstract
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="02-the-model-and-the-variational-principle.html" class="md-footer__link md-footer__link--next" aria-label="다음: §2 The model and the variational principle">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §2 The model and the variational principle
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
