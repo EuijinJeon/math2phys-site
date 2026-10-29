@@ -904,10 +904,46 @@
 <td>🧭 물리(정류점) vs 수학(inf) 차이를 해석에 표시</td>
 <td>Theorem 2.1</td>
 </tr>
+<tr>
+<td>R17</td>
+<td>tree 계수 <span class="arithmatex">\(\gamma_\beta=m_{d}-n_\beta m_{d+1}\)</span>, <span class="arithmatex">\(\kappa(S)\)</span> (3.5),(3.13)</td>
+<td><a href="doc/03-calculus-on-finite-trees.html#s3-1-p7">§3.1 ¶7</a></td>
+<td>replica trick 의 <strong>Parisi block counting</strong> (<span class="arithmatex">\(n\to0\)</span>): 크기 <span class="arithmatex">\(m_d\)</span> block 에서 replica 가 있는 sub-block <span class="arithmatex">\(n_\beta\)</span> 개를 뺀 자리 수</td>
+<td>제안 해석</td>
+<td>RS(<span class="arithmatex">\(L=1\)</span>)에서 <span class="arithmatex">\(\gamma=-n\)</span>, <span class="arithmatex">\(\kappa=(n-1)\cdots(n-k)\vert_{n=0}=(-1)^kk!\)</span> ✓; (3.12) 무작위 tree brute force ✓</td>
+<td>MPV 의 Parisi 행렬, §3.1 ¶7 전개</td>
+</tr>
+<tr>
+<td>R18</td>
+<td>tree 법칙 <span class="arithmatex">\(Q_k\)</span> (3.8)</td>
+<td><a href="doc/03-calculus-on-finite-trees.html#s3-2-p2">§3.2 ¶2</a></td>
+<td>Ruelle cascade 에서 뽑은 <span class="arithmatex">\(k\)</span> 개 replica 의 <strong>overlap tree 법칙</strong> (nested Chinese restaurant)</td>
+<td>제안 해석</td>
+<td><span class="arithmatex">\(L=2\)</span>: PD<span class="arithmatex">\((m,0)\)</span> CRP 와 규칙 일치 ✓, <span class="arithmatex">\(Q_2\)</span> split 확률 <span class="arithmatex">\(m_{d+1}-m_d=P(q_d)\)</span> ✓, (3.9) sympy 정확 일치 ✓</td>
+<td>Pitman (2006) §3.2, PT [16]</td>
+</tr>
+<tr>
+<td>R19</td>
+<td>path kernel <span class="arithmatex">\(K_d\)</span>, tilted kernel (3.2)</td>
+<td><a href="doc/03-calculus-on-finite-trees.html#s3-1-p4">§3.1 ¶4</a></td>
+<td>계층 <span class="arithmatex">\(d\)</span> 에서 하위 상태를 고르는 확률; tilt = 상태 가중치 <span class="arithmatex">\(\propto Z_\alpha^{m_d}\)</span> (Monasson <span class="arithmatex">\(m\)</span>-reweighting)</td>
+<td>제안 해석</td>
+<td>확률 kernel 정규화 ✓, <span class="arithmatex">\(L=2\)</span> 에서 <span class="arithmatex">\(K_1\propto P(\alpha)Z_\alpha^m\)</span> ✓</td>
+<td>§3.1 ¶4 전개</td>
+</tr>
+<tr>
+<td>R20</td>
+<td>삽입 <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(Y_d\)</span> (3.3), <span class="arithmatex">\(\log Y_0\)</span></td>
+<td><a href="doc/03-calculus-on-finite-trees.html#s3-1-p5">§3.1 ¶5</a></td>
+<td>Boltzmann 가중치 섭동 (<span class="arithmatex">\(-\delta H=\log A\)</span>); <span class="arithmatex">\(\log Y_0\)</span> = 계층 free entropy 변화</td>
+<td>제안 해석</td>
+<td><span class="arithmatex">\(L=1\)</span>: <span class="arithmatex">\(\log Y_0=\log Z_A/Z\)</span> ✓, <span class="arithmatex">\(L=2\)</span>: 1RSB replicated free entropy 차 ✓</td>
+<td>§3.1 ¶5 전개, Lemma 3.1</td>
+</tr>
 </tbody>
 </table>
 <h2 id="object">이후 섹션에서 나올 주요 object (그 섹션 전에 다시 제안)<a class="headerlink" href="#object" title="Permanent link">&para;</a></h2>
-<p>cavity reservoir(§2.2, §5), finite probability tree·signed sum(§3), perturbation score(§6), multioverlap concentration(§7), recursive law encoding(§8).</p>
+<p>cavity reservoir(§2.2, §5), perturbation score(§6), multioverlap concentration(§7), recursive law encoding(§8).</p>
 <h2 id="_1">변경 이력<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -921,6 +957,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2026-10-29</td>
+<td>R17–R20</td>
+<td>(신규)</td>
+<td>제안 해석 (§3 번역 중 추가)</td>
+<td>해당 없음</td>
+<td>main</td>
+</tr>
 <tr>
 <td>2026-10-29</td>
 <td>R5, R7, R12, R13, R16</td>
