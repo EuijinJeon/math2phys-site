@@ -943,22 +943,28 @@
 
 <p><a id="s8"></a></p>
 <h1 id="8-independent-hierarchical-messages-and-the-cavity-comparison">§8 Independent hierarchical messages and the cavity comparison<a class="headerlink" href="#8-independent-hierarchical-messages-and-the-cavity-comparison" title="Permanent link">&para;</a></h1>
-<!-- TODO:제목번역 s8 -->
-
+<p><em>제목: 독립 계층 message 와 cavity 비교</em></p>
 <p><a href="07-decorrelation-on-prescribed-trees.html">← 이전: §7 Decorrelation on prescribed trees</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="09-normalization-truncation-and-completion-.html">다음: §9 Normalization, truncation, and completion of the proof →</a></p>
 <details>
 <summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
-<!-- TODO:요약 s8 -->
+<p><strong>하는 일.</strong> lower bound 를 완성한다 (유계 모형).
+- Lemma 8.1: 섭동된 reservoir 의 무작위 site 하나에 대해, 상태 계층 안의 local field <span class="arithmatex">\(x=\operatorname{arctanh}\langle\sigma_i\rangle\)</span> 의 계층적 분포를 RSB order parameter <span class="arithmatex">\(\zeta_{L,N}\in\mathcal M_L\)</span> 로 encode. 시행 message 의 spin moment = 실제 multioverlap 평균 (8.2).
+- Lemma 8.2: site 패턴의 경험 분포는 multioverlap 으로 결정 → multioverlap 이 집중하면 서로 다른 site 를 독립 message 로 바꿀 수 있다.
+- Proposition 8.3: §3 의 log 전개 + §7 의 집중 + Lemma 8.2 로, cavity 증분 <span class="arithmatex">\(\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\)</span>.
+- Corollary 8.4: <span class="arithmatex">\(\liminf F_N\ge\inf_r\Phi_r\)</span>.</p>
+<p><strong>물리적 의미.</strong> cavity method 의 논리 — "실제 계의 cavity field 분포(population of populations)를 order parameter 로 넣으면 Bethe 공식이 free energy 를 준다" — 를 엄밀화. 핵심 단계인 "cavity spin 들이 독립" 은 §7 의 multioverlap 집중으로 정당화된다. 물리와 달리 고정점 방정식은 필요 없다: 실제 계에서 읽은 order parameter 는 하나의 시행일 뿐이고, 그 Bethe 값이 inf 보다 크다는 것만 쓴다.</p>
+<p><strong>건너뛰어도 되는지.</strong> 결론 Corollary 8.4 만 알면 된다: (유계 모형에서) pressure 의 liminf <span class="arithmatex">\(\ge\inf_r\Phi_r\)</span>. §4 의 upper bound 와 합쳐 Mézard–Parisi 공식이 된다 (§9 에서 유계 가정 제거).</p>
 </details>
 <p><a id="s8-p1"></a></p>
 <h4 id="8-1">§8 ¶1<a class="headerlink" href="#8-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
 <p><a id="s8-p1-s1"></a><strong>s1</strong> We turn the reservoir into a trial law in three steps: encode its full one-site branching law, use multioverlap concentration to separate the sites, and compare the resulting insertion logarithms.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-p1-s1 --></p>
+<p><strong>s1</strong> reservoir 를 세 단계로 시행 법칙으로 바꾼다: 그 단일 site branching 법칙 전체를 encode 하고, multioverlap 집중을 써서 site 들을 분리하고, 결과로 나오는 삽입 log 들을 비교한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-p1 -->
-
+<ul>
+<li><strong>s1</strong> lower bound 의 핵심 아이디어: <strong>실제 계(reservoir)의 상태 구조 자체를 하나의 RSB 시행 법칙으로 읽는다.</strong> 그러면 cavity 증분 ≈ 그 시행 법칙의 Bethe 값 <span class="arithmatex">\(\ge\inf\mathcal B\)</span>. 물리의 cavity method 에서 "실제 계의 cavity field 분포(population)가 RSB order parameter" 라는 것을 그대로 엄밀화. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>], [<a href="99-references.html#ref-Pan13">14</a>]</li>
+</ul>
 <hr />
 <p><a id="s8-p2"></a></p>
 <h4 id="8-2">§8 ¶2<a class="headerlink" href="#8-2" title="Permanent link">&para;</a></h4>
@@ -974,23 +980,39 @@
 \Delta_N^{L,\mathbf u_{L,N}}\le\underline F+2\varepsilon. \tag{8.1}
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-p2-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-p2-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-p2-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-p2-s6 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(\varepsilon\gt 0\)</span> 을 고정한다.</p>
+<p><strong>s2</strong> 각 깊이 <span class="arithmatex">\(L\ge2\)</span> 에서 Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a> 가 주는 크기 수열과 결정적 매개변수 선택을 쓴다.</p>
+<p><strong>s3</strong> 이 수열 위의 크기를 <span class="arithmatex">\(N\)</span> 이라 쓴다.</p>
+<p><strong>s4</strong> 선택은 <span class="arithmatex">\(L\)</span> 에 의존할 수 있으며, 아래의 모든 명제는 이 선택들에 관한 것이다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(\underline F\)</span> 는 선택 이전과 마찬가지로 유계 모형의 <em>모든</em> 계 크기에 대한 liminf 로 유지한다.</p>
+<p><strong>s6</strong> 특히 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-p2 -->
-
+<ul>
+<li><strong>s1–s6, (8.1)</strong> <code>🔧</code> 선택된 크기들에서 cavity 증분이 <span class="arithmatex">\(\underline F+2\varepsilon\)</span> 이하 (Lemma 6.2 (i)).</li>
+</ul>
 <p><strong>식 (8.1) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Delta_N^{L,\mathbf u}\le\underline F+2\varepsilon\)</span></td>
+<td>낮은 증분</td>
+<td>선택된 크기에서 spin 하나 추가 비용 ≈ pressure 의 liminf</td>
+<td><code>📚</code> Lemma 6.2 (i)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s8-1"></a></p>
 <h2 id="81-encoding-a-single-site-tree">§8.1 Encoding a single-site tree<a class="headerlink" href="#81-encoding-a-single-site-tree" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s8-1 -->
-
+<p><em>제목: 단일 site tree 의 encoding</em></p>
 <p><a id="s8-1-e1"></a></p>
 <h3 id="lemma-81-recursive-law-encoding">▸ Lemma 8.1 (Recursive law encoding)<a class="headerlink" href="#lemma-81-recursive-law-encoding" title="Permanent link">&para;</a></h3>
 <p><a id="s8-1-p1"></a></p>
@@ -999,11 +1021,12 @@
 <p><a id="s8-1-p1-s1"></a><strong>s1</strong> For each fixed <span class="arithmatex">\(N\)</span>, <span class="arithmatex">\(L\ge2\)</span>, and selected parameter vector, with the reservoir root disorder averaged, there is a deterministic trial law <span class="arithmatex">\(\zeta_{L,N}\in\mathcal M_L\)</span> whose single-label spin process has the same expected spin products on every prescribed tree as a uniformly chosen site of the reservoir.</p>
 <p><a id="s8-1-p1-s2"></a><strong>s2</strong> Different trial labels can be chosen independently.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-1-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-1-p1-s2 --></p>
+<p><strong>s1</strong> 각 고정된 <span class="arithmatex">\(N\)</span>, <span class="arithmatex">\(L\ge2\)</span>, 선택된 매개변수 벡터에 대해, reservoir root disorder 를 평균하면, 그 단일 label spin 과정이 모든 지정된 tree 위에서 reservoir 의 균등하게 고른 site 와 같은 기대 spin 곱을 갖는 결정적 시행 법칙 <span class="arithmatex">\(\zeta_{L,N}\in\mathcal M_L\)</span> 이 존재한다.</p>
+<p><strong>s2</strong> 서로 다른 시행 label 은 독립적으로 고를 수 있다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-1-p1 -->
-
+<ul>
+<li><strong>s1–s2</strong> Lemma 8.1: reservoir 의 "무작위 site 하나가 상태 계층 안에서 갖는 local field 의 계층적 분포" 를 RSB order parameter <span class="arithmatex">\(\zeta\in\mathcal M_L\)</span> (R11) 로 encode. 물리: <strong>population dynamics 에서 쓰는 cavity field 의 분포의 분포</strong> 가 실제 계에서 바로 정의된다. <code>📚</code> 증명 §8.1 ¶2–¶4</li>
+</ul>
 <hr />
 <p><em>(끝: s8-1-e1)</em></p>
 <p><a id="s8-1-e2"></a></p>
@@ -1024,19 +1047,41 @@ x=\operatorname{arctanh}\langle{\sigma_i}\rangle,
 <p><a id="s8-1-p2-s6"></a><strong>s6</strong> At each terminal replica leaf, draw a spin with law <span class="arithmatex">\(q_x\)</span>.</p>
 <p><a id="s8-1-p2-s7"></a><strong>s7</strong> Given the auxiliary prefix, these spins are independent and have exactly the one-site law of the independent terminal Gibbs replicas.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-1-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-1-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-1-p2-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-1-p2-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-1-p2-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-1-p2-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s8-1-p2-s7 --></p>
+<p><strong>s1</strong> root 변수에 reservoir root disorder 와 함께 독립 균등 site <span class="arithmatex">\(i\in[N]\)</span> 을 포함한다.</p>
+<p><strong>s2</strong> 각 경로를 따라 tilted reservoir 보조 kernel 을 뽑고, <span class="arithmatex">\(\mathscr G_d\)</span> 를 이 확대된 root 와 깊이 <span class="arithmatex">\(d\)</span> 까지의 보조 prefix 전체로 생성되는 sigma-field 라 하자.</p>
+<p><strong>s3</strong> 깊이 <span class="arithmatex">\(r=L-1\)</span> 에서 다음과 같이 두며, 괄호는 leaf Gibbs 기댓값을 뜻한다.</p>
+<p><strong>s4</strong> 이것은 유한하다: 유한 <span class="arithmatex">\(N\)</span> 에서 모든 배치 가중치는 엄격히 양수이므로 <span class="arithmatex">\(-1\lt\langle{\sigma_i}\rangle\lt 1\)</span> 이다.</p>
+<p><strong>s5</strong> 따라서 <span class="arithmatex">\(x\)</span> 는 깊이 <span class="arithmatex">\(L\)</span> 의 말단 spin 전이 이전인 깊이 <span class="arithmatex">\(r\)</span> 에서 결정된다.</p>
+<p><strong>s6</strong> 각 말단 replica leaf 에서 법칙 <span class="arithmatex">\(q_x\)</span> 를 갖는 spin 을 뽑는다.</p>
+<p><strong>s7</strong> 보조 prefix 가 주어지면 이 spin 들은 독립이고 독립 말단 Gibbs replica 들의 단일 site 법칙을 정확히 갖는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-1-p2 -->
-
+<ul>
+<li><strong>s3, <span class="arithmatex">\(x=\operatorname{arctanh}\langle\sigma_i\rangle\)</span></strong> = site <span class="arithmatex">\(i\)</span> 의 <strong>pure state 안에서의 local field</strong> (R7 cavity field 의 정의 <span class="arithmatex">\(\langle s\rangle_{q_x}=\tanh x\)</span> 를 거꾸로). 물리: 상태 <span class="arithmatex">\(\alpha\)</span> 안 자화 <span class="arithmatex">\(m_i^\alpha=\tanh h_i^\alpha\)</span> 에서 field <span class="arithmatex">\(h_i^\alpha\)</span> 를 읽음. <code>✅</code> 아래 전개</li>
+<li><strong>s6–s7</strong> 상태가 정해지면 같은 site 의 replica spin 들은 <span class="arithmatex">\(q_x\)</span> 로 독립 — 같은 pure state 의 두 replica 는 site 하나에서 자화만 공유. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: local field 의 정의와 단일 site 법칙 (s3–s7)</summary>
+<p><span class="arithmatex">\(q_x(s)=e^{xs}/(2\cosh x)\)</span> 이면 <span class="arithmatex">\(\sum_ssq_x(s)=\tanh x\)</span>. <span class="arithmatex">\(x=\operatorname{arctanh}\langle\sigma_i\rangle\)</span> 로 두면 <span class="arithmatex">\(\langle s\rangle_{q_x}=\langle\sigma_i\rangle\)</span> ✓. <span class="arithmatex">\(\pm1\)</span> spin 의 법칙은 평균으로 결정되므로 <span class="arithmatex">\(q_x\)</span> = 상태 안 <span class="arithmatex">\(\sigma_i\)</span> 의 법칙 ✓. 깊이 <span class="arithmatex">\(L\)</span> 에서 replica 들은 prefix 가 주어지면 독립이므로 각자 <span class="arithmatex">\(q_x\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §8.1 ¶2 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-1-p2-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(x=\operatorname{arctanh}\langle\sigma_i\rangle\)</span></td>
+<td>깊이 <span class="arithmatex">\(r\)</span> 변수</td>
+<td>site <span class="arithmatex">\(i\)</span> 의 pure state 안 local field (R7)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s8-1-p3"></a></p>
 <h4 id="81-3">§8.1 ¶3<a class="headerlink" href="#81-3" title="Permanent link">&para;</a></h4>
@@ -1052,16 +1097,40 @@ x=\operatorname{arctanh}\langle{\sigma_i}\rangle,
 <p><a id="s8-1-p3-s3"></a><strong>s3</strong> All state spaces are standard Borel, so these conditional probability kernels have measurable versions.</p>
 <p><a id="s8-1-p3-s4"></a><strong>s4</strong> The auxiliary priors used here may be taken to be finite products of finite mark spaces at each realized root; hence the same assertion also follows directly by finite sums conditional on the root counts.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-1-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-1-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-1-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-1-p3-s4 --></p>
+<p><strong>s1</strong> 무작위 측도들을 거꾸로 다음과 같이 정의한다.</p>
+<p><strong>s2</strong> 그러면 <span class="arithmatex">\(\eta_d\in\mathcal M_{r-d}\)</span> 이므로 <span class="arithmatex">\(\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L\)</span> 이다.</p>
+<p><strong>s3</strong> 모든 상태 공간이 standard Borel 이므로 이 조건부 확률 kernel 들은 측정가능한 판본을 갖는다.</p>
+<p><strong>s4</strong> 여기서 쓰는 보조 prior 는 각 실현된 root 에서 유한 mark 공간들의 유한 곱으로 잡을 수 있다; 따라서 같은 주장은 root 개수에 조건부인 유한 합으로도 직접 나온다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-1-p3 -->
-
+<ul>
+<li><strong>s1–s2</strong> <span class="arithmatex">\(\eta_{r-1}\)</span> = 깊이 <span class="arithmatex">\(r-1\)</span> 상태 묶음 안에서 local field 의 분포, <span class="arithmatex">\(\eta_{r-2}\)</span> = 그 분포들의 분포, … → <span class="arithmatex">\(\zeta\)</span> = 최상위 분포. 물리: 1RSB 이면 <span class="arithmatex">\(\zeta\)</span> = "상태마다 다른 cavity field 분포(population)의 분포" — Mézard–Parisi 의 population of populations 그대로 (R11). <code>📚</code> [<a href="99-references.html#ref-MP01">12</a>]</li>
+<li><strong>s3–s4</strong> <code>🔧</code> 측정가능성.</li>
+</ul>
 <p><strong>식 Eq. §8.1 ¶3 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-1-p3-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\eta_{r-1}=\mathrm{Law}(x\mid\mathscr G_{r-1})\)</span></td>
+<td>가장 안쪽 측도</td>
+<td>한 상태 묶음 안의 local field 분포</td>
+<td><code>📚</code> R11</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\eta_d=\mathrm{Law}(\eta_{d+1}\mid\mathscr G_d)\)</span></td>
+<td>거꾸로 쌓기</td>
+<td>분포의 분포 (계층)</td>
+<td><code>📚</code> R11</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s8-1-p4"></a></p>
 <h4 id="81-4">§8.1 ¶4<a class="headerlink" href="#81-4" title="Permanent link">&para;</a></h4>
@@ -1090,33 +1159,76 @@ G_T(\eta_d)=\prod_{\ell=1}^j
 <p><a id="s8-1-p4-s11"></a><strong>s11</strong> Use independent copies of the entire construction, including the reservoir root and uniform site, for different labels.</p>
 <p><a id="s8-1-p4-s12"></a><strong>s12</strong> The resulting messages are independent of the new physical disorder in the cavity insertions.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-1-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-1-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-1-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-1-p4-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-1-p4-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-1-p4-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s8-1-p4-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s8-1-p4-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s8-1-p4-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s8-1-p4-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s8-1-p4-s11 --></p>
-<p><strong>s12</strong> <!-- TODO:번역 s8-1-p4-s12 --></p>
+<p><strong>s1</strong> 모든 branching 패턴에 대한 명시적 확인은 다음과 같다.</p>
+<p><strong>s2</strong> 자손 tree <span class="arithmatex">\(T\)</span> 를 고정하고 각 말단 leaf 에 spin <span class="arithmatex">\(e_a\)</span> 를 지정한다.</p>
+<p><strong>s3</strong> 깊이 <span class="arithmatex">\(r\)</span> 에서 그 조건부 확률은 <span class="arithmatex">\(G_T(x)=\prod_a q_x(e_a)\)</span> 다.</p>
+<p><strong>s4</strong> 깊이 <span class="arithmatex">\(d\lt r\)</span> 에서 <span class="arithmatex">\(T_1,\ldots,T_j\)</span> 를 그 자식들에 뿌리를 둔 subtree 라 하자.</p>
+<p><strong>s5</strong> 자식들의 조건부 독립성이 다음 backward 재귀를 준다.</p>
+<p><strong>s6</strong> 귀납에 의해 이 확률은 전체 prefix 에 오직 <span class="arithmatex">\(\eta_d\)</span> 를 통해서만 의존한다.</p>
+<p><strong>s7</strong> 따라서 포개진 측도들은 unary 구간과 임의의 자식 수를 포함해 모든 자손 tree 의 결합 출력 법칙을 보존한다.</p>
+<p><strong>s8</strong> 이 재귀는 정확히 <a href="02-the-model-and-the-variational-principle.html#eq-2-7">(2.7)</a> 의 branching 판이다.</p>
+<p><strong>s9</strong> <span class="arithmatex">\(\zeta_{L,N}=\operatorname{Law}(\eta_0)\)</span> 로 잡으면 root 혼합도 보존된다.</p>
+<p><strong>s10</strong> 특히 leaf 의 모든 부분집합 <span class="arithmatex">\(S\)</span> 에 대해 다음이 성립한다.</p>
+<p><strong>s11</strong> 서로 다른 label 에 대해서는 reservoir root 와 균등 site 를 포함한 전체 구성의 독립 사본을 쓴다.</p>
+<p><strong>s12</strong> 결과로 나오는 message 는 cavity 삽입의 새 물리적 disorder 와 독립이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-1-p4 -->
-
+<ul>
+<li><strong>s2–s9</strong> 재귀 <span class="arithmatex">\(G_T(\eta_d)=\prod_\ell\int G_{T_\ell}\,d\eta_d\)</span>: 서로 다른 하위 상태로 가는 replica 무리는 독립적으로 하위 상태를 뽑는다 — RPC 계층의 표본추출 규칙 그대로. 그래서 encode 된 <span class="arithmatex">\(\zeta\)</span> 가 원래 replica 결합 법칙을 보존. <code>✅</code> 아래 전개</li>
+<li><strong>s10, (8.2)</strong> 시행 message 의 spin moment = reservoir 의 multioverlap 평균. 즉 <strong>시행 order parameter 가 실제 계의 모든 multioverlap 평균을 재현</strong>. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: (8.2) (s10)</summary>
+<p>균등 site <span class="arithmatex">\(i\)</span> 가 root 에 포함되어 있으므로 <span class="arithmatex">\(\mathbb E\prod_{a\in S}\tau^a=\mathbb E_i\mathbb E\prod_a\sigma_i^a=\frac1N\sum_i\mathbb E\prod_{a\in S}\sigma_i^a\)</span> ✓, 그리고 <span class="arithmatex">\(\frac1N\sum_i\prod\sigma_i^a=R_S\)</span> (3.1) ✓. 재귀: 깊이 <span class="arithmatex">\(d\)</span> 의 자식 subtree 들은 prefix 가 주어지면 독립 (tree 표본추출 규칙) → 확률이 곱, 각 자식 subtree 는 다음 단계 측도 <span class="arithmatex">\(\nu\sim\eta_d\)</span> 를 통해서만 의존 ✓.</p>
+</details>
 <p><strong>식 Eq. §8.1 ¶4 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-1-p4-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(G_T(\eta_d)=\prod_\ell\int G_{T_\ell}(\nu)\eta_d(d\nu)\)</span></td>
+<td>backward 재귀</td>
+<td>서로 다른 하위 상태의 replica 무리는 독립 (RPC 표본추출)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (8.2) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\prod_{a\in S}\tau^a\)</span></td>
+<td>시행 message spin moment</td>
+<td>시행 order parameter 가 예측하는 multioverlap</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(=\mathbb ER_S\)</span></td>
+<td>reservoir multioverlap 평균</td>
+<td>실제 계의 multioverlap</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s8-2"></a></p>
 <h2 id="82-from-multioverlaps-to-spin-patterns">§8.2 From multioverlaps to spin patterns<a class="headerlink" href="#82-from-multioverlaps-to-spin-patterns" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s8-2 -->
-
+<p><em>제목: multioverlap 에서 spin 패턴으로</em></p>
 <p><a id="s8-2-e3"></a></p>
 <h3 id="lemma-82-empirical-pattern-comparison">▸ Lemma 8.2 (Empirical-pattern comparison)<a class="headerlink" href="#lemma-82-empirical-pattern-comparison" title="Permanent link">&para;</a></h3>
 <p><a id="s8-2-p1"></a></p>
@@ -1131,16 +1243,33 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 \]</div>
 <p><a id="s8-2-p1-s4"></a><strong>s4</strong> The observable may also depend on new insertion disorder, independent of the reservoir.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-2-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-2-p1-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-2-p1-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-2-p1-s4 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(k\)</span> 개 leaf 를 가진 지정 tree 를 고정한다.</p>
+<p><strong>s2</strong> 절댓값이 1 이하인 관측량이 <span class="arithmatex">\(a\)</span> 개의 독립 균등 site label 에서의 replica-spin 패턴을 쓴다고 하자.</p>
+<p><strong>s3</strong> 이 패턴들을 Lemma <a href="08-independent-hierarchical-messages-and-th.html#s8-1-e1">8.1</a> 의 <span class="arithmatex">\(a\)</span> 개의 독립 시행 label 패턴으로 바꾸면 그 기댓값이 최대 다음만큼 바뀐다.</p>
+<p><strong>s4</strong> 관측량은 reservoir 와 독립인 새 삽입 disorder 에도 의존할 수 있다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-2-p1 -->
-
+<ul>
+<li><strong>s1–s4, (8.3)</strong> Lemma 8.2: 무작위 site <span class="arithmatex">\(a\)</span> 개의 replica spin 패턴을 독립 시행 message 로 바꾸는 오차 ≤ <span class="arithmatex">\(a\times\)</span>(multioverlap 들의 요동). 즉 <strong>multioverlap 이 self-averaging 이면 서로 다른 site 들이 독립</strong> — cavity method 에서 cavity spin 들(삽입 factor 의 이웃)을 독립 message 로 다루는 것의 정당화. <code>📚</code> 증명 §8.2 ¶2</li>
+</ul>
 <p><strong>식 (8.3) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-3 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(a\sum_S\mathbb E\lvert R_S-\mathbb ER_S\rvert\)</span></td>
+<td>패턴 교체 오차</td>
+<td>site 사이 독립성 위반 = multioverlap 요동</td>
+<td><code>📚</code> §8.2 ¶2</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s8-2-e3)</em></p>
 <p><a id="s8-2-e4"></a></p>
@@ -1168,21 +1297,60 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-2-p2-s5"></a><strong>s5</strong> Integrating a function bounded by one costs at most twice total variation.</p>
 <p><a id="s8-2-p2-s6"></a><strong>s6</strong> Conditioning on the independent insertion disorder proves the last assertion.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-2-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-2-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-2-p2-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-2-p2-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-2-p2-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-2-p2-s6 --></p>
+<p><strong>s1</strong> 표본 reservoir 배치에 조건부로, 균등 site 에서의 패턴 <span class="arithmatex">\(\boldsymbol\sigma_i=(\sigma_i^1,\ldots,\sigma_i^k)\)</span> 는 다음 경험 분포를 갖는다.</p>
+<p><strong>s2</strong> <a href="08-independent-hierarchical-messages-and-th.html#eq-8-2">(8.2)</a> 에 의해 시행 label 의 분포는 <span class="arithmatex">\(\bar\pi=\mathbb E\pi\)</span> 다.</p>
+<p><strong>s3</strong> 독립 균등 복원 표본추출은 reservoir 안에서 조건부로 <span class="arithmatex">\(\pi^{\otimes a}\)</span> 를 주고, 시행 분포는 <span class="arithmatex">\(\bar\pi^{\otimes a}\)</span> 다.</p>
+<p><strong>s4</strong> 곱측도에 대한 기초적 telescoping bound 가 다음을 준다.</p>
+<p><strong>s5</strong> 1 이하로 유계인 함수를 적분하면 최대 total variation 의 두 배의 비용이 든다.</p>
+<p><strong>s6</strong> 독립 삽입 disorder 에 조건부로 하면 마지막 주장이 증명된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-2-p2 -->
-
+<ul>
+<li><strong>s1</strong> site 패턴의 경험 분포는 multioverlap 들로 완전히 결정 (Fourier–Walsh 전개). 물리: <span class="arithmatex">\(k\)</span>-replica 의 site 통계 = 모든 multioverlap. <code>✅</code> 아래 전개</li>
+<li><strong>s2–s6</strong> 경험 분포 <span class="arithmatex">\(\pi\)</span> 가 평균 <span class="arithmatex">\(\bar\pi\)</span> 에 집중하면 site 들을 독립 표본으로 바꿀 수 있음 (TV bound). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 경험 분포의 Walsh 전개와 TV bound (s1, s4)</summary>
+<p><span class="arithmatex">\(\prod_{b=1}^k\frac{1+e_b\sigma^b}2=2^{-k}\sum_{S\subseteq[k]}\prod_{b\in S}e_b\sigma^b\)</span> ✓; <span class="arithmatex">\(i\)</span> 평균 → <span class="arithmatex">\(2^{-k}\sum_SR_S\prod_{b\in S}e_b\)</span> ✓ (<span class="arithmatex">\(R_\varnothing=1\)</span>).
+<span class="arithmatex">\(\lVert\pi-\bar\pi\rVert_{\rm TV}=\frac12\sum_{\boldsymbol e}\lvert\pi-\bar\pi\rvert\le\frac12\sum_{\boldsymbol e}2^{-k}\sum_{S\ne\varnothing}\lvert R_S-\mathbb ER_S\rvert=\frac12\sum_{S\ne\varnothing}\lvert R_S-\mathbb ER_S\rvert\)</span> ✓. 곱측도: <span class="arithmatex">\(\lVert\pi^{\otimes a}-\bar\pi^{\otimes a}\rVert\le a\lVert\pi-\bar\pi\rVert\)</span> (한 인자씩 교체) ✓.</p>
+</details>
 <p><strong>식 Eq. §8.2 ¶2 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-2-p2-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\pi(\boldsymbol e)=2^{-k}\sum_SR_S\prod_{b\in S}e_b\)</span></td>
+<td>경험 패턴 분포</td>
+<td>site 하나의 <span class="arithmatex">\(k\)</span>-replica spin 패턴 통계 = multioverlap 들</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §8.2 ¶2 #2 항별 표</strong></p>
-<!-- TODO:항표 s8-2-p2-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lVert\pi^{\otimes a}-\bar\pi^{\otimes a}\rVert_{\rm TV}\le\frac a2\sum_S\lvert R_S-\mathbb ER_S\rvert\)</span></td>
+<td>TV bound</td>
+<td>여러 site 를 독립 message 로 바꾸는 비용</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s8-2-p3"></a></p>
@@ -1217,34 +1385,73 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-2-p3-s13"></a><strong>s13</strong> Summing over the finitely many topologies and subsets, and using the bound two for each deviation on nonregular trees, proves <a href="08-independent-hierarchical-messages-and-th.html#eq-8-5">(8.5)</a>.</p>
 <p><a id="s8-2-p3-s14"></a><strong>s14</strong> Apply Theorem <a href="07-decorrelation-on-prescribed-trees.html#s7-1-e1">7.1</a> first at fixed <span class="arithmatex">\(\eta\)</span>, taking the fixed-<span class="arithmatex">\(L\)</span> limit in <span class="arithmatex">\(N\)</span> before <span class="arithmatex">\(L\to\infty\)</span>, and then let <span class="arithmatex">\(\eta\downarrow0\)</span> to obtain <a href="08-independent-hierarchical-messages-and-th.html#eq-8-4">(8.4)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-2-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-2-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-2-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-2-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-2-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-2-p3-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s8-2-p3-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s8-2-p3-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s8-2-p3-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s8-2-p3-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s8-2-p3-s11 --></p>
-<p><strong>s12</strong> <!-- TODO:번역 s8-2-p3-s12 --></p>
-<p><strong>s13</strong> <!-- TODO:번역 s8-2-p3-s13 --></p>
-<p><strong>s14</strong> <!-- TODO:번역 s8-2-p3-s14 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(Q_k\)</span> 를 Lemma <a href="03-calculus-on-finite-trees.html#s3-2-e3">3.2</a> 의 tree 법칙이라 하자.</p>
+<p><strong>s2</strong> decorrelation 정리의 다음 결과가 필요하다.</p>
+<p><strong>s3</strong> 여기서와 아래에서 안쪽 극한은 선택된 고정 <span class="arithmatex">\(L\)</span> 수열을 따른다.</p>
+<p><strong>s4</strong> 이를 보기 위해 <span class="arithmatex">\(0\lt \eta\lt 1/2\)</span> 을 고정하고, <span class="arithmatex">\(\mathfrak S_k\)</span> 를 <span class="arithmatex">\([k]\)</span> 의 공집합 아닌 부분집합 위의 표지 topology 들의 유한 모음이라 하자.</p>
+<p><strong>s5</strong> 다음 bound 를 주장한다.</p>
+<p><strong>s6</strong> singleton 에 대한 평균은 깊이 좌표가 없다.</p>
+<p><strong>s7</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-4-e11">3.6</a> 에 의해 regular 가 아닌 tree 는 확률이 최대 <span class="arithmatex">\(C_k(\eta+L^{-1})\)</span> 이다.</p>
+<p><strong>s8</strong> regular tree 에서는 모든 유도 subtree 가 그 branching 깊이에 대한 내부 조건과 분리 조건을 유지한다.</p>
+<p><strong>s9</strong> branching vertex 가 <span class="arithmatex">\(a\)</span> 개인 topology 에 대해 각 깊이 배정의 확률은 최대 <span class="arithmatex">\(C_kL^{-a}\)</span> 이다.</p>
+<p><strong>s10</strong> 유도 subtree 가 <span class="arithmatex">\(a'\)</span> 개의 branching vertex 를 유지하면, 그 깊이의 각 배정은 전체 tree 로의 확장을 최대 <span class="arithmatex">\(L^{a-a'}\)</span> 개 갖는다.</p>
+<p><strong>s11</strong> 이 미사용 좌표들을 합해 없애면 <span class="arithmatex">\(\mathcal A_{L,\eta}\)</span> 의 정규화 <span class="arithmatex">\(L^{-a'}\)</span> 가 정확히 남는다.</p>
+<p><strong>s12</strong> Cauchy–Schwarz 가 평균 절대 편차의 결과 평균을 <span class="arithmatex">\(\bigl(\mathcal A_{L,\eta}\operatorname{Var}(R_U)\bigr)^{1/2}\)</span> 로 bound 한다.</p>
+<p><strong>s13</strong> 유한 개의 topology 와 부분집합에 대해 합하고, regular 가 아닌 tree 에서는 각 편차에 bound 2 를 쓰면 <a href="08-independent-hierarchical-messages-and-th.html#eq-8-5">(8.5)</a> 가 증명된다.</p>
+<p><strong>s14</strong> Theorem <a href="07-decorrelation-on-prescribed-trees.html#s7-1-e1">7.1</a> 을 먼저 고정된 <span class="arithmatex">\(\eta\)</span> 에서 적용하되, <span class="arithmatex">\(L\to\infty\)</span> 이전에 고정 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(N\)</span> 극한을 취하고, 그 다음 <span class="arithmatex">\(\eta\downarrow0\)</span> 으로 보내면 <a href="08-independent-hierarchical-messages-and-th.html#eq-8-4">(8.4)</a> 를 얻는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-2-p3 -->
-
+<ul>
+<li><strong>s2, (8.4)</strong> Ruelle cascade replica 의 overlap tree <span class="arithmatex">\(Q_k\)</span> 로 평균했을 때 multioverlap 요동 → 0. 이것이 §3 의 log 전개 각 차수에서 site 독립성 오차를 0 으로 만든다. <code>📚</code> (8.5) 와 Theorem 7.1</li>
+<li><strong>s4–s14, (8.5)</strong> <span class="arithmatex">\(Q_k\)</span> 평균 = (비정상 모양: 확률 <span class="arithmatex">\(O(\eta+1/L)\)</span>) + (정상 모양: 깊이 평균 <span class="arithmatex">\(\mathcal A\)</span>, Theorem 7.1). §3.4 의 Lemma 3.6 과 Remark 3.7 이 바로 이 전환을 위한 것. <code>📚</code> Lemma 3.6, Remark 3.7</li>
+</ul>
 <p><strong>식 (8.4) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-4 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E_{Q_k}\sum_S\mathbb E\lvert R_S-\mathbb ER_S\rvert\to0\)</span></td>
+<td>cascade 평균 요동</td>
+<td>Ruelle cascade 로 뽑은 replica 들의 multioverlap 이 결정적</td>
+<td><code>📚</code> (8.5), Theorem 7.1</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (8.5) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-5 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(C_k(\eta+L^{-1})\)</span></td>
+<td>비정상 모양</td>
+<td>overlap 단계가 겹치거나 끝에 붙는 확률</td>
+<td><code>📚</code> (3.16)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum_U(\mathcal A\mathrm{Var}R_U)^{1/2}\)</span></td>
+<td>정상 모양</td>
+<td>전형적 overlap 구조에서의 요동</td>
+<td><code>📚</code> Theorem 7.1</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s8-3"></a></p>
 <h2 id="83-comparison-of-the-insertion-logarithms">§8.3 Comparison of the insertion logarithms<a class="headerlink" href="#83-comparison-of-the-insertion-logarithms" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s8-3 -->
-
+<p><em>제목: 삽입 log 의 비교</em></p>
 <p><a id="s8-3-e5"></a></p>
 <h3 id="proposition-83">▸ Proposition 8.3<a class="headerlink" href="#proposition-83" title="Permanent link">&para;</a></h3>
 <p><a id="s8-3-p1"></a></p>
@@ -1258,13 +1465,42 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
  -\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\right|=0. \tag{8.6}
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p1-s1 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(\mathbf m^{(L)}=(1/L,\ldots,(L-1)/L)\)</span> 인 Lemma <a href="08-independent-hierarchical-messages-and-th.html#s8-1-e1">8.1</a> 의 시행 법칙에 대해 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p1 -->
-
+<ul>
+<li><strong>s1, (8.6)</strong> Proposition 8.3: <strong>cavity 증분 (실제 계) ≈ encode 된 시행 법칙의 Bethe free entropy</strong> (<span class="arithmatex">\(L\to\infty\)</span>). 물리의 cavity 계산 "<span class="arithmatex">\(\Delta F\)</span> = site 항 − edge 항, population 으로 평가" 이 실제 계의 상태 구조로 평가했을 때 정확해진다는 것. <code>📚</code> 증명 §8.3 ¶2–¶6</li>
+</ul>
 <p><strong>식 (8.6) 항별 표</strong></p>
-<!-- TODO:항표 eq-8-6 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Delta_N^{L,\mathbf u}\)</span></td>
+<td>cavity 증분</td>
+<td>실제 계(reservoir)에서 spin 하나 추가 비용</td>
+<td><code>📚</code> Lemma 5.1</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\)</span></td>
+<td>Bethe 값</td>
+<td>실제 계의 상태 구조를 order parameter 로 한 RSB Bethe free entropy (R15)</td>
+<td><code>📚</code> (2.11)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lim_L\limsup_N\lvert\cdot\rvert=0\)</span></td>
+<td>일치</td>
+<td>full-RSB 극한에서 cavity 공식이 정확</td>
+<td><code>📚</code> §8.3 증명</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s8-3-e5)</em></p>
 <p><a id="s8-3-e6"></a></p>
@@ -1276,12 +1512,13 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-3-p2-s2"></a><strong>s2</strong> Denote the resulting trial insertions by <span class="arithmatex">\(\widetilde A_{\rm s}\)</span> and <span class="arithmatex">\(\widetilde A_{\rm b}\)</span>, and their recursions from <a href="03-calculus-on-finite-trees.html#eq-3-3">(3.3)</a> by <span class="arithmatex">\(\widetilde Y_{0,\rm s}\)</span> and <span class="arithmatex">\(\widetilde Y_{0,\rm b}\)</span>.</p>
 <p><a id="s8-3-p2-s3"></a><strong>s3</strong> These recursions use the trial kernels.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p2-s3 --></p>
+<p><strong>s1</strong> Lemma <a href="05-a-perturbed-cavity-reservoir.html#s5-e1">5.1</a> 의 각 삽입에 대해, 그 site label 에서의 reservoir spin 들을 Lemma <a href="08-independent-hierarchical-messages-and-th.html#s8-1-e1">8.1</a> 의 독립 spin 과정으로 바꾼다.</p>
+<p><strong>s2</strong> 결과로 나오는 시행 삽입을 <span class="arithmatex">\(\widetilde A_{\rm s}\)</span>, <span class="arithmatex">\(\widetilde A_{\rm b}\)</span>, 그 <a href="03-calculus-on-finite-trees.html#eq-3-3">(3.3)</a> 의 재귀를 <span class="arithmatex">\(\widetilde Y_{0,\rm s}\)</span>, <span class="arithmatex">\(\widetilde Y_{0,\rm b}\)</span> 라 쓴다.</p>
+<p><strong>s3</strong> 이 재귀들은 시행 kernel 을 쓴다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p2 -->
-
+<ul>
+<li><strong>s1–s3</strong> cavity 삽입의 이웃 spin (reservoir) 을 독립 시행 message 의 spin 으로 교체. 물리: cavity graph 에서 이웃들을 독립 cavity field 로 근사 (Bethe 근사) — 여기서는 근사가 아니라 오차를 통제. <code>🔧</code></li>
+</ul>
 <hr />
 <p><a id="s8-3-p3"></a></p>
 <h4 id="83-3">§8.3 ¶3<a class="headerlink" href="#83-3" title="Permanent link">&para;</a></h4>
@@ -1303,18 +1540,46 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 \]</div>
 <p><a id="s8-3-p3-s6"></a><strong>s6</strong> By <a href="05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a>, it remains to compare the reservoir and trial insertion logarithms in the stated limits.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-3-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s8-3-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s8-3-p3-s6 --></p>
+<p><strong>s1</strong> 말단 spin 전이에서 <span class="arithmatex">\(\widetilde A_{\rm s}\)</span> 를 그 독립 시행 spin 에 대해 평균하면 정확히 <a href="02-the-model-and-the-variational-principle.html#eq-2-8">(2.8)</a> 의 <span class="arithmatex">\(V_{\rm s}\)</span> 를 얻는다; 따라서 <span class="arithmatex">\(\widetilde Y_{0,\rm s}=T_0V_{\rm s}\)</span> 다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(\widetilde A_{\rm b}\)</span> 에 대해서는 같은 전이가 서로소인 message label 을 갖는 <span class="arithmatex">\(K_{\rm b}\)</span> 개 edge 인자의 곱을 준다.</p>
+<p><strong>s3</strong> 물리적 disorder 와 한 깊이에서의 모든 message prefix 가 주어지면 이 label 그룹들은 독립으로 남는다.</p>
+<p><strong>s4</strong> 따라서 그 곱은 마지막 단계부터 첫 단계까지 차례로 각 조건부 power mean 을 통해 인수분해된다.</p>
+<p><strong>s5</strong> 결과적으로 다음이 성립한다.</p>
+<p><strong>s6</strong> <a href="05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a> 에 의해 남은 것은 명시된 극한에서 reservoir 와 시행 삽입 log 를 비교하는 것이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p3 -->
-
+<ul>
+<li><strong>s1</strong> 시행 site 삽입 = Bethe site 항 (R10). <code>📚</code> (2.8)</li>
+<li><strong>s2–s5</strong> bond 삽입: 독립 label 그룹의 곱은 power mean 을 통과해 곱으로 분해 → <span class="arithmatex">\(K_{\rm b}\)</span> 개 edge 항의 합, 평균 <span class="arithmatex">\(\alpha(p-1)\)</span> 개. 그래서 site − bond = Bethe 공식 (2.11). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: power mean 의 곱 분해 (s4–s5)</summary>
+<p><span class="arithmatex">\(X,Y\gt0\)</span> 가 조건부 독립이면 <span class="arithmatex">\((K(XY)^m)^{1/m}=(KX^mKY^m)^{1/m}=(KX^m)^{1/m}(KY^m)^{1/m}\)</span> ✓ (독립이면 기댓값이 곱). 단계마다 반복하면 <span class="arithmatex">\(\widetilde Y_{0,\rm b}=\prod_{j\le K_{\rm b}}T_0V_{\rm e}^{(j)}\)</span>, <span class="arithmatex">\(\log\)</span> 합의 기댓값 <span class="arithmatex">\(=\mathbb EK_{\rm b}\cdot\mathbb E\log T_0V_{\rm e}=\alpha(p-1)\mathbb E\log T_0V_{\rm e}\)</span> (Wald) ✓. 따라서 <span class="arithmatex">\(\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\mathbb E\log T_0V_{\rm e}=\mathcal B_{L-1}\)</span> ✓ ((2.11)).</p>
+</details>
 <p><strong>식 Eq. §8.3 ¶3 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-3-p3-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e}\)</span></td>
+<td>시행 bond 삽입</td>
+<td>Bethe edge 항 (R9)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\log2+\mathbb E\log\widetilde Y_{0,\rm s}-\mathbb E\log\widetilde Y_{0,\rm b}=\mathcal B_{L-1}\)</span></td>
+<td>시행 증분</td>
+<td>Bethe free entropy (R15)</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s8-3-p4"></a></p>
 <h4 id="83-4">§8.3 ¶4<a class="headerlink" href="#83-4" title="Permanent link">&para;</a></h4>
@@ -1324,13 +1589,18 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-3-p4-s3"></a><strong>s3</strong> On this event both the reservoir insertion and its trial version can be written as <span class="arithmatex">\(A=z(1+D)\)</span> with <span class="arithmatex">\(|D|\le c\)</span>, uniformly in all disorder and path variables.</p>
 <p><a id="s8-3-p4-s4"></a><strong>s4</strong> The deterministic term <span class="arithmatex">\(\log z\)</span> cancels in the comparison.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-3-p4-s4 --></p>
+<p><strong>s1</strong> 어느 삽입이든, 먼저 그 Poisson 개수 <span class="arithmatex">\(K\)</span> 를 고정된 <span class="arithmatex">\(M\)</span> 에 대해 <span class="arithmatex">\(K\le M\)</span> 으로 제한한다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(C=H+BM\)</span>, <span class="arithmatex">\(z=\cosh C\)</span>, <span class="arithmatex">\(c=\tanh C\lt 1\)</span> 로 둔다.</p>
+<p><strong>s3</strong> 이 사건 위에서 reservoir 삽입과 그 시행 판 모두 모든 disorder 와 경로 변수에 대해 균등하게 <span class="arithmatex">\(|D|\le c\)</span> 인 <span class="arithmatex">\(A=z(1+D)\)</span> 로 쓸 수 있다.</p>
+<p><strong>s4</strong> 결정적 항 <span class="arithmatex">\(\log z\)</span> 는 비교에서 상쇄된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p4 -->
-
+<ul>
+<li><strong>s1–s4</strong> 유계 log-weight <span class="arithmatex">\(\lvert\log A\rvert\le C\)</span> 이면 <span class="arithmatex">\(A=\cosh C\,(1+D)\)</span>, <span class="arithmatex">\(\lvert D\rvert\le\tanh C\)</span> — R5 의 loop 전개 형태를 다시 만들어 §3 의 log 전개를 적용. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: A = cosh C (1+D) (s3)</summary>
+<p><span class="arithmatex">\(A\in[e^{-C},e^C]\)</span> 이면 <span class="arithmatex">\(D=A/\cosh C-1\in[e^{-C}/\cosh C-1,e^C/\cosh C-1]=[-\tanh C,\tanh C]\)</span> ✓ (<span class="arithmatex">\(e^{\pm C}/\cosh C=1\pm\tanh C\)</span>).</p>
+</details>
 <hr />
 <p><a id="s8-3-p5"></a></p>
 <h4 id="83-5">§8.3 ¶5<a class="headerlink" href="#83-5" title="Permanent link">&para;</a></h4>
@@ -1340,13 +1610,14 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-3-p5-s3"></a><strong>s3</strong> Hence <a href="08-independent-hierarchical-messages-and-th.html#eq-8-4">(8.4)</a> makes its tree-averaged error tend to zero in the ordered limits.</p>
 <p><a id="s8-3-p5-s4"></a><strong>s4</strong> For every fixed <span class="arithmatex">\(M\)</span>, truncating the expansion after <span class="arithmatex">\(q\)</span> terms leaves an error at most <span class="arithmatex">\(\sum_{k\gt q}c^k/k\)</span> on either side, uniformly in <span class="arithmatex">\(N,L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-3-p5-s4 --></p>
+<p><strong>s1</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-2-e3">3.2</a> 의 각 차수 <span class="arithmatex">\(k\)</span> 에서, <span class="arithmatex">\(D\)</span> 의 <span class="arithmatex">\(k\)</span> 개 사본의 곱은 최대 <span class="arithmatex">\(pM\)</span> 개 label 에서의 replica-spin 패턴과 독립 삽입 disorder 의 유계 함수다.</p>
+<p><strong>s2</strong> Lemma <a href="08-independent-hierarchical-messages-and-th.html#s8-2-e3">8.2</a> 에 의해 고정된 tree 위에서의 그 평가 오차는 <span class="arithmatex">\(pM\sum_{S\ne\varnothing}\mathbb E|R_S-\mathbb E R_S|\)</span> 로 bound 된다.</p>
+<p><strong>s3</strong> 따라서 <a href="08-independent-hierarchical-messages-and-th.html#eq-8-4">(8.4)</a> 가 순서 있는 극한에서 그 tree 평균 오차를 0 으로 보낸다.</p>
+<p><strong>s4</strong> 모든 고정된 <span class="arithmatex">\(M\)</span> 에 대해, 전개를 <span class="arithmatex">\(q\)</span> 항 이후 절단하면 양쪽 모두에서 <span class="arithmatex">\(N,L\)</span> 에 균등하게 최대 <span class="arithmatex">\(\sum_{k\gt q}c^k/k\)</span> 의 오차가 남는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p5 -->
-
+<ul>
+<li><strong>s1–s4</strong> log 전개의 각 차수는 <span class="arithmatex">\(Q_k\)</span> 로 뽑은 replica 들의 site 패턴 함수 → multioverlap 요동이 0 이면 실제 계와 시행 법칙이 같은 값. 이 모든 것이 §3 (log 전개), §7 (decorrelation), §8.2 (패턴 비교)의 조립. <code>📚</code> Lemma 3.2, Lemma 8.2, (8.4)</li>
+</ul>
 <hr />
 <p><a id="s8-3-p6"></a></p>
 <h4 id="83-6">§8.3 ¶6<a class="headerlink" href="#83-6" title="Permanent link">&para;</a></h4>
@@ -1356,13 +1627,14 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 <p><a id="s8-3-p6-s3"></a><strong>s3</strong> This proves convergence of the expected insertion logarithms: explicitly, first choose <span class="arithmatex">\(M\)</span> to control the Poisson tail, then <span class="arithmatex">\(q\)</span> to control the geometric tail, and then take the limits in <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(L\)</span> for the finitely many remaining expansion terms.</p>
 <p><a id="s8-3-p6-s4"></a><strong>s4</strong> Together with the trial identities above and <a href="05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a>, this proves <a href="08-independent-hierarchical-messages-and-th.html#eq-8-6">(8.6)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-3-p6-s4 --></p>
+<p><strong>s1</strong> 개수 cutoff 밖에서는 양쪽의 원래 삽입 log 가 <span class="arithmatex">\(H+BK\)</span> 로 bound 된다.</p>
+<p><strong>s2</strong> 따라서 그 기대 기여는 최대 <span class="arithmatex">\(2\mathbb E[(H+BK)\mathbf1_{\{K&gt;M\}}]\)</span> 이며, <span class="arithmatex">\(M\to\infty\)</span> 일 때 0 으로 간다.</p>
+<p><strong>s3</strong> 이것이 기대 삽입 log 의 수렴을 증명한다: 명시적으로, 먼저 Poisson 꼬리를 통제하도록 <span class="arithmatex">\(M\)</span> 을, 그 다음 기하 꼬리를 통제하도록 <span class="arithmatex">\(q\)</span> 를 고르고, 남은 유한 개의 전개 항에 대해 <span class="arithmatex">\(N\)</span> 과 <span class="arithmatex">\(L\)</span> 의 극한을 취한다.</p>
+<p><strong>s4</strong> 위의 시행 항등식과 <a href="05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a> 와 함께 이것이 <a href="08-independent-hierarchical-messages-and-th.html#eq-8-6">(8.6)</a> 을 증명한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p6 -->
-
+<ul>
+<li><strong>s1–s4</strong> <code>🔧</code> 극한 순서: <span class="arithmatex">\(M\)</span> (degree cutoff) → <span class="arithmatex">\(q\)</span> (전개 차수) → <span class="arithmatex">\(N\)</span> → <span class="arithmatex">\(L\)</span>.</li>
+</ul>
 <hr />
 <p>∎</p>
 <p><a id="s8-3-e7"></a></p>
@@ -1376,13 +1648,30 @@ a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E|R_S-\mathbb E R_S|. \tag{8.3}
 \liminf_{N\to\infty}F_N\ge\inf_{r\ge0}\Phi_r.
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p7-s1 --></p>
+<p><strong>s1</strong> 유계이고 순열 불변인 모든 상호작용 법칙과 유계 field 법칙에 대해, Section <a href="02-the-model-and-the-variational-principle.html#s2">2</a> 에서 정의한 functional 로 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p7 -->
-
+<ul>
+<li><strong>s1</strong> Corollary 8.4: <strong>lower bound</strong> <span class="arithmatex">\(\liminf F_N\ge\inf_r\Phi_r\)</span> (유계 모형). §4 의 upper bound 와 합치면 Mézard–Parisi 공식. 짝수 <span class="arithmatex">\(p\)</span> 나 (2.4) 가 필요 없다는 것이 중요. <code>📚</code> §8.3 ¶8</li>
+</ul>
 <p><strong>식 Eq. §8.3 ¶7 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-3-p7-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\liminf F_N\ge\inf_r\Phi_r\)</span></td>
+<td>lower bound</td>
+<td>pressure 는 RSB Bethe 변분값 이상</td>
+<td><code>📚</code> §8.3 ¶8</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s8-3-e7)</em></p>
 <p><a id="s8-3-e8"></a></p>
@@ -1402,16 +1691,37 @@ A\le\underline F+2\varepsilon+
 <p><a id="s8-3-p8-s3"></a><strong>s3</strong> The inner limit uses that depth's selected sequence.</p>
 <p><a id="s8-3-p8-s4"></a><strong>s4</strong> Letting <span class="arithmatex">\(L\to\infty\)</span> in Proposition <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e5">8.3</a> gives <span class="arithmatex">\(A\le\underline F+2\varepsilon\)</span>, and then <span class="arithmatex">\(\varepsilon\downarrow0\)</span> proves the result.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s8-3-p8-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s8-3-p8-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s8-3-p8-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s8-3-p8-s4 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(A=\inf_{r\ge0}\Phi_r\)</span> 로 쓰며, 이는 <a href="02-the-model-and-the-variational-principle.html#eq-2-12">(2.12)</a> 에 의해 유한하다.</p>
+<p><strong>s2</strong> encode 된 각 시행 값은 적어도 <span class="arithmatex">\(A\)</span> 이므로, <a href="08-independent-hierarchical-messages-and-th.html#eq-8-1">(8.1)</a> 은 모든 고정된 <span class="arithmatex">\(L\)</span> 에서 다음을 준다.</p>
+<p><strong>s3</strong> 안쪽 극한은 그 깊이의 선택된 수열을 쓴다.</p>
+<p><strong>s4</strong> Proposition <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e5">8.3</a> 에서 <span class="arithmatex">\(L\to\infty\)</span> 로 보내면 <span class="arithmatex">\(A\le\underline F+2\varepsilon\)</span> 을 얻고, <span class="arithmatex">\(\varepsilon\downarrow0\)</span> 으로 보내면 결과가 증명된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s8-3-p8 -->
-
+<ul>
+<li><strong>s1–s4</strong> 논리: <span class="arithmatex">\(A\le\mathcal B(\zeta_{L,N})\)</span> (inf 의 정의) <span class="arithmatex">\(\approx\Delta_N\)</span> (Prop. 8.3) <span class="arithmatex">\(\le\underline F+2\varepsilon\)</span> (선택). 🧭 물리 직관과의 차이: 물리에서는 정류점 방정식(population dynamics 의 고정점)을 풀어 그 값이 free energy 라고 하지만, 이 증명은 고정점을 전혀 쓰지 않는다 — 실제 계에서 읽은 order parameter 는 고정점일 필요가 없고, 그냥 inf 보다 크다는 것만 쓴다. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 부등식의 연결 (s2–s4)</summary>
+<p><span class="arithmatex">\(\zeta_{L,N}\in\mathcal M_L\)</span>, <span class="arithmatex">\(\mathbf m^{(L)}\)</span> 은 허용 시행 → <span class="arithmatex">\(\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\ge\Phi_{L-1}\ge A\)</span> ✓. <span class="arithmatex">\(A\le\mathcal B\le\Delta_N+\lvert\Delta_N-\mathcal B\rvert\le\underline F+2\varepsilon+\lvert\Delta_N-\mathcal B\rvert\)</span> ✓ ((8.1)). <span class="arithmatex">\(\limsup_N\)</span> 후 <span class="arithmatex">\(L\to\infty\)</span>: (8.6) 으로 마지막 항 → 0 ✓.</p>
+</details>
 <p><strong>식 Eq. §8.3 ¶8 #1 항별 표</strong></p>
-<!-- TODO:항표 s8-3-p8-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(A\le\underline F+2\varepsilon+\limsup\lvert\Delta_N-\mathcal B\rvert\)</span></td>
+<td>핵심 부등식</td>
+<td>실제 계의 상태 구조는 하나의 시행 → inf 이상</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 
