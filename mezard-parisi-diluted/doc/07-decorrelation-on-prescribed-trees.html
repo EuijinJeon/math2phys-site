@@ -991,12 +991,15 @@
 
 <p><a id="s7"></a></p>
 <h1 id="7-decorrelation-on-prescribed-trees">§7 Decorrelation on prescribed trees<a class="headerlink" href="#7-decorrelation-on-prescribed-trees" title="Permanent link">&para;</a></h1>
-<!-- TODO:제목번역 s7 -->
-
+<p><em>제목: 지정된 tree 위의 decorrelation</em></p>
 <p><a href="06-perturbations-and-identities-on-prescrib.html">← 이전: §6 Perturbations and identities on prescribed trees</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="08-independent-hierarchical-messages-and-th.html">다음: §8 Independent hierarchical messages and the cavity comparison →</a></p>
 <details>
 <summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
-<!-- TODO:요약 s7 -->
+<p><strong>하는 일.</strong> §6 의 GG 류 항등식만으로, 섭동된 reservoir 의 replica 구조에 대해 두 가지를 증명한다.
+- Proposition 7.4 (조건부 decorrelation): 전형적 상태(깊이 <span class="arithmatex">\(d\)</span> 묶음)를 정하면, 그 아래 spin 곱들의 connected correlation (site 평균한 조건부 공분산 제곱 <span class="arithmatex">\(v_N\)</span>) 이 0 으로 간다. leaf 수에 대한 귀납; 기본 단계는 <span class="arithmatex">\(\frac12\sum c_\ell\mathbb E(X-X_\ell)^2=\delta\mathrm{Var}X\)</span>.
+- Theorem 7.1: overlap 구조(topology + 단계 값)를 정한 replica 들의 multioverlap 은 (단계 값에 대해 평균한 의미로) <span class="arithmatex">\(L\to\infty\)</span> 에서 요동이 없다. 분산 = 상태 사이 (marker anchor 로 0) + 상태 안 (clustering 과 단계 연속성으로 작음).</p>
+<p><strong>물리적 의미.</strong> 두 가지 cavity/RSB 가정을 증명한다: (1) <strong>pure state clustering</strong> — 각 상태 안에서 spin 들은 거의 독립 (cavity method 에서 이웃 spin 의 cavity field 를 독립으로 다루는 근거; 제안 해석 R22), (2) <strong>overlap 의 결정성</strong> — Parisi 그림에서 replica 쌍의 overlap 은 갈라지는 단계로 정해진다. 둘 다 모형 세부 없이 GG 항등식(stochastic stability)에서 나온다.</p>
+<p><strong>건너뛰어도 되는지.</strong> 증명 기술(이동된 사본, 계수 상쇄)은 건너뛰어도 된다. 알아 둘 결론: §8 에서 reservoir 의 site/bond 삽입을 시행 법칙(독립 계층 message)과 비교할 때, 상태 안 clustering 덕분에 cavity spin 들을 독립 message 로 바꿀 수 있다.</p>
 </details>
 <p><a id="s7-p1"></a></p>
 <h4 id="7-1">§7 ¶1<a class="headerlink" href="#7-1" title="Permanent link">&para;</a></h4>
@@ -1006,13 +1009,14 @@
 <p><a id="s7-p1-s3"></a><strong>s3</strong> Different values of <span class="arithmatex">\(L\)</span> may use different sequences.</p>
 <p><a id="s7-p1-s4"></a><strong>s4</strong> The argument uses only these identities and the tree sampling rules; in particular, it does not use the interaction factorization.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-p1-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-p1-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-p1-s4 --></p>
+<p><strong>s1</strong> 이 섹션 내내 <span class="arithmatex">\(m_d=d/L\)</span>, <span class="arithmatex">\(\delta=L^{-1}\)</span> 이다.</p>
+<p><strong>s2</strong> 각 고정된 <span class="arithmatex">\(L\)</span> 에 대해 <span class="arithmatex">\(N\)</span> 의 모든 극한은 Lemma <a href="06-perturbations-and-identities-on-prescrib.html#s6-3-e3">6.2</a> 가 주는 크기와 매개변수 선택을 따르며, 이들은 Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a> 의 항등식을 만족한다.</p>
+<p><strong>s3</strong> 서로 다른 <span class="arithmatex">\(L\)</span> 값은 서로 다른 수열을 쓸 수 있다.</p>
+<p><strong>s4</strong> 논증은 이 항등식들과 tree 표본추출 규칙만 쓴다; 특히 상호작용 factorization 은 쓰지 않는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-p1 -->
-
+<ul>
+<li><strong>s1–s4</strong> 입력은 §6 의 GG 류 항등식(6.17)뿐. 모형의 구체적 형태(R5 의 loop 전개)는 쓰지 않는다 — 결론은 "GG 항등식을 만족하는 모든 계층 측도" 의 일반적 성질. 물리로는 stochastic stability 만으로 상태 구조가 결정된다는 Parisi–Ghirlanda–Guerra 철학. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>], [<a href="99-references.html#ref-Pan13">14</a>]</li>
+</ul>
 <hr />
 <p><a id="s7-p2"></a></p>
 <h4 id="7-2">§7 ¶2<a class="headerlink" href="#7-2" title="Permanent link">&para;</a></h4>
@@ -1020,16 +1024,16 @@
 <p><a id="s7-p2-s1"></a><strong>s1</strong> Our goal is concentration of every finite multioverlap, averaged over separated interior branching depths.</p>
 <p><a id="s7-p2-s2"></a><strong>s2</strong> These are the averages needed for the comparison with independent messages in Section <a href="08-independent-hierarchical-messages-and-th.html#s8">8</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-p2-s2 --></p>
+<p><strong>s1</strong> 목표는 분리된 내부 branching 깊이들에 대해 평균한, 모든 유한 multioverlap 의 집중이다.</p>
+<p><strong>s2</strong> 이것이 Section <a href="08-independent-hierarchical-messages-and-th.html#s8">8</a> 에서 독립 message 와 비교하는 데 필요한 평균이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-p2 -->
-
+<ul>
+<li><strong>s1–s2</strong> 목표: replica 들의 overlap 구조(tree 모양과 각 분기의 깊이)를 정하면, 그 replica 들의 multioverlap 은 <strong>무작위가 아닌 값</strong>으로 집중한다 (요동 → 0). Parisi 그림에서 "같은 단계 <span class="arithmatex">\(q_d\)</span> 의 두 replica 는 overlap 이 정확히 <span class="arithmatex">\(q_d\)</span>" 인 것의 multioverlap·diluted 판. <code>📚</code> §8 에서 사용</li>
+</ul>
 <hr />
 <p><a id="s7-1"></a></p>
 <h2 id="71-averages-over-depths">§7.1 Averages over depths<a class="headerlink" href="#71-averages-over-depths" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s7-1 -->
-
+<p><em>제목: 깊이에 대한 평균</em></p>
 <p><a id="s7-1-p1"></a></p>
 <h4 id="71-1">§7.1 ¶1<a class="headerlink" href="#71-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1041,16 +1045,17 @@
 <p><a id="s7-1-p1-s6"></a><strong>s6</strong> When an additional prefix depth <span class="arithmatex">\(d\)</span> is specified, it must satisfy the same restrictions relative to all branching depths.</p>
 <p><a id="s7-1-p1-s7"></a><strong>s7</strong> When two copies of one topology use aligned depths, corresponding vertices share one depth coordinate; regularity is imposed on these distinct coordinates.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p1-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-1-p1-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-1-p1-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-1-p1-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-1-p1-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-1-p1-s7 --></p>
+<p><strong>s1</strong> topology 는 표지된 leaf 위의 유한한 뿌리 있는 tree 로, unary vertex 는 생략한다.</p>
+<p><strong>s2</strong> 각 branching vertex 에는 <span class="arithmatex">\(\{0,\ldots,L-1\}\)</span> 안의 정수 깊이가 배정되며, 모든 가지를 따라 엄격히 증가한다.</p>
+<p><strong>s3</strong> topology <span class="arithmatex">\(S\)</span> 의 branching vertex 수를 <span class="arithmatex">\(b(S)\)</span> 라 쓴다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(\eta\gt 0\)</span> 을 고정한다.</p>
+<p><strong>s5</strong> 배정된 모든 깊이를 <span class="arithmatex">\(L\)</span> 로 나눈 값이 <span class="arithmatex">\((\eta,1-\eta)\)</span> 안에 있고 서로 다른 branching vertex 의 정규화된 깊이가 <span class="arithmatex">\(\eta\)</span> 보다 더 차이 나면 깊이 배정을 <em><span class="arithmatex">\(\eta\)</span>-regular</em> 라 한다.</p>
+<p><strong>s6</strong> 추가 prefix 깊이 <span class="arithmatex">\(d\)</span> 가 지정되면, 그것도 모든 branching 깊이에 대해 같은 제한을 만족해야 한다.</p>
+<p><strong>s7</strong> 한 topology 의 두 사본이 정렬된 깊이를 쓰면, 대응하는 vertex 들은 하나의 깊이 좌표를 공유한다; regularity 는 이 서로 다른 좌표들에 부과된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p1 -->
-
+<ul>
+<li><strong>s1–s7</strong> topology + 깊이 배정 = replica 들의 overlap 구조 (어느 쌍이 어느 단계 <span class="arithmatex">\(q_d\)</span> 에서 갈라지는가). regular = overlap 단계들이 서로 떨어져 있고 양 끝에서 떨어짐 (§3.4). <code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p1">§3.4 ¶1</a></li>
+</ul>
 <hr />
 <p><a id="s7-1-p2"></a></p>
 <h4 id="71-2">§7.1 ¶2<a class="headerlink" href="#71-2" title="Permanent link">&para;</a></h4>
@@ -1073,22 +1078,61 @@
 <p><a id="s7-1-p2-s6"></a><strong>s6</strong> Summing over an unused coordinate costs at most <span class="arithmatex">\(L\)</span>, canceled by its normalization.</p>
 <p><a id="s7-1-p2-s7"></a><strong>s7</strong> A fixed integer shift of any subset of the coordinates maps <span class="arithmatex">\(\eta\)</span>-regular assignments injectively into <span class="arithmatex">\(\eta/2\)</span>-regular assignments for all sufficiently large <span class="arithmatex">\(L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-1-p2-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-1-p2-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-1-p2-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-1-p2-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-1-p2-s7 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(a\)</span> 개의 깊이 좌표 위의 음이 아닌 배열 <span class="arithmatex">\(z(\mathbf q)\)</span> 에 대해 다음과 같이 둔다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(d\lt\min_v q_v\)</span> 같은 추가 순서 제한은 합의 정의역에 포함된다.</p>
+<p><strong>s3</strong> 이들은 정규화되지 않은 평균이다: 총 질량이 최대 1 이다.</p>
+<p><strong>s4</strong> 따라서 <span class="arithmatex">\(0\lt \gamma\le1\)</span> 에 대해 다음이 성립한다.</p>
+<p><strong>s5</strong> 두 가지 기초적 비교가 반복해서 나온다.</p>
+<p><strong>s6</strong> 쓰지 않는 좌표에 대해 합하면 최대 <span class="arithmatex">\(L\)</span> 의 비용이 드는데, 이는 그 정규화로 상쇄된다.</p>
+<p><strong>s7</strong> 좌표들의 임의의 부분집합을 고정된 정수만큼 이동하면, 충분히 큰 모든 <span class="arithmatex">\(L\)</span> 에 대해 <span class="arithmatex">\(\eta\)</span>-regular 배정이 <span class="arithmatex">\(\eta/2\)</span>-regular 배정으로 단사적으로 옮겨진다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p2 -->
-
+<ul>
+<li><strong>s1, (7.1)</strong> <span class="arithmatex">\(L^{-a}\sum_{\mathbf q}\)</span> = overlap 단계 값들에 대한 Riemann 합, 즉 Parisi <span class="arithmatex">\(x\)</span> 변수에 대한 적분 <span class="arithmatex">\(\int dx_1\cdots dx_a\)</span> 의 이산판 (§3.4 Remark 3.7). <code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p5">§3.4 ¶5</a></li>
+<li><strong>s3–s4, (7.2)</strong> 질량 <span class="arithmatex">\(\le1\)</span> 인 평균에 대한 Jensen. <code>✅</code> 아래 전개</li>
+<li><strong>s6–s7</strong> <code>🔧</code> 좌표 하나의 합은 <span class="arithmatex">\(L\)</span> 로 정규화됨; 정수 이동은 regularity 를 반으로 줄일 뿐.</li>
+</ul>
+<details>
+<summary>전개: (7.2) (s4)</summary>
+<p><span class="arithmatex">\(w=\mathcal A1\le1\)</span> (질량). 정규화 평균 <span class="arithmatex">\(\bar{\mathcal A}=\mathcal A/w\)</span> 는 확률평균이고 <span class="arithmatex">\(z\mapsto z^\gamma\)</span> 는 오목: <span class="arithmatex">\(\mathcal A z^\gamma=w\bar{\mathcal A}z^\gamma\le w(\bar{\mathcal A}z)^\gamma=w^{1-\gamma}(\mathcal Az)^\gamma\le(\mathcal Az)^\gamma\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.1) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(L^{-a}\sum_{\mathbf q\ \eta\text{-regular}}z(\mathbf q)\)</span></td>
+<td>정규화 안 된 깊이 평균</td>
+<td>overlap 단계 값(<span class="arithmatex">\(x\)</span> 변수)들에 대한 적분의 이산판</td>
+<td><code>📚</code> Remark 3.7</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.2) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A(z^\gamma)\le(\mathcal Az)^\gamma\)</span></td>
+<td>Jensen</td>
+<td>분수 거듭제곱을 평균 밖으로</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-1-p3"></a></p>
 <h4 id="71-3">§7.1 ¶3<a class="headerlink" href="#71-3" title="Permanent link">&para;</a></h4>
@@ -1102,16 +1146,33 @@
 \]</div>
 <p><a id="s7-1-p3-s4"></a><strong>s4</strong> Constants multiplying this error may depend arbitrarily on <span class="arithmatex">\(L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-1-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-1-p3-s4 --></p>
+<p><strong>s1</strong> 유계 크기의 표지 topology 는 유한 개뿐이고, 고정된 <span class="arithmatex">\(L\)</span> 에서 그 깊이 배정도 유한 개뿐이다.</p>
+<p><strong>s2</strong> 따라서 Theorem <a href="06-perturbations-and-identities-on-prescrib.html#s6-5-e9">6.5</a> 의 오차는 <span class="arithmatex">\(N\to\infty\)</span> 로 보내기 전에 아래에서 쓰는 임의의 유한 모음에 대해 최대화할 수 있다.</p>
+<p><strong>s3</strong> 그런 최대를 <span class="arithmatex">\(\varepsilon_{N,L,k}\)</span> 라 쓴다; 각 고정된 <span class="arithmatex">\(L,k\)</span> 에 대해 다음이 성립한다.</p>
+<p><strong>s4</strong> 이 오차에 곱해지는 상수는 <span class="arithmatex">\(L\)</span> 에 임의로 의존할 수 있다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p3 -->
-
+<ul>
+<li><strong>s1–s4, (7.3)</strong> <code>🔧</code> 고정 <span class="arithmatex">\(L\)</span> 에서 GG 항등식 오차를 유한 개 tree 에 대해 한꺼번에 0 으로.</li>
+</ul>
 <p><strong>식 (7.3) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-3 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\varepsilon_{N,L,k}\to0\)</span></td>
+<td>항등식 오차의 최대</td>
+<td>고정 <span class="arithmatex">\(L\)</span> 에서 GG 항등식의 균등 수렴</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-1-p4"></a></p>
 <h4 id="71-4">§7.1 ¶4<a class="headerlink" href="#71-4" title="Permanent link">&para;</a></h4>
@@ -1119,11 +1180,12 @@
 <p><a id="s7-1-p4-s1"></a><strong>s1</strong> Recall that <span class="arithmatex">\(R_S\)</span> is the multioverlap of the sampled leaves of <span class="arithmatex">\(S\)</span>, defined in <a href="03-calculus-on-finite-trees.html#eq-3-1">(3.1)</a>.</p>
 <p><a id="s7-1-p4-s2"></a><strong>s2</strong> The result to be proved is the following.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p4-s2 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(R_S\)</span> 는 <a href="03-calculus-on-finite-trees.html#eq-3-1">(3.1)</a> 에서 정의한, <span class="arithmatex">\(S\)</span> 의 표본 leaf 들의 multioverlap 임을 상기하라.</p>
+<p><strong>s2</strong> 증명할 결과는 다음과 같다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p4 -->
-
+<ul>
+<li><strong>s1–s2</strong> <code>🔧</code> 예고.</li>
+</ul>
 <hr />
 <p><a id="s7-1-e1"></a></p>
 <h3 id="theorem-71">▸ Theorem 7.1<a class="headerlink" href="#theorem-71" title="Permanent link">&para;</a></h3>
@@ -1140,14 +1202,38 @@
 <p>↳ where only the <span class="arithmatex">\(b(S)\)</span> branching depths are averaged.</p>
 <p><a id="s7-1-p5-s2"></a><strong>s2</strong> For a singleton, whose average has no coordinates, <span class="arithmatex">\(\operatorname{Var}(R_S)\to0\)</span> as <span class="arithmatex">\(N\to\infty\)</span> at every fixed <span class="arithmatex">\(L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p5-s2 --></p>
+<p><strong>s1</strong> 모든 고정된 표지 topology <span class="arithmatex">\(S\)</span> 에 대해 다음이 성립하며, 여기서 평균하는 것은 <span class="arithmatex">\(b(S)\)</span> 개의 branching 깊이뿐이다.</p>
+<p><strong>s2</strong> 평균할 좌표가 없는 singleton 에 대해서는 모든 고정된 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(N\to\infty\)</span> 일 때 <span class="arithmatex">\(\operatorname{Var}(R_S)\to0\)</span> 이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p5 -->
-
+<ul>
+<li><strong>s1, (7.4)</strong> Theorem 7.1: overlap 구조가 정해진 replica 들의 multioverlap 은 (전형적인 단계 값들에서) <strong>요동이 없다</strong>. 물리 Parisi 그림: 두 replica 의 overlap 은 그들이 갈라지는 단계 <span class="arithmatex">\(q_d\)</span> 로 결정되고 그 외 무작위성이 없다 — 여기서는 모든 multioverlap 에 대해, 단계 값에 대해 평균한 의미로. 🧭 물리 직관과의 차이: 물리는 이를 RSB ansatz 의 일부로 가정하지만, 여기서는 GG 항등식으로부터 증명하며, 그것도 <span class="arithmatex">\(L\to\infty\)</span> 와 깊이 평균이라는 약한 의미에서만. <code>📚</code> 증명 §7.4</li>
+<li><strong>s2</strong> singleton (<span class="arithmatex">\(S\)</span> 가 leaf 하나): <span class="arithmatex">\(R_S=\frac1N\sum_i\sigma_i\)</span> = 자화(magnetization) 는 self-averaging. <code>📚</code> §7.4 ¶2</li>
+</ul>
 <p><strong>식 (7.4) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-4 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A_{L,\eta}\mathrm{Var}(R_S)\)</span></td>
+<td>깊이 평균한 분산</td>
+<td>전형적 overlap 구조에서 multioverlap 의 요동</td>
+<td><code>📚</code> §7.4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lim_L\limsup_N(\cdot)=0\)</span></td>
+<td>극한</td>
+<td>full-RSB 극한에서 multioverlap 이 결정적</td>
+<td><code>📚</code> §7.4</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s7-1-e1)</em></p>
 <p><a id="s7-1-p6"></a></p>
@@ -1159,19 +1245,19 @@
 <p><a id="s7-1-p6-s4"></a><strong>s4</strong> We then use a marker anchor to concentrate the remaining conditional mean at each fixed depth.</p>
 <p><a id="s7-1-p6-s5"></a><strong>s5</strong> Averaging over depths is essential when combining the two estimates.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-1-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-1-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-1-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-1-p6-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-1-p6-s5 --></p>
+<p><strong>s1</strong> 증명은 두 부분이다.</p>
+<p><strong>s2</strong> 먼저 spin 곱 벡터의 조건부 공분산 제곱을 통해 표본 prefix 아래의 무작위성을 통제한다.</p>
+<p><strong>s3</strong> 이것은 leaf 수에 대한 귀납이다; 목표 split 을 한 단계 늦추면 그 부호 있는 extension 계수가 통제된다.</p>
+<p><strong>s4</strong> 그 다음 marker anchor 를 써서 각 고정된 깊이에서 남은 조건부 평균을 집중시킨다.</p>
+<p><strong>s5</strong> 두 추정을 합칠 때 깊이에 대한 평균이 필수적이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-1-p6 -->
-
+<ul>
+<li><strong>s2–s3</strong> 1 부: "상태(prefix) 를 정하면 그 안에서 spin 들의 connected correlation 이 사라진다" (pure state clustering) 를 귀납으로. 2 부: 상태 자체에 대한 조건부 평균이 상태마다 같다 (self-averaging). 물리: Var = (상태 안 요동) + (상태 사이 요동), 각각을 0 으로. <code>📚</code> §7.2–§7.4</li>
+</ul>
 <hr />
 <p><a id="s7-2"></a></p>
 <h2 id="72-conditional-covariance-and-continuity-in-depth">§7.2 Conditional covariance and continuity in depth<a class="headerlink" href="#72-conditional-covariance-and-continuity-in-depth" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s7-2 -->
-
+<p><em>제목: 조건부 공분산과 깊이 연속성</em></p>
 <p><a id="s7-2-p1"></a></p>
 <h4 id="72-1">§7.2 ¶1<a class="headerlink" href="#72-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1196,20 +1282,66 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><a id="s7-2-p1-s4"></a><strong>s4</strong> Every coordinate of <span class="arithmatex">\(A_S\)</span> and <span class="arithmatex">\(\mu_{d,S}\)</span> has absolute value at most one, and <span class="arithmatex">\(0\le v_N(S,d)\le1\)</span>.</p>
 <p><a id="s7-2-p1-s5"></a><strong>s5</strong> The next lemma explains why this squared covariance is the useful quantity to induct on.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p1-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p1-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p1-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-2-p1-s5 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(S\)</span> 의 표본 사본에 대해 다음과 같이 둔다.</p>
+<p><strong>s2</strong> 첫 branching 깊이를 포함한 초기 줄기 위의 깊이 <span class="arithmatex">\(d\)</span> 에서, <span class="arithmatex">\(\mathscr F_d\)</span> 를 root 와 <span class="arithmatex">\(d\)</span> 까지의 표본 prefix 로 생성되는 것이라 하고 다음을 정의한다.</p>
+<p><strong>s3</strong> 기댓값은 root 를 포함한다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(A_S\)</span> 와 <span class="arithmatex">\(\mu_{d,S}\)</span> 의 모든 좌표는 절댓값이 1 이하이고 <span class="arithmatex">\(0\le v_N(S,d)\le1\)</span> 이다.</p>
+<p><strong>s5</strong> 다음 lemma 는 이 공분산 제곱이 왜 귀납에 쓸모 있는 양인지 설명한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p1 -->
-
+<ul>
+<li><strong>s1</strong> <span class="arithmatex">\(A_S\)</span> = site 별 spin 곱 벡터, <span class="arithmatex">\(R_S=\mathbf 1\cdot A_S\)</span> (site 평균). <code>🔧</code></li>
+<li><strong>s2, (7.5)</strong> <span class="arithmatex">\(\mu_{d,S}\)</span> = 깊이 <span class="arithmatex">\(d\)</span> 상태 묶음이 주어졌을 때 site 별 spin 곱의 평균 (상태 안의 국소 자화의 곱). <span class="arithmatex">\(v_N(S,d)\)</span> = 상태 안에서 site 쌍 <span class="arithmatex">\((i,j)\)</span> 의 <strong>connected correlation 제곱의 site 평균</strong>. <span class="arithmatex">\(v_N\to0\)</span> 은 "각 상태 안에서 spin 들이 거의 독립" = <strong>pure state 의 clustering 성질</strong> — cavity method 가 이웃 spin 들의 독립을 가정하는 근거 (새 역할 제안 R22, 제안 해석). <code>📚</code> Panchenko [<a href="99-references.html#ref-Pan13">14</a>] 의 spin 분포 관점</li>
+</ul>
 <p><strong>식 Eq. §7.2 ¶1 #1 항별 표</strong></p>
-<!-- TODO:항표 s7-2-p1-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(A_S=(\prod_a\sigma_i^a)_i\)</span></td>
+<td>spin 곱 벡터</td>
+<td>site 별 multi-replica 관측량</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(R_S=\mathbf1\cdot A_S\)</span>, <span class="arithmatex">\(x\cdot y=N^{-1}\sum x_iy_i\)</span></td>
+<td>site 평균</td>
+<td>multioverlap</td>
+<td><code>📚</code> (3.1)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.5) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-5 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mu_{d,S}=\mathbb E[A_S\mid\mathscr F_d]\)</span></td>
+<td>조건부 평균</td>
+<td>깊이 <span class="arithmatex">\(d\)</span> 상태 안의 국소 자화(곱)</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(v_N(S,d)=N^{-2}\mathbb E\sum_{ij}\mathrm{Cov}(A_{S,i},A_{S,j}\mid\mathscr F_d)^2\)</span></td>
+<td>조건부 공분산 제곱</td>
+<td>상태 안 connected correlation 의 크기 (clustering 척도, R22)</td>
+<td><code>🔧</code> 정의</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-2-e2"></a></p>
 <h3 id="lemma-72-contractions-and-three-copies">▸ Lemma 7.2 (Contractions and three copies)<a class="headerlink" href="#lemma-72-contractions-and-three-copies" title="Permanent link">&para;</a></h3>
@@ -1229,17 +1361,61 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
        \ge \frac2{N^2}\mathbb E\sum_{i,j}C_{ij}^2. \tag{7.7}
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p2-s2 --></p>
+<p><strong>s1</strong> 무작위 벡터 <span class="arithmatex">\(B\in[-1,1]^N\)</span> 이 <span class="arithmatex">\(\mathscr F_d\)</span> 가 주어졌을 때 <span class="arithmatex">\(A_S\)</span> 와 조건부 독립이면 다음이 성립한다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(X,Y,Z\)</span> 가 sigma field <span class="arithmatex">\(\mathscr G\)</span> 가 주어졌을 때 유계 무작위 벡터의 조건부 독립 사본이고 <span class="arithmatex">\(C\)</span> 가 그 조건부 공분산 행렬이면 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p2 -->
-
+<ul>
+<li><strong>s1, (7.6)</strong> clustering (<span class="arithmatex">\(v_N\)</span> 작음) 이면, 상태 안 요동 <span class="arithmatex">\(A_S-\mu\)</span> 를 독립인 다른 벡터와 site 평균하면 작다. <code>📚</code> §7.2 ¶3 증명</li>
+<li><strong>s2, (7.7)</strong> 역방향: 같은 상태에서 뽑은 세 replica 의 overlap 차 <span class="arithmatex">\(X\cdot Y-X\cdot Z\)</span> 의 요동이 작으면 clustering. 물리: "같은 상태 안의 replica 쌍 overlap 이 결정적이면 상태 안 connected correlation 이 작다". <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 세 사본 부등식 (7.7)</summary>
+<p><span class="arithmatex">\(X\)</span> 를 고정하면 <span class="arithmatex">\(Y-Z\)</span> 는 평균 0, 공분산 <span class="arithmatex">\(2C\)</span> (조건부 독립). <span class="arithmatex">\(\mathbb E[(X\cdot(Y-Z))^2\mid X,\mathscr G]=N^{-2}X^{\mathsf T}(2C)X\)</span>. <span class="arithmatex">\(X\)</span> 에 대해 평균: <span class="arithmatex">\(\frac2{N^2}\mathrm{tr}(C\,\mathbb E[XX^{\mathsf T}\mid\mathscr G])=\frac2{N^2}\mathrm{tr}(C(C+\mu\mu^{\mathsf T}))\)</span> ✓. <span class="arithmatex">\(\mathrm{tr}(C\mu\mu^{\mathsf T})=\mu^{\mathsf T}C\mu\ge0\)</span> (<span class="arithmatex">\(C\succeq0\)</span>) → <span class="arithmatex">\(\ge\frac2{N^2}\mathrm{tr}C^2=\frac2{N^2}\sum_{ij}C_{ij}^2\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.6) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-6 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lVert(A_S-\mu)\cdot B\rVert_{L^2}\le v_N^{1/4}\)</span></td>
+<td>contraction bound</td>
+<td>clustering → 상태 안 요동의 site 평균이 작음</td>
+<td><code>📚</code> §7.2 ¶3</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.7) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-7 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E(X\cdot Y-X\cdot Z)^2\)</span></td>
+<td>세 사본 overlap 차</td>
+<td>같은 상태 안 replica overlap 의 요동</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\ge\frac2{N^2}\mathbb E\sum C_{ij}^2\)</span></td>
+<td>하한</td>
+<td>connected correlation 크기</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s7-2-e2)</em></p>
 <p><a id="s7-2-e3"></a></p>
@@ -1260,17 +1436,39 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 \]</div>
 <p>↳ since <span class="arithmatex">\(C\)</span> is positive semidefinite.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-2-p3-s5 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(\mathscr F_d\)</span> 와 <span class="arithmatex">\(B\)</span> 에 조건부로, contraction 의 제곱의 기댓값은 <span class="arithmatex">\(N^{-2}\sum_{ij}C_{ij}B_iB_j\)</span> 다.</p>
+<p><strong>s2</strong> 그 절댓값은 최대 <span class="arithmatex">\(N^{-2}\sum_{ij}|C_{ij}|\)</span> 이다.</p>
+<p><strong>s3</strong> Cauchy–Schwarz 를 먼저 <span class="arithmatex">\(i,j\)</span> 에 대해, 그 다음 prefix 에 대해 적용하면 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-6">(7.6)</a> 이 증명된다.</p>
+<p><strong>s4</strong> 둘째 주장에 대해 <span class="arithmatex">\(\mu=\mathbb E[X\mid\mathscr G]\)</span> 라 쓴다.</p>
+<p><strong>s5</strong> 조건부 독립성이 다음을 주며, <span class="arithmatex">\(C\)</span> 가 양의 준정부호이므로 결과가 나온다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p3 -->
-
+<ul>
+<li><strong>s1–s3</strong> <code>✅</code> 아래 전개</li>
+<li><strong>s4–s5</strong> <code>📚</code> <a href="07-decorrelation-on-prescribed-trees.html#s7-2-p2">§7.2 ¶2</a> 전개</li>
+</ul>
+<details>
+<summary>전개: (7.6) (s1–s3)</summary>
+<p><span class="arithmatex">\(\mathbb E[((A-\mu)\cdot B)^2\mid\mathscr F_d,B]=N^{-2}\sum_{ij}C_{ij}B_iB_j\le N^{-2}\sum_{ij}\lvert C_{ij}\rvert\le\bigl(N^{-2}\sum C_{ij}^2\bigr)^{1/2}\)</span> (Cauchy–Schwarz, <span class="arithmatex">\(N^2\)</span> 항). prefix 에 대해 다시 Cauchy–Schwarz: <span class="arithmatex">\(\mathbb E[\cdot]\le(\mathbb EN^{-2}\sum C^2)^{1/2}=v_N^{1/2}\)</span>, 제곱근 → <span class="arithmatex">\(v_N^{1/4}\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §7.2 ¶3 #1 항별 표</strong></p>
-<!-- TODO:항표 s7-2-p3-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\frac2{N^2}\mathrm{tr}((C+\mu\mu^{\mathsf T})C)\)</span></td>
+<td>조건부 기댓값</td>
+<td>세 replica overlap 차의 분산</td>
+<td><code>✅</code> <a href="07-decorrelation-on-prescribed-trees.html#s7-2-p2">§7.2 ¶2</a> 와 같은 계산; 같은 문단 전개는 (7.6)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s7-2-e4"></a></p>
@@ -1297,22 +1495,55 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p>↳ where this average includes <span class="arithmatex">\(d\)</span> and all branching depths, and the means are evaluated along the same sampled path.</p>
 <p><a id="s7-2-p4-s7"></a><strong>s7</strong> The constant depends only on the number of vertices and shifts, uniformly in <span class="arithmatex">\(N\)</span>, the evaluation depth, and the transition kernels.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p4-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-2-p4-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-2-p4-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-2-p4-s7 --></p>
+<p><strong>s1</strong> topology <span class="arithmatex">\(S\)</span> 와 그 branching vertex 의 부분집합 <span class="arithmatex">\(U\)</span> 를 고정한다.</p>
+<p><strong>s2</strong> 각 <span class="arithmatex">\(\eta\)</span>-regular 깊이 배정에 대해, <span class="arithmatex">\(S^U\)</span> 를 같은 topology 에서 <span class="arithmatex">\(U\)</span> 의 vertex 깊이를 하나씩 늘린 것이라 하자.</p>
+<p><strong>s3</strong> 조상 평가 깊이 <span class="arithmatex">\(d\)</span> 에서 같은 표본 prefix 를 써서 평균들을 비교한다.</p>
+<p><strong>s4</strong> 그러면 충분히 큰 모든 <span class="arithmatex">\(L\)</span> 에 대해 다음이 성립한다.</p>
+<p><strong>s5</strong> 평균은 모든 branching 깊이에 대해 취하며, 좌표 <span class="arithmatex">\(d\)</span> 도 범위가 있으면 평균하고 아니면 고정한다.</p>
+<p><strong>s6</strong> <span class="arithmatex">\(d\)</span> 가 <span class="arithmatex">\(S\)</span> 의 초기 unary 구간을 따라 움직이면 다음이 성립하며, 이 평균은 <span class="arithmatex">\(d\)</span> 와 모든 branching 깊이를 포함하고 평균들은 같은 표본 경로를 따라 계산된다.</p>
+<p><strong>s7</strong> 상수는 vertex 와 이동의 개수에만 의존하며, <span class="arithmatex">\(N\)</span>, 평가 깊이, 전이 kernel 에 대해 균등하다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p4 -->
-
+<ul>
+<li><strong>s1–s7, (7.8)–(7.9)</strong> Lemma 7.3: overlap 단계를 하나 옮겨도 (깊이 <span class="arithmatex">\(d\to d+1\)</span>, 즉 <span class="arithmatex">\(q_d\to q_{d+1}\)</span>) 조건부 평균은 평균적으로 <span class="arithmatex">\(O(1/L)\)</span> 만 바뀐다 — <strong>overlap 단계에 대한 연속성</strong>. 물리로는 full-RSB 에서 상태 구조가 <span class="arithmatex">\(x\)</span> 에 대해 연속적으로 변한다는 것. <code>📚</code> §7.2 ¶5–¶6 증명</li>
+</ul>
 <p><strong>식 (7.8) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-8 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A\mathbb E\lVert\mu_{d,S^U}-\mu_{d,S}\rVert^2\le C/L\)</span></td>
+<td>분기 깊이 연속성</td>
+<td>overlap 단계 하나 이동의 효과 <span class="arithmatex">\(O(dx)\)</span></td>
+<td><code>📚</code> §7.2 ¶6</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.9) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-9 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A\mathbb E\lVert\mu_{d+1,S}-\mu_{d,S}\rVert^2\le C/L\)</span></td>
+<td>평가 깊이 연속성</td>
+<td>상태 계층을 한 단계 내려갈 때의 평균 변화</td>
+<td><code>📚</code> §7.2 ¶5</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s7-2-e4)</em></p>
 <p><a id="s7-2-e5"></a></p>
@@ -1329,16 +1560,37 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 \]</div>
 <p><a id="s7-2-p5-s4"></a><strong>s4</strong> This proves the evaluation-depth assertion after summing over the ranged depth and dividing by <span class="arithmatex">\(L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p5-s4 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(T\)</span> 의 이후 branching 깊이들을 고정하고 그 초기 줄기를 따라 경로 하나를 뽑는다.</p>
+<p><strong>s2</strong> 이 경로 위에서 <span class="arithmatex">\(\mu_{t,T}\)</span> 는 유계 벡터 martingale 이다.</p>
+<p><strong>s3</strong> 그 증분의 직교성이 다음을 준다.</p>
+<p><strong>s4</strong> 이것이, 범위가 있는 깊이에 대해 합하고 <span class="arithmatex">\(L\)</span> 로 나눈 뒤 평가 깊이 주장을 증명한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p5 -->
-
+<ul>
+<li><strong>s1–s4, (7.10)</strong> 상태 계층을 내려가며 국소 자화는 martingale (정보가 늘어남). 총 "에너지" <span class="arithmatex">\(\le1\)</span> 을 <span class="arithmatex">\(L\)</span> 단계에 나누면 평균 한 단계 변화는 <span class="arithmatex">\(1/L\)</span>. 물리: 상태 계층의 각 단계가 전체 요동에 기여하는 몫이 <span class="arithmatex">\(dx\)</span> 차수. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: martingale 에너지 (s3)</summary>
+<p>직교 증분: <span class="arithmatex">\(\sum_t\mathbb E\lVert\mu_{t+1}-\mu_t\rVert_N^2=\mathbb E\lVert\mu_{\rm end}\rVert_N^2-\mathbb E\lVert\mu_{\rm start}\rVert_N^2\le1\)</span> (좌표 <span class="arithmatex">\(\le1\)</span>) ✓. <span class="arithmatex">\(t\)</span> 에 대해 평균하면 <span class="arithmatex">\(\frac1L\sum_t\le\frac1L\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.10) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-10 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\sum_t\mathbb E\lVert\mu_{t+1}-\mu_t\rVert^2\le1\)</span></td>
+<td>martingale 에너지</td>
+<td>상태 계층 전체의 국소 자화 요동 총량</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-2-p6"></a></p>
 <h4 id="72-6">§7.2 ¶6<a class="headerlink" href="#72-6" title="Permanent link">&para;</a></h4>
@@ -1362,23 +1614,52 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><a id="s7-2-p6-s10"></a><strong>s10</strong> Regularity ensures that the intermediate shapes have the same ancestry relations and, for large <span class="arithmatex">\(L\)</span>, lie in the enlarged <span class="arithmatex">\(\eta/2\)</span>-regular domain.</p>
 <p><a id="s7-2-p6-s11"></a><strong>s11</strong> All relevant one-prefix marginal laws are unchanged when other sampled branches are omitted, so these estimates hold in any larger sampled tree.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p6-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-2-p6-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-2-p6-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-2-p6-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-2-p6-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-2-p6-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-2-p6-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s7-2-p6-s11 --></p>
+<p><strong>s1</strong> 깊이 <span class="arithmatex">\(q\)</span> 에 있고 자식 모양 <span class="arithmatex">\(T_1,\ldots,T_s\)</span> 를 갖는 branching vertex 를 생각하자.</p>
+<p><strong>s2</strong> 그 이후 깊이를 고정하면 원래 조건부 평균은 좌표별 곱으로 이해한 <span class="arithmatex">\(\prod_j \mu_{q,T_j}\)</span> 다.</p>
+<p><strong>s3</strong> split 이 <span class="arithmatex">\(q+1\)</span> 로 늦춰지면, 같은 깊이 <span class="arithmatex">\(q\)</span> prefix 에서의 조건부 평균은 <span class="arithmatex">\(\mathbb E[\prod_j \mu_{q+1,T_j}\mid\mathscr F_q]\)</span> 이며, 여기서 자식 평균들은 공통의 한 단계 연장 위에서 계산된다.</p>
+<p><strong>s4</strong> Jensen 부등식과 <span class="arithmatex">\([-1,1]^s\)</span> 위의 곱 차 부등식이 다음을 준다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(q\)</span> 에 대한 합은 각 자식 모양을 고정한 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-10">(7.10)</a> 을 쓴다.</p>
+<p><strong>s6</strong> 바뀐 subtree 평균을 조상 평가로 전파하는 것은 조건부 기댓값과 1 이하로 유계인 인자의 곱셈으로 이루어진다.</p>
+<p><strong>s7</strong> 두 연산 모두 이 제곱 norm 을 축소한다.</p>
+<p><strong>s8</strong> 따라서 다른 모든 깊이 좌표에 대해 평균하면 이동 하나에 대한 <span class="arithmatex">\(C/L\)</span> bound 가 증명된다.</p>
+<p><strong>s9</strong> 여러 이동에 대해서는 vertex 를 하나씩 바꾸고, 이동 수와 같은 인자를 갖는 제곱 삼각부등식을 쓴다.</p>
+<p><strong>s10</strong> regularity 는 중간 모양들이 같은 조상 관계를 갖고, 큰 <span class="arithmatex">\(L\)</span> 에 대해 확대된 <span class="arithmatex">\(\eta/2\)</span>-regular 정의역에 놓임을 보장한다.</p>
+<p><strong>s11</strong> 다른 표본 가지를 생략해도 관련된 단일 prefix marginal 법칙은 바뀌지 않으므로, 이 추정은 더 큰 임의의 표본 tree 에서도 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p6 -->
-
+<ul>
+<li><strong>s1–s3</strong> 분기점에서 자식들은 조건부 독립 → 평균이 곱 (상태 안 clustering 과 별개로, 서로 다른 하위 상태는 독립). 분기를 한 단계 늦추면 자식들이 한 단계 더 같은 상태를 공유. <code>📚</code> tree 표본추출 규칙 (§3.1 ¶2)</li>
+<li><strong>s4, (7.11)</strong> 곱 차 부등식 <span class="arithmatex">\(\lVert\prod a_j-\prod b_j\rVert^2\le s\sum\lVert a_j-b_j\rVert^2\)</span> (<span class="arithmatex">\(\lvert a_j\rvert,\lvert b_j\rvert\le1\)</span>). <code>✅</code> 아래 전개</li>
+<li><strong>s5–s11</strong> <code>🔧</code> 합쳐서 <span class="arithmatex">\(C/L\)</span>.</li>
+</ul>
+<details>
+<summary>전개: 곱 차 부등식 (s4)</summary>
+<p><span class="arithmatex">\(\prod_ja_j-\prod_jb_j=\sum_j(\prod_{i\lt j}b_i)(a_j-b_j)(\prod_{i\gt j}a_i)\)</span>, 각 인자 <span class="arithmatex">\(\le1\)</span> → <span class="arithmatex">\(\lvert\cdot\rvert\le\sum_j\lvert a_j-b_j\rvert\)</span>, Cauchy–Schwarz 로 제곱 <span class="arithmatex">\(\le s\sum_j\lvert a_j-b_j\rvert^2\)</span> ✓. Jensen: <span class="arithmatex">\(\lVert\mathbb E[X\mid\mathscr F]\rVert^2\le\mathbb E[\lVert X\rVert^2\mid\mathscr F]\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.11) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-11 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\prod_j\mu_{q,T_j}-\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]\)</span></td>
+<td>분기 지연의 효과</td>
+<td>하위 상태 분리를 한 단계 늦출 때의 변화</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\le s\sum_j\mathbb E\lVert\mu_{q+1,T_j}-\mu_{q,T_j}\rVert^2\)</span></td>
+<td>bound</td>
+<td>자식별 한 단계 martingale 증분</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s7-2-p7"></a></p>
@@ -1402,28 +1683,71 @@ a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
 <p><a id="s7-2-p7-s7"></a><strong>s7</strong> For two such sides, both can be projected with total <span class="arithmatex">\(L^2\)</span> error at most <span class="arithmatex">\(2p_N(S,e)\)</span>.</p>
 <p><a id="s7-2-p7-s8"></a><strong>s8</strong> Multiplication of the contracted error by any scalar test <span class="arithmatex">\(f\)</span> with <span class="arithmatex">\(|f|\le1\)</span>, even a correlated one, does not increase its <span class="arithmatex">\(L^1\)</span> bound.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-2-p7-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-2-p7-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-2-p7-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-2-p7-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-2-p7-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-2-p7-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-2-p7-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-2-p7-s8 --></p>
+<p><strong>s1</strong> 이제 <span class="arithmatex">\(S\)</span> 가 깊이 <span class="arithmatex">\(e\)</span> 에서 처음으로 진부분 자식 모양 <span class="arithmatex">\(T_1,\ldots,T_s\)</span> 로 갈라진다고 하자.</p>
+<p><strong>s2</strong> 자식들의 조건부 독립성이 <span class="arithmatex">\(\mu_{e,S}=\prod_j\mu_{e,T_j}\)</span> 를 준다.</p>
+<p><strong>s3</strong> 다음과 같이 쓴다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(e\)</span> 에서의 prefix 가 주어졌을 때 <span class="arithmatex">\(S\)</span> 의 연장과 독립인 임의의 벡터 <span class="arithmatex">\(B\in[-1,1]^N\)</span> 에 대해, <a href="07-decorrelation-on-prescribed-trees.html#eq-7-6">(7.6)</a> 을 써서 자식들을 차례로 교체하면 다음을 얻는다.</p>
+<p><strong>s5</strong> 각 교체에서 다른 자식 벡터들과 이미 교체된 평균들은, <span class="arithmatex">\(\mathscr F_e\)</span> 에 조건부로 교체되는 자식과 독립인 유계 승수를 이룬다.</p>
+<p><strong>s6</strong> 특히 이것은 <span class="arithmatex">\(B=\mathbf1\)</span> 과, <span class="arithmatex">\(e\)</span> 이전에 분리된 다른 쪽에서 표본추출된 벡터에 적용된다.</p>
+<p><strong>s7</strong> 그런 두 쪽에 대해 둘 다를 총 <span class="arithmatex">\(L^2\)</span> 오차 최대 <span class="arithmatex">\(2p_N(S,e)\)</span> 로 투영할 수 있다.</p>
+<p><strong>s8</strong> 축약된 오차에 <span class="arithmatex">\(|f|\le1\)</span> 인 임의의 스칼라 test <span class="arithmatex">\(f\)</span> 를 곱해도, 상관이 있더라도, 그 <span class="arithmatex">\(L^1\)</span> bound 는 커지지 않는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-2-p7 -->
-
+<ul>
+<li><strong>s1–s4, (7.12)–(7.13)</strong> multioverlap <span class="arithmatex">\(R_S\)</span> 를 "첫 분기 상태에서의 자식별 국소 자화 곱" 으로 바꾸는 오차는 자식들의 clustering 척도 <span class="arithmatex">\(v^{1/4}\)</span> 합으로 bound. 물리: 상태가 주어지면 multi-replica 관측량 ≈ 국소 자화들의 곱 (평균장/cavity 의 factorization). <code>✅</code> (7.6) 을 자식마다 적용 — §7.2 ¶3 전개</li>
+<li><strong>s5–s8</strong> <code>🔧</code> 교체 순서와 test 곱의 처리.</li>
+</ul>
+<details>
+<summary>전개: 자식 교체 (s4)</summary>
+<p><span class="arithmatex">\(A_S=\prod_jA_{T_j}\)</span> (좌표별). <span class="arithmatex">\(j\)</span> 번째 자식을 <span class="arithmatex">\(\mu_{e,T_j}\)</span> 로 바꾸는 오차: <span class="arithmatex">\((A_{T_j}-\mu_{e,T_j})\cdot(B\prod_{i\ne j}(\cdot))\)</span>, 승수는 조건부 독립·유계 → (7.6) 으로 <span class="arithmatex">\(\le v_N(T_j,e)^{1/4}\)</span> ✓. <span class="arithmatex">\(s\)</span> 번 합 → <span class="arithmatex">\(p_N(S,e)\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.12) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-12 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(a_{S,e}=\prod_j\mu_{e,T_j}\)</span></td>
+<td>투영</td>
+<td>첫 분기 상태에서 하위 상태별 국소 자화의 곱</td>
+<td><code>🔧</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p_N(S,e)=\sum_jv_N(T_j,e)^{1/4}\)</span></td>
+<td>오차 척도</td>
+<td>자식 상태들의 clustering 위반 정도</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.13) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-13 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lVert(A_S-a_{S,e})\cdot B\rVert_{L^2}\le p_N(S,e)\)</span></td>
+<td>투영 bound</td>
+<td>multi-replica 관측량 ≈ 국소 자화 곱 (cavity factorization)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3"></a></p>
 <h2 id="73-conditional-decorrelation">§7.3 Conditional decorrelation<a class="headerlink" href="#73-conditional-decorrelation" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s7-3 -->
-
+<p><em>제목: 조건부 decorrelation</em></p>
 <p><a id="s7-3-e6"></a></p>
 <h3 id="proposition-74">▸ Proposition 7.4<a class="headerlink" href="#proposition-74" title="Permanent link">&para;</a></h3>
 <p><a id="s7-3-p1"></a></p>
@@ -1438,14 +1762,31 @@ a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
 <p>↳ where the average ranges over all branching depths of <span class="arithmatex">\(S\)</span> and an additional regular depth <span class="arithmatex">\(d\)</span> strictly before its first split.</p>
 <p><a id="s7-3-p1-s2"></a><strong>s2</strong> For a singleton, the average ranges over <span class="arithmatex">\(d\)</span> alone.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p1-s2 --></p>
+<p><strong>s1</strong> 모든 고정된 표지 topology <span class="arithmatex">\(S\)</span> 와 모든 <span class="arithmatex">\(\eta\gt 0\)</span> 에 대해 다음이 성립하며, 여기서 평균은 <span class="arithmatex">\(S\)</span> 의 모든 branching 깊이와 그 첫 split 보다 엄격히 앞선 추가 regular 깊이 <span class="arithmatex">\(d\)</span> 에 대해 취한다.</p>
+<p><strong>s2</strong> singleton 에 대해서는 평균이 <span class="arithmatex">\(d\)</span> 만을 대상으로 한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p1 -->
-
+<ul>
+<li><strong>s1–s2, (7.14)</strong> Proposition 7.4 = <strong>pure state clustering</strong> (R22): 전형적 상태(깊이 <span class="arithmatex">\(d\)</span> 묶음)를 정하면 그 아래 spin 곱들의 connected correlation 이 사라진다. 🧭 물리 직관과의 차이: cavity method 는 "각 pure state 안에서 cavity spin 들이 독립" 을 가정으로 쓰지만, 여기서는 GG 항등식만으로 (평균된 의미에서) 증명한다. <code>📚</code> 증명 §7.3 ¶2–¶12</li>
+</ul>
 <p><strong>식 (7.14) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-14 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lim_L\limsup_N\mathcal A_{L,\eta}v_N(S,d)=0\)</span></td>
+<td>조건부 공분산 → 0</td>
+<td>상태 안 clustering (R22)</td>
+<td><code>📚</code> §7.3 증명</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s7-3-e6)</em></p>
 <p><a id="s7-3-e7"></a></p>
@@ -1465,18 +1806,36 @@ V_{k,L}(\eta)=\max_{1\le |S|\le k}
 <p><a id="s7-3-p2-s5"></a><strong>s5</strong> The maximum is over finitely many labeled topologies.</p>
 <p><a id="s7-3-p2-s6"></a><strong>s6</strong> Averages of any lower-order covariance used below, including averages with extra unused coordinates or shifted depths, are bounded by the appropriate <span class="arithmatex">\(V_{k-1,L}(\eta/2)\)</span>, using <a href="07-decorrelation-on-prescribed-trees.html#eq-7-2">(7.2)</a> when fractional powers occur.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p2-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p2-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p2-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p2-s6 --></p>
+<p><strong>s1</strong> leaf 수 <span class="arithmatex">\(k\)</span> 에 대한 귀납을 한다.</p>
+<p><strong>s2</strong> 귀납은 각 진부분 자식을 그 조건부 평균으로 바꾼다.</p>
+<p><strong>s3</strong> 그 다음 지연된 branching 깊이를 갖는 두 사본에 지정 tree 항등식을 적용한다; 부호 있는 계수를 합하면 이것은 음이 아닌 세 사본 추정이 된다.</p>
+<p><strong>s4</strong> 깊이 평균을 추적하기 위해 다음과 같이 둔다.</p>
+<p><strong>s5</strong> 최대는 유한 개의 표지 topology 에 대한 것이다.</p>
+<p><strong>s6</strong> 아래에서 쓰는 임의의 저차 공분산의 평균은, 추가된 미사용 좌표나 이동된 깊이를 포함한 평균도, 분수 거듭제곱이 나올 때 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-2">(7.2)</a> 를 써서 적절한 <span class="arithmatex">\(V_{k-1,L}(\eta/2)\)</span> 로 bound 된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p2 -->
-
+<ul>
+<li><strong>s1–s3</strong> 전략: GG 항등식을 두 사본에 적용하고, §3.3 의 계수 합(R17)을 이용해 부호 있는 합을 "세 replica overlap 차의 제곱" (항상 <span class="arithmatex">\(\ge0\)</span>) 으로 바꾼다 → (7.7) 로 clustering. <code>🔧</code></li>
+<li><strong>s4, (7.15)</strong> <code>🔧</code> 귀납 변수.</li>
+</ul>
 <p><strong>식 (7.15) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-15 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(V_{k,L}(\eta)=\max_{\lvert S\rvert\le k}\limsup\mathcal Av_N\)</span></td>
+<td>귀납 변수</td>
+<td><span class="arithmatex">\(k\)</span> 개 이하 replica 에서 clustering 위반의 최대</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p3"></a></p>
 <h4 id="73-3">§7.3 ¶3<a class="headerlink" href="#73-3" title="Permanent link">&para;</a></h4>
@@ -1505,26 +1864,78 @@ c_d=2m_{d+1}-m_d=(d+2)\delta,
 <p><a id="s7-3-p3-s10"></a><strong>s10</strong> Hence <a href="07-decorrelation-on-prescribed-trees.html#eq-7-7">(7.7)</a> and <span class="arithmatex">\(c_d\ge\eta\)</span> give <span class="arithmatex">\(v_N(S,d)\le\delta/\eta+o_N(1)\)</span> at each fixed <span class="arithmatex">\(L,d\)</span>.</p>
 <p><a id="s7-3-p3-s11"></a><strong>s11</strong> This proves <span class="arithmatex">\(V_{1,L}(\eta)\le\delta/\eta\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p3-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p3-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p3-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-3-p3-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-3-p3-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s7-3-p3-s11 --></p>
+<p><strong>s1</strong> <em>leaf 하나.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\(d\)</span> 에서 갈라지는 두 옛 경로를 잡고 경로 <span class="arithmatex">\(1\)</span> 을 spin anchor 로 하며, anchor 와 정확히 <span class="arithmatex">\(d\)</span> 에서 갈라져야 하는 색 하나를 더한다.</p>
+<p><strong>s3</strong> 쓸 수 있는 옛 경로 <span class="arithmatex">\(2\)</span> 는 계수 <span class="arithmatex">\(1\)</span> 을 갖는다.</p>
+<p><strong>s4</strong> fresh 경로는 두 옛 경로 모두에서 <span class="arithmatex">\(d\)</span> 에서 계수 <span class="arithmatex">\(-c_d\)</span> 로 갈라지거나, 경로 <span class="arithmatex">\(2\)</span> 를 따라가다 <span class="arithmatex">\(\ell\gt d\)</span> 에서 계수 <span class="arithmatex">\(-c_\ell\)</span> 로 떠날 수 있으며, 여기서 다음과 같다.</p>
+<p><strong>s5</strong> anchor 만에서의 총 계수는 <span class="arithmatex">\(-\delta\)</span> 다.</p>
+<p><strong>s6</strong> <span class="arithmatex">\(X=R_{12}\)</span>, 대응하는 fresh extension 에 대해 <span class="arithmatex">\(X_\ell=R_{13}\)</span> 이라 쓴다.</p>
+<p><strong>s7</strong> 각 <span class="arithmatex">\(X_\ell\)</span> 은 <span class="arithmatex">\(X\)</span> 의 marginal 법칙을 가지며 <span class="arithmatex">\(\sum_{\ell=d}^{L-1}c_\ell=1+\delta\)</span> 이다.</p>
+<p><strong>s8</strong> 따라서 <span class="arithmatex">\(f=X\)</span> 인 지정 tree 항등식이 다음을 준다.</p>
+<p><strong>s9</strong> <span class="arithmatex">\(\ell=d\)</span> 에 대해 세 spin 벡터는 <span class="arithmatex">\(d\)</span> 아래에서 조건부 독립이다.</p>
+<p><strong>s10</strong> 따라서 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-7">(7.7)</a> 과 <span class="arithmatex">\(c_d\ge\eta\)</span> 가 각 고정된 <span class="arithmatex">\(L,d\)</span> 에서 <span class="arithmatex">\(v_N(S,d)\le\delta/\eta+o_N(1)\)</span> 을 준다.</p>
+<p><strong>s11</strong> 이것이 <span class="arithmatex">\(V_{1,L}(\eta)\le\delta/\eta\)</span> 를 증명한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p3 -->
-
+<ul>
+<li><strong>s2–s8, (7.16)–(7.17)</strong> 기본 단계: 두 replica 가 단계 <span class="arithmatex">\(q_d\)</span> 에서 갈라질 때, 셋째 replica 와의 overlap 이 "둘째 replica 와의 overlap 과 같다" 는 GG 항등식이 <span class="arithmatex">\(\frac12\sum c_\ell\mathbb E(X-X_\ell)^2=\delta\mathrm{Var}X\)</span> 를 준다. 즉 같은 overlap 단계의 replica 쌍들은 거의 같은 overlap 을 갖는다 (<span class="arithmatex">\(\delta=1/L\to0\)</span>). <code>✅</code> 아래 전개</li>
+<li><strong>s9–s11</strong> → leaf 하나짜리 상태 안 clustering: <span class="arithmatex">\(v_N\le\delta/\eta\)</span>. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: c 가중치와 (7.17) (s4–s10)</summary>
+<p><span class="arithmatex">\(c_d=2m_{d+1}-m_d=\frac{2d+2-d}L=(d+2)\delta\)</span> ✓. 합: <span class="arithmatex">\((d+2)\delta+(L-1-d)\delta=(L+1)\delta=1+\delta\)</span> ✓. 계수: 옛 경로 2 는 <span class="arithmatex">\(+1\)</span>, fresh 는 <span class="arithmatex">\(-c_\ell\)</span> (§3.3 ¶3 과 같은 계산), anchor 만이면 <span class="arithmatex">\(-\delta\)</span>.
+Theorem 6.5, <span class="arithmatex">\(f=X\)</span>: <span class="arithmatex">\(\mathbb EX^2-\sum_\ell c_\ell\mathbb E[XX_\ell]-\mathbb EX\cdot(-\delta)\mathbb EX\to0\)</span>. <span class="arithmatex">\(\mathbb EX_\ell^2=\mathbb EX^2\)</span> 이므로 <span class="arithmatex">\(\frac12\sum_\ell c_\ell\mathbb E(X-X_\ell)^2=(1+\delta)\mathbb EX^2-\sum c_\ell\mathbb E[XX_\ell]=(1+\delta)\mathbb EX^2-\mathbb EX^2-\delta(\mathbb EX)^2=\delta\mathrm{Var}X\)</span> ✓.
+<span class="arithmatex">\(\ell=d\)</span> 항만 남기면 (<span class="arithmatex">\(c_d\ge\eta\)</span> 는 <span class="arithmatex">\(d/L\gt\eta\)</span> 에서) <span class="arithmatex">\(\mathbb E(X-X_d)^2\le2\delta/\eta\)</span>, 세 사본 (7.7) 로 <span class="arithmatex">\(\frac2{N^2}\mathbb E\sum C^2\le2\delta/\eta\)</span> → <span class="arithmatex">\(v_N\le\delta/\eta\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.16) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-16 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(c_d=2m_{d+1}-m_d=(d+2)\delta\)</span></td>
+<td>깊이 <span class="arithmatex">\(d\)</span> fresh 계수 (절댓값)</td>
+<td>두 replica 블록 밖 자리 수 (R17)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(c_\ell=\delta\)</span></td>
+<td>unary 이탈 계수</td>
+<td>새 overlap 단계 하나 <span class="arithmatex">\(=dx\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.17) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-17 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\frac12\sum_\ell c_\ell\mathbb E(X-X_\ell)^2\)</span></td>
+<td>overlap 차의 가중 제곱</td>
+<td>같은 단계의 replica 쌍 overlap 이 얼마나 다른가</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(=\delta\mathrm{Var}(X)+o_N(1)\le\delta\)</span></td>
+<td>GG 결과</td>
+<td><span class="arithmatex">\(1/L\to0\)</span>: 같은 단계 overlap 은 결정적</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p4"></a></p>
 <h4 id="73-4">§7.3 ¶4<a class="headerlink" href="#73-4" title="Permanent link">&para;</a></h4>
@@ -1539,18 +1950,19 @@ c_d=2m_{d+1}-m_d=(d+2)\delta,
 <p><a id="s7-3-p4-s8"></a><strong>s8</strong> Add all other colors of side I first, then those of side II.</p>
 <p><a id="s7-3-p4-s9"></a><strong>s9</strong> Figure <a href="07-decorrelation-on-prescribed-trees.html#fig-1">1</a> illustrates one local shift.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p4-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p4-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p4-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p4-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p4-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-3-p4-s9 --></p>
+<p><strong>s1</strong> <em>이동된 사본과 그 계수.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\(|S|=k\ge2\)</span>, 그 첫 split 을 <span class="arithmatex">\(e\gt d\)</span>, 진부분 자식 모양을 <span class="arithmatex">\(T_1,\ldots,T_s\)</span> 라 하자.</p>
+<p><strong>s3</strong> I 과 II 로 표기하는 <span class="arithmatex">\(S\)</span> 의 두 사본으로 이루어진 옛 tree 를 뽑는데, 그 줄기는 <span class="arithmatex">\(d\)</span> 에서 갈라지고 내부 깊이 배정은 정렬되어 있다.</p>
+<p><strong>s4</strong> I 의 옛 leaf 하나를 spin anchor 로 고정한다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(S^+\)</span> 를 <span class="arithmatex">\(S\)</span> 의 모든 내부 branching 깊이를 하나씩 늘린 topology 라 하자.</p>
+<p><strong>s6</strong> 지정 tree 항등식에서, anchor 와 더해진 색들이 <span class="arithmatex">\(d\)</span> 에서 분리된 <span class="arithmatex">\(S^+\)</span> 의 두 사본을 이루고, anchor 는 첫 사본의 원래 표지 위치에 있도록 요구한다.</p>
+<p><strong>s7</strong> 이 제약은 anchor 와 더해진 색들만 관련된다.</p>
+<p><strong>s8</strong> I 쪽의 다른 모든 색을 먼저 더하고, 그 다음 II 쪽의 색을 더한다.</p>
+<p><strong>s9</strong> Figure <a href="07-decorrelation-on-prescribed-trees.html#fig-1">1</a> 은 국소 이동 하나를 보여준다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p4 -->
-
+<ul>
+<li><strong>s2–s9</strong> 귀납 단계: 두 사본 (I, II) 의 상태 구조를 같게 두되, 새 replica 들의 분기 깊이를 한 단계 늦춘다 (<span class="arithmatex">\(S^+\)</span>). 이렇게 하면 새 분기점은 옛 tree 에 없는 깊이에 생겨, §3.3 Lemma 3.5 (새 overlap 단계마다 <span class="arithmatex">\(\delta\)</span>) 로 계수를 통제할 수 있다. <code>🔧</code> §3.3 의 장치 활용</li>
+</ul>
 <hr />
 <p><a id="fig-1"></a></p>
 <h4 id="figure-1">Figure 1<a class="headerlink" href="#figure-1" title="Permanent link">&para;</a></h4>
@@ -1560,7 +1972,7 @@ c_d=2m_{d+1}-m_d=(d+2)\delta,
 <p><strong>원문 (캡션)</strong></p>
 <p><a id="fig-1-s1"></a><strong>cap</strong> One local effect of delaying a target split. The old tree is solid; the dashed child creates a split at the previously unary depth-<span class="arithmatex">\(e+1\)</span> vertex, with coefficient <span class="arithmatex">\(m_{e+1}-m_{e+2}=-\delta\)</span>. The proof shifts every internal target depth and charges distinct vertices separately, even when their depths coincide. Later target colors may reuse eligible old leaves.</p>
 <p><strong>번역</strong></p>
-<p><strong>cap</strong> <!-- TODO:번역 fig-1-s1 --></p>
+<p><strong>cap</strong> 목표 split 을 늦추는 것의 국소 효과 하나. 옛 tree 는 실선이다; 점선 자식은 이전에 unary 였던 깊이 <span class="arithmatex">\(e+1\)</span> vertex 에서 계수 <span class="arithmatex">\(m_{e+1}-m_{e+2}=-\delta\)</span> 로 split 을 만든다. 증명은 모든 내부 목표 깊이를 이동하고, 깊이가 일치하더라도 서로 다른 vertex 를 따로 부과한다. 이후의 목표 색은 자격 있는 옛 leaf 를 재사용할 수 있다.</p>
 <p><a id="s7-3-p5"></a></p>
 <h4 id="73-5">§7.3 ¶5<a class="headerlink" href="#73-5" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1588,28 +2000,82 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p5-s9"></a><strong>s9</strong> The full signed coefficient has an additional factor <span class="arithmatex">\(-\delta\)</span> from separation at <span class="arithmatex">\(d\)</span>; we divide by <span class="arithmatex">\(J\)</span> and leave that factor in the identity.</p>
 <p><a id="s7-3-p5-s10"></a><strong>s10</strong> Equation <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a> then controls every projection error after division.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p5-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p5-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p5-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p5-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p5-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-3-p5-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-3-p5-s10 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(\kappa(T)\)</span> 를 reference 계수 <a href="03-calculus-on-finite-trees.html#eq-3-13">(3.13)</a> 이라 하고 다음과 같이 둔다.</p>
+<p><strong>s2</strong> 각 vertex 에서 <span class="arithmatex">\(j=1\)</span> 인자는 <span class="arithmatex">\(-\delta\)</span> 이고, <span class="arithmatex">\(j\ge2\)</span> 에 대해서는 충분히 큰 모든 <span class="arithmatex">\(L\)</span> 에서 그 절댓값이 적어도 <span class="arithmatex">\(\eta/2\)</span> 다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(b=b(S)\)</span> 이면 다음이 성립한다.</p>
+<p><strong>s4</strong> 큰 <span class="arithmatex">\(L\)</span> 에 대해, regularity 는 각 이동된 깊이가 <span class="arithmatex">\(d\)</span> 를 포함한 옛 tree 의 모든 branching 깊이와 다르도록 보장한다.</p>
+<p><strong>s5</strong> 따라서 이 <span class="arithmatex">\(2b\)</span> 개의 목표 branching vertex 는 fresh unary split 으로 만들어져야 한다.</p>
+<p><strong>s6</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-3-e9">3.5</a> 가 다음을 준다.</p>
+<p><strong>s7</strong> 두 사본은 정렬된 깊이를 갖지만 서로 다른 branching vertex 를 갖는다: 각 vertex 가 자기 인자 <span class="arithmatex">\(\delta\)</span> 를 공급한다.</p>
+<p><strong>s8</strong> 이것이 이동의 이유다.</p>
+<p><strong>s9</strong> 전체 부호 있는 계수에는 <span class="arithmatex">\(d\)</span> 에서의 분리로부터 추가 인자 <span class="arithmatex">\(-\delta\)</span> 가 있다; <span class="arithmatex">\(J\)</span> 로 나누고 그 인자는 항등식에 남겨 둔다.</p>
+<p><strong>s10</strong> 그러면 식 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a> 이 나눗셈 후의 모든 투영 오차를 통제한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p5 -->
-
+<ul>
+<li><strong>s1–s3, (7.18)–(7.19)</strong> <span class="arithmatex">\(J=\kappa(S^+)^2\)</span> = 두 사본의 Parisi block counting 가중 (R17). 크기 <span class="arithmatex">\(\sim\delta^{2b}\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s4–s10, (7.20)</strong> 상쇄 전 절댓값 합 / <span class="arithmatex">\(J\)</span> 가 유계 (Lemma 3.5). 즉 작은 신호 <span class="arithmatex">\(J\)</span> 로 나눠도 오차가 폭발하지 않는다. <code>📚</code> Lemma 3.5 (3.15)</li>
+</ul>
+<details>
+<summary>전개: J 의 하한 (s2–s3)</summary>
+<p><span class="arithmatex">\(\kappa(S^+)=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})\)</span>. <span class="arithmatex">\(j=1\)</span>: <span class="arithmatex">\(-\delta\)</span>. <span class="arithmatex">\(j\ge2\)</span>: <span class="arithmatex">\(\lvert\cdot\rvert=(j-1)m_d+j\delta\ge m_d\gt\eta-\delta\ge\eta/2\)</span> (큰 <span class="arithmatex">\(L\)</span>) ✓ (§3.3 ¶13 과 같은 계산). 분기점 <span class="arithmatex">\(b\)</span> 개 → <span class="arithmatex">\(\lvert\kappa\rvert\ge\delta^b(\eta/2)^{\sum(a_v-2)}\)</span>, 제곱 → <span class="arithmatex">\(\lvert J\rvert\ge c_{k,\eta}\delta^{2b}\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.18) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-18 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(J=\kappa(S^+)^2\)</span></td>
+<td>두 사본의 reference 계수</td>
+<td>두 사본에 replica 를 지정 구조로 배치하는 counting (R17)</td>
+<td><code>📚</code> (3.13)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.19) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-19 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert J\rvert\ge c_{k,\eta}\delta^{2b}\)</span></td>
+<td>하한</td>
+<td>새 overlap 단계 <span class="arithmatex">\(2b\)</span> 개, 각 <span class="arithmatex">\(dx\)</span></td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.20) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-20 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\frac1{\lvert J\rvert}\sum\lvert c\rvert\le C_{k,\eta}\)</span></td>
+<td>상대 절댓값 합</td>
+<td>상쇄 전 무게가 신호와 같은 차수</td>
+<td><code>📚</code> (3.15)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p6"></a></p>
 <h4 id="73-6">§7.3 ¶6<a class="headerlink" href="#73-6" title="Permanent link">&para;</a></h4>
@@ -1627,20 +2093,37 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p6-s7"></a><strong>s7</strong> This definition depends only on the single-copy marginal shapes, not on the particular extension.</p>
 <p><a id="s7-3-p6-s8"></a><strong>s8</strong> Thus <a href="07-decorrelation-on-prescribed-trees.html#eq-7-21">(7.21)</a> holds uniformly for the comparisons in the extension sum, even though the union of the old and target trees itself need not have regular depths.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p6-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p6-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p6-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p6-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p6-s8 --></p>
+<p><strong>s1</strong> <em>두 목표 쪽 투영하기.</em></p>
+<p><strong>s2</strong> 모든 extension 에서 marginal 목표 tree 는 <span class="arithmatex">\(d\)</span> 에서의 분리 아래로 독립인 <span class="arithmatex">\(S^+\)</span> 의 보통 사본 두 개로 이루어진다.</p>
+<p><strong>s3</strong> <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a> 에 의해 그 multioverlap 은 <span class="arithmatex">\(e+1\)</span> 에서 투영된 평균들의 축약과 <span class="arithmatex">\(L^2\)</span> 에서 최대 <span class="arithmatex">\(2p_N(S^+,e+1)\)</span> 만큼 다르다.</p>
+<p><strong>s4</strong> 진부분 자식 깊이를 하나씩 되돌리고, 그 평가 깊이를 <span class="arithmatex">\(e+1\)</span> 에서 <span class="arithmatex">\(e\)</span> 로 바꾼다.</p>
+<p><strong>s5</strong> 곱 차 부등식과 Lemma <a href="07-decorrelation-on-prescribed-trees.html#s7-2-e4">7.3</a> 은 이것이 <span class="arithmatex">\(L^2\)</span> 에서 최대 <span class="arithmatex">\(h_N(S)\)</span> 의 오차를 더함을 보이며, 다음이 성립한다.</p>
+<p><strong>s6</strong> <span class="arithmatex">\(h_N(S)\)</span> 는 이 비교들에서의 유한 개 <span class="arithmatex">\(L^2(\|\cdot\|_N)\)</span> 거리의 합에 크기 의존 상수를 곱한 것으로 잡을 수 있다.</p>
+<p><strong>s7</strong> 이 정의는 특정 extension 이 아니라 단일 사본 marginal 모양에만 의존한다.</p>
+<p><strong>s8</strong> 따라서 옛 tree 와 목표 tree 의 합집합 자체가 regular 깊이를 갖지 않더라도 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-21">(7.21)</a> 은 extension 합 안의 비교들에 균등하게 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p6 -->
-
+<ul>
+<li><strong>s2–s8, (7.21)</strong> 목표 replica 들의 multioverlap 을 국소 자화 곱으로 바꾸고 (clustering), 늦춘 단계를 원래로 되돌리는 비용 (단계 연속성, Lemma 7.3) 은 <span class="arithmatex">\(O(L^{-1/2})\)</span>. <code>📚</code> (7.13), Lemma 7.3</li>
+</ul>
 <p><strong>식 (7.21) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-21 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A h_N(S)^2\le C_k/L\)</span></td>
+<td>이동 되돌림 오차</td>
+<td>overlap 단계 한 칸의 차이 <span class="arithmatex">\(O(dx)\)</span></td>
+<td><code>📚</code> Lemma 7.3</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p7"></a></p>
 <h4 id="73-7">§7.3 ¶7<a class="headerlink" href="#73-7" title="Permanent link">&para;</a></h4>
@@ -1648,11 +2131,12 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p7-s1"></a><strong>s1</strong> Let <span class="arithmatex">\(a,b\)</span> denote the vectors <span class="arithmatex">\(a_{S,e}\)</span> on the old stems I and II.</p>
 <p><a id="s7-3-p7-s2"></a><strong>s2</strong> The target stem in I shares the old prefix through <span class="arithmatex">\(e\)</span> because it contains the anchor, so its final projected vector is <span class="arithmatex">\(a\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p7-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p7-s2 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(a,b\)</span> 를 옛 줄기 I 과 II 위의 벡터 <span class="arithmatex">\(a_{S,e}\)</span> 라 하자.</p>
+<p><strong>s2</strong> I 의 목표 줄기는 anchor 를 포함하므로 <span class="arithmatex">\(e\)</span> 까지 옛 prefix 를 공유하며, 그 최종 투영 벡터는 <span class="arithmatex">\(a\)</span> 다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p7 -->
-
+<ul>
+<li><strong>s1–s2</strong> <code>🔧</code> <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span> = 사본 I, II 의 첫 분기 상태에서의 국소 자화 곱.</li>
+</ul>
 <hr />
 <p><a id="s7-3-p8"></a></p>
 <h4 id="73-8">§7.3 ¶8<a class="headerlink" href="#73-8" title="Permanent link">&para;</a></h4>
@@ -1667,18 +2151,19 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p8-s8"></a><strong>s8</strong> Every remaining possibility follows the old II prefix through <span class="arithmatex">\(e\)</span> and has final projected vector <span class="arithmatex">\(b\)</span>.</p>
 <p><a id="s7-3-p8-s9"></a><strong>s9</strong> All later target paths in side II follow its first path through <span class="arithmatex">\(e\)</span>, since their earliest split is <span class="arithmatex">\(e+1\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p8-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p8-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p8-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p8-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p8-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p8-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p8-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p8-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-3-p8-s9 --></p>
+<p><strong>s1</strong> <em>부호 있는 extension 합.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\(f\)</span> 를 <span class="arithmatex">\(2k\)</span> 개 옛 leaf 전부의 overlap 으로 두는데, 이는 허용된 고정 overlap 단항식이다.</p>
+<p><strong>s3</strong> I 쪽 목표 추가는 모두 <span class="arithmatex">\(d\)</span> 아래 anchor 의 가지 안에 머무르므로 옛 II 줄기와 그 자식 수를 바꾸지 않는다.</p>
+<p><strong>s4</strong> II 쪽 목표의 첫 추가 경로를 <span class="arithmatex">\(e\)</span> 까지의 prefix 로 분류한다.</p>
+<p><strong>s5</strong> 그것은 <span class="arithmatex">\(\ell=d\)</span> 에서 계수 <span class="arithmatex">\(-c_d\)</span> 로 fresh 하게 갈라지거나, 옛 II 줄기를 따라가다 <span class="arithmatex">\(d\lt\ell\lt e\)</span> 에서 계수 <span class="arithmatex">\(-c_\ell=-\delta\)</span> 로 갈라질 수 있다.</p>
+<p><strong>s6</strong> 그런 클래스에서 <span class="arithmatex">\(b_\ell\)</span> 을 새 줄기 위의 <span class="arithmatex">\(a_{S,e}\)</span> 라 하자; 그것은 <span class="arithmatex">\(\ell\)</span> 까지 옛 II prefix 를 공유한다.</p>
+<p><strong>s7</strong> <span class="arithmatex">\(\ell=d\)</span> 에서 <span class="arithmatex">\(a,b,b_d\)</span> 를 싣는 줄기들은 <span class="arithmatex">\(d\)</span> 아래에서 조건부 독립이다.</p>
+<p><strong>s8</strong> 나머지 모든 가능성은 <span class="arithmatex">\(e\)</span> 까지 옛 II prefix 를 따라가며 최종 투영 벡터 <span class="arithmatex">\(b\)</span> 를 갖는다.</p>
+<p><strong>s9</strong> II 쪽의 이후 모든 목표 경로는 그 가장 이른 split 이 <span class="arithmatex">\(e+1\)</span> 이므로 첫 경로를 <span class="arithmatex">\(e\)</span> 까지 따라간다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p8 -->
-
+<ul>
+<li><strong>s2–s9</strong> 새 II 사본이 옛 II 사본과 어디서 갈라지는가로 분류: 일찍(깊이 <span class="arithmatex">\(\ell\lt e\)</span>) 갈라지면 다른 상태의 사본 <span class="arithmatex">\(b_\ell\)</span>, 아니면 같은 상태 <span class="arithmatex">\(b\)</span>. 물리로는 "새 replica 무리가 옛 replica 무리와 같은 상태에 들어가는가, 다른 상태에 들어가는가" 의 분류 — GG 항등식의 "확률 <span class="arithmatex">\(1/n\)</span> 씩" 구조의 계층판. <code>🔧</code> 계수는 §3.3 ¶3 과 같은 계산</li>
+</ul>
 <hr />
 <p><a id="s7-3-p9"></a></p>
 <h4 id="73-9">§7.3 ¶9<a class="headerlink" href="#73-9" title="Permanent link">&para;</a></h4>
@@ -1691,16 +2176,17 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p9-s6"></a><strong>s6</strong> Thus the joint marginal of the old paths and projected prefixes is fixed within each class.</p>
 <p><a id="s7-3-p9-s7"></a><strong>s7</strong> In particular, the expectation of <span class="arithmatex">\(f\)</span> times the projected overlap is constant within a class and can be multiplied by its total signed coefficient.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p9-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p9-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p9-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p9-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p9-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p9-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p9-s7 --></p>
+<p><strong>s1</strong> 고정된 extension history 에 대해, 모든 옛 경로와 첫 목표-II prefix 를 <span class="arithmatex">\(e\)</span> 까지 남기고 다른 모든 새 가지를 지운다.</p>
+<p><strong>s2</strong> 목표-I 투영 <span class="arithmatex">\(a\)</span> 는 이미 남겨진 옛 anchor prefix 에만 의존한다.</p>
+<p><strong>s3</strong> 지워진 각 subtree 는 그 확률 kernel 아래에서 1 로 적분된다; 재사용된 옛 leaf 는 새 변수를 도입하지 않는다.</p>
+<p><strong>s4</strong> 남겨진 tree 는 클래스에만 의존한다: <span class="arithmatex">\(\ell\lt e\)</span> 에 fresh 줄기를 붙인 옛 tree 이거나, 나머지 클래스에서는 그냥 옛 tree 다.</p>
+<p><strong>s5</strong> history 는 조합적 선택이지 표본값에 대한 조건이 아니다.</p>
+<p><strong>s6</strong> 따라서 옛 경로들과 투영된 prefix 들의 결합 marginal 은 각 클래스 안에서 고정된다.</p>
+<p><strong>s7</strong> 특히 <span class="arithmatex">\(f\)</span> 곱하기 투영 overlap 의 기댓값은 클래스 안에서 상수이며 그 총 부호 있는 계수를 곱할 수 있다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p9 -->
-
+<ul>
+<li><strong>s1–s7</strong> <code>🔧</code> projectivity (§3.1 ¶2): 쓰지 않는 replica 를 적분하면 사라지므로 클래스별로 기댓값이 같고, 계수만 합하면 된다.</li>
+</ul>
 <hr />
 <p><a id="s7-3-p10"></a></p>
 <h4 id="73-10">§7.3 ¶10<a class="headerlink" href="#73-10" title="Permanent link">&para;</a></h4>
@@ -1726,21 +2212,64 @@ J=\kappa(S^+)^2. \tag{7.18}
  \end{array}
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p10-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p10-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p10-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p10-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p10-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p10-s6 --></p>
+<p><strong>s1</strong> Lemma <a href="03-calculus-on-finite-trees.html#s3-3-e7">3.4</a> 에 의해, 이후 II 쪽 색을 거꾸로 합하면 각 첫 경로 선택마다 <span class="arithmatex">\(\kappa(S^+)\)</span> 를 준다.</p>
+<p><strong>s2</strong> I 쪽 선택을 합하면 다른 인자 <span class="arithmatex">\(\kappa(S^+)\)</span> 를 준다.</p>
+<p><strong>s3</strong> 따라서 <span class="arithmatex">\(\ell\)</span> 에서의 fresh 클래스는 총 계수 <span class="arithmatex">\(-c_\ell J\)</span> 를 갖는다.</p>
+<p><strong>s4</strong> 총 계수는 옛 tree 에서도 anchor 만에서도 <span class="arithmatex">\(-\delta J\)</span> 다.</p>
+<p><strong>s5</strong> 다음이 성립하므로, 나머지 <span class="arithmatex">\(e\)</span> 까지 prefix 클래스의 계수는 <span class="arithmatex">\(m_eJ\)</span> 다.</p>
+<p><strong>s6</strong> 따라서 투영된 항들은 다음 계수를 갖는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p10 -->
-
+<ul>
+<li><strong>s1–s6</strong> Parisi block counting (Lemma 3.4, R17) 으로 클래스별 계수를 계산: 다른 상태로 가는 클래스 <span class="arithmatex">\(-c_\ell J\)</span>, 같은 상태 <span class="arithmatex">\(m_eJ\)</span>, 총 <span class="arithmatex">\(-\delta J\)</span>. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 계수 합 (s4–s5)</summary>
+<p><span class="arithmatex">\(\sum_{\ell=d}^{e-1}c_\ell=(d+2)\delta+(e-1-d)\delta=(e+1)\delta=m_e+\delta\)</span> ✓. 총 <span class="arithmatex">\(-\delta J\)</span> 에서 fresh 클래스 합 <span class="arithmatex">\(-(m_e+\delta)J\)</span> 를 빼면 나머지 <span class="arithmatex">\(=-\delta J+(m_e+\delta)J=m_eJ\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §7.3 ¶10 #1 항별 표</strong></p>
-<!-- TODO:항표 s7-3-p10-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta=m_e+\delta\)</span></td>
+<td>계수 합</td>
+<td>다른 상태로 가는 클래스들의 총 counting</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §7.3 ¶10 #2 항별 표</strong></p>
-<!-- TODO:항표 s7-3-p10-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(a\cdot b_\ell\)</span>, 계수 <span class="arithmatex">\(-c_\ell J\)</span></td>
+<td>fresh 클래스</td>
+<td>새 사본이 옛 사본과 다른 상태 (<span class="arithmatex">\(q_\ell\)</span> 에서 분리)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(a\cdot b\)</span>, 계수 <span class="arithmatex">\(m_eJ\)</span></td>
+<td>옛 prefix 클래스</td>
+<td>새 사본이 옛 사본과 같은 상태 (<span class="arithmatex">\(e\)</span> 까지 공유)</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p11"></a></p>
 <h4 id="73-11">§7.3 ¶11<a class="headerlink" href="#73-11" title="Permanent link">&para;</a></h4>
@@ -1768,22 +2297,66 @@ J=\kappa(S^+)^2. \tag{7.18}
 <p><a id="s7-3-p11-s6"></a><strong>s6</strong> Sum these errors with absolute coefficients and apply <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a>.</p>
 <p><a id="s7-3-p11-s7"></a><strong>s7</strong> The final term includes division of the original identity error by <span class="arithmatex">\(J\)</span> and tends to zero at fixed <span class="arithmatex">\(L\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p11-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p11-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p11-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p11-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p11-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p11-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p11-s7 --></p>
+<p><strong>s1</strong> 각 행의 투영 overlap 에 <span class="arithmatex">\(f\)</span> 를 곱하고 지정 tree 항등식을 <span class="arithmatex">\(J\)</span> 로 나눈다.</p>
+<p><strong>s2</strong> 정리하면 다음을 얻으며, 여기서 우변의 <span class="arithmatex">\(R_{\mathrm{target}}\)</span> 은 anchor 만의 extension 에서의 목표 overlap 이다.</p>
+<p><strong>s3</strong> 그 절댓값은 최대 1 이다.</p>
+<p><strong>s4</strong> 오차는 다음을 만족한다.</p>
+<p><strong>s5</strong> 실제로, 투영 오차에 <span class="arithmatex">\(f\)</span> 를 곱하는 것은, 상관이 있더라도, <span class="arithmatex">\(|f|\le1\)</span> 이므로 최대 그 <span class="arithmatex">\(L^2\)</span> norm 만큼의 비용이 든다.</p>
+<p><strong>s6</strong> 이 오차들을 절댓값 계수로 합하고 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a> 을 적용한다.</p>
+<p><strong>s7</strong> 마지막 항은 원래 항등식 오차를 <span class="arithmatex">\(J\)</span> 로 나눈 것을 포함하며 고정된 <span class="arithmatex">\(L\)</span> 에서 0 으로 간다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p11 -->
-
+<ul>
+<li><strong>s1–s2, (7.22)</strong> GG 항등식 (6.17) 의 이 경우 판: <span class="arithmatex">\(\sum_\ell c_\ell\mathbb E[f(a\cdot b-a\cdot b_\ell)]=\delta(\cdots)+\rho_N\)</span>. 좌변 = "같은 상태 사본과 다른 상태 사본의 overlap 차" 와 관측량의 상관. <code>✅</code> 아래 전개</li>
+<li><strong>s4–s7, (7.23)</strong> <code>🔧</code> 오차 = clustering 위반 + 단계 이동 + 항등식 오차.</li>
+</ul>
+<details>
+<summary>전개: (7.22) 의 정리 (s2)</summary>
+<p>(6.17) 을 <span class="arithmatex">\(J\)</span> 로 나누면: <span class="arithmatex">\(\sum_\ell(-c_\ell)\mathbb E[f\,a\cdot b_\ell]+m_e\mathbb E[f\,a\cdot b]-\mathbb Ef(-\delta)\mathbb ER_{\rm target}\approx0\)</span>. <span class="arithmatex">\(m_e=\sum c_\ell-\delta\)</span> 를 넣으면 <span class="arithmatex">\(\sum_\ell c_\ell\mathbb E[f(a\cdot b-a\cdot b_\ell)]-\delta\mathbb E[f\,a\cdot b]+\delta\mathbb Ef\,\mathbb ER_{\rm target}\approx0\)</span> → (7.22) ✓.</p>
+</details>
 <p><strong>식 (7.22) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-22 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\sum_\ell c_\ell\mathbb E[f(a\cdot b-a\cdot b_\ell)]\)</span></td>
+<td>좌변</td>
+<td>같은/다른 상태 사본 overlap 차와 관측량의 상관</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\delta(\mathbb E[f\,a\cdot b]-\mathbb Ef\,\mathbb ER_{\rm target})\)</span></td>
+<td>우변</td>
+<td><span class="arithmatex">\(O(1/L)\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.23) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-23 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert\rho_N\rvert\le C(p_N(S^+,e+1)+h_N(S))+C_L\varepsilon_{N,L,k}\)</span></td>
+<td>오차</td>
+<td>clustering 위반 + 단계 이동 + GG 오차</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-3-p12"></a></p>
 <h4 id="73-12">§7.3 ¶12<a class="headerlink" href="#73-12" title="Permanent link">&para;</a></h4>
@@ -1842,63 +2415,151 @@ V_{k,L}(\eta)\le C_{k,\eta}\left(
 <p><a id="s7-3-p12-s21"></a><strong>s21</strong> The maximum over smaller topologies in <a href="07-decorrelation-on-prescribed-trees.html#eq-7-15">(7.15)</a> can be absorbed in the right side because these covariances are bounded by one.</p>
 <p><a id="s7-3-p12-s22"></a><strong>s22</strong> The base case and induction now imply <span class="arithmatex">\(V_{k,L}(\eta)\to0\)</span> for every fixed <span class="arithmatex">\(k,\eta\)</span>, proving the proposition.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-3-p12-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-3-p12-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-3-p12-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-3-p12-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-3-p12-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-3-p12-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-3-p12-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-3-p12-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-3-p12-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-3-p12-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s7-3-p12-s11 --></p>
-<p><strong>s12</strong> <!-- TODO:번역 s7-3-p12-s12 --></p>
-<p><strong>s13</strong> <!-- TODO:번역 s7-3-p12-s13 --></p>
-<p><strong>s14</strong> <!-- TODO:번역 s7-3-p12-s14 --></p>
-<p><strong>s15</strong> <!-- TODO:번역 s7-3-p12-s15 --></p>
-<p><strong>s16</strong> <!-- TODO:번역 s7-3-p12-s16 --></p>
-<p><strong>s17</strong> <!-- TODO:번역 s7-3-p12-s17 --></p>
-<p><strong>s18</strong> <!-- TODO:번역 s7-3-p12-s18 --></p>
-<p><strong>s19</strong> <!-- TODO:번역 s7-3-p12-s19 --></p>
-<p><strong>s20</strong> <!-- TODO:번역 s7-3-p12-s20 --></p>
-<p><strong>s21</strong> <!-- TODO:번역 s7-3-p12-s21 --></p>
-<p><strong>s22</strong> <!-- TODO:번역 s7-3-p12-s22 --></p>
+<p><strong>s1</strong> <em>귀납 마무리.</em></p>
+<p><strong>s2</strong> 식 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a> 은 <span class="arithmatex">\(\|f-a\cdot b\|_{L^2}\le2p_N(S,e)\)</span> 를 준다.</p>
+<p><strong>s3</strong> 또한 <span class="arithmatex">\(\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1\)</span> 이다.</p>
+<p><strong>s4</strong> 따라서 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-22">(7.22)</a> 좌변에서 <span class="arithmatex">\(f\)</span> 를 <span class="arithmatex">\(a\cdot b\)</span> 로 바꾸는 비용은 최대 <span class="arithmatex">\(4p_N(S,e)\)</span> 다.</p>
+<p><strong>s5</strong> 각 <span class="arithmatex">\(a\cdot b_\ell\)</span> 은 <span class="arithmatex">\(a\cdot b\)</span> 와 같은 marginal 법칙을 가지므로 그 좌변은 다음이 된다.</p>
+<p><strong>s6</strong> 그 summand 들은 음이 아니고 <span class="arithmatex">\(c_d\ge\eta\)</span> 이다.</p>
+<p><strong>s7</strong> <a href="07-decorrelation-on-prescribed-trees.html#eq-7-22">(7.22)</a> 의 우변은 절댓값이 <span class="arithmatex">\(2\delta+|\rho_N(S,d)|\)</span> 로 bound 된다.</p>
+<p><strong>s8</strong> 따라서 다음이 성립한다.</p>
+<p><strong>s9</strong> <span class="arithmatex">\(d\)</span> 아래에서 조건부 독립으로 <span class="arithmatex">\(A_S\)</span> 의 세 사본을 뽑는다.</p>
+<p><strong>s10</strong> 첫 사본과 관련된 두 축약 각각을 투영하면 <span class="arithmatex">\(L^2\)</span> 에서 최대 <span class="arithmatex">\(2p_N(S,e)\)</span> 만큼 바뀐다.</p>
+<p><strong>s11</strong> <a href="07-decorrelation-on-prescribed-trees.html#eq-7-7">(7.7)</a>, <a href="07-decorrelation-on-prescribed-trees.html#eq-7-24">(7.24)</a>, <span class="arithmatex">\(p_N(S,e)\le k\)</span> 를 쓰면 다음을 얻는다.</p>
+<p><strong>s12</strong> 어느 <span class="arithmatex">\(p_N\)</span> 안의 자식이든 <span class="arithmatex">\(k\)</span> 개보다 적은 leaf 를 갖는다.</p>
+<p><strong>s13</strong> 평균 단계를 명시적으로 하기 위해, 정렬된 구성은 <span class="arithmatex">\(d\)</span> 와 <span class="arithmatex">\(e\)</span> 를 포함해 <span class="arithmatex">\(D=b(S)+1\)</span> 개의 서로 다른 깊이 좌표를 갖는다.</p>
+<p><strong>s14</strong> <span class="arithmatex">\(T_j\)</span> 에 속한 항은 <span class="arithmatex">\(D_j=b(T_j)+1\)</span> 개의 좌표만 쓴다.</p>
+<p><strong>s15</strong> 이동된 항에 대해 이들은 <span class="arithmatex">\(\pi_j(\mathbf q)=(e+1,(q_v+1)_{v\in\operatorname{Br}(T_j)})\)</span> 이다.</p>
+<p><strong>s16</strong> 남겨진 모든 배정은 최대 <span class="arithmatex">\(L^{D-D_j}\)</span> 개의 원상을 가지며, 그 좌표는 큰 <span class="arithmatex">\(L\)</span> 에 대해 <span class="arithmatex">\(\eta/2\)</span>-regular 다.</p>
+<p><strong>s17</strong> <span class="arithmatex">\(w_j\)</span> 를 이 좌표들의 함수로서의 자식 공분산이라 하면, <span class="arithmatex">\(0\lt\gamma\le1\)</span> 에 대해 다음이 성립한다.</p>
+<p><strong>s18</strong> 이동되지 않은 항도 좌표를 옮기지 않은 같은 bound 를 갖는다.</p>
+<p><strong>s19</strong> 따라서 정렬된 두 사본은 단일 사본 추정을 쓴다; 독립적으로 평균한 사본 쌍을 대각선으로 제한하는 일은 없다.</p>
+<p><strong>s20</strong> <span class="arithmatex">\(\gamma=1/4\)</span> 를 택한 뒤 <span class="arithmatex">\(\limsup_N\)</span> 을 취하고 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-21">(7.21)</a> 과 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-3">(7.3)</a> 을 쓰면, 충분히 큰 <span class="arithmatex">\(L\)</span> 에 대해 다음을 얻는다.</p>
+<p><strong>s21</strong> 이 공분산들은 1 로 bound 되므로 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-15">(7.15)</a> 의 더 작은 topology 에 대한 최대는 우변에 흡수될 수 있다.</p>
+<p><strong>s22</strong> 기초 단계와 귀납이 이제 모든 고정된 <span class="arithmatex">\(k,\eta\)</span> 에 대해 <span class="arithmatex">\(V_{k,L}(\eta)\to0\)</span> 을 함의하며, 명제가 증명된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-3-p12 -->
-
+<ul>
+<li><strong>s2–s8, (7.24)</strong> 좌변이 "같은 상태 사본(<span class="arithmatex">\(b\)</span>)과 다른 상태 사본(<span class="arithmatex">\(b_\ell\)</span>)의 overlap 차의 제곱" 이 되어 <span class="arithmatex">\(\ge0\)</span>; 우변이 작으므로 차가 작다. <code>✅</code> 아래 전개</li>
+<li><strong>s9–s11, (7.25)</strong> 세 사본 부등식 (7.7) 로 clustering 척도 <span class="arithmatex">\(v_N(S,d)\)</span> 를 bound. <code>📚</code> (7.7)</li>
+<li><strong>s12–s22, (7.26)–(7.27)</strong> 귀납: <span class="arithmatex">\(V_k\le C(L^{-1/2}+V_{k-1}^{1/4})\)</span>, <span class="arithmatex">\(V_1\le\delta/\eta\)</span> → 모두 0 (<span class="arithmatex">\(L\to\infty\)</span>). 물리: <strong>모든 크기의 replica 묶음에서 상태 안 clustering</strong> 이 성립. <code>✅</code> 귀납 닫힘은 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 좌변의 제곱 형태와 귀납의 닫힘 (s5, s22)</summary>
+<p><span class="arithmatex">\(a\cdot b_\ell\overset{d}=a\cdot b\)</span> 이면 <span class="arithmatex">\(\mathbb E[(a\cdot b)(a\cdot b-a\cdot b_\ell)]=\frac12\mathbb E(a\cdot b-a\cdot b_\ell)^2\)</span> ✓ (<span class="arithmatex">\(\mathbb E[x(x-y)]=\frac12\mathbb E(x-y)^2+\frac12(\mathbb Ex^2-\mathbb Ey^2)\)</span>, 둘째 항 0).
+귀납: <span class="arithmatex">\(V_{1,L}\le\delta/\eta\to0\)</span>. <span class="arithmatex">\(V_{k-1,L}(\eta/2)\to0\)</span> (<span class="arithmatex">\(L\to\infty\)</span>) 이면 <span class="arithmatex">\(V_{k,L}(\eta)\le C(L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4})\to0\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §7.3 ¶12 #1 항별 표</strong></p>
-<!-- TODO:항표 s7-3-p12-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\frac12\sum_\ell c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2\)</span></td>
+<td>음이 아닌 좌변</td>
+<td>같은/다른 상태 사본 overlap 차의 크기</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.24) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-24 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E(a\cdot b-a\cdot b_d)^2\le C(\delta+p_N+\lvert\rho_N\rvert)\)</span></td>
+<td>세 사본 투영 추정</td>
+<td>같은 단계 overlap 은 거의 결정적</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.25) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-25 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(v_N(S,d)\le C(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N)+C_L\varepsilon\)</span></td>
+<td>귀납 추정</td>
+<td><span class="arithmatex">\(k\)</span> replica 의 clustering 을 더 작은 묶음의 clustering 으로</td>
+<td><code>📚</code> (7.7), (7.24)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.26) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-26 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(L^{-D}\sum w_j(\pi_j(\mathbf q))^\gamma\le(L^{-D_j}\sum w_j)^\gamma\)</span></td>
+<td>fiber bound</td>
+<td>쓰지 않는 단계 좌표를 적분해 단일 사본 평균으로</td>
+<td><code>📚</code> (7.2)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.27) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-27 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})\)</span></td>
+<td>귀납 재귀</td>
+<td>clustering 이 replica 수에 대해 귀납적으로 성립</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s7-4"></a></p>
 <h2 id="74-concentration-of-every-multioverlap">§7.4 Concentration of every multioverlap<a class="headerlink" href="#74-concentration-of-every-multioverlap" title="Permanent link">&para;</a></h2>
-<!-- TODO:제목번역 s7-4 -->
-
+<p><em>제목: 모든 multioverlap 의 집중</em></p>
 <p><a id="s7-4-p1"></a></p>
 <h4 id="74-1">§7.4 ¶1<a class="headerlink" href="#74-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
 <p><a id="s7-4-p1-s1"></a><strong>s1</strong> The covariance estimate controls fluctuations below a sampled prefix.</p>
 <p><a id="s7-4-p1-s2"></a><strong>s2</strong> We now use a marker anchor to concentrate the prefix projection, and combine this with the averaged continuity estimate.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-4-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-4-p1-s2 --></p>
+<p><strong>s1</strong> 공분산 추정은 표본 prefix 아래의 요동을 통제한다.</p>
+<p><strong>s2</strong> 이제 marker anchor 를 써서 prefix 투영을 집중시키고, 이를 평균된 연속성 추정과 합친다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-4-p1 -->
-
+<ul>
+<li><strong>s1–s2</strong> 남은 것: 상태 사이 요동 (조건부 평균 <span class="arithmatex">\(M\)</span> 이 상태마다 다른가). marker anchor 로 처리. <code>🔧</code></li>
+</ul>
 <hr />
 <p><a id="s7-4-e8"></a></p>
 <h3 id="proof-of-theorem-71">▸ <em>Proof of Theorem <a href="07-decorrelation-on-prescribed-trees.html#s7-1-e1">7.1</a>.</em><a class="headerlink" href="#proof-of-theorem-71" title="Permanent link">&para;</a></h3>
@@ -1908,11 +2569,16 @@ V_{k,L}(\eta)\le C_{k,\eta}\left(
 <p><a id="s7-4-p2-s1"></a><strong>s1</strong> For a singleton, use the spin-anchor identity with no added colors and <span class="arithmatex">\(f=R_S\)</span>.</p>
 <p><a id="s7-4-p2-s2"></a><strong>s2</strong> It gives <span class="arithmatex">\(\mathbb ER_S^2=(\mathbb ER_S)^2+o_N(1)\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-4-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-4-p2-s2 --></p>
+<p><strong>s1</strong> singleton 에 대해서는 더해진 색 없이 <span class="arithmatex">\(f=R_S\)</span> 인 spin anchor 항등식을 쓴다.</p>
+<p><strong>s2</strong> 그것은 <span class="arithmatex">\(\mathbb ER_S^2=(\mathbb ER_S)^2+o_N(1)\)</span> 을 준다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-4-p2 -->
-
+<ul>
+<li><strong>s1–s2</strong> 자화 <span class="arithmatex">\(R_S=\frac1N\sum\sigma_i\)</span> 의 self-averaging: (6.17) 의 <span class="arithmatex">\(k=0\)</span> 판. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: singleton (s2)</summary>
+<p><span class="arithmatex">\(k=0\)</span>, spin anchor: 옛 tree 쪽 <span class="arithmatex">\(\mathbb E[fR_{\{a_*\}}]\)</span>, anchor 만 쪽 <span class="arithmatex">\(\mathbb E[R_{\{a_*\}}]\)</span> (빈 extension 계수 1). <span class="arithmatex">\(f=R_S\)</span> (<span class="arithmatex">\(S=\{a_*\}\)</span>): <span class="arithmatex">\(\mathbb ER_S^2-\mathbb ER_S\,\mathbb ER_S\to0\)</span> ✓.</p>
+</details>
 <hr />
 <p><a id="s7-4-p3"></a></p>
 <h4 id="74-3">§7.4 ¶3<a class="headerlink" href="#74-3" title="Permanent link">&para;</a></h4>
@@ -1944,29 +2610,82 @@ C(S,e)\bigl(\mathbb EM^2-(\mathbb E R_S)^2\bigr)
 \]</div>
 <p><a id="s7-4-p3-s11"></a><strong>s11</strong> Division by <span class="arithmatex">\(C(S,e)\)</span> is made only at fixed <span class="arithmatex">\(L\)</span>; no uniform lower bound as <span class="arithmatex">\(L\to\infty\)</span> is needed.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-4-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-4-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-4-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-4-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-4-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-4-p3-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-4-p3-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-4-p3-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-4-p3-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-4-p3-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s7-4-p3-s11 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(S\)</span> 가 <span class="arithmatex">\(e\)</span> 에서 처음 갈라지고 진부분 자식 모양 <span class="arithmatex">\(T_1,\ldots,T_s\)</span> 를 갖는다고 하자.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(e\)</span> 보다 한 단계 앞에서 조건을 건다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(S\)</span> 를 옛 tree 로 쓰고, 그 leaf 하나를 marker anchor 로 지정하며, 모든 leaf 가 anchor 와 <span class="arithmatex">\(e-1\)</span> 에서 갈라지는 <span class="arithmatex">\(S\)</span> 의 완전한 사본을 더한다.</p>
+<p><strong>s4</strong> 옛 tree 가 거기서 아직 갈라지지 않았으므로 그 첫 경로는 <span class="arithmatex">\(e-1\)</span> 에서 fresh 여야 한다.</p>
+<p><strong>s5</strong> 다른 모든 목표 경로는 결과로 생긴 fresh subtree 안에 놓인다.</p>
+<p><strong>s6</strong> 지정 tree 항등식 양쪽의 extension 계수는 같은 0 아닌 수다.</p>
+<p><strong>s7</strong> 목표 사본과 옛 사본은 <span class="arithmatex">\(\mathscr F_{e-1}\)</span> 아래에서 조건부 독립이고 동일 분포다.</p>
+<p><strong>s8</strong> <span class="arithmatex">\(f=R_S\)</span>, <span class="arithmatex">\(M=\mathbb E[R_S\mid\mathscr F_{e-1}]\)</span> 로 두면 그 곱의 조건부 기댓값은 <span class="arithmatex">\(M^2\)</span> 이다.</p>
+<p><strong>s9</strong> anchor 만 쪽에서는 marker 의 <span class="arithmatex">\(e-1\)</span> 아래 연장을 지우면 확률 kernel 이 1 로 적분되어 평균 <span class="arithmatex">\(\mathbb E R_S\)</span> 를 갖는 보통의 목표 법칙 <span class="arithmatex">\(S\)</span> 가 남는다.</p>
+<p><strong>s10</strong> 따라서 항등식은 다음을 주고, 이로부터 다음이 따른다.</p>
+<p><strong>s11</strong> <span class="arithmatex">\(C(S,e)\)</span> 로 나누는 것은 고정된 <span class="arithmatex">\(L\)</span> 에서만 한다; <span class="arithmatex">\(L\to\infty\)</span> 에서 균등한 하한은 필요 없다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-4-p3 -->
-
+<ul>
+<li><strong>s3–s10, (7.28)–(7.30)</strong> marker anchor (상태 위치만 표시) 로 같은 상태 묶음(<span class="arithmatex">\(e-1\)</span> 까지 공유)의 두 replica 무리를 비교: GG 항등식이 <span class="arithmatex">\(\mathrm{Var}(M)\to0\)</span> 을 준다. 즉 <strong>상태(깊이 <span class="arithmatex">\(e-1\)</span> 묶음)마다 multioverlap 의 조건부 평균이 같다</strong> — 상태 사이 요동도 0. 물리: 모든 (전형적) 상태가 같은 overlap 구조를 가짐 (상태의 통계적 동등성). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: marker 항등식 (s6–s10)</summary>
+<p>계수: <span class="arithmatex">\(e-1\)</span> 에서 unary fresh <span class="arithmatex">\(m_{e-1}-m_e=-\delta\)</span>, 나머지는 <span class="arithmatex">\(\kappa(S)\)</span> (Lemma 3.4) → <span class="arithmatex">\(C(S,e)=-\delta\kappa(S)\)</span>, 양쪽 같음 ✓ (anchor 만 쪽도 같은 모양). 옛 쪽: <span class="arithmatex">\(\mathbb E[R_S^{\rm old}R_S^{\rm new}]=\mathbb E[M^2]\)</span> (조건부 독립·동일분포) ✓. anchor 만 쪽: <span class="arithmatex">\(\mathbb ER_S\cdot\mathbb ER_S\)</span>. (6.17): <span class="arithmatex">\(C(\mathbb EM^2-(\mathbb ER_S)^2)\to0\)</span>, <span class="arithmatex">\(\mathbb EM=\mathbb ER_S\)</span> 이므로 <span class="arithmatex">\(=C\,\mathrm{Var}M\)</span> ✓.</p>
+</details>
 <p><strong>식 (7.28) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-28 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(C(S,e)=-\delta\kappa(S)\)</span></td>
+<td>marker 계수</td>
+<td>한 단계 앞 분리 (<span class="arithmatex">\(dx\)</span>) × Parisi counting</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.29) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-29 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(C(\mathbb EM^2-(\mathbb ER_S)^2)=C\,\mathrm{Var}(M)=o_N(1)\)</span></td>
+<td>marker 항등식</td>
+<td>상태 사이 요동 → 0</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.30) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-30 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathrm{Var}(M)\to0\)</span></td>
+<td>prefix 투영의 집중</td>
+<td>모든 전형적 상태에서 같은 조건부 multioverlap</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s7-4-p4"></a></p>
 <h4 id="74-4">§7.4 ¶4<a class="headerlink" href="#74-4" title="Permanent link">&para;</a></h4>
@@ -2005,32 +2724,101 @@ G=\mathbf1\cdot\prod_j \mu_{e,T_j},
 <p><a id="s7-4-p4-s10"></a><strong>s10</strong> In this estimate we used <span class="arithmatex">\(p_N(S,e)^2\le s\sum_jv_N(T_j,e)^{1/2}\)</span> and <a href="07-decorrelation-on-prescribed-trees.html#eq-7-26">(7.26)</a> with <span class="arithmatex">\(\gamma=1/2\)</span>: here the full average has <span class="arithmatex">\(D=b(S)\)</span> coordinates because <span class="arithmatex">\(d\)</span> is absent, while still <span class="arithmatex">\(D_j=b(T_j)+1\)</span>.</p>
 <p><a id="s7-4-p4-s11"></a><strong>s11</strong> Proposition <a href="07-decorrelation-on-prescribed-trees.html#s7-3-e6">7.4</a> finishes the proof.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-4-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-4-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-4-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-4-p4-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s7-4-p4-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s7-4-p4-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s7-4-p4-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s7-4-p4-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s7-4-p4-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s7-4-p4-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s7-4-p4-s11 --></p>
+<p><strong>s1</strong> 남은 것은 이 prefix 아래의 조건부 분산을 통제하는 것이다.</p>
+<p><strong>s2</strong> 자식 공분산은 그 모든 branching 깊이와 분리된 <span class="arithmatex">\(e\)</span> 에서 계산된다; <span class="arithmatex">\(e-1\)</span> 로의 이동은 대신 martingale 연속성을 쓴다.</p>
+<p><strong>s3</strong> 다음과 같이 둔다.</p>
+<p><strong>s4</strong> 후자는 <span class="arithmatex">\(\mathscr F_{e-1}\)</span>-측정가능하다.</p>
+<p><strong>s5</strong> <a href="07-decorrelation-on-prescribed-trees.html#eq-7-13">(7.13)</a> 에 의해 <span class="arithmatex">\(\mathbb E(R_S-G)^2\le p_N(S,e)^2\)</span> 이다.</p>
+<p><strong>s6</strong> 모든 진부분 자식 깊이를 고정하면 곱 차 부등식과 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-10">(7.10)</a> 이 다음을 함의한다.</p>
+<p><strong>s7</strong> 여기서 <span class="arithmatex">\(e\)</span> 자체가 범위 있는 좌표이므로 한 단계 증분들을 <span class="arithmatex">\(L\)</span> 로 나누기 전에 합한다.</p>
+<p><strong>s8</strong> 조건부 기댓값은 최적의 <span class="arithmatex">\(L^2\)</span> 투영이므로 다음이 성립한다.</p>
+<p><strong>s9</strong> 분산 분해와 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-30">(7.30)</a> 이 이제 다음을 보인다.</p>
+<p><strong>s10</strong> 이 추정에서 <span class="arithmatex">\(p_N(S,e)^2\le s\sum_jv_N(T_j,e)^{1/2}\)</span> 와 <span class="arithmatex">\(\gamma=1/2\)</span> 인 <a href="07-decorrelation-on-prescribed-trees.html#eq-7-26">(7.26)</a> 을 썼다: 여기서 전체 평균은 <span class="arithmatex">\(d\)</span> 가 없으므로 <span class="arithmatex">\(D=b(S)\)</span> 개의 좌표를 갖지만, 여전히 <span class="arithmatex">\(D_j=b(T_j)+1\)</span> 이다.</p>
+<p><strong>s11</strong> Proposition <a href="07-decorrelation-on-prescribed-trees.html#s7-3-e6">7.4</a> 가 증명을 마친다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-4-p4 -->
-
+<ul>
+<li><strong>s1–s11</strong> 분산 분해: <span class="arithmatex">\(\mathrm{Var}(R_S)=\mathrm{Var}(M)+\mathbb E(R_S-M)^2\)</span> = (상태 사이) + (상태 안). 상태 안은 clustering (Prop. 7.4) 과 단계 연속성 (<span class="arithmatex">\(1/L\)</span>) 으로, 상태 사이는 (7.30) 으로. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: 분산 분해와 L² 투영 (s8–s9)</summary>
+<p><span class="arithmatex">\(M=\mathbb E[R_S\mid\mathscr F_{e-1}]\)</span> 는 <span class="arithmatex">\(\mathscr F_{e-1}\)</span>-측정가능 함수 중 <span class="arithmatex">\(L^2\)</span> 최적 근사이므로 <span class="arithmatex">\(\mathbb E(R_S-M)^2\le\mathbb E(R_S-G_-)^2\)</span> ✓. <span class="arithmatex">\((x+y)^2\le2x^2+2y^2\)</span>: <span class="arithmatex">\(\le2\mathbb E(R_S-G)^2+2\mathbb E(G-G_-)^2\)</span> ✓. <span class="arithmatex">\(\mathrm{Var}R_S=\mathrm{Var}M+\mathbb E(R_S-M)^2\)</span> (전체 분산 법칙) ✓.</p>
+</details>
 <p><strong>식 Eq. §7.4 ¶4 #1 항별 표</strong></p>
-<!-- TODO:항표 s7-4-p4-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(G=\mathbf1\cdot\prod_j\mu_{e,T_j}\)</span>, <span class="arithmatex">\(G_-\)</span> (깊이 <span class="arithmatex">\(e-1\)</span>)</td>
+<td>투영된 multioverlap</td>
+<td>국소 자화 곱의 site 평균</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.31) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-31 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal A\mathbb E(G-G_-)^2\le C_k/L\)</span></td>
+<td>인접 prefix 오차</td>
+<td>상태 계층 한 단계 차이 <span class="arithmatex">\(O(dx)\)</span></td>
+<td><code>📚</code> (7.10)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §7.4 ¶4 #2 항별 표</strong></p>
-<!-- TODO:항표 s7-4-p4-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathbb E(R_S-M)^2\le\mathbb E(R_S-G_-)^2\le2p_N^2+2\mathbb E(G-G_-)^2\)</span></td>
+<td>상태 안 요동 bound</td>
+<td>clustering + 단계 연속성</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (7.32) 항별 표</strong></p>
-<!-- TODO:항표 eq-7-32 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\limsup\mathcal A\mathrm{Var}(R_S)\le C(L^{-1}+V_{k-1,L}^{1/2})\)</span></td>
+<td>분산 추정</td>
+<td>multioverlap 요동 = 상태 사이(0) + 상태 안(작음)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s7-4-e9"></a></p>
@@ -2043,13 +2831,14 @@ G=\mathbf1\cdot\prod_j \mu_{e,T_j},
 <p><a id="s7-4-p5-s3"></a><strong>s3</strong> Errors that survive the <span class="arithmatex">\(N\)</span> limit are controlled by the uniform relative absolute-cost bound <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a>, the lower-order covariance averages, and the martingale estimate <span class="arithmatex">\(C/L\)</span>.</p>
 <p><a id="s7-4-p5-s4"></a><strong>s4</strong> No rate of convergence in <span class="arithmatex">\(N\)</span> uniform in <span class="arithmatex">\(L\)</span> is used.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s7-4-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s7-4-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s7-4-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s7-4-p5-s4 --></p>
+<p><strong>s1</strong> 이 섹션에서 상쇄되지 않은 모든 작은 분모는 지정 tree 항등식 오차에서만 나타난다.</p>
+<p><strong>s2</strong> 고정된 <span class="arithmatex">\(L\)</span> 에서 관련 tree 는 유한 개이므로, 그 오차들은 깊이 평균이나 <span class="arithmatex">\(L\)</span> 극한을 취하기 전에 사라진다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(N\)</span> 극한 후에도 남는 오차는 균등한 상대 절댓값 비용 bound <a href="07-decorrelation-on-prescribed-trees.html#eq-7-20">(7.20)</a>, 저차 공분산 평균, 그리고 martingale 추정 <span class="arithmatex">\(C/L\)</span> 로 통제된다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(L\)</span> 에 균등한 <span class="arithmatex">\(N\)</span> 에서의 수렴 속도는 쓰지 않는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s7-4-p5 -->
-
+<ul>
+<li><strong>s1–s4</strong> <code>🔧</code> Remark 7.5: 작은 분모(<span class="arithmatex">\(J\sim\delta^{2b}\)</span>)로 나누는 것은 고정 <span class="arithmatex">\(L\)</span> 에서만; 극한 순서 덕분에 균등 수렴 속도가 필요 없다.</li>
+</ul>
 <hr />
 <p><em>(끝: s7-4-e9)</em></p>
 
