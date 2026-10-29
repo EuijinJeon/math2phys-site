@@ -745,12 +745,16 @@
 
 <p><a id="s5"></a></p>
 <h1 id="5-a-perturbed-cavity-reservoir">§5 A perturbed cavity reservoir<a class="headerlink" href="#5-a-perturbed-cavity-reservoir" title="Permanent link">&para;</a></h1>
-<!-- TODO:제목번역 s5 -->
-
+<p><em>제목: 섭동된 cavity reservoir</em></p>
 <p><a href="04-the-interpolation-upper-bound.html">← 이전: §4 The interpolation upper bound</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="06-perturbations-and-identities-on-prescrib.html">다음: §6 Perturbations and identities on prescribed trees →</a></p>
 <details>
 <summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
-<!-- TODO:요약 s5 -->
+<p><strong>하는 일.</strong> lower bound 의 출발점인 Aizenman–Sims–Starr cavity 비교를 세운다.
+- <span class="arithmatex">\(N\)</span> 계와 <span class="arithmatex">\(N+1\)</span> 계를 공통 reservoir (<span class="arithmatex">\(N\)</span> spin, factor 평균 <span class="arithmatex">\(\rho_N\)</span>)로 비교. Poisson thinning 으로 <span class="arithmatex">\(N+1\)</span> 계 = reservoir + site 삽입, <span class="arithmatex">\(N\)</span> 계 = reservoir + bond 삽입 (factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개).
+- Lemma 5.1: 증분 <span class="arithmatex">\(\Delta_N=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o(1)\)</span> — Bethe 공식의 site 항 − edge 항과 같은 구조이지만, 평균은 reservoir 의 실제 계층 측도에서.
+- reservoir 에 sublinear (<span class="arithmatex">\(N^{3/4}\)</span>) 개의 single-site 섭동을 넣는다. pressure 변화는 <span class="arithmatex">\(O(N^{3/4})\)</span>, 밀도로는 0. 계층은 균등 mesh <span class="arithmatex">\(m_d=d/L\)</span>.</p>
+<p><strong>물리적 의미.</strong> cavity method 의 "spin 하나를 붙였다 떼기" 를 엄밀하게 한 것. <span class="arithmatex">\(-\alpha(p-1)\)</span> 은 <span class="arithmatex">\(N+1\)</span> 계와 <span class="arithmatex">\(N\)</span> 계의 factor 개수 차이에서 나온다. 섭동은 stochastic stability 를 강제하기 위한 작은 무작위 항으로, 다음 섹션에서 replica 들의 구조(Ghirlanda–Guerra 류 항등식)를 끌어내는 데 쓰인다. upper bound 와 달리 짝수 <span class="arithmatex">\(p\)</span>, (2.4) 가 필요 없다.</p>
+<p><strong>건너뛰어도 되는지.</strong> 결론 (5.5) 만 알면 된다: pressure 의 lower bound 는 "reservoir 측도에서 site 삽입 − bond 삽입" 의 평균을 시행 Bethe 공식과 비교하는 문제로 바뀐다(§8).</p>
 </details>
 <p><a id="s5-p1"></a></p>
 <h4 id="5-1">§5 ¶1<a class="headerlink" href="#5-1" title="Permanent link">&para;</a></h4>
@@ -760,13 +764,16 @@
 <p><a id="s5-p1-s3"></a><strong>s3</strong> We add a sublinear number of bounded perturbations to obtain identities for its spin trees.</p>
 <p><a id="s5-p1-s4"></a><strong>s4</strong> The comparison below shows that these perturbations change the pressure by <span class="arithmatex">\(o(1)\)</span> and preserve the site-minus-bond cavity increment.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p1-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p1-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p1-s4 --></p>
+<p><strong>s1</strong> 크기 <span class="arithmatex">\(N\)</span> 과 <span class="arithmatex">\(N+1\)</span> 의 계를 공통의 <span class="arithmatex">\(N\)</span>-spin 계, 즉 <em>reservoir</em> 를 통해 비교한다.</p>
+<p><strong>s2</strong> 이 cavity 비교는 Aizenman–Sims–Starr 변분 방식 [<a href="99-references.html#ref-ASS03">2</a>] 과 Panchenko [<a href="99-references.html#ref-Pan13">14</a>, Section 2.2] 의 spin 분포 형태를 따른다.</p>
+<p><strong>s3</strong> 그 spin tree 들에 대한 항등식을 얻기 위해 sublinear 개수의 유계 섭동을 더한다.</p>
+<p><strong>s4</strong> 아래의 비교는 이 섭동들이 pressure 를 <span class="arithmatex">\(o(1)\)</span> 만큼만 바꾸며 site 빼기 bond 의 cavity 증분을 보존함을 보인다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p1 -->
-
+<ul>
+<li><strong>s1–s2</strong> Aizenman–Sims–Starr (ASS) 방식: <span class="arithmatex">\(NF_N\)</span> 의 증분 <span class="arithmatex">\((N+1)F_{N+1}-NF_N\)</span> 을 "spin 하나를 더하는 비용" 으로 계산하면 그 Cesàro 평균이 <span class="arithmatex">\(F_N\)</span> 의 극한을 준다. 물리의 <strong>cavity method</strong> 그 자체 (spin 하나를 붙였다 떼며 free energy 증분을 계산). <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>], [<a href="99-references.html#ref-Pan13">14</a>]</li>
+<li><strong>s3</strong> <span class="arithmatex">\(o(N)\)</span> 크기의 섭동 = stochastic stability 용 섭동 (glossary: perturbation). 이 섭동이 replica 들에 Ghirlanda–Guerra 류 항등식을 강제한다(§6). 물리에서는 "작은 무작위 섭동에 대한 안정성" 을 가정하지만, 수학은 섭동을 명시적으로 넣고 그 효과를 통제한다. <code>📚</code> [<a href="99-references.html#ref-Pan13">14</a>]</li>
+<li><strong>s4</strong> 섭동이 pressure 를 <span class="arithmatex">\(o(1)\)</span> 만 바꾸므로 같은 극한. <code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p4">§5 ¶4</a> 의 (5.3) 전개</li>
+</ul>
 <hr />
 <p><a id="s5-p2"></a></p>
 <h4 id="5-2">§5 ¶2<a class="headerlink" href="#5-2" title="Permanent link">&para;</a></h4>
@@ -774,11 +781,13 @@
 <p><a id="s5-p2-s1"></a><strong>s1</strong> Until Section <a href="09-normalization-truncation-and-completion-.html#s9">9</a>, assume that <span class="arithmatex">\(B(\theta)\le B\)</span> and <span class="arithmatex">\(|h|\le H\)</span> almost surely and that the law of <span class="arithmatex">\(\theta\)</span> is invariant under permutations of its <span class="arithmatex">\(p\)</span> coordinates.</p>
 <p><a id="s5-p2-s2"></a><strong>s2</strong> Neither the factorization nor the positivity assumption is used in the lower bound.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p2-s2 --></p>
+<p><strong>s1</strong> Section <a href="09-normalization-truncation-and-completion-.html#s9">9</a> 까지 <span class="arithmatex">\(B(\theta)\le B\)</span> 와 <span class="arithmatex">\(|h|\le H\)</span> 가 거의 확실하고 <span class="arithmatex">\(\theta\)</span> 의 법칙이 그 <span class="arithmatex">\(p\)</span> 개 좌표의 순열에 대해 불변이라고 가정한다.</p>
+<p><strong>s2</strong> lower bound 에서는 factorization 도 positivity 가정도 쓰지 않는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p2 -->
-
+<ul>
+<li><strong>s1</strong> <code>🔧</code> 유계 coupling, 유계 field, factor 의 입력 순서 대칭 — §9 에서 truncation 으로 제거.</li>
+<li><strong>s2</strong> 중요: <strong>lower bound 는 짝수 <span class="arithmatex">\(p\)</span> 나 (2.4) 없이</strong> 성립. 물리적으로, "Bethe 공식이 pressure 이하가 아니다" 쪽은 모든 diluted 모형에서 성립하고, 제한은 upper bound 쪽뿐이다. <code>📚</code> §1, Theorem 2.1</li>
+</ul>
 <hr />
 <p><a id="s5-p3"></a></p>
 <h4 id="5-3">§5 ¶3<a class="headerlink" href="#5-3" title="Permanent link">&para;</a></h4>
@@ -800,23 +809,65 @@ m_d=d/L\quad(0\le d\le L),\qquad\delta=1/L. \tag{5.1}
 <p><a id="s5-p3-s7"></a><strong>s7</strong> The parameters of the factors are denoted by <span class="arithmatex">\(\mathbf u\)</span> and are fixed, not quenched random variables, unless a parameter average is explicitly taken.</p>
 <p><a id="s5-p3-s8"></a><strong>s8</strong> The factors needed later are specified in Section <a href="06-perturbations-and-identities-on-prescrib.html#s6">6</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s5-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s5-p3-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s5-p3-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s5-p3-s8 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(L\ge2\)</span> 를 고정하고 다음을 갖는 <span class="arithmatex">\(r=L-1\)</span> 개의 보조 단계를 쓴다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\((c_\nu)_{\nu\ge1}\)</span> 을 <span class="arithmatex">\(\sum_\nu c_\nu=1\)</span> 인 양수열이라 하고 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 로 둔다.</p>
+<p><strong>s3</strong> spin 가중치에, 평균 <span class="arithmatex">\(c_\nu s_N\)</span> 인 개수와 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 site 를 갖는 single-site 인자 <span class="arithmatex">\(\psi_\nu\)</span> 의 독립 Poisson 족들을 더한다.</p>
+<p><strong>s4</strong> 각 인자는 곱 prior 로 계층을 따라 뽑힌 자기만의 보조 변수를 쓰며 다음을 만족한다.</p>
+<p><strong>s5</strong> 인자의 총 개수는 <span class="arithmatex">\(\operatorname{Poisson}(s_N)\)</span> 이며 거의 확실히 유한하다.</p>
+<p><strong>s6</strong> 개수, 종류, site 는 root 변수다.</p>
+<p><strong>s7</strong> 인자들의 매개변수는 <span class="arithmatex">\(\mathbf u\)</span> 로 쓰며, 매개변수 평균을 명시적으로 취하지 않는 한 quenched 무작위 변수가 아니라 고정된 값이다.</p>
+<p><strong>s8</strong> 나중에 필요한 인자들은 Section <a href="06-perturbations-and-identities-on-prescrib.html#s6">6</a> 에서 지정된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p3 -->
-
+<ul>
+<li><strong>s1, (5.1)</strong> 균등 mesh <span class="arithmatex">\(m_d=d/L\)</span>: full-RSB 를 <span class="arithmatex">\(L-1\)</span> 단계로 이산화한 reservoir 계층 (R12, §3.3–§3.4). 물리로는 Parisi 함수 <span class="arithmatex">\(x(q)\)</span> 를 단계 index 에 대해 선형으로 둔 것. <code>📚</code> §3.4</li>
+<li><strong>s3–s5</strong> 섭동 = site 하나에 걸리는 약한 인자 <span class="arithmatex">\(\psi_\nu\)</span> 들을 Poisson<span class="arithmatex">\((s_N)\)</span> 개, <span class="arithmatex">\(s_N=N^{3/4}=o(N)\)</span>. 물리로는 작은 무작위 외부장 같은 single-site 항을 sublinear 하게 더한 것. 각 인자는 자기 보조 변수(계층 위치)를 가져, 상태 계층에도 섭동이 걸린다. <code>🔧</code> §6 에서 구체적 형태</li>
+<li><strong>s4, (5.2)</strong> <code>🔧</code> <span class="arithmatex">\(\psi\in[1/2,3/2]\)</span>: 인자 하나가 free entropy 를 최대 <span class="arithmatex">\(\log2\)</span> 만큼 바꿈.</li>
+<li><strong>s6–s7</strong> <code>🔧</code> 섭동의 개수·위치는 quenched, 매개변수 <span class="arithmatex">\(\mathbf u\)</span> 는 고정 (나중에 평균).</li>
+</ul>
 <p><strong>식 (5.1) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(m_d=d/L\)</span></td>
+<td>균등 mesh</td>
+<td>full-RSB 의 이산화된 Parisi parameter (R12)</td>
+<td><code>📚</code> §3.4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\delta=1/L\)</span></td>
+<td>간격</td>
+<td>새 overlap 단계 하나의 무게</td>
+<td><code>📚</code> §3.3</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (5.2) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(1/2\le\psi_\nu\le3/2\)</span></td>
+<td>인자 bound</td>
+<td>섭동 인자 하나의 free entropy 변화 <span class="arithmatex">\(\le\log2\)</span></td>
+<td><code>📚</code> <span class="arithmatex">\(\lvert\log\psi\rvert\le\log2\)</span>; <a href="05-a-perturbed-cavity-reservoir.html#s5-p4">§5 ¶4</a> 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s5-p4"></a></p>
 <h4 id="5-4">§5 ¶4<a class="headerlink" href="#5-4" title="Permanent link">&para;</a></h4>
@@ -830,15 +881,43 @@ m_d=d/L\quad(0\le d\le L),\qquad\delta=1/L. \tag{5.1}
 \]</div>
 <p>↳ uniformly in the hierarchy, its parameters, and <span class="arithmatex">\(N\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p4-s3 --></p>
+<p><strong>s1</strong> 결과로 나온 leaf partition function 에 power mean 재귀를 적용한다.</p>
+<p><strong>s2</strong> 그 root log 의 기댓값을 <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> 라 쓴다.</p>
+<p><strong>s3</strong> 섭동되지 않은 spin 가중치와 점별로 비교한 뒤 재귀를 적용하면, 계층·그 매개변수·<span class="arithmatex">\(N\)</span> 에 대해 균등하게 다음을 얻는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p4 -->
-
+<ul>
+<li><strong>s1–s2</strong> <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> = 섭동된 계의 계층(RSB 시행 구조를 넣은) free entropy (크기 <span class="arithmatex">\(N\)</span> 곱한 것). <code>📚</code> §3.1</li>
+<li><strong>s3, (5.3)</strong> 섭동이 바꾸는 양은 최대 <span class="arithmatex">\(s_N\log2=O(N^{3/4})\)</span> → <span class="arithmatex">\(N\)</span> 으로 나누면 0. 물리: sublinear 섭동은 free energy 밀도를 바꾸지 않는다. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: (5.3) (s3)</summary>
+<p>각 인자 <span class="arithmatex">\(\psi\in[\frac12,\frac32]\)</span> 이므로 섭동된 가중치 / 원래 가중치 <span class="arithmatex">\(\in[2^{-K},2^K]\)</span> (<span class="arithmatex">\(K\)</span> = 인자 개수, root 변수). §3.1 ¶8 의 단조성·동차성으로 root log 도 <span class="arithmatex">\(K\log2\)</span> 이내. <span class="arithmatex">\(\mathbb EK=s_N\)</span> → <span class="arithmatex">\(\lvert P_N-NF_N\rvert\le s_N\log2\)</span> ✓ (보조 계층이 없는 원래 계는 <span class="arithmatex">\(L\)</span> 에 무관: 섭동이 없으면 보조 변수가 쓰이지 않아 power mean 이 항등 연산).</p>
+</details>
 <p><strong>식 (5.3) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-3 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(P_N^{L,\mathbf u}-NF_N\)</span></td>
+<td>섭동 효과</td>
+<td>섭동에 의한 free entropy 변화</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\log2)s_N=O(N^{3/4})\)</span></td>
+<td>bound</td>
+<td>밀도로는 <span class="arithmatex">\(o(1)\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s5-e1"></a></p>
 <h3 id="lemma-51-cavity-increments">▸ Lemma 5.1 (Cavity increments)<a class="headerlink" href="#lemma-51-cavity-increments" title="Permanent link">&para;</a></h3>
@@ -871,22 +950,102 @@ A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
 \]</div>
 <p>↳ where <span class="arithmatex">\(K_{\rm s}\sim\operatorname{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\operatorname{Poisson}(\alpha(p-1))\)</span>, and all displayed indices are independent uniform indices in <span class="arithmatex">\([N]\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p5-s4 --></p>
+<p><strong>s1</strong> 증분 <span class="arithmatex">\(\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span> 는 <span class="arithmatex">\(N,L,\mathbf u\)</span> 에 대해 균등하게 유계다.</p>
+<p><strong>s2</strong> 물리적 상호작용 개수의 평균이 다음과 같고, 보통의 field 들과 평균 <span class="arithmatex">\(c_\nu s_N\)</span> 인 섭동 개수를 갖는 <span class="arithmatex">\(N\)</span> spin 위의 reservoir 가 있어 다음이 성립한다.</p>
+<p><strong>s3</strong> 오차는 <span class="arithmatex">\(L,\mathbf u\)</span> 에 대해 균등하다.</p>
+<p><strong>s4</strong> 삽입 재귀는 tilted reservoir kernel 과 독립적인 새 root disorder 를 쓰며, 말단 삽입은 다음과 같다; 여기서 <span class="arithmatex">\(K_{\rm s}\sim\operatorname{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\operatorname{Poisson}(\alpha(p-1))\)</span> 이고 표시된 모든 index 는 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 index 다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p5 -->
-
+<ul>
+<li><strong>s1–s2, (5.4)–(5.5)</strong> Lemma 5.1: ASS cavity 증분 = <span class="arithmatex">\(\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o(1)\)</span>. 물리의 cavity 공식 "<span class="arithmatex">\(\Delta F\)</span> = (spin 하나 + 그에 붙는 factor 들을 더하는 비용) − (factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개를 더하는 비용)" 과 정확히 같은 구조이며, Bethe 공식 (2.11) 의 site 항 − <span class="arithmatex">\(\alpha(p-1)\)</span> edge 항에 대응한다. 차이: 여기서는 reservoir 의 <strong>실제 Gibbs/계층 측도</strong>에서 평균하고, 시행 message 가 아니다. <code>📚</code> 개수는 <a href="05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a>, 조립은 <a href="05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a> 전개</li>
+<li><strong>s4, (5.6)–(5.7)</strong> <span class="arithmatex">\(A_{\rm s}\)</span> = 새 spin <span class="arithmatex">\(\varepsilon\)</span> 하나와 그에 붙는 Poisson<span class="arithmatex">\((\alpha p)\)</span> 개 factor (나머지 <span class="arithmatex">\(p-1\)</span> 입력은 reservoir spin) → site 삽입. <span class="arithmatex">\(A_{\rm b}\)</span> = reservoir spin 들 사이에 Poisson<span class="arithmatex">\((\alpha(p-1))\)</span> 개 factor 를 더함 → bond 삽입. <code>📚</code> R9, R10 대응; 평균 개수는 <a href="05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a></li>
+</ul>
 <p><strong>식 (5.4) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-4 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\rho_N=\alpha(N+1)(N/(N+1))^p\)</span></td>
+<td>reservoir factor 평균 개수</td>
+<td><span class="arithmatex">\(N+1\)</span> 계에서 새 spin 을 건드리지 않는 factor 들</td>
+<td><code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a> 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (5.5) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-5 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Delta_N\)</span></td>
+<td><span class="arithmatex">\(P_{N+1}-P_N\)</span></td>
+<td>spin 하나 추가의 free entropy 증분 (ASS)</td>
+<td><code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>]</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\log2\)</span></td>
+<td>새 spin 의 자유도</td>
+<td>새 spin 두 상태의 entropy</td>
+<td><code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a> 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\log Y_{0,\rm s}\)</span></td>
+<td>site 삽입</td>
+<td>새 spin + factor <span class="arithmatex">\(\alpha p\)</span> 개 (Bethe site 항, R10)</td>
+<td><code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(-\mathbb E\log Y_{0,\rm b}\)</span></td>
+<td>bond 삽입</td>
+<td>factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개 (Bethe edge 항, R9)</td>
+<td><code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (5.6), (5.7) 항별 표</strong></p>
-<!-- TODO:항표 eq-5-6 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(A_{\rm s}=\frac12\sum_\varepsilon\exp(h\varepsilon+\sum_j\theta_j(\cdot,\varepsilon))\)</span> (5.6)</td>
+<td>site 삽입 가중치</td>
+<td>새 spin 의 국소 partition function (cavity spin 은 reservoir 에서)</td>
+<td><code>📚</code> (2.8) 과 같은 꼴</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A_{\rm b}=\exp(\sum_j\theta_j)\)</span> (5.7)</td>
+<td>bond 삽입 가중치</td>
+<td>reservoir 에 factor 를 더하는 Boltzmann 인자</td>
+<td><code>📚</code> (2.9) 와 같은 꼴</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(K_{\rm s}\sim\)</span> Poisson<span class="arithmatex">\((\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\)</span> Poisson<span class="arithmatex">\((\alpha(p-1))\)</span></td>
+<td>개수</td>
+<td>새 spin 의 degree / 이중계수 보정</td>
+<td><code>📚</code> <a href="05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a> 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s5-e1)</em></p>
 <p><a id="s5-e2"></a></p>
@@ -907,20 +1066,42 @@ A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
 \]</div>
 <p><a id="s5-p6-s8"></a><strong>s8</strong> These quantities are nonnegative for all sufficiently large <span class="arithmatex">\(N\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p6-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s5-p6-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s5-p6-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s5-p6-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s5-p6-s8 --></p>
+<p><strong>s1</strong> <em>물리적 상호작용.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\((N+1)\)</span>-spin 계의 Poisson 상호작용 과정을 <span class="arithmatex">\(N+1\)</span> 과 같은 index 의 개수에 따라 나눈다.</p>
+<p><strong>s3</strong> 새 index 가 없는 항들의 평균은 <span class="arithmatex">\(\rho_N\)</span> 이다.</p>
+<p><strong>s4</strong> 새 index 가 정확히 하나인 항들의 평균은 <span class="arithmatex">\(\alpha p(N/(N+1))^{p-1}=\alpha p+O(N^{-1})\)</span> 이다; 순열 불변성에 의해 새 입력을 마지막에 놓을 수 있다.</p>
+<p><strong>s5</strong> 그 나머지 index 들은 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 index 이고, 상호작용 함수는 지정된 법칙을 유지한다.</p>
+<p><strong>s6</strong> 새 index 가 둘 이상인 항들의 총 평균은 <span class="arithmatex">\(O(N^{-1})\)</span> 이다.</p>
+<p><strong>s7</strong> 한편 <span class="arithmatex">\(N\)</span>-spin 계는 같은 reservoir 에 평균이 다음과 같은 Poisson 개수의 옛 상호작용을 더해 얻을 수 있다.</p>
+<p><strong>s8</strong> 충분히 큰 모든 <span class="arithmatex">\(N\)</span> 에 대해 이 양들은 음이 아니다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p6 -->
-
+<ul>
+<li><strong>s2–s8</strong> Poisson thinning 으로 factor 를 "새 spin 을 건드리지 않음 / 한 번 / 두 번 이상" 으로 나눈다. reservoir 는 <span class="arithmatex">\(N\)</span> 계와 <span class="arithmatex">\(N+1\)</span> 계의 공통 부분: <span class="arithmatex">\(N+1\)</span> 계 = reservoir + 새 spin 의 factor (평균 <span class="arithmatex">\(\approx\alpha p\)</span>), <span class="arithmatex">\(N\)</span> 계 = reservoir + factor <span class="arithmatex">\(\approx\alpha(p-1)\)</span> 개. 그래서 증분 = site − bond. 이것이 Bethe 공식에서 <span class="arithmatex">\(-\alpha(p-1)\)</span> 이 나오는 cavity 쪽 이유 (R9). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: Poisson thinning 의 평균 (s3–s7)</summary>
+<p><span class="arithmatex">\(N+1\)</span> 계: factor 수 Poisson<span class="arithmatex">\((\alpha(N+1))\)</span>, 각 index 독립 균등 <span class="arithmatex">\([N+1]\)</span>. 새 index 수 <span class="arithmatex">\(\sim\)</span> Binomial<span class="arithmatex">\((p,\frac1{N+1})\)</span>. 0 개: <span class="arithmatex">\(\alpha(N+1)(\frac N{N+1})^p=\rho_N\)</span> ✓. 1 개: <span class="arithmatex">\(\alpha(N+1)p\frac1{N+1}(\frac N{N+1})^{p-1}=\alpha p(1-\frac1{N+1})^{p-1}=\alpha p+O(N^{-1})\)</span> ✓. <span class="arithmatex">\(\ge2\)</span>: <span class="arithmatex">\(\alpha(N+1)O(N^{-2})=O(N^{-1})\)</span> ✓.
+<span class="arithmatex">\(N\)</span> 계: <span class="arithmatex">\(\alpha N-\rho_N=\alpha N-\alpha(N+1)(1-\frac p{N+1}+O(N^{-2}))=\alpha N-\alpha(N+1)+\alpha p+O(N^{-1})=\alpha(p-1)+O(N^{-1})\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §5 ¶6 #1 항별 표</strong></p>
-<!-- TODO:항표 s5-p6-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha N-\rho_N=\alpha(p-1)+O(N^{-1})\)</span></td>
+<td><span class="arithmatex">\(N\)</span> 계와 reservoir 의 차</td>
+<td>Bethe edge 항의 계수 <span class="arithmatex">\(\alpha(p-1)\)</span> (이중계수 보정, R9)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s5-p7"></a></p>
 <h4 id="5-7">§5 ¶7<a class="headerlink" href="#5-7" title="Permanent link">&para;</a></h4>
@@ -936,18 +1117,40 @@ A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
 <p><a id="s5-p7-s5"></a><strong>s5</strong> Deleting or adding a perturbation changes the root logarithm by at most <span class="arithmatex">\(\log2\)</span>; an interaction changes it by at most <span class="arithmatex">\(B\)</span>.</p>
 <p><a id="s5-p7-s6"></a><strong>s6</strong> An unused auxiliary variable can simply be integrated out with its prior, so these comparisons remain valid when the number of auxiliary variables changes.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p7-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p7-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p7-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p7-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s5-p7-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s5-p7-s6 --></p>
+<p><strong>s1</strong> <em>섭동.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\((N+1)\)</span>-spin 계에서 옛 site 섭동 개수의 총 평균은 <span class="arithmatex">\(s_{N+1}N/(N+1)\)</span> 이고, 새 site 개수의 평균은 <span class="arithmatex">\(s_{N+1}/(N+1)\)</span> 이다.</p>
+<p><strong>s3</strong> 공통 Poisson 점을 써서 이 과정들을 reservoir 섭동과 결합(coupling)한다.</p>
+<p><strong>s4</strong> 짝지어지지 않는 인자의 기대 개수는 최대 다음과 같다.</p>
+<p><strong>s5</strong> 섭동 하나를 지우거나 더하면 root log 가 최대 <span class="arithmatex">\(\log2\)</span> 바뀌고; 상호작용 하나는 최대 <span class="arithmatex">\(B\)</span> 바꾼다.</p>
+<p><strong>s6</strong> 쓰지 않는 보조 변수는 그 prior 로 그냥 적분해 없앨 수 있으므로, 보조 변수의 개수가 바뀌어도 이 비교들은 유효하다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p7 -->
-
+<ul>
+<li><strong>s2–s4</strong> 섭동 개수가 <span class="arithmatex">\(N\)</span> 에 따라 조금 바뀌어도(<span class="arithmatex">\(s_{N+1}\)</span> vs <span class="arithmatex">\(s_N\)</span>) 짝지어지지 않는 섭동은 평균 <span class="arithmatex">\(O(N^{-1/4})\)</span> 개뿐이라 증분에 영향이 없다. <code>✅</code> 아래 전개</li>
+<li><strong>s5–s6</strong> <code>🔧</code> 섭동 하나 <span class="arithmatex">\(\le\log2\)</span>, factor 하나 <span class="arithmatex">\(\le B\)</span> 의 변화; 쓰지 않는 보조 변수는 적분해 사라짐 (§3.1 ¶11).</li>
+</ul>
+<details>
+<summary>전개: 짝지어지지 않는 인자 수 (s4)</summary>
+<p><span class="arithmatex">\(s_{N+1}-s_N=(N+1)^{3/4}-N^{3/4}\approx\frac34N^{-1/4}\)</span>, <span class="arithmatex">\(2s_{N+1}/(N+1)\approx2N^{-1/4}\)</span> → 합 <span class="arithmatex">\(O(N^{-1/4})\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §5 ¶7 #1 항별 표</strong></p>
-<!-- TODO:항표 s5-p7-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert s_{N+1}-s_N\rvert+2s_{N+1}/(N+1)\)</span></td>
+<td>짝 없는 섭동 수</td>
+<td>크기를 바꿀 때 섭동 구조의 불일치</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s5-p8"></a></p>
 <h4 id="5-8">§5 ¶8<a class="headerlink" href="#5-8" title="Permanent link">&para;</a></h4>
@@ -966,20 +1169,48 @@ A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
 <p><a id="s5-p8-s7"></a><strong>s7</strong> Together with the coupling estimate this bounds the increments for large <span class="arithmatex">\(N\)</span>; increasing the constant covers the remaining sizes.</p>
 <p><a id="s5-p8-s8"></a><strong>s8</strong> All estimates are uniform in <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(\mathbf u\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p8-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p8-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p8-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s5-p8-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s5-p8-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s5-p8-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s5-p8-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s5-p8-s8 --></p>
+<p><strong>s1</strong> <em>증분.</em></p>
+<p><strong>s2</strong> 따라서 새 index 가 반복되는 상호작용을 버리고, 섭동을 짝짓고, 두 삽입 개수 평균을 그 극한으로 바꾸는 데 총 기대 비용 <span class="arithmatex">\(O(N^{-1/4})\)</span> 이 든다.</p>
+<p><strong>s3</strong> 새 spin 에 대해 합하면 <span class="arithmatex">\(2A_{\rm s}\)</span> 를 주고, 옛 계의 보정은 <span class="arithmatex">\(A_{\rm b}\)</span> 를 준다.</p>
+<p><strong>s4</strong> 인자 <span class="arithmatex">\(2\)</span> 가 증분의 <span class="arithmatex">\(\log2\)</span> 항을 공급한다.</p>
+<p><strong>s5</strong> 그러면 power mean 에 대한 삽입 항등식이 <a href="05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a> 를 증명한다.</p>
+<p><strong>s6</strong> 끝으로 다음이 성립한다.</p>
+<p><strong>s7</strong> 결합 추정과 함께 이것이 큰 <span class="arithmatex">\(N\)</span> 에 대해 증분을 bound 한다; 상수를 키우면 나머지 크기들도 포함된다.</p>
+<p><strong>s8</strong> 모든 추정은 <span class="arithmatex">\(L\)</span> 과 <span class="arithmatex">\(\mathbf u\)</span> 에 대해 균등하다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p8 -->
-
+<ul>
+<li><strong>s3–s5</strong> 새 spin 을 적분: <span class="arithmatex">\(\sum_\varepsilon=2\cdot\frac12\sum_\varepsilon\)</span> → <span class="arithmatex">\(\log2+\log A_{\rm s}\)</span>. 그리고 Lemma 3.1 (삽입 = <span class="arithmatex">\(\log Y_0\)</span>, R20): <span class="arithmatex">\(P_{N+1}-P_N=(\text{reservoir}+\text{site})-(\text{reservoir}+\text{bond})=\log2+\log Y_{0,\rm s}-\log Y_{0,\rm b}\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s6–s8</strong> <code>🔧</code> 증분의 균등 유계성: <span class="arithmatex">\(\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}\)</span>, <span class="arithmatex">\(\mathbb EK_{\rm s}=\alpha p\)</span> 유한.</li>
+</ul>
+<details>
+<summary>전개: 증분의 조립 (s3–s5)</summary>
+<p><span class="arithmatex">\(P_{N+1}\)</span>: reservoir 가중치 × <span class="arithmatex">\(\sum_\varepsilon e^{h\varepsilon+\sum_j\theta_j(\cdot,\varepsilon)}=2A_{\rm s}\)</span>. Lemma 3.1 로 root log 변화 <span class="arithmatex">\(=\log Y_0(2A_{\rm s})=\log2+\log Y_{0,\rm s}\)</span> (동차성). <span class="arithmatex">\(P_N\)</span>: reservoir × <span class="arithmatex">\(A_{\rm b}\)</span> → <span class="arithmatex">\(\log Y_{0,\rm b}\)</span>. 차: <span class="arithmatex">\(\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}\)</span> ✓ (+ 결합 비용 <span class="arithmatex">\(O(N^{-1/4})\)</span>).</p>
+</details>
 <p><strong>식 Eq. §5 ¶8 #1 항별 표</strong></p>
-<!-- TODO:항표 s5-p8-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}\)</span></td>
+<td>site 삽입 bound</td>
+<td>새 spin 의 field + factor 들의 최대 에너지</td>
+<td><code>✅</code> <span class="arithmatex">\(e^{-H-BK}\le A_{\rm s}\le e^{H+BK}\)</span> 와 §3.1 ¶8 단조성</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lvert\log Y_{0,\rm b}\rvert\le BK_{\rm b}\)</span></td>
+<td>bond 삽입 bound</td>
+<td>더한 factor 들의 최대 에너지</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s5-p9"></a></p>
@@ -989,12 +1220,14 @@ A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
 <p><a id="s5-p9-s2"></a><strong>s2</strong> The reservoir retains an independent Poisson interaction process of mean <span class="arithmatex">\(O(N)\)</span> and <span class="arithmatex">\(N\)</span> independent bounded fields.</p>
 <p><a id="s5-p9-s3"></a><strong>s3</strong> Thus the concentration argument applies to its slightly modified interaction mean as well.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s5-p9-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s5-p9-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s5-p9-s3 --></p>
+<p><strong>s1</strong> lower bound 증명의 나머지에서 모든 spin tree 는 이 reservoir 에서, 그 tilted 보조 kernel 과 말단 Gibbs kernel 을 써서 뽑는다.</p>
+<p><strong>s2</strong> reservoir 는 평균 <span class="arithmatex">\(O(N)\)</span> 인 독립 Poisson 상호작용 과정과 <span class="arithmatex">\(N\)</span> 개의 독립 유계 field 를 유지한다.</p>
+<p><strong>s3</strong> 따라서 concentration 논증은 조금 바뀐 상호작용 평균에도 적용된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s5-p9 -->
-
+<ul>
+<li><strong>s1</strong> 이후의 replica (spin tree) 는 모두 섭동된 reservoir 의 계층 측도(R19 tilted kernel + Gibbs)에서 뽑는다. 즉 cavity 증분 (5.5) 의 평균을 §3 의 tree 전개로 계산하게 된다. <code>📚</code> §3</li>
+<li><strong>s2–s3</strong> <code>🔧</code> reservoir 의 factor 평균이 <span class="arithmatex">\(\alpha N\)</span> 에서 <span class="arithmatex">\(O(1)\)</span> 만 다르므로 self-averaging(concentration) 논증이 그대로 적용.</li>
+</ul>
 <hr />
 
 
