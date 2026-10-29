@@ -763,12 +763,15 @@
 
 <p><a id="s9"></a></p>
 <h1 id="9-normalization-truncation-and-completion-of-the-proof">§9 Normalization, truncation, and completion of the proof<a class="headerlink" href="#9-normalization-truncation-and-completion-of-the-proof" title="Permanent link">&para;</a></h1>
-<!-- TODO:제목번역 s9 -->
-
+<p><em>제목: 정규화, truncation, 그리고 증명의 완성</em></p>
 <p><a href="08-independent-hierarchical-messages-and-th.html">← 이전: §8 Independent hierarchical messages and the cavity comparison</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="10-named-models-and-the-zero-temperature-li.html">다음: §10 Named models and the zero-temperature limit →</a></p>
 <details>
 <summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
-<!-- TODO:요약 s9 -->
+<p><strong>하는 일.</strong> 유계 모형의 lower bound (Corollary 8.4) 와 factorization 모형의 upper bound (Proposition 4.1) 를 이어 Theorem 2.1 을 완성한다.
+- Lemma 9.1: coupling·field 에 대한 pressure 와 Bethe 값의 Lipschitz 안정성; 에너지 원점 이동 <span class="arithmatex">\(c\)</span> 에 대해 둘 다 정확히 <span class="arithmatex">\(-\alpha\mathbb Ec\)</span> 이동.
+- <span class="arithmatex">\(c=\theta(1..1)\)</span> 을 빼서 loop 전개의 인자 <span class="arithmatex">\(a\)</span> 를 없애면 상호작용이 입력 순서에 대칭이 되고, 큰 coupling 을 잘라 유계 모형으로 근사한다.</p>
+<p><strong>물리적 의미.</strong> 에너지 원점 이동과 드문 강한 coupling 의 절단은 free energy 밀도를 연속적으로만 바꾼다. 상한과 하한이 일치하므로 thermodynamic limit 의 존재 자체가 증명된다 (물리에서는 가정).</p>
+<p><strong>건너뛰어도 되는지.</strong> 건너뛰어도 된다. 결론: Theorem 2.1 (Mézard–Parisi 공식) 의 증명 완료.</p>
 </details>
 <p><a id="s9-p1"></a></p>
 <h4 id="9-1">§9 ¶1<a class="headerlink" href="#9-1" title="Permanent link">&para;</a></h4>
@@ -776,11 +779,12 @@
 <p><a id="s9-p1-s1"></a><strong>s1</strong> The lower bound proved in Corollary <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e7">8.4</a> requires bounded permutation-invariant interactions, whereas the upper bound uses the factorization and positivity hypotheses.</p>
 <p><a id="s9-p1-s2"></a><strong>s2</strong> An integrable constant shift and uniform approximation connect the two statements.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p1-s2 --></p>
+<p><strong>s1</strong> Corollary <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e7">8.4</a> 에서 증명한 lower bound 는 유계이고 순열 불변인 상호작용을 요구하는 반면, upper bound 는 factorization 과 positivity 가정을 쓴다.</p>
+<p><strong>s2</strong> 적분가능한 상수 이동과 균등 근사가 두 명제를 잇는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p1 -->
-
+<ul>
+<li><strong>s1–s2</strong> 두 반쪽의 가정이 다르다: lower bound (유계·순열 대칭), upper bound (loop 전개 R5, 짝수 <span class="arithmatex">\(p\)</span>, 조건 (2.4)). 상수 이동(에너지 원점 이동)과 truncation(큰 coupling 자르기)으로 연결. <code>🔧</code></li>
+</ul>
 <hr />
 <p><a id="s9-e1"></a></p>
 <h3 id="lemma-91-stability">▸ Lemma 9.1 (Stability)<a class="headerlink" href="#lemma-91-stability" title="Permanent link">&para;</a></h3>
@@ -805,18 +809,70 @@
  \qquad\widehat{\mathcal B}_r=\mathcal B_r-\alpha\mathbb E c. \tag{9.3}
 \]</div>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s9-p2-s3 --></p>
+<p><strong>s1</strong> 고정된 <span class="arithmatex">\(p\)</span> 와 <span class="arithmatex">\(\alpha\)</span> 에 대해 각각 <a href="02-the-model-and-the-variational-principle.html#eq-2-1">(2.1)</a> 을 만족하는 두 상호작용 법칙 <span class="arithmatex">\(\theta,\theta'\)</span> 와 두 field 법칙 <span class="arithmatex">\(h,h'\)</span> 를 결합(coupling)하고, <span class="arithmatex">\(D=\mathbb E\max_s|\theta(s)-\theta'(s)|\)</span>, <span class="arithmatex">\(d=\mathbb E|h-h'|\)</span> 로 둔다.</p>
+<p><strong>s2</strong> 그러면 <span class="arithmatex">\(N,r\)</span> 과 <span class="arithmatex">\(r=0\)</span> 을 포함한 모든 시행 법칙에 대해 균등하게 다음이 성립한다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(c\)</span> 가 상호작용에 붙은 적분가능한 무작위 상수이고 <span class="arithmatex">\(\widehat\theta=\theta-c\)</span> 이면 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p2 -->
-
+<ul>
+<li><strong>s1–s2, (9.1)–(9.2)</strong> Lemma 9.1: coupling 과 field 를 조금 바꾸면 pressure 와 Bethe 값이 Lipschitz 로 바뀐다. 계수: pressure 는 spin 당 factor <span class="arithmatex">\(\alpha\)</span> 개, Bethe 는 site 항 <span class="arithmatex">\(\alpha p\)</span> + edge 항 <span class="arithmatex">\(\alpha(p-1)\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s3, (9.3)</strong> factor 마다 상수 <span class="arithmatex">\(c\)</span> 를 빼면 (에너지 원점 이동) 둘 다 정확히 <span class="arithmatex">\(\alpha\mathbb Ec\)</span> 만큼 이동 — Bethe 공식이 이 자명한 대칭을 존중. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: (9.1)–(9.3) 의 계수 (s2–s3)</summary>
+<p>(9.1): 같은 개수·index 로 결합하면 log-weight 차 <span class="arithmatex">\(\le\sum_k\max_s\lvert\theta_k-\theta'_k\rvert+\sum_i\lvert h_i-h'_i\rvert\)</span>, 평균 <span class="arithmatex">\(\alpha ND+Nd\)</span>, <span class="arithmatex">\(N\)</span> 으로 나눔 ✓.
+(9.2): site 항 <span class="arithmatex">\(\le\alpha pD+d\)</span> (factor Poisson<span class="arithmatex">\((\alpha p)\)</span> 개 + field), edge 항 <span class="arithmatex">\(\alpha(p-1)\times D\)</span> → 합 <span class="arithmatex">\(\alpha(2p-1)D+d\)</span> ✓.
+(9.3): <span class="arithmatex">\(F_N\)</span>: Poisson<span class="arithmatex">\((\alpha N)\)</span> 개 factor 가 각각 <span class="arithmatex">\(-c\)</span> → <span class="arithmatex">\(-\alpha\mathbb Ec\)</span> ✓. <span class="arithmatex">\(\mathcal B_r\)</span>: site 항 <span class="arithmatex">\(-\alpha p\mathbb Ec\)</span>, edge 항 <span class="arithmatex">\(-\alpha(p-1)\cdot(-\mathbb Ec)=+\alpha(p-1)\mathbb Ec\)</span>, 합 <span class="arithmatex">\(-\alpha\mathbb Ec\)</span> ✓.</p>
+</details>
 <p><strong>식 (9.1), (9.2) 항별 표</strong></p>
-<!-- TODO:항표 eq-9-1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert F_N-F_N'\rvert\le\alpha D+d\)</span> (9.1)</td>
+<td>pressure 안정성</td>
+<td>coupling·field 의 작은 변화에 대한 연속성</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lvert\mathcal B_r-\mathcal B_r'\rvert\le\alpha(2p-1)D+d\)</span> (9.2)</td>
+<td>Bethe 안정성</td>
+<td>site 항 <span class="arithmatex">\(\alpha p\)</span> + edge 항 <span class="arithmatex">\(\alpha(p-1)\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (9.3) 항별 표</strong></p>
-<!-- TODO:항표 eq-9-3 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\widehat F_N=F_N-\alpha\mathbb Ec\)</span></td>
+<td>pressure 이동</td>
+<td>에너지 원점 이동</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\widehat{\mathcal B}_r=\mathcal B_r-\alpha\mathbb Ec\)</span></td>
+<td>Bethe 이동</td>
+<td>site <span class="arithmatex">\(-\alpha p\)</span>, edge <span class="arithmatex">\(+\alpha(p-1)\)</span> 의 합</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s9-e1)</em></p>
 <p><a id="s9-e2"></a></p>
@@ -831,15 +887,16 @@
 <p><a id="s9-p3-s5"></a><strong>s5</strong> The power means preserve these root-measurable bounds.</p>
 <p><a id="s9-p3-s6"></a><strong>s6</strong> The site term has mean <span class="arithmatex">\(\alpha p\)</span> interactions and the edge term has coefficient <span class="arithmatex">\(\alpha(p-1)\)</span>, giving <a href="09-normalization-truncation-and-completion-.html#eq-9-2">(9.2)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s9-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s9-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s9-p3-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s9-p3-s6 --></p>
+<p><strong>s1</strong> 두 Hamiltonian 에서 같은 개수와 index 를 쓴다.</p>
+<p><strong>s2</strong> 그 점별 log-weight 차는 상호작용 sup-norm 차들과 field 차들의 합으로 bound 된다.</p>
+<p><strong>s3</strong> partition function 의 log 는 이 bound 를 보존하며, 이것이 <a href="09-normalization-truncation-and-completion-.html#eq-9-1">(9.1)</a> 을 준다.</p>
+<p><strong>s4</strong> 각 cavity 상호작용은 대응하는 sup-norm 상호작용 차 이하로 바뀌고, 각 edge log 도 마찬가지다.</p>
+<p><strong>s5</strong> power mean 은 이 root 측정가능 bound 를 보존한다.</p>
+<p><strong>s6</strong> site 항은 평균 <span class="arithmatex">\(\alpha p\)</span> 개의 상호작용을, edge 항은 계수 <span class="arithmatex">\(\alpha(p-1)\)</span> 을 가지므로 <a href="09-normalization-truncation-and-completion-.html#eq-9-2">(9.2)</a> 를 얻는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p3 -->
-
+<ul>
+<li><strong>s1–s6</strong> <code>📚</code> <a href="09-normalization-truncation-and-completion-.html#s9-p2">§9 ¶2</a> 전개 (같은 계산). power mean 의 단조성·동차성은 §3.1 ¶8.</li>
+</ul>
 <hr />
 <p><a id="s9-p4"></a></p>
 <h4 id="9-4">§9 ¶4<a class="headerlink" href="#9-4" title="Permanent link">&para;</a></h4>
@@ -847,11 +904,12 @@
 <p><a id="s9-p4-s1"></a><strong>s1</strong> For <a href="09-normalization-truncation-and-completion-.html#eq-9-3">(9.3)</a>, the physical constants factor out of the spin partition function and of every power mean.</p>
 <p><a id="s9-p4-s2"></a><strong>s2</strong> In the functional, the site term shifts by <span class="arithmatex">\(-\alpha p\mathbb E c\)</span> and the edge term contributes <span class="arithmatex">\(+\alpha(p-1)\mathbb E c\)</span>, for a net shift <span class="arithmatex">\(-\alpha\mathbb E c\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p4-s2 --></p>
+<p><strong>s1</strong> <a href="09-normalization-truncation-and-completion-.html#eq-9-3">(9.3)</a> 에 대해, 물리적 상수는 spin partition function 과 모든 power mean 밖으로 인수분해된다.</p>
+<p><strong>s2</strong> functional 에서 site 항은 <span class="arithmatex">\(-\alpha p\mathbb E c\)</span> 만큼 이동하고 edge 항은 <span class="arithmatex">\(+\alpha(p-1)\mathbb E c\)</span> 를 기여해, 순 이동은 <span class="arithmatex">\(-\alpha\mathbb E c\)</span> 다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p4 -->
-
+<ul>
+<li><strong>s1–s2</strong> <code>📚</code> <a href="09-normalization-truncation-and-completion-.html#s9-p2">§9 ¶2</a> 전개.</li>
+</ul>
 <hr />
 <p>∎</p>
 <p><a id="s9-e3"></a></p>
@@ -874,20 +932,42 @@
 <p><a id="s9-p5-s7"></a><strong>s7</strong> Independence and identical distribution of the <span class="arithmatex">\(f_\ell\)</span>, and their independence of <span class="arithmatex">\(b\)</span>, show that the law of <span class="arithmatex">\(\widehat\theta\)</span> is invariant under permutations of its inputs.</p>
 <p><a id="s9-p5-s8"></a><strong>s8</strong> Moreover <span class="arithmatex">\(\mathbb E B(\widehat\theta)\le2\mathbb E B(\theta)\lt \infty\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s9-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s9-p5-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s9-p5-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s9-p5-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s9-p5-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s9-p5-s8 --></p>
+<p><strong>s1</strong> 승수 <span class="arithmatex">\(a\)</span> 는 표지된 입력 함수들에 비대칭적으로 의존할 수 있으므로 원래 상호작용 법칙은 순열 불변일 필요가 없다.</p>
+<p><strong>s2</strong> 먼저 적분가능한 스칼라 이동으로 이 승수를 제거한다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(c=\theta(1,\ldots,1)\)</span>, <span class="arithmatex">\(\widehat\theta=\theta-c\)</span> 로 둔다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(|c|\le B(\theta)\)</span> 이므로 상수는 적분가능하다.</p>
+<p><strong>s5</strong> factorization 이 다음을 준다.</p>
+<p><strong>s6</strong> 승수 <span class="arithmatex">\(a\)</span> 가 사라졌다.</p>
+<p><strong>s7</strong> <span class="arithmatex">\(f_\ell\)</span> 들의 독립·동일 분포성과 <span class="arithmatex">\(b\)</span> 와의 독립성은 <span class="arithmatex">\(\widehat\theta\)</span> 의 법칙이 그 입력의 순열에 대해 불변임을 보인다.</p>
+<p><strong>s8</strong> 또한 <span class="arithmatex">\(\mathbb E B(\widehat\theta)\le2\mathbb E B(\theta)\lt\infty\)</span> 이다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p5 -->
-
+<ul>
+<li><strong>s1–s7</strong> loop 전개 (R5) 의 spin 무관 인자 <span class="arithmatex">\(a\)</span> 를 에너지 원점 이동으로 제거하면, 남은 <span class="arithmatex">\(\log\frac{1+b\prod f(s)}{1+b\prod f(1)}\)</span> 는 입력 순서에 대칭 (<span class="arithmatex">\(f_\ell\)</span> i.i.d.). 이로써 §5 ¶2 의 순열 불변 가정과 state.md 의 (2.6) slot 대칭성 질문이 해결된다: 원 모형이 대칭이 아니어도 이동 후 대칭. <code>✅</code> 아래 전개</li>
+<li><strong>s8</strong> <code>🔧</code> <span class="arithmatex">\(\lvert\widehat\theta(s)\rvert\le\lvert\theta(s)\rvert+\lvert c\rvert\le2B\)</span>.</li>
+</ul>
+<details>
+<summary>전개: 이동 후 대칭성 (s5–s7)</summary>
+<p><span class="arithmatex">\(e^{\theta(s)}=a(1+b\prod_\ell f_\ell(s_\ell))\)</span> 이므로 <span class="arithmatex">\(\widehat\theta(s)=\theta(s)-\theta(1..1)=\log\frac{1+b\prod f_\ell(s_\ell)}{1+b\prod f_\ell(1)}\)</span> ✓ (<span class="arithmatex">\(a\)</span> 상쇄). 입력 순열 <span class="arithmatex">\(\pi\)</span>: <span class="arithmatex">\(\prod_\ell f_\ell(s_{\pi(\ell)})=\prod_\ell f_{\pi^{-1}(\ell)}(s_\ell)\)</span>, <span class="arithmatex">\((f_\ell)\)</span> 가 i.i.d. 이고 <span class="arithmatex">\(b\)</span> 와 독립이면 <span class="arithmatex">\((f_{\pi^{-1}(\ell)})\overset d=(f_\ell)\)</span> → 법칙 불변 ✓.</p>
+</details>
 <p><strong>식 Eq. §9 ¶5 #1 항별 표</strong></p>
-<!-- TODO:항표 s9-p5-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\widehat\theta(s)=\log\frac{1+b\prod f_\ell(s_\ell)}{1+b\prod f_\ell(1)}\)</span></td>
+<td>이동된 log-weight</td>
+<td>loop 전개에서 spin 무관 인자 <span class="arithmatex">\(a\)</span> 를 제거한 factor 에너지 (R5)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s9-p6"></a></p>
 <h4 id="9-6">§9 ¶6<a class="headerlink" href="#9-6" title="Permanent link">&para;</a></h4>
@@ -919,29 +999,83 @@ D_K=\mathbb E\max_s|\widehat\theta(s)-\widehat\theta^{(K)}(s)|\longrightarrow0,
 <p><a id="s9-p6-s10"></a><strong>s10</strong> Finally Proposition <a href="04-the-interpolation-upper-bound.html#s4-e1">4.1</a> gives <span class="arithmatex">\(\limsup_NF_N\le\inf_r\Phi_r\)</span>.</p>
 <p><a id="s9-p6-s11"></a><strong>s11</strong> Both limits agree, proving existence and <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s9-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s9-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s9-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s9-p6-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s9-p6-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s9-p6-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s9-p6-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s9-p6-s8 --></p>
-<p><strong>s9</strong> <!-- TODO:번역 s9-p6-s9 --></p>
-<p><strong>s10</strong> <!-- TODO:번역 s9-p6-s10 --></p>
-<p><strong>s11</strong> <!-- TODO:번역 s9-p6-s11 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(K\gt 0\)</span> 에 대해 <span class="arithmatex">\(\widehat\theta\)</span> 의 각 값을 <span class="arithmatex">\([-K,K]\)</span> 로 자르고 <span class="arithmatex">\(h\)</span> 를 <span class="arithmatex">\([-K,K]\)</span> 로 잘라 <span class="arithmatex">\(\widehat\theta^{(K)},h^{(K)}\)</span> 를 얻는다.</p>
+<p><strong>s2</strong> 순열 불변성은 보존된다.</p>
+<p><strong>s3</strong> 유계 법칙 lower bound Corollary <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e7">8.4</a> 는 truncation 이 factorization 을 보존하든 아니든 적용된다.</p>
+<p><strong>s4</strong> dominated convergence 에 의해 다음이 성립한다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(\widehat I\)</span> 를 모든 깊이와 시행 법칙에 대한 정규화된 시행 functional 의 infimum, <span class="arithmatex">\(I_K\)</span> 를 truncation 된 물리 법칙에 대한 같은 infimum 이라 쓴다.</p>
+<p><strong>s6</strong> 균등 시행 추정이 다음을 준다.</p>
+<p><strong>s7</strong> pressure 추정과 Corollary <a href="08-independent-hierarchical-messages-and-th.html#s8-3-e7">8.4</a> 가 이제 다음을 함의한다.</p>
+<p><strong>s8</strong> <span class="arithmatex">\(K\to\infty\)</span> 로 보내면 <span class="arithmatex">\(\liminf_N\widehat F_N\ge\widehat I=\inf_r\widehat\Phi_r\)</span> 이 증명된다.</p>
+<p><strong>s9</strong> 상수 이동을 되돌리면 <span class="arithmatex">\(\liminf_NF_N\ge\inf_r\Phi_r\)</span> 을 얻는다.</p>
+<p><strong>s10</strong> 끝으로 Proposition <a href="04-the-interpolation-upper-bound.html#s4-e1">4.1</a> 이 <span class="arithmatex">\(\limsup_NF_N\le\inf_r\Phi_r\)</span> 을 준다.</p>
+<p><strong>s11</strong> 두 극한이 일치하므로 존재성과 <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a> 이 증명된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s9-p6 -->
-
+<ul>
+<li><strong>s1–s9</strong> 큰 coupling 을 잘라 유계 모형으로 근사 → lower bound 적용 → 자른 효과는 (9.1)–(9.2) 로 <span class="arithmatex">\(D_K,d_K\to0\)</span>. 물리: 드문 강한 coupling 은 free energy 밀도에 연속적으로만 기여. <code>✅</code> 아래 전개</li>
+<li><strong>s10–s11</strong> upper bound (§4) + lower bound (§8–§9) → <strong>Mézard–Parisi 공식</strong> <span class="arithmatex">\(\lim F_N=\inf_r\Phi_r\)</span> (Theorem 2.1). 🧭 물리 직관과의 차이: 물리는 극한의 존재(열역학 극한)를 가정하지만 여기서는 상한·하한이 일치하는 것으로 존재 자체를 증명한다. <code>📚</code> Theorem 2.1, Proposition 4.1, Corollary 8.4</li>
+</ul>
+<details>
+<summary>전개: 부등식 사슬 (s7)</summary>
+<p><span class="arithmatex">\(\liminf\widehat F_N\ge\liminf F^{(K)}_N-\alpha D_K-d_K\)</span> ((9.1)) <span class="arithmatex">\(\ge I_K-\alpha D_K-d_K\)</span> (Cor. 8.4) <span class="arithmatex">\(\ge\widehat I-\alpha(2p-1)D_K-d_K-\alpha D_K-d_K=\widehat I-2\alpha pD_K-2d_K\)</span> ((9.2)) ✓.</p>
+</details>
 <p><strong>식 Eq. §9 ¶6 #1 항별 표</strong></p>
-<!-- TODO:항표 s9-p6-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(D_K,d_K\to0\)</span></td>
+<td>truncation 오차</td>
+<td>큰 coupling·field 의 기여가 사라짐</td>
+<td><code>📚</code> dominated convergence</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §9 ¶6 #2 항별 표</strong></p>
-<!-- TODO:항표 s9-p6-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert\widehat I-I_K\rvert\le\alpha(2p-1)D_K+d_K\)</span></td>
+<td>변분값 안정성</td>
+<td>Bethe 변분값의 연속성</td>
+<td><code>📚</code> (9.2)</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §9 ¶6 #3 항별 표</strong></p>
-<!-- TODO:항표 s9-p6-e3 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\liminf\widehat F_N\ge I_K-\alpha D_K-d_K\ge\widehat I-2\alpha pD_K-2d_K\)</span></td>
+<td>하한 사슬</td>
+<td>유계 근사에서 일반 모형으로</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 

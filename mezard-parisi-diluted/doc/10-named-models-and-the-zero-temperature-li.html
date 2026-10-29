@@ -835,12 +835,17 @@
 
 <p><a id="s10"></a></p>
 <h1 id="10-named-models-and-the-zero-temperature-limit">§10 Named models and the zero-temperature limit<a class="headerlink" href="#10-named-models-and-the-zero-temperature-limit" title="Permanent link">&para;</a></h1>
-<!-- TODO:제목번역 s10 -->
-
+<p><em>제목: 이름 있는 모형들과 영온도 극한</em></p>
 <p><a href="09-normalization-truncation-and-completion-.html">← 이전: §9 Normalization, truncation, and completion of the proof</a> · <a href="../mezard-parisi-diluted.html">목차</a> · <a href="99-references.html">다음: References →</a></p>
 <details>
 <summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
-<!-- TODO:요약 s10 -->
+<p><strong>하는 일.</strong> Theorem 2.1 을 이름 있는 모형에 적용한다.
+- Corollary 10.1: 대칭 coupling 의 diluted 짝수 <span class="arithmatex">\(p\)</span>-spin glass (Viana–Bray = <span class="arithmatex">\(p=2\)</span>), loop 전개 <span class="arithmatex">\(a=\cosh\beta J\)</span>, <span class="arithmatex">\(b=\tanh\beta J\)</span>.
+- Corollary 10.2: soft random 짝수 <span class="arithmatex">\(K\)</span>-SAT, <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=e^{-\beta W}-1\le0\)</span>.
+- Corollary 10.3: 영온도 극한 — 바닥상태 에너지 밀도 (SAT 이면 변수당 최소 위반 clause 수) <span class="arithmatex">\(=\lim_{\beta\to\infty}\frac1\beta\inf\mathcal B_{r,\beta}\)</span>, 유한 <span class="arithmatex">\(\beta\)</span> 오차 <span class="arithmatex">\(\le\log2/\beta\)</span>.
+- Remark 10.4: 홀수 <span class="arithmatex">\(K\)</span> (3-SAT) 은 제외, 동반 논문 참조.</p>
+<p><strong>물리적 의미.</strong> Viana–Bray 와 random <span class="arithmatex">\(K\)</span>-SAT 의 Mézard–Parisi (RSB cavity) 공식이 엄밀해진다. 영온도 공식은 각 <span class="arithmatex">\(\beta\)</span> 에서 inf 를 취한 뒤 극한을 취하므로, 물리의 energetic cavity method 가 가정하는 극한 hierarchy 없이 성립한다.</p>
+<p><strong>건너뛰어도 되는지.</strong> 응용에 관심이 있으면 읽을 가치가 있다. 결론: 짝수 <span class="arithmatex">\(p\)</span> (또는 짝수 <span class="arithmatex">\(K\)</span>) 에서 바닥상태 에너지까지 변분 공식으로 주어진다.</p>
 </details>
 <p><a id="s10-p1"></a></p>
 <h4 id="10-1">§10 ¶1<a class="headerlink" href="#10-1" title="Permanent link">&para;</a></h4>
@@ -848,11 +853,12 @@
 <p><a id="s10-p1-s1"></a><strong>s1</strong> The standard examples of the factorization are the diluted spin models and random satisfiability models of Franz–Leone and Panchenko–Talagrand [<a href="99-references.html#ref-FL03">9</a>, <a href="99-references.html#ref-PT04">16</a>].</p>
 <p><a id="s10-p1-s2"></a><strong>s2</strong> We retain the Poisson counts and sampling with replacement specified in <a href="02-the-model-and-the-variational-principle.html#eq-2-2">(2.2)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p1-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p1-s2 --></p>
+<p><strong>s1</strong> factorization 의 표준적인 예는 Franz–Leone 과 Panchenko–Talagrand [<a href="99-references.html#ref-FL03">9</a>, <a href="99-references.html#ref-PT04">16</a>] 의 diluted spin 모형과 random satisfiability 모형이다.</p>
+<p><strong>s2</strong> <a href="02-the-model-and-the-variational-principle.html#eq-2-2">(2.2)</a> 에서 지정한 Poisson 개수와 복원 표본추출을 유지한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p1 -->
-
+<ul>
+<li><strong>s1–s2</strong> 구체적 모형: diluted <span class="arithmatex">\(p\)</span>-spin (Viana–Bray 포함) 과 soft random <span class="arithmatex">\(K\)</span>-SAT. 둘 다 R5 의 loop 전개를 갖는다. <code>📚</code> [<a href="99-references.html#ref-FL03">9</a>], [<a href="99-references.html#ref-PT04">16</a>]</li>
+</ul>
 <hr />
 <p><a id="s10-e1"></a></p>
 <h3 id="corollary-101-vianabray-and-diluted-even-spin-models">▸ Corollary 10.1 (Viana–Bray and diluted even-spin models)<a class="headerlink" href="#corollary-101-vianabray-and-diluted-even-spin-models" title="Permanent link">&para;</a></h3>
@@ -869,15 +875,38 @@
 <p>↳ satisfies the variational formula <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a>, with the trial functional evaluated at these interaction and field laws.</p>
 <p><a id="s10-p2-s3"></a><strong>s3</strong> In particular, this holds for the Viana–Bray model [<a href="99-references.html#ref-VB85">18</a>], which is the case <span class="arithmatex">\(p=2\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p2-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p2-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p2-s3 --></p>
+<p><strong>s1</strong> 짝수 정수 <span class="arithmatex">\(p\ge2\)</span>, <span class="arithmatex">\(\alpha\gt 0\)</span>, 그리고 <span class="arithmatex">\(J\)</span> 는 대칭 분포를 갖고 <span class="arithmatex">\(\mathbb E|J|+\mathbb E|H|\lt\infty\)</span> 인 독립 실수 무작위 변수 <span class="arithmatex">\(J,H\)</span> 를 고정한다.</p>
+<p><strong>s2</strong> 모든 <span class="arithmatex">\(\beta\gt 0\)</span> 에 대해 다음 모형은 이 상호작용과 field 법칙에서 계산한 시행 functional 로 변분 공식 <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a> 을 만족한다.</p>
+<p><strong>s3</strong> 특히 이것은 <span class="arithmatex">\(p=2\)</span> 인 경우인 Viana–Bray 모형 [<a href="99-references.html#ref-VB85">18</a>] 에 대해 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p2 -->
-
+<ul>
+<li><strong>s1–s3</strong> Corollary 10.1: 대칭 coupling 의 diluted 짝수 <span class="arithmatex">\(p\)</span>-spin glass (field 포함) 에서 Mézard–Parisi 공식 성립. <span class="arithmatex">\(p=2\)</span> = Viana–Bray (diluted SK). coupling 분포는 대칭이고 1 차 moment 만 유한하면 된다. <code>📚</code> §10 ¶3 증명</li>
+</ul>
 <p><strong>식 Eq. §10 ¶2 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p2-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\theta_\beta=\beta J\prod_\ell s_\ell\)</span></td>
+<td><span class="arithmatex">\(p\)</span>-spin 상호작용</td>
+<td>inverse temperature × 무작위 coupling × spin 곱 (R1)</td>
+<td><code>📚</code> (2.2)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(h_\beta=\beta H\)</span></td>
+<td>field</td>
+<td>무작위 외부장 (R2)</td>
+<td><code>📚</code> (2.2)</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s10-e1)</em></p>
 <p><a id="s10-e2"></a></p>
@@ -895,17 +924,51 @@ a=\cosh(\beta J),\qquad b=\tanh(\beta J),\qquad f_\ell(s)=s.
 <p><a id="s10-p3-s4"></a><strong>s4</strong> Finally, <span class="arithmatex">\(B(\theta_\beta)=\beta|J|\)</span> and <span class="arithmatex">\(|h_\beta|=\beta|H|\)</span>.</p>
 <p><a id="s10-p3-s5"></a><strong>s5</strong> Thus all hypotheses of Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> hold.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p3-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p3-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p3-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s10-p3-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s10-p3-s5 --></p>
+<p><strong>s1</strong> 다음을 쓴다.</p>
+<p><strong>s2</strong> 함수 <span class="arithmatex">\(f_\ell\)</span> 은 결정적인 독립 사본이고 <span class="arithmatex">\(|b|\lt 1\)</span> 이 거의 확실하다.</p>
+<p><strong>s3</strong> 대칭성이 <span class="arithmatex">\(b\)</span> 의 모든 홀수 moment 를 0 으로 만들고, 짝수 moment 는 음이 아니다.</p>
+<p><strong>s4</strong> 끝으로 <span class="arithmatex">\(B(\theta_\beta)=\beta|J|\)</span> 이고 <span class="arithmatex">\(|h_\beta|=\beta|H|\)</span> 다.</p>
+<p><strong>s5</strong> 따라서 Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> 의 모든 가정이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p3 -->
-
+<ul>
+<li><strong>s1, 식 §10 ¶3 #1</strong> R5 (loop 전개) 의 원형: <span class="arithmatex">\(a=\cosh\beta J\)</span>, <span class="arithmatex">\(b=\tanh\beta J\)</span> (effective coupling), <span class="arithmatex">\(f=s\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s3</strong> 조건 (2.4) <span class="arithmatex">\(\mathbb E[(-b)^n]\ge0\)</span>: <span class="arithmatex">\(J\)</span> 대칭 → 홀수 moment 0, 짝수 <span class="arithmatex">\(\ge0\)</span> (R6). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: tanh 전개와 moment 조건 (s1–s3)</summary>
+<p><span class="arithmatex">\(\epsilon=\prod_\ell s_\ell\in\{\pm1\}\)</span> 이면 <span class="arithmatex">\(e^{x\epsilon}=\cosh x+\epsilon\sinh x=\cosh x(1+\epsilon\tanh x)\)</span> ✓. <span class="arithmatex">\(b=\tanh\beta J\)</span>, <span class="arithmatex">\(\lvert b\rvert\lt1\)</span> ✓. <span class="arithmatex">\(J\overset d=-J\)</span> → <span class="arithmatex">\(b\overset d=-b\)</span> → 홀수 <span class="arithmatex">\(n\)</span>: <span class="arithmatex">\(\mathbb E[(-b)^n]=0\)</span>, 짝수: <span class="arithmatex">\(\mathbb Eb^n\ge0\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §10 ¶3 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p3-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(a=\cosh\beta J\)</span></td>
+<td>spin 무관 인자</td>
+<td>loop 전개의 정규화 (R5)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(b=\tanh\beta J\)</span></td>
+<td>effective coupling</td>
+<td>고온 전개의 bond 세기 (R5)</td>
+<td><code>✅</code></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f_\ell(s)=s\)</span></td>
+<td>국소 관측량</td>
+<td>spin 자체</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s10-e3"></a></p>
@@ -925,16 +988,39 @@ a=\cosh(\beta J),\qquad b=\tanh(\beta J),\qquad f_\ell(s)=s.
 <p>↳ satisfies <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a>.</p>
 <p><a id="s10-p4-s4"></a><strong>s4</strong> The choice <span class="arithmatex">\(W=1\)</span> is the soft random even-<span class="arithmatex">\(K\)</span> SAT model; <span class="arithmatex">\(W\)</span> gives an independent nonnegative clause weight.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p4-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p4-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p4-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s10-p4-s4 --></p>
+<p><strong>s1</strong> 짝수 정수 <span class="arithmatex">\(K\ge2\)</span> 와 <span class="arithmatex">\(\alpha\gt 0\)</span> 을 고정한다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\(\varepsilon_1,\ldots,\varepsilon_K\)</span> 를 독립인 공정한 부호, <span class="arithmatex">\(W\ge0\)</span> 를 부호들과 독립이고 <span class="arithmatex">\(\mathbb E W\lt\infty\)</span> 인 변수라 하자.</p>
+<p><strong>s3</strong> 모든 <span class="arithmatex">\(\beta\gt 0\)</span> 에 대해 다음 상호작용은 <a href="02-the-model-and-the-variational-principle.html#eq-2-13">(2.13)</a> 을 만족한다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(W=1\)</span> 은 soft random even-<span class="arithmatex">\(K\)</span> SAT 모형이고, <span class="arithmatex">\(W\)</span> 는 독립적인 음이 아닌 clause 가중치를 준다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p4 -->
-
+<ul>
+<li><strong>s1–s4</strong> Corollary 10.2: soft (유한 온도) random <span class="arithmatex">\(K\)</span>-SAT, 짝수 <span class="arithmatex">\(K\)</span>. clause 가 위반되면 에너지 <span class="arithmatex">\(W\)</span> (가중치) — Boltzmann 인자 <span class="arithmatex">\(e^{-\beta W}\)</span>. 물리: random constraint satisfaction 의 유한 온도 판, 1RSB/clustering 연구의 표준 모형. <code>📚</code> [<a href="99-references.html#ref-FL03">9</a>], [<a href="99-references.html#ref-PT04">16</a>]</li>
+</ul>
 <p><strong>식 Eq. §10 ¶4 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p4-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\prod_\ell\frac{1+\varepsilon_\ell s_\ell}2\)</span></td>
+<td>clause 위반 indicator</td>
+<td>모든 literal 이 거짓이면 1</td>
+<td><code>📚</code> <a href="10-named-models-and-the-zero-temperature-li.html#s10-p5">§10 ¶5</a> 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(-\beta W\)</span></td>
+<td>위반 비용</td>
+<td>inverse temperature × clause 에너지</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s10-e3)</em></p>
 <p><a id="s10-e4"></a></p>
@@ -954,18 +1040,39 @@ e^{\theta_\beta(s)}
 <p><a id="s10-p5-s5"></a><strong>s5</strong> Since <span class="arithmatex">\(0\le-b\lt 1\)</span>, the strict product condition and every positivity inequality hold.</p>
 <p><a id="s10-p5-s6"></a><strong>s6</strong> Moreover, <span class="arithmatex">\(B(\theta_\beta)=\beta W\)</span>, so Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> applies.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p5-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p5-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p5-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s10-p5-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s10-p5-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s10-p5-s6 --></p>
+<p><strong>s1</strong> 곱 <span class="arithmatex">\(I_\varepsilon(s)=\prod_\ell(1+\varepsilon_\ell s_\ell)/2\)</span> 는 <span class="arithmatex">\(\{0,1\}\)</span> 에 값을 가지며 위반된 clause 를 나타낸다.</p>
+<p><strong>s2</strong> 따라서 다음이 성립한다.</p>
+<p><strong>s3</strong> <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=e^{-\beta W}-1\)</span>, <span class="arithmatex">\(f_\ell(s)=(1+\varepsilon_\ell s)/2\)</span> 로 잡는다.</p>
+<p><strong>s4</strong> 함수들은 독립 사본이고 <span class="arithmatex">\(b\)</span> 와 독립이다.</p>
+<p><strong>s5</strong> <span class="arithmatex">\(0\le-b\lt 1\)</span> 이므로 엄격한 곱 조건과 모든 positivity 부등식이 성립한다.</p>
+<p><strong>s6</strong> 또한 <span class="arithmatex">\(B(\theta_\beta)=\beta W\)</span> 이므로 Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> 이 적용된다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p5 -->
-
+<ul>
+<li><strong>s1–s6</strong> SAT 의 loop 전개: <span class="arithmatex">\(b=e^{-\beta W}-1\in(-1,0]\)</span> (음의 effective coupling — 위반 억제), <span class="arithmatex">\(f\)</span> = literal 이 거짓일 indicator. <span class="arithmatex">\(-b\ge0\)</span> 이므로 (2.4) 의 모든 moment 가 음이 아님 (R6). 이로써 state.md 의 "soft K-SAT factorization 이 §10 정의와 같은지" 질문이 해결: §1 ¶3 의 서술과 같은 <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=e^{-\beta}-1\)</span> (<span class="arithmatex">\(W=1\)</span>). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: SAT 의 factorization (s1–s5)</summary>
+<p><span class="arithmatex">\(\frac{1+\varepsilon s}2=\mathbf 1\{s=\varepsilon\}\)</span> 이므로 <span class="arithmatex">\(I_\varepsilon(s)=\prod_\ell\mathbf 1\{s_\ell=\varepsilon_\ell\}\in\{0,1\}\)</span> (clause 의 literal 이 모두 거짓인 배치) ✓. <span class="arithmatex">\(I\in\{0,1\}\)</span> 이면 <span class="arithmatex">\(e^{-\beta WI}=1+(e^{-\beta W}-1)I\)</span> ✓. <span class="arithmatex">\(W\ge0\)</span> → <span class="arithmatex">\(b\in(-1,0]\)</span>, <span class="arithmatex">\((-b)^n\ge0\)</span> ✓; <span class="arithmatex">\(\lvert b\rvert\prod\lvert f\rvert\le\lvert b\rvert\lt1\)</span> ✓.</p>
+</details>
 <p><strong>식 Eq. §10 ¶5 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p5-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(e^{\theta_\beta}=1+(e^{-\beta W}-1)I_\varepsilon\)</span></td>
+<td>loop 전개</td>
+<td><span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=e^{-\beta W}-1\le0\)</span> (R5)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s10-p6"></a></p>
@@ -989,19 +1096,52 @@ e^{\theta_\beta(s)}
 <p><a id="s10-p6-s3"></a><strong>s3</strong> These scores and their disorder laws do not depend on <span class="arithmatex">\(\beta\)</span>; in both cases the partition function is <span class="arithmatex">\(Z_N(\beta)=\sum_\sigma e^{\beta\mathcal E_N(\sigma)}\)</span>.</p>
 <p><a id="s10-p6-s4"></a><strong>s4</strong> Let <span class="arithmatex">\(\mathcal B_{r,\beta}\)</span> denote the functional <a href="02-the-model-and-the-variational-principle.html#eq-2-11">(2.11)</a> for the corresponding laws at inverse temperature <span class="arithmatex">\(\beta\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p6-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p6-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p6-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s10-p6-s4 --></p>
+<p><strong>s1</strong> spin 모형에 대해 척도화되지 않은 에너지 score 를 다음과 같이 정의한다.</p>
+<p><strong>s2</strong> satisfiability 모형에 대해서는 다음과 같이 둔다.</p>
+<p><strong>s3</strong> 이 score 들과 그 disorder 법칙은 <span class="arithmatex">\(\beta\)</span> 에 의존하지 않는다; 두 경우 모두 partition function 은 <span class="arithmatex">\(Z_N(\beta)=\sum_\sigma e^{\beta\mathcal E_N(\sigma)}\)</span> 다.</p>
+<p><strong>s4</strong> <span class="arithmatex">\(\mathcal B_{r,\beta}\)</span> 를 inverse temperature <span class="arithmatex">\(\beta\)</span> 에서 대응하는 법칙에 대한 functional <a href="02-the-model-and-the-variational-principle.html#eq-2-11">(2.11)</a> 이라 하자.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p6 -->
-
+<ul>
+<li><strong>s1–s4</strong> <span class="arithmatex">\(\mathcal E_N\)</span> = (부호를 바꾼) 에너지: spin glass 는 <span class="arithmatex">\(-H\)</span> (<span class="arithmatex">\(\beta=1\)</span> 단위), SAT 는 <span class="arithmatex">\(-\)</span>(위반 clause 가중합). <span class="arithmatex">\(Z=\sum e^{\beta\mathcal E}\)</span>. <code>🔧</code> 표기</li>
+</ul>
 <p><strong>식 Eq. §10 ¶6 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p6-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal E_N=\sum_kJ_k\prod\sigma+\sum_iH_i\sigma_i\)</span></td>
+<td>spin 모형 score</td>
+<td><span class="arithmatex">\(-\)</span>(에너지), <span class="arithmatex">\(\beta\)</span> 무관</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §10 ¶6 #2 항별 표</strong></p>
-<!-- TODO:항표 s10-p6-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\mathcal E_N=-\sum_kW_k\prod_\ell\frac{1+\varepsilon\sigma}2\)</span></td>
+<td>SAT score</td>
+<td><span class="arithmatex">\(-\)</span>(위반 clause 가중합)</td>
+<td><code>🔧</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><a id="s10-e5"></a></p>
 <h3 id="corollary-103-zero-temperature-variational-limit">▸ Corollary 10.3 (Zero-temperature variational limit)<a class="headerlink" href="#corollary-103-zero-temperature-variational-limit" title="Permanent link">&para;</a></h3>
@@ -1023,18 +1163,62 @@ g=\lim_{\beta\to\infty}\frac1\beta
 <p><a id="s10-p7-s2"></a><strong>s2</strong> More precisely, the expression inside the temperature limit lies in <span class="arithmatex">\([g,g+\log(2)/\beta]\)</span>.</p>
 <p><a id="s10-p7-s3"></a><strong>s3</strong> For unit-weight SAT, the limiting expected minimum number of violated clauses per variable is <span class="arithmatex">\(-g\)</span>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p7-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p7-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p7-s3 --></p>
+<p><strong>s1</strong> Corollary <a href="10-named-models-and-the-zero-temperature-li.html#s10-e1">10.1</a>–<a href="10-named-models-and-the-zero-temperature-li.html#s10-e3">10.2</a> 의 각 모형에 대해 다음 극한이 존재하고 다음을 만족한다.</p>
+<p><strong>s2</strong> 더 정확히는, 온도 극한 안의 식은 <span class="arithmatex">\([g,g+\log(2)/\beta]\)</span> 안에 있다.</p>
+<p><strong>s3</strong> 단위 가중치 SAT 에 대해, 변수당 위반 clause 최소 개수의 극한 기댓값은 <span class="arithmatex">\(-g\)</span> 다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p7 -->
-
+<ul>
+<li><strong>s1, (10.1)</strong> Corollary 10.3: <strong>바닥상태 에너지 밀도</strong> <span class="arithmatex">\(-g\)</span> (spin glass) / <strong>MAX-SAT 의 변수당 최소 위반 clause 수</strong> <span class="arithmatex">\(-g\)</span> = <span class="arithmatex">\(\lim_{\beta\to\infty}\frac1\beta\inf\mathcal B_{r,\beta}\)</span>. 물리의 영온도 cavity method (energetic 1RSB, survey propagation 의 에너지판) 에 대응하는 공식. 🧭 물리 직관과의 차이: 물리에서는 <span class="arithmatex">\(\beta\to\infty\)</span> 에서 <span class="arithmatex">\(y=\beta m\)</span> 을 고정한 극한 hierarchy (energetic cavity)를 쓰지만, 여기서는 각 <span class="arithmatex">\(\beta\)</span> 에서 inf 를 취한 뒤 극한만 취하고, 극한 hierarchy 의 존재는 필요 없다 (§10 ¶9). <code>📚</code> [<a href="99-references.html#ref-MP01">12</a>] 의 <span class="arithmatex">\(T=0\)</span> 판은 Mézard–Parisi (2003) — 이 논문 참고문헌에는 없음 <code>❓</code> 정확한 대응 공식은 미확인</li>
+<li><strong>s2</strong> 오차 <span class="arithmatex">\(\log2/\beta\)</span>: entropy 기여. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: entropy 오차 log 2/β (s2)</summary>
+<p><span class="arithmatex">\(e^{\beta\max\mathcal E}\le Z_N\le2^Ne^{\beta\max\mathcal E}\)</span> → <span class="arithmatex">\(\max\mathcal E/N\le\frac1{N\beta}\log Z\le\max\mathcal E/N+\frac{\log2}\beta\)</span> ✓ (기대값 취함).</p>
+</details>
 <p><strong>식 Eq. §10 ¶7 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p7-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(g=\lim\frac1N\mathbb E\max_\sigma\mathcal E_N\)</span></td>
+<td>최대 score 밀도</td>
+<td><span class="arithmatex">\(-\)</span>(바닥상태 에너지 밀도)</td>
+<td><code>🔧</code> 정의</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 (10.1) 항별 표</strong></p>
-<!-- TODO:항표 eq-10-1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lim_{\beta\to\infty}\frac1\beta\inf\mathcal B_{r,\beta}\)</span></td>
+<td>영온도 변분 공식</td>
+<td>영온도 cavity (energetic) 공식에 대응</td>
+<td><code>✅</code> 같은 문단 전개 (오차 <span class="arithmatex">\(\log2/\beta\)</span>)</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\([g,g+\log2/\beta]\)</span></td>
+<td>유한 <span class="arithmatex">\(\beta\)</span> 오차</td>
+<td>바닥상태 근처 entropy</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><em>(끝: s10-e5)</em></p>
 <p><a id="s10-e6"></a></p>
@@ -1061,23 +1245,61 @@ g_N\le\frac{P_N(\beta)}\beta
 <p><a id="s10-p8-s7"></a><strong>s7</strong> Taking <span class="arithmatex">\(N\to\infty\)</span> in the finite-volume bounds now gives <span class="arithmatex">\(g\le I(\beta)/\beta\le g+\log(2)/\beta\)</span>, proving <a href="10-named-models-and-the-zero-temperature-li.html#eq-10-1">(10.1)</a>.</p>
 <p><a id="s10-p8-s8"></a><strong>s8</strong> In the satisfiability model, maximizing the negative violation count is the same as minimizing that count.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p8-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p8-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p8-s3 --></p>
-<p><strong>s4</strong> <!-- TODO:번역 s10-p8-s4 --></p>
-<p><strong>s5</strong> <!-- TODO:번역 s10-p8-s5 --></p>
-<p><strong>s6</strong> <!-- TODO:번역 s10-p8-s6 --></p>
-<p><strong>s7</strong> <!-- TODO:번역 s10-p8-s7 --></p>
-<p><strong>s8</strong> <!-- TODO:번역 s10-p8-s8 --></p>
+<p><strong>s1</strong> <span class="arithmatex">\(g_N=N^{-1}\mathbb E\max_\sigma\mathcal E_N(\sigma)\)</span>, <span class="arithmatex">\(P_N(\beta)=N^{-1}\mathbb E\log Z_N(\beta)\)</span> 라 쓴다.</p>
+<p><strong>s2</strong> 1 차 moment 가정이 <span class="arithmatex">\(g_N\)</span> 을 유한하고 균등하게 유계로 만든다.</p>
+<p><strong>s3</strong> spin 배치는 <span class="arithmatex">\(2^N\)</span> 개이므로 다음이 성립한다.</p>
+<p><strong>s4</strong> 각 고정된 <span class="arithmatex">\(\beta\gt 0\)</span> 에 대해 Theorem <a href="02-the-model-and-the-variational-principle.html#s2-1-e1">2.1</a> 은 <span class="arithmatex">\(P_N(\beta)\to I(\beta)\)</span> 를 주며, 여기서 <span class="arithmatex">\(I(\beta)=\inf_{r,\zeta,\mathbf m}\mathcal B_{r,\beta}(\zeta,\mathbf m)\)</span> 이다.</p>
+<p><strong>s5</strong> 따라서 다음이 성립한다.</p>
+<p><strong>s6</strong> <span class="arithmatex">\(\beta\to\infty\)</span> 로 보내면 <span class="arithmatex">\(g_N\)</span> 이 극한 <span class="arithmatex">\(g\)</span> 로 수렴함이 증명된다.</p>
+<p><strong>s7</strong> 이제 유한 부피 bound 에서 <span class="arithmatex">\(N\to\infty\)</span> 로 보내면 <span class="arithmatex">\(g\le I(\beta)/\beta\le g+\log(2)/\beta\)</span> 를 얻어 <a href="10-named-models-and-the-zero-temperature-li.html#eq-10-1">(10.1)</a> 이 증명된다.</p>
+<p><strong>s8</strong> satisfiability 모형에서 음의 위반 개수를 최대화하는 것은 그 개수를 최소화하는 것과 같다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p8 -->
-
+<ul>
+<li><strong>s3</strong> <span class="arithmatex">\(g_N\le P_N/\beta\le g_N+\log2/\beta\)</span>: free entropy / <span class="arithmatex">\(\beta\)</span> 는 바닥상태 score 와 entropy <span class="arithmatex">\(\le N\log2\)</span> 사이. <code>✅</code> 아래 전개</li>
+<li><strong>s5–s7</strong> 바닥상태 에너지의 극한 존재도 이로부터 (limsup 과 liminf 차이 <span class="arithmatex">\(\le\log2/\beta\to0\)</span>). <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: g_N 의 수렴 (s5–s6)</summary>
+<p><span class="arithmatex">\(\limsup g_N\le\lim P_N/\beta=I/\beta\le\liminf g_N+\log2/\beta\)</span> ✓. <span class="arithmatex">\(\beta\to\infty\)</span>: <span class="arithmatex">\(\limsup g_N\le\liminf g_N\)</span> → 수렴 ✓.</p>
+</details>
 <p><strong>식 Eq. §10 ¶8 #1 항별 표</strong></p>
-<!-- TODO:항표 s10-p8-e1 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(g_N\le P_N(\beta)/\beta\le g_N+\log2/\beta\)</span></td>
+<td>sandwich</td>
+<td>free energy 는 바닥상태 에너지와 entropy 보정 사이</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <p><strong>식 Eq. §10 ¶8 #2 항별 표</strong></p>
-<!-- TODO:항표 s10-p8-e2 -->
-
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\limsup g_N\le I(\beta)/\beta\le\liminf g_N+\log2/\beta\)</span></td>
+<td>극한 sandwich</td>
+<td>바닥상태 에너지 밀도의 존재</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>∎</p>
 <p><a id="s10-p9"></a></p>
@@ -1086,11 +1308,12 @@ g_N\le\frac{P_N(\beta)}\beta
 <p><a id="s10-p9-s1"></a><strong>s1</strong> The infimum in <a href="10-named-models-and-the-zero-temperature-li.html#eq-10-1">(10.1)</a> is taken over all finite hierarchies separately at each positive temperature.</p>
 <p><a id="s10-p9-s2"></a><strong>s2</strong> The formula does not require attainment or a limiting hierarchy.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p9-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p9-s2 --></p>
+<p><strong>s1</strong> <a href="10-named-models-and-the-zero-temperature-li.html#eq-10-1">(10.1)</a> 의 infimum 은 각 양의 온도에서 따로 모든 유한 계층에 대해 취한다.</p>
+<p><strong>s2</strong> 공식은 infimum 의 달성이나 극한 계층을 요구하지 않는다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p9 -->
-
+<ul>
+<li><strong>s1–s2</strong> 🧭 물리 직관과의 차이: 영온도 cavity method 는 <span class="arithmatex">\(\beta\to\infty\)</span> 에서 극한 order parameter (예: warning/survey 분포) 의 존재를 가정하지만, 이 공식은 그런 극한 대상을 필요로 하지 않는다. <code>📚</code> §10 ¶8</li>
+</ul>
 <hr />
 <p><a id="s10-e7"></a></p>
 <h3 id="remark-104">▸ Remark 10.4<a class="headerlink" href="#remark-104" title="Permanent link">&para;</a></h3>
@@ -1101,12 +1324,13 @@ g_N\le\frac{P_N(\beta)}\beta
 <p><a id="s10-p10-s2"></a><strong>s2</strong> For that model, the companion [<a href="99-references.html#ref-OpenAIThreeSAT2026">13</a>, Theorem 8.4] gives an exact soft-pressure formula over finite rational trials for a Poisson number of clauses whose variable positions are sampled independently with replacement.</p>
 <p><a id="s10-p10-s3"></a><strong>s3</strong> Its sign-indexed message pairs need not form a probability distribution, and its trial functional differs from <a href="02-the-model-and-the-variational-principle.html#eq-2-11">(2.11)</a>.</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p10-s1 --></p>
-<p><strong>s2</strong> <!-- TODO:번역 s10-p10-s2 --></p>
-<p><strong>s3</strong> <!-- TODO:번역 s10-p10-s3 --></p>
+<p><strong>s1</strong> Corollary <a href="10-named-models-and-the-zero-temperature-li.html#s10-e3">10.2</a> 의 짝수 arity 가정은 random 3-SAT 을 배제한다.</p>
+<p><strong>s2</strong> 그 모형에 대해서는 동반 논문 [<a href="99-references.html#ref-OpenAIThreeSAT2026">13</a>, Theorem 8.4] 가, 변수 위치가 독립적으로 복원 추출되는 Poisson 개수의 clause 에 대해, 유한 유리수 시행 위에서의 정확한 soft-pressure 공식을 준다.</p>
+<p><strong>s3</strong> 그 부호 표지 message 쌍은 확률 분포를 이룰 필요가 없으며, 그 시행 functional 은 <a href="02-the-model-and-the-variational-principle.html#eq-2-11">(2.11)</a> 과 다르다.</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p10 -->
-
+<ul>
+<li><strong>s1–s3</strong> 홀수 <span class="arithmatex">\(K\)</span> (3-SAT) 은 §4 의 볼록성 논증이 깨져 이 정리 밖. 동반 논문이 다른 시행 functional (확률 분포가 아닌 부호 표지 message 쌍) 로 3-SAT 의 공식을 준다고 한다. <code>📚</code> [<a href="99-references.html#ref-OpenAIThreeSAT2026">13</a>] (내용은 이 문서에서 확인하지 않음 <code>❓</code>)</li>
+</ul>
 <hr />
 <p><em>(끝: s10-e7)</em></p>
 <p><a id="s10-p11"></a></p>
@@ -1114,10 +1338,11 @@ g_N\le\frac{P_N(\beta)}\beta
 <p><strong>원문</strong></p>
 <p><a id="s10-p11-s1"></a><strong>s1</strong> plain</p>
 <p><strong>번역</strong></p>
-<p><strong>s1</strong> <!-- TODO:번역 s10-p11-s1 --></p>
+<p><strong>s1</strong> plain</p>
 <p><strong>물리 해석</strong></p>
-<!-- TODO:해석 s10-p11 -->
-
+<ul>
+<li><strong>s1</strong> <code>🔧</code> 원문 내용 아님: LaTeX 의 <code>\bibliographystyle{plain}</code> 명령이 변환 과정에서 문단으로 남은 것. 하네스 <code>segment.py</code> 개선 대상 (state.md 에 기록).</li>
+</ul>
 <hr />
 
 
