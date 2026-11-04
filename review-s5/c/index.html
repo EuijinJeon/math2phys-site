@@ -1,0 +1,1371 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+<meta name="robots" content="noindex">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://euijinjeon.github.io/math2phys-site/mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html">
+      
+      
+        <link rel="prev" href="../../mezard-parisi-diluted/doc/04-the-interpolation-upper-bound.html">
+      
+      
+        <link rel="next" href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>§5 A perturbed cavity reservoir - math2phys — 수학 논문 물리 읽기</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/m2p.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-a-perturbed-cavity-reservoir" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-header__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            math2phys — 수학 논문 물리 읽기
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              §5 A perturbed cavity reservoir
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="math2phys — 수학 논문 물리 읽기" class="md-nav__button md-logo" aria-label="math2phys — 수학 논문 물리 읽기" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    math2phys — 수학 논문 물리 읽기
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    홈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    The Mézard–Parisi formula for diluted spin glasses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            The Mézard–Parisi formula for diluted spin glasses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/mezard-parisi-diluted.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    입구
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/00-abstract.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §0 Abstract
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/01-introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §1 Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/02-the-model-and-the-variational-principle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 The model and the variational principle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/03-calculus-on-finite-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 Calculus on finite trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/04-the-interpolation-upper-bound.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 The interpolation upper bound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    §5 A perturbed cavity reservoir
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lemma-51-cavity-increments" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 5.1 (Cavity increments)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §6 Perturbations and identities on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/07-decorrelation-on-prescribed-trees.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §7 Decorrelation on prescribed trees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/08-independent-hierarchical-messages-and-th.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §8 Independent hierarchical messages and the cavity comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/09-normalization-truncation-and-completion-.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §9 Normalization, truncation, and completion of the proof
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/10-named-models-and-the-zero-temperature-li.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §10 Named models and the zero-temperature limit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mezard-parisi-diluted/doc/99-references.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    역할 지정
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    용어집
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa_log.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Q&A 기록
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lemma-51-cavity-increments" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Lemma 5.1 (Cavity increments)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▸ Proof.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset"><div class="admonition note"><p class="admonition-title">비교용 사본 — §5 해석 개선판 C</p><p>§5 해석만 다르고 나머지는 공개 사이트와 같습니다. 다른 버전: <a href="../original/#s5">원본</a> · <a href="../../review/">전체 목록</a></p></div>
+                
+                  
+
+
+<!-- math2phys format v1 · 원문 블록은 segment.py 생성물: 손으로 고치지 말 것 -->
+
+<p><a id="s5"></a></p>
+<h1 id="5-a-perturbed-cavity-reservoir">§5 A perturbed cavity reservoir<a class="headerlink" href="#5-a-perturbed-cavity-reservoir" title="Permanent link">&para;</a></h1>
+<p><em>제목: 섭동된 cavity reservoir</em></p>
+<p><a href="../../mezard-parisi-diluted/doc/04-the-interpolation-upper-bound.html">← 이전: §4 The interpolation upper bound</a> · <a href="../../mezard-parisi-diluted/mezard-parisi-diluted.html">목차</a> · <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html">다음: §6 Perturbations and identities on prescribed trees →</a></p>
+<details>
+<summary><b>섹션 요약</b> — 무엇을 하는지 · 물리적 의미 · 건너뛰어도 되는지</summary>
+<p><strong>하는 일.</strong> lower bound 의 출발점인 Aizenman–Sims–Starr cavity 비교를 세운다.
+- <span class="arithmatex">\(N\)</span> 계와 <span class="arithmatex">\(N+1\)</span> 계를 공통 reservoir (<span class="arithmatex">\(N\)</span> spin, factor 평균 <span class="arithmatex">\(\rho_N\)</span>)로 비교. Poisson thinning 으로 <span class="arithmatex">\(N+1\)</span> 계 = reservoir + site 삽입, <span class="arithmatex">\(N\)</span> 계 = reservoir + bond 삽입 (factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개).
+- Lemma 5.1: 증분 <span class="arithmatex">\(\Delta_N=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o(1)\)</span> — Bethe 공식의 site 항 − edge 항과 같은 꼴이다. 다만 평균은 reservoir 의 tilted 계층 측도에서 하고, 독립 message 로 바꿔 Bethe 식과 같게 만드는 것은 §7–§8 의 일이다.
+- reservoir 에 sublinear (<span class="arithmatex">\(N^{3/4}\)</span>) 개의 single-site 섭동을 넣는다. 총 free entropy 변화는 <span class="arithmatex">\(O(N^{3/4})\)</span>, pressure(밀도) 변화는 <span class="arithmatex">\(O(N^{-1/4})\)</span>. 계층은 균등 mesh <span class="arithmatex">\(m_d=d/L\)</span>.</p>
+<p><strong>물리적 의미.</strong> cavity method 의 "spin 하나를 붙였다 떼기" 를 엄밀하게 한 것. <span class="arithmatex">\(-\alpha(p-1)\)</span> 은 <span class="arithmatex">\(N+1\)</span> 계와 <span class="arithmatex">\(N\)</span> 계의 factor 개수 차이에서 나온다. 섭동은 stochastic stability 용 탐침이다. 다음 섹션에서 그 매개변수를 적절히 고르면 지정된 spin tree 위의 항등식(Ghirlanda–Guerra 논증이 선행 사례)이 나온다. 유계·입력 순열 불변 law 의 lower bound 증명(§8)은 factorization (2.3) 과 positivity (2.4) 를 쓰지 않는다. 이 둘은 §4 upper bound 에서 짝수 <span class="arithmatex">\(p\)</span> 의 convexity 와 함께 쓰이고, §9 에서 일반 law 로 넘어갈 때 (2.3) 이 상수 shift 뒤 순열 불변성을 준다.</p>
+<p><strong>건너뛰어도 되는지.</strong> 결론 (5.5) 만 알면 된다: pressure 의 lower bound 는 "reservoir 측도에서 site 삽입 − bond 삽입" 의 평균을 시행 Bethe 공식과 비교하는 문제로 바뀐다(§8).</p>
+</details>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> lower bound 를 위해 free entropy 를 "spin 하나 추가 비용" <span class="arithmatex">\(\Delta_N=P_{N+1}-P_N\)</span> 들의 합으로 보고, 낮은 증분을 아래에서 잡는다(Aizenman–Sims–Starr). 장애물이 둘이다: diluted 계에서 <span class="arithmatex">\(N\)</span> 계에 새 spin 과 그 factor 를 붙이면 factor 가 <span class="arithmatex">\(\alpha\)</span> 개가 아니라 약 <span class="arithmatex">\(\alpha p\)</span> 개 늘어 <span class="arithmatex">\(N+1\)</span> 계가 되지 않고, 다음 절에 필요한 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 개의 섭동도 크기마다 달라 두 계가 어긋난다.</li>
+<li><strong>물리로는.</strong> cavity method 의 "spin 하나를 붙였다 떼기". 두 계가 공통으로 품는 <span class="arithmatex">\(N\)</span>-spin reservoir 를 잡아 <span class="arithmatex">\(N+1\)</span> 계 = reservoir + site 삽입(새 spin 과 factor 약 <span class="arithmatex">\(\alpha p\)</span> 개), <span class="arithmatex">\(N\)</span> 계 = reservoir + bond 삽입(옛 spin 사이 factor 약 <span class="arithmatex">\(\alpha(p-1)\)</span> 개)으로 쓰고, 섭동은 공통 Poisson 점으로 짝짓는다.</li>
+<li><strong>결론.</strong> Lemma 5.1 의 (5.5): <span class="arithmatex">\(\Delta_N^{L,\mathbf u}=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o_N(1)\)</span>, 그리고 (5.3): 섭동은 free entropy 밀도를 <span class="arithmatex">\((\log2)N^{-1/4}\)</span> 이내로만 바꾼다. 이후 모든 spin tree 는 이 reservoir 에서 뽑는다(¶9).</li>
+<li><strong>읽는 법.</strong> ¶3–¶4 섭동의 정의와 비용, ¶5 Lemma 진술, 증명은 장애물 ① factor 회계(¶6) → ② 섭동 짝짓기(¶7) → 조립(¶8). 주의할 곳: 모든 추정이 계층 깊이 <span class="arithmatex">\(L\)</span> 과 섭동 매개변수 <span class="arithmatex">\(\mathbf u\)</span> 에 균등하다는 점 — 다음 절에서 <span class="arithmatex">\(\mathbf u\)</span> 를 <span class="arithmatex">\(N,L\)</span> 마다 골라 쓰고, §8 에서 고정 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(N\to\infty\)</span> 를 먼저 취한 뒤 <span class="arithmatex">\(L\to\infty\)</span> 로 가므로 이 균등성이 필요하다.</li>
+</ul>
+<p><a id="s5-p1"></a></p>
+<h4 id="5-1">§5 ¶1<a class="headerlink" href="#5-1" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p1-s1"></a><strong>s1</strong> We compare systems of sizes <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(N+1\)</span> through a common <span class="arithmatex">\(N\)</span>-spin system, the <em>reservoir</em>.</p>
+<p><a id="s5-p1-s2"></a><strong>s2</strong> This cavity comparison follows the Aizenman–Sims–Starr variational scheme [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-ASS03">2</a>] and its spin-distribution form in Panchenko [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-Pan13">14</a>, Section 2.2].</p>
+<p><a id="s5-p1-s3"></a><strong>s3</strong> We add a sublinear number of bounded perturbations to obtain identities for its spin trees.</p>
+<p><a id="s5-p1-s4"></a><strong>s4</strong> The comparison below shows that these perturbations change the pressure by <span class="arithmatex">\(o(1)\)</span> and preserve the site-minus-bond cavity increment.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 크기 <span class="arithmatex">\(N\)</span> 과 <span class="arithmatex">\(N+1\)</span> 의 계를 공통의 <span class="arithmatex">\(N\)</span>-spin 계, 즉 <em>reservoir</em> 를 통해 비교한다.</p>
+<p><strong>s2</strong> 이 cavity 비교는 Aizenman–Sims–Starr 변분 방식 [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-ASS03">2</a>] 과 Panchenko [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-Pan13">14</a>, Section 2.2] 의 spin 분포 형태를 따른다.</p>
+<p><strong>s3</strong> 그 spin tree 들에 대한 항등식을 얻기 위해 sublinear 개수의 유계 섭동을 더한다.</p>
+<p><strong>s4</strong> 아래의 비교는 이 섭동들이 pressure 를 <span class="arithmatex">\(o(1)\)</span> 만큼만 바꾸며 site 빼기 bond 의 cavity 증분을 보존함을 보인다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> Aizenman–Sims–Starr (ASS) 방식: 공통 <span class="arithmatex">\(N\)</span>-spin 계인 reservoir 를 기준으로 <span class="arithmatex">\(N\)</span> 계와 <span class="arithmatex">\(N+1\)</span> 계를 비교해, 증분 <span class="arithmatex">\(\Delta_N=P_{N+1}-P_N\)</span> 을 "spin 하나를 더하는 비용" 으로 계산한다. 증분들의 평균이 <span class="arithmatex">\(F_N\)</span> 이므로 <span class="arithmatex">\(\liminf_NF_N\)</span> 근처보다 크지 않은 증분이 무한히 많고, 그런 증분이 변분값 아래로 내려가지 않음을 보이면 <span class="arithmatex">\(\liminf_NF_N\)</span> 의 lower bound 가 된다 — 이 논문은 이 방향만 쓰고, 극한의 존재는 §4 의 upper bound 와 합쳐진 뒤에 나온다. 물리의 <strong>cavity method</strong>(spin 하나를 붙였다 떼며 free energy 증분 계산)를 엄밀하게 만든 것. <code>📚</code> [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-ASS03">2</a>], [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-Pan13">14</a>], <a href="../../mezard-parisi-diluted/doc/08-independent-hierarchical-messages-and-th.html#s8">§8</a></li>
+<li><strong>s3</strong> <span class="arithmatex">\(o(N)\)</span> 개의 섭동 = stochastic stability 용 섭동 (glossary: perturbation). 총 기여가 subextensive 라 pressure 는 바꾸지 않지만, replica 들이 공유하는 상태 구조를 읽는 탐침 역할을 한다: §6 에서 섭동 매개변수 <span class="arithmatex">\(\mathbf u\)</span> 를 <span class="arithmatex">\(N,L\)</span> 마다 적절히 고르면 섭동 score 가 concentration 되고, 그로부터 지정된 spin tree 위의 항등식이 나온다(Ghirlanda–Guerra 의 self-averaging 논증이 선행 사례). 물리는 이런 안정성을 가정하지만, 수학은 섭동을 명시적으로 넣고 그 효과를 통제한다. <code>📚</code> <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html#s6">§6</a> 서두, [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-Pan13">14</a>]</li>
+<li><strong>s4</strong> (5.3) 으로 <span class="arithmatex">\(\lvert P_N^{L,\mathbf u}/N-F_N\rvert\le(\log2)N^{-1/4}\)</span> 가 계층·매개변수·<span class="arithmatex">\(N\)</span> 에 균등하게 성립하므로, 섭동된 계와 원래 계의 free entropy 밀도는 liminf·limsup 이 같다. 둘째 주장(섭동이 있어도 증분이 site 삽입 − bond 삽입 꼴로 남는다)은 ¶5 의 Lemma 5.1 이 보인다. <code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p4">§5 ¶4</a> 의 (5.3) 전개</li>
+</ul>
+<hr />
+<p><a id="s5-p2"></a></p>
+<h4 id="5-2">§5 ¶2<a class="headerlink" href="#5-2" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p2-s1"></a><strong>s1</strong> Until Section <a href="../../mezard-parisi-diluted/doc/09-normalization-truncation-and-completion-.html#s9">9</a>, assume that <span class="arithmatex">\(B(\theta)\le B\)</span> and <span class="arithmatex">\(|h|\le H\)</span> almost surely and that the law of <span class="arithmatex">\(\theta\)</span> is invariant under permutations of its <span class="arithmatex">\(p\)</span> coordinates.</p>
+<p><a id="s5-p2-s2"></a><strong>s2</strong> Neither the factorization nor the positivity assumption is used in the lower bound.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> Section <a href="../../mezard-parisi-diluted/doc/09-normalization-truncation-and-completion-.html#s9">9</a> 까지 <span class="arithmatex">\(B(\theta)\le B\)</span> 와 <span class="arithmatex">\(|h|\le H\)</span> 가 거의 확실하고 <span class="arithmatex">\(\theta\)</span> 의 법칙이 그 <span class="arithmatex">\(p\)</span> 개 좌표의 순열에 대해 불변이라고 가정한다.</p>
+<p><strong>s2</strong> lower bound 에서는 factorization 도 positivity 가정도 쓰지 않는다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> <code>🔧</code> 유계 coupling (<span class="arithmatex">\(B(\theta)\le B\)</span>), 유계 field (<span class="arithmatex">\(\lvert h\rvert\le H\)</span>), factor 입력 순서에 대한 법칙의 대칭(새 spin 이 factor 의 어느 입력에 들어가도 같은 법칙으로 다루게 해 준다 — ¶6 s4 에서 쓰인다). §9 에서 유계성은 truncation 으로 없애며, 이 가정 아래 ¶3 부터 섭동된 reservoir 를 만든다. 순열 불변성은 없애지 않는다: 주정리 가정 (2.3) 아래 상수 shift <span class="arithmatex">\(\theta-\theta(1,\ldots,1)\)</span> 뒤 자동으로 성립하고 truncation 도 이를 보존한다. <code>📚</code> <a href="../../mezard-parisi-diluted/doc/09-normalization-truncation-and-completion-.html#s9">§9</a></li>
+<li><strong>s2</strong> 중요: lower bound <span class="arithmatex">\(\liminf_NF_N\ge\inf_r\Phi_r\)</span> (pressure 가 계층 cavity 변분값보다 작지 않다) 의 증명은 <strong>factorization (2.3) 도 positivity (2.4) 도 쓰지 않는다</strong>. 유계이고 입력 순열에 불변인 interaction law 와 유계 field law 면 된다(§8 Corollary). 두 가정이 쓰이는 곳은 다른 두 군데다: 반대 방향 upper bound(§4)에서 interpolation 나머지 항의 부호를 짝수 <span class="arithmatex">\(p\)</span> 의 <span class="arithmatex">\(x\mapsto x^p\)</span> convexity 와 (2.4) 로 정할 때, 그리고 §9 에서 일반 law 로 넘어갈 때 (2.3) 이 상수 shift 뒤 순열 불변성을 줄 때(s1). <code>📚</code> §1 Proof strategy, <a href="../../mezard-parisi-diluted/doc/04-the-interpolation-upper-bound.html#s4">§4</a>, §8 Corollary</li>
+</ul>
+<hr />
+<p><a id="s5-p3"></a></p>
+<h4 id="5-3">§5 ¶3<a class="headerlink" href="#5-3" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p3-s1"></a><strong>s1</strong> Fix <span class="arithmatex">\(L\ge2\)</span> and use <span class="arithmatex">\(r=L-1\)</span> auxiliary levels with</p>
+<p><a id="eq-5-1"></a></p>
+<div class="arithmatex">\[
+m_d=d/L\quad(0\le d\le L),\qquad\delta=1/L. \tag{5.1}
+\]</div>
+<p><a id="s5-p3-s2"></a><strong>s2</strong> Let <span class="arithmatex">\((c_\nu)_{\nu\ge1}\)</span> be positive with <span class="arithmatex">\(\sum_\nu c_\nu=1\)</span>, and let <span class="arithmatex">\(s_N=N^{3/4}\)</span>.</p>
+<p><a id="s5-p3-s3"></a><strong>s3</strong> To the spin weight add independent Poisson families of single-site factors <span class="arithmatex">\(\psi_\nu\)</span>, with counts of means <span class="arithmatex">\(c_\nu s_N\)</span> and independent uniform sites in <span class="arithmatex">\([N]\)</span>.</p>
+<p><a id="s5-p3-s4"></a><strong>s4</strong> Each factor uses its own auxiliary variables, drawn along the hierarchy with product priors, and satisfies</p>
+<p><a id="eq-5-2"></a></p>
+<div class="arithmatex">\[
+1/2\le\psi_\nu\le3/2. \tag{5.2}
+\]</div>
+<p><a id="s5-p3-s5"></a><strong>s5</strong> The total number of factors is <span class="arithmatex">\(\operatorname{Poisson}(s_N)\)</span> and is finite almost surely.</p>
+<p><a id="s5-p3-s6"></a><strong>s6</strong> Counts, types, and sites are root variables.</p>
+<p><a id="s5-p3-s7"></a><strong>s7</strong> The parameters of the factors are denoted by <span class="arithmatex">\(\mathbf u\)</span> and are fixed, not quenched random variables, unless a parameter average is explicitly taken.</p>
+<p><a id="s5-p3-s8"></a><strong>s8</strong> The factors needed later are specified in Section <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html#s6">6</a>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <span class="arithmatex">\(L\ge2\)</span> 를 고정하고 다음을 갖는 <span class="arithmatex">\(r=L-1\)</span> 개의 보조 단계를 쓴다.</p>
+<p><strong>s2</strong> <span class="arithmatex">\((c_\nu)_{\nu\ge1}\)</span> 을 <span class="arithmatex">\(\sum_\nu c_\nu=1\)</span> 인 양수열이라 하고 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 로 둔다.</p>
+<p><strong>s3</strong> spin 가중치에, 평균 <span class="arithmatex">\(c_\nu s_N\)</span> 인 개수와 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 site 를 갖는 single-site 인자 <span class="arithmatex">\(\psi_\nu\)</span> 의 독립 Poisson 족들을 더한다.</p>
+<p><strong>s4</strong> 각 인자는 곱 prior 로 계층을 따라 뽑힌 자기만의 보조 변수를 쓰며 다음을 만족한다.</p>
+<p><strong>s5</strong> 인자의 총 개수는 <span class="arithmatex">\(\operatorname{Poisson}(s_N)\)</span> 이며 거의 확실히 유한하다.</p>
+<p><strong>s6</strong> 개수, 종류, site 는 root 변수다.</p>
+<p><strong>s7</strong> 인자들의 매개변수는 <span class="arithmatex">\(\mathbf u\)</span> 로 쓰며, 매개변수 평균을 명시적으로 취하지 않는 한 quenched 무작위 변수가 아니라 고정된 값이다.</p>
+<p><strong>s8</strong> 나중에 필요한 인자들은 Section <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html#s6">6</a> 에서 지정된다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1, (5.1)</strong> ¶2 의 가정 아래 섭동된 계의 재료(계층 눈금과 섭동)를 정한다 — 균등 mesh <span class="arithmatex">\(m_d=d/L\)</span> (<span class="arithmatex">\(m_0=0\)</span>, <span class="arithmatex">\(m_L=1\)</span>, 내부 <span class="arithmatex">\(L-1\)</span> 개가 보조 단계): power-mean 재귀의 지수 눈금이다. 물리로는 1RSB 에서 상태를 <span class="arithmatex">\(Z^m\)</span> 에 비례해 재가중하는 그 지수 <span class="arithmatex">\(m\)</span> 을 0 과 1 사이에 균등하게 깐 것이다. overlap 값 <span class="arithmatex">\(q_d\)</span> 를 정한 것이 아니므로, 이것만으로 Parisi 함수 <span class="arithmatex">\(x(q)\)</span> 의 모양이나 실제 Gibbs 상태가 full-RSB 라고 주장하지 않는다(<code>제안 해석</code>: <span class="arithmatex">\(x\)</span> 를 단계 index 에 대해 선형으로 둔 <span class="arithmatex">\(L-1\)</span> 단계 RSB 시행 구조). <code>📚</code> §3.4</li>
+<li><strong>s3–s5</strong> 섭동 = single-site 유계 인자 <span class="arithmatex">\(\psi_\nu\in[1/2,3/2]\)</span> 를 총 Poisson<span class="arithmatex">\((s_N)\)</span> 개, <span class="arithmatex">\(s_N=N^{3/4}=o(N)\)</span>, 균등 site 에 곱한 것. 인자 하나하나는 약하지 않다(<span class="arithmatex">\(\lvert\log\psi\rvert\le\log2\)</span> 이고 <span class="arithmatex">\(N\)</span> 과 함께 작아지지 않는다); 작은 것은 개수, 즉 site 당 평균 <span class="arithmatex">\(N^{-1/4}\)</span> 개뿐이다. 종류 <span class="arithmatex">\(\nu\)</span> 는 비율 <span class="arithmatex">\(c_\nu\)</span> (<span class="arithmatex">\(\sum_\nu c_\nu=1\)</span>) 로 섞이고, 각 인자는 계층을 따라 따로 뽑는 자기 보조 변수에도 의존해 상태 계층에도 섭동이 걸린다. <code>🔧</code> §6 에서 구체적 형태</li>
+<li><strong>s4, (5.2)</strong> <code>🔧</code> <span class="arithmatex">\(\psi\in[1/2,3/2]\)</span>: 인자 하나가 free entropy 를 최대 <span class="arithmatex">\(\log2\)</span> 만큼 바꿈.</li>
+<li><strong>s6–s7</strong> <code>🔧</code> 섭동의 개수·종류·site 는 root 변수(quenched, power-mean 재귀 바깥에서 평균). 매개변수 <span class="arithmatex">\(\mathbf u\)</span> 는 무작위 변수가 아닌 고정값이고 평균은 명시적으로 쓴 곳에서만 취한다 — §6 은 <span class="arithmatex">\(N,L\)</span> 마다 결정론적 <span class="arithmatex">\(\mathbf u\)</span> 를 골라 쓴다.</li>
+</ul>
+<p><strong>식 (5.1) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(m_d=d/L\)</span></td>
+<td>균등 mesh</td>
+<td>보조 계층의 재가중 지수 눈금 (<code>제안 해석</code>: 이산화된 Parisi parameter, R12)</td>
+<td><code>📚</code> §3.4</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\delta=1/L\)</span></td>
+<td>간격</td>
+<td>재가중 지수 눈금의 간격</td>
+<td><code>📚</code> §3.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (5.2) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(1/2\le\psi_\nu\le3/2\)</span></td>
+<td>인자 bound</td>
+<td>섭동 인자 하나의 free entropy 변화 <span class="arithmatex">\(\le\log2\)</span></td>
+<td><code>📚</code> <span class="arithmatex">\(\lvert\log\psi\rvert\le\log2\)</span>; <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p4">§5 ¶4</a> 전개</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s5-p4"></a></p>
+<h4 id="5-4">§5 ¶4<a class="headerlink" href="#5-4" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p4-s1"></a><strong>s1</strong> Apply the power-mean recursion to the resulting leaf partition function.</p>
+<p><a id="s5-p4-s2"></a><strong>s2</strong> Write <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> for its expected root logarithm.</p>
+<p><a id="s5-p4-s3"></a><strong>s3</strong> Comparing pointwise with the unperturbed spin weight and then applying the recursion gives</p>
+<p><a id="eq-5-3"></a></p>
+<div class="arithmatex">\[
+|P_N^{L,\mathbf u}-NF_N|\le (\log2)s_N, \tag{5.3}
+\]</div>
+<p>↳ uniformly in the hierarchy, its parameters, and <span class="arithmatex">\(N\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 결과로 나온 leaf partition function 에 power mean 재귀를 적용한다.</p>
+<p><strong>s2</strong> 그 root log 의 기댓값을 <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> 라 쓴다.</p>
+<p><strong>s3</strong> 섭동되지 않은 spin 가중치와 점별로 비교한 뒤 재귀를 적용하면, 계층·그 매개변수·<span class="arithmatex">\(N\)</span> 에 대해 균등하게 다음을 얻는다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s2</strong> ¶3 의 섭동을 넣은 계에서, <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> = 섭동된 leaf partition function 에 power-mean 재귀(<span class="arithmatex">\(m_d=d/L\)</span>)를 적용한 root log 의 기댓값. 섭동 인자가 보조 변수에 의존하므로 어떤 Gibbs 계의 <span class="arithmatex">\(\mathbb E\log Z\)</span> 그 자체는 아니다(<code>제안 해석</code>: RSB 시행 구조를 넣은 섭동 계의 free entropy, <span class="arithmatex">\(N\)</span> 배). 섭동이 없으면 보조 변수가 쓰이지 않아 정확히 <span class="arithmatex">\(NF_N\)</span> 이다. <code>📚</code> §3.1</li>
+<li><strong>s3, (5.3)</strong> 모든 <span class="arithmatex">\(N\)</span> 에서, 계층(<span class="arithmatex">\(L\)</span>)과 <span class="arithmatex">\(\mathbf u\)</span> 에 균등하게 <span class="arithmatex">\(\lvert P_N^{L,\mathbf u}-NF_N\rvert\le s_N\log2=O(N^{3/4})\)</span>; <span class="arithmatex">\(N\)</span> 으로 나누면 <span class="arithmatex">\((\log2)N^{-1/4}\to0\)</span>, 즉 sublinear 섭동은 free entropy 밀도를 바꾸지 않는다. 이 균등성 덕에 §6 에서 <span class="arithmatex">\(\mathbf u\)</span> 를 <span class="arithmatex">\(N,L\)</span> 에 따라 골라도, §8 에서 고정 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(N\to\infty\)</span> 를 먼저 취한 뒤 <span class="arithmatex">\(L\to\infty\)</span> 로 가도 이 비교가 유지된다. <code>✅</code> 아래 전개</li>
+</ul>
+<details>
+<summary>전개: (5.3) (s3)</summary>
+<p>각 인자 <span class="arithmatex">\(\psi\in[\frac12,\frac32]\)</span> 이므로 섭동된 가중치 / 원래 가중치 <span class="arithmatex">\(\in[2^{-K},2^K]\)</span> (<span class="arithmatex">\(K\)</span> = 인자 개수, root 변수). <span class="arithmatex">\(K\)</span> 는 root 변수이므로 점별 bound 를 먼저 얻고 그 다음 기댓값을 취한다. §3.1 ¶8 의 단조성·동차성으로 root log 도 <span class="arithmatex">\(K\log2\)</span> 이내. <span class="arithmatex">\(\mathbb EK=s_N\)</span> → <span class="arithmatex">\(\lvert P_N-NF_N\rvert\le s_N\log2\)</span> ✓ (보조 계층이 없는 원래 계는 <span class="arithmatex">\(L\)</span> 에 무관: 섭동이 없으면 보조 변수가 쓰이지 않아 power mean 이 항등 연산).</p>
+</details>
+<p><strong>식 (5.3) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(P_N^{L,\mathbf u}-NF_N\)</span></td>
+<td>섭동 효과</td>
+<td>섭동에 의한 free entropy 변화</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\((\log2)s_N=O(N^{3/4})\)</span></td>
+<td>bound</td>
+<td>밀도로는 <span class="arithmatex">\(o(1)\)</span></td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s5-e1"></a></p>
+<h3 id="lemma-51-cavity-increments">▸ Lemma 5.1 (Cavity increments)<a class="headerlink" href="#lemma-51-cavity-increments" title="Permanent link">&para;</a></h3>
+<p><a id="s5-p5"></a></p>
+<h4 id="5-5">§5 ¶5<a class="headerlink" href="#5-5" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p5-s1"></a><strong>s1</strong> The increments <span class="arithmatex">\(\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span> are uniformly bounded in <span class="arithmatex">\(N,L,\mathbf u\)</span>.</p>
+<p><a id="s5-p5-s2"></a><strong>s2</strong> There is a reservoir on <span class="arithmatex">\(N\)</span> spins with physical interaction count of mean</p>
+<p><a id="eq-5-4"></a></p>
+<div class="arithmatex">\[
+\rho_N=\alpha(N+1)\left(\frac{N}{N+1}\right)^p, \tag{5.4}
+\]</div>
+<p>↳ the usual fields, and the perturbation counts of means <span class="arithmatex">\(c_\nu s_N\)</span>, such that</p>
+<p><a id="eq-5-5"></a></p>
+<div class="arithmatex">\[
+\Delta_N^{L,\mathbf u}
+ =\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o_N(1). \tag{5.5}
+\]</div>
+<p><a id="s5-p5-s3"></a><strong>s3</strong> The error is uniform in <span class="arithmatex">\(L,\mathbf u\)</span>.</p>
+<p><a id="s5-p5-s4"></a><strong>s4</strong> The insertion recursion uses the tilted reservoir kernels and independent new root disorder, with terminal insertions</p>
+<p><a id="eq-5-6"></a><a id="eq-5-7"></a></p>
+<div class="arithmatex">\[
+\begin{align*}
+A_{\rm s}(\sigma)&amp;=\frac12\sum_{\varepsilon=\pm1}
+ \exp\left(h\varepsilon+\sum_{j=1}^{K_{\rm s}}
+ \theta_j(\sigma_{i_{1,j}},\ldots,\sigma_{i_{p-1,j}},\varepsilon)\right), \tag{5.6} \\
+A_{\rm b}(\sigma)&amp;=\exp\left(\sum_{j=1}^{K_{\rm b}}
+ \theta_j(\sigma_{i_{1,j}},\ldots,\sigma_{i_{p,j}})\right), \tag{5.7}
+\end{align*}
+\]</div>
+<p>↳ where <span class="arithmatex">\(K_{\rm s}\sim\operatorname{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\operatorname{Poisson}(\alpha(p-1))\)</span>, and all displayed indices are independent uniform indices in <span class="arithmatex">\([N]\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> 증분 <span class="arithmatex">\(\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span> 는 <span class="arithmatex">\(N,L,\mathbf u\)</span> 에 대해 균등하게 유계다.</p>
+<p><strong>s2</strong> 물리적 상호작용 개수의 평균이 다음과 같고, 보통의 field 들과 평균 <span class="arithmatex">\(c_\nu s_N\)</span> 인 섭동 개수를 갖는 <span class="arithmatex">\(N\)</span> spin 위의 reservoir 가 있어 다음이 성립한다.</p>
+<p><strong>s3</strong> 오차는 <span class="arithmatex">\(L,\mathbf u\)</span> 에 대해 균등하다.</p>
+<p><strong>s4</strong> 삽입 재귀는 tilted reservoir kernel 과 독립적인 새 root disorder 를 쓰며, 말단 삽입은 다음과 같다; 여기서 <span class="arithmatex">\(K_{\rm s}\sim\operatorname{Poisson}(\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\operatorname{Poisson}(\alpha(p-1))\)</span> 이고 표시된 모든 index 는 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 index 다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1–s3, (5.4)–(5.5)</strong> ¶3–¶4 의 섭동된 계에 대해, Lemma 5.1 은 두 가지를 말한다: 증분 <span class="arithmatex">\(\Delta_N^{L,\mathbf u}\)</span> 은 <span class="arithmatex">\(N,L,\mathbf u\)</span> 에 대해 균등 유계이고, 각 <span class="arithmatex">\(N\)</span> 마다 평균 <span class="arithmatex">\(\rho_N\)</span> 인 reservoir 가 있어 <span class="arithmatex">\(\Delta_N^{L,\mathbf u}=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o_N(1)\)</span> (오차는 <span class="arithmatex">\(L,\mathbf u\)</span> 에 균등). 물리의 cavity 공식 "(spin 하나 + 그 factor 를 더하는 비용) − (factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개를 더하는 비용)" 과 같은 꼴이다. 다만 Bethe 공식 (2.11) 의 site 항 − <span class="arithmatex">\(\alpha(p-1)\times\)</span>edge 항과 같아진 것은 아니다: 여기서 bond 삽입은 상관된 reservoir spin 위에 factor Poisson<span class="arithmatex">\((\alpha(p-1))\)</span> 개를 한꺼번에 넣은 것이고, 독립 message 로 바꾸는 일은 §7–§8 에서 한다. <code>📚</code> 개수는 <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a>, 조립은 <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a> 전개</li>
+<li><strong>s4, (5.6)–(5.7)</strong> <span class="arithmatex">\(A_{\rm s}\)</span> = 새 spin <span class="arithmatex">\(\varepsilon\)</span> 과 그에 붙는 Poisson<span class="arithmatex">\((\alpha p)\)</span> 개 factor 의 국소 가중치(나머지 <span class="arithmatex">\(p-1\)</span> 입력은 <span class="arithmatex">\([N]\)</span> 에서 독립 균등으로 뽑은 reservoir spin) → site 삽입; <span class="arithmatex">\(A_{\rm b}\)</span> = reservoir spin 사이에 factor Poisson<span class="arithmatex">\((\alpha(p-1))\)</span> 개를 더하는 가중치 → bond 삽입. 이 새 disorder(<span class="arithmatex">\(K\)</span>, <span class="arithmatex">\(\theta_j\)</span>, <span class="arithmatex">\(h\)</span>, index)는 reservoir 와 독립인 root 변수이고, <span class="arithmatex">\(Y_0\)</span> 는 <span class="arithmatex">\(A\)</span> 를 reservoir 의 말단 Gibbs 측도로 평균한 뒤 power-mean 재귀로 root 까지 올린 값, 즉 계층 전체가 삽입에 응답한 양이다. 보조 단계가 없으면 액체론의 Widom 삽입 공식과 같다(아래 배경). <code>📚</code> R9, R10 대응; 평균 개수는 <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a>; <span class="arithmatex">\(Y_0\)</span> 정의는 <a href="../../mezard-parisi-diluted/doc/03-calculus-on-finite-trees.html#s3-1">§3.1</a></li>
+</ul>
+<details>
+<summary>배경: Y₀ 는 계층을 쌓은 Widom 삽입 공식이다</summary>
+<p><span class="arithmatex">\(Y_0\)</span> 의 재귀는 tilted 보조 kernel(아래 가지의 partition function 의 <span class="arithmatex">\(m_d\)</span> 제곱에 비례해 재가중한 조건부 분포)을 따라 root 까지 올라간다.</p>
+<p>보조 단계가 없으면 <span class="arithmatex">\(Y_0=\langle A\rangle_{\rm res}\)</span> 이고 <span class="arithmatex">\(\log Z_{\rm res+A}-\log Z_{\rm res}=\log\langle A\rangle_{\rm res}\)</span> 이다: 입자 하나를 넣는 free energy 비용이 넣지 않은 계에서 잰 삽입 Boltzmann 인자의 평균이라는 Widom test-particle 공식이다.</p>
+<p>상호작용을 순간적으로 켜는 과정으로 보면 일 <span class="arithmatex">\(W=-\log A\)</span>(reservoir Gibbs 측도에서 잰 값)에 대한 Jarzynski 등식 <span class="arithmatex">\(\langle e^{-W}\rangle_{\rm res}=Z_{\rm res+A}/Z_{\rm res}\)</span> 과 같은 항등식이다.</p>
+<p>보조 단계가 있으면 이 평균이 한 번으로 끝나지 않고 깊이 <span class="arithmatex">\(d\)</span> 마다 지수 <span class="arithmatex">\(m_d\)</span> 의 power mean 으로 쌓인다. 그래서 <span class="arithmatex">\(Y_0\)</span> 는 계층 전체가 삽입에 응답한 양이다. <code>📚</code> R9, R10 대응</p>
+</details>
+<p><strong>식 (5.4) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\rho_N=\alpha(N+1)(N/(N+1))^p\)</span></td>
+<td>reservoir factor 평균 개수</td>
+<td><span class="arithmatex">\(N+1\)</span> 계에서 새 spin 을 건드리지 않는 factor 들</td>
+<td><code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a> 전개</td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (5.5) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Delta_N\)</span></td>
+<td><span class="arithmatex">\(P_{N+1}-P_N\)</span></td>
+<td>spin 하나 추가의 free entropy 증분 (ASS)</td>
+<td><code>📚</code> [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-ASS03">2</a>]</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\log2\)</span></td>
+<td>새 spin 의 자유도</td>
+<td>새 spin 두 상태의 entropy</td>
+<td><code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a> 전개</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbb E\log Y_{0,\rm s}\)</span></td>
+<td>site 삽입</td>
+<td>새 spin + factor <span class="arithmatex">\(\alpha p\)</span> 개 (Bethe site 항, R10) — Bethe site 항과 같은 꼴(같아지는 것은 §7–§8)</td>
+<td><code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p8">§5 ¶8</a></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(-\mathbb E\log Y_{0,\rm b}\)</span></td>
+<td>bond 삽입</td>
+<td>factor <span class="arithmatex">\(\alpha(p-1)\)</span> 개 (Bethe edge 항, R9) — Bethe edge 항 <span class="arithmatex">\(\times\alpha(p-1)\)</span> 과 같은 꼴(같아지는 것은 §7–§8)</td>
+<td><code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>식 (5.6), (5.7) 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(A_{\rm s}=\frac12\sum_\varepsilon\exp(h\varepsilon+\sum_j\theta_j(\cdot,\varepsilon))\)</span> (5.6)</td>
+<td>site 삽입 가중치</td>
+<td>새 spin 의 국소 partition function (cavity spin 은 reservoir 에서)</td>
+<td><code>📚</code> (2.8) 과 같은 꼴</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A_{\rm b}=\exp(\sum_j\theta_j)\)</span> (5.7)</td>
+<td>bond 삽입 가중치</td>
+<td>reservoir 에 factor 를 더하는 Boltzmann 인자</td>
+<td><code>📚</code> (2.9) 와 같은 꼴</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(K_{\rm s}\sim\)</span> Poisson<span class="arithmatex">\((\alpha p)\)</span>, <span class="arithmatex">\(K_{\rm b}\sim\)</span> Poisson<span class="arithmatex">\((\alpha(p-1))\)</span></td>
+<td>개수</td>
+<td>새 spin 의 degree / 이중계수 보정</td>
+<td><code>📚</code> <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#s5-p6">§5 ¶6</a> 전개</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>(끝: s5-e1)</em></p>
+<p><a id="s5-e2"></a></p>
+<h3 id="proof">▸ <em>Proof.</em><a class="headerlink" href="#proof" title="Permanent link">&para;</a></h3>
+<p><a id="s5-p6"></a></p>
+<h4 id="5-6">§5 ¶6<a class="headerlink" href="#5-6" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p6-s1"></a><strong>s1</strong> <em>The physical interactions.</em></p>
+<p><a id="s5-p6-s2"></a><strong>s2</strong> Split the Poisson interaction process of the <span class="arithmatex">\((N+1)\)</span>-spin system according to the number of indices equal to <span class="arithmatex">\(N+1\)</span>.</p>
+<p><a id="s5-p6-s3"></a><strong>s3</strong> Terms with no new index have mean <span class="arithmatex">\(\rho_N\)</span>.</p>
+<p><a id="s5-p6-s4"></a><strong>s4</strong> Terms with exactly one new index have mean <span class="arithmatex">\(\alpha p(N/(N+1))^{p-1}=\alpha p+O(N^{-1})\)</span>; by permutation invariance we may place the new input last.</p>
+<p><a id="s5-p6-s5"></a><strong>s5</strong> Their other indices are independent uniform indices in <span class="arithmatex">\([N]\)</span>, and their interaction functions retain the prescribed law.</p>
+<p><a id="s5-p6-s6"></a><strong>s6</strong> Terms with at least two new indices have total mean <span class="arithmatex">\(O(N^{-1})\)</span>.</p>
+<p><a id="s5-p6-s7"></a><strong>s7</strong> Meanwhile, the <span class="arithmatex">\(N\)</span>-spin system can be obtained from the same reservoir by adding a Poisson number of old interactions of mean</p>
+<p><a id="s5-p6-e1"></a></p>
+<div class="arithmatex">\[
+\alpha N-\rho_N=\alpha(p-1)+O(N^{-1}).
+\]</div>
+<p><a id="s5-p6-s8"></a><strong>s8</strong> These quantities are nonnegative for all sufficiently large <span class="arithmatex">\(N\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>물리적 상호작용.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\((N+1)\)</span>-spin 계의 Poisson 상호작용 과정을 <span class="arithmatex">\(N+1\)</span> 과 같은 index 의 개수에 따라 나눈다.</p>
+<p><strong>s3</strong> 새 index 가 없는 항들의 평균은 <span class="arithmatex">\(\rho_N\)</span> 이다.</p>
+<p><strong>s4</strong> 새 index 가 정확히 하나인 항들의 평균은 <span class="arithmatex">\(\alpha p(N/(N+1))^{p-1}=\alpha p+O(N^{-1})\)</span> 이다; 순열 불변성에 의해 새 입력을 마지막에 놓을 수 있다.</p>
+<p><strong>s5</strong> 그 나머지 index 들은 <span class="arithmatex">\([N]\)</span> 안의 독립 균등 index 이고, 상호작용 함수는 지정된 법칙을 유지한다.</p>
+<p><strong>s6</strong> 새 index 가 둘 이상인 항들의 총 평균은 <span class="arithmatex">\(O(N^{-1})\)</span> 이다.</p>
+<p><strong>s7</strong> 한편 <span class="arithmatex">\(N\)</span>-spin 계는 같은 reservoir 에 평균이 다음과 같은 Poisson 개수의 옛 상호작용을 더해 얻을 수 있다.</p>
+<p><strong>s8</strong> 충분히 큰 모든 <span class="arithmatex">\(N\)</span> 에 대해 이 양들은 음이 아니다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s2–s8</strong> Lemma 5.1 증명의 첫 장애물인 factor 회계 — 공통 reservoir 에서 site 삽입으로 <span class="arithmatex">\(N+1\)</span> 계를, bond 삽입으로 <span class="arithmatex">\(N\)</span> 계를 만든다(아래 그림). 그러려면 Poisson thinning 으로 <span class="arithmatex">\(N+1\)</span> 계의 factor 를 새 spin 을 "건드리지 않음 (평균 <span class="arithmatex">\(\rho_N\)</span>) / 한 번 (<span class="arithmatex">\(\alpha p+O(N^{-1})\)</span>) / 두 번 이상 (<span class="arithmatex">\(O(N^{-1})\)</span>)" 으로 나눈다. reservoir 는 두 계의 공통 부분이어서 <span class="arithmatex">\(N+1\)</span> 계 ≈ reservoir + 새 spin 과 그 factor, <span class="arithmatex">\(N\)</span> 계 = reservoir + 옛 factor 평균 <span class="arithmatex">\(\alpha N-\rho_N=\alpha(p-1)+O(N^{-1})\)</span> 개다. 세 평균은 Poisson 개수로 쓰려면 음이 아니어야 한다. 원문은 충분히 큰 <span class="arithmatex">\(N\)</span> 에서 그렇다고만 적지만, 실제로 <span class="arithmatex">\(\alpha N-\rho_N=\alpha N[1-(N/(N+1))^{p-1}]&gt;0\)</span> 이라 모든 <span class="arithmatex">\(N\ge1\)</span> 에서 양수이고, 작은 <span class="arithmatex">\(N\)</span> 에서도 reservoir 에 옛 factor 를 더해 <span class="arithmatex">\(N\)</span> 계를 복원할 수 있다. 두 번 이상 항을 버리고 평균을 극한값 <span class="arithmatex">\(\alpha p\)</span>, <span class="arithmatex">\(\alpha(p-1)\)</span> 로 바꾸는 비용은 ¶8 에서 <span class="arithmatex">\(O(N^{-1/4})\)</span> 에 흡수되므로 증분 ≈ site − bond 이고, 이것이 Bethe 공식에서 <span class="arithmatex">\(-\alpha(p-1)\)</span> 이 나오는 cavity 쪽 이유다 (R9). <code>✅</code> 아래 전개</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+  R["reservoir: N spin, factor 평균 ρ_N ≈ αN − α(p−1), field·섭동 포함"]
+  R --&gt;|"site 삽입: 새 spin + 그 spin 을 한 번 쓰는 factor ≈ αp 개"| A["N+1 계"]
+  R --&gt;|"bond 삽입: 옛 spin 끼리의 factor ≈ α(p−1) 개"| B["N 계"]
+  X["새 spin 을 두 번 이상 쓰는 factor: 평균 O(1/N), 버림"] -.-&gt; A
+  A -.-&gt;|"log 2 + E log Y₀,s"| D["증분 Δ_N"]
+  B -.-&gt;|"− E log Y₀,b"| D</code></pre>
+<p>공통 reservoir 하나에서 site 삽입으로 <span class="arithmatex">\(N+1\)</span> 계를, bond 삽입으로 <span class="arithmatex">\(N\)</span> 계를 만들고, 두 삽입의 응답 차가 Lemma 5.1 의 증분이 된다.</p>
+<details>
+<summary>전개: Poisson thinning 의 평균과 수치 확인 (s3–s8)</summary>
+<p><span class="arithmatex">\(N+1\)</span> 계: factor 수 Poisson<span class="arithmatex">\((\alpha(N+1))\)</span>, 각 index 독립 균등 <span class="arithmatex">\([N+1]\)</span>. 새 index 수 <span class="arithmatex">\(\sim\)</span> Binomial<span class="arithmatex">\((p,\frac1{N+1})\)</span>. 0 개: <span class="arithmatex">\(\alpha(N+1)(\frac N{N+1})^p=\rho_N\)</span> ✓. 1 개: <span class="arithmatex">\(\alpha(N+1)p\frac1{N+1}(\frac N{N+1})^{p-1}=\alpha p(1-\frac1{N+1})^{p-1}=\alpha p+O(N^{-1})\)</span> ✓. <span class="arithmatex">\(\ge2\)</span>: <span class="arithmatex">\(\alpha(N+1)O(N^{-2})=O(N^{-1})\)</span> ✓.
+<span class="arithmatex">\(N\)</span> 계: <span class="arithmatex">\(\alpha N-\rho_N=\alpha N-\alpha(N+1)(1-\frac p{N+1}+O(N^{-2}))=\alpha N-\alpha(N+1)+\alpha p+O(N^{-1})=\alpha(p-1)+O(N^{-1})\)</span> ✓.</p>
+<p>비음수 조건(s8): <span class="arithmatex">\(\rho_N=\alpha N(\frac N{N+1})^{p-1}\)</span> 이므로 <span class="arithmatex">\(\alpha N-\rho_N=\alpha N\bigl[1-(\frac N{N+1})^{p-1}\bigr]&gt;0\)</span>, 한 번 항 <span class="arithmatex">\(\alpha p(\frac N{N+1})^{p-1}&gt;0\)</span>, <span class="arithmatex">\(\rho_N&gt;0\)</span> — 사실 모든 <span class="arithmatex">\(N\ge1\)</span> 에서 양수다(원문은 큰 <span class="arithmatex">\(N\)</span> 에서만 주장하며, 증명에는 그것으로 충분하다).</p>
+<p>수치 예 (<span class="arithmatex">\(\alpha=1\)</span>, <span class="arithmatex">\(N=100\)</span>, <span class="arithmatex">\(p=3\)</span>): <span class="arithmatex">\(\rho_N\approx98.03\)</span>, 한 번 <span class="arithmatex">\(\approx2.94\)</span>, 두 번 이상 <span class="arithmatex">\(\approx0.03\)</span> (합 <span class="arithmatex">\(101=\alpha(N+1)\)</span>), <span class="arithmatex">\(N\)</span> 계 − reservoir <span class="arithmatex">\(\approx1.97\)</span>. factor 는 <span class="arithmatex">\(\alpha\)</span> 개만 늘지만 새 spin 은 약 <span class="arithmatex">\(\alpha p\)</span> 개를 보고, 그 차 <span class="arithmatex">\(\alpha(p-1)\)</span> 이 bond 항이다.</p>
+<p>가장 작은 경우 (<span class="arithmatex">\(\alpha=1\)</span>, <span class="arithmatex">\(p=2\)</span>, <span class="arithmatex">\(N=1\)</span>): 새 index 수 <span class="arithmatex">\(\sim\)</span> Binomial<span class="arithmatex">\((2,\frac12)\)</span> 이므로 <span class="arithmatex">\(\rho_1=0.5\)</span>, 한 번 <span class="arithmatex">\(=1\)</span>, 두 번 <span class="arithmatex">\(=0.5\)</span> (합 <span class="arithmatex">\(2=\alpha(N+1)\)</span>), <span class="arithmatex">\(N\)</span> 계 − reservoir <span class="arithmatex">\(=0.5\ge0\)</span>.</p>
+</details>
+<details>
+<summary>배경: SK 에서도 같은 'p 대 p−1' 계수가 나온다</summary>
+<p>SK·mixed <span class="arithmatex">\(p\)</span>-spin 의 ASS 증분에서 cavity field 공분산 <span class="arithmatex">\(\xi'(q)\)</span> 와 bond 보정 공분산 <span class="arithmatex">\(q\xi'(q)-\xi(q)\)</span> 는 순수 <span class="arithmatex">\(p\)</span>-spin(<span class="arithmatex">\(\xi\propto q^p\)</span>)에서 <span class="arithmatex">\(p\,q^{p-1}\)</span> 와 <span class="arithmatex">\((p-1)q^p\)</span> 로, 계수가 <span class="arithmatex">\(p\)</span> 대 <span class="arithmatex">\(p-1\)</span> 이다(두 양의 비 자체는 <span class="arithmatex">\(q\)</span> 에 의존한다). <code>제안 해석</code>: 여기 <span class="arithmatex">\(K_{\rm s}\)</span>, <span class="arithmatex">\(K_{\rm b}\)</span> 의 평균 <span class="arithmatex">\(\alpha p\)</span> 대 <span class="arithmatex">\(\alpha(p-1)\)</span> 과 같은 셈법으로 읽을 수 있다 — 새 spin 은 자기가 들어간 <span class="arithmatex">\(p\)</span> 자리마다 상호작용을 보지만 계 전체에서 실제로 늘어난 몫은 하나뿐이고, 나머지 <span class="arithmatex">\(p-1\)</span> 몫을 bond 항으로 뺀다. <code>📚</code> [<a href="../../mezard-parisi-diluted/doc/99-references.html#ref-Pan13">14</a>]</p>
+</details>
+<p><strong>식 Eq. §5 ¶6 #1 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha N-\rho_N=\alpha(p-1)+O(N^{-1})\)</span></td>
+<td><span class="arithmatex">\(N\)</span> 계와 reservoir 의 차</td>
+<td>Bethe edge 항의 계수 <span class="arithmatex">\(\alpha(p-1)\)</span> (이중계수 보정, R9)</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s5-p7"></a></p>
+<h4 id="5-7">§5 ¶7<a class="headerlink" href="#5-7" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p7-s1"></a><strong>s1</strong> <em>The perturbations.</em></p>
+<p><a id="s5-p7-s2"></a><strong>s2</strong> The old-site perturbation count in the <span class="arithmatex">\((N+1)\)</span>-spin system has total mean <span class="arithmatex">\(s_{N+1}N/(N+1)\)</span>, and the new-site count has mean <span class="arithmatex">\(s_{N+1}/(N+1)\)</span>.</p>
+<p><a id="s5-p7-s3"></a><strong>s3</strong> Couple these processes to the reservoir perturbations using common Poisson points.</p>
+<p><a id="s5-p7-s4"></a><strong>s4</strong> The expected number of unmatched factors is at most</p>
+<p><a id="s5-p7-e1"></a></p>
+<div class="arithmatex">\[
+|s_{N+1}-s_N|+2s_{N+1}/(N+1)=O(N^{-1/4}).
+\]</div>
+<p><a id="s5-p7-s5"></a><strong>s5</strong> Deleting or adding a perturbation changes the root logarithm by at most <span class="arithmatex">\(\log2\)</span>; an interaction changes it by at most <span class="arithmatex">\(B\)</span>.</p>
+<p><a id="s5-p7-s6"></a><strong>s6</strong> An unused auxiliary variable can simply be integrated out with its prior, so these comparisons remain valid when the number of auxiliary variables changes.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>섭동.</em></p>
+<p><strong>s2</strong> <span class="arithmatex">\((N+1)\)</span>-spin 계에서 옛 site 섭동 개수의 총 평균은 <span class="arithmatex">\(s_{N+1}N/(N+1)\)</span> 이고, 새 site 개수의 평균은 <span class="arithmatex">\(s_{N+1}/(N+1)\)</span> 이다.</p>
+<p><strong>s3</strong> 공통 Poisson 점을 써서 이 과정들을 reservoir 섭동과 결합(coupling)한다.</p>
+<p><strong>s4</strong> 짝지어지지 않는 인자의 기대 개수는 최대 다음과 같다.</p>
+<p><strong>s5</strong> 섭동 하나를 지우거나 더하면 root log 가 최대 <span class="arithmatex">\(\log2\)</span> 바뀌고; 상호작용 하나는 최대 <span class="arithmatex">\(B\)</span> 바꾼다.</p>
+<p><strong>s6</strong> 쓰지 않는 보조 변수는 그 prior 로 그냥 적분해 없앨 수 있으므로, 보조 변수의 개수가 바뀌어도 이 비교들은 유효하다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s2–s4</strong> 둘째 장애물인 섭동 개수의 어긋남을 공통 Poisson 점 coupling 으로 처리한다: 두 계의 옛 site 에 놓이는 섭동은 가능한 만큼 같은 Poisson 점과 같은 인자 정보를 공유시키고(비평형 계산에서 두 계에 같은 noise realization 을 넣어 차이만 보는 것과 비슷한 장치이며, 실제 시간 진화는 아니다), <span class="arithmatex">\(N\)</span> 계의 섭동은 reservoir 와 같으므로, 옛 site 섭동의 평균 차 <span class="arithmatex">\(\lvert s_{N+1}N/(N+1)-s_N\rvert\le\lvert s_{N+1}-s_N\rvert+s_{N+1}/(N+1)\)</span> 과 새 site 에 걸린 섭동(평균 <span class="arithmatex">\(s_{N+1}/(N+1)\)</span>)만 짝 없는 인자로 센다. 그 기대 개수가 <span class="arithmatex">\(O(N^{-1/4})\)</span> 이고 하나당 root log 변화가 <span class="arithmatex">\(\le\log2\)</span> 이므로, 증분의 변화는 <span class="arithmatex">\(O(N^{-1/4})\)</span> 로 (5.5) 의 <span class="arithmatex">\(o_N(1)\)</span> 에 흡수된다(<span class="arithmatex">\(L,\mathbf u\)</span> 에 균등). 밀도 비교 (5.3) 과는 다른 종류의 결론이다: <span class="arithmatex">\(N\)</span> 으로 나누기 전 spin 하나의 증분 수준에서 사라지는 것은 두 계의 섭동 개수가 달라서 생기는 짝 없는 인자의 비용뿐이다. 짝지은 섭동은 reservoir 에 남아 <span class="arithmatex">\(Y_{0,\rm s}\)</span>, <span class="arithmatex">\(Y_{0,\rm b}\)</span> 를 통해 증분이 계속 <span class="arithmatex">\(\mathbf u\)</span> 에 의존하고, §6 은 이 의존을 탐침으로 쓴다 — 같은 noise 를 공유해도 그 noise 가 상태에 주는 영향은 지워지지 않는다. <code>✅</code> 아래 전개</li>
+<li><strong>s5–s6</strong> <code>🔧</code> 섭동 하나 <span class="arithmatex">\(\le\log2\)</span>, factor 하나 <span class="arithmatex">\(\le B\)</span> 의 변화; 쓰지 않는 보조 변수는 적분해 사라짐 (§3.1 ¶11).</li>
+</ul>
+<details>
+<summary>전개: 짝 없는 인자 수 상한이 O(N^(−1/4)) 인 이유 (s4)</summary>
+<p><span class="arithmatex">\(N\)</span> 계의 섭동은 reservoir 와 같으므로 짝 없는 인자는 <span class="arithmatex">\(N+1\)</span> 계 쪽에서만 생긴다. 옛 site: 평균 <span class="arithmatex">\(s_{N+1}N/(N+1)\)</span> 대 <span class="arithmatex">\(s_N\)</span>, 차 <span class="arithmatex">\(\le\lvert s_{N+1}-s_N\rvert+s_{N+1}/(N+1)\)</span>. 새 site: 평균 <span class="arithmatex">\(s_{N+1}/(N+1)\)</span>. 합이 상한 <span class="arithmatex">\(\lvert s_{N+1}-s_N\rvert+2s_{N+1}/(N+1)\)</span> 이다. <span class="arithmatex">\(s_N=N^{3/4}\)</span> 에서 크기를 확인한다.</p>
+<p><span class="arithmatex">\(s_{N+1}-s_N=(N+1)^{3/4}-N^{3/4}\approx\frac34N^{-1/4}\)</span>, <span class="arithmatex">\(2s_{N+1}/(N+1)\approx2N^{-1/4}\)</span> → 합 <span class="arithmatex">\(O(N^{-1/4})\)</span> ✓.</p>
+<p>두 항과 (5.3) 의 밀도 오차는 모두 대략 <span class="arithmatex">\(s_N/N\)</span> 크기라 <span class="arithmatex">\(s_N=o(N)\)</span> 이면 0 으로 간다. 지수 <span class="arithmatex">\(3/4\)</span> 의 아래쪽 제약(섭동이 충분히 많아야 하는 이유)은 §6 의 섭동 추정에서 정해진다 ❓.</p>
+</details>
+<p><strong>식 Eq. §5 ¶7 #1 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert s_{N+1}-s_N\rvert+2s_{N+1}/(N+1)\)</span></td>
+<td>짝 없는 섭동 수</td>
+<td>크기를 바꿀 때 섭동 구조의 불일치</td>
+<td><code>✅</code> 같은 문단 전개</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a id="s5-p8"></a></p>
+<h4 id="5-8">§5 ¶8<a class="headerlink" href="#5-8" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p8-s1"></a><strong>s1</strong> <em>The increment.</em></p>
+<p><a id="s5-p8-s2"></a><strong>s2</strong> We may consequently discard the repeated-new-index interactions, match the perturbations, and replace the two insertion count means by their limits at a total expected cost <span class="arithmatex">\(O(N^{-1/4})\)</span>.</p>
+<p><a id="s5-p8-s3"></a><strong>s3</strong> Summing over the new spin gives <span class="arithmatex">\(2A_{\rm s}\)</span>, while the old-system correction gives <span class="arithmatex">\(A_{\rm b}\)</span>.</p>
+<p><a id="s5-p8-s4"></a><strong>s4</strong> The factor <span class="arithmatex">\(2\)</span> supplies the term <span class="arithmatex">\(\log2\)</span> in the increment.</p>
+<p><a id="s5-p8-s5"></a><strong>s5</strong> The insertion identity for the power means then proves <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a>.</p>
+<p><a id="s5-p8-s6"></a><strong>s6</strong> Finally,</p>
+<p><a id="s5-p8-e1"></a></p>
+<div class="arithmatex">\[
+|\log Y_{0,\rm s}|\le H+BK_{\rm s},\qquad
+ |\log Y_{0,\rm b}|\le BK_{\rm b}.
+\]</div>
+<p><a id="s5-p8-s7"></a><strong>s7</strong> Together with the coupling estimate this bounds the increments for large <span class="arithmatex">\(N\)</span>; increasing the constant covers the remaining sizes.</p>
+<p><a id="s5-p8-s8"></a><strong>s8</strong> All estimates are uniform in <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(\mathbf u\)</span>.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> <em>증분.</em></p>
+<p><strong>s2</strong> 따라서 새 index 가 반복되는 상호작용을 버리고, 섭동을 짝짓고, 두 삽입 개수 평균을 그 극한으로 바꾸는 데 총 기대 비용 <span class="arithmatex">\(O(N^{-1/4})\)</span> 이 든다.</p>
+<p><strong>s3</strong> 새 spin 에 대해 합하면 <span class="arithmatex">\(2A_{\rm s}\)</span> 를 주고, 옛 계의 보정은 <span class="arithmatex">\(A_{\rm b}\)</span> 를 준다.</p>
+<p><strong>s4</strong> 인자 <span class="arithmatex">\(2\)</span> 가 증분의 <span class="arithmatex">\(\log2\)</span> 항을 공급한다.</p>
+<p><strong>s5</strong> 그러면 power mean 에 대한 삽입 항등식이 <a href="../../mezard-parisi-diluted/doc/05-a-perturbed-cavity-reservoir.html#eq-5-5">(5.5)</a> 를 증명한다.</p>
+<p><strong>s6</strong> 끝으로 다음이 성립한다.</p>
+<p><strong>s7</strong> 결합 추정과 함께 이것이 큰 <span class="arithmatex">\(N\)</span> 에 대해 증분을 bound 한다; 상수를 키우면 나머지 크기들도 포함된다.</p>
+<p><strong>s8</strong> 모든 추정은 <span class="arithmatex">\(L\)</span> 과 <span class="arithmatex">\(\mathbf u\)</span> 에 대해 균등하다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s3–s5</strong> ¶6–¶7 의 결합을 조립한다 — 공통 reservoir 에서 두 갈래로 출발한다: 한쪽엔 새 spin 과 그 factor 를 붙이고(새 spin 을 합하면 <span class="arithmatex">\(2A_{\rm s}\)</span> 이고 power mean 의 동차성 <span class="arithmatex">\(Y_0(2A_{\rm s})=2Y_0(A_{\rm s})\)</span> 로 <span class="arithmatex">\(\log2\)</span> 가 분리된다), 다른 쪽엔 옛 spin 사이 factor 를 보충한다(<span class="arithmatex">\(A_{\rm b}\)</span>). 각 삽입에 Lemma 3.1 (삽입 항등식: root 변수를 고정하면 root log 변화 <span class="arithmatex">\(=\log Y_0\)</span> 가 정확히 성립, R20) 을 적용하고 기댓값을 취해 빼면 공통 reservoir 기여가 상쇄되어 <span class="arithmatex">\(P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+O(N^{-1/4})\)</span> 이다. 이 <span class="arithmatex">\(O(N^{-1/4})\)</span> 오차는 항등식이 아니라 ¶6–¶7 의 결합 비용에서 오고 <span class="arithmatex">\(L,\mathbf u\)</span> 에 균등하다. <code>✅</code> 아래 전개</li>
+<li><strong>s6–s8</strong> <code>🔧</code> 증분의 균등 유계성: <span class="arithmatex">\(\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}\)</span>, <span class="arithmatex">\(\lvert\log Y_{0,\rm b}\rvert\le BK_{\rm b}\)</span> 이고 <span class="arithmatex">\(\mathbb EK_{\rm s}=\alpha p\)</span>, <span class="arithmatex">\(\mathbb EK_{\rm b}=\alpha(p-1)\)</span> 이 유한하다. 결합 비용 <span class="arithmatex">\(O(N^{-1/4})\)</span> 과 합치면 큰 <span class="arithmatex">\(N\)</span> 에서 bound 가 나온다. 결합 추정이 큰 <span class="arithmatex">\(N\)</span> 에서만 쓰이므로 남는 유한 개의 작은 <span class="arithmatex">\(N\)</span> 에서는 증분을 직접 bound 한다(<span class="arithmatex">\(\lvert P_N^{L,\mathbf u}\rvert\le N(\log2+H+\alpha B)+s_N\log2\)</span> 이고 <span class="arithmatex">\(L,\mathbf u\)</span> 와 무관하다). 상수를 키우는 것은 이 크기들까지 bound 의 적용 범위를 넓히는 단계다. 모든 추정은 <span class="arithmatex">\(L,\mathbf u\)</span> 에 균등하다.</li>
+</ul>
+<details>
+<summary>전개: 증분의 조립 (s3–s5)</summary>
+<p><span class="arithmatex">\(Y_0\)</span>: <span class="arithmatex">\(A\)</span> 를 말단 Gibbs 측도로 평균하고 tilted 보조 kernel 을 따라 power-mean 재귀로 root 까지 올린 값(보조 단계가 없으면 <span class="arithmatex">\(\langle A\rangle_{\rm res}\)</span>).</p>
+<p><span class="arithmatex">\(P_{N+1}\)</span>: reservoir 가중치 × <span class="arithmatex">\(\sum_\varepsilon e^{h\varepsilon+\sum_j\theta_j(\cdot,\varepsilon)}=2A_{\rm s}\)</span>. 점별 항등식(Lemma 3.1) root log 변화 <span class="arithmatex">\(=\log Y_0(2A_{\rm s})\)</span> 의 기댓값을 취하면 <span class="arithmatex">\(\mathbb E[\text{root log 변화}]=\mathbb E\log Y_0(2A_{\rm s})=\log2+\mathbb E\log Y_{0,\rm s}\)</span> (동차성). <span class="arithmatex">\(P_N\)</span>: reservoir × <span class="arithmatex">\(A_{\rm b}\)</span> → <span class="arithmatex">\(\mathbb E\log Y_{0,\rm b}\)</span>. 차: <span class="arithmatex">\(\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}\)</span> ✓ (+ 결합 비용 <span class="arithmatex">\(O(N^{-1/4})\)</span>).</p>
+<p>확인(상수 상호작용): <span class="arithmatex">\(\theta\equiv c\)</span>, <span class="arithmatex">\(h\equiv0\)</span>, 섭동 인자 <span class="arithmatex">\(\psi\equiv1\)</span> 이면 <span class="arithmatex">\(Z_N=2^Ne^{cM_N}\)</span> (<span class="arithmatex">\(M_N\sim\)</span> Poisson<span class="arithmatex">\((\alpha N)\)</span>) 이라 <span class="arithmatex">\(\Delta_N=\log2+\alpha c\)</span> 다. 한편 <span class="arithmatex">\(A_{\rm s}=e^{cK_{\rm s}}\)</span>, <span class="arithmatex">\(A_{\rm b}=e^{cK_{\rm b}}\)</span> 는 spin 에 의존하지 않아 <span class="arithmatex">\(Y_0=A\)</span> 이므로 (5.5) 는 <span class="arithmatex">\(\log2+\alpha pc-\alpha(p-1)c=\log2+\alpha c\)</span> ✓. site 항만 쓰면 <span class="arithmatex">\(\alpha(p-1)c\)</span> 만큼 과대평가한다: 새 spin 이 보는 factor 는 약 <span class="arithmatex">\(\alpha p\)</span> 개지만 계 전체에서 늘어난 factor 는 <span class="arithmatex">\(\alpha\)</span> 개다.</p>
+</details>
+<p><strong>식 Eq. §5 ¶8 #1 항별 표</strong></p>
+<table>
+<thead>
+<tr>
+<th>항</th>
+<th>수학적 정의</th>
+<th>지정된 물리 역할 하의 의미</th>
+<th>검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}\)</span></td>
+<td>site 삽입 bound</td>
+<td>새 spin 의 field + factor 들의 최대 에너지</td>
+<td><code>✅</code> <span class="arithmatex">\(e^{-H-BK}\le A_{\rm s}\le e^{H+BK}\)</span> 와 §3.1 ¶8 단조성</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\lvert\log Y_{0,\rm b}\rvert\le BK_{\rm b}\)</span></td>
+<td>bond 삽입 bound</td>
+<td>더한 factor 들의 최대 에너지</td>
+<td><code>✅</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>∎</p>
+<p><a id="s5-p9"></a></p>
+<h4 id="5-9">§5 ¶9<a class="headerlink" href="#5-9" title="Permanent link">&para;</a></h4>
+<p><strong>원문</strong></p>
+<p><a id="s5-p9-s1"></a><strong>s1</strong> In the rest of the lower-bound proof, all spin trees are sampled from this reservoir using its tilted auxiliary kernels and its terminal Gibbs kernel.</p>
+<p><a id="s5-p9-s2"></a><strong>s2</strong> The reservoir retains an independent Poisson interaction process of mean <span class="arithmatex">\(O(N)\)</span> and <span class="arithmatex">\(N\)</span> independent bounded fields.</p>
+<p><a id="s5-p9-s3"></a><strong>s3</strong> Thus the concentration argument applies to its slightly modified interaction mean as well.</p>
+<p><strong>번역</strong></p>
+<p><strong>s1</strong> lower bound 증명의 나머지에서 모든 spin tree 는 이 reservoir 에서, 그 tilted 보조 kernel 과 말단 Gibbs kernel 을 써서 뽑는다.</p>
+<p><strong>s2</strong> reservoir 는 평균 <span class="arithmatex">\(O(N)\)</span> 인 독립 Poisson 상호작용 과정과 <span class="arithmatex">\(N\)</span> 개의 독립 유계 field 를 유지한다.</p>
+<p><strong>s3</strong> 따라서 concentration 논증은 조금 바뀐 상호작용 평균에도 적용된다.</p>
+<p><strong>물리 해석</strong></p>
+<ul>
+<li><strong>s1</strong> Lemma 5.1 이 끝난 뒤, lower bound 증명의 모든 spin tree 는 이 섭동된 reservoir 에서 뽑는다. 여기서 spin tree 는 상호작용 그래프의 국소 이웃 tree 가 아니라 replica 를 뽑는 보조 계층의 계보다: 보조 변수는 tilted kernel(아래 가지 partition function 의 <span class="arithmatex">\(m_d\)</span> 제곱으로 재가중한 조건부 분포)을 따라 위에서부터 뽑아 같은 조상까지는 replica 들이 공유하고, 각 leaf 에서는 그 보조 변수에 조건부인 reservoir Gibbs 분포로 spin 배치를 뽑는다. 그래서 cavity 증분 (5.5) 의 평균을 §3 의 tree 전개로 계산할 수 있다. 이 "계층 power mean + tilted kernel" 은 Ruelle probability cascade(매개변수 <span class="arithmatex">\(\zeta_d\leftrightarrow m_d\)</span>) 위의 평균을 무한 가중치 없이 유한한 kernel 열의 재귀로 쓴 형태다 — §3 서두가 Panchenko–Talagrand 의 Ruelle cascade 계산을 선행 사례로 들고 같은 항등식을 무한 계층 없이 직접 유도한다고 밝힌다. ❓ 미확인: 이 절의 spin tree 는 §6 에서 지정된 모양이라, replica 계보가 RPC 처럼 무작위로 갈라진다는 읽기까지는 여기서 확인되지 않는다. <code>📚</code> <a href="../../mezard-parisi-diluted/doc/03-calculus-on-finite-trees.html#s3">§3</a>, <a href="../../mezard-parisi-diluted/doc/03-calculus-on-finite-trees.html#s3-p1">§3 서두</a></li>
+<li><strong>s2–s3</strong> <code>🔧</code> reservoir 도 평균 <span class="arithmatex">\(O(N)\)</span> 인 독립 Poisson 상호작용 과정(평균 <span class="arithmatex">\(\rho_N=\alpha N-\alpha(p-1)+O(N^{-1})\)</span>)과 <span class="arithmatex">\(N\)</span> 개의 독립 유계 field 를 가진다. §6 의 concentration 논증은 이 구조(평균 <span class="arithmatex">\(O(N)\)</span> 인 독립 Poisson 상호작용 과정과 독립 유계 field)에 기대므로, 상호작용 평균이 <span class="arithmatex">\(\alpha N\)</span> 에서 <span class="arithmatex">\(\rho_N\)</span> 으로 조금 바뀐 reservoir 에도 적용된다.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../../mezard-parisi-diluted/doc/04-the-interpolation-upper-bound.html" class="md-footer__link md-footer__link--prev" aria-label="이전: §4 The interpolation upper bound">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                §4 The interpolation upper bound
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../mezard-parisi-diluted/doc/06-perturbations-and-identities-on-prescrib.html" class="md-footer__link md-footer__link--next" aria-label="다음: §6 Perturbations and identities on prescribed trees">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                §6 Perturbations and identities on prescribed trees
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../javascripts/mathjax-config.js"></script>
+      
+        <script src="../../javascripts/m2p.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
