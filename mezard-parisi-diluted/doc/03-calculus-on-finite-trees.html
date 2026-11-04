@@ -2313,6 +2313,22 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <p><a id="s3-3"></a></p>
 <h2 id="33-sums-of-extension-coefficients">§3.3 Sums of extension coefficients<a class="headerlink" href="#33-sums-of-extension-coefficients" title="Permanent link">&para;</a></h2>
 <p><em>제목: extension 계수의 합</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> §6–§7 의 lower bound 증명은 지정한 overlap tree 의 계수 합 <span class="arithmatex">\(\kappa(S)\)</span>(또는 그 일부 인자 곱 <span class="arithmatex">\(J\)</span>)로 나눈다. 계수 <span class="arithmatex">\(c_E\)</span> 의 부호가 섞여, 균등 mesh 에서 이 합은 branching vertex 하나마다 <span class="arithmatex">\(\delta=1/L\)</span> 인자가 붙을 만큼 작은데 항 하나하나는 <span class="arithmatex">\(O(1)\)</span> 이다(¶3 의 가장 작은 예: 부호 있는 합 <span class="arithmatex">\(-\delta\)</span>, 절댓값 합 <span class="arithmatex">\(2+\delta\)</span>). 그래서 나눈 뒤 오차가 커지지 않음을 따로 보여야 한다.</li>
+<li><strong>물리로는.</strong> replica 계산의 Parisi block counting 에서 <span class="arithmatex">\(n\to0\)</span> 이라 음수가 될 수 있는 조합 인자에 해당한다(제안 해석). 쓰지 않은 옛 replica 는 sub-block 크기로 바뀌어 사라지고 overlap 구조만 남는다. 절댓값 합을 부호 있는 합으로 나눈 비는 Monte Carlo sign problem 의 (평균 부호)<span class="arithmatex">\(^{-1}\)</span> 과 같은 구조다(비유).</li>
+<li><strong>결론.</strong> Lemma 3.4 (3.12)–(3.13): <span class="arithmatex">\(\kappa(S)\)</span> 는 옛 tree 와 무관한 곱 <span class="arithmatex">\(\prod_v\prod_j(m_{d_v}-jm_{d_v+1})\)</span> 이다. Lemma 3.5 (3.14)–(3.15): 옛 tree 의 branching 깊이와 다른 깊이에 있는 목표 branching vertex <span class="arithmatex">\(b\)</span> 개마다 절댓값 합에도 <span class="arithmatex">\(\delta\)</span> 가 하나씩 붙어 <span class="arithmatex">\(\le C_{q,k}\delta^b\)</span> 이고, <span class="arithmatex">\(m_{d_v}\ge\eta\)</span> 이면 <span class="arithmatex">\(J\)</span> 로 나눈 비가 <span class="arithmatex">\(L\)</span> 에 무관하게 유계다.</li>
+<li><strong>읽는 법.</strong> 핵심은 ¶3(상쇄 예), ¶4(Lemma 3.4), ¶8–¶9(Lemma 3.5)다. ¶5–¶6, ¶10–¶13 은 증명이고 각 문단의 기본 화면 한 줄만 읽어도 흐름이 이어진다.</li>
+<li><strong>주의.</strong> <span class="arithmatex">\(\delta\)</span> 는 overlap 값 하나가 아니라 목표 vertex 하나마다 붙는다(같은 깊이의 두 vertex 도 각각 셈). 옛 branching 깊이와 겹치는 vertex 는 <span class="arithmatex">\(b\)</span> 에 들지 않아 <span class="arithmatex">\(\delta\)</span> 를 얻지 못한다(¶3 첫 예). ¶13 의 <span class="arithmatex">\(j\ge2\)</span> 인자는 상한이 아니라 하한(<span class="arithmatex">\(\ge\eta\)</span>)이 쓰인다.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+  A["§6–§7: κ(S) 또는 J 로 나눈다"] --&gt; B["장애물 (¶3): 부호 있는 합 −δ, 절댓값 합 2+δ"]
+  B --&gt; C["Lemma 3.4 (¶4–¶6): κ(S) = 옛 tree 무관 곱"]
+  B --&gt; D["Lemma 3.5 (¶8, ¶10–¶12): 절댓값 합 ≤ C·δᵇ, 새 깊이 목표 vertex 하나당 δ"]
+  C --&gt; E["(3.15) (¶9, ¶13): 절댓값 합 ÷ J 의 크기 ≤ C, L 무관"]
+  D --&gt; E
+  E --&gt; F["한계: 옛 branching 깊이와 겹치는 vertex 는 b 에 들지 않음"]</code></pre>
+<p>부호 있는 합은 Lemma 3.4 가 정확히 주고, 상쇄 전 크기는 Lemma 3.5 가 새 깊이 목표 vertex 의 인자 곱 <span class="arithmatex">\(J\)</span> 와 같은 차수 <span class="arithmatex">\(\delta^b\)</span> 로 묶는다. 둘을 합친 (3.15) 가 §6–§7 의 나눗셈을 안전하게 만든다(옛 branching 깊이와 겹치는 vertex 는 예외).</p>
 <p><a id="s3-3-p1"></a></p>
 <h4 id="33-1">§3.3 ¶1<a class="headerlink" href="#33-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -2321,7 +2337,7 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <p><strong>s1</strong> 이제 lower bound 에 쓰이는 지정된 tree 항등식에서, 부호 있는 정규화와 누적 오차를 통제한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> <code>🔧</code> §3.2 의 계수 <span class="arithmatex">\(c_E\)</span> 는 부호가 섞여 있어, 합이 작아지는 상쇄가 생긴다. lower bound 증명(§6–§7)에서 이 작은 합으로 나누게 되므로, 부호 있는 합의 정확한 값(Lemma 3.4)과 절댓값 합의 bound(Lemma 3.5)가 필요하다.</li>
+<li><strong>s1</strong> <code>🔧</code> §3.2 의 계수 <span class="arithmatex">\(c_E\)</span> 는 부호가 섞여 있어, 합이 작아지는 상쇄가 생긴다. lower bound 증명(§6–§7)에서 이 작은 합으로 나누게 되므로, 부호 있는 합의 정확한 값(Lemma 3.4)과 절댓값 합의 bound(Lemma 3.5)가 필요하다. history 마다 남는 오차를 <span class="arithmatex">\(r_E\)</span> 라 하면 정규화 뒤 오차는 <span class="arithmatex">\(\lvert\sum_Ec_Er_E\rvert/\lvert\kappa(S)\rvert\le(\sup_E\lvert r_E\rvert)\sum_E\lvert c_E\rvert/\lvert\kappa(S)\rvert\)</span> 로 제어된다(모형 설명). 그래서 분모의 정확한 값과 분자의 상쇄 없는 크기가 둘 다 필요하고, ¶3 이 둘이 얼마나 다를 수 있는지 예로 보인다.</li>
 </ul>
 <hr />
 <p><a id="s3-3-p2"></a></p>
@@ -2336,7 +2352,7 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <p><strong>s3</strong> 특히 제약은 같은 지정된 조상 구조를 가진, 쓰지 않은 옛 경로들을 구별하지 않는다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> reference 경로 = 관측량이 실제로 붙어 있는 replica 들(anchor + 이미 섭동 관측량을 받은 replica). 제약 = "새 replica 가 reference replica 들과 어떤 overlap 단계에 있어야 하는가" 만 지정. 물리로는 Parisi 행렬에서 replica 의 block 위치(overlap 값들)만 지정하고 어느 replica index 인지는 묻지 않는 것과 같다. <code>🔧</code> 이후 계수 합을 overlap 구조만의 함수로 만들기 위한 설정</li>
+<li><strong>s1–s3</strong> reference 경로 = 관측량이 실제로 붙어 있는 replica 들(anchor + 이미 섭동 관측량을 받은 replica). 제약 = "새 replica 가 reference replica 들과 어떤 overlap 단계에 있어야 하는가" 만 지정. 물리로는 Parisi 행렬에서 replica 의 block 위치(overlap 값들)만 지정하고 어느 replica index 인지는 묻지 않는 것과 같다. ¶3 은 이 설정에서 계수 합이 얼마나 상쇄되는지 가장 작은 예로 보인다. <code>🔧</code> 이후 계수 합을 overlap 구조만의 함수로 만들기 위한 설정</li>
 </ul>
 <hr />
 <p><a id="s3-3-p3"></a></p>
@@ -2367,11 +2383,22 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <p><strong>s8</strong> 다음 두 lemma 는 이 두 계산을 확장한다: 첫째는 부호 있는 합을 계산하고, 둘째는 지정된 split 이 옛 branching 깊이에서 벗어난 곳에서 일어날 때 절댓값 합을 통제한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> 예: 새 replica 가 anchor 와 overlap 단계 <span class="arithmatex">\(q_d\)</span> 를 가져야 할 때, 세 가지 방법(옛 replica 재사용 <span class="arithmatex">\(+1\)</span>, 깊이 <span class="arithmatex">\(d\)</span> 에서 새 replica <span class="arithmatex">\(m_d-2m_{d+1}\)</span>, 옛 replica 를 따라가다 더 깊은 곳에서 이탈 <span class="arithmatex">\(m_\ell-m_{\ell+1}\)</span>)의 계수가 크게 상쇄되어 <span class="arithmatex">\(m_d-m_{d+1}\)</span> 만 남는다. Parisi block 해석(R17)으로는 "anchor 와 깊이 <span class="arithmatex">\(d\)</span> block 은 같고 깊이 <span class="arithmatex">\(d+1\)</span> sub-block 은 다른 replica 의 수 <span class="arithmatex">\(=m_d-m_{d+1}\)</span>" — <strong>어떤 옛 replica 가 있었는지와 무관</strong>한 counting 이 결과로 나온다. <code>✅</code> 아래 전개</li>
-<li><strong>s5</strong> 🧭 물리 직관과의 차이: 균등 mesh(full-RSB 의 이산화)에서 정확한 overlap 값 하나의 무게는 <span class="arithmatex">\(\delta=1/L\to0\)</span> (연속 <span class="arithmatex">\(P(q)\)</span> 에서 한 점의 무게가 <span class="arithmatex">\(dx\)</span>). 그런데 부호 있는 합 <span class="arithmatex">\(-\delta\)</span> 를 만드는 항들의 절댓값은 <span class="arithmatex">\(O(1)\)</span> 이라, 오차를 <span class="arithmatex">\(\delta\)</span> 로 나누면 폭발할 수 있다. 물리의 replica 계산은 이런 상쇄를 형식적으로 처리하지만, 엄밀한 증명은 이를 따로 통제해야 한다. <code>✅</code> 아래 전개</li>
-<li><strong>s6–s7</strong> split 깊이가 옛 tree 에 branching 이 없는 깊이로 옮겨지면 선택지는 하나(<span class="arithmatex">\(-\delta\)</span>)뿐이라 절댓값도 작다. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s5</strong> 예: 깊이 <span class="arithmatex">\(d\)</span> 에서 갈라지는 옛 경로 두 개(첫째가 anchor)에 색 하나를 더하면서 anchor 와의 split 깊이를 지정하고, 먼저 <span class="arithmatex">\(d\)</span> 로(s1–s5), 다음에 <span class="arithmatex">\(d+1\lt L\)</span> 로(s6–s7) 두 경우를 비교한다. 깊이 <span class="arithmatex">\(d\)</span> 로 지정하면 세 가지 방법(옛 replica 재사용 <span class="arithmatex">\(+1\)</span>, 깊이 <span class="arithmatex">\(d\)</span> 에서 새 replica <span class="arithmatex">\(m_d-2m_{d+1}\)</span>, 옛 replica 를 따라가다 더 깊은 곳에서 이탈 <span class="arithmatex">\(m_\ell-m_{\ell+1}\)</span>)의 계수가 크게 상쇄되어 <span class="arithmatex">\(m_d-m_{d+1}\)</span> 만 남는다. Parisi block 해석(R17, 제안 해석)으로는 이 값이 'anchor 와 깊이 <span class="arithmatex">\(d\)</span> block 은 같고 깊이 <span class="arithmatex">\(d+1\)</span> sub-block 은 다른 자리의 형식적 수'인데, 균등 mesh 에서 <span class="arithmatex">\(-\delta\lt0\)</span> 이므로 실제 replica 개수가 아니라 <span class="arithmatex">\(n\to0\)</span> 형식적 counting 이고, 어떤 옛 replica 가 있었는지와 무관하다는 점은 수학적으로 성립한다. <code>✅</code> 합의 항등식은 아래 전개</li>
+<li><strong>s5</strong> 🧭 물리 직관과의 차이: 이 예의 부호 있는 합은 <span class="arithmatex">\(-\delta\)</span> 인데 상쇄 전 절댓값 합은 <span class="arithmatex">\(2+\delta\)</span> 다. history 별 오차가 <span class="arithmatex">\(\sup_E\lvert r_E\rvert\)</span> 로만 알려져 있으면 정규화 뒤 오차의 상한(¶1 의 부등식)에 붙는 증폭 인자는 최악의 경우 <span class="arithmatex">\((2+\delta)/\delta=2L+1\)</span> 이라, 물리의 replica 계산이 형식적으로 넘기는 이 상쇄를 증명은 따로 통제해야 한다. 작은 크기는 우연이 아니다: 개별 계수 <span class="arithmatex">\(c_E\)</span>(<span class="arithmatex">\(+1\)</span>, <span class="arithmatex">\(m_d-2m_{d+1}\)</span> 등)와 부호 있는 값 <span class="arithmatex">\(-\delta\)</span> 는 확률이 아니지만, 그 크기 <span class="arithmatex">\(m_{d+1}-m_d\)</span> 는 §3.2 의 tree 법칙 <span class="arithmatex">\(Q_2\)</span> 에서 두 경로가 깊이 <span class="arithmatex">\(d\)</span> 에서 갈라질 확률과 정확히 같고(¶4 의 <span class="arithmatex">\(\kappa(S)=(-1)^kk!\,Q_{k+1}(S)\)</span> 의 <span class="arithmatex">\(k=1\)</span> 경우이며 Lemma 3.4 로 옛 tree 와 무관), 균등 mesh 에서 그 값이 <span class="arithmatex">\(m\)</span> 좌표(Parisi <span class="arithmatex">\(x\)</span>)의 간격 <span class="arithmatex">\(\delta\)</span> 다. <code>✅</code> 합은 아래 전개 <code>📚</code> <span class="arithmatex">\(Q_2\)</span> 의 split 확률 <span class="arithmatex">\(m_{d+1}-m_d\)</span> 는 <a href="03-calculus-on-finite-trees.html#s3-2-p2">§3.2 의 <span class="arithmatex">\(Q_k\)</span> 정의 바로 뒤 예</a></li>
+<li><strong>s6–s7</strong> 요구 split 깊이를 <span class="arithmatex">\(d+1\lt L\)</span> 로 늦추면, 깊이 <span class="arithmatex">\(d+1\)</span> 에서 anchor 와 공통인 vertex 는 anchor 경로 위의 unary vertex(자식이 하나인 vertex) 하나뿐이고 그 아래에 다른 옛 leaf 가 없다. 그래서 이 예에서는 허용 선택이 그 vertex 의 fresh split 하나(<span class="arithmatex">\(-\delta\)</span>)이고 절댓값 합도 <span class="arithmatex">\(\delta\)</span> 다(증폭률 1). 일반적으로는(제약이 깊이만 정할 때) 이런 unary 선택이 한 단계에 여러 개일 수 있어 합이 <span class="arithmatex">\(s\delta\)</span> 이하로만 통제된다(¶10). 두 예가 tree 어디에 붙는지는 아래 그림. <code>✅</code> 아래 전개</li>
 <li><strong>s8</strong> <code>🔧</code> Lemma 3.4 (부호 있는 합의 일반 공식), Lemma 3.5 (절댓값 합의 bound) 예고.</li>
 </ul>
+<pre class="mermaid"><code>flowchart TD
+  R["root → 깊이 d 까지 공통 경로"] --&gt; V["깊이 d vertex: anchor 와 둘째 옛 경로가 갈라짐 (branching)"]
+  V --&gt; A1["anchor 쪽 깊이 d+1 vertex (unary)"]
+  A1 --&gt; A2["… anchor leaf"]
+  V --&gt; B1["둘째 경로 쪽 깊이 d+1 … L−1 vertex (unary 사슬)"]
+  B1 --&gt; B2["둘째 옛 leaf"]
+  B2 -.-&gt;|"선택 1: 재사용, 계수 +1"| F1["새 색"]
+  V -.-&gt;|"선택 2: 여기서 fresh, 계수 m_d − 2m_(d+1)"| F2["새 색"]
+  B1 -.-&gt;|"선택 3: 깊이 ℓ 에서 이탈, 계수 m_ℓ − m_(ℓ+1)"| F3["새 색"]
+  A1 -.-&gt;|"늦춘 예 (요구 깊이 d+1): fresh, 계수 −δ"| F4["새 색"]</code></pre>
+<p>깊이 <span class="arithmatex">\(d\)</span> 로 지정한 예(점선 1–3)에서는 깊이 <span class="arithmatex">\(d\)</span> vertex 가 이미 branching 이라 재사용·fresh·이탈이 모두 열려 <span class="arithmatex">\(O(1)\)</span> 계수끼리 상쇄되고, <span class="arithmatex">\(d+1\)</span> 로 늦춘 예(점선 4)에서는 anchor 쪽 unary vertex 하나만 열려 상쇄할 상대가 없다 — 이 대비를 일반 tree 로 넓힌 것이 Lemma 3.5 의 '옛 branching 깊이와 다른 깊이' 조건이며, 선택이 하나뿐인 것은 이 예에서만이고 일반 경우는 ¶10 의 <span class="arithmatex">\(s\delta\)</span> bound 로 통제된다.</p>
 <details>
 <summary>전개: 상쇄 예제의 합 (s3–s7)</summary>
 <p>anchor 경로 위의 깊이 <span class="arithmatex">\(d\)</span> vertex 는 자식 2 개(anchor 쪽, 둘째 경로 쪽), 둘째 경로 위의 깊이 <span class="arithmatex">\(\ell=d+1..L-1\)</span> vertex 는 unary. 둘째 경로를 따라가다 깊이 <span class="arithmatex">\(\ell\)</span> 에서 이탈하는 fresh path 의 계수는 <span class="arithmatex">\(m_\ell-1\cdot m_{\ell+1}\)</span>. 합:</p>
@@ -2381,8 +2408,10 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <p>✓</p>
 <p>균등 mesh: <span class="arithmatex">\(m_d-2m_{d+1}=\frac{d-2d-2}{L}=-\frac{d+2}{L}\)</span>, <span class="arithmatex">\(\sum_\ell\lvert m_\ell-m_{\ell+1}\rvert=\frac{L-1-d}{L}\)</span>. 절댓값 합 <span class="arithmatex">\(=1+\frac{d+2}{L}+\frac{L-1-d}{L}=2+\frac1L=2+\delta\)</span> ✓, 부호 있는 합 <span class="arithmatex">\(-\frac1L=-\delta\)</span> ✓.</p>
 <p>split 을 <span class="arithmatex">\(d+1\)</span> 로 늦추면: 깊이 <span class="arithmatex">\(d+1\)</span> 에서 anchor 와 공통이려면 anchor 쪽 자식으로 들어가야 하고, 그 아래는 anchor 만 있으므로 옛 leaf 선택 불가; anchor 경로의 깊이 <span class="arithmatex">\(d+1\)</span> vertex (unary)에서 fresh: 계수 <span class="arithmatex">\(m_{d+1}-m_{d+2}=-\delta\)</span> ✓.</p>
+<p>숫자로: <span class="arithmatex">\(L=10\)</span>, <span class="arithmatex">\(d=3\)</span> 이면 세 선택의 계수는 <span class="arithmatex">\(+1\)</span>, <span class="arithmatex">\(-0.5\)</span>, 이탈 6 개 합 <span class="arithmatex">\(-0.6\)</span>; 부호 있는 합 <span class="arithmatex">\(-0.1\)</span>, 절댓값 합 <span class="arithmatex">\(2.1\)</span> ✓.</p>
 </details>
-<p><strong>식 Eq. §3.3 ¶3 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶3 의 상쇄 식 — 세 선택의 계수와 그 합</summary>
 <table>
 <thead>
 <tr>
@@ -2414,11 +2443,12 @@ e^{m_d(X^A_{d-1}-X_{d-1})}=\int P_d(dz)\,\frac{e^{m_dX_d(z)}}{e^{m_dX_{d-1}}}\,e
 <tr>
 <td><span class="arithmatex">\(=m_d-m_{d+1}\)</span></td>
 <td>상쇄 결과</td>
-<td>anchor 와 정확히 단계 <span class="arithmatex">\(q_d\)</span> 인 replica 의 수 (옛 replica 와 무관; R17)</td>
-<td><code>✅</code></td>
+<td>anchor 와 정확히 단계 <span class="arithmatex">\(q_d\)</span> 인 자리의 형식적 수 (음수 가능; R17 제안 해석)</td>
+<td><code>✅</code> 항등식만</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s3-3-e7"></a></p>
 <h3 id="lemma-34-reference-path-totals">▸ Lemma 3.4 (Reference-path totals)<a class="headerlink" href="#lemma-34-reference-path-totals" title="Permanent link">&para;</a></h3>
@@ -2448,12 +2478,13 @@ m_d-jm_{d+1}. \tag{3.12}
 <p><strong>s5</strong> 더 일반적으로, 같은 한 단계 규칙을 이미 만들어진 임의의 reference 집합에서 시작해 반복할 수 있다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3, (3.12)</strong> Lemma 3.4: 새 replica 가 "reference replica 들과 깊이 <span class="arithmatex">\(d\)</span> block 은 공유하되, reference 가 있는 <span class="arithmatex">\(j\)</span> 개 sub-block 은 피해야" 할 때 계수 합 <span class="arithmatex">\(=m_d-jm_{d+1}\)</span>. <strong>옛 tree(관측량에 등장하지만 아직 쓰지 않은 replica 들)에 무관.</strong> Parisi block counting (R17)과 정확히 같다: 크기 <span class="arithmatex">\(m_d\)</span> block 에서 크기 <span class="arithmatex">\(m_{d+1}\)</span> sub-block <span class="arithmatex">\(j\)</span> 개를 뺀 replica 수. <code>✅</code> 아래 전개 (무작위 tree 200 개 brute force)</li>
-<li><strong>s4, (3.13)</strong> reference tree 모양 <span class="arithmatex">\(S\)</span> 전체에 대해 곱하면 <span class="arithmatex">\(\kappa(S)=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})\)</span>. 물리로는 "Parisi 행렬에서 replica 들을 지정된 overlap 구조로 배치하는 방법의 수 (<span class="arithmatex">\(n\to0\)</span>)" — replica 계산에서 overlap 구조별 가중치로 나오는 조합 인자의 엄밀한 판본으로 보인다 (R17, 제안 해석). <code>✅</code> RS 에서 <span class="arithmatex">\((n-1)\cdots(n-k)\vert_{n=0}\)</span> 재현 (아래 전개)</li>
-<li><strong>s5</strong> <code>🔧</code> 이미 만든 reference 집합에서 출발해도 같은 규칙.</li>
+<li><strong>s1–s3, (3.12)</strong> Lemma 3.4 는 새 색 하나의 한 단계 계수 합을 다룬다. 새 색이 지정된 reference prefix 를 깊이 <span class="arithmatex">\(d\)</span> 까지 따라간 뒤 reference 를 포함하는 <span class="arithmatex">\(j\ge1\)</span> 개 자식을 <strong>모두</strong> 피해야 하고 <strong>그 밖의 진행에는 제약이 없으면</strong>, 허용되는 모든 선택의 계수 합은 옛 tree(쓰지 않은 옛 경로)와 무관하게 <span class="arithmatex">\(m_d-jm_{d+1}\)</span> 이다. 지정된 물리 역할(Parisi block counting, R17) 하에서는 크기 <span class="arithmatex">\(m_d\)</span> block 에서 크기 <span class="arithmatex">\(m_{d+1}\)</span> sub-block <span class="arithmatex">\(j\)</span> 개를 뺀 '자리 수'와 같은 대수식이지만, <span class="arithmatex">\(m_d\lt m_{d+1}\)</span> 이라 음수가 될 수 있는 <span class="arithmatex">\(n\to0\)</span> 형식적 counting 이지 실제 replica 개수나 확률은 아니다 — 제안 해석. <code>✅</code> 수학 항등식은 아래 brute force, 역할 대수식의 일치는 아래 RS 극한 전개</li>
+<li><strong>s4, (3.13)</strong> 이제 anchor 와 <span class="arithmatex">\(k\)</span> 개 색만으로 이룬 reference tree 모양 <span class="arithmatex">\(S\)</span> (overlap 관계의 설계도)를 하나 고정한다. 그러면 <strong>임의의 옛 tree</strong> 에 대해, anchor 와 색들이 정확히 <span class="arithmatex">\(S\)</span> 를 이루는 모든 호환 extension 의 계수 합은 <span class="arithmatex">\(\kappa(S)=\prod_{v\in\operatorname{Br}(S)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})\)</span> 이다. 여기서 <span class="arithmatex">\(\operatorname{Br}(S)\)</span> 는 <span class="arithmatex">\(S\)</span> 의 branching vertex 집합, <span class="arithmatex">\(a_v\)</span> 는 <span class="arithmatex">\(v\)</span> 의 자식 수, <span class="arithmatex">\(d_v\)</span> 는 깊이이고, 각 <span class="arithmatex">\(v\)</span> 에서 새 자식 그룹을 처음 열 때마다 인자 하나가 붙는다(¶6). <code>✅</code> RS 에서 <span class="arithmatex">\((n-1)\cdots(n-k)\vert_{n=0}=(-1)^kk!\)</span> 재현 (아래 전개)</li>
+<li><strong>s4</strong> 옛 tree 가 anchor 하나뿐이면 모든 선택이 fresh 이므로, §3.2 의 tree 법칙 <span class="arithmatex">\(Q_k\)</span> 정의(fresh 계수의 절댓값을 현재 leaf 수로 나눈 것이 선택 확률)에서 바로 <span class="arithmatex">\(\kappa(S)=(-1)^kk!\,Q_{k+1}(S)\)</span> 가 된다. 즉 <span class="arithmatex">\(\kappa(S)\)</span> 는 부호 <span class="arithmatex">\((-1)^k\)</span> 와 <span class="arithmatex">\(k!\)</span> 을 뗀, <span class="arithmatex">\(k+1\)</span> 개 replica 의 overlap tree 가 <span class="arithmatex">\(S\)</span> 일 확률이고, Lemma 3.4 로 <span class="arithmatex">\(\kappa(S)\)</span> 가 옛 tree 와 무관하므로 이 등식은 어떤 옛 tree 에서도 성립한다(옛 replica 재사용과 fresh 계수가 상쇄되어 '옛 replica 가 없는 세계'의 확률로 돌아간다). 1RSB 에서는 <span class="arithmatex">\(Q_k\)</span> 의 선택 규칙이 ML 의 Chinese restaurant process(Pitman 의 PD<span class="arithmatex">\((m,0)\)</span>)와 같은 꼴이고(아래 전개), 다단계 <span class="arithmatex">\(Q_k\)</span> 를 Ruelle cascade 에서 뽑은 replica 들의 overlap tree 법칙으로 읽는 것은 제안 해석(R18)이다. <code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-2-p2">§3.2 ¶2 의 <span class="arithmatex">\(Q_k\)</span> 규칙과 Lemma 3.2 (Logarithmic expansion) 증명</a> (Lemma 3.4 의 증명은 ¶5–¶6) <code>📚</code> CRP 는 Pitman, Combinatorial Stochastic Processes (2006) ❓ 절 번호 미확인</li>
 </ul>
 <details>
-<summary>전개: (3.12) brute force 와 κ 의 RS 극한 (s1–s5)</summary>
+<summary>전개: (3.12) brute force 와 κ 의 RS·1RSB 극한 (s1–s5)</summary>
+<p>이 실험은 한 단계 식 (3.12) 만, <span class="arithmatex">\(L=5\)</span>, 깊이별 자식 0–2 개 범위에서 확인한다. 일반 증명은 ¶5–¶6 이다.</p>
 <p><strong>brute force (sympy, 기호 <span class="arithmatex">\(m_1..m_4\)</span>, <span class="arithmatex">\(L=5\)</span>).</strong> 깊이별 자식 0–2 인 무작위 옛 tree (leaf 3–9 개), 무작위 vertex <span class="arithmatex">\(v\)</span> (깊이 <span class="arithmatex">\(d\)</span>) 와 reference 자식 <span class="arithmatex">\(j\)</span> 개를 고르고, 허용 선택 — <span class="arithmatex">\(v\)</span> 에서 fresh (<span class="arithmatex">\(m_d-n_vm_{d+1}\)</span>), 제외되지 않은 자식 subtree 의 옛 leaf (계수 1), 그 subtree 안 내부 vertex 의 fresh (<span class="arithmatex">\(m_{d_u}-n_um_{d_u+1}\)</span>) — 의 계수를 모두 더해 <span class="arithmatex">\(m_d-jm_{d+1}\)</span> 과 비교.</p>
 <div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-</span> <span class="n">nchild</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">m</span><span class="p">[</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">total</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">lf</span> <span class="ow">in</span> <span class="n">leaves</span> <span class="k">if</span> <span class="n">lf</span><span class="p">[:</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">lf</span><span class="p">[:</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">excl</span><span class="p">)</span>
@@ -2463,8 +2494,16 @@ m_d-jm_{d+1}. \tag{3.12}
 </code></pre></div>
 <p>결과: 200 개 모두 <strong>기호적으로 0</strong> ✓.</p>
 <p><strong>RS 극한.</strong> <span class="arithmatex">\(L=1\)</span>: 모든 branching 은 root (<span class="arithmatex">\(m_0=0\)</span>, <span class="arithmatex">\(m_1=1\)</span>). anchor + 색 <span class="arithmatex">\(k\)</span> 개가 모두 서로 다른 replica (star, <span class="arithmatex">\(a_{\rm root}=k+1\)</span>): <span class="arithmatex">\(\kappa=\prod_{j=1}^{k}(0-j)=(-1)^kk!\)</span>. replica trick 에서 replica <span class="arithmatex">\(a\)</span> 와 다르고 서로 다른 replica <span class="arithmatex">\(b_1..b_k\)</span> 를 고르는 방법 수 <span class="arithmatex">\((n-1)(n-2)\cdots(n-k)\)</span> 를 <span class="arithmatex">\(n\to0\)</span> 으로 보내면 <span class="arithmatex">\((-1)^kk!\)</span> ✓.</p>
+<p><strong>1RSB 극한.</strong> <span class="arithmatex">\(L=2\)</span>, <span class="arithmatex">\(m_0=0\)</span>, <span class="arithmatex">\(m_1=m\)</span>, <span class="arithmatex">\(m_2=1\)</span>. 기호 <span class="arithmatex">\((x)_n=x(x+1)\cdots(x+n-1)\)</span> 은 상승 factorial(<span class="arithmatex">\((x)_0=1\)</span>)이다. leaf 가 <span class="arithmatex">\(s\)</span> 개이고 block(깊이 1 vertex)이 <span class="arithmatex">\(t\)</span> 개(block <span class="arithmatex">\(i\)</span> 에 leaf <span class="arithmatex">\(n_i\)</span> 개)일 때 <span class="arithmatex">\(Q\)</span> 규칙은 새 block(root 에서 fresh) 확률 <span class="arithmatex">\(tm/s\)</span>, block <span class="arithmatex">\(i\)</span> 에 앉기(깊이 1 vertex 에서 fresh) <span class="arithmatex">\((n_i-m)/s\)</span> 이고 분자의 합은 <span class="arithmatex">\(tm+\sum_i(n_i-m)=s\)</span> ✓ — PD<span class="arithmatex">\((m,0)\)</span> Chinese restaurant process 의 착석 규칙(새 테이블 <span class="arithmatex">\(tm/s\)</span>, 테이블 <span class="arithmatex">\(i\)</span> 에 <span class="arithmatex">\((n_i-m)/s\)</span>)과 같다.</p>
+<p>(3.13) 으로: <span class="arithmatex">\(S\)</span> 의 leaf 가 <span class="arithmatex">\(k+1\)</span> 개이고 block 이 <span class="arithmatex">\(t\)</span> 개면 root 인자 <span class="arithmatex">\(\prod_{j=1}^{t-1}(0-jm)=(-1)^{t-1}(t-1)!\,m^{t-1}\)</span>, block <span class="arithmatex">\(i\)</span> 인자 <span class="arithmatex">\(\prod_{j=1}^{n_i-1}(m-j)=(-1)^{n_i-1}(1-m)_{n_i-1}\)</span>, 곱의 부호는 <span class="arithmatex">\((-1)^{(t-1)+\sum_i(n_i-1)}=(-1)^{(t-1)+(k+1-t)}=(-1)^k\)</span> 이므로</p>
+<div class="arithmatex">\[
+\kappa(S)=(-1)^kk!\cdot\frac{(t-1)!\,m^{t-1}\prod_i(1-m)_{n_i-1}}{k!}
+\]</div>
+<p>이고 분수가 PD<span class="arithmatex">\((m,0)\)</span> 의 EPPF(크기 <span class="arithmatex">\(n_1,\ldots,n_t\)</span> 인 분할 하나의 확률) 다 ✓. 수치: <span class="arithmatex">\(m=1/2\)</span>, <span class="arithmatex">\(k=2\)</span>, 분할 <span class="arithmatex">\(\{2,1\}\)</span> 이면 <span class="arithmatex">\(\kappa=(-\tfrac12)(-\tfrac12)=\tfrac14\)</span>, EPPF <span class="arithmatex">\(=\tfrac{m(1-m)}{2!}=\tfrac18\)</span>, <span class="arithmatex">\(2!\cdot\tfrac18=\tfrac14\)</span> ✓.</p>
+<p><strong>s5</strong> <code>🔧</code> 이미 만든 reference 집합에서 출발해도 같은 규칙.</p>
 </details>
-<p><strong>식 (3.12) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (3.12) — 깊이 d block 과 제외된 j 개 sub-block</summary>
 <table>
 <thead>
 <tr>
@@ -2489,7 +2528,9 @@ m_d-jm_{d+1}. \tag{3.12}
 </tr>
 </tbody>
 </table>
-<p><strong>식 (3.13) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (3.13) — branching vertex 별 인자 곱과 옛 tree 무관성</summary>
 <table>
 <thead>
 <tr>
@@ -2516,10 +2557,11 @@ m_d-jm_{d+1}. \tag{3.12}
 <td>옛 tree 무관</td>
 <td></td>
 <td>관측량의 미사용 replica 와 무관한 보편 인자</td>
-<td><code>✅</code> brute force</td>
+<td><code>✅</code> 한 단계 (3.12) 는 brute force(L=5, 자식 ≤2), (3.13) 은 ¶6 의 역순 반복 합으로</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s3-3-e7)</em></p>
 <p><a id="s3-3-e8"></a></p>
@@ -2551,13 +2593,15 @@ q+\sum_{\beta\text{ internal in the subtree}}
 <p><strong>s8</strong> 이 기여들을 지정된 vertex 에서의 fresh 선택에 더하면 <span class="arithmatex">\(m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}\)</span> 이 된다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s8</strong> 증명의 핵심: reference 가 없는 subtree 하나의 모든 선택(옛 replica 들 + 그 안의 새 replica 들)의 계수 합은 정확히 <span class="arithmatex">\(m_{d+1}\)</span> = "그 sub-block 의 크기". 즉 관측량에 쓰이지 않은 옛 replica 들은 counting 에서 sub-block 의 크기 <span class="arithmatex">\(m_{d+1}\)</span> 로 정확히 대체된다. <code>✅</code> 아래 전개, §3.3 ¶4 의 brute force</li>
+<li><strong>s1–s8</strong> 이 증명은 (3.12) 가 옛 tree 와 무관한 이유를 보인다. reference 가 없는 subtree 하나(지정 vertex 의 깊이 <span class="arithmatex">\(d+1\)</span> 자식에 뿌리) 안의 모든 선택(옛 leaf + 내부 fresh)의 계수 합은 정확히 그 sub-block 의 크기 <span class="arithmatex">\(m_{d+1}\)</span> 이다. 지정 vertex 에서 바로 갈라지는 fresh 계수 <span class="arithmatex">\(m_d-nm_{d+1}\)</span> 은 reference 수 <span class="arithmatex">\(j\)</span> 가 아니라 현재 tree 전체의 자식 수 <span class="arithmatex">\(n\)</span>(쓰지 않은 옛 경로 포함)에 의존하지만, <span class="arithmatex">\(n-j\)</span> 개 subtree 가 <span class="arithmatex">\(+m_{d+1}\)</span> 씩 더해 <span class="arithmatex">\(m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}\)</span> 로 <span class="arithmatex">\(n\)</span> 이 정확히 지워진다 — 물리로는 쓰지 않은 옛 replica 들이 counting 에서 sub-block 크기 <span class="arithmatex">\(m_{d+1}\)</span> 로 대체된다는 뜻이다(제안 해석). <code>✅</code> 아래 전개, §3.3 ¶4 의 brute force</li>
 </ul>
 <details>
 <summary>전개: subtree 안의 telescoping (s6–s8)</summary>
+<p>여기서 <span class="arithmatex">\(\beta\)</span> 는 subtree 의 내부 vertex, <span class="arithmatex">\(n_\beta\)</span> 는 그 자식 수, <span class="arithmatex">\(d_\beta\)</span> 는 깊이다. 아래 식 <span class="arithmatex">\(q+\sum_\beta(m_{d_\beta}-n_\beta m_{d_\beta+1})\)</span> 에서 edge <span class="arithmatex">\(\beta\to\beta'\)</span> 마다 위 끝 <span class="arithmatex">\(\beta\)</span> 의 <span class="arithmatex">\(-n_\beta m_{d_\beta+1}\)</span> 중 한 몫 <span class="arithmatex">\(-m_{d_{\beta'}}\)</span> 과 아래 끝 <span class="arithmatex">\(\beta'\)</span>(내부 vertex)의 <span class="arithmatex">\(+m_{d_{\beta'}}\)</span> 가 상쇄되고, 아래 끝이 leaf 면 남는 <span class="arithmatex">\(-m_L=-1\)</span> 이 옛 leaf 계수 <span class="arithmatex">\(+1\)</span> 과 상쇄되어 뿌리의 <span class="arithmatex">\(+m_{d+1}\)</span> 만 남는다.</p>
 <p>깊이 <span class="arithmatex">\(d+1\)</span> 에 뿌리를 둔 subtree 에 (3.7) 의 논증을 적용: <span class="arithmatex">\(\sum_{\beta}(n_\beta m_{d_\beta+1}-m_{d_\beta})=q-m_{d+1}\)</span> (leaf 는 <span class="arithmatex">\(m_L=1\)</span> 씩, subtree 의 뿌리는 <span class="arithmatex">\(-m_{d+1}\)</span>). 부호를 바꾸면 <span class="arithmatex">\(q+\sum_\beta(m_{d_\beta}-n_\beta m_{d_\beta+1})=m_{d+1}\)</span> ✓. 말단 자식 (<span class="arithmatex">\(d+1=L\)</span>): 옛 leaf 하나, 내부 vertex 없음 → <span class="arithmatex">\(1=m_L\)</span> ✓. <span class="arithmatex">\(n-j\)</span> 개 subtree 합 <span class="arithmatex">\((n-j)m_{d+1}\)</span> + 지정 vertex 의 fresh <span class="arithmatex">\(m_d-nm_{d+1}\)</span> = <span class="arithmatex">\(m_d-jm_{d+1}\)</span> ✓.</p>
 </details>
-<p><strong>식 Eq. §3.3 ¶5 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶5 의 subtree telescoping 식 — 옛 leaf 수, 내부 fresh 계수, 합</summary>
 <table>
 <thead>
 <tr>
@@ -2588,6 +2632,7 @@ q+\sum_{\beta\text{ internal in the subtree}}
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s3-3-p6"></a></p>
 <h4 id="33-6">§3.3 ¶6<a class="headerlink" href="#33-6" title="Permanent link">&para;</a></h4>
@@ -2605,11 +2650,11 @@ q+\sum_{\beta\text{ internal in the subtree}}
 <p><strong>s5</strong> 그 인자들이 색의 순서와 무관하게 <a href="03-calculus-on-finite-trees.html#eq-3-13">(3.13)</a> 을 준다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> 한 단계 합이 reference tree 의 모양에만 의존하므로 마지막 선택부터 거꾸로 합하면 곱이 된다. branching vertex 에 자식 그룹이 <span class="arithmatex">\(a_v\)</span> 개면, 두 번째·세 번째… 그룹이 처음 열릴 때 제외 수가 <span class="arithmatex">\(1,2,\ldots,a_v-1\)</span>. 물리로는 "replica 를 하나씩 서로 다른 sub-block 에 넣을 때마다 남은 자리가 <span class="arithmatex">\(m_d-jm_{d+1}\)</span>" 이라는 순차 counting. 순서 무관성 = replica 의 순열 대칭. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s5</strong> 한 단계 합이 reference tree 의 모양에만 의존하므로 마지막 선택부터 거꾸로 합하면 곱이 된다. branching vertex 에 자식 그룹이 <span class="arithmatex">\(a_v\)</span> 개면, 두 번째·세 번째… 그룹이 처음 열릴 때 제외 수가 <span class="arithmatex">\(1,2,\ldots,a_v-1\)</span>. 물리로는 "replica 를 하나씩 서로 다른 sub-block 에 넣을 때마다 남은 자리가 <span class="arithmatex">\(m_d-jm_{d+1}\)</span>" 이라는 순차 counting. 순서 무관성은 1RSB 에서는 ¶4 의 Chinese restaurant 그림의 exchangeability(손님이 오는 순서를 바꿔도 같은 분할의 확률 EPPF 가 같다)로 확인되고, 일반 <span class="arithmatex">\(L\)</span> 에서 이를 replica 순열 대칭과 같은 것으로 보는 것은 제안 해석이다. 이로써 Lemma 3.4 가 끝나고, ¶7 은 이 작은 곱으로 나눌 때 필요한 절댓값 bound 로 넘어간다. <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: 인자 1..a_v−1 의 등장 (s4–s5)</summary>
-<p>branching vertex <span class="arithmatex">\(v\)</span> 에 최종적으로 <span class="arithmatex">\(a_v\)</span> 개 자식 그룹이 있다. anchor 를 포함하는 첫 그룹은 처음부터 있다. 어떤 색이 아직 열리지 않은 그룹을 처음 열 때, 이미 열린 그룹 수(= 제외 reference 자식 수)는 <span class="arithmatex">\(1,2,\ldots,a_v-1\)</span> 을 차례로 지나며, 그 단계의 합은 (3.12) 로 <span class="arithmatex">\(m_{d_v}-jm_{d_v+1}\)</span>. 이미 열린 그룹 안으로 들어가는 색은 더 깊은 vertex 에서 같은 논리로 처리된다. 순서를 바꿔도 각 <span class="arithmatex">\(v\)</span> 의 <span class="arithmatex">\(j\)</span> 값 집합 <span class="arithmatex">\(\{1..a_v-1\}\)</span> 은 같다 ✓. RS star 예(<span class="arithmatex">\(\kappa=(-1)^kk!\)</span>)는 §3.3 ¶4 전개 ✓.</p>
+<p>branching vertex <span class="arithmatex">\(v\)</span> 에 최종적으로 <span class="arithmatex">\(a_v\)</span> 개 자식 그룹이 있다. <span class="arithmatex">\(v\)</span> 를 처음 지나는 reference(anchor 이거나, <span class="arithmatex">\(v\)</span> 보다 위에서 갈라져 나온 색)가 첫 그룹을 열며, 그 reference 의 인자는 <span class="arithmatex">\(v\)</span> 보다 위 vertex 에서 붙으므로 <span class="arithmatex">\(v\)</span> 에서는 인자가 없다. 어떤 색이 아직 열리지 않은 그룹을 처음 열 때, 이미 열린 그룹 수(= 제외 reference 자식 수)는 <span class="arithmatex">\(1,2,\ldots,a_v-1\)</span> 을 차례로 지나며, 그 단계의 합은 (3.12) 로 <span class="arithmatex">\(m_{d_v}-jm_{d_v+1}\)</span>. 이미 열린 그룹 안으로 들어가는 색은 더 깊은 vertex 에서 같은 논리로 처리된다. 순서를 바꿔도 각 <span class="arithmatex">\(v\)</span> 의 <span class="arithmatex">\(j\)</span> 값 집합 <span class="arithmatex">\(\{1..a_v-1\}\)</span> 은 같다 ✓. RS star 예(<span class="arithmatex">\(\kappa=(-1)^kk!\)</span>)는 §3.3 ¶4 전개 ✓.</p>
 </details>
 <hr />
 <p>∎</p>
@@ -2625,10 +2670,11 @@ q+\sum_{\beta\text{ internal in the subtree}}
 <p><strong>s3</strong> 다음 추정은 그런 vertex 각각에 작은 인자 하나를 부과한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> 균등 mesh 에서 <span class="arithmatex">\(\kappa(S)\)</span> 는 branching 하나당 <span class="arithmatex">\(m_d-m_{d+1}=-\delta\)</span> 인자를 가질 수 있어 작다. 나중에 이것으로 나누므로, 절댓값 합도 같은 차수 <span class="arithmatex">\(\delta^b\)</span> 임을 보여야 한다. 아이디어: 목표 overlap 단계가 옛 replica 들의 어떤 overlap 단계와도 다르면, 그 단계를 만들 수 있는 것은 "새 replica 가 unary 지점에서 갈라지는" 선택(<span class="arithmatex">\(-\delta\)</span>)뿐이다. <code>✅</code> 아래 전개 (§3.3 ¶3 의 둘째 예와 같은 계산)</li>
+<li><strong>s1–s3</strong> 이 문단은 Lemma 3.5 가 무엇을 bound 해야 하는지 정한다. 균등 mesh 에서 <span class="arithmatex">\(\kappa(S)\)</span> 의 각 branching vertex 인자 중 <span class="arithmatex">\(j=1\)</span> 인자만 <span class="arithmatex">\(m_d-m_{d+1}=-\delta\)</span> 로 작고(<span class="arithmatex">\(m_d\)</span> 가 <span class="arithmatex">\(0\)</span> 에서 떨어져 있으면 <span class="arithmatex">\(j\ge2\)</span> 인자는 작지 않다, ¶13), 이런 인자를 포함한 곱으로 나눌 때는 절댓값 합도 그만큼 작아야 한다. 단 Lemma 3.5 가 <span class="arithmatex">\(\delta\)</span> 를 보장하는 것은 목표 깊이가 옛 tree 의 어떤 branching 깊이와도 다른 <span class="arithmatex">\(b\)</span> 개 vertex 뿐이고, 나누는 수도 <span class="arithmatex">\(\kappa(S)\)</span> 전체가 아니라 그 <span class="arithmatex">\(b\)</span> 개 vertex 의 모든 인자(<span class="arithmatex">\(j=1,\ldots,a_v-1\)</span>)를 곱한 <span class="arithmatex">\(J\)</span> 이며 그 크기는 <span class="arithmatex">\(\delta^b\)</span> 차수다(¶9, ¶13). <code>✅</code> 아래 전개 (§3.3 ¶3 의 둘째 예와 같은 계산)</li>
 </ul>
 <details>
 <summary>전개: unary split 의 계수 (s2)</summary>
+<p>아이디어: 그런 깊이의 옛 vertex 는 모두 unary(자식이 하나)이므로, 목표 vertex 가 처음 branching 이 되는 삽입은 unary 지점의 fresh split(<span class="arithmatex">\(-\delta\)</span>)일 수밖에 없고, 그 뒤 같은 vertex 에 경로를 더 붙일 때는 <span class="arithmatex">\(\delta\)</span> 가 다시 필요하지 않다.</p>
 <p>unary vertex (<span class="arithmatex">\(n_\beta=1\)</span>) 깊이 <span class="arithmatex">\(d\)</span> 에서 fresh: <span class="arithmatex">\(\gamma=m_d-m_{d+1}=-\delta\)</span> (균등 mesh) ✓. 목표 깊이에 옛 branching 이 없으면 그 깊이의 옛 vertex 는 모두 unary 이므로, 그 깊이에서 새 branching 을 만드는 선택의 계수는 모두 <span class="arithmatex">\(-\delta\)</span> ✓.</p>
 </details>
 <hr />
@@ -2656,10 +2702,11 @@ q+\sum_{\beta\text{ internal in the subtree}}
 <p><strong>s6</strong> 상수는 <span class="arithmatex">\(L\)</span>, 지정된 깊이들, 그리고 서로 다른 vertex 에서의 깊이 일치에 무관하다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5, (3.14)</strong> Lemma 3.5: 균등 mesh(full-RSB 이산화)에서, 옛 replica 들에 없던 "새로운" overlap 단계 <span class="arithmatex">\(b\)</span> 개를 요구하면 계수 절댓값 합이 <span class="arithmatex">\(\delta^b\)</span> 만큼 작다. 물리로는 연속 <span class="arithmatex">\(P(q)\)</span> 에서 새 overlap 값 하나를 지정할 때마다 <span class="arithmatex">\(dx\)</span> 가 하나씩 붙는다는 것 — 확률의 크기 counting 과 일치. <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-3-p10">§3.3 ¶10</a>–¶12</li>
-<li><strong>s6</strong> 상수가 <span class="arithmatex">\(L\)</span> 에 무관 → <span class="arithmatex">\(L\to\infty\)</span> (full-RSB 극한) 에서도 유효. <code>🔧</code></li>
+<li><strong>s1–s5, (3.14)</strong> Lemma 3.5 는 균등 mesh <span class="arithmatex">\(m_d=d/L\)</span>(<span class="arithmatex">\(\delta=1/L\)</span>)에서 상쇄 전 절댓값 합의 크기를 다룬다. 옛 leaf 가 <span class="arithmatex">\(q\)</span> 개인 tree(여기서 <span class="arithmatex">\(q\)</span> 는 leaf 수이지 overlap 값 <span class="arithmatex">\(q_d\)</span> 가 아니다)에 canceled-anchor extension 규칙(§3.2: 각 색이 anchor 가 아닌 쓰지 않은 옛 leaf(계수 <span class="arithmatex">\(1\)</span>) 또는 내부 vertex 의 fresh path 로 가는 규칙)으로 <span class="arithmatex">\(k\)</span> 개 색을 배정하고, 지정 모양의 branching vertex 중 깊이가 옛 tree 의 어떤 branching 깊이와도 다른 것이 <span class="arithmatex">\(b\)</span> 개면, 허용 history 의 계수 절댓값 합은 <span class="arithmatex">\(C_{q,k}\delta^b\)</span> 이하다; <strong><span class="arithmatex">\(\delta\)</span> 는 overlap 값이 아니라 그런 vertex 하나마다 붙는다</strong>(s6). 물리로는 Parisi <span class="arithmatex">\(x\)</span> 축을 같은 간격 <span class="arithmatex">\(\delta\)</span> 로 나눴을 때 overlap 구조에 필요한 분기 사건 하나마다 mesh 인자 <span class="arithmatex">\(dx=\delta\)</span> 하나를 지불한다는 그림이지만, 이는 부호 있는 계수의 절댓값 bound 이지 overlap 값들이 뽑힐 확률은 아니다(제안 해석). <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-3-p10">§3.3 ¶10</a>–¶12</li>
+<li><strong>s6</strong> 상수 <span class="arithmatex">\(C_{q,k}\)</span> 는 <span class="arithmatex">\(L\)</span>, 지정 깊이들, 그 깊이들의 일치에 무관하고 <span class="arithmatex">\(q\)</span> 와 <span class="arithmatex">\(k\)</span> 에만 의존한다. 따라서 <span class="arithmatex">\(q,k\)</span> 를 고정하면 균등 mesh 를 <span class="arithmatex">\(L\to\infty\)</span> 로 세분하는 극한에서도 균일하게 유효하다(임의의 Parisi measure 에 대한 주장은 아니다). <code>🔧</code> 깊이 일치에 무관하므로 서로 다른 두 목표 vertex 가 같은 깊이에 있어도 <span class="arithmatex">\(\delta^2\)</span> 이다(¶12 s4). 허용 집합에 추가 제약을 걸어도 bound 는 그대로다(절댓값 합은 집합을 줄이면 줄기만 한다). §7 은 이것으로 두 사본의 목표 vertex <span class="arithmatex">\(2b\)</span> 개(사본끼리 같은 깊이)에서 <span class="arithmatex">\(\delta^{2b}\)</span> 를 얻는다 <code>📚</code> <a href="07-decorrelation-on-prescribed-trees.html#s7-3-p5">§7.3 ¶5</a></li>
 </ul>
-<p><strong>식 (3.14) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (3.14) — 절댓값 합과 vertex 당 δ 의 bound</summary>
 <table>
 <thead>
 <tr>
@@ -2679,11 +2726,12 @@ q+\sum_{\beta\text{ internal in the subtree}}
 <tr>
 <td><span class="arithmatex">\(C_{q,k}\delta^b\)</span></td>
 <td>bound</td>
-<td>새 overlap 단계 하나당 <span class="arithmatex">\(\delta=dx\)</span> 하나</td>
+<td>목표 branching vertex 하나당 <span class="arithmatex">\(\delta\)</span> 하나 (깊이가 겹쳐도 각각)</td>
 <td><code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-3-p12">§3.3 ¶12</a> 의 명시적 상수</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s3-3-p9"></a></p>
 <h4 id="33-9">§3.3 ¶9<a class="headerlink" href="#33-9" title="Permanent link">&para;</a></h4>
@@ -2704,13 +2752,15 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s2</strong> 그들 모두에서 <span class="arithmatex">\(m_{d_v}\geq\eta\gt 0\)</span> 이면 <span class="arithmatex">\(J\ne0\)</span> 이고 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s2, (3.15)</strong> <span class="arithmatex">\(J\)</span> = 그 <span class="arithmatex">\(b\)</span> 개 branching 에서의 <span class="arithmatex">\(\kappa\)</span> 인자 곱 (부호 있는 counting, R17). 절댓값 합을 <span class="arithmatex">\(\lvert J\rvert\)</span> 로 나눠도 유계 — "작은 신호(<span class="arithmatex">\(J\sim\delta^b\)</span>)로 나눠도 오차가 같은 차수라 비가 유한". 조건 <span class="arithmatex">\(m_{d_v}\ge\eta\)</span>: overlap 단계가 가장 바깥(<span class="arithmatex">\(q_0\)</span> 근처, <span class="arithmatex">\(x\approx0\)</span>)에 붙지 않을 것. <code>✅</code> <a href="03-calculus-on-finite-trees.html#s3-3-p13">§3.3 ¶13</a> 의 하한을 여기서 다시 계산</li>
+<li><strong>s1–s2, (3.15)</strong> <span class="arithmatex">\(J\)</span> 는 지정된 <span class="arithmatex">\(b\)</span> 개 branching vertex 의 인자만 곱한 정규화 계수다. history 별 오차가 <span class="arithmatex">\(r_E\)</span> 면 <span class="arithmatex">\(\lvert J^{-1}\sum_Ec_Er_E\rvert\le C_{q,k,\eta}\sup_E\lvert r_E\rvert\)</span> 이므로, (3.15) 는 작은 계수로 나눈 뒤에도 오차가 mesh 세분화 때문에 증폭되지 않는다는 뜻이다. 조건 <span class="arithmatex">\(m_{d_v}\ge\eta\gt0\)</span> 은 각 분기의 <span class="arithmatex">\(m\)</span> 좌표(Parisi <span class="arithmatex">\(x\)</span>)를 <span class="arithmatex">\(0\)</span> 에서 떼어 놓아 세 번째 이후 자식 그룹을 여는 인자까지 작아지는 것을 막는다(하한 계산은 ¶13). <code>✅</code> <a href="03-calculus-on-finite-trees.html#s3-3-p13">§3.3 ¶13</a> 의 하한을 여기서 다시 계산</li>
+<li><strong>s2</strong> 비유: 절댓값 합 / <span class="arithmatex">\(\lvert\)</span>부호 있는 합<span class="arithmatex">\(\rvert\)</span> 은 Monte Carlo sign problem 의 <span class="arithmatex">\(\lvert\)</span>평균 부호<span class="arithmatex">\(\rvert^{-1}\)</span>(<span class="arithmatex">\(\lvert c_E\rvert\)</span> 에 비례해 history 를 뽑는 ensemble 에서 부호의 평균)이고, 수치해석으로는 합의 condition number 다. 허용 집합에 추가 제약이 없고(그래서 부호 있는 합 <span class="arithmatex">\(=\kappa(S)\)</span>, Lemma 3.4), <span class="arithmatex">\(S\)</span> 의 branching vertex 가 모두 옛 branching 깊이와 다른 새 깊이이며(그래서 <span class="arithmatex">\(\kappa(S)=J\)</span>) 모두 <span class="arithmatex">\(m_{d_v}\ge\eta\)</span> 이면, (3.15) 는 평균 부호의 크기가 <span class="arithmatex">\(L\)</span> 에 무관하게 <span class="arithmatex">\(1/C_{q,k,\eta}\)</span> 이상이라는 말이다; 추가 제약이 있거나 일부 vertex 만 <span class="arithmatex">\(b\)</span> 에 들면 부호 있는 합은 <span class="arithmatex">\(J\)</span> 와 다를 수 있어(추가 제약이 있으면 0 일 수도 있다) (3.15) 는 작은 <span class="arithmatex">\(J\)</span> 로 나눈 오차의 bound 로만 읽는다. 옛 branching 깊이와 겹치는 vertex 는 <span class="arithmatex">\(b\)</span> 에 들지 않아 그 <span class="arithmatex">\(-\delta\)</span> 가 보상되지 않으며, ¶3 첫 예에서 평균 부호의 크기가 <span class="arithmatex">\(\delta/(2+\delta)\to0\)</span> 인 것이 그 경우다. <code>📚</code> 수치는 원문 <a href="03-calculus-on-finite-trees.html#s3-3-p3">§3.3 ¶3</a> s5(부호 있는 합 <span class="arithmatex">\(-\delta\)</span>, 절댓값 합 <span class="arithmatex">\(2+\delta\)</span>)와 (3.15) (비유 자체는 제안 해석)</li>
 </ul>
 <details>
 <summary>전개: |J| 의 하한 (s2)</summary>
-<p><span class="arithmatex">\(j=1\)</span>: <span class="arithmatex">\(\lvert m_d-m_{d+1}\rvert=\delta\)</span>. <span class="arithmatex">\(j\ge2\)</span>: <span class="arithmatex">\(m_d-jm_{d+1}=m_d-j(m_d+\delta)=-(j-1)m_d-j\delta\)</span>, 절댓값 <span class="arithmatex">\(\ge(j-1)\eta\ge\eta\)</span> (단 <span class="arithmatex">\(\eta\le1\)</span>). 따라서 <span class="arithmatex">\(\lvert J\rvert\ge\delta^b\eta^{\sum_v(a_v-2)}\)</span>, (3.14) 와 나누면 <span class="arithmatex">\(C_{q,k}\eta^{-\sum(a_v-2)}=C_{q,k,\eta}\)</span> ✓.</p>
+<p><span class="arithmatex">\(j=1\)</span>: <span class="arithmatex">\(\lvert m_d-m_{d+1}\rvert=\delta\)</span>. <span class="arithmatex">\(j\ge2\)</span>: <span class="arithmatex">\(m_d-jm_{d+1}=m_d-j(m_d+\delta)=-(j-1)m_d-j\delta\)</span>, 절댓값 <span class="arithmatex">\(\ge(j-1)\eta\ge\eta\)</span>. 따라서 <span class="arithmatex">\(\lvert J\rvert\ge\delta^b\eta^{\sum_v(a_v-2)}\)</span>. 지정 모양의 leaf 는 <span class="arithmatex">\(k+1\)</span> 개라 모든 branching vertex 에 걸쳐 <span class="arithmatex">\(\sum(a_v-1)=k\)</span> 이고, 그래서 <span class="arithmatex">\(b\)</span> 개 vertex 에 대해 <span class="arithmatex">\(\sum_v(a_v-2)\le k-b\)</span> 다. <span class="arithmatex">\(\eta\le m_{d_v}\le1\)</span> 이므로 <span class="arithmatex">\(\eta^{-\sum(a_v-2)}\le\eta^{-k}\)</span>. (3.14) 로 나누면 <span class="arithmatex">\(\frac1{\lvert J\rvert}\sum\lvert c_E\rvert\le C_{q,k}\eta^{-k}=:C_{q,k,\eta}\)</span> ✓ (모양·<span class="arithmatex">\(L\)</span>·깊이 무관).</p>
 </details>
-<p><strong>식 Eq. §3.3 ¶9 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶9 의 J 정의 — 지정 branching vertex 의 인자 곱</summary>
 <table>
 <thead>
 <tr>
@@ -2729,7 +2779,9 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 </tr>
 </tbody>
 </table>
-<p><strong>식 (3.15) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (3.15) — 상대 절댓값 합과 L 무관 상수</summary>
 <table>
 <thead>
 <tr>
@@ -2743,7 +2795,7 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <tr>
 <td><span class="arithmatex">\(\frac1{\lvert J\rvert}\sum\lvert c_E\rvert\)</span></td>
 <td>상대 절댓값 합</td>
-<td>상쇄 전 무게 / 상쇄 후 신호</td>
+<td>상쇄 전 절댓값 무게 / 지정 vertex 정규화 계수의 크기 <span class="arithmatex">\(\lvert J\rvert\)</span> (추가 제약이 없고 모든 branching vertex 가 <span class="arithmatex">\(b\)</span> 에 들면 <span class="arithmatex">\(\lvert\)</span>평균 부호<span class="arithmatex">\(\rvert^{-1}\)</span>)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
@@ -2754,6 +2806,7 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s3-3-e9)</em></p>
 <p><a id="s3-3-e10"></a></p>
@@ -2774,10 +2827,11 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s5</strong> 따라서 한 단계를 지정된 깊이의 unary vertex 에서의 fresh divergence 로 제한하면 계수 절댓값 합은 최대 <span class="arithmatex">\(s\delta\)</span> 인데, 그런 divergence 는 각각 계수 <span class="arithmatex">\(m_d-m_{d+1}=-\delta\)</span> 를 갖기 때문이다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> <code>🔧</code> 셈: 한 단계의 절댓값 합 <span class="arithmatex">\(\le2s\)</span> (새 replica 쪽 <span class="arithmatex">\(s\)</span> + 옛 replica 쪽 <span class="arithmatex">\(\le s\)</span>), 지정 깊이의 unary split 으로 제한하면 <span class="arithmatex">\(\le s\delta\)</span>. 모든 fresh 계수가 음수이므로 절댓값 합 = (3.7) 의 <span class="arithmatex">\(n\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s5</strong> <code>🔧</code> 이 문단은 replica 한 개를 더하는 단계 하나의 절댓값 비용을 센다. 현재 tree 의 leaf 수를 <span class="arithmatex">\(s\)</span> 라 하면 제약 없는 단계는 <span class="arithmatex">\(\le2s\le2(q+k)\)</span>, 지정 깊이의 unary split(처음 branching 을 만드는 fresh 선택)으로 제한한 단계는 <span class="arithmatex">\(\le s\delta\)</span> 다. 해상도 <span class="arithmatex">\(L\)</span> 을 늘려 divergence 깊이 후보가 많아져도 삽입 한 번의 비용은 <span class="arithmatex">\(L\)</span> 이 아니라 replica 수로 제어된다(¶12 가 이것을 곱한다). <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: 단계별 절댓값 합 (s1–s5)</summary>
+<p>fresh 계수는 모두 음수라 절댓값 합은 <span class="arithmatex">\(\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})\)</span> 이고, (3.7)(전체 tree 의 telescoping: 내부 edge 마다 상쇄, leaf 마다 <span class="arithmatex">\(m_L=1\)</span>, 뿌리 <span class="arithmatex">\(m_0=0\)</span>)에 의해 leaf 수 <span class="arithmatex">\(s\)</span> 와 같다 — (3.7) 의 <span class="arithmatex">\(n\)</span> 이 바로 이 <span class="arithmatex">\(s\)</span> 다. 옛 leaf 선택은 계수 1 인 것이 최대 <span class="arithmatex">\(s\)</span> 개. 고정 깊이에는 vertex 가 최대 <span class="arithmatex">\(s\)</span> 개이고 unary split 하나의 절댓값 계수는 <span class="arithmatex">\(\delta\)</span> 다.</p>
 <p>fresh 계수 <span class="arithmatex">\(\gamma_\beta=-(n_\beta m_{d+1}-m_d)\lt0\)</span> 이고 (3.7) 로 <span class="arithmatex">\(\sum_\beta\lvert\gamma_\beta\rvert=s\)</span> ✓. 옛 leaf 선택은 계수 1, 최대 <span class="arithmatex">\(s\)</span> 개 ✓. <span class="arithmatex">\(s\le q+k\)</span> (옛 <span class="arithmatex">\(q\)</span> + 새로 더한 최대 <span class="arithmatex">\(k\)</span>) ✓. 깊이 <span class="arithmatex">\(d\)</span> 의 vertex 는 서로 다른 leaf 조상이므로 <span class="arithmatex">\(\le s\)</span> 개, unary 각각 <span class="arithmatex">\(\lvert\gamma\rvert=\delta\)</span> → <span class="arithmatex">\(\le s\delta\)</span> ✓.</p>
 </details>
 <hr />
@@ -2801,10 +2855,11 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s7</strong> 가능한 배정은 최대 <span class="arithmatex">\(k!/(k-b)!\)</span> 개다 (그리고 필연적으로 <span class="arithmatex">\(b\leq k\)</span>).</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s7</strong> <code>🔧</code> 조합론: 새 overlap 단계 각각은 어떤 새 replica 가 unary 지점에서 갈라지며 처음 만들어진다. 새 replica 하나는 branching 하나만 만들므로 단계 <span class="arithmatex">\(b\)</span> 개는 서로 다른 replica 에 대응하고, 그 배정 방법은 <span class="arithmatex">\(\le k!/(k-b)!\)</span>. 물리적 의미: 새 overlap 값 하나마다 그것을 "처음 만든" replica 가 있다. <code>✅</code> s5 (fresh path 는 갈라지는 지점 하나에서만 기존 tree 와 만나므로 새 branching 은 그 지점 하나) — 아래 전개</li>
+<li><strong>s1–s7</strong> <code>🔧</code> 조합론: 이 문단은 <span class="arithmatex">\(\delta\)</span> 를 어느 삽입 단계에 매길지 정한다. 목표 branching vertex 는 그 깊이에 옛 branching 이 없으므로 옛 tree 에서 branching 일 수 없고, 처음 branching 이 되는 단계에서 어떤 fresh path 가 그 vertex 가 unary 일 때 거기서 갈라져야 한다. fresh path 하나는 branching vertex 를 하나만 만들므로 vertex 마다 그것을 처음 branching 으로 만든 단계를 붙이면 서로 다른 vertex 는 같은 깊이(같은 overlap 값)여도 서로 다른 단계에 대응하고, 그런 단사 배정은 <span class="arithmatex">\(\le k!/(k-b)!\)</span> 개다(<span class="arithmatex">\(b\le k\)</span>). 단계는 replica 를 합에 넣는 순서이지 시간 진화가 아니다. <code>✅</code> s5 (fresh path 는 갈라지는 지점 하나에서만 기존 tree 와 만나므로 새 branching 은 그 지점 하나) — 아래 전개</li>
 </ul>
 <details>
 <summary>전개: 배정 수 (s5–s7)</summary>
+<p>s4: 목표 vertex 는 옛 경로 위에도, 앞 단계에 더해진 새 경로 위에도 있을 수 있다. 어느 쪽이든 처음 branching 이 되는 순간 그 vertex 는 unary 이고 거기서 fresh path 가 갈라진다.</p>
 <p>fresh path 는 divergence vertex 에서 새 자식을 만들고 그 아래는 전부 새 vertex (unary) 이므로, 새로 branching 이 되는 vertex 는 divergence vertex 하나뿐 ✓. <span class="arithmatex">\(b\)</span> 개 목표 vertex 를 <span class="arithmatex">\(k\)</span> 단계 중 서로 다른 단계에 단사로 배정: <span class="arithmatex">\(k(k-1)\cdots(k-b+1)=k!/(k-b)!\)</span> ✓.</p>
 </details>
 <hr />
@@ -2826,13 +2881,14 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s4</strong> 지정된 단계들이 서로 다르게 남으므로, 반복된 배정 깊이를 포함해 이것이 <a href="03-calculus-on-finite-trees.html#eq-3-14">(3.14)</a> 를 증명한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4</strong> <code>🔧</code> 제약을 완화(더 큰 집합)하면 절댓값 합은 커지기만 하므로 상한으로 충분. 지정 단계 <span class="arithmatex">\(b\)</span> 개는 <span class="arithmatex">\((q+k)\delta\)</span>, 나머지는 <span class="arithmatex">\(2(q+k)\)</span>. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s4</strong> <code>🔧</code> 이 문단은 ¶10 의 단계 비용과 ¶11 의 배정을 조립해 (3.14) 를 끝낸다. 배정을 하나 고정하고 '지정 단계가 배정 깊이에서 unary split 을 만든다'는 제약만 남겨 history 집합을 키우면(절댓값 합은 커지기만 하므로 상한으로 충분), 각 단계의 합은 <strong>앞선 선택과 무관하게</strong> 지정 단계에서 <span class="arithmatex">\(\le(q+k)\delta\)</span>, 나머지에서 <span class="arithmatex">\(\le2(q+k)\)</span> 이므로 마지막 단계부터 차례로 합하면 곱이 된다 — 삽입들 사이의 독립성은 가정하지 않는다. 배정 수 <span class="arithmatex">\(k!/(k-b)!\)</span> 를 곱하면 (3.14) 이고, 지정 단계들은 서로 다르므로 두 목표 vertex 가 같은 깊이에 배정되어도 <span class="arithmatex">\(\delta\)</span> 가 각각 붙는다. <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: 반복 합의 bound (s3)</summary>
-<p>절댓값 합은 단계별 선택에 대해 곱으로 위에서 bound 된다(각 단계의 합을 그 단계 최대값으로). 지정 단계 <span class="arithmatex">\(b\)</span> 개: <span class="arithmatex">\(((q+k)\delta)^b\)</span>, 나머지 <span class="arithmatex">\(k-b\)</span> 단계: <span class="arithmatex">\((2(q+k))^{k-b}\)</span>, 배정 수 <span class="arithmatex">\(k!/(k-b)!\)</span> (§3.3 ¶11) ✓. 곱 = 식 §3.3 ¶12 #1 ✓, 따라서 <span class="arithmatex">\(C_{q,k}=\max_b\frac{k!}{(k-b)!}(q+k)^b(2(q+k))^{k-b}\)</span>.</p>
+<p>절댓값 합은 단계별 선택에 대해 곱으로 위에서 bound 된다(각 단계의 합을 그 단계 최대값으로, 앞선 선택에 대해 균일한 bound). 지정 단계 <span class="arithmatex">\(b\)</span> 개: <span class="arithmatex">\(((q+k)\delta)^b\)</span>, 나머지 <span class="arithmatex">\(k-b\)</span> 단계: <span class="arithmatex">\((2(q+k))^{k-b}\)</span>, 배정 수 <span class="arithmatex">\(k!/(k-b)!\)</span> (§3.3 ¶11) ✓. 곱 = 원문 s3 의 식 <span class="arithmatex">\(\frac{k!}{(k-b)!}(q+k)^b(2(q+k))^{k-b}\delta^b\)</span> ✓, 따라서 <span class="arithmatex">\(C_{q,k}=\max_b\frac{k!}{(k-b)!}(q+k)^b(2(q+k))^{k-b}\)</span>.</p>
 </details>
-<p><strong>식 Eq. §3.3 ¶12 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶12 의 반복 합 bound — 배정 수, 지정 단계, 나머지 단계</summary>
 <table>
 <thead>
 <tr>
@@ -2846,13 +2902,13 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <tr>
 <td><span class="arithmatex">\(\frac{k!}{(k-b)!}\)</span></td>
 <td>배정 수</td>
-<td>새 overlap 단계를 처음 만드는 replica 의 선택</td>
+<td>각 목표 vertex 를 처음 branching 으로 만드는 삽입 단계의 선택</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\((q+k)^b\delta^b\)</span></td>
 <td>지정 단계</td>
-<td>새 overlap 단계마다 <span class="arithmatex">\(\delta\)</span></td>
+<td>목표 branching vertex 하나마다 <span class="arithmatex">\(\delta\)</span> (깊이가 겹쳐도 각각)</td>
 <td><code>✅</code></td>
 </tr>
 <tr>
@@ -2863,6 +2919,7 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s3-3-p13"></a></p>
 <h4 id="33-13">§3.3 ¶13<a class="headerlink" href="#33-13" title="Permanent link">&para;</a></h4>
@@ -2880,13 +2937,16 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s3</strong> 따라서 <span class="arithmatex">\(|J|\geq\delta^b\eta^{\sum_v(a_v-2)}\)</span> 이고, 결과가 따라 나온다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> <span class="arithmatex">\(j=1\)</span> (두 번째 sub-block 을 여는 첫 replica) 의 인자만 <span class="arithmatex">\(\delta\)</span> 로 작고, 세 번째 이후는 <span class="arithmatex">\(O(\eta)\)</span>. 물리로는 "새 overlap 단계 하나에 <span class="arithmatex">\(dx\)</span> 하나" 이고, 그 단계에 replica 를 더 넣는 것은 작지 않다. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s3</strong> 이 문단은 <span class="arithmatex">\(\lvert J\rvert\)</span> 의 하한으로 (3.15) 를 끝낸다. 각 목표 vertex 에서 두 번째 sub-block 을 처음 여는 <span class="arithmatex">\(j=1\)</span> 인자만 절댓값 <span class="arithmatex">\(\delta\)</span> 로 작고, <span class="arithmatex">\(j\ge2\)</span> 인자는 <span class="arithmatex">\((j-1)m_d+j\delta\ge\eta\)</span> 로 <strong>아래로 유계</strong>(작지 않음)이며 그 개수 <span class="arithmatex">\(\sum_v(a_v-2)\)</span> 는 모양의 크기로 묶인다(<span class="arithmatex">\(\le k-b\)</span>). 따라서 <span class="arithmatex">\(\lvert J\rvert\ge\delta^b\eta^{\sum_v(a_v-2)}\)</span> 이고 (3.14) 와 나누면 <span class="arithmatex">\(\delta^b\)</span> 가 지워져 <span class="arithmatex">\(L\)</span> 에 무관한 (3.15) 가 나온다 — 두 인자는 같은 식 <span class="arithmatex">\(\lvert m_d-jm_{d+1}\rvert=jm_{d+1}-m_d\)</span> 로, 옛 tree 가 anchor 하나뿐일 때 §3.2 의 <span class="arithmatex">\(Q\)</span> 규칙에서 가지가 <span class="arithmatex">\(j\)</span> 개인 vertex 에 가지를 하나 더 여는 무게(확률 × 현재 leaf 수)다. unary vertex 를 처음 가르는 무게(<span class="arithmatex">\(j=1\)</span>)는 연속한 두 <span class="arithmatex">\(m\)</span> 값의 차 <span class="arithmatex">\(\delta\)</span> 뿐이지만 이미 갈라진 vertex 에 가지를 더 붙이는 무게는 <span class="arithmatex">\(m_d\)</span> 정도로 작지 않다(물리 그림으로는 새 분기점 하나에 <span class="arithmatex">\(dx\)</span> 하나, 제안 해석). <code>✅</code> 아래 전개</li>
+<li><strong>s3</strong> 이로써 길잡이의 장애물이 풀린다: 새 깊이 목표 vertex 마다 붙는 <span class="arithmatex">\(\delta\)</span> 가 분자 (3.14) 와 분모 <span class="arithmatex">\(\lvert J\rvert\ge\delta^b\eta^{\sum_v(a_v-2)}\)</span> 에서 함께 지워지므로, §6–§7 은 균등 mesh 를 <span class="arithmatex">\(L\to\infty\)</span> 로 세분해도 <span class="arithmatex">\(J\)</span> 로 안전하게 나눌 수 있다. <code>📚</code> 원문 s3 의 하한과 (3.14) (계산은 위 항목의 전개)</li>
 </ul>
 <details>
 <summary>전개: |m_d − j m_{d+1}| (s1)</summary>
 <p><span class="arithmatex">\(m_{d+1}=m_d+\delta\)</span>: <span class="arithmatex">\(m_d-jm_{d+1}=(1-j)m_d-j\delta\)</span>, 절댓값 <span class="arithmatex">\((j-1)m_d+j\delta\)</span> ✓ (<span class="arithmatex">\(j\ge1\)</span>). <span class="arithmatex">\(j=1\)</span> 이면 <span class="arithmatex">\(\delta\)</span>, <span class="arithmatex">\(j\ge2\)</span> 이면 <span class="arithmatex">\(\ge m_d\ge\eta\)</span> ✓.</p>
+<p>예: 세 갈래 vertex 하나의 인자 곱은 <span class="arithmatex">\((-\delta)(-m_d-2\delta)\)</span> 로, 작은 mesh 인자는 하나다.</p>
 </details>
-<p><strong>식 Eq. §3.3 ¶13 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶13 의 인자 하한 — 주 항, mesh 보정, 하한</summary>
 <table>
 <thead>
 <tr>
@@ -2912,16 +2972,24 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <tr>
 <td><span class="arithmatex">\(\ge\eta\)</span></td>
 <td>하한</td>
-<td><span class="arithmatex">\(q_0\)</span> 근처가 아닌 overlap 단계</td>
+<td><span class="arithmatex">\(m\)</span> 좌표(Parisi <span class="arithmatex">\(x\)</span>)가 <span class="arithmatex">\(0\)</span> 에서 떨어진 분기에서 인자가 작지 않음</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s3-4"></a></p>
 <h2 id="34-the-distribution-of-branching-depths">§3.4 The distribution of branching depths<a class="headerlink" href="#34-the-distribution-of-branching-depths" title="Permanent link">&para;</a></h2>
 <p><em>제목: branching 깊이의 분포</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> 뒤의 logarithmic expansion(§8–§9)은 replica tree 를 모양별로 나눠 branching 깊이 좌표에 대한 평균으로 추정한다. 그러려면 깊이가 끝이나 서로 가까이 몰린 '나쁜 모양' 을 작은 대가로 버리고, 깊이 좌표에 대한 합으로 <span class="arithmatex">\(Q_k\)</span> 아래 기여를 위에서 누를 수단이 필요하다.</li>
+<li><strong>물리로는.</strong> 갈림점(branching vertex)은 replica 계보가 갈라지는 사건이고, 그 위치 <span class="arithmatex">\(x=d/L=m_d\)</span> 를 Parisi 의 <span class="arithmatex">\(x(q)\)</span> 로 읽을 수 있다(제안 해석). 분리는 <span class="arithmatex">\(q\)</span> 가 아니라 <span class="arithmatex">\(x\)</span> 축에서 잰다. 여러 replica 쌍이 한 갈림점을 공유해 같은 overlap 을 갖는 일은 흔하고 허용된다 — 드문 것은 <em>서로 다른</em> 두 갈림점이 가까워지는 일이다.</li>
+<li><strong>결론.</strong> Lemma 3.6: 비regular 확률 <span class="arithmatex">\(\le C_k(\eta+L^{-1})\)</span> (3.16), 특정 topology·깊이 배정의 확률 <span class="arithmatex">\(\le C_kL^{-a}\)</span>, 즉 갈림점 하나당 최대 <span class="arithmatex">\(1/L\)</span> (3.17). <span class="arithmatex">\(C_k\)</span> 는 <span class="arithmatex">\(k\)</span> 에만 의존하고 <span class="arithmatex">\(L,\eta\)</span> 에 무관하며, 모두 유한 <span class="arithmatex">\(L\)</span> 에서의 upper bound 다. (3.16) 의 오차는 <span class="arithmatex">\(L\to\infty\)</span> 뒤에도 <span class="arithmatex">\(C_k\eta\)</span> 가 남으므로, 쓰는 곳(§8)에서는 <span class="arithmatex">\(\eta\)</span> 를 고정한 채 <span class="arithmatex">\(N\to\infty\)</span>, <span class="arithmatex">\(L\to\infty\)</span> 를 먼저 보내고 <span class="arithmatex">\(\eta\downarrow0\)</span> 은 마지막에 보낸다. Remark 3.7 이 둘을 묶어 regular 깊이 배정에 대한 평균 추정을 로그 전개에 쓰게 한다.</li>
+<li><strong>읽는 법.</strong> ¶1(정의)·¶2(진술)가 핵심. ¶3–¶4 증명은 '새 갈림점은 unary vertex 에서만 생기고 한 깊이에 생길 확률은 <span class="arithmatex">\(\le\delta=1/L\)</span>' 이라는 사실로 두 bound 를 얻는다((3.17) 에서는 unary 구간을 유지한 제한이 replica 추가 이력을 하나로 정한다는 점도 쓴다). ¶5 는 쓰는 법.</li>
+</ul>
 <p><a id="s3-4-p1"></a></p>
 <h4 id="34-1">§3.4 ¶1<a class="headerlink" href="#34-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -2938,9 +3006,17 @@ J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
 <p><strong>s5</strong> 이것은 tree 하나를 뽑을 때 쓰이는 regularity 다; 나중에는 대응하는 깊이 배정이 의도적으로 정렬된 두 사본도 쓴다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4</strong> regular = replica 들의 overlap 단계가 (i) 양 끝(<span class="arithmatex">\(x\approx0\)</span>, <span class="arithmatex">\(x\approx1\)</span>, 즉 <span class="arithmatex">\(q_0\)</span> 근처와 self-overlap 근처)에서 떨어져 있고 (ii) 서로 <span class="arithmatex">\(\eta\)</span> 이상 떨어져 있음. 균등 mesh 에서 정규화 깊이 <span class="arithmatex">\(d/L=m_d=x(q_d)\)</span> 이므로, regular 는 "<span class="arithmatex">\(x\)</span> 값들이 서로 분리되고 경계에서 떨어진 overlap 구조" 다. <code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p1">§3.4 ¶1</a> s1, s3 의 정의에서 직접 (<span class="arithmatex">\(m_d=d/L\)</span> 이므로 정규화 깊이 = <span class="arithmatex">\(m_d\)</span>)</li>
-<li><strong>s5</strong> <code>🔧</code> 두 사본을 정렬해 쓰는 것은 §7 decorrelation 에서 (예고).</li>
+<li><strong>s1–s4</strong> regular 라는 tree 모양 조건을 정의한다. 자식이 하나뿐인 vertex(unary vertex)가 이어지는 unary 구간을 접어 갈림점만 남기고 그 위치를 정규화 깊이 <span class="arithmatex">\(x=d/L=m_d\)</span> 로 표시하면, regular 는 (i) 모든 갈림점이 <span class="arithmatex">\(x\in(\eta,1-\eta)\)</span> 안에 있고 (ii) <strong>서로 다른 두 갈림점은 다른 subtree 에 있더라도</strong> <span class="arithmatex">\(x\)</span> 차이가 <span class="arithmatex">\(\eta\)</span> 보다 큰(strict) 모양이다. 예컨대 replica 쌍 (12) 와 (34) 가 같은 깊이에서 갈라지는 4-replica tree 는 regular 가 아니다 — 조건은 overlap 값이 아니라 갈림점(vertex) 단위다. <code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p1">§3.4 ¶1</a> s1, s3 의 정의에서 직접</li>
+<li><strong>s1–s4</strong> 이 <span class="arithmatex">\(m_d\)</span> 를 Parisi 의 <span class="arithmatex">\(x(q_d)\)</span> 로 읽으면 regular 는 "<span class="arithmatex">\(x\)</span> 값들이 서로 분리되고 경계층 <span class="arithmatex">\(x\approx0,1\)</span> 을 피한 overlap 구조" 다. 분리 폭은 <span class="arithmatex">\(x\)</span> 로 재며 <span class="arithmatex">\(q\)</span> 값 사이의 간격을 제한하지 않는다. <code>🔧</code> 제안 해석(지정된 물리 역할 하의 대응; 원문 §3.4 는 <span class="arithmatex">\(x(q)\)</span> 를 언급하지 않음)</li>
+<li><strong>s5</strong> <code>🔧</code> 두 사본을 정렬해 쓰는 것은 §7 decorrelation 에서 (예고). 다음 ¶2 는 이 조건이 깨질 확률이 작음을 진술한다.</li>
 </ul>
+<pre class="mermaid"><code>flowchart TD
+  R["root · x = 0"] --&gt; A["갈림점 A · x = 0.3"]
+  A --&gt; L1["leaf 1 · x = 1"]
+  A --&gt; B["갈림점 B · x = 0.7"]
+  B --&gt; L2["leaf 2 · x = 1"]
+  B --&gt; L3["leaf 3 · x = 1"]</code></pre>
+<p>unary 구간을 접고 갈림점만 남긴 <span class="arithmatex">\(k=3\)</span> tree 다(<span class="arithmatex">\(x=d/L\)</span>). <span class="arithmatex">\(\eta=0.2\)</span> 이면 A, B 가 모두 <span class="arithmatex">\((0.2,0.8)\)</span> 안이고 서로 <span class="arithmatex">\(0.4\gt0.2\)</span> 떨어져 있으므로 regular; 반면 (12) 와 (34) 가 같은 <span class="arithmatex">\(x\)</span> 에서 갈라지는 4-replica tree 는 서로 다른 두 갈림점의 <span class="arithmatex">\(x\)</span> 차이가 <span class="arithmatex">\(0\)</span> 이라 regular 가 아니다. <code>📚</code> §3.4 ¶1 s3 (정의를 예시에 적용)</p>
 <hr />
 <p><a id="s3-4-e11"></a></p>
 <h3 id="lemma-36-regular-shapes">▸ Lemma 3.6 (Regular shapes)<a class="headerlink" href="#lemma-36-regular-shapes" title="Permanent link">&para;</a></h3>
@@ -2966,11 +3042,12 @@ Q_k\{\text{that topology and depth assignment}\}
 <p><strong>s3</strong> regular tree 에서 leaf 를 지우면, unary 가 된 branching vertex 를 버린 뒤, regular tree 가 된다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (3.16)</strong> Lemma 3.6: <span class="arithmatex">\(Q_k\)</span> (Ruelle cascade replica 의 overlap tree, R18) 아래에서 overlap 단계가 경계 근처이거나 서로 가까울 확률은 <span class="arithmatex">\(O(\eta+1/L)\)</span>. full-RSB 의 연속 <span class="arithmatex">\(P(q)\)</span> 에서 <span class="arithmatex">\(k\)</span> 개 replica 의 overlap 값들이 겹치거나 끝점에 붙을 확률이 작다는 것과 같다. <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-4-p3">§3.4 ¶3</a></li>
-<li><strong>s2, (3.17)</strong> 특정 overlap 구조와 그 단계 값들을 정확히 지정할 확률 <span class="arithmatex">\(\le C_kL^{-a}\)</span>: branching 하나당 <span class="arithmatex">\(1/L\)</span> (연속 분포에서 한 점에 <span class="arithmatex">\(dx\)</span>). <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-4-p4">§3.4 ¶4</a></li>
-<li><strong>s3</strong> replica 를 적분해 없애도 regular 성질 유지 (projectivity 와 호환). <code>🔧</code></li>
+<li><strong>s1, (3.16)</strong> 서로 다른 갈림점의 <span class="arithmatex">\(x\)</span> 좌표가 경계층에 들어가거나 서로 <span class="arithmatex">\(\eta\)</span> 안으로 붙는 사건의 확률을 bound 한다: <span class="arithmatex">\(Q_k\)</span> ((3.8) 규칙으로 replica 를 하나씩 붙여 만드는 유한 <span class="arithmatex">\(L\)</span> 의 tree 법칙; Ruelle cascade replica 의 overlap tree 법칙으로 읽는 것은 제안 해석, roles R18) 아래에서 고정된 <span class="arithmatex">\(k\)</span> 마다 <span class="arithmatex">\(L\)</span> 과 <span class="arithmatex">\(\eta\)</span> 에 <strong>무관한</strong> 상수 <span class="arithmatex">\(C_k\)</span> 로 <span class="arithmatex">\(\le C_k(\eta+L^{-1})\)</span> 이다(mesh 를 잘게 해도 상수가 커지지 않지만, <span class="arithmatex">\(C_k\)</span> 는 <span class="arithmatex">\(k\)</span> 에 의존). 여러 replica 쌍이 한 갈림점을 공유해 같은 overlap 을 갖는 것은 위반이 아니다 — "겹침은 흔하고, 근접은 드물다". 연속 <span class="arithmatex">\(x\)</span> 분포에서 서로 다른 갈림점이 몰릴 확률이 작다는 full-RSB 직관과 닮았다 <code>🔧</code> 제안 해석(원문은 유한 <span class="arithmatex">\(L\)</span> 의 upper bound 만 주장). <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-4-p3">§3.4 ¶3</a></li>
+<li><strong>s2, (3.17)</strong> 모든 표지 topology 와 모든 일관된 깊이 배정에 대해 <strong>같은 상수</strong> <span class="arithmatex">\(C_k\)</span> 로, 갈림점 <span class="arithmatex">\(a\)</span> 개인 특정 계보를 위치까지 지정할 확률 <span class="arithmatex">\(\le C_kL^{-a}\)</span>: 갈림점 하나당 최대 <span class="arithmatex">\(1/L\)</span>. 연속 분포의 부피 요소 <span class="arithmatex">\((dx)^a\)</span> 에 해당하는 upper bound 이지, 좌표들이 독립·균등하다는 뜻은 아니다. <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-4-p4">§3.4 ¶4</a></li>
+<li><strong>s3</strong> regular 인 tree 에서 일부 leaf 를 지우고, 그 결과 자식이 하나뿐(unary)이 된 갈림점을 목록에서 버리면 남은 tree 도 regular 다. 남은 갈림점의 깊이는 원래 깊이들의 부분집합이기 때문이다. 개별 tree 에 대한 결정론적 사실이며 <span class="arithmatex">\(Q_k\)</span> 의 marginal 에 대한 진술은 아니다. <code>📚</code> 증명은 <a href="03-calculus-on-finite-trees.html#s3-4-p4">§3.4 ¶4</a> s6–s7</li>
 </ul>
-<p><strong>식 (3.16) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (3.16) — 비regular 확률과 그 upper bound 2항</summary>
 <table>
 <thead>
 <tr>
@@ -2984,18 +3061,20 @@ Q_k\{\text{that topology and depth assignment}\}
 <tr>
 <td><span class="arithmatex">\(Q_k\{\text{not regular}\}\)</span></td>
 <td>비정상 모양의 확률</td>
-<td><span class="arithmatex">\(k\)</span> replica 의 overlap 단계가 겹치거나 끝에 붙을 확률</td>
+<td>서로 다른 갈림점의 <span class="arithmatex">\(x\)</span> 좌표가 <span class="arithmatex">\(\eta\)</span> 안으로 붙거나 경계층에 들어갈 확률 (한 갈림점을 여러 쌍이 공유하는 것은 해당 없음)</td>
 <td><code>📚</code> §3.4 ¶3</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(C_k(\eta+L^{-1})\)</span></td>
-<td>bound</td>
-<td>분리 폭 <span class="arithmatex">\(\eta\)</span> 와 mesh <span class="arithmatex">\(1/L\)</span> 에 비례</td>
-<td><code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p3">§3.4 ¶3</a> 전개</td>
+<td>upper bound (<span class="arithmatex">\(C_k\)</span> 는 <span class="arithmatex">\(L,\eta\)</span> 무관)</td>
+<td>분리 폭 <span class="arithmatex">\(\eta\)</span> 와 mesh <span class="arithmatex">\(1/L\)</span> 의 합의 상수배 <strong>이하</strong> (lower bound 는 주장하지 않음); 가장 작은 예 <span class="arithmatex">\(k=2\)</span>: 갈림점 하나의 깊이는 <span class="arithmatex">\(Q_2\)</span> 아래 <span class="arithmatex">\(d=0,\ldots,L-1\)</span> 위 균등(각 <span class="arithmatex">\(1/L\)</span>)이고 비regular 는 경계층뿐이라 확률 <span class="arithmatex">\(=2\eta+O(L^{-1})\)</span> — <span class="arithmatex">\(\eta\)</span> 항(경계층 폭)과 <span class="arithmatex">\(L^{-1}\)</span> 항(격자 반올림)이 둘 다 실제로 생긴다. 서로 다른 갈림점끼리의 근접은 <span class="arithmatex">\(k\ge3\)</span> 부터.</td>
+<td><code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p3">§3.4 ¶3</a> 전개; <span class="arithmatex">\(k=2\)</span> 는 §3.2 의 <span class="arithmatex">\(Q_2\)</span> 예시(split 균등)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (3.17) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (3.17) — 지정 topology·깊이 배정의 확률과 그 upper bound 2항</summary>
 <table>
 <thead>
 <tr>
@@ -3009,17 +3088,18 @@ Q_k\{\text{that topology and depth assignment}\}
 <tr>
 <td><span class="arithmatex">\(Q_k\{\text{topology, 깊이 배정}\}\)</span></td>
 <td>특정 모양의 확률</td>
-<td>특정 overlap 구조·값의 확률</td>
+<td>갈림점 <span class="arithmatex">\(a\)</span> 개인 특정 표지 topology 와 그 깊이 배정의 확률</td>
 <td><code>📚</code> §3.4 ¶4</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(C_kL^{-a}\)</span></td>
 <td>bound</td>
-<td>branching (새 overlap 값) 하나당 <span class="arithmatex">\(1/L=dx\)</span></td>
+<td>갈림점 하나당 최대 <span class="arithmatex">\(1/L\)</span> (연속 분포의 <span class="arithmatex">\(dx\)</span> 에 해당하는 upper bound); <span class="arithmatex">\(k=2\)</span> (<span class="arithmatex">\(a=1\)</span>) 에서는 특정 깊이의 확률이 정확히 <span class="arithmatex">\(1/L\)</span> 이라 등호로 도달된다. <span class="arithmatex">\(k\ge3\)</span> 에서는 깊이마다 확률이 달라(¶3) upper bound 일 뿐이다.</td>
 <td><code>📚</code> <a href="03-calculus-on-finite-trees.html#s3-4-p4">§3.4 ¶4</a> 전개</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s3-4-e11)</em></p>
 <p><a id="s3-4-e12"></a></p>
@@ -3046,11 +3126,23 @@ Q_k\{\text{that topology and depth assignment}\}
 <p><strong>s8</strong> 이미 branching 인 vertex 에서의 divergence 는 새 좌표를 만들지 않으므로 추가 배제가 필요 없다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s8</strong> 새 overlap 단계는 새 replica 가 unary 지점에서 갈라질 때만 생기고, 그 확률은 깊이당 <span class="arithmatex">\(\le\delta\)</span>. 금지 깊이가 <span class="arithmatex">\(O(\eta L+1)\)</span> 개 → 확률 <span class="arithmatex">\(O(\eta+1/L)\)</span>. 물리: <span class="arithmatex">\(P(q)\)</span> 가 <span class="arithmatex">\(q\)</span> 위에서 퍼져 있어(균등 mesh) 특정 좁은 구간에 새 overlap 값이 떨어질 확률은 구간 폭에 비례. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s7</strong> (3.16) 을 증명한다: replica 를 하나씩 붙일 때 새 갈림점이 금지 깊이에 생길 확률을 센다. 새 갈림점(새 깊이 좌표)은 새 경로가 자식 하나뿐인 vertex(unary vertex)에서 갈라질 때만 생기고 그 확률은 깊이당 <span class="arithmatex">\(\le\delta=1/L\)</span> 이다. 각 단계의 금지 깊이(경계 근처, 기존 갈림점의 <span class="arithmatex">\(\eta\)</span> 안)는 <span class="arithmatex">\(\le C_k(\eta L+1)\)</span> 개라 위반 확률 <span class="arithmatex">\(\le C_k(\eta+L^{-1})\)</span>, 처음 <span class="arithmatex">\(k-1\)</span> 단계에 union bound 를 쓰면 (3.16). <code>✅</code> 아래 전개</li>
+<li><strong>s8</strong> 이미 갈림점인 vertex 에서 갈라지면 기존 좌표를 재사용할 뿐이라 배제할 필요가 없다. 물리: bound 가 걸리는 것은 깊이 <span class="arithmatex">\(x=m_d\)</span> 축이다 — 한 깊이에 새 갈림점이 생길 확률은 (그 깊이의 unary vertex 수)<span class="arithmatex">\(\times\delta/n\le\delta\)</span> 로 위에서 눌릴 뿐 균등하지는 않다(아래 그림의 <span class="arithmatex">\(k=3\)</span> 에서 A 위 줄기는 깊이당 <span class="arithmatex">\(\delta/2\)</span>, A 아래는 깊이당 <span class="arithmatex">\(\delta\)</span>; 등간격인 것은 격자 <span class="arithmatex">\(x=d/L\)</span> 뿐이다). 그래서 <span class="arithmatex">\(x\)</span> 폭 <span class="arithmatex">\(O(\eta)\)</span> 인 금지 층에 떨어질 확률은 그 폭(+mesh 한 칸)의 상수배 이하이고, <span class="arithmatex">\(q\)</span> 값의 간격에 대해서는 아무것도 가정하지 않는다. <code>📚</code> §3.4 ¶3 s4, s8</li>
+<li><strong>s8</strong> (비교) "unary vertex 하나당 새 값 확률 <span class="arithmatex">\(\delta/n\)</span>, 옛 값 재사용은 <span class="arithmatex">\(O(1)\)</span>" 이라는 구조는 Ghirlanda–Guerra identity 의 "새 값 <span class="arithmatex">\(\tfrac1n\mu\)</span> + 옛 값" 분할과 닮았다(<span class="arithmatex">\(\mu\)</span> = <span class="arithmatex">\(Q_2\)</span> 아래 <span class="arithmatex">\(q_{12}\)</span> 의 법칙, <span class="arithmatex">\(x\)</span> 위 균등). 제안 해석; <span class="arithmatex">\(k=3\)</span> 일치는 아래 전개 블록, 일반 <span class="arithmatex">\(k\)</span> 동치는 <code>❓</code> 미확인.</li>
 </ul>
+<pre class="mermaid"><code>flowchart TD
+  S["leaf 3 추가 · 현재 n = 2, 갈림점 A 의 깊이 x₀ = d₀/L"] --&gt; U1["① A 위 공통 줄기의 unary vertex 에서 갈라짐 · 확률 ≈ x₀/2 · 새 좌표 생김"]
+  S --&gt; U2["② A 아래 두 가지의 unary vertex 에서 갈라짐 · 확률 ≈ 1 − x₀ · 새 좌표 생김"]
+  S --&gt; V["③ A 자체에 새 자식 · 확률 ≈ x₀/2 · 새 좌표 없음"]</code></pre>
+<p>①② 만 새 깊이 좌표를 만들고(unary vertex 하나당 <span class="arithmatex">\(\delta/2\)</span>, 깊이당 <span class="arithmatex">\(\le\delta\)</span>) 금지 깊이(<span class="arithmatex">\(O(\eta L+1)\)</span> 개)에 떨어질 확률은 <span class="arithmatex">\(O(\eta+1/L)\)</span> 이다(s2–s7); ③ 은 <span class="arithmatex">\(O(1)\)</span> 로 흔하지만 기존 좌표의 재사용이라 regular 위반이 아니다(s8). <code>📚</code> §3.4 ¶3 s2, s8 (네 경우의 확률, Parisi ultrametric 삼각형과의 대응은 아래 전개 블록) — ¶4 는 같은 "새 갈림점마다 <span class="arithmatex">\(\le\delta\)</span>" 를 곱으로 써서 (3.17) 을 증명한다.</p>
 <details>
-<summary>전개: union bound (s3–s7)</summary>
+<summary>전개: union bound (s2–s8) · k=3 확인, GG·MPSTV 비교</summary>
+<p>기호: <span class="arithmatex">\(n\)</span> = 현재 leaf 수, <span class="arithmatex">\(n_\beta\)</span> = vertex <span class="arithmatex">\(\beta\)</span> 의 자식 수, <span class="arithmatex">\(m_d=d/L\)</span>, <span class="arithmatex">\(\delta=m_{d+1}-m_d=1/L\)</span>. (3.8): 다음 경로가 <span class="arithmatex">\(\beta\)</span> 에서 갈라질 확률 <span class="arithmatex">\((n_\beta m_{d_\beta+1}-m_{d_\beta})/n\)</span>.</p>
 <p>unary vertex (<span class="arithmatex">\(n_\beta=1\)</span>) 의 (3.8) 확률: <span class="arithmatex">\((1\cdot m_{d+1}-m_d)/n=\delta/n\)</span> ✓. 깊이당 vertex <span class="arithmatex">\(\le n\)</span> → 깊이당 <span class="arithmatex">\(\le\delta\)</span>, 집합 <span class="arithmatex">\(B\)</span> 에 대해 <span class="arithmatex">\(\le\lvert B\rvert\delta\)</span> ✓. 각 단계 금지 깊이 수 <span class="arithmatex">\(\le C_k(\eta L+1)\)</span> 이므로 그 단계의 위반 확률 <span class="arithmatex">\(\le C_k(\eta L+1)/L=C_k(\eta+L^{-1})\)</span>; <span class="arithmatex">\(k-1\)</span> 단계 union bound 로 상수만 바뀜 ✓.</p>
+<p>regular 위반은 새 갈림점 깊이가 경계 근처이거나 기존 갈림점 깊이와 <span class="arithmatex">\(\eta\)</span> 이내일 때만 생긴다. 새 깊이 좌표는 unary divergence 에서만 생기므로(s2), 이미 갈림점인 vertex 에서의 divergence 는 위반을 만들 수 없다(s8). 따라서 금지 생성 사건이 없으면 최종 tree 는 regular 다(s6). 각 단계의 금지 집합은 그때까지의 (무작위) tree 에 의존하지만 어떤 tree 에 대해서도 크기가 <span class="arithmatex">\(\le C_k(\eta L+1)\)</span> 이므로 조건부 위반 확률이 균일하게 <span class="arithmatex">\(\le C_k(\eta+L^{-1})\)</span> 이고, <span class="arithmatex">\(k-1\)</span> 단계에 union bound 를 쓴다(s7).</p>
+<p><span class="arithmatex">\(k=3\)</span> 확인(<span class="arithmatex">\(n=2\)</span>, 갈림점 A 깊이 <span class="arithmatex">\(d_0\)</span>): 공통 줄기 unary <span class="arithmatex">\(d_0\)</span> 개 × <span class="arithmatex">\(\delta/2\)</span> = <span class="arithmatex">\(d_0/(2L)\approx x_0/2\)</span>; A 아래 두 가지 unary <span class="arithmatex">\(2(L-d_0-1)\)</span> 개 × <span class="arithmatex">\(\delta/2\approx1-x_0\)</span>; A 자체 <span class="arithmatex">\((2m_{d_0+1}-m_{d_0})/2=(d_0+2)/(2L)\approx x_0/2\)</span>. 합 <span class="arithmatex">\(=[d_0+2(L-d_0-1)+d_0+2]/(2L)=1\)</span> ✓.</p>
+<p>Ghirlanda–Guerra 비교(<span class="arithmatex">\(k=3\)</span>): 셋째 leaf 의 overlap <span class="arithmatex">\(q_{13}\)</span> 은 확률 <span class="arithmatex">\((d_0+2)/(2L)\)</span> (A 자체) <span class="arithmatex">\(+(L-d_0-1)/(2L)\)</span> (leaf 2 쪽 가지) <span class="arithmatex">\(=(L+1)/(2L)\approx\tfrac12\)</span> 로 옛 값 <span class="arithmatex">\(q_{12}\)</span> 와 같고, 나머지는 공통 줄기·leaf 1 쪽 가지의 깊이마다 <span class="arithmatex">\(\delta/2\)</span> 씩, 즉 <span class="arithmatex">\(q_{13}\)</span> 의 새 값 쪽은 깊이 <span class="arithmatex">\(x\)</span> 위 균등 측도의 <span class="arithmatex">\(\tfrac12\)</span> 배다(새 값이 되는 경로는 공통 줄기와 leaf 1 쪽 가지로, 깊이마다 unary vertex 가 하나씩이기 때문; 새 갈림점 생성 위치 전체는 leaf 2 쪽 가지까지 더해 균등하지 않다). 이는 <span class="arithmatex">\(n=2\)</span> 의 '<span class="arithmatex">\(\tfrac12\mu+\tfrac12\delta_{q_{12}}\)</span>' 분할과 mesh 오차 안에서 일치한다 ✓. 여기서 <span class="arithmatex">\(\mu\)</span> 는 <span class="arithmatex">\(Q_2\)</span> 아래 <span class="arithmatex">\(q_{12}\)</span> 의 법칙으로 <span class="arithmatex">\(x\)</span> 위 균등이다(§3.2 의 <span class="arithmatex">\(Q_2\)</span> 예시).</p>
+<p>ultrametric 삼각형 대응(<span class="arithmatex">\(k=3\)</span>, 제안 해석): ② 를 leaf 1 쪽·leaf 2 쪽 가지로 나누면 네 경우는 ① 공통 줄기 <span class="arithmatex">\(\approx x_0/2\)</span> → <span class="arithmatex">\(q_{13}=q_{23}\lt q_{12}\)</span>; ② leaf 1 쪽 <span class="arithmatex">\(\approx(1-x_0)/2\)</span> → <span class="arithmatex">\(q_{13}\gt q_{12}=q_{23}\)</span>; ② leaf 2 쪽 <span class="arithmatex">\(\approx(1-x_0)/2\)</span> → <span class="arithmatex">\(q_{23}\gt q_{12}=q_{13}\)</span>; ③ A 자체 <span class="arithmatex">\(\approx x_0/2\)</span> → 세 overlap 모두 같음. 이는 Parisi 해의 3-replica 결합분포(Mézard–Parisi–Sourlas–Toulouse–Virasoro, Phys. Rev. Lett. 52, 1156 (1984))에서 <span class="arithmatex">\(q_{12}=q\)</span> 조건부 무게 — 작은 쪽 이등변 <span class="arithmatex">\(x(q)/2\)</span>, 큰 쪽 이등변 각 <span class="arithmatex">\((1-x(q))/2\)</span>, 정삼각형 <span class="arithmatex">\(x(q)/2\)</span> — 와 같은 꼴이다(<span class="arithmatex">\(x_0\leftrightarrow x(q)\)</span>). 넷 중 새 깊이 좌표를 만드는 것은 ①② 뿐이다(s2, s8).</p>
 </details>
 <hr />
 <p><a id="s3-4-p4"></a></p>
@@ -3073,12 +3165,14 @@ Q_k\{\text{that topology and depth assignment}\}
 <p><strong>s7</strong> 그 깊이 좌표들은 옛 좌표들의 부분집합이므로 regularity 가 보존된다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> 특정 overlap tree 의 확률 = 그 tree 를 만드는 replica 추가 순서(유일)의 전이확률 곱. 새 branching 하나마다 <span class="arithmatex">\(\le\delta\)</span> (그 단계의 <span class="arithmatex">\(n\)</span> 으로 나누므로 실제로는 <span class="arithmatex">\(\delta/n\)</span>). <code>✅</code> 아래 전개</li>
-<li><strong>s6–s7</strong> <code>🔧</code> replica 를 지워도 남은 overlap 단계는 원래 단계의 부분집합.</li>
+<li><strong>s1–s5</strong> (3.17) 을 증명한다: ¶3 의 "새 갈림점마다 확률 <span class="arithmatex">\(\le\delta\)</span>" 를 이번에는 곱으로 쓴다(replica 를 하나씩 붙이는 과정은 Markov chain 이고, 경로 확률은 master equation 의 trajectory 확률처럼 전이확률의 곱이다). 최종 표지 tree 를 unary 구간을 접지 않은 채(깊이 정보를 그대로 둔 채) 표지 <span class="arithmatex">\(1,\ldots,n\)</span> 의 leaf 로 제한하면 <span class="arithmatex">\(n\)</span> 개일 때의 tree 가 깊이까지 복원되므로 replica 추가 이력이 유일하게 정해지고(¶1 에서 unary 구간을 접은 것은 모양을 기술할 때뿐이다), 갈림점 <span class="arithmatex">\(a\)</span> 개 각각은 확률 <span class="arithmatex">\(\le\delta\)</span> (실제로는 <span class="arithmatex">\(\delta/n\)</span>) 인 unary divergence 로 처음 생기며 나머지 전이는 <span class="arithmatex">\(\le1\)</span> 이라 확률 <span class="arithmatex">\(\le\delta^a=L^{-a}\)</span> 이다. 자식 순서를 동일시하는 topology 기술의 중복은 <span class="arithmatex">\(k\)</span> 만의 함수로 bound 되어 <span class="arithmatex">\(C_k\)</span> 에 흡수된다. <code>✅</code> 아래 전개</li>
+<li><strong>s6–s7</strong> leaf 를 지운 뒤에도 자식이 둘 이상 남은 갈림점은 원래 tree 의 <strong>같은 깊이</strong>에 있던 갈림점이다(자식이 하나로 줄어든 vertex 는 목록에서 버린다). 따라서 남은 깊이 좌표는 원래 좌표의 부분집합이고, '경계에서 <span class="arithmatex">\(\eta\)</span> 보다 멂' 과 '서로 <span class="arithmatex">\(\eta\)</span> 보다 멂' 이 그대로 성립한다 — ¶2 s3 의 증명. <code>📚</code> §3.4 ¶4 s6–s7</li>
 </ul>
 <details>
-<summary>전개: 지정 history 의 확률 (s2–s4)</summary>
-<p>leaf 에 <span class="arithmatex">\(1..k\)</span> 순서 표지가 있으므로 <span class="arithmatex">\(Q\)</span> 의 <span class="arithmatex">\(n\to n+1\)</span> 단계는 tree 의 <span class="arithmatex">\(\{1..n\}\)</span> 제한에서 <span class="arithmatex">\(\{1..n+1\}\)</span> 제한으로의 전이로 유일하게 결정 ✓. 새 branching 을 만드는 단계: unary vertex 선택 확률 <span class="arithmatex">\(\delta/n\le\delta\)</span>; 그 외 단계 <span class="arithmatex">\(\le1\)</span> ✓. 따라서 <span class="arithmatex">\(\le\delta^a=L^{-a}\)</span> ✓. 자식 순서를 동일시하면 같은 topology 에 속하는 표지 tree 수가 <span class="arithmatex">\(k\)</span> 만의 함수로 bound → <span class="arithmatex">\(C_k\)</span> ✓.</p>
+<summary>전개: 지정 history 의 확률과 상수 C_k (s1–s5)</summary>
+<p><span class="arithmatex">\(a\)</span> = 지정 tree 의 갈림점 수, <span class="arithmatex">\(\delta=1/L\)</span>; replica 를 표지 순서대로 추가하는 전이확률을 곱한다.</p>
+<p>leaf 에 <span class="arithmatex">\(1..k\)</span> 순서 표지가 있으므로 <span class="arithmatex">\(Q\)</span> 의 <span class="arithmatex">\(n\to n+1\)</span> 단계는 tree 의 (unary 구간을 유지한) <span class="arithmatex">\(\{1..n\}\)</span> 제한에서 (unary 구간을 유지한) <span class="arithmatex">\(\{1..n+1\}\)</span> 제한으로의 전이로 유일하게 결정 ✓. 새 branching 을 만드는 단계: unary vertex 선택 확률 <span class="arithmatex">\(\delta/n\le\delta\)</span>; 그 외 단계 <span class="arithmatex">\(\le1\)</span> ✓. 따라서 <span class="arithmatex">\(\le\delta^a=L^{-a}\)</span> ✓. 자식 순서를 동일시하면 같은 topology 에 속하는 표지 tree 수가 <span class="arithmatex">\(k\)</span> 만의 함수로 bound → <span class="arithmatex">\(C_k\)</span> ✓.</p>
+<p>경로 확률로 보면: <span class="arithmatex">\(k-1\)</span> 걸음 Markov chain 의 지정 경로 하나의 확률 = 걸음별 전이확률의 곱이고, 새 깊이 좌표를 만드는 <span class="arithmatex">\(a\)</span> 걸음은 각각 지정된 깊이 칸 하나의 unary vertex 를 고르므로 <span class="arithmatex">\(\le\delta\)</span>, 나머지 걸음은 <span class="arithmatex">\(\le1\)</span> 로 버린다.</p>
 </details>
 <hr />
 <p>∎</p>
@@ -3098,7 +3192,9 @@ Q_k\{\text{that topology and depth assignment}\}
 <p><strong>s4</strong> <a href="03-calculus-on-finite-trees.html#eq-3-16">(3.16)</a> 과 함께, 이것은 regular 깊이 배정에 대한 평균 추정을 logarithmic expansion 에서 쓸 수 있게 해 준다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4</strong> Remark 3.7: "<span class="arithmatex">\(a\)</span> 개 overlap 단계에 대한 Riemann 합 <span class="arithmatex">\(L^{-a}\sum_{d_1..d_a}\)</span>" 은 <span class="arithmatex">\(Q_k\)</span> 기대값으로 바꿔 쓸 수 있다. 물리로는 <span class="arithmatex">\(\int dx_1\cdots dx_a\)</span> (Parisi 함수의 <span class="arithmatex">\(x\)</span> 변수에 대한 적분)의 이산 판본. full-RSB 의 연속 <span class="arithmatex">\(x\)</span> 위 적분을 균등 mesh 의 평균으로 다루겠다는 뜻. <code>📚</code> (3.17) 에서 직접; 쓰이는 곳은 §8–§9 (예고)</li>
+<li><strong>s1–s2</strong> Remark 3.7 은 (3.17) 을 쓰는 법을 말한다: <span class="arithmatex">\(Q_k\)</span> 는 topology <span class="arithmatex">\(\tau\)</span> 마다(갈림점 <span class="arithmatex">\(a=a(\tau)\)</span> 개) 그 깊이 좌표 격자 위에서 각 점의 확률이 셀 부피 <span class="arithmatex">\(L^{-a(\tau)}\)</span> 의 <span class="arithmatex">\(C_k\)</span> 배 이하인 분포다. 그래서 topology <span class="arithmatex">\(\tau\)</span> 하나의 <span class="arithmatex">\(Q_k\)</span> 기여는 깊이에 대한 정규화되지 않은 평균으로 <strong>위에서</strong> bound 된다: <span class="arithmatex">\(\bigl\lvert\sum_{\mathbf d}Q_k\{\tau,\mathbf d\}f(\mathbf d)\bigr\rvert\le C_kL^{-a}\sum_{\mathbf d}\lvert f(\mathbf d)\rvert\)</span>. topology 가 유한 개라 모두 합해도 상수는 <span class="arithmatex">\(k\)</span> 에만 의존한다 — 등식(바꿔 쓰기)이 아니라 upper bound 로의 환원이다. <code>📚</code> (3.17) 과 s1</li>
+<li><strong>s3–s4</strong> subshape 가 쓰지 않는 깊이 좌표 <span class="arithmatex">\(r\)</span> 개를 합하면 많아야 <span class="arithmatex">\(L^r\)</span> 배라 <span class="arithmatex">\(L^{-a}\)</span> 의 해당 인수를 상쇄할 뿐이다(남는 것 <span class="arithmatex">\(L^{-(a-r)}\)</span>; 보이지 않는 좌표를 합해 없애는 것). 비regular 부분은 (3.16) 의 확률 upper bound <span class="arithmatex">\(C_k(\eta+L^{-1})\)</span> 로 따로 처리한다(쓰이는 곳 §8 에서는 비regular tree 위의 편차를 상수로 bound 한다). 이 오차는 <span class="arithmatex">\(L\to\infty\)</span> 뒤에도 <span class="arithmatex">\(C_k\eta\)</span> 가 남으므로, <strong>regular</strong> 깊이 배정의 평균 추정은 <span class="arithmatex">\(\eta\)</span> 를 고정한 채 <span class="arithmatex">\(N\to\infty\)</span>, <span class="arithmatex">\(L\to\infty\)</span> 순으로 쓰고 <span class="arithmatex">\(\eta\downarrow0\)</span> 은 마지막에 보낸다. <code>📚</code> s3–s4; 쓰이는 곳은 §8–§9 (예고)</li>
+<li><strong>s2</strong> <span class="arithmatex">\(L^{-a}\sum_{d_1..d_a}\)</span> 는 <span class="arithmatex">\(x_i=d_i/L\)</span> 에 대한 Riemann 합이라 <span class="arithmatex">\(\int dx_1\cdots dx_a\)</span> (Parisi 함수의 <span class="arithmatex">\(x\)</span> 변수 적분)의 이산 판본처럼 볼 수 있다 <code>🔧</code> 제안 해석. 이 Remark 자체는 유한 <span class="arithmatex">\(L\)</span> 에서의 upper bound 이며 <span class="arithmatex">\(L\to\infty\)</span> 극한을 주장하지 않는다.</li>
 </ul>
 <hr />
 <p><em>(끝: s3-4-e13)</em></p>
