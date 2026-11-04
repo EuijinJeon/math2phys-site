@@ -1267,6 +1267,26 @@ t_\nu=j^{-1},\qquad
 <p><a id="s6-2"></a></p>
 <h2 id="62-concentration-of-each-perturbation-score">§6.2 Concentration of each perturbation score<a class="headerlink" href="#62-concentration-of-each-perturbation-score" title="Permanent link">&para;</a></h2>
 <p><em>제목: 각 섭동 score 의 집중</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> GG 식 논증으로 overlap 항등식을 끌어내려면, 각 섭동 type <span class="arithmatex">\(\nu\)</span> 의 score <span class="arithmatex">\(D_\nu\)</span> (섭동 log-weight 의 <span class="arithmatex">\(u\)</span>-미분) 가 한 시료 안(thermal)에서도 시료 사이(disorder)에서도 평균 항 수 <span class="arithmatex">\(\lambda_\nu=c_\nu N^{3/4}\)</span> 에 비해 작게 요동해야 한다. 그런데 이 증명은 계층(RSB) 측도 아래의 분산을 직접 계산하지 않고, disorder 도 Poisson 개수·이산 표지라 SK 식의 Gaussian 부분적분·Gaussian concentration 을 쓰지 않는다 — 대신 아래 두 갈래로 free entropy 를 통해 잰다.</li>
+<li><strong>물리로는.</strong> 요동을 직접 재지 않고 free entropy 로 잰다: thermal 요동은 root 고정 free entropy <span class="arithmatex">\(X_0(u)\)</span> 의 곡률이 위에서 누르고(¶4–¶5), disorder 요동은 볼록하게 고친 <span class="arithmatex">\(G=X_0+2nu^2\)</span> 의 함수값 집중(Efron–Stein)을 기울기 집중으로 옮겨 누른다(¶6–¶7). 마지막에 삼각부등식으로 둘을 합친다.</li>
+<li><strong>결론.</strong> Lemma 6.1: 고정된 <span class="arithmatex">\(L\)</span> 과 type <span class="arithmatex">\(\nu\)</span> 에서 <span class="arithmatex">\(\int e_{\nu,N}\,d\pi\to0\)</span>. 다음 소절은 이 평균 bound 와 Markov 부등식으로 <span class="arithmatex">\(e_{\nu,N}(\mathbf u)\)</span> 가 작은 결정적 섭동 세기 열을 고른다.</li>
+<li><strong>읽는 법 (주의).</strong> '작다' 는 모두 평균 score 가 아니라 평균 항 수 <span class="arithmatex">\(\lambda_\nu\)</span> 대비이고, 수렴은 각 <span class="arithmatex">\(\mathbf u\)</span> 가 아니라 <span class="arithmatex">\(\pi\)</span>-평균(<span class="arithmatex">\(L^1(\pi)\)</span>)이다. 상수는 <span class="arithmatex">\(m_1=1/L\)</span>, <span class="arithmatex">\(\lvert I_\nu\rvert\)</span>, <span class="arithmatex">\(J_\nu\)</span> 의 여유에 의존해 <span class="arithmatex">\(L,\nu\)</span> 에 균등하지 않다. 핵심 계산은 ¶4 의 (6.8) 과 ¶7 의 (6.12).</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+  A["Lemma 6.1: score D의 요동 / λν → 0 (u를 π로 평균)"] --&gt; B["thermal: D − ⟨D⟩ (root 고정, 경로·spin 요동)"]
+  A --&gt; C["disorder: ⟨D⟩ = X₀′ 의 root 사이 요동"]
+  P["(6.6) |D| ≤ 2n, −4n ≤ ∂uD ≤ 0"] --&gt; B1
+  B --&gt; B1["(6.8) X₀″ ≥ m₁·Var(D|F₀) − 4n"]
+  B1 --&gt; B2["(6.9)–(6.10) 기울기 유계 → u-적분 분산 O(λν) → thermal 오차 O(λν^−1/2)"]
+  B1 --&gt; C1
+  C --&gt; C1["(6.11) G = X₀ + 2nu² 볼록, Var G ≤ CN (Efron–Stein)"]
+  P --&gt; C1
+  C1 --&gt; C2["(6.12) 할선으로 기울기 끼우기, ρ = N^−1/8 → disorder 오차 O(N^−1/8)"]
+  B2 --&gt; Z["삼각부등식으로 합산 + 나머지 매개변수 π 적분 → (6.5)"]
+  C2 --&gt; Z</code></pre>
+<p>두 갈래 모두 (6.6) 의 경로별 bound 에서 출발하고, (6.8) 의 곡률 하한이 thermal 쪽 bound 와 disorder 쪽 볼록화(G)에 함께 쓰인다.</p>
 <p><a id="s6-2-p1"></a></p>
 <h4 id="62-1">§6.2 ¶1<a class="headerlink" href="#62-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1293,14 +1313,16 @@ e_{\nu,N}(\mathbf u)
 <p><strong>s3</strong> 다음을 정의한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (6.3)</strong> score <span class="arithmatex">\(D_\nu=\partial_u\sum_q\log\psi_{\nu,q}\)</span> = 섭동 Hamiltonian 의 <span class="arithmatex">\(u\)</span>-미분 (섭동 "에너지"). <span class="arithmatex">\(\langle\cdot\rangle\)</span> = 계층 측도(R19)에서 replica 하나. <code>✅</code> 아래 전개</li>
-<li><strong>s3, (6.4)</strong> <span class="arithmatex">\(e_{\nu,N}\)</span> = score 의 상대 요동 (thermal + disorder). GG 논증에서 <span class="arithmatex">\(\mathbb E\langle\lvert H'-\mathbb E\langle H'\rangle\rvert\rangle/N\to0\)</span> 에 해당. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>]</li>
+<li><strong>s1–s2, (6.3)</strong> score <span class="arithmatex">\(D_\nu=\partial_u\sum_q\log\psi_{\nu,q}\)</span> (<span class="arithmatex">\(\psi_{\nu,q}\)</span> = (6.3) 의 분모) 는 섭동 세기 <span class="arithmatex">\(u\)</span> 를 조금 바꿀 때 경로의 섭동 log-weight 가 얼마나 변하는지 재는 conjugate observable 이다. 섭동 Hamiltonian 을 <span class="arithmatex">\(H'=-\sum_q\log\psi_{\nu,q}\)</span> 로 두면 <span class="arithmatex">\(D_\nu=-\partial_uH'\)</span> (부호 반대의 섭동 "에너지"). 두 평균을 구별한다: <span class="arithmatex">\(\langle\cdot\rangle\)</span> 는 root 를 고정하고 현재 <span class="arithmatex">\(\mathbf u\)</span> 의 tilted 경로(말단 Gibbs spin 배치 포함)를 평균하고, <span class="arithmatex">\(\mathbb E_{\mathbf u}\)</span> 는 <span class="arithmatex">\(\mathbf u\)</span> 를 고정한 채 root 의 무작위성을 평균한다. <code>✅</code> 아래 전개</li>
+<li><strong>s3, (6.4)</strong> <span class="arithmatex">\(e_{\nu,N}(\mathbf u)\)</span> = 고정된 <span class="arithmatex">\(\mathbf u\)</span> 에서 score 가 전체 평균 <span class="arithmatex">\(\mathbb E_{\mathbf u}\langle D_\nu\rangle\)</span> 에서 벗어나는 평균 절대 편차(경로 안 thermal + root 사이 disorder)를 <strong>평균 항 수</strong> <span class="arithmatex">\(c_\nu s_N=\mathbb E n_\nu\)</span> 로 나눈 것 — 평균 score 로 나눈 것이 아니다. 이 자체는 정의이고, 0 으로 간다는 주장은 <span class="arithmatex">\(\mathbf u\)</span> 를 <span class="arithmatex">\(\pi\)</span> 로 평균한 다음 문단 (6.5) 에서만 나온다. GG 논증의 <span class="arithmatex">\(\mathbb E\langle\lvert H'-\mathbb E\langle H'\rangle\rvert\rangle/N\to0\)</span> (섭동 세기 평균 후) 에 대응하되 분모가 <span class="arithmatex">\(N\)</span> 이 아니라 <span class="arithmatex">\(c_\nu s_N\sim N^{3/4}\)</span>. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>]</li>
 </ul>
 <details>
 <summary>전개: score = log-weight 의 u 미분 (s1)</summary>
+<p><span class="arithmatex">\(\psi_{\nu,q}=1+t_\nu g_q\sigma_{i_q}+u_\nu g_{0,q}S_{0,q}\)</span>.</p>
 <p><span class="arithmatex">\(\partial_u\log(1+tg\sigma+ug_0S_0)=\frac{g_0S_0}{1+tg\sigma+ug_0S_0}\)</span> ✓; 항 <span class="arithmatex">\(q=1..n_\nu\)</span> 의 합 = (6.3) ✓.</p>
 </details>
-<p><strong>식 (6.3) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.3) — score D_ν</summary>
 <table>
 <thead>
 <tr>
@@ -1314,12 +1336,14 @@ e_{\nu,N}(\mathbf u)
 <tr>
 <td><span class="arithmatex">\(D_\nu=\sum_q\frac{g_{0,q}S_{0,q}}{\psi_{\nu,q}}\)</span></td>
 <td>score</td>
-<td>섭동 Hamiltonian 의 <span class="arithmatex">\(u\)</span>-미분 ("섭동 에너지")</td>
+<td>섭동 log-weight 의 <span class="arithmatex">\(u\)</span>-미분 <span class="arithmatex">\(=-\partial_uH'\)</span> (conjugate observable)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.4) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.4) — 평균 항 수 대비 평균 절대 편차 e_ν,N</summary>
 <table>
 <thead>
 <tr>
@@ -1332,12 +1356,13 @@ e_{\nu,N}(\mathbf u)
 <tbody>
 <tr>
 <td><span class="arithmatex">\(\mathbb E\langle\lvert D-\mathbb E\langle D\rangle\rvert\rangle/(c_\nu s_N)\)</span></td>
-<td>상대 평균 절대 편차</td>
-<td>섭동 에너지의 self-averaging 정도</td>
+<td>평균 항 수 <span class="arithmatex">\(c_\nu s_N\)</span> 대비 평균 절대 편차</td>
+<td>섭동 응답의 self-averaging 정도 (thermal + disorder)</td>
 <td><code>🔧</code> 정의</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-2-e1"></a></p>
 <h3 id="lemma-61-averaged-score-concentration">▸ Lemma 6.1 (Averaged score concentration)<a class="headerlink" href="#lemma-61-averaged-score-concentration" title="Permanent link">&para;</a></h3>
@@ -1357,9 +1382,11 @@ e_{\nu,N}(\mathbf u)
 <p><strong>s3</strong> 상수가 <span class="arithmatex">\(L\)</span> 이나 <span class="arithmatex">\(\nu\)</span> 에 대해 균등할 필요는 없다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (6.5)</strong> Lemma 6.1: 섭동 세기를 평균하면 섭동 에너지가 self-averaging (thermal 요동 + disorder 요동 모두 → 0). 물리에서 "작은 섭동에 대해 free energy 가 미분가능 → 에너지 요동이 작다" 의 엄밀판. <code>📚</code> 증명 §6.2 ¶3–¶7</li>
+<li><strong>s1–s3, (6.5)</strong> Lemma 6.1: <strong>고정된</strong> <span class="arithmatex">\(L\)</span> 과 <strong>고정된</strong> type <span class="arithmatex">\(\nu\)</span> 에서, 섭동 세기 <span class="arithmatex">\(\mathbf u\)</span> 를 <span class="arithmatex">\(\pi\)</span> 로 평균하면 score 의 상대 요동(평균 항 수 <span class="arithmatex">\(c_\nu s_N\)</span> 대비, thermal + disorder)이 <span class="arithmatex">\(N\to\infty\)</span> 에서 0. 원래 계와 reservoir 모두에 성립(s2)하고, 수렴의 상수는 <span class="arithmatex">\(m_1=1/L\)</span> 과 <span class="arithmatex">\(\lvert I_\nu\rvert\)</span> 에 의존하므로 <span class="arithmatex">\(L,\nu\)</span> 에 균등하지 않다(s3). 이하 증명은 이 평균 bound 를 thermal·disorder 두 갈래로 보인다. <code>📚</code> 증명 §6.2 ¶3–¶7</li>
+<li>🧭 물리 직관과의 차이: 물리는 '작은 섭동에 대해 free energy 가 미분가능 → 에너지 요동이 작다' 로 읽지만, 증명은 극한의 미분가능성을 쓰지 않고 유한 <span class="arithmatex">\(N\)</span> 의 거의-볼록성·기울기 유계·함수값 집중만 쓴다. 그래서 결론도 각 <span class="arithmatex">\(\mathbf u\)</span> 가 아니라 <span class="arithmatex">\(\mathbf u\)</span>-평균이다 — 저온 Curie–Weiss 의 <span class="arithmatex">\(h=0\)</span> 처럼 기울기가 점프하는 세기에서는 응답 요동이 남을 수 있고, 증명은 요동을 <span class="arithmatex">\(u\)</span>-적분으로만 누르므로 그런 점을 따로 배제할 필요가 없다. <code>제안 해석</code> <code>❓</code> (Curie–Weiss 예는 논문에 없음)</li>
 </ul>
-<p><strong>식 (6.5) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.5) — π-평균 집중</summary>
 <table>
 <thead>
 <tr>
@@ -1372,12 +1399,13 @@ e_{\nu,N}(\mathbf u)
 <tbody>
 <tr>
 <td><span class="arithmatex">\(\int e_{\nu,N}\,d\pi\to0\)</span></td>
-<td>평균 집중</td>
-<td>거의 모든 섭동 세기에서 self-averaging</td>
+<td><span class="arithmatex">\(\pi\)</span>-평균 집중 (<span class="arithmatex">\(L^1(\pi)\)</span> 수렴)</td>
+<td><span class="arithmatex">\(\pi\)</span>-확률로 self-averaging: 임의의 <span class="arithmatex">\(\varepsilon\gt0\)</span> 에 대해 <span class="arithmatex">\(e_{\nu,N}\gt\varepsilon\)</span> 인 세기들의 <span class="arithmatex">\(\pi\)</span>-비중 <span class="arithmatex">\(\to0\)</span> (각 <span class="arithmatex">\(\mathbf u\)</span> 에서의 수렴은 주장하지 않음)</td>
 <td><code>📚</code> §6.2 증명</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s6-2-e1)</em></p>
 <p><a id="s6-2-e2"></a></p>
@@ -1402,13 +1430,15 @@ e_{\nu,N}(\mathbf u)
 <p><strong>s3</strong> 이 구간에서 경로별로 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s3, (6.6)</strong> score 는 항 수 <span class="arithmatex">\(n\)</span> 에 비례해 유계이고, <span class="arithmatex">\(u\)</span> 에 대해 감소 (각 항의 미분 <span class="arithmatex">\(-(g_0S_0)^2/\psi^2\le0\)</span>). <code>✅</code> 아래 전개</li>
+<li><strong>s1–s3, (6.6)</strong> 이제 다른 매개변수는 모두 고정하고 <span class="arithmatex">\(u=u_\nu\)</span> 만 바꾼다(s1). <span class="arithmatex">\(n=n_\nu\)</span> 는 이 root 의 <span class="arithmatex">\(\nu\)</span>-type 섭동 항 수(평균 <span class="arithmatex">\(\lambda_\nu=c_\nu s_N\)</span>)이고, <span class="arithmatex">\(J_\nu\)</span> 는 평균을 취할 구간 <span class="arithmatex">\(I_\nu\)</span> 를 양옆으로 조금 넓힌 열린 구간이다(s2) — 이 여유는 ¶7 에서 <span class="arithmatex">\(u\pm\rho\)</span> 의 함수값을 비교할 때 쓴다. 먼저 경로와 말단 spin 배치를 얼려 놓고 score 의 크기와 기울기를 제한한다: <span class="arithmatex">\(J_\nu\)</span> 위에서 <span class="arithmatex">\(\lvert t_\nu\rvert+\lvert u\rvert\lt1/2\)</span> 와 <span class="arithmatex">\(\lvert g\rvert,\lvert g_0S_0\rvert\le1\)</span> 이므로 분모 <span class="arithmatex">\(\psi\gt1/2\)</span>, 따라서 <span class="arithmatex">\(\lvert D_\nu\rvert\le2n\)</span> 이고 <span class="arithmatex">\(-4n\le\partial_uD_\nu\le0\)</span> (각 항의 미분 <span class="arithmatex">\(-(g_0S_0)^2/\psi^2\)</span>). 고정 경로의 직접 응답 <span class="arithmatex">\(\partial_uD\)</span> 는 음수지만, 평균에서는 <span class="arithmatex">\(u\)</span> 가 경로들의 확률도 바꾸므로 그 재가중이 다음 문단 (6.8) 의 양의 분산 항이 되고, 여기 <span class="arithmatex">\(-4n\)</span> 이 그 하한의 보정항이 된다. <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: (6.6) (s3)</summary>
+<p><span class="arithmatex">\(\psi\gt\frac12\)</span> 는 <span class="arithmatex">\(\lvert t_\nu\rvert+\lvert u\rvert\lt\frac12\)</span> 와 <span class="arithmatex">\(\lvert g\rvert,\lvert g_0S_0\rvert\le1\)</span> 에서 나온다 (<span class="arithmatex">\(\psi\ge1-\lvert t_\nu\rvert-\lvert u\rvert\)</span>).</p>
 <p><span class="arithmatex">\(\psi\gt\frac12\)</span>, <span class="arithmatex">\(\lvert g_0S_0\rvert\le1\)</span> → 항마다 <span class="arithmatex">\(\lvert g_0S_0/\psi\rvert\lt2\)</span> ✓, <span class="arithmatex">\(\partial_u(g_0S_0/\psi)=-(g_0S_0)^2/\psi^2\in[-4,0]\)</span> ✓.</p>
 </details>
-<p><strong>식 (6.6) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.6) — score 의 크기와 기울기 2행</summary>
 <table>
 <thead>
 <tr>
@@ -1433,6 +1463,7 @@ e_{\nu,N}(\mathbf u)
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-2-p4"></a></p>
 <h4 id="62-4">§6.2 ¶4<a class="headerlink" href="#62-4" title="Permanent link">&para;</a></h4>
@@ -1473,14 +1504,19 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <p><strong>s8</strong> 그 root 기댓값은 Poisson 개수의 유한 moment 로 정당화된다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s4–s5, (6.7)–(6.8)</strong> 계층 free entropy 의 2 차 미분 = <span class="arithmatex">\(\langle\partial_uD\rangle\)</span> + <span class="arithmatex">\(\sum_dm_d\langle(M_d-M_{d-1})^2\rangle\)</span>. 물리로는 <strong>susceptibility 를 상태 계층의 단계별 요동으로 분해</strong>: 깊이 <span class="arithmatex">\(d\)</span> 의 상태 묶음 사이에서 섭동 에너지의 평균이 얼마나 다른지(분산)에 Parisi parameter <span class="arithmatex">\(m_d\)</span> 가중치를 곱해 더한다. <span class="arithmatex">\(L=1\)</span> (RS) 이면 보통의 <span class="arithmatex">\(\partial^2\log Z=\langle\partial H'\rangle+\mathrm{Var}(H')\)</span>. <code>✅</code> 아래 전개</li>
-<li><strong>s5</strong> 하한 <span class="arithmatex">\(\ge m_1\mathrm{Var}(D\mid\mathscr F_0)-4n\)</span>: 모든 단계 분산의 합 ≥ <span class="arithmatex">\(m_1\)</span> × 전체 분산 (<span class="arithmatex">\(m_d\ge m_1\)</span>, martingale 증분의 직교성). 즉 free entropy 의 곡률이 섭동 에너지의 전체 thermal 분산을 통제. <code>✅</code> 아래 전개</li>
+<li><strong>s2–s5, (6.7)–(6.8)</strong> root 를 고정하고 tilted 경로를 '상태 계층에서 가지를 한 단계씩 고르고 마지막에 Gibbs spin 배치를 뽑는 실험' 으로 보자 (<code>제안 해석</code>). <span class="arithmatex">\(X_0(u)\)</span> 는 이 root 의 log partition function, <span class="arithmatex">\(\mathscr F_d\)</span> 는 깊이 <span class="arithmatex">\(d\)</span> 까지 공개된 가지 정보, <span class="arithmatex">\(M_d=\langle D_\nu\mid\mathscr F_d\rangle\)</span> 는 그 정보로 예측한 score 이므로 <span class="arithmatex">\(M_d-M_{d-1}\)</span> 은 가지 하나를 더 알았을 때의 예측 변화다. (6.8) 은 곡률 <span class="arithmatex">\(X_0''\)</span> = 고정 경로의 직접 응답 <span class="arithmatex">\(\langle\partial_uD\rangle\)</span> + 단계별 예측 변화의 분산을 Parisi parameter <span class="arithmatex">\(m_d\)</span> 로 가중한 합 — susceptibility 를 계층 단계별 요동으로 분해한 것이고, (6.7) <span class="arithmatex">\(X_0'=\langle D\rangle\)</span> 는 Hellmann–Feynman. 마지막 spin 단계는 <span class="arithmatex">\(m_L=1\)</span> 이라 보통의 Gibbs 분산이 들어간다(s3). <code>✅</code> 아래 전개</li>
+<li><strong>s5</strong> 하한 <span class="arithmatex">\(X_0''\ge m_1\mathrm{Var}(D\mid\mathscr F_0)-4n\)</span> (<span class="arithmatex">\(u\in J_\nu\)</span>): <span class="arithmatex">\(-4n\)</span> 은 (6.6) 의 <span class="arithmatex">\(\partial_uD\ge-4n\)</span> 에서, 첫 항은 <span class="arithmatex">\(m_d\ge m_1=1/L\gt0\)</span> 와 martingale 증분의 직교성 <span class="arithmatex">\(\sum_d\langle(M_d-M_{d-1})^2\rangle=\mathrm{Var}(D\mid\mathscr F_0)\)</span> 에서 온다. 즉 곡률에 <span class="arithmatex">\(4n\)</span> 을 더한 것이 root 고정 하의 score 분산(모든 계층 단계 + Gibbs)의 <span class="arithmatex">\(m_1\)</span> 배를 위에서 누른다 — 곡률이 곧 분산은 아니다. <span class="arithmatex">\(m_d\ge m_1=1/L\gt0\)</span> 이므로 모든 계층 단계의 분산을 한꺼번에 통제할 수 있고, 그 대가로 다음 문단 (6.9) 의 상수에 <span class="arithmatex">\(1/m_1\)</span> 이 들어간다. 다음 문단은 이 하한을 <span class="arithmatex">\(u\)</span> 로 적분한다. (곡률이 0 인데 분산은 항당 <span class="arithmatex">\(O(1)\)</span> 인 장난감, 그리고 <span class="arithmatex">\(m_1\to0\)</span> 에서 무엇이 보이지 않게 되는지: 아래 전개) <code>✅</code> 아래 전개</li>
 </ul>
 <details>
-<summary>전개: backward 단계의 1·2 차 미분 (s4–s5)</summary>
-<p><span class="arithmatex">\(X_{d-1}=\frac1m\log K e^{mX_d}\)</span> (<span class="arithmatex">\(m=m_d\)</span>). <span class="arithmatex">\(\partial X_{d-1}=\frac{K[e^{mX_d}\partial X_d]}{Ke^{mX_d}}=\tilde K(\partial X_d)\)</span> (<span class="arithmatex">\(\tilde K\)</span> = tilt 된 kernel) ✓. 다시 미분: <span class="arithmatex">\(\partial^2X_{d-1}=\tilde K(\partial^2X_d)+m[\tilde K((\partial X_d)^2)-(\tilde K\partial X_d)^2]=\tilde K(\partial^2X_d)+m\,\mathrm{Var}_{\tilde K}(\partial X_d)\)</span> ✓ (log-sum-exp 의 2 차 미분 = 분산). 말단 <span class="arithmatex">\(X_L=\log(\text{spin weight})\)</span>, <span class="arithmatex">\(\partial X_L=D_\nu\)</span> (score). 재귀를 풀면 <span class="arithmatex">\(\partial X_d=M_d\)</span>, <span class="arithmatex">\(\mathrm{Var}_{K_d}(M_d)=\langle(M_d-M_{d-1})^2\mid\mathscr F_{d-1}\rangle\)</span> → (6.8) ✓. martingale 증분은 직교: <span class="arithmatex">\(\sum_d\langle(M_d-M_{d-1})^2\rangle=\mathrm{Var}(D\mid\mathscr F_0)\)</span>, <span class="arithmatex">\(m_d\ge m_1\)</span> → 하한 ✓.</p>
+<summary>전개: backward 단계의 1·2 차 미분 (s4–s5) + 곡률 0·분산 O(1) 장난감</summary>
+<p>주의: 원문 s4 표시식의 <span class="arithmatex">\(K_d\)</span>, <span class="arithmatex">\(\mathrm{Var}_{K_d}\)</span> 는 s6 에 따라 현재 <span class="arithmatex">\(u\)</span> 에서 tilt 된 kernel (<span class="arithmatex">\(=\tilde K_d\)</span>, untilted kernel 을 <span class="arithmatex">\(e^{m_dX_d}\)</span> 로 재가중한 것) 로 읽는다.</p>
+<p><span class="arithmatex">\(X_{d-1}=\frac1m\log K e^{mX_d}\)</span> (<span class="arithmatex">\(m=m_d\)</span>). <span class="arithmatex">\(\partial X_{d-1}=\frac{K[e^{mX_d}\partial X_d]}{Ke^{mX_d}}=\tilde K(\partial X_d)\)</span> (<span class="arithmatex">\(\tilde K\)</span> = tilt 된 kernel) ✓. 다시 미분: <span class="arithmatex">\(\partial^2X_{d-1}=\tilde K(\partial^2X_d)+m[\tilde K((\partial X_d)^2)-(\tilde K\partial X_d)^2]=\tilde K(\partial^2X_d)+m\,\mathrm{Var}_{\tilde K}(\partial X_d)\)</span> ✓ (log-sum-exp 의 2 차 미분 = 분산). 말단 <span class="arithmatex">\(X_L=\log(\text{spin weight})\)</span>, <span class="arithmatex">\(\partial X_L=D_\nu\)</span> (score). 재귀를 풀면 <span class="arithmatex">\(\partial X_d=M_d\)</span>, <span class="arithmatex">\(\mathrm{Var}_{\tilde K_d}(M_d)=\langle(M_d-M_{d-1})^2\mid\mathscr F_{d-1}\rangle\)</span> → (6.8) ✓. martingale 증분은 직교: <span class="arithmatex">\(\sum_d\langle(M_d-M_{d-1})^2\rangle=\mathrm{Var}(D\mid\mathscr F_0)\)</span>, <span class="arithmatex">\(m_d\ge m_1\)</span> → 하한 ✓.</p>
+<p>비교: 형식적으로 <span class="arithmatex">\(L=1\)</span> (<span class="arithmatex">\(m_1=m_L=1\)</span>, Gibbs 단계만) 로 놓으면 보통의 <span class="arithmatex">\(\partial_u^2\log Z=\langle\partial_uD\rangle+\mathrm{Var}(D)\)</span> 로 돌아간다. 이 절은 <span class="arithmatex">\(L\ge2\)</span> 를 가정하므로 비교용 특수화다. <code>제안 해석</code></p>
+<p>하한이 <span class="arithmatex">\(m_1\)</span> 에 비례하므로 <span class="arithmatex">\(m_1\to0\)</span> 이면 가장 바깥 단계의 요동은 곡률에 보이지 않는다: 그 단계의 tilt <span class="arithmatex">\(e^{m_1X_1}\)</span> 이 1 에 가까워져 <span class="arithmatex">\(X_0=\frac1{m_1}\log Ke^{m_1X_1}\to K(X_1)\)</span> (log 의 단순 평균) 이 되기 때문이다. (6.9) 의 상수 <span class="arithmatex">\(1/m_1\)</span> 이 그 흔적이다. <code>제안 해석</code></p>
+<p>장난감 확인 (형식적 <span class="arithmatex">\(L=1\)</span>, <span class="arithmatex">\(t_\nu=0\)</span>, <code>제안 해석</code>): 항 하나, <span class="arithmatex">\(g_0=1\)</span>, <span class="arithmatex">\(S_0=\sigma\)</span> (§6.1 의 <span class="arithmatex">\(S_0=\sigma_i\)</span> 선택) 가 균등 기본 측도의 spin 이라 두면 tilted 법칙은 <span class="arithmatex">\(P(\sigma)=(1+u\sigma)/2\)</span>, <span class="arithmatex">\(Z=2\)</span> 라 <span class="arithmatex">\(X_0''=0\)</span>. 그런데 <span class="arithmatex">\(D=\sigma/(1+u\sigma)\)</span> 이므로 <span class="arithmatex">\(\langle D\rangle=0\)</span>, <span class="arithmatex">\(\langle D^2\rangle=\frac1{1-u^2}=-\langle\partial_uD\rangle\)</span> — 직접 항이 분산을 정확히 상쇄한다. 곡률 0 인데 분산은 항당 <span class="arithmatex">\(O(1)\)</span> 이므로 <span class="arithmatex">\(-4n\)</span> 없이 "곡률 ≥ 분산" 은 거짓이다(하한 <span class="arithmatex">\(0\ge n/(1-u^2)-4n\)</span> 은 <span class="arithmatex">\(\lvert u\rvert\lt1/2\)</span> 에서 성립 ✓). 독립 항 <span class="arithmatex">\(n\)</span> 개면 상대 thermal 요동이 <span class="arithmatex">\(\sim n^{-1/2}\)</span> 이므로, 이 예에서는 (6.10) 의 <span class="arithmatex">\(\lambda_\nu^{-1/2}\)</span> 차수가 더 좋아질 수 없다.</p>
 </details>
-<p><strong>식 Eq. §6.2 ¶4 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶4 backward 단계 미분 식 — 1차 응답·분산 항</summary>
 <table>
 <thead>
 <tr>
@@ -1505,7 +1541,9 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.7), (6.8) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.7), (6.8) — 기울기·곡률 분해·하한 4행</summary>
 <table>
 <thead>
 <tr>
@@ -1525,7 +1563,7 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <tr>
 <td><span class="arithmatex">\(\langle\partial_uD_\nu\rangle\)</span> (6.8)</td>
 <td>직접 항</td>
-<td>섭동의 곡률</td>
+<td>고정 경로의 직접 응답 (<span class="arithmatex">\(\le0\)</span>, <span class="arithmatex">\(\ge-4n\)</span>)</td>
 <td><code>✅</code></td>
 </tr>
 <tr>
@@ -1537,11 +1575,12 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <tr>
 <td><span class="arithmatex">\(\ge m_1\mathrm{Var}(D\mid\mathscr F_0)-4n\)</span> (6.8)</td>
 <td>하한</td>
-<td>곡률이 전체 thermal 분산을 통제</td>
+<td>곡률 <span class="arithmatex">\(+4n\)</span> 이 root 고정 조건부 분산의 <span class="arithmatex">\(m_1\)</span> 배를 통제</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-2-p5"></a></p>
 <h4 id="62-5">§6.2 ¶5<a class="headerlink" href="#62-5" title="Permanent link">&para;</a></h4>
@@ -1564,13 +1603,14 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <p><strong>s2</strong> 따라서 구간 평균한 thermal 평균 절대 편차를 <span class="arithmatex">\(\lambda_\nu\)</span> 로 나눈 것은 최대 다음과 같다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s2, (6.9)–(6.10)</strong> GG 논증의 핵심: <span class="arithmatex">\(\int X''du=X'(b)-X'(a)\)</span> 는 유계(<span class="arithmatex">\(\le4n\)</span>)이므로 분산의 <span class="arithmatex">\(u\)</span>-평균은 <span class="arithmatex">\(O(\lambda)\)</span>; 표준편차/평균은 <span class="arithmatex">\(O(\lambda^{-1/2})\to0\)</span>. 물리로는 "free energy 가 <span class="arithmatex">\(u\)</span> 에 대해 볼록하고 기울기가 유계이면, 대부분의 <span class="arithmatex">\(u\)</span> 에서 곡률(=에너지 요동)이 작다". <code>✅</code> 아래 전개</li>
+<li><strong>s1–s2, (6.9)–(6.10)</strong> 이 문단은 ¶4 의 하한을 <span class="arithmatex">\(u\)</span> 로 적분해 thermal 요동을 끝낸다. 물리 그림은 '<span class="arithmatex">\(u\)</span> 구간 전체의 요동 예산' 이다 (<code>제안 해석</code>): free entropy 는 거의 볼록(<span class="arithmatex">\(X_0''\ge-4n\)</span>)하고 기울기가 <span class="arithmatex">\(\lvert X_0'\rvert\le2n\)</span> 으로 유계이므로 <span class="arithmatex">\(\int_a^b(X_0''+4n)du=X_0'(b)-X_0'(a)+4n\lvert I_\nu\rvert=O(n)\)</span>, root 평균 후 <span class="arithmatex">\(\int_{I_\nu}\mathbb E\,\mathrm{Var}(D\mid\mathscr F_0)\,du=O(\lambda_\nu)\)</span> — 분산이 <span class="arithmatex">\(\lambda_\nu^2\)</span> 에 비해 작다. 이 '곡률을 적분하면 기울기 차이로 유계 → 섭동 세기를 평균하면 thermal 요동이 작다' 가 GG 논증의 중심 단계이고, 여기서는 그 곡률에 계층 단계별 분산이 <span class="arithmatex">\(m_d\)</span> 가중으로 들어간 판이다. <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>] Cauchy–Schwarz 로 <strong><span class="arithmatex">\(u\)</span>-구간 평균한</strong> thermal 평균 절대 편차를 <span class="arithmatex">\(\lambda_\nu\)</span> (평균 항 수, <span class="arithmatex">\(\langle D\rangle\)</span> 아님) 로 나누면 <span class="arithmatex">\(\le\bigl(4(1+\lvert I_\nu\rvert)/(m_1\lvert I_\nu\rvert\lambda_\nu)\bigr)^{1/2}=O_{L,\nu}(\lambda_\nu^{-1/2})\to0\)</span>. 남은 것은 root 사이 요동(다음 문단). <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: (6.9)–(6.10) (s1–s2)</summary>
 <p><span class="arithmatex">\(m_1\int_a^b\mathrm{Var}\,du\le\int_a^b(X_0''+4n)du=X_0'(b)-X_0'(a)+4n(b-a)\le4n+4n(b-a)\)</span> ✓. 기댓값: <span class="arithmatex">\(\mathbb En=\lambda_\nu\)</span> → (6.9) ✓. Cauchy–Schwarz: <span class="arithmatex">\(\frac1{\lvert I\rvert}\int\mathbb E\langle\lvert D-\langle D\rangle\rvert\rangle\le\bigl(\frac1{\lvert I\rvert}\int\mathbb E\mathrm{Var}\bigr)^{1/2}\le\bigl(\frac{4\lambda(1+\lvert I\rvert)}{m_1\lvert I\rvert}\bigr)^{1/2}\)</span>, <span class="arithmatex">\(\lambda\)</span> 로 나누면 (6.10) ✓.</p>
 </details>
-<p><strong>식 (6.9) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.9) — u-적분 thermal 분산과 bound</summary>
 <table>
 <thead>
 <tr>
@@ -1590,12 +1630,14 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <tr>
 <td><span class="arithmatex">\(4\lambda_\nu(1+b-a)/m_1\)</span></td>
 <td>bound</td>
-<td><span class="arithmatex">\(O(\lambda)\)</span>: 요동은 평균의 제곱근 차수</td>
+<td><span class="arithmatex">\(u\)</span>-적분한 분산이 <span class="arithmatex">\(O(\lambda_\nu)\)</span>: 표준편차는 평균 항 수 <span class="arithmatex">\(\lambda_\nu\)</span> 의 제곱근 차수 (상수 <span class="arithmatex">\(\propto1/m_1=L\)</span>)</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.10) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.10) — 구간 평균 thermal 상대 요동</summary>
 <table>
 <thead>
 <tr>
@@ -1609,11 +1651,12 @@ X_0''(u)&amp;=\langle\partial_uD_\nu\rangle
 <tr>
 <td><span class="arithmatex">\((4(1+\lvert I\rvert)/(m_1\lvert I\rvert\lambda))^{1/2}\)</span></td>
 <td>상대 thermal 요동</td>
-<td><span class="arithmatex">\(O(\lambda^{-1/2})\to0\)</span>: thermal self-averaging</td>
+<td><span class="arithmatex">\(O_{L,\nu}(\lambda_\nu^{-1/2})\to0\)</span>: 구간 평균 thermal self-averaging</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-2-p6"></a></p>
 <h4 id="62-6">§6.2 ¶6<a class="headerlink" href="#62-6" title="Permanent link">&para;</a></h4>
@@ -1681,14 +1724,18 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s19</strong> <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-11">(6.11)</a> 의 도함수 bound 는 <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-6">(6.6)</a> 에서 바로 나온다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s2–s4</strong> disorder 요동: <span class="arithmatex">\(G=X_0+2nu^2\)</span> 를 볼록하게 만들고 (<span class="arithmatex">\(X_0''\ge-4n\)</span>), <span class="arithmatex">\(\mathrm{Var}(G)=O(N)\)</span> — free entropy (크기 <span class="arithmatex">\(N\)</span> 곱한 것)의 disorder 요동이 <span class="arithmatex">\(O(\sqrt N)\)</span>, 즉 <strong>self-averaging</strong>. <code>✅</code> 볼록성은 아래 전개; 분산은 Efron–Stein (s7–s17)</li>
-<li><strong>s5–s17</strong> Efron–Stein: 독립 입력 하나를 바꿀 때 free entropy 가 <span class="arithmatex">\(O(1)\)</span> 만 바뀌면 분산 <span class="arithmatex">\(\le\)</span> (입력 수) × <span class="arithmatex">\(O(1)\)</span> = <span class="arithmatex">\(O(N)\)</span>. 물리의 "extensive 양의 상대 요동이 <span class="arithmatex">\(1/\sqrt N\)</span>" 의 표준 증명. <code>📚</code> [<a href="99-references.html#ref-EfronStein">8</a>]; Poisson Lipschitz 부등식은 <code>✅</code> 아래 전개</li>
+<li><strong>s2–s4</strong> thermal 부분을 끝냈으므로 이제 root 마다 달라지는 평균 score <span class="arithmatex">\(X_0'=\langle D_\nu\rangle\)</span> 의 disorder 요동을 다룬다. <span class="arithmatex">\(G=X_0+2nu^2\)</span> 는 <span class="arithmatex">\(X_0\)</span> 의 음의 곡률을 상쇄하는 보조 함수다. root 실현마다 <span class="arithmatex">\(J_\nu\)</span> 에서 볼록이고(<span class="arithmatex">\(G''=X_0''+4n\ge m_1\mathrm{Var}(D\mid\mathscr F_0)\ge0\)</span>, (6.8)) — <span class="arithmatex">\(X_0\)</span> 는 이미 경로를 평균한 양이므로 "경로별" 이 아니다 — 그래서 다음 문단에서 각 root 의 기울기를 양옆 할선으로 끼울 수 있다. (6.11): 고정된 <span class="arithmatex">\(\mathbf u\)</span> 에서 root 에 대한 <span class="arithmatex">\(\mathrm{Var}(G(u))\le C_\nu N\)</span> — free entropy 의 sample-to-sample 요동이 <span class="arithmatex">\(O(\sqrt N)\)</span> — 과 <span class="arithmatex">\(\lvert\mathbb E_{\mathbf u}G'\rvert\le C_\nu\lambda_\nu\)</span> 가 <strong><span class="arithmatex">\(u\in J_\nu\)</span> 와 다른 모든 매개변수에 대해 균등</strong> (<span class="arithmatex">\(C_\nu\)</span> 는 <span class="arithmatex">\(\nu\)</span> 에 의존 가능); 이 균등성이 ¶7 s11 의 곱측도 적분에 쓰인다. <code>✅</code> 볼록성은 아래 전개; 분산은 Efron–Stein (s7–s17)</li>
+<li><strong>s5–s17</strong> Efron–Stein 은 독립 입력 하나를 다시 뽑았을 때 함수값이 얼마나 변하는지로 전체 분산을 누른다 — 물리로는 '시료의 구성 요소 하나를 다시 뽑아 free entropy 가 얼마나 달라지는지 보는 실험' 이다 (<code>제안 해석</code>). 두 단계: (i) 물리 interaction 개수와 총 섭동 개수에 조건부로 하면 root 의 독립 입력은 interaction·field 하나하나와 섭동 항 하나하나(type·site 는 독립 표지, s6)다. mark 는 root 입력이 아니라 경로의 auxiliary depth 에서 뽑히는 변수라 <span class="arithmatex">\(X_0\)</span> 안에서 이미 적분돼 있다(§6.1). 입력 하나를 다시 뽑으면 <span class="arithmatex">\(X_0\)</span> 는 <span class="arithmatex">\(O(1)\)</span> 만 바뀌고(spin 가중치에서 바로 나오고 power mean 이 보존, s12), 항을 넣거나 빼도 같다 — 빠진 항의 쓰지 않는 mark 는 적분해 없애면 되기 때문이다(s13). 그래서 조건부 분산 <span class="arithmatex">\(\le C\times\)</span>(root 변수 개수). (ii) 조건부 평균은 개수의 Lipschitz 함수(개수를 하나 바꾸면 평균이 유계량만 변함)라 <span class="arithmatex">\(\mathrm{Var}\le C^2\mathrm{Var}(\text{Poisson 개수})=O(N)\)</span>. 둘을 <span class="arithmatex">\(\mathrm{Var}=\mathbb E\,\mathrm{Var}(\cdot\mid\text{개수})+\mathrm{Var}\,\mathbb E(\cdot\mid\text{개수})\)</span> 로 합친다. s11 이 '동일 분포도 대칭 통계량도 필요 없다' 고 짚는 이유는 입력 종류(interaction·field·여러 type 의 섭동 항)마다 분포가 다르고 <span class="arithmatex">\(X_0\)</span> 가 입력에 대해 대칭이 아니기 때문이다. <code>📚</code> [<a href="99-references.html#ref-EfronStein">8</a>] (Efron–Stein 부등식); Poisson Lipschitz 부등식과 SK·cavity 와의 대응은 <code>✅</code> 아래 전개</li>
 </ul>
 <details>
-<summary>전개: G 의 볼록성과 Poisson Lipschitz 분산 (s3, s16)</summary>
-<p><span class="arithmatex">\(G''=X_0''+4n\ge m_1\mathrm{Var}-4n+4n\ge0\)</span> ✓. Lipschitz: <span class="arithmatex">\(\mathrm{Var}\,b(Q)=\frac12\mathbb E(b(Q)-b(Q'))^2\le\frac{C^2}2\mathbb E(Q-Q')^2=C^2\mathrm{Var}\,Q\)</span> ✓, Poisson<span class="arithmatex">\((\lambda)\)</span> 분산 <span class="arithmatex">\(=\lambda=O(N)\)</span> ✓.</p>
+<summary>전개: G 의 볼록성, Poisson Lipschitz 분산, SK·cavity 와의 대응 (s3, s12–s16)</summary>
+<p><span class="arithmatex">\(G''=X_0''+4n\ge m_1\mathrm{Var}-4n+4n\ge0\)</span> ✓. Lipschitz: <span class="arithmatex">\(\mathrm{Var}\,b(Q)=\frac12\mathbb E(b(Q)-b(Q'))^2\le\frac{C^2}2\mathbb E(Q-Q')^2=C^2\mathrm{Var}\,Q\)</span> ✓, Poisson 개수 <span class="arithmatex">\(Q\)</span> 의 분산 = 평균. 물리 interaction 개수는 평균 <span class="arithmatex">\(O(N)\)</span>, 섭동 개수는 평균 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 이므로 합쳐 <span class="arithmatex">\(\mathrm{Var}=O(N)\)</span> (여기 평균은 <span class="arithmatex">\(\lambda_\nu\)</span> 와 다른 양) ✓.</p>
+<p>SK 에서는 coupling 이 Gaussian 이라 Gaussian concentration 으로 <span class="arithmatex">\(\mathrm{Var}\log Z=O(N)\)</span> 을 바로 얻지만, 여기 disorder 는 Poisson 개수와 이산 type·site 표지라 그 도구가 맞지 않는다. 대신 s12–s13 의 'interaction·field·섭동 항 하나를 다시 뽑거나 넣고 빼도 <span class="arithmatex">\(X_0\)</span> 가 <span class="arithmatex">\(O(1)\)</span> 만 바뀐다' 는 cavity 법에서 factor 하나를 더하거나 뺄 때의 free entropy 증분이 유계라는 것과 같은 수준의 진술이고, Efron–Stein 은 <span class="arithmatex">\(O(N)\)</span> 개 증분의 제곱을 더해 분산을 준다. <code>제안 해석</code></p>
+<p>¶7 은 <span class="arithmatex">\(\mathbb E\lvert Z\rvert\le\sqrt{C_\nu N}\)</span> 만 쓰므로 지수적 꼬리 없이 분산 bound 로 충분하다.</p>
+<p>s9 의 Doob 차분 <span class="arithmatex">\(D_j\)</span> (score <span class="arithmatex">\(D_\nu\)</span> 와 무관한 기호) 는 ¶4 의 <span class="arithmatex">\(M_d-M_{d-1}\)</span> 과 같은 역할이다 — thermal 쪽은 계층 가지를 깊이 순으로, disorder 쪽은 root 입력을 하나씩 공개하며, 두 경우 모두 martingale 증분의 직교성으로 분산 = 증분 제곱의 합(s10; ¶4 의 <span class="arithmatex">\(\sum_d\langle(M_d-M_{d-1})^2\rangle=\mathrm{Var}(D\mid\mathscr F_0)\)</span>)이 된다. <code>제안 해석</code></p>
 </details>
-<p><strong>식 Eq. §6.2 ¶6 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶6 G 정의식 — 볼록화 보조 함수</summary>
 <table>
 <thead>
 <tr>
@@ -1702,12 +1749,14 @@ G(u)=X_0(u)+2nu^2
 <tr>
 <td><span class="arithmatex">\(G(u)=X_0(u)+2nu^2\)</span></td>
 <td>볼록화</td>
-<td>free entropy 에 작은 이차항을 더해 볼록하게</td>
+<td><span class="arithmatex">\(X_0\)</span> 의 음의 곡률을 상쇄하는 보조 함수 (보정 크기는 섭동 척도 <span class="arithmatex">\(O(\lambda_\nu)\)</span>, <span class="arithmatex">\(N\)</span> 대비로는 무시됨)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.11) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.11) — 함수값 분산·평균 기울기 bound</summary>
 <table>
 <thead>
 <tr>
@@ -1732,7 +1781,9 @@ G(u)=X_0(u)+2nu^2
 </tr>
 </tbody>
 </table>
-<p><strong>식 Eq. §6.2 ¶6 #2 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: ¶6 Efron–Stein 식 — Doob 분해</summary>
 <table>
 <thead>
 <tr>
@@ -1751,7 +1802,10 @@ G(u)=X_0(u)+2nu^2
 </tr>
 </tbody>
 </table>
-<p><strong>식 Eq. §6.2 ¶6 #3 항별 표</strong></p>
+<p>기호: <span class="arithmatex">\(Z^{(j)}\)</span> = <span class="arithmatex">\(j\)</span> 번째 독립 입력만 다시 뽑은 값; <span class="arithmatex">\(D_j=\mathbb E[Z-E_jZ\mid\mathscr G_j]\)</span> = 입력을 차례로 공개할 때 조건부 평균의 증분 (score <span class="arithmatex">\(D_\nu\)</span> 와 무관한 기호).</p>
+</details>
+<details>
+<summary>항별 표: ¶6 Poisson Lipschitz 식 — 개수 요동의 영향</summary>
 <table>
 <thead>
 <tr>
@@ -1770,6 +1824,8 @@ G(u)=X_0(u)+2nu^2
 </tr>
 </tbody>
 </table>
+<p>기호: <span class="arithmatex">\(Q\)</span> = Poisson 개수, <span class="arithmatex">\(b(Q)\)</span> = 개수에 조건부인 평균; <span class="arithmatex">\(C\)</span>-Lipschitz = 개수 하나 바꿀 때 <span class="arithmatex">\(b\)</span> 의 변화가 <span class="arithmatex">\(C\)</span> 이하.</p>
+</details>
 <hr />
 <p><a id="s6-2-p7"></a></p>
 <h4 id="62-7">§6.2 ¶7<a class="headerlink" href="#62-7" title="Permanent link">&para;</a></h4>
@@ -1819,16 +1875,19 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s11</strong> 모든 추정은 다른 매개변수에 대해 균등하므로, 나머지 곱측도에 대한 적분이 <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-5">(6.5)</a> 를 증명한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5, (6.12)</strong> 볼록 함수의 표준 보조정리: 함수값이 <span class="arithmatex">\(\sqrt N\)</span> 정도로 집중되면, 기울기(섭동 에너지)도 대부분의 <span class="arithmatex">\(u\)</span> 에서 집중된다. GG/Talagrand 논증에서 쓰이는 그 부등식. <code>✅</code> 아래 전개</li>
-<li><strong>s6–s7</strong> 균형: <span class="arithmatex">\(\sqrt N/\rho=N^{5/8}\)</span>, <span class="arithmatex">\(\rho\lambda=N^{5/8}\)</span> — 둘 다 <span class="arithmatex">\(\lambda=N^{3/4}\)</span> 보다 작다. 섭동 개수 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 를 <span class="arithmatex">\(\sqrt N\)</span> 과 <span class="arithmatex">\(N\)</span> 사이로 잡은 이유. <code>✅</code> 아래 전개</li>
-<li><strong>s8–s11</strong> <code>🔧</code> 보정항 제거 비용 <span class="arithmatex">\(O(\lambda^{-1/2})\)</span>; thermal + disorder 를 합쳐 Lemma 6.1.</li>
+<li><strong>s1–s5, (6.12)</strong> 이 문단은 ¶6 의 함수값 집중을 기울기 <span class="arithmatex">\(G'\)</span> (평균 score + 보정) 의 집중으로 옮긴다. 물리 그림: 응답을 <span class="arithmatex">\(u\pm\rho\)</span> 에서 잰 free entropy 의 유한 차분으로 추정한다 — 간격 <span class="arithmatex">\(\rho\)</span> 가 작으면 <span class="arithmatex">\(O(\sqrt N)\)</span> 의 sample 잡음이 <span class="arithmatex">\(1/\rho\)</span> 배 증폭되고, 크면 그 사이에서 평균 응답이 변하는 오차가 커진다; 볼록성은 실제 기울기를 양옆 할선 사이에 가둔다. 그 결과 기울기 disorder 요동의 <strong><span class="arithmatex">\(u\)</span>-구간 평균</strong>은 <span class="arithmatex">\(u\pm\rho\in J_\nu\)</span> 인 모든 <span class="arithmatex">\(\rho\)</span> 에 대해 <span class="arithmatex">\(C_\nu(\sqrt N/\rho+\rho\lambda_\nu/\lvert I_\nu\rvert)\)</span> 이하다. 다음 항목처럼 <span class="arithmatex">\(\rho=N^{-1/8}\)</span> 로 잡으면 절대 크기는 <span class="arithmatex">\(O(N^{5/8})\)</span> 이고, 이는 <span class="arithmatex">\(\lambda_\nu\)</span> 로 나눠야 0 으로 가는 크기다 — 고정된 각 <span class="arithmatex">\(u\)</span> 에서의 집중이 아니다. 부등식은 <code>✅</code> 아래 전개; GG/Talagrand 논증에서 같은 장치를 쓴다는 점은 <code>📚</code> [<a href="99-references.html#ref-GG98">10</a>].</li>
+<li><strong>s6–s7</strong> 균형: <span class="arithmatex">\(\rho=N^{-1/8}\)</span> 에서 <span class="arithmatex">\(\sqrt N/\rho=N^{5/8}\)</span>, <span class="arithmatex">\(\rho\lambda_\nu=c_\nu N^{5/8}\)</span> — 둘 다 <span class="arithmatex">\(\lambda_\nu=c_\nu N^{3/4}\)</span> 대비 <span class="arithmatex">\(N^{-1/8}\to0\)</span>. 이 문단이 요구하는 것은 <span class="arithmatex">\(s_N\gg\sqrt N\)</span> (섭동 항 수가 free entropy 의 disorder 요동 <span class="arithmatex">\(\sqrt N\)</span> 을 이겨야 함) 뿐이고, <span class="arithmatex">\(s_N=o(N)\)</span> 은 섭동이 free energy 를 <span class="arithmatex">\((\log2)s_N\)</span> 이하로만 바꾸게 하는 앞 절의 비교식에서 온다(<a href="06-perturbations-and-identities-on-prescrib.html#s6-1-p2">§6.1 ¶2</a>). 단 <span class="arithmatex">\(\rho\)</span> 는 <span class="arithmatex">\(u\pm\rho\in J_\nu\)</span> 가 되도록 <span class="arithmatex">\(J_\nu\)</span> 가 <span class="arithmatex">\(I_\nu\)</span> 바깥으로 갖는 고정 여유보다 작아야 하므로 <span class="arithmatex">\(N\ge N_0(\nu)\)</span> 에서만 쓴다 — 이것도 상수가 <span class="arithmatex">\(\nu\)</span> 에 균등하지 않은 이유. <code>✅</code> 아래 전개</li>
+<li><strong>s8–s11</strong> <code>🔧</code> 합산: <span class="arithmatex">\(\lvert D-\mathbb E\langle D\rangle\rvert\le\lvert D-\langle D\rangle\rvert+\lvert\langle D\rangle-\mathbb E\langle D\rangle\rvert\)</span>. 첫 항(thermal)은 (6.10); 둘째 항(disorder)은 <span class="arithmatex">\(\langle D\rangle=X_0'=G'-4nu\)</span> 이므로 (6.12) 에 보정 <span class="arithmatex">\(4nu\)</span> 의 요동 비용 <span class="arithmatex">\(C_\nu\mathbb E\lvert n-\lambda_\nu\rvert/\lambda_\nu=O(\lambda_\nu^{-1/2})\)</span> 를 더해 처리. 둘 다 <span class="arithmatex">\(u_\nu\)</span> 에 대해 <span class="arithmatex">\(I_\nu\)</span> 위에서 평균한 bound 다. <span class="arithmatex">\(\pi\)</span> 는 각 <span class="arithmatex">\(I_\nu\)</span> 위 균등 확률측도의 곱이므로(§6.1) 이 구간 평균이 곧 <span class="arithmatex">\(u_\nu\)</span> 에 대한 <span class="arithmatex">\(\pi\)</span>-적분이고, bound 들이 다른 매개변수에 균등하므로(¶6 (6.11)) 나머지 좌표로 적분해도 그대로 남아 (6.5) 가 된다.</li>
 </ul>
 <details>
-<summary>전개: 차분몫 부등식과 지수 균형 (s3, s6–s7)</summary>
+<summary>전개: 차분몫 부등식, 최적 ρ 와 병목(disorder 쪽) (s3, s6–s7)</summary>
+<p><span class="arithmatex">\(\bar G=\mathbb E_{\mathbf u}G\)</span> 는 root 평균 함수, <span class="arithmatex">\(Z=G-\bar G\)</span> 는 그 시료 편차(s2).</p>
 <p>볼록 <span class="arithmatex">\(G\)</span>: <span class="arithmatex">\(\frac{G(u)-G(u-\rho)}\rho\le G'(u)\le\frac{G(u+\rho)-G(u)}\rho\)</span>. <span class="arithmatex">\(G=\bar G+Z\)</span> 로 쓰고 <span class="arithmatex">\(\bar G\)</span> 도 볼록이므로 <span class="arithmatex">\(\frac{\bar G(u+\rho)-\bar G(u)}\rho\le\bar G'(u+\rho)\)</span>, <span class="arithmatex">\(\frac{\bar G(u)-\bar G(u-\rho)}{\rho}\ge\bar G'(u-\rho)\)</span>. 정리하면 <span class="arithmatex">\(G'(u)-\bar G'(u)\le\frac{\lvert Z(u+\rho)\rvert+\lvert Z(u)\rvert}\rho+\bar G'(u+\rho)-\bar G'(u)\)</span>, 반대쪽도 같아 표시된 부등식 ✓. <span class="arithmatex">\(\mathbb E\lvert Z\rvert\le\sqrt{C N}\)</span> → 첫 항 <span class="arithmatex">\(\sqrt N/\rho\)</span>. 단조 <span class="arithmatex">\(\bar G'\)</span> 의 이동 적분 <span class="arithmatex">\(\le2\rho\cdot O(\lambda)\)</span>, <span class="arithmatex">\(\lvert I\rvert\)</span> 로 나눔 → 둘째 항 ✓.
 <span class="arithmatex">\(\rho=N^{-1/8}\)</span>: <span class="arithmatex">\(\sqrt N/\rho=N^{5/8}\)</span>, <span class="arithmatex">\(\rho\lambda=c N^{5/8}\)</span>; <span class="arithmatex">\(\lambda=cN^{3/4}\)</span> 로 나누면 <span class="arithmatex">\(N^{-1/8}\to0\)</span> ✓.</p>
+<p>최적 <span class="arithmatex">\(\rho\)</span> (상수 <span class="arithmatex">\(C_\nu\)</span>, <span class="arithmatex">\(\lvert I_\nu\rvert\)</span> 는 무시한 차수 계산): 일반 <span class="arithmatex">\(\lambda\)</span> 에서 <span class="arithmatex">\(\sqrt N/\rho+\rho\lambda\)</span> 를 <span class="arithmatex">\(\rho\)</span> 로 최소화하면 <span class="arithmatex">\(\rho^*=N^{1/4}\lambda^{-1/2}\)</span>, 최솟값 <span class="arithmatex">\(2N^{1/4}\lambda^{1/2}\)</span>; <span class="arithmatex">\(\lambda\)</span> 로 나누면 <span class="arithmatex">\(2(\sqrt N/\lambda)^{1/2}\)</span> 이므로 <span class="arithmatex">\(\lambda\gg\sqrt N\)</span> 이어야 0 으로 간다 ✓. <span class="arithmatex">\(\lambda=N^{3/4}\)</span> 이면 <span class="arithmatex">\(\rho^*=N^{-1/8}\)</span> — 논문의 선택이 이 bound 를 최소화하는 차수와 일치한다 ✓. 이는 ML 의 유한 차분(zeroth-order) gradient 추정과 같은 꼴의 교환이다: 함수값 잡음 <span class="arithmatex">\(\sigma\)</span>, 기울기 변화 규모 <span class="arithmatex">\(\kappa\)</span> 에서 오차 <span class="arithmatex">\(\sigma/h+\kappa h\)</span> 를 최소화하는 간격은 <span class="arithmatex">\(h^*=(\sigma/\kappa)^{1/2}\)</span> 이고, <span class="arithmatex">\(\sigma=\sqrt N\)</span> ((6.11) 의 함수값 요동), <span class="arithmatex">\(\kappa=\lambda_\nu\)</span> (평균 기울기의 총변화 규모) 를 넣으면 위의 <span class="arithmatex">\(\rho^*=N^{1/4}\lambda^{-1/2}\)</span>. <code>제안 해석</code> 속도 비교: thermal 쪽 (6.10) 은 <span class="arithmatex">\(\lambda^{-1/2}=N^{-3/8}\)</span>, disorder 쪽은 <span class="arithmatex">\(N^{-1/8}\)</span> 이라 병목은 disorder 쪽이다.</p>
 </details>
-<p><strong>식 Eq. §6.2 ¶7 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶7 차분몫 부등식 — 함수값 요동·평균 기울기 변화</summary>
 <table>
 <thead>
 <tr>
@@ -1848,12 +1907,14 @@ G(u)=X_0(u)+2nu^2
 <tr>
 <td><span class="arithmatex">\(\bar G'(u+\rho)-\bar G'(u-\rho)\)</span></td>
 <td>평균 기울기 변화</td>
-<td>평균 섭동 에너지의 변화(곡률)</td>
+<td>간격 <span class="arithmatex">\(2\rho\)</span> 사이 평균 응답의 변화(구간 적분하면 단조성으로 작아짐)</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 Eq. §6.2 ¶7 #2 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: ¶7 이동 적분 부등식 — 단조 함수</summary>
 <table>
 <thead>
 <tr>
@@ -1865,14 +1926,16 @@ G(u)=X_0(u)+2nu^2
 </thead>
 <tbody>
 <tr>
-<td><span class="arithmatex">\(\int[\bar G'(u+\rho)-\bar G'(u-\rho)]du\le2\rho[\cdots]\)</span></td>
+<td><span class="arithmatex">\(\int[\bar G'(u+\rho)-\bar G'(u-\rho)]du\le2\rho[\bar G'(b+\rho)-\bar G'(a-\rho)]\)</span></td>
 <td>단조 함수의 이동 적분</td>
-<td>곡률은 평균적으로 작다</td>
+<td>평균 응답 <span class="arithmatex">\(\bar G'\)</span> 은 단조이고 총변화가 <span class="arithmatex">\(O(\lambda_\nu)\)</span> 로 유계라서, <span class="arithmatex">\(\rho\)</span> 만큼 옮긴 차이의 구간 적분은 <span class="arithmatex">\(2\rho\times O(\lambda_\nu)\)</span> — 작은 것은 이동 폭 <span class="arithmatex">\(\rho\)</span> 이지 곡률이 아니다</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.12) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.12) — 기울기 disorder 요동 bound</summary>
 <table>
 <thead>
 <tr>
@@ -1897,6 +1960,7 @@ G(u)=X_0(u)+2nu^2
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s6-3"></a></p>
