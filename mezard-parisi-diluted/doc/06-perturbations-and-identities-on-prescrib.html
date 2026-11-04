@@ -1102,6 +1102,13 @@
 <p><a id="s6-1"></a></p>
 <h2 id="61-the-perturbation-family">§6.1 The perturbation family<a class="headerlink" href="#61-the-perturbation-family" title="Permanent link">&para;</a></h2>
 <p><em>제목: 섭동 족</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> 뒤 절에서 overlap 계층의 항등식을 얻으려면, 두 replica 가 상태 계층을 어느 깊이까지 공유하는지 읽어 내는 섭동이 필요하다. 이 소절은 그 섭동 족을 조립만 하고, score 의 집중·매개변수 선택·Taylor 계수 소거는 §6.2–§6.4 에서 증명한다.</li>
+<li><strong>물리로는.</strong> 상태 계층의 깊이마다 무작위 <span class="arithmatex">\(\pm1\)</span> 표지(mark)를 붙이고, 그 표지로 세기가 정해지는 약한 국소 field 를 평균 <span class="arithmatex">\(N^{3/4}\)</span> 개 무작위 site 에 꽂는 것이다 (제안 해석). 두 replica 가 같은 표지를 보는지는 공통 조상의 깊이로 정해진다.</li>
+<li><strong>결론.</strong> 각 type 은 두 세기를 갖는다: Taylor 전개를 탐지하는 <span class="arithmatex">\(t=1/j\)</span> 와 score 를 꺼내는 source <span class="arithmatex">\(u\in[j^{-j},2j^{-j}]\)</span> (6.1). 섭동은 두 요구 사이에 놓인다: 계를 바꾸지 않을 만큼 약해야 하고(인자 <span class="arithmatex">\(1/2\lt\psi\lt3/2\)</span> (6.2) 이고 평균 삽입 수 <span class="arithmatex">\(s_N=N^{3/4}=o(N)\)</span> 이라 root log 의 기댓값 변화가 <span class="arithmatex">\((\log2)s_N\)</span> 이내, 따라서 <span class="arithmatex">\(N\to\infty\)</span> 에서 spin 당 free energy 는 바뀌지 않는다), 동시에 극한에서 흔적을 남길 만큼 많아야 한다(<span class="arithmatex">\(s_N\to\infty\)</span>).</li>
+<li><strong>읽는 법.</strong> ¶1 은 표지 규칙(그림 참고), ¶2 가 핵심(두 세기와 실제 배치), ¶3 은 <span class="arithmatex">\(u\)</span> 값을 고르는 보조 절차다. 주의: "<span class="arithmatex">\(u\)</span> 가 <span class="arithmatex">\(t\)</span> 의 모든 거듭제곱보다 작다" 는 고정 <span class="arithmatex">\(j\)</span> 의 부등식이 아니라 <span class="arithmatex">\(j\to\infty\)</span> 점근 진술이고, 극한은 §6.3 의 선택 절차가 준 하나의 수열을 따른 <span class="arithmatex">\(N\to\infty\)</span> 먼저, type 의 <span class="arithmatex">\(j\)</span>(<span class="arithmatex">\(t=1/j\)</span>)<span class="arithmatex">\(\to\infty\)</span> 나중이다. ¶3 의 선택 단계 첨자(원문은 이것도 <span class="arithmatex">\(j\)</span>)는 이와 다른 첨자라 해석에서는 <span class="arithmatex">\(m\)</span> 으로 쓴다.</li>
+</ul>
 <p><a id="s6-1-p1"></a></p>
 <h4 id="61-1">§6.1 ¶1<a class="headerlink" href="#61-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1120,12 +1127,24 @@
 <p><strong>s6</strong> 부호들의 곱과 그 유리수 평균이 이 모임에 속한다; 이들이 branching 패턴을 선택할 것이다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> mark = 상태 계층의 깊이 <span class="arithmatex">\(d\)</span> 에 붙은 무작위 <span class="arithmatex">\(\pm1\)</span> 표지. 같은 깊이 <span class="arithmatex">\(d\)</span> 상태 묶음에 있는 replica 들은 같은 값, 다른 묶음은 독립. 물리로는 <strong>각 Parisi 단계의 상태 묶음마다 무작위 부호의 외부장</strong> 을 거는 것 — 두 replica 가 그 단계까지 같은 상태에 있는지를 부호의 상관으로 탐지한다. 새 object: 역할 제안 R21 "mark = 상태 묶음 표지 field" (제안 해석). <code>✅</code> 공유 vertex 에서 <span class="arithmatex">\(\mathbb E[\xi\xi]=1\)</span>, 아니면 <span class="arithmatex">\(\mathbb E\xi\,\mathbb E\xi=0\)</span> — §6.5 ¶4 의 (6.18) 전개</li>
-<li><strong>s5–s6</strong> <code>🔧</code> 가산 족이라 모두 동시에 넣을 수 있다.</li>
+<li><strong>s1–s3</strong> 이 항목은 mark 가 무엇인지 다룬다. mark 는 상태 계층의 깊이 <span class="arithmatex">\(d\in\{1,\ldots,L-1\}\)</span> 에 배정된 무작위 부호 <span class="arithmatex">\(\xi\)</span>(<span class="arithmatex">\(\pm1\)</span> 을 같은 확률로 취하는 Rademacher 부호)이고, 두 replica 가 깊이 <span class="arithmatex">\(d\)</span> vertex 를 공유하면 같은 값, 다른 vertex 를 지나면 독립이다. 이 절이 확정하는 것은 이 공유/독립 구조뿐이다. 물리로는 각 Parisi 단계의 상태 묶음마다 표지를 붙이는 것으로 볼 수 있다(제안 해석, roles R21): 표지 자체는 field 가 아니고, 표지들의 함수 <span class="arithmatex">\(g(\xi)\in\mathbb Q\cap[-1,1]\)</span> 가 ¶2 의 field 세기가 된다. <code>✅</code> 공유 vertex 에서 <span class="arithmatex">\(\mathbb E[\xi\xi]=1\)</span>, 아니면 <span class="arithmatex">\(\mathbb E\xi\,\mathbb E\xi=0\)</span> — §6.5 ¶4 의 (6.18) 전개</li>
+<li><strong>s1, s4</strong> <code>🔧</code> specification 의 나머지는 ¶2 섭동 인자의 설계도다: <span class="arithmatex">\(g(\xi)\)</span> 는 field 항 <span class="arithmatex">\(t\,g\,\sigma_i\)</span> 의 계수, <span class="arithmatex">\(g_0(\xi)\)</span> 는 score 항 <span class="arithmatex">\(u\,g_0S_0\)</span> 의 계수(둘 다 값은 <span class="arithmatex">\(\mathbb Q\cap[-1,1]\)</span>)이고, <span class="arithmatex">\(S_0\)</span> 는 score 항에 spin <span class="arithmatex">\(\sigma_i\)</span> 를 곱할지(<span class="arithmatex">\(S_0=\sigma_i\)</span>) 1 을 곱할지(<span class="arithmatex">\(S_0=1\)</span>)의 선택이다. 이 두 선택은 뒤에서 각각 spin anchor 와 marker anchor 로 쓰인다(<a href="#s6-5-p1">§6.5 ¶1</a>). <span class="arithmatex">\(n=0\)</span> 이면 <span class="arithmatex">\(g,g_0\)</span> 는 상수다.</li>
+<li><strong>s5–s6</strong> <code>🔧</code> 부호 정의역 <span class="arithmatex">\(\{-1,1\}^n\)</span> 이 유한하고 <span class="arithmatex">\(g,g_0\)</span> 의 값이 유리수로 제한되므로 specification 전체는 가산이다(실수값을 허용하면 비가산). 가산이어야 ¶2 에서 type 을 <span class="arithmatex">\(\nu\in\mathbb N\)</span> 으로 나열하고 가중 <span class="arithmatex">\(c_\nu\)</span> 를 줄 수 있다. 부호의 곱 <span class="arithmatex">\(\prod_{k\in A}\xi_k\)</span> 의 두 replica 상관은 <span class="arithmatex">\(A\)</span> 의 모든 좌표에서 vertex 를 공유할 때만 1, 아니면 0 이라서, 이런 곱들이 branching 패턴을 골라내는 재료가 된다(제안 해석. 실제 선택은 §6.5). → ¶2 에서 이 설계도로 섭동 인자를 만들어 실제로 꽂는다.</li>
 </ul>
+<pre class="mermaid"><code>graph TD
+  R["root (깊이 0): 삽입 개수·type·site — 모든 replica 공유"] --&gt; A["깊이 1 vertex A: ξ₁ = a"]
+  R --&gt; B["깊이 1 vertex B: ξ₁ = b"]
+  A --&gt; A1["깊이 2 vertex A1: ξ₂ = a₁"]
+  A --&gt; A2["깊이 2 vertex A2: ξ₂ = a₂"]
+  B --&gt; B1["깊이 2 vertex B1: ξ₂ = b₁"]
+  A1 --&gt; r1["replica 1"]
+  A1 --&gt; r2["replica 2"]
+  A2 --&gt; r3["replica 3"]
+  B1 --&gt; r4["replica 4"]</code></pre>
+<p>좌표 하나는 배정된 깊이의 vertex 마다 독립 값을 갖고, replica 는 자기 경로가 지나는 vertex 의 값을 본다. 그래서 replica 1·2 는 ξ₁, ξ₂ 를 모두 공유하고(곱 ξ₁ξ₂ 의 상관도 1), 1·3 은 ξ₁ 만 공유하며(ξ₂ 와 ξ₁ξ₂ 의 상관 0), 1·4 는 아무것도 공유하지 않는다 — mark 의 상관은 두 replica 의 공통 조상 깊이, 곧 overlap 단계를 읽어 낸다(제안 해석).</p>
 <details>
-<summary>전개: mark 상관 (s3)</summary>
-<p>Rademacher <span class="arithmatex">\(\xi_v\)</span> 가 깊이 <span class="arithmatex">\(d\)</span> vertex 마다 독립. 두 replica 가 깊이 <span class="arithmatex">\(d\)</span> vertex 를 공유하면 <span class="arithmatex">\(\mathbb E[\xi_v^2]=1\)</span>, 공유하지 않으면 <span class="arithmatex">\(\mathbb E[\xi_v\xi_{v'}]=0\)</span> ✓.</p>
+<summary>전개: mark 상관 (s3) 과 부호 곱의 상관 (s6)</summary>
+<p>Rademacher <span class="arithmatex">\(\xi_v\)</span>(<span class="arithmatex">\(\pm1\)</span> 을 같은 확률, 평균 0)가 깊이 <span class="arithmatex">\(d\)</span> vertex 마다 독립. 두 replica 가 깊이 <span class="arithmatex">\(d\)</span> vertex 를 공유하면 <span class="arithmatex">\(\mathbb E[\xi_v^2]=1\)</span>, 공유하지 않으면 독립이고 평균 0 이라 <span class="arithmatex">\(\mathbb E[\xi_v\xi_{v'}]=\mathbb E\xi_v\,\mathbb E\xi_{v'}=0\)</span> ✓. 서로 다른 좌표는 독립이므로 곱 <span class="arithmatex">\(\prod_{k\in A}\xi_k\)</span> 의 두 replica 상관은 <span class="arithmatex">\(\prod_{k\in A}\mathbb E[\xi_k^{(1)}\xi_k^{(2)}]\)</span>, 곧 <span class="arithmatex">\(A\)</span> 의 모든 좌표에서 vertex 를 공유하면 1, 하나라도 아니면 0 이다. 부호의 곱 <span class="arithmatex">\(\prod_{k\in A}\xi_k\)</span> 는 값이 <span class="arithmatex">\(\pm1\in\mathbb Q\cap[-1,1]\)</span> 이라 그 자체로 <span class="arithmatex">\(g\)</span> 나 <span class="arithmatex">\(g_0\)</span> 로 쓸 수 있고, 곱들의 유리수 가중 평균(볼록결합)도 값이 <span class="arithmatex">\([-1,1]\)</span> 안에 머물러 족에 들어간다(s6). 다만 값이 <span class="arithmatex">\([-1,1]\)</span> 을 벗어나는 일반 선형결합(예: <span class="arithmatex">\(\xi_1+\xi_2\)</span>)은 족에 없다. 참고로 <span class="arithmatex">\(\{-1,1\}^n\)</span> 위의 모든 함수는 이런 곱들의 선형결합으로 유일하게 전개된다(Boolean Fourier, 곧 Walsh 전개 — spin 계의 다체 상호작용 전개와 같은 것).</p>
 </details>
 <hr />
 <p><a id="s6-1-p2"></a></p>
@@ -1167,12 +1186,21 @@ t_\nu=j^{-1},\qquad
 <p><strong>s12</strong> 인자 bound 는 <a href="05-a-perturbed-cavity-reservoir.html#eq-5-3">(5.3)</a> 에서처럼 power mean 을 거친 항별 비교를 허용한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s2</strong> 섭동 인자 <span class="arithmatex">\(1+tg\sigma_i+ug_0S_0\)</span>: <span class="arithmatex">\(t\)</span> 항 = spin 에 걸린 field (<span class="arithmatex">\(g\)</span> 는 mark 로 정해진 부호·세기, 즉 상태 묶음에 따라 달라지는 field), <span class="arithmatex">\(u\)</span> 항 = score 를 만드는 항. <span class="arithmatex">\(u\sim j^{-j}\)</span> 는 <span class="arithmatex">\(t=1/j\)</span> 의 어떤 거듭제곱보다도 작다 — 이것이 "Taylor 계수가 모두 0" 을 끌어내는 장치 (§6.4 ¶8). <code>🔧</code></li>
-<li><strong>s4, (6.1)</strong> <code>🔧</code> <span class="arithmatex">\(t_\nu=1/j\)</span>, <span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span>.</li>
-<li><strong>s8, (6.2)</strong> 섭동 = site 하나의 Boltzmann 인자 <span class="arithmatex">\(1+tg\sigma_i+\dots\)</span> (<span class="arithmatex">\(=e^{\text{작은 field}}\)</span> 의 loop 꼴, R5 와 같은 형태). <code>🔧</code></li>
-<li><strong>s9–s12</strong> <code>🔧</code> <span class="arithmatex">\(\lvert t\rvert+\lvert u\rvert\le\frac14+\frac2{4^4}\lt\frac12\)</span> → <span class="arithmatex">\(\psi\in(\frac12,\frac32)\)</span>; §5 의 (5.3) 적용.</li>
+<li><strong>s1–s4, (6.1)</strong> <code>🔧</code> 이 항목은 섭동 인자 <span class="arithmatex">\(1+tg\sigma_i+ug_0S_0\)</span> 의 두 세기를 다룬다(← ¶1 의 specification 마다 <span class="arithmatex">\(j\ge4\)</span> 인 type 을 하나씩 만든다). <span class="arithmatex">\(t_\nu=1/j\)</span> 는 mark 로 세기 <span class="arithmatex">\(g\)</span> 가 정해지는 field 이고, 그 값을 바꿔 가며 삽입의 Taylor 전개를 탐지한다. <span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span> 는 source 다: 삽입 하나에서 <span class="arithmatex">\(\partial_u\log\psi=g_0S_0/\psi\)</span> 이고, 이것을 type <span class="arithmatex">\(\nu\)</span> 의 모든 삽입에 더한 것이 score 다(제안 해석. score 의 식과 그 요동 제어는 <a href="#s6-2">§6.2</a>). "<span class="arithmatex">\(u\)</span> 가 <span class="arithmatex">\(t\)</span> 의 모든 거듭제곱보다 작다" 는 고정 <span class="arithmatex">\(j\)</span> 의 부등식이 아니라 각 고정 차수 <span class="arithmatex">\(q\)</span> 에 대해 <span class="arithmatex">\(u/t^q\to0\)</span> (<span class="arithmatex">\(j\to\infty\)</span>) 이라는 점근 진술이고, 극한은 각 고정 type(고정 <span class="arithmatex">\(j\)</span>)에서 §6.3 의 선택 lemma 가 준 하나의 수열(모든 type 에 공통)을 따라 <span class="arithmatex">\(N\to\infty\)</span> 를 먼저, type 의 <span class="arithmatex">\(j\to\infty\)</span> 를 나중에 취한다 — 이 순서로 극한 Taylor 계수가 모두 0 임이 <a href="#s6-4-p8">§6.4 ¶8</a> 에서 나온다(수치 예, 왜 <span class="arithmatex">\(j^{-j}\)</span> 여야 하는지, 모순 논증은 아래 보조 해석).</li>
+<li><strong>s5–s7, s10–s11</strong> <code>🔧</code> 이 항목은 가산 개 type 을 유한 계에 실제로 넣는 법을 다룬다. 그림은 <span class="arithmatex">\(N\)</span> 개 spin 에 평균 <span class="arithmatex">\(s_N=N^{3/4}\)</span> 개의 약한 국소 탐침을 무작위로 꽂는 것이다: type <span class="arithmatex">\(\nu\)</span> 에는 비율 <span class="arithmatex">\(c_\nu\)</span>(<span class="arithmatex">\(\sum_\nu c_\nu=1\)</span>)만큼 Poisson<span class="arithmatex">\((c_\nu N^{3/4})\)</span> 개를 배정하고, 각 탐침은 균등한 site 하나와 자기 mark 의 독립 사본을 갖는다. 총수가 Poisson<span class="arithmatex">\((N^{3/4})\)</span> 라 유한 <span class="arithmatex">\(N\)</span> 에서는 거의 확실히 유한 개만 쓰이고, site 당 평균 개수 <span class="arithmatex">\(N^{-1/4}\)</span> 는 0 으로 간다. 개수·type·site 는 root 에서 정해지므로 모든 replica 가 같은 삽입(같은 site, 같은 type)을 본다. 그 삽입의 mark 값만 ¶1 의 규칙(s2–s3)대로 배정된 깊이의 vertex 에서 뽑혀, 그 vertex 를 공유하는 replica 끼리는 같고 아니면 독립이다(s10).</li>
+<li><strong>s8–s12, (6.2)</strong> <code>🔧</code> 이 항목은 꽂힌 탐침 하나가 하는 일을 다룬다. <span class="arithmatex">\(\sigma_i=\pm1\)</span> 이므로 <span class="arithmatex">\(\psi_\nu\)</span> 는 근사가 아니라 정확히 (mark 에 의존하는 상수)<span class="arithmatex">\(\times e^{h\sigma_i}\)</span>, 곧 한 site 의 국소 Boltzmann 인자로, §2 의 high-temperature 전개 (2.3) 과 같은 꼴이다(roles R5). <span class="arithmatex">\(S_0=1\)</span> 이면 spin 과 무관한 앞 인자 <span class="arithmatex">\(1+ug_0\)</span> 도 mark 에, 곧 replica 가 있는 상태 묶음에 의존하므로 상태 묶음의 상대 가중치를 바꾼다(제안 해석). 인자 bound <span class="arithmatex">\(1/2\lt\psi\lt3/2\)</span> 와 평균 삽입 수 <span class="arithmatex">\(s_N=o(N)\)</span> 덕분에 섭동 전체는 root log 의 기댓값을 <span class="arithmatex">\((\log2)s_N\)</span> 이내로만 바꿔, <span class="arithmatex">\(N\to\infty\)</span> 에서 spin 당 free energy 를 바꾸지 않는다(유한 <span class="arithmatex">\(N\)</span> 에서는 spin 당 <span class="arithmatex">\((\log2)N^{-1/4}\)</span> 이내; 세부는 아래 보조 해석). → ¶3 에서 구간 <span class="arithmatex">\(I_\nu\)</span> 안의 <span class="arithmatex">\(u\)</span> 값을 고른다.</li>
 </ul>
-<p><strong>식 (6.1) 항별 표</strong></p>
+<details>
+<summary>보조 해석 — Taylor 계수 소거의 요지와 왜 j⁻ʲ 인가 (s2), Poisson superposition·thinning (s6, s11), ψ 의 정확한 지수 꼴과 인자 bound (s8–s12)</summary>
+<ul>
+<li><strong>s2</strong> <code>🔧</code> <a href="#s6-4-p8">§6.4 ¶8</a> 의 논리. 거기서 <span class="arithmatex">\(H_N(t,u)=J_{N,\mathcal T}(t,u)-\mathbb E f\,J_{N,\{a_*\}}(t,u)\)</span> (<a href="#eq-6-15">(6.15)</a>) 는 새 삽입 하나의 score 로 가중한 test <span class="arithmatex">\(f\)</span> 의 기댓값에서 곱을 뺀 공분산 꼴 차이이고, Lemma 6.3 (Palm bound (6.16) 과 <span class="arithmatex">\(u\)</span> 에 대한 Lipschitz 성)으로 <span class="arithmatex">\(\limsup_N\lvert H_N(j^{-1},0)\rvert\le C\limsup_N\lvert u_{\nu,N}\rvert\le2Cj^{-j}\)</span> 가 된다(<span class="arithmatex">\(C\)</span> 는 <span class="arithmatex">\(j\)</span> 와 무관한 상수). 선택된 수열을 따라 보낸 극한 <span class="arithmatex">\(H(t)=\lim_N H_N(t,0)\)</span> 은 <span class="arithmatex">\(j\)</span> 와 무관한 하나의 해석 함수이고(같은 <span class="arithmatex">\(H_N\)</span> 을 모든 <span class="arithmatex">\(j\)</span> 에 쓴다), 충분히 큰 모든 <span class="arithmatex">\(j\)</span> 에서 <span class="arithmatex">\(\lvert H(j^{-1})\rvert\le2Cj^{-j}\)</span> 다. 첫 0 아닌 Taylor 계수의 차수가 <span class="arithmatex">\(q\)</span> 라면 충분히 큰 <span class="arithmatex">\(j\)</span> 에서 <span class="arithmatex">\(\lvert H(j^{-1})\rvert\ge c\,j^{-q}\)</span> (<span class="arithmatex">\(c\gt0\)</span>) 인데 <span class="arithmatex">\(j^{-j}/j^{-q}\to0\)</span> 이므로 모순이고, 따라서 <span class="arithmatex">\(H\equiv0\)</span> 이다. 고정 <span class="arithmatex">\(j\)</span> 하나에서는 모순이 없다: <span class="arithmatex">\(u/t^q\le2j^{q-j}\)</span> 라서 예컨대 <span class="arithmatex">\(j=10\)</span> 이면 <span class="arithmatex">\(t=0.1\)</span>, <span class="arithmatex">\(u\approx10^{-10}\)</span> 은 <span class="arithmatex">\(t^9\)</span> 보다 작지만 <span class="arithmatex">\(t^{11}\)</span> 보다는 크다. 왜 모든 거듭제곱보다 빨리 줄어야 하는가: 상한이 <span class="arithmatex">\(Cj^{-q_0}\)</span> 꼴(예: <span class="arithmatex">\(u\sim t^{q_0}\)</span>)에 그치면 이 모순은 차수 <span class="arithmatex">\(q\lt q_0\)</span> 인 계수만 배제하고 <span class="arithmatex">\(q_0\)</span> 차 이상의 계수는 남긴다 — 원문 s2 의 'every fixed power' 와 'each coefficient' 가 짝인 이유다.</li>
+<li><strong>s6, s11</strong> <code>🔧</code> 두 문장은 같은 구성의 두 표현이다(Poisson superposition·thinning, 곧 합치기·쪼개기): type 마다 독립인 Poisson<span class="arithmatex">\((c_\nu s_N)\)</span> 개를 모두 모으면 총수는 Poisson<span class="arithmatex">\((\sum_\nu c_\nu s_N)=\)</span>Poisson<span class="arithmatex">\((s_N)\)</span> 이고, 거꾸로 Poisson<span class="arithmatex">\((s_N)\)</span> 개 탐침을 뽑아 각자 독립적으로 확률 <span class="arithmatex">\(c_\nu\)</span> 로 type 을 정하면 type 별 개수가 서로 독립인 Poisson<span class="arithmatex">\((c_\nu s_N)\)</span> 이 된다. 그래서 '평균 <span class="arithmatex">\(N^{3/4}\)</span> 개의 탐침 구름에 type 을 무작위로 칠한 것' 으로 그려도 정확하다.</li>
+<li><strong>s8, (6.2)</strong> <code>🔧</code> mark 를 고정하고 <span class="arithmatex">\(\psi=A+B\sigma_i\)</span> 로 쓰면 <span class="arithmatex">\(\psi=\sqrt{A^2-B^2}\,e^{h\sigma_i}\)</span>, <span class="arithmatex">\(\tanh h=B/A\)</span> 다(<span class="arithmatex">\(e^{h\sigma}=\cosh h\,(1+\tanh h\,\sigma)\)</span>). <span class="arithmatex">\(S_0=\sigma_i\)</span> 이면 <span class="arithmatex">\(A=1\)</span>, <span class="arithmatex">\(B=tg+ug_0\)</span>; <span class="arithmatex">\(S_0=1\)</span> 이면 <span class="arithmatex">\(A=1+ug_0\)</span>, <span class="arithmatex">\(B=tg\)</span>.</li>
+<li><strong>s9–s12</strong> <code>🔧</code> <span class="arithmatex">\(\lvert t\rvert+\lvert u\rvert\le\frac14+\frac2{4^4}\lt\frac12\)</span> → <span class="arithmatex">\(\psi\in(\frac12,\frac32)\)</span>; §5 의 (5.3) 적용. 이 bound 는 <span class="arithmatex">\(\lvert g\rvert,\lvert g_0\rvert\le1\)</span>, <span class="arithmatex">\(\lvert\sigma_i\rvert=\lvert S_0\rvert=1\)</span>, <span class="arithmatex">\(j\ge4\)</span> 에서 나온다. 인자마다 로그가 <span class="arithmatex">\(\log2\)</span> 이내로만 움직이므로 (5.3) 에 의해 <span class="arithmatex">\(\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N\)</span> 이 hierarchy·<span class="arithmatex">\(\mathbf u\)</span>·<span class="arithmatex">\(N\)</span> 에 대해 균일하게 성립한다. 여기서 <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> 는 섭동된 계의 root log partition function 의 기댓값, <span class="arithmatex">\(NF_N\)</span> 은 섭동 없는 계의 같은 양이다(§5). <span class="arithmatex">\(s_N=N^{3/4}=o(N)\)</span> 이므로 spin 당 차이는 <span class="arithmatex">\((\log2)N^{-1/4}\to0\)</span> 이다.</li>
+</ul>
+</details>
+<details>
+<summary>항별 표: 식 (6.1) — 두 세기 t_ν, u_ν</summary>
 <table>
 <thead>
 <tr>
@@ -1191,13 +1219,15 @@ t_\nu=j^{-1},\qquad
 </tr>
 <tr>
 <td><span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span></td>
-<td>score 세기</td>
-<td>초소형 섭동: <span class="arithmatex">\(t\)</span> 의 모든 거듭제곱보다 작음</td>
+<td>score 세기 (구간 안에서 ¶3 의 <span class="arithmatex">\(\pi\)</span> 를 써서 결정적 벡터로 선택, <span class="arithmatex">\(N\)</span> 에 따라 달라질 수 있음)</td>
+<td>초소형 source: 각 고정 <span class="arithmatex">\(q\)</span> 에 대해 <span class="arithmatex">\(j\to\infty\)</span> 일 때 <span class="arithmatex">\(j^{-j}=o(t_\nu^{\,q})\)</span></td>
 <td><code>🔧</code> §6.4 ¶8 에서 쓰임</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (6.2) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (6.2) — 섭동 인자 ψ_ν</summary>
 <table>
 <thead>
 <tr>
@@ -1210,12 +1240,13 @@ t_\nu=j^{-1},\qquad
 <tbody>
 <tr>
 <td><span class="arithmatex">\(\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0\)</span></td>
-<td>site 섭동 인자</td>
-<td>상태 묶음 표지(mark)에 의존하는 약한 국소 field (R21 제안 해석)</td>
+<td>site 섭동 인자 (<span class="arithmatex">\(g,g_0\)</span>: mark 의 함수, 값 <span class="arithmatex">\(\mathbb Q\cap[-1,1]\)</span>; <span class="arithmatex">\(S_0\in\{1,\sigma_i\}\)</span> — ¶1 s1)</td>
+<td>mark 에 의존하는 약한 국소 field, <span class="arithmatex">\(S_0=1\)</span> 이면 상태 묶음 가중치 인자 포함 (제안 해석, roles R21)</td>
 <td><code>🔧</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-1-p3"></a></p>
 <h4 id="61-3">§6.1 ¶3<a class="headerlink" href="#61-3" title="Permanent link">&para;</a></h4>
@@ -1229,7 +1260,8 @@ t_\nu=j^{-1},\qquad
 <p><strong>s3</strong> 각 구간은 고정된 type 에 대해 고정된 양의 길이를 가지므로 집중 추정은 그 길이에 의존할 수 있다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> <code>🔧</code> 섭동 세기 <span class="arithmatex">\(u\)</span> 를 구간에서 평균한 뒤 "좋은" 값을 하나 고른다 (GG 논증의 표준: 거의 모든 섭동 세기에서 self-averaging).</li>
+<li><strong>s1–s2</strong> <code>🔧</code> 이 항목은 <span class="arithmatex">\(\pi\)</span> 가 무엇이고 무엇에 쓰이는지 다룬다(← ¶2 의 구간 <span class="arithmatex">\(I_\nu\)</span>). <span class="arithmatex">\(\pi\)</span> 는 각 <span class="arithmatex">\(u_\nu\)</span> 를 <span class="arithmatex">\(I_\nu\)</span> 에서 독립 균등하게 뽑는 분포이고, 물리로는 추가 disorder 가 아니라 source 세기의 설정값을 훑는 탐색 분포다: 모든 quenched 기댓값은 고정된 <span class="arithmatex">\(\mathbf u\)</span> 에서 계산하고, <span class="arithmatex">\(\pi\)</span> 평균은 그 바깥에서 '좋은 <span class="arithmatex">\(\mathbf u\)</span> 가 있다' 를 보이는 데만 쓴다. <a href="#s6-3">§6.3</a> 의 Lemma 'Deterministic parameter selection' 은 두 조건을 동시에 맞춘다: <span class="arithmatex">\(\pi\)</span> 평균한 cavity increment <span class="arithmatex">\(\int\Delta_N\,d\pi\)</span>(크기를 하나 늘릴 때 root log 기댓값의 증가 <span class="arithmatex">\(\Delta_N=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span>)가 <span class="arithmatex">\(\underline F+\varepsilon\)</span>(<span class="arithmatex">\(\underline F=\liminf_NF_N\)</span>) 이하인 크기 <span class="arithmatex">\(N\)</span> 을 무한히 많이 찾고, 그중에서 <span class="arithmatex">\(m\)</span> 번째 단계마다 type <span class="arithmatex">\(\nu\le m\)</span> 의 <span class="arithmatex">\(\pi\)</span> 평균 score 오차가 작은 <span class="arithmatex">\(N_m\)</span> 을 골라, Markov 부등식으로 그 오차가 모두 작은 집합 <span class="arithmatex">\(G_m\)</span>(측도 <span class="arithmatex">\(\ge1-m^{-2}\)</span>) 안에서 increment 도 낮은(<span class="arithmatex">\(\le\underline F+2\varepsilon\)</span>) 결정적 벡터 <span class="arithmatex">\(\mathbf u_m\)</span> 하나를 고른다(단계 첨자 <span class="arithmatex">\(m\)</span>: 원문은 이것도 <span class="arithmatex">\(j\)</span> 로 쓰지만 <span class="arithmatex">\(t_\nu=1/j\)</span> 의 <span class="arithmatex">\(j\)</span> 와는 다른 첨자다). 덧붙여, 고정 <span class="arithmatex">\(u\)</span> 하나 대신 평균을 쓰는 데는 free energy 의 <span class="arithmatex">\(u\)</span>-미분이 꺾이는 드문 값을 피한다는 Ghirlanda–Guerra 식 동기도 있을 수 있다(제안 해석) <code>❓</code> 미확인: 이 논문의 정확한 부등식 꼴은 §6.2 의 집중 Lemma 에서 확인해야 한다.</li>
+<li><strong>s3</strong> <code>🔧</code> 고정 type <span class="arithmatex">\(\nu\)</span> 에서 <span class="arithmatex">\(I_\nu\)</span> 의 길이 <span class="arithmatex">\(j^{-j}\)</span> 는 <span class="arithmatex">\(N\)</span> 과 무관한 양수라서 집중 추정의 상수가 그 길이에 의존해도 되지만, 그 대가로 추정은 type 에 대해 균일하지 않다. 그래서 선택 단계는 <span class="arithmatex">\(m\)</span> 번째 단계에서 나열 번호 <span class="arithmatex">\(\nu\le m\)</span> 인 유한 개 type 만 다루고, 단계마다 다루는 type 을 늘리며 <span class="arithmatex">\(N_m\)</span> 을 차례로 키워 모든 type 에 공통인 수열 하나를 만든다 — 물리로는 계를 키우며 source 설정값을 확정하는 탐침 type 을 늘려 가는 조작이고(제안 해석), 탐침 세기 <span class="arithmatex">\(t=1/j\)</span> 를 줄이는 조작과는 다르다. 극한은 각 고정 type 에서 이 수열을 따라 <span class="arithmatex">\(N\to\infty\)</span> 를 먼저 취하고 type 의 <span class="arithmatex">\(j\to\infty\)</span> 는 그 뒤에 쓰며(<a href="#s6-4-p8">§6.4 ¶8</a>), type 에 대한 균일성은 주장하지 않는다. → <a href="#s6-2">§6.2</a> 에서 각 type 의 score 가 이 평균 의미로 집중함을 보인다.</li>
 </ul>
 <hr />
 <p><a id="s6-2"></a></p>
