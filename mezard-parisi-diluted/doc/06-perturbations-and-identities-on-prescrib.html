@@ -2592,6 +2592,14 @@ H_N(t,u)
 <p><a id="s6-5"></a></p>
 <h2 id="65-prescribing-the-colored-tree">§6.5 Prescribing the colored tree<a class="headerlink" href="#65-prescribing-the-colored-tree" title="Permanent link">&para;</a></h2>
 <p><em>제목: 색칠된 tree 지정하기</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> §6.4 까지 손에 쥔 것은 단일 mark <span class="arithmatex">\(g\)</span> 로 섭동했을 때 새 site 삽입 응답 <span class="arithmatex">\(H_N(t,0)\)</span> 의 Taylor 계수가 0 으로 간다는 것(Lemma 6.4)뿐이다. 하한 쪽 논증은 "색칠된 replica 들이 옛 tree 의 어느 깊이에서 갈라지는가" 를 지정한 채 성립하는 항등식을 요구하고(<a href="03-calculus-on-finite-trees.html#s3-3-p1">§3.3 ¶1</a>), 이 소절이 그것(Theorem 6.5)을 만든다.</li>
+<li><strong>물리로는.</strong> diluted·계층 판 Ghirlanda–Guerra 항등식이다(제안 해석): 관측량 <span class="arithmatex">\(f\)</span> 와 색칠된 replica 의 multioverlap 을 부호 있는 계수 <span class="arithmatex">\(c_E\)</span> 로 가중한 상관이, anchor 하나만 남긴 tree 의 같은 가중합 × <span class="arithmatex">\(\mathbb Ef\)</span> 로 닫힌다.</li>
+<li><strong>결론.</strong> (6.17): 섭동된 계에서 Lemma 6.2 가 주는 모든 수열(고정 <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(\varepsilon&gt;0\)</span> 마다)을 따라, 고정 <span class="arithmatex">\(L\)</span>·tree·<span class="arithmatex">\(f\)</span>·제약 <span class="arithmatex">\(\mathcal C\)</span> 마다 두 가중합의 차가 0 으로 간다. 이 조합들에 대한 균등성은 주장하지 않는다.</li>
+<li><strong>장애물 둘.</strong> (i) Lemma 6.4 는 mark 하나(<span class="arithmatex">\(g\)</span>)만 다루므로 색마다 다른 표지를 달 수 없다 → ¶3 polarization 으로 교차 응답을 단일 응답들의 부호 있는 합으로 분해. (ii) 원하는 것은 overlap 값이 아니라 tree 위의 split 깊이이므로 그것을 정확히 0/1 로 읽는 장치가 필요하다 → ¶4–¶5 깊이별 무작위 부호와 차 <span class="arithmatex">\(H_d-H_{d+1}\)</span>.</li>
+<li><strong>읽는 법.</strong> ¶1 재료 → ¶2 정리 → 증명: ¶3 polarization 으로 색마다 다른 mark 분리 → ¶4 vertex 별 무작위 부호로 "같은 묶음인가" indicator → ¶5 차 <span class="arithmatex">\(H_d-H_{d+1}\)</span> 로 정확한 split 깊이 → ¶6 조립. ¶7 은 극한 순서. 주의할 곳: split 깊이는 tree 위의 위치이지 overlap 값이 아니다(¶5 s2); ¶2 의 <span class="arithmatex">\(L=1\)</span> 전개는 형식적 확인이다; ¶3 s7 의 '유리수 값' 조건과 ¶7 s5 의 '가산 족' 은 같은 장치다(mark 족이 polarization 에 닫혀 있어 한 수열로 충분).</li>
+</ul>
 <p><a id="s6-5-p1"></a></p>
 <h4 id="65-1">§6.5 ¶1<a class="headerlink" href="#65-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -2624,10 +2632,11 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s8</strong> <span class="arithmatex">\(k=0\)</span> 이면 이들은 각각 <span class="arithmatex">\(R_{\{a_*\}}\)</span> 와 <span class="arithmatex">\(1\)</span> 이다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s6</strong> spin anchor: anchor replica 의 spin 도 overlap 에 들어감; marker anchor: 들어가지 않음 (상태 위치만 표시). 제약 <span class="arithmatex">\(\mathcal C\)</span> = 새 replica 들과 anchor 사이의 overlap 단계 지정. <code>🔧</code></li>
-<li><strong>s7, R_E</strong> <span class="arithmatex">\(R_E\)</span> = 새 replica 들(과 anchor)의 multioverlap. <code>📚</code> (3.1)</li>
+<li><strong>s1–s6</strong> Theorem 6.5 에 들어갈 재료 — anchor 종류, 색, 제약 <span class="arithmatex">\(\mathcal C\)</span>, extension history <span class="arithmatex">\(E\)</span> 와 계수 <span class="arithmatex">\(c_E\)</span> — 를 정하는 문단이다(다음 ¶2 가 이것으로 정리를 쓴다). 색 0 은 anchor, 색 <span class="arithmatex">\(1,\ldots,k\)</span> 는 순서대로 더하는 replica 의 표지이고, 각 색은 anchor 가 아닌 미사용 옛 leaf 이거나 새로 만든 fresh path 에 놓인다 — 이 배치 하나가 history <span class="arithmatex">\(E\)</span> 이고, <span class="arithmatex">\(c_E\)</span> 는 확률 가중치가 아니라 canceled-anchor 전개(Lemma 3.3)가 각 배치에 주는 부호 있는 계수다. 제약 <span class="arithmatex">\(\mathcal C\)</span> 는 색 <span class="arithmatex">\(0,\ldots,k\)</span> 쌍들의 sampled tree 상 split 깊이에 대한 모순 없는 임의의 요구 모음이다 — 일부 쌍만 지정해도 되고(비어 있으면 제약 없음), 다른 옛 replica 에는 조건을 걸지 않는다(물리 그림으로는 overlap 단계 <span class="arithmatex">\(q_d\)</span> 에 대응하지만, 정의는 overlap 값이 아니라 tree 위의 위치다). <code>🔧</code></li>
+<li><strong>s7, R_E</strong> <span class="arithmatex">\(R_E\)</span> = history <span class="arithmatex">\(E\)</span> 에서 색 <span class="arithmatex">\(1..k\)</span> 가 놓인 replica 위치(옛 leaf 또는 fresh path)들의 multioverlap. spin anchor 이면 anchor 의 spin 도 곱에 넣고, marker anchor 이면 넣지 않는다(anchor 는 tree 위치만 표시). <code>📚</code> (3.1), Lemma 3.3</li>
 </ul>
-<p><strong>식 Eq. §6.5 ¶1 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶1 의 R_E 정의 — spin anchor 와 marker anchor 두 경우</summary>
 <table>
 <thead>
 <tr>
@@ -2641,17 +2650,18 @@ R_E=\frac1N\sum_{i=1}^N
 <tr>
 <td><span class="arithmatex">\(R_E\)</span> (spin anchor)</td>
 <td><span class="arithmatex">\(\frac1N\sum_i\sigma_i^{a_*}\prod_j\sigma_i^{a_j(E)}\)</span></td>
-<td>anchor + 새 replica 의 multioverlap</td>
+<td>anchor + 색칠된 replica(옛 leaf 또는 fresh path) 의 multioverlap</td>
 <td><code>📚</code> (3.1)</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(R_E\)</span> (marker anchor)</td>
 <td><span class="arithmatex">\(\frac1N\sum_i\prod_j\sigma_i^{a_j(E)}\)</span></td>
-<td>새 replica 만의 multioverlap</td>
+<td>색칠된 replica 만의 multioverlap</td>
 <td><code>📚</code> (3.1)</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-5-e9"></a></p>
 <h3 id="theorem-65-identity-on-prescribed-trees">▸ Theorem 6.5 (Identity on prescribed trees)<a class="headerlink" href="#theorem-65-identity-on-prescribed-trees" title="Permanent link">&para;</a></h3>
@@ -2678,18 +2688,24 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s4</strong> 오차는 <span class="arithmatex">\(L\)</span> 에 대한 어떤 극한보다도 먼저, 고정된 <span class="arithmatex">\(L\)</span>, 고정된 tree, 고정된 제약에서 0 으로 간다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (6.17)</strong> Theorem 6.5 = <strong>diluted·계층 판 Ghirlanda–Guerra 항등식</strong>: 옛 replica 관측량 <span class="arithmatex">\(f\)</span> 와 새 replica 들의 multioverlap 의 상관을, §3 의 부호 있는 계수(R17 Parisi block counting)로 가중한 합이 "독립" 일 때의 값과 같아진다. §3 ¶1 과 §3.2 ¶5 의 <code>❓</code> (canceled-anchor 전개가 GG 류 항등식으로 쓰이는지)가 여기서 해결된다. <code>✅</code> 아래 전개 (RS, <span class="arithmatex">\(k=1\)</span> 에서 표준 GG 재현)</li>
-<li><strong>s2–s4</strong> <code>🔧</code> 모든 tree·제약·차수에 대해, 고정 <span class="arithmatex">\(L\)</span> 에서.</li>
+<li><strong>s1, (6.17)</strong> ¶1 의 재료로 쓴 Theorem 6.5 는 <strong>diluted·계층 판 Ghirlanda–Guerra 항등식</strong>으로 읽을 수 있다(제안 해석; 길잡이와 같음). 섭동된 계에서 Lemma 6.2 가 주는 어떤 크기·매개변수 수열을 따라서든(고정 <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(\varepsilon&gt;0\)</span> 마다 그 lemma 가 주는 모든 수열) <span class="arithmatex">\(N\to\infty\)</span> 로 보내면, 옛 tree 위에서 <span class="arithmatex">\(f\)</span> 와 색칠된 replica 의 multioverlap <span class="arithmatex">\(R_E\)</span> 의 상관을 부호 있는 계수 <span class="arithmatex">\(c_E\)</span> (Parisi block counting 으로 읽기, roles R17) 로 가중한 합이, anchor 하나짜리 tree <span class="arithmatex">\(\{a_*\}\)</span> 에서 같은 제약으로 센 합 × <span class="arithmatex">\(\mathbb Ef\)</span> 와 같아진다(둘째 항은 history 집합도 계수도 첫 항과 다르다). 개별 replica 가 <span class="arithmatex">\(f\)</span> 와 독립이 된다는 뜻이 아니라 두 가중합 사이의 닫힌 관계이고, §3 ¶1 과 §3.2 ¶5 의 <code>❓</code>(canceled-anchor 전개가 GG 류 항등식으로 쓰이는지)가 여기서 해결된다. <code>✅</code> 식 구조만: 아래 전개에서 정리 범위 밖인 <span class="arithmatex">\(L=1\)</span>·<span class="arithmatex">\(k=1\)</span>·제약 없음에 형식적으로 대입하면 표준 GG 꼴이 나온다</li>
+<li><strong>s2–s4</strong> 각각 고정된 옛 tree, anchor 종류(spin/marker), 옛 multioverlap 의 유계 다항식 <span class="arithmatex">\(f\)</span> (계수는 <span class="arithmatex">\(N\)</span> 과 무관), 색 개수 <span class="arithmatex">\(k\ge0\)</span> (빈 추가 포함), 제약 <span class="arithmatex">\(\mathcal C\)</span> 마다 따로 성립하고, 오차는 고정 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(N\to\infty\)</span> 로 0 이 된다. tree·<span class="arithmatex">\(f\)</span>·<span class="arithmatex">\(\mathcal C\)</span>·<span class="arithmatex">\(L\)</span> 에 대한 균등성은 주장하지 않는다 — 그래서 뒤에서 <span class="arithmatex">\(L\)</span> 마다 다른 수열을 쓸 수 있다(¶7). 증명(¶3–¶6)은 Lemma 6.4 의 단일-<span class="arithmatex">\(g\)</span> 소멸을 이 지정 tree 꼴로 옮긴다. <code>🔧</code></li>
 </ul>
 <details>
-<summary>전개: RS (L=1), k=1, spin anchor 에서 표준 GG 항등식 (s1)</summary>
+<summary>보조 해석: 제약 𝒞 는 표준 GG 의 test 함수 ψ(R₁,ₙ₊₁) 자리인가 — 미확인</summary>
+<p><strong>s1–s2</strong> 제안 해석 — 제약 <span class="arithmatex">\(\mathcal C\)</span> 는 표준 GG 에서 새 overlap 의 test 함수 <span class="arithmatex">\(\psi(R_{1,n+1})\)</span> 가 하던 일, 즉 "새 replica 가 어느 단계에서 갈라졌는가" 를 고르는 자리를 맡는 것으로 읽을 수 있다. <code>❓</code> 미확인: split 깊이와 overlap 값의 대응, <span class="arithmatex">\(L\ge2\)</span> 에서 <span class="arithmatex">\(c_E\)</span> 가 표준 GG 의 <span class="arithmatex">\(1/n\)</span> 구조로 어떻게 환원되는지는 본문에서 확인하지 않았다.</p>
+</details>
+<details>
+<summary>전개: (6.17) 을 L=1, k=1, spin anchor 에 형식적으로 대입하면 표준 GG 항등식 (s1) — 정리 자체는 L≥2</summary>
+<p>(RS 한 단계 tree 에서 <span class="arithmatex">\(m_0=0\)</span>, <span class="arithmatex">\(m_1=1\)</span> 이므로 root 계수 <span class="arithmatex">\(\gamma_{\rm root}=m_0-nm_1=-n\)</span>; "새 경로" = root 에서 새로 뻗은 fresh path. Lemma 6.2·Theorem 6.5 는 <span class="arithmatex">\(L\ge2\)</span> 에서 세워지므로 이 계산은 식 구조의 형식적 확인이다.)</p>
 <p>옛 tree = replica <span class="arithmatex">\(1..n\)</span> (anchor <span class="arithmatex">\(a_*=1\)</span>), 모두 root 에서 갈라짐. 색 1 개, 제약 없음. history: 옛 leaf <span class="arithmatex">\(a\in\{2..n\}\)</span> (계수 1), root 에서 새 경로 (계수 <span class="arithmatex">\(\gamma_{\rm root}=m_0-nm_1=-n\)</span>). 단일 anchor tree <span class="arithmatex">\(\{1\}\)</span>: 새 경로만 (계수 <span class="arithmatex">\(-1\)</span>). (6.17):</p>
 <div class="arithmatex">\[
 \sum_{a=2}^n\mathbb E[fR_{1a}]-n\,\mathbb E[fR_{1,n+1}]-\mathbb Ef\cdot(-1)\,\mathbb E[R_{12}]\to0,
 \]</div>
 <p>즉 <span class="arithmatex">\(\mathbb E[fR_{1,n+1}]=\frac1n\mathbb Ef\,\mathbb ER_{12}+\frac1n\sum_{a=2}^n\mathbb E[fR_{1a}]\)</span> — <strong>Ghirlanda–Guerra 항등식 그대로</strong> ✓ ([<a href="99-references.html#ref-GG98">10</a>]; <span class="arithmatex">\(R\)</span> 는 multioverlap 이므로 diluted 판 [<a href="99-references.html#ref-BarraDeSanctis07">3</a>]).</p>
 </details>
-<p><strong>식 (6.17) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.17) — 옛 tree 의 가중합, anchor 하나짜리 tree 의 가중합 × 𝔼f, 극한</summary>
 <table>
 <thead>
 <tr>
@@ -2703,23 +2719,24 @@ R_E=\frac1N\sum_{i=1}^N
 <tr>
 <td><span class="arithmatex">\(\sum_{E\in\mathfrak E(\mathcal T)}c_E\mathbb E[fR_E]\)</span></td>
 <td>옛 tree 의 extension 합</td>
-<td>관측량 <span class="arithmatex">\(f\)</span> 를 가진 계에서 새 replica 의 multioverlap, Parisi block counting 가중 (R17)</td>
-<td><code>✅</code> 같은 문단 전개 (RS)</td>
+<td>관측량 <span class="arithmatex">\(f\)</span> 를 가진 계에서 색칠된 replica(옛 leaf 또는 fresh path) 의 multioverlap, 부호 있는 계수 <span class="arithmatex">\(c_E\)</span> 가중 (Parisi block counting 으로 읽기, roles R17)</td>
+<td><code>✅</code> 같은 문단 전개 (L=1 형식적 대입)</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\mathbb Ef\sum_{E\in\mathfrak E(\{a_*\})}c_E\mathbb E[R_E]\)</span></td>
 <td>anchor 만의 합 × <span class="arithmatex">\(\mathbb Ef\)</span></td>
-<td>관측량과 독립일 때의 값</td>
-<td><code>✅</code></td>
+<td>anchor 하나짜리 tree 에서 같은 제약으로 센 합 × <span class="arithmatex">\(\mathbb Ef\)</span> (인수분해된 기준값)</td>
+<td><code>✅</code> L=1·k=1·제약 없음 한 경우 (형식적)</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\to0\)</span></td>
 <td>항등식</td>
 <td>계층·diluted 판 Ghirlanda–Guerra</td>
-<td><code>✅</code> RS 에서 표준 GG</td>
+<td><code>✅</code> L=1 형식적 대입에서 표준 GG</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s6-5-e9)</em></p>
 <p><a id="s6-5-e10"></a></p>
@@ -2755,15 +2772,20 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s9</strong> 혼합 도함수 전개는 정확히 순서 있는 extension 규칙이다: 그 계수에 추가 factorial 은 없다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s3–s8</strong> 서로 다른 새 replica 에 서로 다른 섭동 field <span class="arithmatex">\(g_j\)</span> 를 붙이고 싶지만 섭동 족은 단일 <span class="arithmatex">\(g\)</span> 만 가지므로, polarization 으로 혼합 미분을 단일 방향 미분들의 조합으로 쓴다. <code>✅</code> 아래 전개 (수치)</li>
-<li><strong>s9</strong> <code>🔧</code> 혼합 미분 = §3.2 의 순서 있는 extension 규칙 (각 색이 한 번씩).</li>
+<li><strong>s3–s8</strong> 이 문단은 Lemma 6.4 의 "단일 mark <span class="arithmatex">\(g\)</span> 의 계수 → 0" 을, 색마다 다른 mark <span class="arithmatex">\(g_j\)</span> 가 한 번씩 들어간 혼합 계수 — 응답 이론으로는 <span class="arithmatex">\(k\)</span> 차 교차 응답(제안 해석, 아래 전개) — 로 옮긴다. anchor 쪽 mark <span class="arithmatex">\(g_0\)</span> 도 함께 고정하고 <span class="arithmatex">\(g_0,\ldots,g_k\)</span> 를 모두 같은 유한 개의 보조 Rademacher 좌표에서 함께 만든다(s3); 그래야 ¶4 의 selector 가 색 사이 상관을 쓸 수 있다. polarization 은 이 혼합 계수를 <span class="arithmatex">\(2^k\)</span> 개 단일-<span class="arithmatex">\(g\)</span> 계수 <span class="arithmatex">\(Q_N(k^{-1}\sum_j\epsilon_jg_j)\)</span> 의 부호 있는 합으로 쓰고, 각 항은 하나의 mark specification <span class="arithmatex">\((k^{-1}\sum_j\epsilon_jg_j,\ g_0)\)</span> 이다. 첫 성분이 유리수 값·<span class="arithmatex">\(\lvert\cdot\rvert\le1\)</span> 이라 이 쌍은 처음 고정한 가산 mark 족에 속하므로(s7 — 이 닫힘 덕분에 ¶7 s5 처럼 한 수열로 충분하다) 각 항에 Lemma 6.4 를 쓸 수 있고 유한 합도 0 으로 간다. 남은 일은 이 혼합 계수에서 <span class="arithmatex">\(\mathcal C\)</span> 를 만족하는 history 만 고르는 것이다(¶4). <code>✅</code> 아래 전개 (수치)</li>
+<li><strong>s9</strong> 혼합 미분은 Lemma 3.3 우변 <span class="arithmatex">\(\sum_Ec_E\,\mathbb E_{\mathcal T_E}[\cdots]\)</span> 와 계수까지 같다: 같은 방향일 때 생기는 <span class="arithmatex">\(1/k!\)</span> 는 <span class="arithmatex">\(Q_N=k![t^k]H_N\)</span> 정의에서 이미 상쇄됐고, 서로 다른 <span class="arithmatex">\(z_j\)</span> 로 한 번씩 미분하면 "색 <span class="arithmatex">\(j\)</span> = <span class="arithmatex">\(j\)</span> 번째로 더한 replica" 라는 순서가 고정돼 history 마다 <span class="arithmatex">\(c_E\)</span> 가 한 번씩 붙는다(서로 다른 source 로 미분하면 대칭 인자가 사라지는 Wick 계산과 같은 현상). <code>🔧</code></li>
 </ul>
 <details>
-<summary>전개: polarization 공식 (s6)</summary>
+<summary>전개: polarization = 교차 감수율을 h₁±h₂ 로 재는 trick (s6) — 동차성, 일반 k, k=3 수치, k=2 손계산</summary>
+<p>응답 이론으로 보면 <span class="arithmatex">\(z_j\)</span> 는 탐침 방향 <span class="arithmatex">\(g_j\)</span> 의 세기이고 혼합 미분은 <span class="arithmatex">\(k\)</span> 차 교차 응답이다 — <span class="arithmatex">\(k=2\)</span> 이면 교차 감수율을 <span class="arithmatex">\(h_1\pm h_2\)</span> 단일 방향 응답의 차로 얻는 익숙한 trick 이다. <span class="arithmatex">\(g_j\)</span> 는 보조 mark 이지 replica 마다 따로 건 외부장이 아니다(제안 해석). 인자를 <span class="arithmatex">\(k^{-1}\)</span> 로 줄이는 것은 <span class="arithmatex">\(\lvert\cdot\rvert\le1\)</span> 을 지키기 위해서이고, 줄인 만큼은 동차성으로 앞 계수 <span class="arithmatex">\(k^k\)</span> 가 되돌린다.</p>
+<p><span class="arithmatex">\(H_N\)</span> 에서 <span class="arithmatex">\(g\)</span> 는 언제나 <span class="arithmatex">\(t\)</span> 와 함께 <span class="arithmatex">\(tg\)</span> 로 들어가므로 <span class="arithmatex">\(Q_N(g)=k![t^k]H_N\)</span> 은 <span class="arithmatex">\(g\)</span> 에 대해 <span class="arithmatex">\(k\)</span> 차 동차이고, 대칭 다중선형 <span class="arithmatex">\(\Phi\)</span> 로 <span class="arithmatex">\(Q_N(g)=\Phi(g,\ldots,g)\)</span> 라 쓸 수 있다.</p>
 <p><span class="arithmatex">\(k\)</span> 차 동차 다항식 <span class="arithmatex">\(Q(g)=\Phi(g,\ldots,g)\)</span> (<span class="arithmatex">\(\Phi\)</span> 대칭 다중선형)에 대해 <span class="arithmatex">\(\sum_{\epsilon}\prod_j\epsilon_j\,Q(\sum_j\epsilon_jg_j)=2^kk!\,\Phi(g_1..g_k)\)</span>, 동차성으로 <span class="arithmatex">\(Q(k^{-1}\cdot)=k^{-k}Q(\cdot)\)</span> → 표시된 식 <span class="arithmatex">\(=\Phi(g_1..g_k)\)</span> ✓.</p>
 <p>수치 확인 (python, <span class="arithmatex">\(k=3\)</span>, 무작위 대칭 3-텐서, <span class="arithmatex">\(\mathbb R^4\)</span> 의 무작위 <span class="arithmatex">\(g_j\)</span>): <span class="arithmatex">\(\Phi(g_1,g_2,g_3)=-0.22805733214\)</span>, polarization 식 <span class="arithmatex">\(=-0.22805733214\)</span> ✓ (12 자리 일치).</p>
+<p><span class="arithmatex">\(k=2\)</span> 예: 계수 <span class="arithmatex">\(\frac{2^2}{2^2\,2!}=\frac12\)</span>, <span class="arithmatex">\(\epsilon\)</span> 합 <span class="arithmatex">\(=2[Q(\tfrac{g_1+g_2}2)-Q(\tfrac{g_1-g_2}2)]\)</span>, 2 차 동차성으로 표시된 식 <span class="arithmatex">\(=\frac14[Q(g_1+g_2)-Q(g_1-g_2)]=\Phi(g_1,g_2)\)</span> ✓ — <span class="arithmatex">\(\chi_{12}=\partial_{h_1}\partial_{h_2}F\)</span> 를 <span class="arithmatex">\(F(h_1+h_2)\)</span>, <span class="arithmatex">\(F(h_1-h_2)\)</span> 의 차로 읽는 계산과 같다.</p>
+<p>왜 굳이 '유리수 값' 인가. 섹션 시작의 mark 족은 유한 sign 정의역 위의 <span class="arithmatex">\(\mathbb Q\cap[-1,1]\)</span> 값 함수들이라 가산이고, 유리수 계수 평균에 닫혀 있다 — polarization 인자도, ¶5 의 부호 곱도 족 밖으로 나가지 않는다(s7, ¶5 s6). 가산이어야 type 을 <span class="arithmatex">\(\nu\in\mathbb N\)</span> 으로 열거할 수 있고, Lemma 6.2 증명은 <span class="arithmatex">\(N_j\)</span> 를 차례로 골라 <span class="arithmatex">\(\nu\le j\)</span> 인 type 의 오차를 함께 작게 하고 moment 수렴은 대각선 부분수열로 얻어, 하나의 수열에 모든 type 의 집중을 모은다(¶7 s2, s5). <code>📚</code> Lemma 6.2 증명. 물리 그림(제안 해석): 쓸 탐침 field 목록을 처음에 가산 개로 정해 두고, 교차 응답을 재려고 섞은 탐침도 그 목록 안에 있게 만든 것이다.</p>
 </details>
-<p><strong>식 Eq. §6.5 ¶3 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶3 의 polarization 식 — 2ᵏ 개 단일 mark 계수의 부호 있는 합</summary>
 <table>
 <thead>
 <tr>
@@ -2777,11 +2799,12 @@ R_E=\frac1N\sum_{i=1}^N
 <tr>
 <td><span class="arithmatex">\(\frac{k^k}{2^kk!}\sum_\epsilon\prod\epsilon_j\,Q_N(k^{-1}\sum\epsilon_jg_j)\)</span></td>
 <td>polarization</td>
-<td>서로 다른 replica 에 서로 다른 field 를 거는 효과를 단일 field 응답들로 재구성</td>
+<td>색마다 다른 보조 mark <span class="arithmatex">\(g_j\)</span> 의 교차 응답을 단일 mark 응답들로 재구성 (보조 mark 이지 실제 외부장 아님)</td>
 <td><code>✅</code> 같은 문단 전개 (수치)</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-5-p4"></a></p>
 <h4 id="65-4">§6.5 ¶4<a class="headerlink" href="#65-4" title="Permanent link">&para;</a></h4>
@@ -2810,13 +2833,26 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s7</strong> 이 계산의 모든 mark 는 기본 reservoir 와 독립이다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s2–s6, (6.18)</strong> 깊이 <span class="arithmatex">\(d\)</span> 상태 묶음마다 무작위 부호 field 를 두 replica 에 같이 걸면, 그 부호의 평균 곱은 "두 replica 가 깊이 <span class="arithmatex">\(d\)</span> 까지 같은 상태 묶음" 의 indicator. 물리로는 <strong>overlap 단계를 탐지하는 staggered field</strong> — 상태 묶음별로 무작위 방향의 field 를 걸어 replica 쌍의 상관으로 overlap 구조를 읽는다 (R21 제안 해석). <code>✅</code> 아래 전개</li>
+<li><strong>s2–s6, (6.18)</strong> ¶3 의 혼합 계수에서 <span class="arithmatex">\(\mathcal C\)</span> 를 만족하는 history 만 남기는 selector 를 만드는 문단이다. 물리 그림으로는 계층의 공통 조상을 읽는 무작위 표식이다 — 같은 조상 vertex 를 읽는 두 색은 같은 부호를 받아 곱이 1, 다른 vertex 를 읽으면 평균 0 인 계보 필터(제안 해석). 구성은 이렇다: 요구 <span class="arithmatex">\((a,b,d)\)</span> (<span class="arithmatex">\(1\le d\le L-1\)</span>) 하나마다 따로, 깊이 <span class="arithmatex">\(d\)</span> 의 vertex 마다 독립 ±1 부호를 두고 색 <span class="arithmatex">\(a,b\)</span> 가 각자 자기 조상 vertex 의 부호를 <span class="arithmatex">\(g_a,g_b\)</span> 에 곱하면, 평균 곱은 "두 색이 깊이 <span class="arithmatex">\(d\)</span> vertex 를 공유(split 깊이 <span class="arithmatex">\(\ge d\)</span>)" 의 indicator 이고, 요구마다 좌표가 독립이라 (6.18) 처럼 곱으로 분해된다. mark 는 base reservoir 와 독립이라 이 평균을 Gibbs·disorder 평균과 따로 할 수 있다(s7). <code>✅</code> 아래 전개</li>
 </ul>
+<pre class="mermaid"><code>graph TD
+  R["root · 깊이 0"] --&gt; A["깊이 1 vertex A · 요구② 부호 ξ⁽²⁾(A)"]
+  R --&gt; B["깊이 1 vertex B · 요구② 부호 ξ⁽²⁾(B)"]
+  A --&gt; A1["깊이 2 vertex A1 · 요구① 부호 ξ⁽¹⁾(A1)"]
+  A --&gt; A2["깊이 2 vertex A2 · 요구① 부호 ξ⁽¹⁾(A2)"]
+  A1 --&gt; c0["색 0 · anchor"]
+  A1 --&gt; c1["색 1"]
+  A2 --&gt; c2["색 2"]</code></pre>
+<p><span class="arithmatex">\(L=3\)</span> 에서 요구 ①(색 0·색 1 이 깊이 2 vertex 공유)과 ②(색 0·색 2 가 깊이 1 vertex 공유)에 각각 독립 ±1 부호 족 <span class="arithmatex">\(\xi^{(1)}\)</span> (깊이 2 vertex 마다 하나), <span class="arithmatex">\(\xi^{(2)}\)</span> (깊이 1 vertex 마다 하나)를 두면, 각 색은 자기 조상 vertex 의 부호를 곱해 <span class="arithmatex">\(g_0=\xi^{(1)}_{A1}\xi^{(2)}_A\)</span>, <span class="arithmatex">\(g_1=\xi^{(1)}_{A1}\)</span>, <span class="arithmatex">\(g_2=\xi^{(2)}_A\)</span> 를 받는다. 같은 vertex 를 읽는 부호는 제곱해 1 이 되므로 mark 평균이 1 이고, 색 2 가 B 아래였다면 <span class="arithmatex">\(\xi^{(2)}_A\xi^{(2)}_B\)</span> 의 평균 0 이 되어 그 history 는 걸러진다 — 이것이 (6.18) 이다.</p>
 <details>
-<summary>전개: mark selector (s4–s6)</summary>
-<p>요구 <span class="arithmatex">\((a,b,d)\)</span> 마다 독립 <span class="arithmatex">\(\xi\)</span> 를 깊이 <span class="arithmatex">\(d\)</span> vertex 에 두고 <span class="arithmatex">\(g_a,g_b\)</span> 에 곱함. 결합 기댓값 = 요구별 <span class="arithmatex">\(\mathbb E[\xi_{v_a}\xi_{v_b}]\)</span> 의 곱 (<span class="arithmatex">\(v_a,v_b\)</span> = 각 replica 의 깊이 <span class="arithmatex">\(d\)</span> vertex) = <span class="arithmatex">\(\prod\mathbf 1\{v_a=v_b\}\)</span> ✓ (§6.1 ¶1 전개와 같은 계산). 한 <span class="arithmatex">\(g_a\)</span> 에 여러 <span class="arithmatex">\(\xi\)</span> 가 곱해져도 서로 독립이라 기댓값이 분해 ✓.</p>
+<summary>전개: mark selector (s4–s6) — 부호 곱의 평균 = "같은 vertex 인가" 의 Kronecker delta</summary>
+<p>각 <span class="arithmatex">\(\xi_v\)</span> 는 서로 독립이고 ±1 을 확률 1/2 씩 갖는다. 그러므로 <span class="arithmatex">\(\mathbb E[\xi_u\xi_v]=\delta_{uv}\)</span> — random sign probe(Hutchinson trace estimator 의 <span class="arithmatex">\(\mathbb E[\xi\xi^{\sf T}]=I\)</span>)와 같은 원리로, 부호 곱의 평균이 "같은 vertex 인가" 를 묻는 Kronecker delta 가 된다.</p>
+<p>요구 <span class="arithmatex">\((a,b,d)\)</span> 마다 독립 <span class="arithmatex">\(\xi\)</span> 를 깊이 <span class="arithmatex">\(d\)</span> vertex 에 두고 <span class="arithmatex">\(g_a,g_b\)</span> 에 곱함. 결합 기댓값 = 요구별 <span class="arithmatex">\(\mathbb E[\xi_{v_a}\xi_{v_b}]\)</span> 의 곱 (<span class="arithmatex">\(v_a,v_b\)</span> = 각 replica 의 깊이 <span class="arithmatex">\(d\)</span> vertex) = <span class="arithmatex">\(\prod\mathbf 1\{v_a=v_b\}\)</span> ✓ (<a href="06-perturbations-and-identities-on-prescrib.html#s6-1-p1">§6.1 ¶1</a> 전개와 같은 계산). 한 <span class="arithmatex">\(g_a\)</span> 에 여러 <span class="arithmatex">\(\xi\)</span> 가 곱해져도 서로 독립이라 기댓값이 분해 ✓.</p>
+<p>요구마다 독립 좌표가 필요하다. 같은 좌표를 두 요구에 재사용하면 한 색이 같은 부호를 두 번 받아 제곱이 1 이 되고, 원하지 않는 history 까지 살아남을 수 있다.</p>
+<p>대비 — 더하면 GREM, 곱하면 selector(제안 해석). 같은 깊이별 독립 부호를 곱하지 않고 더해 leaf 마다 <span class="arithmatex">\(X_a=\sum_{d=1}^{L-1}\xi^{(d)}_{v_d(a)}\)</span> 로 두면, Derrida 의 GREM 처럼 <span class="arithmatex">\(\mathbb E[X_aX_b]\)</span> 는 두 leaf 가 공유한 깊이 <span class="arithmatex">\(d\ge1\)</span> vertex 의 수, 곧 split 깊이다(¶4 그림에서 색 0·1 은 2, 색 0·2 는 1). GREM 은 공분산으로 split 깊이를 '재고', selector 는 요구 하나에 좌표 하나를 골라 곱해 '이 깊이를 공유했나' 의 0/1 을 '고른다' — 그래서 (6.18) 이 indicator 들의 곱이 된다.</p>
 </details>
-<p><strong>식 (6.18) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.18) — mark 평균과 공유 indicator 의 곱</summary>
 <table>
 <thead>
 <tr>
@@ -2830,17 +2866,18 @@ R_E=\frac1N\sum_{i=1}^N
 <tr>
 <td><span class="arithmatex">\(\mathbb E_{\rm marks}[g_0^{a_*}\prod_jg_j^{a_j(E)}]\)</span></td>
 <td>mark 평균</td>
-<td>상태 묶음별 무작위 field 의 replica 간 상관</td>
+<td>깊이 <span class="arithmatex">\(d\)</span> vertex 에 붙인 무작위 부호 표식의 색 간 평균 곱 (계보 필터)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\prod\mathbf 1\{a,b\)</span> 가 깊이 <span class="arithmatex">\(d\)</span> vertex 공유<span class="arithmatex">\(\}\)</span></td>
 <td>indicator</td>
-<td>지정된 overlap 단계 이상</td>
+<td>split 깊이 <span class="arithmatex">\(\ge d\)</span> (sampled tree 위치의 사건, overlap 값 아님)</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-5-p5"></a></p>
 <h4 id="65-5">§6.5 ¶5<a class="headerlink" href="#65-5" title="Permanent link">&para;</a></h4>
@@ -2862,11 +2899,13 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s7</strong> 상수 mark 는 <span class="arithmatex">\(k=0\)</span> 을 다룬다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4</strong> "overlap 단계 <span class="arithmatex">\(\ge d\)</span>" 의 indicator 차로 "정확히 <span class="arithmatex">\(q_d\)</span>" 를 얻는다 (<span class="arithmatex">\(H_d-H_{d+1}\)</span>). 이것으로 임의의 overlap 구조(색칠된 tree 모양)를 골라낸다. <code>✅</code> <span class="arithmatex">\(H_d\)</span> 는 <span class="arithmatex">\(d\)</span> 에 대해 감소하고 <span class="arithmatex">\(H_0=1\)</span>, <span class="arithmatex">\(H_L=0\)</span> 이므로 <span class="arithmatex">\(\sum_{d=0}^{L-1}(H_d-H_{d+1})=1\)</span>, 각 항은 정확한 split 깊이의 indicator</li>
+<li><strong>s1–s4</strong> ¶4 의 공유 indicator 를 <span class="arithmatex">\(H_d(a,b)\)</span> 라 부르고(두 색이 tree 에서 깊이 <span class="arithmatex">\(d\)</span> vertex 를 공유하면 1), 그 차 <span class="arithmatex">\(H_d-H_{d+1}\)</span> 로 "split 깊이가 정확히 <span class="arithmatex">\(d\)</span>" 를 얻는 문단이다 — 누적분포의 차로 한 구간의 질량을 얻는 것과 같은 구조다. 이것은 sampled tree 위 위치의 사건이고(s2: spin 배치가 우연히 같아도 위치는 구별된다), 물리 그림으로 overlap 단계 <span class="arithmatex">\(q_d\)</span> 에 대응할 뿐 overlap 값이 <span class="arithmatex">\(q_d\)</span> 라는 사건이 아니다. 곱과 유한 선형결합으로 모순 없는 임의의 색칠된 tree 모양(또는 그 모음)을 골라내고, ¶6 이 이것을 조립한다. <code>✅</code> <span class="arithmatex">\(H_d\)</span> 는 <span class="arithmatex">\(d\)</span> 에 대해 감소하고 <span class="arithmatex">\(H_0=1\)</span>, <span class="arithmatex">\(H_L=0\)</span> 이므로 <span class="arithmatex">\(\sum_{d=0}^{L-1}(H_d-H_{d+1})=1\)</span>, 각 항은 정확한 split 깊이의 indicator</li>
+<li><strong>s5–s7</strong> 선형결합의 각 항에서 <span class="arithmatex">\(g_a\)</span> 는 부호들의 곱이라 <span class="arithmatex">\(\{-1,1\}\)</span> 값이므로, ¶3 의 polarization 인자까지 처음 고정한 가산 mark 족에 들어간다 — Lemma 6.4 를 쓸 수 있는 조건을 다시 확인하는 단계. <span class="arithmatex">\(k=0\)</span> 은 상수 mark. <code>🔧</code></li>
 </ul>
 <details>
 <summary>전개: 정확한 split 의 indicator (s3)</summary>
 <p>split 깊이가 <span class="arithmatex">\(d^*\)</span> 이면 <span class="arithmatex">\(H_d=\mathbf 1\{d\le d^*\}\)</span> 이므로 <span class="arithmatex">\(H_d-H_{d+1}=\mathbf 1\{d=d^*\}\)</span> ✓.</p>
+<p>왜 overlap 값으로 고르지 않나(제안 해석). <span class="arithmatex">\(\mathbf 1\{R_{ab}\approx q_d\}\)</span> 같은 overlap 값 indicator 는 spin 배치의 함수라서 mark 평균처럼 Gibbs·disorder 평균과 분리되지 않고(¶4 s7), 유한 <span class="arithmatex">\(N\)</span> 에서 정확한 0/1 도 아니며 정리가 허용하는 유계 다항식 test 꼴도 아니다(¶2 s2). tree 위치는 mark 만으로 유한 <span class="arithmatex">\(N\)</span> 에서 정확히 고를 수 있어 (6.18) 이 항등식으로 선다. <code>❓</code> 위치와 overlap 값을 잇는 일은 이 소절 밖이며, 어느 절에서 이뤄지는지는 확인하지 않았다.</p>
 </details>
 <hr />
 <p><a id="s6-5-p6"></a></p>
@@ -2885,7 +2924,8 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s5</strong> 구성은 깊이 <span class="arithmatex">\(L-1\)</span> 까지의 mark 만 쓴다: extension 규칙은 anchor 나 이미 쓴 색을 재사용하지 않으므로 깊이 <span class="arithmatex">\(L\)</span> 에서의 일치 test 는 필요 없다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> 조립: §3.2 의 canceled-anchor 전개 (Lemma 3.3) + mark selector + site 평균 → (6.17). 깊이 <span class="arithmatex">\(L\)</span> (같은 pure state 안의 서로 다른 replica) 은 extension 규칙상 자동으로 구별되므로 탐지할 필요 없음. <code>📚</code> Lemma 3.3, §6.5 ¶3–¶5</li>
+<li><strong>s1–s4</strong> ¶3–¶5 의 장치를 조립해 (6.17) 을 끝내는 문단이다. 혼합 canceled-anchor 전개(Lemma 3.3)를 차 (6.15) 에 적용하면 history 별 항과 계수 <span class="arithmatex">\(c_E\)</span> 가 나오고, 두 평균이 서로 다른 일을 한다: mark 평균(selector (6.18))은 <span class="arithmatex">\(\mathcal C\)</span> 를 만족하는 tree 계보만 남기고, 독립 균등 삽입 site 평균은 각 항의 spin 곱을 정확히 <span class="arithmatex">\(R_E\)</span> 로 바꿔 계수 차가 (6.17) 의 좌변이 되며, 그것을 Lemma 6.4 + polarization(¶3) 이 0 으로 보낸다. overlap 단항식 <span class="arithmatex">\(f\)</span> 에서 증명한 뒤 유한 선형결합으로 정리의 유계 다항식 test 로 넓힌다. <code>📚</code> Lemma 3.3, §6.5 ¶3–¶5</li>
+<li><strong>s5</strong> mark 는 깊이 <span class="arithmatex">\(L-1\)</span> 까지만 필요하다. 깊이 <span class="arithmatex">\(L\)</span> vertex 공유는 같은 replica 위치(같은 leaf)라는 뜻인데, extension 규칙이 anchor 와 이미 쓴 색을 재사용하지 않으므로 서로 다른 색은 깊이 <span class="arithmatex">\(L\)</span> 에서 일치할 수 없다(<span class="arithmatex">\(H_L=0\)</span> 자동, ¶5 s1). <code>🔧</code></li>
 </ul>
 <hr />
 <p>∎</p>
@@ -2907,7 +2947,7 @@ R_E=\frac1N\sum_{i=1}^N
 <p><strong>s5</strong> 가산 족 전체에 균등한 집중 추정은 필요 없다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> <code>🔧</code> 극한 순서: 섭동 족 고정 → <span class="arithmatex">\(N\to\infty\)</span> → <span class="arithmatex">\(j\to\infty\)</span> → (나중에) <span class="arithmatex">\(L\to\infty\)</span>. 물리에서는 순서를 신경 쓰지 않지만, 엄밀하게는 이 순서가 균등성 없이도 논증을 성립시킨다.</li>
+<li><strong>s1–s5</strong> 앞 증명(¶3–¶6, Lemma 6.4)이 쓴 선택·극한 순서를 정리하는 Remark 다. 고정 <span class="arithmatex">\(L\)</span> (계층 해상도) 에서 ① mark specification 과 가중치 <span class="arithmatex">\(c_\nu\)</span> 고정 → ② 매개변수 평균(Lemma 6.2, 고정 <span class="arithmatex">\(L\)</span> 과 <span class="arithmatex">\(\varepsilon&gt;0\)</span> 마다)으로 하나의 수열 <span class="arithmatex">\((N_j,\mathbf u_j)\)</span> 선택: 이 수열을 따라 cavity 증가분이 <span class="arithmatex">\(\underline F+2\varepsilon\)</span> 이하이고, 모든 type 이 집중하며, 모든 유한 overlap moment 가 수렴한다 → ③ type 지수 <span class="arithmatex">\(j\)</span> (<span class="arithmatex">\(t_\nu=j^{-1}\)</span>, <span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span>; 수열 번호의 <span class="arithmatex">\(j\)</span> 와는 다른 쓰임) 를 고정한 채 그 수열을 따라 <span class="arithmatex">\(N\to\infty\)</span>, 그다음 <span class="arithmatex">\(j\to\infty\)</span> → ④ 지정 tree 항등식이 선 뒤에야 <span class="arithmatex">\(L\)</span> 을 키운다(<span class="arithmatex">\((L,\varepsilon)\)</span> 마다 다른 수열 허용). 물리 그림으로는 '고정한 작은 매개변수에서 먼저 <span class="arithmatex">\(N\to\infty\)</span>, 그다음 매개변수 <span class="arithmatex">\(\to0\)</span>' 이라는 순서가 <span class="arithmatex">\(\lim_{h\to0}\lim_{N\to\infty}\)</span> 와 같다(제안 해석). 다만 <span class="arithmatex">\(j\to\infty\)</span> 는 계에서 field 를 끄는 단계가 아니다: 섭동된 계는 모든 type 을 한꺼번에 담고(Palm identity: 같은 <span class="arithmatex">\(H_N\)</span> 이 모든 <span class="arithmatex">\(j\)</span> 에 쓰인다), <span class="arithmatex">\(j\)</span> 는 극한 해석 함수 <span class="arithmatex">\(H(t)\)</span> 를 <span class="arithmatex">\(t=j^{-1}\)</span> 에서 재는 탐침 점이며, 그렇게 얻은 <span class="arithmatex">\(|H(j^{-1})|\le2Cj^{-j}\)</span> 가 Taylor 계수를 모두 0 으로 만든다(Lemma 6.4). 섭동의 free energy 비용이 사라지는 것은 <span class="arithmatex">\(s_N=N^{3/4}=o(N)\)</span> 덕분이고 이 bound 는 매개변수에 균등하다. ② 의 '평균' 은 <span class="arithmatex">\(u\)</span> 를 구간 <span class="arithmatex">\(I_\nu\)</span> 위에서 평균해 score 요동이 작은 <span class="arithmatex">\(u\)</span> 를 고르는 장치로, 요동을 <span class="arithmatex">\(u\)</span>-곡률로 묶어 구간에서 적분하는 볼록성 논증이다(<code>📚</code> Averaged score concentration lemma) — 물리로는 상공존점 같은 특이점을 피해 일반적인 field 값을 고르는 그림이다(제안 해석). 이 순서를 지키면 가산 type 전체에 균등한 집중 추정 없이 논증이 선다(s5). 이로써 이 소절은 단일 mark 의 계수 소멸을, 지정된 색칠 tree 마다의 GG 류 닫힌 관계 (6.17) 로 바꾸었다. <code>🔧</code></li>
 </ul>
 <hr />
 <p><em>(끝: s6-5-e11)</em></p>
