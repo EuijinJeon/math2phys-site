@@ -1966,6 +1966,20 @@ G(u)=X_0(u)+2nu^2
 <p><a id="s6-3"></a></p>
 <h2 id="63-one-sequence-for-low-increments-and-all-identities">§6.3 One sequence for low increments and all identities<a class="headerlink" href="#63-one-sequence-for-low-increments-and-all-identities" title="Permanent link">&para;</a></h2>
 <p><em>제목: 낮은 증분과 모든 항등식을 위한 하나의 수열</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> lower bound <span class="arithmatex">\(\liminf_NF_N\ge\inf_{r\ge0}\Phi_r\)</span> 를 cavity 비교(Aizenman–Sims–Starr 방식)로 얻으려면, 같은 크기 <span class="arithmatex">\(N\)</span> 과 같은 섭동 세기 <span class="arithmatex">\(\mathbf u\)</span> 에서 (a) spin 하나를 더할 때의 log partition function 증가량이 낮고 (b) 섭동 score 가 집중해 Ghirlanda–Guerra 류 항등식을 쓸 수 있어야 한다. 장애물: (a) 는 <span class="arithmatex">\(\mathbf u\)</span> 에 대한 평균으로만, (b) 는 측도가 큰 <span class="arithmatex">\(\mathbf u\)</span> 집합에서만 주어져서 그냥 한 점에 겹치지 않는다.</li>
+<li><strong>물리로는.</strong> 계를 spin 하나씩 키우며 증가량이 낮은 크기를 찾고, 보조 섭동(replica 구조를 읽는 탐침)의 손잡이 <span class="arithmatex">\(\mathbf u\)</span> 를 요동이 작은 곳에 맞춘 뒤, 모든 replica 통계가 안정되는 크기만 남긴다 (<code>제안 해석</code>).</li>
+<li><strong>결론.</strong> 고정된 <span class="arithmatex">\(L,\varepsilon\)</span> 마다 결정적 수열 <span class="arithmatex">\((N_j,\mathbf u_j)\)</span> 하나: 위에서 <span class="arithmatex">\(\underline F+2\varepsilon\)</span> 으로 눌린 증분(한 방향), 각 고정 type 의 score 집중(type 에 대해 균등하지 않음), 깊이-<span class="arithmatex">\(L\)</span> multioverlap moment 의 부분수열 수렴. 이후 극한 순서는 <span class="arithmatex">\(N\to\infty\)</span> → <span class="arithmatex">\(L\to\infty\)</span> → <span class="arithmatex">\(\varepsilon\downarrow0\)</span>.</li>
+<li><strong>읽는 법.</strong> ¶2–¶5 가 Lemma 6.2 의 진술, ¶6–¶8 이 크기를 세 번 거르는 증명(아래 그림), ¶9 가 이후 표기 약속. 핵심은 ¶7: 증분 유계 <span class="arithmatex">\(\lvert\Delta_N\rvert\le C\)</span> 덕분에 나쁜 <span class="arithmatex">\(\mathbf u\)</span> 를 버려도 평균 증분이 거의 안 변한다. 주의: (i) 은 한 방향 부등식이고, 극한은 유일성을 주장하지 않는 부분수열 극한이다.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+  A["모든 크기 N"] --&gt;|"¶6: π 평균과 telescoping"| B["π 평균 증분 ≤ liminf F + ε 인 크기들 (무한 집합)"]
+  B --&gt;|"¶7: 그 안에서 차례로 크게 고르기"| C["크기 N_j: 처음 j 개 type 의 π 평균 오차 합 ≤ j⁻³"]
+  C --&gt;|"¶7: Markov + 나쁜 집합 빼고 조건부 평균"| D["결정적 섭동 세기 u_j 하나: 증분 ≤ liminf F + 2ε, 처음 j 개 오차 ≤ 1/j"]
+  D --&gt;|"¶8: 대각 부분수열"| E["깊이 L 의 모든 tree moment 가 수렴하는 수열"]
+  E --&gt;|"¶9"| F["이후 모든 N → ∞ 는 이 수열을 따라서"]</code></pre>
+<p>증명은 크기를 세 번 걸러 하나의 수열을 만든다. 각 단계는 앞 단계의 성질을 잃지 않는다 — 부등식은 크기마다 성립하고, 수렴은 부분수열로 옮겨도 유지되기 때문이다.</p>
 <p><a id="s6-3-p1"></a></p>
 <h4 id="63-1">§6.3 ¶1<a class="headerlink" href="#63-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1978,7 +1992,8 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s3</strong> <span class="arithmatex">\(P_N^{L,\mathbf u}\)</span> 가 root 평균한 섭동된 log partition function 임을 상기하고 <span class="arithmatex">\(\Delta_N(\mathbf u)=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}\)</span> 로 둔다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> lower bound 의 목표: <span class="arithmatex">\(\underline F=\liminf F_N\ge\inf\mathcal B\)</span>. ASS 방식에서는 cavity 증분 <span class="arithmatex">\(\Delta_N\)</span> 이 <span class="arithmatex">\(\underline F\)</span> 근처인 크기 <span class="arithmatex">\(N\)</span> 을 골라, 그 크기에서 증분을 Bethe 공식과 비교한다. 동시에 그 크기에서 섭동이 self-averaging 이어야 GG 류 항등식을 쓸 수 있다. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>]</li>
+<li><strong>s2–s3</strong> 이 문단은 목표와 기호를 정한다. 목표(유계 interaction·field 법칙): <span class="arithmatex">\(\underline F=\liminf_NF_N\ge\inf_{r\ge0}\Phi_r\)</span>, <span class="arithmatex">\(\Phi_r=\inf_{\zeta,\mathbf m}\mathcal B_r(\zeta,\mathbf m)\)</span> (유한 깊이 hierarchy trial 값의 inf). <span class="arithmatex">\(\Delta_N(\mathbf u)\)</span> 는 섭동 세기 <span class="arithmatex">\(\mathbf u\)</span> 를 고정하고 spin 하나를 더할 때 root 평균 log partition function 의 증가량이다. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>]</li>
+<li><strong>s1</strong> Aizenman–Sims–Starr(ASS) 방식은 <span class="arithmatex">\(\Delta_N\le\underline F+2\varepsilon\)</span> 으로 위에서 눌리는 크기(한 방향만 필요)를 골라 그 크기에서 <span class="arithmatex">\(\Delta_N\approx\mathcal B_{L-1}\ge\inf_r\Phi_r\)</span> 를 보인다. 같은 크기·같은 <span class="arithmatex">\(\mathbf u\)</span> 에서 보조 섭동(<code>제안 해석</code>: pressure 밀도는 바꾸지 않고 replica 구조를 읽는 탐침)이 집중해야 Ghirlanda–Guerra(GG) 류 항등식을 쓸 수 있다 → 이 동시 선택을 Lemma 6.2(¶2)가 준다. <code>📚</code> [<a href="99-references.html#ref-ASS03">2</a>]</li>
 </ul>
 <hr />
 <p><a id="s6-3-e3"></a></p>
@@ -1991,7 +2006,7 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s1</strong> 모든 고정된 <span class="arithmatex">\(L\geq2\)</span> 와 <span class="arithmatex">\(\varepsilon\gt 0\)</span> 에 대해, 다음을 만족하는 크기 <span class="arithmatex">\(N_j\uparrow\infty\)</span> 와 결정적 벡터 <span class="arithmatex">\(\mathbf u_j\)</span> 가 있다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> Lemma 6.2: 세 조건을 동시에 만족하는 크기와 섭동 세기의 수열. <code>📚</code> 증명 §6.3 ¶6–¶8</li>
+<li><strong>s1</strong> Lemma 6.2: tree 깊이 <span class="arithmatex">\(L\ge2\)</span> 와 허용오차 <span class="arithmatex">\(\varepsilon\gt0\)</span> 를 먼저 고정할 때마다, 아래 세 조건(¶3–¶5)을 함께 만족하는 크기 <span class="arithmatex">\(N_j\uparrow\infty\)</span> 와 섭동 세기 <span class="arithmatex">\(\mathbf u_j\)</span> 의 수열이 있다. 수열은 <span class="arithmatex">\((L,\varepsilon)\)</span> 에 의존하고, <span class="arithmatex">\(\mathbf u_j\)</span> 는 결정적이다 — 분포 <span class="arithmatex">\(\pi\)</span> 는 좋은 점을 고르는 데만 쓰고 disorder 처럼 평균하지 않는다. <code>📚</code> 증명 §6.3 ¶6–¶8</li>
 </ul>
 <hr />
 <p><a id="s6-3-p3"></a></p>
@@ -2002,7 +2017,7 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s1</strong> <span class="arithmatex">\(\Delta_{N_j}(\mathbf u_j)\leq \underline F+2\varepsilon\)</span>;</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> (i) cavity 증분이 liminf 근처 — 이 크기에서 "spin 하나 추가의 비용" 이 pressure 의 하한을 대표. <code>🔧</code></li>
+<li><strong>s1</strong> (i) <span class="arithmatex">\(\Delta\)</span> 는 계를 <span class="arithmatex">\(N\)</span> 에서 <span class="arithmatex">\(N+1\)</span> 로 키울 때 log partition function 의 증가량(<span class="arithmatex">\(=-\beta\times\)</span> free energy 증가; <code>제안 해석</code>: 액체론의 Widom test-particle insertion 이 재는 chemical potential 과 같은 구조, 부호 반대)이다. 조건은 한 방향이다: 선택된 크기·섭동에서 <span class="arithmatex">\(\Delta\le\underline F+2\varepsilon\)</span> 이고, <span class="arithmatex">\(\underline F\)</span> 와 양쪽으로 가깝다는 주장은 아니다. 나중에(§8) <span class="arithmatex">\(\Delta\approx\mathcal B_{L-1}\ge\inf_r\Phi_r\)</span> 를 보이면 <span class="arithmatex">\(\inf_r\Phi_r\le\underline F+2\varepsilon\)</span>, 곧 pressure 의 하한이 나온다. <code>🔧</code></li>
 </ul>
 <hr />
 <p><a id="s6-3-p4"></a></p>
@@ -2013,7 +2028,7 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s1</strong> 모든 고정된 type <span class="arithmatex">\(\nu\)</span> 에 대해 reservoir 에서 <span class="arithmatex">\(e_{\nu,N_j}(\mathbf u_j)\longrightarrow0\)</span>;</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> (ii) 모든 섭동의 에너지가 self-averaging. <code>🔧</code></li>
+<li><strong>s1</strong> (ii) reservoir 는 <span class="arithmatex">\(N\)</span> 계와 <span class="arithmatex">\(N+1\)</span> 계를 비교하는 데 쓰는 공통 Gibbs 계이고, type <span class="arithmatex">\(\nu\)</span> 는 그것을 조사하는 보조 섭동의 한 종류다(<code>제안 해석</code>: 탐침). <span class="arithmatex">\(e_{\nu,N}\)</span> 은 섭동 score <span class="arithmatex">\(D_\nu\)</span> — log weight 의 <span class="arithmatex">\(u_\nu\)</span>-미분, 곧 그 섭동에 conjugate 한 에너지형 관측량 — 의 정규화된 <span class="arithmatex">\(L^1\)</span> 요동으로, thermal 요동과 disorder(root) 요동을 함께 재므로 물리의 sample-to-sample self-averaging 보다 강하다. 이것이 각 고정 <span class="arithmatex">\(\nu\)</span> 마다 0 으로 가며, <span class="arithmatex">\(\nu\)</span> 에 대해 균등하지는 않다. <code>🔧</code></li>
 </ul>
 <hr />
 <p><a id="s6-3-p5"></a></p>
@@ -2024,7 +2039,8 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s1</strong> reservoir 에서, 깊이 <span class="arithmatex">\(L\)</span> 의 모든 고정된 유한 지정 tree 위의 multioverlap 유한 곱의 기댓값이 이 수열을 따라 수렴한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> (iii) 모든 multioverlap 의 결합 moment 가 수렴 = replica 의 overlap 분포가 극한을 가짐 (부분수열). 물리에서는 당연히 가정하는 "thermodynamic limit 에서 overlap 분포의 존재" 를 compactness 로 확보. <code>🔧</code></li>
+<li><strong>s1</strong> (iii) multioverlap 은 여러 replica 의 spin 곱을 평균한 상관량으로, 그들이 함께 얼마나 정렬돼 있는지 읽는다. 깊이 <span class="arithmatex">\(L\)</span> 의 고정된 유한 prescribed tree 위 그 유한 곱의 기댓값이, 섭동된 reservoir 에서 선택 수열을 따라 수렴한다 — 즉 그 tree 들 위 multioverlap 결합 분포가 이 부분수열에서 weak 극한을 가진다. tree 의 역할은 앞선 정의를 따르며 공간상의 결합망과 동일시하지 않는다. <code>🔧</code></li>
+<li><strong>s1</strong> <code>🧭 물리 직관과의 차이:</code> 물리에서는 thermodynamic limit 의 overlap 분포가 하나로 존재한다고 가정하지만, 여기서는 부분수열 극한만 확보하고 유일성도, 섭동 없는 원래 모형의 전체 수열 수렴도 주장하지 않는다(극한은 <span class="arithmatex">\(L,\varepsilon\)</span>, 부분수열 선택에 의존할 수 있다). 결론이 liminf 하나에 대한 부등식이고 이후 단계는 어떤 극한에서도 성립하는 성질만 쓰므로 이것으로 충분하다 — 원문도 무한 깊이 극한 Gibbs 상태를 구성하지 않는다고 밝힌다. <code>📚</code> <a href="02-the-model-and-the-variational-principle.html#s2-1-p6">§2.1 ¶6</a></li>
 </ul>
 <hr />
 <p><em>(끝: s6-3-e3)</em></p>
@@ -2048,14 +2064,16 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s4</strong> Lemma <a href="05-a-perturbed-cavity-reservoir.html#s5-e1">5.1</a> 은 균등하게 <span class="arithmatex">\(|\Delta_N(\mathbf u)|\leq C\)</span> 인 상수 <span class="arithmatex">\(C\)</span> 를 준다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s2–s3</strong> Cesàro 논리: <span class="arithmatex">\(\frac1NP_N=\frac1N\sum_{n\lt N}\Delta_n+O(1/N)\)</span>; 증분이 결국 모두 <span class="arithmatex">\(\underline F+\varepsilon\)</span> 보다 크면 평균도 그보다 커서 liminf 와 모순. ASS 의 표준 논법. <code>✅</code> 아래 전개</li>
-<li><strong>s4</strong> <code>🔧</code> 증분 유계.</li>
+<li><strong>s2–s3</strong> 계를 spin 하나씩 키우면 log partition function 은 증가량의 누적합이다: <span class="arithmatex">\(\frac1N\int P_N\,d\pi=\frac1N\sum_{n\lt N}\int\Delta_n\,d\pi+O(1/N)\)</span> (<span class="arithmatex">\(\pi\)</span> = 섭동 세기 <span class="arithmatex">\(\mathbf u\)</span> 의 분포). <span class="arithmatex">\(\pi\)</span> 평균 증분이 어떤 <span class="arithmatex">\(N_0\)</span> 이후 줄곧 <span class="arithmatex">\(\underline F+\varepsilon\)</span> 보다 크면 이 평균의 liminf 도 그 이상이 되어 모순이므로, <span class="arithmatex">\(\pi\)</span> 평균 증분 <span class="arithmatex">\(\le\underline F+\varepsilon\)</span> 인 <span class="arithmatex">\(N\)</span> 이 무한히 많다(전부는 아니고, 개별 <span class="arithmatex">\(\mathbf u\)</span> 에서의 bound 는 아직 없다 → ¶7; ASS 의 표준 논법). lower bound 에는 이런 드문드문한 크기로 충분하므로 ¶7·¶8 에서 크기를 더 솎아내도 된다. <code>✅</code> 아래 전개</li>
+<li><strong>s4</strong> <code>🔧</code> 증분 유계 <span class="arithmatex">\(\lvert\Delta_N(\mathbf u)\rvert\le C\)</span> (<span class="arithmatex">\(N,L,\mathbf u\)</span> 에 균등, Lemma 5.1): 드문 <span class="arithmatex">\(\mathbf u\)</span> 에서도 한 단계 증가량이 폭주하지 못하게 해서, ¶7 에서 나쁜 <span class="arithmatex">\(\mathbf u\)</span> 를 버릴 때 평균 변화를 <span class="arithmatex">\(Cq_j\)</span> 로 묶는다.</li>
 </ul>
 <details>
 <summary>전개: telescoping (s3)</summary>
-<p><span class="arithmatex">\(n\ge N_0\)</span> 에서 모두 <span class="arithmatex">\(\int\Delta_n\,d\pi\gt\underline F+\varepsilon\)</span> 이면 <span class="arithmatex">\(\frac1N\int P_N\,d\pi\ge\frac{N-N_0}N(\underline F+\varepsilon)-\frac{C'}N\to\underline F+\varepsilon\)</span>, 이는 식 §6.3 ¶6 #1 의 liminf <span class="arithmatex">\(=\underline F\)</span> 와 모순 ✓.</p>
+<p><span class="arithmatex">\(n\ge N_0\)</span> 에서 모두 <span class="arithmatex">\(\int\Delta_n\,d\pi\gt\underline F+\varepsilon\)</span> 이면 <span class="arithmatex">\(\frac1N\int P_N\,d\pi\ge\frac{N-N_0}N(\underline F+\varepsilon)-\frac{C'}N\to\underline F+\varepsilon\)</span>, 이는 식 §6.3 ¶6 #1 의 liminf <span class="arithmatex">\(=\underline F\)</span> 와 모순 ✓.
+여기서 <span class="arithmatex">\(C'\)</span> 는 처음 <span class="arithmatex">\(N_0\)</span> 개 증분과 <span class="arithmatex">\(P_{N_0}\)</span> 의 유계 기여를 묶은 상수다(증분 유계로 유한). 결론은 '무한히 많은 <span class="arithmatex">\(N\)</span>' 이지 모든 <span class="arithmatex">\(N\)</span> 이 아니다.</p>
 </details>
-<p><strong>식 Eq. §6.3 ¶6 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶6 식 — 섭동 평균 pressure 의 liminf</summary>
 <table>
 <thead>
 <tr>
@@ -2069,11 +2087,12 @@ G(u)=X_0(u)+2nu^2
 <tr>
 <td><span class="arithmatex">\(\liminf\frac1N\int P_N\,d\pi=\underline F\)</span></td>
 <td>섭동 평균 pressure</td>
-<td>sublinear 섭동은 pressure 밀도를 안 바꿈</td>
+<td>sublinear(<span class="arithmatex">\(s_N=N^{3/4}\)</span>) 섭동은 pressure 밀도를 바꾸지 않는다. bound <span class="arithmatex">\(\lvert P_N-NF_N\rvert\le(\log2)s_N\)</span> 이 <span class="arithmatex">\(\mathbf u\)</span>·<span class="arithmatex">\(L\)</span>·<span class="arithmatex">\(N\)</span> 에 균등해서 <span class="arithmatex">\(\pi\)</span> 적분 뒤에도 liminf 가 <span class="arithmatex">\(\underline F\)</span></td>
 <td><code>📚</code> (5.3)</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-3-p7"></a></p>
 <h4 id="63-7">§6.3 ¶7<a class="headerlink" href="#63-7" title="Permanent link">&para;</a></h4>
@@ -2106,13 +2125,18 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s7</strong> 꼬리를 다시 표지하면 (i) 과 (ii) 가 증명된다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s2–s7</strong> <code>🔧</code> "거의 모든 섭동 세기에서 self-averaging" 과 "평균 증분이 낮음" 을 동시에 만족하는 결정적 <span class="arithmatex">\(\mathbf u\)</span> 하나를 고른다 (Markov 부등식 + 조건부 평균). <code>✅</code> 아래 전개</li>
+<li><strong>s2–s6</strong> 이 문단은 ¶6 의 낮은 평균 증분과 score 집중(Lemma 6.1 이 <span class="arithmatex">\(\pi\)</span> 평균으로만 줌)을 한 점 <span class="arithmatex">\(\mathbf u_j\)</span> 에 겹친다 — <code>제안 해석</code>: 섭동 세기를 탐침 손잡이로 보면, 요동이 작은 손잡이 위치 가운데 증분도 낮은 곳을 찾는 일. ¶6 의 무한집합에서 <span class="arithmatex">\(N_j\)</span> 를 충분히 크게 골라 처음 <span class="arithmatex">\(j\)</span> 개 type 의 오차 <span class="arithmatex">\(\pi\)</span> 평균 합을 <span class="arithmatex">\(\le j^{-3}\)</span> 로 만들면, Markov 로 그 오차가 모두 <span class="arithmatex">\(\le j^{-1}\)</span> 인 집합 <span class="arithmatex">\(G_j\)</span> 의 측도가 <span class="arithmatex">\(\ge1-j^{-2}\)</span> 이다('거의 모든 <span class="arithmatex">\(\mathbf u\)</span>' 가 아니라 <span class="arithmatex">\(j\)</span> 마다 측도가 1 로 가는 집합). <span class="arithmatex">\(\lvert\Delta\rvert\le C\)</span> 라서 <span class="arithmatex">\(G_j\)</span> 밖을 버려도 평균 증분은 <span class="arithmatex">\(Cq_j\)</span> 정도만 바뀌므로, <span class="arithmatex">\(G_j\)</span> 안에 증분 <span class="arithmatex">\(\le\underline F+2\varepsilon\)</span> 인 결정적 <span class="arithmatex">\(\mathbf u_j\)</span> 가 있다. <code>🔧</code> <code>✅</code> 아래 전개</li>
+<li><strong>s7</strong> 고정된 type <span class="arithmatex">\(\nu\)</span> 는 <span class="arithmatex">\(j\ge\nu\)</span> 부터 늘 '처음 <span class="arithmatex">\(j\)</span> 개' 에 들어가므로 <span class="arithmatex">\(e_{\nu,N_j}(\mathbf u_j)\le j^{-1}\to0\)</span> — 이것이 (ii) 의 'for every fixed <span class="arithmatex">\(\nu\)</span>' 이고 <span class="arithmatex">\(\nu\)</span> 에 대해 균등하지 않은 이유다. 남은 (iii) 은 ¶8 이 맡는다. <code>🔧</code></li>
+<li><strong>s2</strong> 섭동 세기를 평균하는 이유: score 의 요동은 log partition function 의 <span class="arithmatex">\(u\)</span> 에 대한 2차 도함수로 통제되고(<span class="arithmatex">\(X_0''\ge m_1\mathrm{Var}(D_\nu\mid\mathscr F_0)-4n\)</span>), 그 2차 도함수는 한 점에서는 클 수 있어도 구간 적분은 1차 도함수의 차이(<span class="arithmatex">\(\lvert X_0'\rvert\le2n\)</span>)로 묶인다. 그래서 요동이 큰 <span class="arithmatex">\(\mathbf u\)</span> 는 측도가 작은 집합에만 있을 수 있다(<code>제안 해석</code>: 비열의 온도 적분이 에너지 차이로 유한한 것과 같은 구조). <code>📚</code> Lemma 6.1 증명 (<a href="06-perturbations-and-identities-on-prescrib.html#s6-2">§6.2</a>)</li>
 </ul>
 <details>
 <summary>전개: Markov 와 조건부 평균 (s4–s5)</summary>
-<p><span class="arithmatex">\(\pi(e_\nu\gt j^{-1}\)</span> for some <span class="arithmatex">\(\nu\le j)\le j\sum_{\nu\le j}\int e_\nu\,d\pi\le j\cdot j^{-3}=j^{-2}\)</span> ✓. <span class="arithmatex">\(G_j\)</span> 위 평균 증분 <span class="arithmatex">\(\le\frac{\int\Delta\,d\pi+Cq_j}{1-q_j}\le\frac{\underline F+\varepsilon+Cj^{-2}}{1-j^{-2}}\to\underline F+\varepsilon\)</span> ✓ → 큰 <span class="arithmatex">\(j\)</span> 에서 <span class="arithmatex">\(\le\underline F+2\varepsilon\)</span>.</p>
+<p><span class="arithmatex">\(\pi\)</span> = 섭동 세기의 분포, <span class="arithmatex">\(G_j\)</span> = 모든 <span class="arithmatex">\(\nu\le j\)</span> 에서 <span class="arithmatex">\(e_{\nu,N_j}\le j^{-1}\)</span> 인 집합, <span class="arithmatex">\(q_j=\pi(G_j^c)\)</span>.</p>
+<p><span class="arithmatex">\(\pi(e_\nu\gt j^{-1}\)</span> for some <span class="arithmatex">\(\nu\le j)\le j\sum_{\nu\le j}\int e_\nu\,d\pi\le j\cdot j^{-3}=j^{-2}\)</span> ✓ (합에 대한 Markov). 분자는 <span class="arithmatex">\(\int_{G_j}\Delta\,d\pi=\int\Delta\,d\pi-\int_{G_j^c}\Delta\,d\pi\le\underline F+\varepsilon+Cq_j\)</span> 에서 온다. <span class="arithmatex">\(\int\Delta\,d\pi\le\underline F+\varepsilon\)</span> 은 <span class="arithmatex">\(N_j\)</span> 를 ¶6 의 무한집합에서 골랐기 때문이고, 둘째 항은 증분 하한 <span class="arithmatex">\(\Delta\ge-C\)</span> 를 쓴다. <span class="arithmatex">\(G_j\)</span> 위 평균 증분 <span class="arithmatex">\(\le\frac{\int\Delta\,d\pi+Cq_j}{1-q_j}\le\frac{\underline F+\varepsilon+Cj^{-2}}{1-j^{-2}}\to\underline F+\varepsilon\)</span> ✓ → 큰 <span class="arithmatex">\(j\)</span> 에서 <span class="arithmatex">\(\le\underline F+2\varepsilon\)</span>.</p>
+<p>증분 유계가 없다면: 측도 <span class="arithmatex">\(q\)</span> 의 나쁜 집합에서 <span class="arithmatex">\(\Delta=-M\)</span> 이고 나머지에서 <span class="arithmatex">\(\Delta=a\)</span> 이면, 평균 <span class="arithmatex">\((1-q)a-qM\)</span> 은 <span class="arithmatex">\(a\)</span> 가 커도 <span class="arithmatex">\(M\)</span> 만 크면 낮을 수 있어 좋은 집합의 증분이 높게 남는다. <span class="arithmatex">\(\Delta\ge-C\)</span> 이면 나쁜 집합이 평균을 끌어내리는 양이 <span class="arithmatex">\(Cq\)</span> 로 묶여 이 시나리오가 막힌다. '충분히 큰 <span class="arithmatex">\(j\)</span>' 는 <span class="arithmatex">\(C,\varepsilon,\lvert\underline F\rvert\)</span> 에 의존한다.</p>
 </details>
-<p><strong>식 Eq. §6.3 ¶7 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶7 식 #1 — 크기 N_j 의 선택 조건</summary>
 <table>
 <thead>
 <tr>
@@ -2126,12 +2150,14 @@ G(u)=X_0(u)+2nu^2
 <tr>
 <td><span class="arithmatex">\(\sum_{\nu\le j}\int e_{\nu,N_j}d\pi\le j^{-3}\)</span></td>
 <td>선택 조건</td>
-<td>처음 <span class="arithmatex">\(j\)</span> 개 섭동이 모두 self-averaging</td>
+<td>처음 <span class="arithmatex">\(j\)</span> 개 type 의 score 요동이 <span class="arithmatex">\(\pi\)</span> 평균으로 <span class="arithmatex">\(j^{-3}\)</span> 이하. 점별 bound 는 Markov 로 얻는 <span class="arithmatex">\(G_j\)</span> 위에서만</td>
 <td><code>🔧</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 Eq. §6.3 ¶7 #2 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: ¶7 식 #2 — 좋은 집합 위 조건부 평균 증분</summary>
 <table>
 <thead>
 <tr>
@@ -2150,6 +2176,7 @@ G(u)=X_0(u)+2nu^2
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-3-p8"></a></p>
 <h4 id="63-8">§6.3 ¶8<a class="headerlink" href="#63-8" title="Permanent link">&para;</a></h4>
@@ -2165,7 +2192,8 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s4</strong> 대각 부분수열이 (i) 이나 (ii) 에 영향을 주지 않고 (iii) 을 준다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s2–s4</strong> <code>🔧</code> 가산 개의 유계 수열 → 대각 논법으로 모두 수렴하는 부분수열 (overlap 분포의 weak convergence 극한). <code>📚</code> 표준 compactness</li>
+<li><strong>s2–s4</strong> 서로 다른 replica 관측량을 모두 같은 크기들에서 읽어야 하나의 일관된 극한 통계가 된다. 고정 <span class="arithmatex">\(L\)</span> 에서 tree 모양·multioverlap 유한 곱은 가산 개이고 각 기댓값은 <span class="arithmatex">\([-1,1]\)</span> 안의 수열이므로, 1번이 수렴하는 부분수열, 그 안에서 2번도 수렴하는 부분수열, … 을 고른 뒤 대각으로 하나씩 뽑으면 모든 고정 moment 가 함께 수렴한다. <code>🔧</code> <code>📚</code> 표준 compactness</li>
+<li><strong>s4</strong> (i) 은 <span class="arithmatex">\(j\)</span> 마다 성립하는 부등식이고 (ii) 는 극한 진술이라 부분수열로 옮겨도 유지된다 — 'without affecting (i) or (ii)' 의 이유. 얻는 것은 깊이-<span class="arithmatex">\(L\)</span> tree 위 multioverlap 결합 분포의 부분수열 weak 극한이며, 이 수열을 ¶9 가 이후 모든 극한의 무대로 약속한다. <code>🔧</code></li>
 </ul>
 <hr />
 <p>∎</p>
@@ -2181,7 +2209,9 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s3</strong> 이 극한들에 대해 <span class="arithmatex">\(L\)</span>, 경로 수, 섭동 type 에 대한 균등성은 주장하지 않는다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> <code>🔧</code> 극한의 순서: <span class="arithmatex">\(N\to\infty\)</span> (고정 <span class="arithmatex">\(L\)</span>) 먼저, 그 다음 <span class="arithmatex">\(L\to\infty\)</span> (§9). 물리에서 "<span class="arithmatex">\(N\to\infty\)</span> 후 full-RSB 극한" 의 순서와 같다.</li>
+<li><strong>s1–s2</strong> 표기 약속: 이후 <span class="arithmatex">\(N\to\infty\)</span> 는 Lemma 6.2 의 크기 <span class="arithmatex">\(N_j\)</span> 를 따르고, 기댓값은 함께 고른 결정적 <span class="arithmatex">\(\mathbf u_j\)</span> 에서 계산하되 그 의존성은 표기에서 생략한다. <code>🔧</code></li>
+<li><strong>s3</strong> 관측 범위(<span class="arithmatex">\(L\)</span>, 경로 수, 섭동 type)를 먼저 고정하고 계를 키운다. 이들을 <span class="arithmatex">\(N\)</span> 과 함께 늘려도 된다는 주장은 없으므로 극한 순서는 (1) 고정 <span class="arithmatex">\(L,\varepsilon\)</span> 에서 그 깊이의 선택 수열로 <span class="arithmatex">\(N\to\infty\)</span>, (2) <span class="arithmatex">\(L\to\infty\)</span> (§7–§8, 오차항 제거), (3) <span class="arithmatex">\(\varepsilon\downarrow0\)</span> (§8 의 lower bound corollary) 이고 바꿀 수 없다. <code>🔧</code></li>
+<li><strong>s1–s3</strong> <code>제안 해석</code>: 'thermodynamic limit 먼저, hierarchy 깊이는 나중' 이라는 모양은 물리의 "<span class="arithmatex">\(N\to\infty\)</span> 후 full-RSB" 순서와 비슷하지만, 여기서 <span class="arithmatex">\(L\to\infty\)</span> 는 full-RSB 해를 얻으려는 것이 아니라 증분과 깊이-<span class="arithmatex">\((L-1)\)</span> trial 값의 차이를 없애는 장치이고, 목표는 여전히 유한 깊이 trial 들의 inf <span class="arithmatex">\(\inf_r\Phi_r\)</span> 다. <span class="arithmatex">\(L\)</span> 을 RSB 단계 수와 동일시하지 않는다. <code>🔧</code></li>
 </ul>
 <hr />
 <p><a id="s6-4"></a></p>
