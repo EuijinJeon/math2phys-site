@@ -2217,6 +2217,24 @@ G(u)=X_0(u)+2nu^2
 <p><a id="s6-4"></a></p>
 <h2 id="64-poisson-insertion-and-analytic-extraction">§6.4 Poisson insertion and analytic extraction<a class="headerlink" href="#64-poisson-insertion-and-analytic-extraction" title="Permanent link">&para;</a></h2>
 <p><em>제목: Poisson 삽입과 해석적 추출</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> self-averaging (6.13) 은 type 마다 한 점에서의, 섭동 항 수 <span class="arithmatex">\(c_\nu s_N\)</span> 으로 정규화된 score–관측량 상관 하나만 준다. 이 소절은 그것을 새 site 삽입 응답 <span class="arithmatex">\(H_N(t,0)\)</span> 의 모든 고정 차수 Taylor 계수가 0 으로 간다는 진술(Lemma 6.4)로 바꾼다. 각 계수는 multioverlap moment 와 두 moment 의 곱의 선형결합이라, replica 사이의 무한히 많은 GG 류 항등식이 된다. 어려움은 각 type 이 응답 함수의 한 점 <span class="arithmatex">\((1/j,u_\nu)\)</span> 만 보고, <span class="arithmatex">\(u=0\)</span> 인 type 은 없다는 것이다. 그래서 점 정보를 <span class="arithmatex">\(t\)</span> 의 모든 차수로 바꿔 줄 장치(Poisson add-one 과 균등 해석성)가 필요하다.</li>
+<li><strong>물리로는.</strong> 같은 배경 reservoir 에 세기 <span class="arithmatex">\(t=1/j\)</span> 인 site probe 를 하나 꽂고, 응답 곡선 하나를 여러 점에서 검사하는 것이다. Poisson 이라서, type-<span class="arithmatex">\(\nu\)</span> 섭동 항들에 대해 더한 평균을 평균 항 수로 나누면 "원래 reservoir 그대로 + 독립적인 새 항 하나" 의 평균이 된다. 표시된 항은 지워지지 않고 새 삽입 인자 <span class="arithmatex">\(A\)</span> 로 남는다(¶4). 보조 세기 <span class="arithmatex">\(u\)</span> 는 1차 응답(score)만 읽는 채널이다. <code>제안 해석</code></li>
+<li><strong>결론.</strong> (6.16): type 점 <span class="arithmatex">\((1/j,u_\nu)\)</span> 에서 <span class="arithmatex">\(\lvert H_N\rvert\le\lVert f\rVert_\infty e_{\nu,N}\)</span> 이고, <span class="arithmatex">\(H_N\)</span> 은 같은 mark specification 의 모든 <span class="arithmatex">\(j\)</span> 에 같은 함수다. Lemma 6.4: 선택된 수열을 따라 <span class="arithmatex">\(H_N(t,0)\)</span> 의 각 Taylor 계수 <span class="arithmatex">\(\to0\)</span>. 한 줄로: Poisson 의 add-one 불변성이 모든 type 을 한 함수 위의 점으로 만들고, 초고속으로 작은 <span class="arithmatex">\(u_\nu\)</span> 와 균등 해석성이 그 점 정보에서 모든 차수를 뽑는다.</li>
+<li><strong>읽는 법.</strong> 순서가 핵심이다. (i) 모든 <span class="arithmatex">\(N\)</span> 에서 정확한 Palm 등식, type 점에서만(¶3–¶4). (ii) <span class="arithmatex">\(N\)</span>·선택 벡터·<span class="arithmatex">\(j\)</span> 에 균등한 해석 bound(¶6)와 계수 수렴으로 극한 함수 <span class="arithmatex">\(H\)</span>(¶7). (iii) <span class="arithmatex">\(j\)</span> 를 고정하고 <span class="arithmatex">\(N\to\infty\)</span>, 그다음 <span class="arithmatex">\(j\to\infty\)</span>(¶8). <span class="arithmatex">\(e_{\nu,N}\to0\)</span> 의 <span class="arithmatex">\(\nu\)</span> 에 대한 균등성은 주장되지 않으므로, 먼저 <span class="arithmatex">\(j\)</span> 를 고정하고 <span class="arithmatex">\(N\to\infty\)</span> 를 보내야 하며 이 순서를 바꿀 수 없다.</li>
+<li><strong>주의할 곳.</strong> <span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span> 가 <span class="arithmatex">\(1/j\)</span> 의 모든 거듭제곱보다 빨리 작다는 것이 모든 차수를 죽이는 열쇠다(¶8). <span class="arithmatex">\(H_N(t,u)\)</span> 자체는 공분산이 아니라 정의된 차이고, 공분산과 같아지는 것은 type 점에서뿐이다.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+  A["(6.13) 정규화된 score–f 상관의 크기 ≤ ‖f‖·e_ν,N"] --&gt; B["Lemma 6.3 Palm: 합 → 새 삽입 하나 (모든 N 에서 등식)"]
+  B --&gt; C["(6.16) type 점 (1/j, u_ν) 에서 H_N 작음 · 모든 j 에 같은 H_N"]
+  D["¶6 N·j 균등 해석 bound + u-도함수 bound"] --&gt; E["¶8 j 고정, N→∞: H_N(1/j,0) 크기의 limsup ≤ 2C·j⁻ʲ"]
+  C --&gt; E
+  D --&gt; F["¶7 계수 수렴 + 균등수렴 → 해석적 극한 H"]
+  E --&gt; G["H(1/j) 의 크기 ≤ 2C·j⁻ʲ, 그다음 j→∞ → H 의 모든 계수 0"]
+  F --&gt; G
+  G --&gt; H["Lemma 6.4: H_N(t,0) 각 Taylor 계수 → 0 = multioverlap 항등식"]</code></pre>
+<p>왼쪽 줄기(Palm)는 type 마다 한 점의 정보를, 오른쪽 줄기(균등 해석성)는 그 점들을 한 함수로 묶는 도구를 주고, 둘은 ¶8 에서 만난다.</p>
 <p><a id="s6-4-p1"></a></p>
 <h4 id="64-1">§6.4 ¶1<a class="headerlink" href="#64-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -2240,13 +2258,17 @@ G(u)=X_0(u)+2nu^2
 <p><strong>s5</strong> 따라서 <a href="06-perturbations-and-identities-on-prescrib.html#eq-6-4">(6.4)</a> 는 각 고정된 type <span class="arithmatex">\(\nu\)</span> 에 대해 다음을 함의한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5, (6.13)</strong> self-averaging 의 결과: anchor replica 의 섭동 에너지 <span class="arithmatex">\(D^{a_*}\)</span> 는 다른 replica 들의 관측량 <span class="arithmatex">\(f\)</span> 와 <strong>비상관</strong> (공분산 → 0). 물리 GG 논증의 출발식 <span class="arithmatex">\(\mathbb E\langle fH'\rangle\approx\mathbb E\langle f\rangle\mathbb E\langle H'\rangle\)</span> 그대로. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s5, (6.13)</strong> 이 문단은 소절 전체의 출발식을 놓는다: 섭동 항 하나당 score 의 self-averaging. anchor <span class="arithmatex">\(a_*\)</span> (옛 replica 중 하나) 의 type-<span class="arithmatex">\(\nu\)</span> score 합 <span class="arithmatex">\(D^{a_*}_\nu\)</span> (anchor 경로 위의 type-<span class="arithmatex">\(\nu\)</span> score 합으로, 경로마다 흔들리는 확률변수다. 그 Gibbs 평균 <span class="arithmatex">\(\langle D_\nu\rangle\)</span> 이 root log partition function <span class="arithmatex">\(X_0\)</span> 의 <span class="arithmatex">\(u_\nu\)</span>-도함수다: <span class="arithmatex">\(X_0'(u)=\langle D_\nu\rangle\)</span>) 와 옛 replica 들(anchor 포함)의 관측량 <span class="arithmatex">\(f\)</span> 의 공분산을, 평균 항 수 <span class="arithmatex">\(c_\nu s_N\)</span> 으로 나눈 값이 <span class="arithmatex">\(\lVert f\rVert_\infty e_{\nu,N}\)</span> 이하다. 부등식은 모든 <span class="arithmatex">\(N\)</span> 에서 성립하고, <span class="arithmatex">\(\to0\)</span> 은 Lemma 6.2(ii) 가 고른 수열·매개변수 벡터에서 각 고정된 <span class="arithmatex">\(\nu\)</span> 마다 성립한다(<span class="arithmatex">\(\nu\)</span> 에 대한 균등성은 주장되지 않는다). <code>✅</code> 아래 전개</li>
+<li><strong>s5</strong> 물리 GG 논증의 출발식 <span class="arithmatex">\(\mathbb E\langle fH'\rangle\approx\mathbb E\langle f\rangle\mathbb E\langle H'\rangle\)</span> 와 같은 꼴이다. 단 <span class="arithmatex">\(H'\)</span> 자리에 정규화된 Poisson score 합 <span class="arithmatex">\(D_\nu/(c_\nu s_N)\)</span> 가 오고 '≈' 은 선택된 수열에서의 극한이다. 다음 ¶2 는 이 합을 '섭동 하나 삽입' 의 함수로 바꿀 준비를 한다. <code>제안 해석</code></li>
 </ul>
 <details>
 <summary>전개: (6.13) (s5)</summary>
-<p><span class="arithmatex">\(\lvert\mathbb E[fD^{a_*}]-\mathbb Ef\,\mathbb E\langle D\rangle\rvert=\lvert\mathbb E[f(D^{a_*}-\mathbb E\langle D\rangle)]\rvert\le\lVert f\rVert_\infty\mathbb E\langle\lvert D-\mathbb E\langle D\rangle\rvert\rangle\)</span> (anchor marginal = tilted 경로 하나) <span class="arithmatex">\(=\lVert f\rVert c_\nu s_Ne_\nu\)</span> ✓.</p>
+<p>여기서 <span class="arithmatex">\(e_{\nu,N}=\mathbb E\langle\lvert D_\nu-\mathbb E\langle D_\nu\rangle\rvert\rangle/(c_\nu s_N)\)</span> 은 (6.4) 의 self-averaging 오차다. <span class="arithmatex">\(\mathbb E\langle D_\nu\rangle\)</span> 은 root 평균이라 상수이므로 <span class="arithmatex">\(f\)</span> 밖으로 나온다:
+<span class="arithmatex">\(\lvert\mathbb E[fD^{a_*}_\nu]-\mathbb Ef\,\mathbb E\langle D_\nu\rangle\rvert=\lvert\mathbb E[f(D^{a_*}_\nu-\mathbb E\langle D_\nu\rangle)]\rvert\le\lVert f\rVert_\infty\mathbb E\langle\lvert D_\nu-\mathbb E\langle D_\nu\rangle\rvert\rangle\)</span> (anchor marginal = tilted 경로 하나) <span class="arithmatex">\(=\lVert f\rVert_\infty c_\nu s_Ne_{\nu,N}\)</span> ✓.
+양변을 <span class="arithmatex">\(c_\nu s_N\)</span> 으로 나누면 (6.13) 을 얻는다.</p>
 </details>
-<p><strong>식 (6.13) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.13) — 정규화된 공분산과 self-averaging bound</summary>
 <table>
 <thead>
 <tr>
@@ -2258,19 +2280,20 @@ G(u)=X_0(u)+2nu^2
 </thead>
 <tbody>
 <tr>
-<td><span class="arithmatex">\(\mathbb E[fD^{a_*}_\nu]-\mathbb Ef\,\mathbb E\langle D_\nu\rangle\)</span></td>
-<td>공분산</td>
-<td>다른 replica 관측량과 anchor 섭동 에너지의 상관</td>
+<td><span class="arithmatex">\(\big(\mathbb E[fD^{a_*}_\nu]-\mathbb Ef\,\mathbb E\langle D_\nu\rangle\big)/(c_\nu s_N)\)</span></td>
+<td>정규화된 공분산(평균 항 수로 나눔)</td>
+<td>옛 replica(anchor 포함) 관측량과 anchor score 의 항당 상관</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\le\lVert f\rVert e_{\nu,N}\to0\)</span></td>
 <td>bound</td>
-<td>self-averaging → 비상관 (GG 출발식)</td>
+<td>self-averaging; 선택된 수열에서 고정 <span class="arithmatex">\(\nu\)</span> 마다 → 0</td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-4-p2"></a></p>
 <h4 id="64-2">§6.4 ¶2<a class="headerlink" href="#64-2" title="Permanent link">&para;</a></h4>
@@ -2298,10 +2321,12 @@ H_N(t,u)
 <p><strong>s4</strong> 단일 anchor 식 <span class="arithmatex">\(J_{N,\{a_*\}}\)</span> 에서 test 는 <span class="arithmatex">\(1\)</span> 이다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3, (6.14)–(6.15)</strong> <span class="arithmatex">\(J\)</span> = "섭동 인자 하나를 새로 삽입한 계에서, anchor 의 섭동 에너지와 관측량 <span class="arithmatex">\(f\)</span> 의 곱" 을 섭동 전 측도로 쓴 것 (§3 의 밀도 <span class="arithmatex">\(W\)</span>, R20). <span class="arithmatex">\(H_N\)</span> = 그 공분산. <code>📚</code> §3.1 ¶7, Lemma 3.1</li>
+<li><strong>s1–s3, (6.14)–(6.15)</strong> 물리 그림: 무작위 새 site 에 국소 reweighting 인자 <span class="arithmatex">\(A=1+tg\sigma_i+ug_0S_0\)</span> 하나를 붙이는 실험. <span class="arithmatex">\(t\)</span> 는 site spin 채널의 세기, <span class="arithmatex">\(u\)</span> 는 score 를 읽어 내는 보조 채널의 세기이고, anchor 의 <span class="arithmatex">\(g_0S_0/A=\partial_u\log A\)</span> 가 그 score 다. <span class="arithmatex">\(J\)</span> 는 이 score 와 <span class="arithmatex">\(f\)</span> 의 곱을 평균한 것이고, <span class="arithmatex">\(W_{\mathcal T}(A)\)</span> 는 삽입으로 갱신된 tree 밀도라 이 평균을 삽입 전 측도로 계산하게 해 준다. 여기서 <span class="arithmatex">\(\mathbb E\)</span> 는 선택된 매개변수 벡터에서의 수정되지 않은 reservoir(모든 type 의 Poisson 족 포함)에 새 site·mark 변수를 독립 prior 로 덧붙인 측도다. <code>📚</code> §3.1 ¶7, Lemma 3.1</li>
+<li><strong>s3, (6.15)</strong> <span class="arithmatex">\(H_N(t,u)\)</span> 는 공분산이 아니라 정의된 차다: <span class="arithmatex">\(J\)</span> 에서 '삽입 전 <span class="arithmatex">\(\mathbb Ef\)</span> × 단일 anchor score 평균' 을 뺀다. 모든 <span class="arithmatex">\((t,u)\)</span> 에서 정의되고, type 점 <span class="arithmatex">\((t_\nu,u_\nu)\)</span> 에서만 Lemma 6.3(¶3–¶4) 에 의해 ¶1 의 정규화된 공분산과 같아진다. <code>🔧</code></li>
 <li><strong>s4</strong> <code>🔧</code> <span class="arithmatex">\(\mathcal T=\{a_*\}\)</span> 이면 관측량 없이 평균만.</li>
 </ul>
-<p><strong>식 (6.14), (6.15) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.14), (6.15) — 삽입 평균 J 와 정의된 차 H_N</summary>
 <table>
 <thead>
 <tr>
@@ -2315,17 +2340,18 @@ H_N(t,u)
 <tr>
 <td><span class="arithmatex">\(J_{N,\mathcal T}=\mathbb E[f\frac{g_0S_0}{A}W_{\mathcal T}(A)]\)</span> (6.14)</td>
 <td>삽입 후 기대값</td>
-<td>새 섭동 하나를 넣은 계에서 anchor 섭동 에너지 × 관측량</td>
+<td>새 삽입 하나를 넣은 계에서 anchor score(<span class="arithmatex">\(\partial_u\log A\)</span>) × 관측량, 삽입 전 측도로</td>
 <td><code>📚</code> (3.5)</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(H_N=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}\)</span> (6.15)</td>
 <td>차</td>
-<td>공분산 (GG 항등식의 좌변 − 우변)</td>
+<td>정의된 차 — type 점에서만 정규화된 공분산과 같음 (GG 항등식의 좌변 − 우변 꼴)</td>
 <td><code>🔧</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s6-4-e5"></a></p>
 <h3 id="lemma-63-palm-identity">▸ Lemma 6.3 (Palm identity)<a class="headerlink" href="#lemma-63-palm-identity" title="Permanent link">&para;</a></h3>
@@ -2343,10 +2369,11 @@ H_N(t,u)
 <p><strong>s2</strong> 고정된 mark specification 에 대해 함수 <span class="arithmatex">\(H_N(t,u)\)</span> 는 그 모든 type <span class="arithmatex">\(j\)</span> 에 대해 같다: 그 기본 reservoir 는 모든 type 을 포함한 원래 Poisson 족 전체를 담고 있다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (6.16)</strong> Lemma 6.3 (Palm 항등식): 섭동 항들의 합으로 된 score 의 공분산 = 섭동 하나를 새로 삽입한 계의 공분산 (Poisson 의 Mecke/Palm 공식). 물리로는 "Poisson 개의 같은 섭동 중 하나에 표시를 하면, 나머지는 원래 계와 같은 분포" — 하나를 떼어 내어 cavity 처럼 다루는 것. <code>📚</code> 증명 §6.4 ¶4</li>
-<li><strong>s2</strong> <code>🔧</code> 여러 <span class="arithmatex">\(j\)</span> (세기 <span class="arithmatex">\(t=1/j\)</span>) 가 같은 함수 <span class="arithmatex">\(H_N(t,u)\)</span> 의 서로 다른 점을 본다 — §6.4 ¶8 의 해석성 논증에 필요.</li>
+<li><strong>s1, (6.16)</strong> Lemma 6.3 (Palm 항등식) 은 두 단으로 되어 있다. 모든 <span class="arithmatex">\(N\)</span> 에서 정확한 등식 '(score 합과 <span class="arithmatex">\(f\)</span> 의 공분산)<span class="arithmatex">\(/(c_\nu s_N)=H_N(t_\nu,u_\nu)\)</span>' (Poisson 의 Mecke/Palm 공식) 이 있고, 여기에 ¶1 의 (6.13) 을 붙이면 <span class="arithmatex">\(\lvert H_N(t_\nu,u_\nu)\rvert\le\lVert f\rVert_\infty e_{\nu,N}\)</span> 이다. <code>📚</code> 증명 §6.4 ¶4  물리로는 모든 섭동 항에 대해 더하고 평균 항 수로 나누면(Palm 평균) 표시된 항 하나는 독립적인 새 삽입이 되고 나머지는 원래 reservoir 법칙을 따르므로, 그 하나를 cavity 처럼 따로 다룰 수 있다. 실현 표본 하나가 아니라 합의 평균에 대한 진술이다(¶4). <code>제안 해석</code></li>
+<li><strong>s2</strong> <code>🔧</code> 같은 mark specification 의 여러 <span class="arithmatex">\(j\)</span> 가 하나의 함수 <span class="arithmatex">\(H_N(t,u)\)</span> 의 서로 다른 점 <span class="arithmatex">\((1/j,u_\nu)\)</span>, <span class="arithmatex">\(u_\nu\in[j^{-j},2j^{-j}]\)</span> 를 본다. 이유: type 하나를 표시한 뒤에도 기본 reservoir 가 모든 type 의 원래 Poisson 족을 그대로 담기 때문이다(¶4 s9). 이것이 ¶8 에서 여러 점의 정보를 한 함수에 모으는 근거다.</li>
 </ul>
-<p><strong>식 (6.16) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (6.16) — Palm 등식과 self-averaging bound</summary>
 <table>
 <thead>
 <tr>
@@ -2360,11 +2387,12 @@ H_N(t,u)
 <tr>
 <td><span class="arithmatex">\(\lvert H_N(t_\nu,u_\nu)\rvert\le\lVert f\rVert e_{\nu,N}\)</span></td>
 <td>Palm bound</td>
-<td>섭동 하나 삽입의 공분산이 self-averaging 오차로 bound</td>
+<td>정확한 Palm 등식(모든 <span class="arithmatex">\(N\)</span>, type 점) + (6.13) 의 self-averaging bound</td>
 <td><code>📚</code> §6.4 ¶4 + (6.13)</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s6-4-e5)</em></p>
 <p><a id="s6-4-e6"></a></p>
@@ -2402,14 +2430,17 @@ H_N(t,u)
 <p><strong>s10</strong> 이것이 마지막 주장을 증명한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> Mecke 공식: <span class="arithmatex">\(\mathbb E\sum_{q\le n}F(x_q;\text{나머지})=\lambda\,\mathbb E F(x;\text{원래 과정})\)</span>, <span class="arithmatex">\(n\sim\)</span> Poisson<span class="arithmatex">\((\lambda)\)</span>, <span class="arithmatex">\(x\)</span> 독립. 즉 Poisson 개 중 하나를 꺼내도 나머지는 원래 법칙. <code>✅</code> 아래 전개</li>
-<li><strong>s4–s6</strong> 꺼낸 항 = 새 섭동 삽입 (§3 Lemma 3.1, R20). anchor 의 <span class="arithmatex">\(1/A\)</span> 가 밀도의 <span class="arithmatex">\(A^{a_*}\)</span> 와 상쇄 = protected leaf (§3.2). <code>📚</code> §3.2 ¶1</li>
+<li><strong>s1–s3</strong> Mecke 공식: <span class="arithmatex">\(\mathbb E\sum_{q\le n}F(x_q;\text{나머지})=\lambda\,\mathbb E F(x;\text{원래 과정})\)</span>, <span class="arithmatex">\(n\sim\)</span> Poisson<span class="arithmatex">\((\lambda)\)</span>, <span class="arithmatex">\(x\)</span> 독립. 이것은 실현된 표본에서 항 하나를 지우는 조작이 아니라 합의 평균을 바꾸는 공식이다. 모든 항을 더하므로 항이 <span class="arithmatex">\(n\)</span> 개인 표본이 <span class="arithmatex">\(n\)</span> 번 기여하고, 그 합을 <span class="arithmatex">\(\lambda=c_\nu s_N\)</span> 으로 나누면 "원래 Poisson reservoir + 독립적인 새 항 하나" 의 평균이 된다. 표시된 항은 사라지지 않고 Gibbs 가중치 안에 새 삽입 인자 <span class="arithmatex">\(A\)</span> 로 남는다. <code>✅</code> 아래 전개</li>
+<li><strong>s4–s6</strong> 표시된(distinguished) 항 = 매개변수 <span class="arithmatex">\(t_\nu,u_\nu\)</span> 를 갖는 독립적인 새 섭동 삽입 (§3 Lemma 3.1, R20). anchor 의 <span class="arithmatex">\(1/A\)</span> 가 밀도의 <span class="arithmatex">\(A^{a_*}\)</span> 와 상쇄 = protected leaf (§3.2). <code>📚</code> §3.2 ¶1</li>
+<li><strong>s7–s10</strong> 이 상쇄로 얻은 두 평균이 각각 ¶2 의 <span class="arithmatex">\(J_{N,\mathcal T}\)</span> 와 단일 anchor <span class="arithmatex">\(J_{N,\{a_*\}}\)</span> 다. 두 식을 빼면 ¶1 의 정규화된 상관이 <span class="arithmatex">\(H_N(t_\nu,u_\nu)\)</span> 이므로 (6.13) 에서 (6.16) 이 나온다. 기본 reservoir 에서 아무 type 도 지우지 않았다는 사실(s9)이 '모든 <span class="arithmatex">\(j\)</span> 에 같은 <span class="arithmatex">\(H_N\)</span>' 을 증명한다. <code>📚</code> (6.13)</li>
 </ul>
 <details>
-<summary>전개: Poisson add-one (Mecke) (s1–s3)</summary>
+<summary>전개: Poisson add-one (Mecke) — 나머지 개수가 다시 Poisson, 개수가 고정된 Bethe lattice 라면 어디서 깨지나, Widom insertion 과의 닮음 (s1–s3)</summary>
 <p><span class="arithmatex">\(n\sim\)</span> Poisson<span class="arithmatex">\((\lambda)\)</span>, <span class="arithmatex">\(x_q\)</span> i.i.d.: <span class="arithmatex">\(\mathbb E\sum_{q=1}^nF(x_q,\{x_{q'}\}_{q'\ne q})=\sum_ne^{-\lambda}\frac{\lambda^n}{n!}n\,\mathbb EF(x,\{x_1..x_{n-1}\})=\lambda\sum_{n'}e^{-\lambda}\frac{\lambda^{n'}}{n'!}\mathbb EF(x,\{x_1..x_{n'}\})\)</span> (<span class="arithmatex">\(n'=n-1\)</span>) ✓ — 나머지 개수가 다시 Poisson<span class="arithmatex">\((\lambda)\)</span> ✓.</p>
+<p>같은 계산을 개수로만 보면 size-bias 후 하나를 뺀 개수가 다시 Poisson<span class="arithmatex">\((\lambda)\)</span> 이다: <span class="arithmatex">\((k+1)p_{k+1}/\lambda=p_k\)</span>. 개수가 고정된 <span class="arithmatex">\(n\)</span> 이라면(random regular·Bethe lattice 쪽) 하나를 빼면 <span class="arithmatex">\(n-1\)</span> 이 되어 남은 계의 법칙이 바뀌고, 이 소절처럼 모든 type 이 같은 함수 <span class="arithmatex">\(H_N\)</span> 을 보게 만드는 단계가 그대로는 성립하지 않을 것이다. <code>❓</code> 미확인(논문은 Poisson reservoir 만 다룬다). stat mech 로는 섭동 항들이 서로 독립인 Poisson 점들(이상 기체 입자처럼)이라는 점에서 Widom test-particle insertion(밀도 = activity × 삽입 인자의 평균)과 같은 모양의 항등식이다. <code>제안 해석</code></p>
 </details>
-<p><strong>식 Eq. §6.4 ¶4 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶4 식 — Palm 등식 두 개</summary>
 <table>
 <thead>
 <tr>
@@ -2423,7 +2454,7 @@ H_N(t,u)
 <tr>
 <td><span class="arithmatex">\(\mathbb E[fD^{a_*}]/(c_\nu s_N)=J_{N,\mathcal T}(t_\nu,u_\nu)\)</span></td>
 <td>Palm</td>
-<td>섭동 에너지 평균 = 섭동 하나 삽입의 효과</td>
+<td>항당 anchor score × 관측량 평균 = 섭동 하나 삽입의 효과</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
@@ -2434,6 +2465,7 @@ H_N(t,u)
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s6-4-e7"></a></p>
@@ -2446,7 +2478,8 @@ H_N(t,u)
 <p><strong>s1</strong> 섭동 족에 포함된 모든 mark specification, 옛 tree, anchor, 유계 overlap 다항식 test <span class="arithmatex">\(f\)</span> 에 대해, <span class="arithmatex">\(H_N(t,0)\)</span> 의 <span class="arithmatex">\(t=0\)</span> 에서의 모든 Taylor 계수는 선택된 수열을 따라 0 으로 간다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1</strong> Lemma 6.4: 공분산 <span class="arithmatex">\(H_N(t,0)\)</span> 의 모든 Taylor 계수 → 0. §3 의 전개로 각 Taylor 계수가 multioverlap 들의 선형결합이므로, 이것이 <strong>replica 들 사이의 무한히 많은 항등식</strong> (GG 류)이 된다. <code>📚</code> 증명 §6.4 ¶6–¶8</li>
+<li><strong>s1</strong> Lemma 6.4: 섭동 족에 포함된 모든 mark specification, 옛 tree, anchor, 유계 test <span class="arithmatex">\(f\)</span> 에 대해, <span class="arithmatex">\(H_N(t,0)\)</span> (<span class="arithmatex">\(u=0\)</span> 으로 둔 Palm 차; <span class="arithmatex">\(u=0\)</span> 인 type 은 없으므로 그 자체는 공분산이 아님) 의 <span class="arithmatex">\(t=0\)</span> 에서의 각 고정 차수 Taylor 계수가 선택된 수열을 따라 0 으로 간다. 각 계수는 multioverlap moment 와 두 moment 의 곱의 <span class="arithmatex">\(N\)</span>-무관한 선형결합이라(¶7), 차수마다 replica 사이의 선형관계 하나씩, 모두 합쳐 무한히 많은 GG 류 항등식이 된다(고정된 <span class="arithmatex">\(L\)</span> 에서). <code>📚</code> 증명 §6.4 ¶6–¶8</li>
+<li><strong>s1</strong> 그림으로는 <span class="arithmatex">\(H_N(t,0)\)</span> 을 probe 세기 <span class="arithmatex">\(t\)</span> 에 대한 응답 곡선으로 보면, <span class="arithmatex">\(t^k\)</span> 계수는 <span class="arithmatex">\(k\)</span> 차 삽입 응답에서 '<span class="arithmatex">\(f\)</span> × anchor score' 가 인수분해에서 어긋나는 정도다. <code>제안 해석</code></li>
 </ul>
 <hr />
 <p><em>(끝: s6-4-e7)</em></p>
@@ -2464,7 +2497,7 @@ H_N(t,u)
 <p><strong>s3</strong> 이 상수들은 고정된 tree, <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(\|f\|_\infty\)</span> 에는 의존할 수 있지만 mark specification 의 type index <span class="arithmatex">\(j\)</span> 에는 의존하지 않는다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> <code>🔧</code> §3.1 ¶13 의 analytic bound: 섭동 세기에 대한 응답이 크기 <span class="arithmatex">\(N\)</span> 과 무관한 원판에서 해석적.</li>
+<li><strong>s1–s3</strong> <code>🔧</code> 이 문단은 ¶7·¶8 이 쓸 세 가지 제어를 확보한다. Lemma 3.3 (§3.1 ¶13 의 analytic bound) 에 의해 <span class="arithmatex">\(H_N(t,u)\)</span> 는 복소 원판 <span class="arithmatex">\(\lvert t\rvert,\lvert u\rvert\lt\rho\)</span> 에서 해석적이고 <span class="arithmatex">\(N\)</span>·선택된 매개변수 벡터·type index <span class="arithmatex">\(j\)</span> 에 균등하게 유계이며, <span class="arithmatex">\(\rho\)</span> 를 줄이면 <span class="arithmatex">\(u\)</span>-도함수도 같은 식으로 유계다(상수는 tree, <span class="arithmatex">\(L\)</span>, <span class="arithmatex">\(\lVert f\rVert_\infty\)</span> 에 의존할 수 있지만 type index <span class="arithmatex">\(j\)</span> 에는 의존하지 않는다). 물리로는 계가 커져도 전개 가능한 작은 세기 근방이 찌그러지지 않는다는 것. 크기 bound 는 ¶7 에서 Taylor 꼬리를, <span class="arithmatex">\(u\)</span>-도함수 bound 는 ¶8 에서 <span class="arithmatex">\(u\)</span> 를 0 으로 옮기는 오차를 제어하고, <span class="arithmatex">\(j\)</span>-균등성이 있어야 ¶8 에서 <span class="arithmatex">\(j\to\infty\)</span> 를 같은 상수 <span class="arithmatex">\(C\)</span> 로 보낼 수 있다.</li>
 </ul>
 <hr />
 <p><a id="s6-4-p7"></a></p>
@@ -2483,12 +2516,13 @@ H_N(t,u)
 <p><strong>s5</strong> 그러면 균등한 analytic bound 가 Taylor 꼬리의 기하급수적 bound 에 의해 <span class="arithmatex">\(H_N(t,0)\)</span> 이 각 더 작은 원판에서 analytic 함수 <span class="arithmatex">\(H(t)\)</span> 로 균등수렴함을 함의한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> 새 site <span class="arithmatex">\(i\)</span> (균등) 의 spin 곱 <span class="arithmatex">\(\frac1N\sum_i\prod_a\sigma_i^a\)</span> = multioverlap (3.1). 즉 site 섭동의 replica 전개는 정확히 multioverlap 의 언어로 쓰인다 — diluted 계에서 order parameter 가 2-replica overlap 이 아니라 <strong>모든 multioverlap</strong> 인 이유. <code>✅</code> 아래 전개</li>
-<li><strong>s4–s5</strong> <code>🔧</code> 계수 수렴 + 균등 해석성 → 극한 함수 <span class="arithmatex">\(H\)</span> 가 해석적.</li>
+<li><strong>s1–s3</strong> 같은 무작위 site 를 여러 replica 가 함께 읽으면 multioverlap 이 나온다: 새 site <span class="arithmatex">\(i\)</span>(균등) 의 spin 곱 평균 <span class="arithmatex">\(\frac1N\sum_i\prod_{a\in S}\sigma_i^a=R_S\)</span> (3.1). 두 replica 면 <span class="arithmatex">\(R_{ab}\)</span>, 네 replica 면 <span class="arithmatex">\(R_{abcd}\)</span> 다. <code>✅</code> 아래 전개. 그래서 각 Taylor 계수는 multioverlap moment 와, 차감항 <span class="arithmatex">\(\mathbb Ef\cdot J_{N,\{a_*\}}\)</span> 에서 오는 두 moment 의 곱의 유한 결합이다. <code>📚</code> 원문 ¶7 s1–s3  고차 계수에서는 같은 site 를 더 많은 replica 가 함께 읽으므로 일반적으로 3개 이상 replica 의 multioverlap 이 나타나고, diluted 계에서 order parameter 가 2-replica overlap 이 아니라 multioverlap 전체가 되는 이유와 이어진다(SK 와의 대비는 아래 전개). <code>제안 해석</code></li>
+<li><strong>s4–s5</strong> <code>🔧</code> 결합 계수는 <span class="arithmatex">\(N\)</span> 에 무관하고(s2) 그 안의 moment 들은 선택된 수열에서 수렴하므로(Lemma 6.2(iii)) 각 Taylor 계수가 수렴한다. ¶6 의 균등 bound 가 Taylor 꼬리를 <span class="arithmatex">\(N\)</span> 에 균등하게 기하급수로 누르므로, 선택된 수열을 따라 <span class="arithmatex">\(H_N(t,0)\to H(t)\)</span> 가 각 더 작은 원판에서 균등하게 성립하고 <span class="arithmatex">\(H\)</span> 는 해석적이다. 이 균등수렴이 ¶8 에서 <span class="arithmatex">\(H_N(1/j,0)\)</span> 의 bound 를 <span class="arithmatex">\(H(1/j)\)</span> 로 옮기는 근거다.</li>
 </ul>
 <details>
-<summary>전개: site 평균 = multioverlap (s3)</summary>
-<p>삽입 site <span class="arithmatex">\(i\)</span> 가 <span class="arithmatex">\([N]\)</span> 에서 균등이고 replica 와 독립이면 <span class="arithmatex">\(\mathbb E_i\prod_{a\in S}\sigma^a_i=\frac1N\sum_{i=1}^N\prod_{a\in S}\sigma_i^a=R_S\)</span> ✓ (3.1).</p>
+<summary>전개: site 평균 = multioverlap (s3) — SK 의 2-replica GG 와의 대비</summary>
+<p>삽입 site <span class="arithmatex">\(i\)</span> 가 <span class="arithmatex">\([N]\)</span> 에서 균등이고 replica 와 독립이면 (<span class="arithmatex">\(S\)</span> 는 spin 곱에 참여하는 replica label 의 집합) <span class="arithmatex">\(\mathbb E_i\prod_{a\in S}\sigma^a_i=\frac1N\sum_{i=1}^N\prod_{a\in S}\sigma_i^a=R_S\)</span> ✓ (3.1).</p>
+<p>SK 의 Gaussian GG 와 비교하면, 거기서는 Gaussian integration by parts 가 공분산만 남겨 항등식이 2-replica overlap <span class="arithmatex">\(R_{ab}\)</span> 로 닫힌다. 여기서는 <span class="arithmatex">\(A=1+tg\sigma_i+\dots\)</span> 의 <span class="arithmatex">\(t^k\)</span> 계수가 새 site 의 spin 을 여러 replica 에서 곱해 데려오므로 <span class="arithmatex">\(R_S\)</span> 가 일반적으로 <span class="arithmatex">\(\lvert S\rvert\gt2\)</span> 로 나타난다. <code>제안 해석</code> (<span class="arithmatex">\(\lvert S\rvert\)</span> 가 차수 <span class="arithmatex">\(k\)</span> 와 함께 커진다는 부분은 <code>❓</code> 미확인)</p>
 </details>
 <hr />
 <p><a id="s6-4-p8"></a></p>
@@ -2513,13 +2547,21 @@ H_N(t,u)
 <p><strong>s5</strong> 따라서 <span class="arithmatex">\(H\)</span> 는 0 근처에서 항등적으로 0 이며, 이것이 계수별로 주장을 증명한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s5</strong> 영리한 장치: <span class="arithmatex">\(H_N(t,u)\)</span> 는 <span class="arithmatex">\(u\)</span> 에 대해 Lipschitz 이므로 <span class="arithmatex">\(\lvert H_N(1/j,0)\rvert\le\lvert H_N(1/j,u_\nu)\rvert+Cu_\nu\)</span>; 첫 항은 self-averaging 으로 0, 둘째는 <span class="arithmatex">\(\le2Cj^{-j}\)</span>. 해석 함수가 <span class="arithmatex">\(1/j\)</span> 에서 <span class="arithmatex">\(j^{-j}\)</span> (모든 거듭제곱보다 빠름) 로 작으면 항등적으로 0. 물리 GG 논증에서는 "섭동 세기의 1 차" 만 쓰지만, 여기서는 <span class="arithmatex">\(t\)</span> 의 <strong>모든 차수</strong>를 한 번에 얻는다. 🧭 물리 직관과의 차이: 물리의 GG 유도는 Gaussian 섭동 하나의 1 차 미분에서 나오지만, diluted 계에서는 Gaussian 이 아닌 Poisson·site 섭동이라 모든 차수의 multioverlap 항등식이 필요하고, 이를 해석성으로 얻는다. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s5</strong> 물리 그림: 같은 배경 reservoir 에 세기 <span class="arithmatex">\(t=1/j\)</span> 인 probe 를 차례로 대 보는 것이고, 순서가 핵심이다. 충분히 큰 <span class="arithmatex">\(j\)</span> 를 고정하고 선택된 수열에서 <span class="arithmatex">\(N\to\infty\)</span> 를 보내면, Lemma 6.3 과 <span class="arithmatex">\(e_{\nu,N}\to0\)</span>, <span class="arithmatex">\(u\)</span> 를 0 으로 옮기는 오차(상수 <span class="arithmatex">\(C\)</span> 는 <span class="arithmatex">\(N\)</span>, <span class="arithmatex">\(j\)</span> 에 무관, ¶6), ¶7 의 균등수렴으로 <span class="arithmatex">\(\lvert H(1/j)\rvert\le2Cj^{-j}\)</span> 를 얻는다. 그다음 <span class="arithmatex">\(j\to\infty\)</span> 를 보내면 첫 비영 Taylor 계수가 보여야 할 크기 <span class="arithmatex">\(cj^{-q}\)</span> 와 모순이므로 <span class="arithmatex">\(H\equiv0\)</span> 이고, ¶7 의 계수 수렴으로 <span class="arithmatex">\(H_N(t,0)\)</span> 의 각 고정 차수 계수도 0 으로 간다(Lemma 6.4). 핵심 설계는 <span class="arithmatex">\(u_\nu\)</span> 를 <span class="arithmatex">\(j^{-j}\)</span> 로 초고속으로 작게 잡은 것이다(<span class="arithmatex">\(1/j\)</span> 정도였다면 0 차 하나만 죽는다). <code>✅</code> 아래 전개</li>
+<li><strong>🧭 물리 직관과의 차이:</strong> 여기서도 보조 세기 <span class="arithmatex">\(u\)</span> 에 대해서는 1차 미분(score)만 쓴다. 새로운 것은 두 번째 세기 <span class="arithmatex">\(t\)</span> 다: <span class="arithmatex">\(u\ll t^{\text{모든 거듭제곱}}\)</span> 으로 잡아 <span class="arithmatex">\(t\)</span> 의 Taylor 계수를 한꺼번에 0 으로 만들고, site 섭동의 모든 차수에 해당하는 multioverlap 항등식을 얻는다. <code>제안 해석</code> (직접 전개 확인은 위 <span class="arithmatex">\(j^{-j}\)</span> 논증에만 해당하고, 이 대비 자체는 확인하지 않았다.)</li>
 </ul>
 <details>
-<summary>전개: j^{-j} 가 거듭제곱보다 빠름 (s4)</summary>
+<summary>전개: 극한 단계 (1)–(3)과 왜 u_ν ∼ j⁻ʲ 인가 — 1/j 였다면 0차만 죽는다, 마지막 단계는 C^∞ 로 충분 (s1–s4)</summary>
+<ol>
+<li>충분히 큰 <span class="arithmatex">\(j\)</span> 를 고정한다(<span class="arithmatex">\(1/j\)</span> 와 <span class="arithmatex">\(2j^{-j}\)</span> 가 ¶6 의 해석 원판 반지름 <span class="arithmatex">\(\rho\)</span> 안에 들어오게). ¶6 의 <span class="arithmatex">\(u\)</span>-도함수 bound(상수 <span class="arithmatex">\(C\)</span> 는 <span class="arithmatex">\(N\)</span>, <span class="arithmatex">\(j\)</span> 에 무관)로 <span class="arithmatex">\(\lvert H_N(1/j,0)\rvert\le\lvert H_N(1/j,u_{\nu,N})\rvert+C\,u_{\nu,N}\)</span>.</li>
+<li>선택된 수열에서 <span class="arithmatex">\(N\to\infty\)</span>: 첫 항은 Lemma 6.3 과 <span class="arithmatex">\(e_{\nu,N}\to0\)</span> 으로 사라지고 <span class="arithmatex">\(u_{\nu,N}\in[j^{-j},2j^{-j}]\)</span> 이므로 <span class="arithmatex">\(\limsup_N\lvert H_N(1/j,0)\rvert\le2Cj^{-j}\)</span>. ¶7 의 균등수렴으로 <span class="arithmatex">\(\lvert H(1/j)\rvert\le2Cj^{-j}\)</span>.</li>
+<li>그다음 <span class="arithmatex">\(j\to\infty\)</span>: 아래.</li>
+</ol>
 <p><span class="arithmatex">\(H(t)=c_qt^q+O(t^{q+1})\)</span>, <span class="arithmatex">\(c_q\ne0\)</span> 이면 작은 <span class="arithmatex">\(t\)</span> 에서 <span class="arithmatex">\(\lvert H(t)\rvert\ge\frac{\lvert c_q\rvert}2t^q\)</span>. <span class="arithmatex">\(t=1/j\)</span>: <span class="arithmatex">\(\frac{\lvert c_q\rvert}2j^{-q}\le2Cj^{-j}\)</span> 는 <span class="arithmatex">\(j^{j-q}\le4C/\lvert c_q\rvert\)</span> 를 뜻하는데 <span class="arithmatex">\(j\to\infty\)</span> 에서 좌변 <span class="arithmatex">\(\to\infty\)</span> — 모순 ✓.</p>
+<p>따라서 해석적인 <span class="arithmatex">\(H\)</span> 의 모든 Taylor 계수는 0 이다. 왜 <span class="arithmatex">\(j^{-j}\)</span> 인가: <span class="arithmatex">\(\limsup_N\lvert u_{\nu,N}\rvert\)</span> 이 <span class="arithmatex">\(\varepsilon_j\)</span> 이면 <span class="arithmatex">\(\lvert H(1/j)\rvert\le C\varepsilon_j\)</span> 만 얻고, <span class="arithmatex">\(\lvert c_q\rvert j^{-q}/2\le C\varepsilon_j\)</span> 와의 모순은 <span class="arithmatex">\(\varepsilon_j=j^{-k}\)</span> 일 때 <span class="arithmatex">\(q\lt k\)</span> 까지만 난다(<span class="arithmatex">\(\varepsilon_j=1/j\)</span> 이면 <span class="arithmatex">\(q=0\)</span> 뿐). 모든 차수를 죽이려면 <span class="arithmatex">\(\varepsilon_j\)</span> 가 모든 거듭제곱보다 빨리 작아야 하고 <span class="arithmatex">\(j^{-j}\)</span> 는 그 가장 간단한 선택이다. 감을 잡기 위해 상수 <span class="arithmatex">\(c\)</span>, <span class="arithmatex">\(C\)</span> 를 1 정도로 놓으면, <span class="arithmatex">\(j=10\)</span> 에서 <span class="arithmatex">\(2j^{-j}=2\times10^{-10}\)</span> 인데 5 차 계수가 남아 있다면 <span class="arithmatex">\(\lvert H(1/10)\rvert\)</span> 는 <span class="arithmatex">\(10^{-5}\)</span> 정도여야 해 이미 다섯 자릿수가 어긋나고, <span class="arithmatex">\(j\)</span> 가 커질수록 이 간극은 어떤 고정 차수에 대해서도 벌어진다. 덧붙여 이 마지막 모순 단계만은 <span class="arithmatex">\(H\)</span> 가 <span class="arithmatex">\(C^\infty\)</span> 이기만 해도 된다. 해석성(¶6 의 <span class="arithmatex">\(N\)</span>-균등 복소 bound)이 꼭 필요한 곳은 ¶7 에서 <span class="arithmatex">\(N\to\infty\)</span> 와 계수 추출의 순서를 바꾸는 단계다.</p>
 </details>
-<p><strong>식 Eq. §6.4 ¶8 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: ¶8 식 — u 를 끄는 오차와 j^{-j} bound</summary>
 <table>
 <thead>
 <tr>
@@ -2533,17 +2575,18 @@ H_N(t,u)
 <tr>
 <td><span class="arithmatex">\(\limsup\lvert H_N(j^{-1},0)\rvert\le C\limsup\lvert u_{\nu,N}\rvert\)</span></td>
 <td>Lipschitz in <span class="arithmatex">\(u\)</span></td>
-<td>초소형 score 섭동의 효과</td>
+<td><span class="arithmatex">\(j\)</span> 고정, 선택된 수열에서 <span class="arithmatex">\(N\to\infty\)</span>: 보조 세기 <span class="arithmatex">\(u\)</span> 를 끄는 오차(<span class="arithmatex">\(C\)</span> 는 <span class="arithmatex">\(N\)</span>, <span class="arithmatex">\(j\)</span> 무관)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\le2Cj^{-j}\)</span></td>
 <td>bound</td>
-<td>모든 거듭제곱보다 빠르게 작음 → <span class="arithmatex">\(H\equiv0\)</span></td>
+<td>그다음 <span class="arithmatex">\(j\to\infty\)</span>: 모든 거듭제곱보다 빠르게 작음 → <span class="arithmatex">\(H\equiv0\)</span></td>
 <td><code>✅</code></td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s6-5"></a></p>
