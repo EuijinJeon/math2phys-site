@@ -1301,6 +1301,13 @@ w\to\int_\eta^{1-2\eta}(1-2\eta-x_u)\,dx_u=\tfrac12(1-3\eta)^2 .
 <p><a id="s7-2"></a></p>
 <h2 id="72-conditional-covariance-and-continuity-in-depth">§7.2 Conditional covariance and continuity in depth<a class="headerlink" href="#72-conditional-covariance-and-continuity-in-depth" title="Permanent link">&para;</a></h2>
 <p><em>제목: 조건부 공분산과 깊이 연속성</em></p>
+<p><strong>물리학자용 길잡이</strong></p>
+<ul>
+<li><strong>왜 필요한가.</strong> 뒤 절의 귀납은 site 별 multi-replica spin 곱 <span class="arithmatex">\(A_S\)</span> 를, 첫 분기 깊이 <span class="arithmatex">\(e\)</span> 의 prefix 로 조건 지은 자식 subtree 별 조건부 평균의 곱 <span class="arithmatex">\(a_{S,e}\)</span> 로 바꿔야 한다. 이 소절은 그 교체 오차를 재는 양 <span class="arithmatex">\(v_N\)</span> 과 두 도구를 준비한다.</li>
+<li><strong>물리로는.</strong> <span class="arithmatex">\(v_N\)</span> 은 상태 계층을 깊이 <span class="arithmatex">\(d\)</span> 까지 알았을 때 남는 site 간 connected correlation 제곱의 평균, 곧 평균적 clustering 척도다(제안 해석). Lemma 7.2 는 이것이 작으면 조건부 독립인 probe 와의 site 평균에서 요동을 버릴 수 있고, 거꾸로 세 사본 overlap 실험으로 이것을 잴 수 있음을 보인다. Lemma 7.3 은 분기 깊이나 평가 깊이를 한 칸 옮기는 비용이 깊이 평균으로 <span class="arithmatex">\(C/L\)</span> 임을 보인다.</li>
+<li><strong>결론.</strong> 첫 분기 깊이 <span class="arithmatex">\(e\)</span> 에서 <span class="arithmatex">\(\|(A_S-a_{S,e})\cdot B\|_{L^2}\le p_N(S,e)=\sum_j v_N(T_j,e)^{1/4}\)</span> (¶7).</li>
+<li><strong>읽는 법.</strong> Lemma 7.2 와 ¶7 의 bound((7.6), (7.13))는 조건부 독립인 유계 probe 와 site 평균(축약)한 오차를 <span class="arithmatex">\(L^2\)</span> 에서 재는, 깊이 평균이 필요 없는 모든 <span class="arithmatex">\(N\)</span> 에서의 bound 다. Lemma 7.3 ((7.8), (7.9))은 조건부 평균 변화의 제곱 norm 을 깊이 배정에 대해 평균해서만 제어한다. 어느 쪽도 개별 site 의 근사나 개별 깊이의 연속성으로 읽지 않는다. RSB 구조(1RSB/full-RSB)는 가정하지 않는다. 증명 세부는 ¶3, ¶5, ¶6 의 접힌 전개에 모여 있다.</li>
+</ul>
 <p><a id="s7-2-p1"></a></p>
 <h4 id="72-1">§7.2 ¶1<a class="headerlink" href="#72-1" title="Permanent link">&para;</a></h4>
 <p><strong>원문</strong></p>
@@ -1333,9 +1340,11 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>물리 해석</strong></p>
 <ul>
 <li><strong>s1</strong> <span class="arithmatex">\(A_S\)</span> = site 별 spin 곱 벡터, <span class="arithmatex">\(R_S=\mathbf 1\cdot A_S\)</span> (site 평균). <code>🔧</code></li>
-<li><strong>s2, (7.5)</strong> <span class="arithmatex">\(\mu_{d,S}\)</span> = 깊이 <span class="arithmatex">\(d\)</span> 상태 묶음이 주어졌을 때 site 별 spin 곱의 평균 (상태 안의 국소 자화의 곱). <span class="arithmatex">\(v_N(S,d)\)</span> = 상태 안에서 site 쌍 <span class="arithmatex">\((i,j)\)</span> 의 <strong>connected correlation 제곱의 site 평균</strong>. <span class="arithmatex">\(v_N\to0\)</span> 은 "각 상태 안에서 spin 들이 거의 독립" = <strong>pure state 의 clustering 성질</strong> — cavity method 가 이웃 spin 들의 독립을 가정하는 근거 (새 역할 제안 R22, 제안 해석). <code>📚</code> Panchenko [<a href="99-references.html#ref-Pan13">14</a>] 의 spin 분포 관점</li>
+<li><strong>s2, (7.5)</strong> <span class="arithmatex">\(\mu_{d,S}\)</span> 는 root 와 깊이 <span class="arithmatex">\(d\)</span> 까지의 표본 prefix(<span class="arithmatex">\(\mathscr F_d\)</span>)를 고정하고, 그 정보로 예측한 site 별 spin 곱 <span class="arithmatex">\(\prod_{a\in S}\sigma_i^a\)</span> 의 조건부 평균이다. <span class="arithmatex">\(d\)</span> 아래에서 leaf 들이 줄기를 더 공유하면 조건부 독립이 아니므로, 이것은 일반적으로 국소 자화의 곱이 <strong>아니다</strong> — 곱으로 쪼개지는 것은 첫 분기 깊이에서뿐이다(¶7). <span class="arithmatex">\(v_N(S,d)\)</span> 는 그 정보를 고정한 뒤 남는 <span class="arithmatex">\(A_{S,i},A_{S,j}\)</span> 의 connected correlation 제곱을 모든 site 쌍과 root·prefix 에 대해 평균한 양이다 (제안 해석). <code>📚</code> Panchenko [<a href="99-references.html#ref-Pan13">14</a>] 의 spin 분포 관점</li>
+<li><strong>s2, (7.5)</strong> <span class="arithmatex">\(v_N\)</span> 이 작다는 것은 전형적인 site 쌍의 상관이 작다는 <strong>평균적</strong> clustering 이다(제안 해석, 새 역할 제안 R22). 개별 쌍, 특히 그래프 이웃 쌍의 독립은 주지 않는다(이웃 쌍은 <span class="arithmatex">\(N^2\)</span> 쌍 중 <span class="arithmatex">\(O(N)\)</span> 개라 <span class="arithmatex">\(v_N\)</span> 에 <span class="arithmatex">\(O(1/N)\)</span> 만 기여). 그래서 cavity 의 이웃 독립 가정과 같지 않다. 단일 replica <span class="arithmatex">\(S=\{a\}\)</span> 이면 정의에서 바로 <span class="arithmatex">\(v_N=\mathbb E\,\chi_{SG}^{(d)}/N\)</span> (<span class="arithmatex">\(\chi_{SG}^{(d)}=N^{-1}\sum_{ij}\langle\sigma_i;\sigma_j\rangle_d^2\)</span>) 이므로, <span class="arithmatex">\(v_N\)</span> 이 작다는 것은 '<span class="arithmatex">\(\mathbb E\,\chi_{SG}^{(d)}=o(N)\)</span>' 을 깊이 평균한 형태로 요구하는 약한 조건이다. 뒤 절(§7.3)이 실제로 보이는 것도 개별 깊이의 <span class="arithmatex">\(v_N\to0\)</span> 이 아니라 <span class="arithmatex">\(\lim_{L\to\infty}\limsup_{N\to\infty}\mathcal A_{L,\eta}v_N(S,d)=0\)</span> (<span class="arithmatex">\(\mathcal A_{L,\eta}\)</span> = 깊이 배정과 <span class="arithmatex">\(d\)</span> 에 대한 평균, ¶4) — <span class="arithmatex">\(N\)</span> 먼저, <span class="arithmatex">\(L\)</span> 나중 — 이다. <code>❓</code> 깊이 <span class="arithmatex">\(d\)</span> 조건부 법칙이 물리의 pure state 와 어떻게 대응하는지는 이 절에서 확인되지 않는다. <code>📚</code> Panchenko [<a href="99-references.html#ref-Pan13">14</a>] 의 spin 분포 관점</li>
 </ul>
-<p><strong>식 Eq. §7.2 ¶1 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 Eq. §7.2 ¶1 #1 — spin 곱 벡터와 site 평균</summary>
 <table>
 <thead>
 <tr>
@@ -1360,7 +1369,9 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 </tr>
 </tbody>
 </table>
-<p><strong>식 (7.5) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (7.5) — 조건부 평균과 조건부 공분산 제곱</summary>
 <table>
 <thead>
 <tr>
@@ -1374,17 +1385,18 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\mu_{d,S}=\mathbb E[A_S\mid\mathscr F_d]\)</span></td>
 <td>조건부 평균</td>
-<td>깊이 <span class="arithmatex">\(d\)</span> 상태 안의 국소 자화(곱)</td>
+<td>깊이 <span class="arithmatex">\(d\)</span> prefix 가 주어졌을 때 multi-replica spin 곱의 조건부 평균 (곱 분해는 첫 분기에서만, ¶7)</td>
 <td><code>🔧</code></td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(v_N(S,d)=N^{-2}\mathbb E\sum_{ij}\mathrm{Cov}(A_{S,i},A_{S,j}\mid\mathscr F_d)^2\)</span></td>
 <td>조건부 공분산 제곱</td>
-<td>상태 안 connected correlation 의 크기 (clustering 척도, R22)</td>
+<td>남은 connected correlation 제곱의 평균 (평균적 clustering 척도, 제안 해석 R22)</td>
 <td><code>🔧</code> 정의</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s7-2-e2"></a></p>
 <h3 id="lemma-72-contractions-and-three-copies">▸ Lemma 7.2 (Contractions and three copies)<a class="headerlink" href="#lemma-72-contractions-and-three-copies" title="Permanent link">&para;</a></h3>
@@ -1408,14 +1420,18 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>s2</strong> <span class="arithmatex">\(X,Y,Z\)</span> 가 sigma field <span class="arithmatex">\(\mathscr G\)</span> 가 주어졌을 때 유계 무작위 벡터의 조건부 독립 사본이고 <span class="arithmatex">\(C\)</span> 가 그 조건부 공분산 행렬이면 다음이 성립한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1, (7.6)</strong> clustering (<span class="arithmatex">\(v_N\)</span> 작음) 이면, 상태 안 요동 <span class="arithmatex">\(A_S-\mu\)</span> 를 독립인 다른 벡터와 site 평균하면 작다. <code>📚</code> §7.2 ¶3 증명</li>
-<li><strong>s2, (7.7)</strong> 역방향: 같은 상태에서 뽑은 세 replica 의 overlap 차 <span class="arithmatex">\(X\cdot Y-X\cdot Z\)</span> 의 요동이 작으면 clustering. 물리: "같은 상태 안의 replica 쌍 overlap 이 결정적이면 상태 안 connected correlation 이 작다". <code>✅</code> 아래 전개</li>
+<li><strong>s1, (7.6)</strong> (7.6) 은 조건부 공분산을 test 하는 도구다: <span class="arithmatex">\(B\in[-1,1]^N\)</span> 이 깊이 <span class="arithmatex">\(d\)</span> prefix 가 주어졌을 때 <span class="arithmatex">\(A_S\)</span> 와 <strong>조건부</strong> 독립이면(prefix 와는 상관돼도 됨) — 곧 prefix 이후의 요동을 공유하지 않는 bounded probe 이면 — 상태 안 요동 <span class="arithmatex">\(A_S-\mu_{d,S}\)</span> 와 <span class="arithmatex">\(B\)</span> 의 site 평균은 <span class="arithmatex">\(L^2\)</span> 에서 <span class="arithmatex">\(v_N^{1/4}\)</span> 이하다. 모든 <span class="arithmatex">\(N\)</span> 에서의 정량 bound 이고, 지수 <span class="arithmatex">\(1/4\)</span> 는 두 번의 Cauchy–Schwarz 에서 온다. ¶7 에서 다른 가지의 벡터를 <span class="arithmatex">\(B\)</span> 로 쓸 수 있는 것이 이 조건 덕분이다. <code>📚</code> §7.2 ¶3 증명</li>
+<li><strong>s2, (7.7)</strong> 역방향 도구: 임의의 sigma field <span class="arithmatex">\(\mathscr G\)</span> 가 주어졌을 때 조건부 독립인 세 사본 <span class="arithmatex">\(X,Y,Z\)</span> (유계 벡터)에서, 기준 <span class="arithmatex">\(X\)</span> 는 두고 비교 상대만 <span class="arithmatex">\(Y\)</span> 에서 <span class="arithmatex">\(Z\)</span> 로 바꿔도 overlap 이 거의 같으면 — 즉 <span class="arithmatex">\(X\)</span> 와 <span class="arithmatex">\(\mathscr G\)</span> 가 주어졌을 때 <span class="arithmatex">\(X\cdot Y\)</span> 가 거의 결정되면 — 조건부 공분산 제곱 평균 <span class="arithmatex">\(N^{-2}\sum C_{ij}^2\)</span> 가 작다(계수 2). 이 문서의 쓰임(<span class="arithmatex">\(\mathscr G\)</span> = prefix, 사본 = 같은 상태에서 뽑은 replica, 제안 해석)에서 단일 replica 이고 <span class="arithmatex">\(\mu=0\)</span> 이면 좌변의 절반이 정확히 <span class="arithmatex">\(N^{-2}\operatorname{tr}C^2=\chi_{SG}/N\)</span>, 곧 물리의 '상태 안 overlap 요동 <span class="arithmatex">\(N\operatorname{Var}(q_{12})=\chi_{SG}\)</span>' 이고, <span class="arithmatex">\(\mu\ne0\)</span> 이면 버린 <span class="arithmatex">\(\mu\)</span> 방향 몫만큼 부등식이 된다. <code>✅</code> 아래 전개</li>
 </ul>
 <details>
 <summary>전개: 세 사본 부등식 (7.7)</summary>
+<p>공통 정보 <span class="arithmatex">\(\mathscr G\)</span> 를 고정하고 <span class="arithmatex">\(\mu=\mathbb E[X\mid\mathscr G]\)</span>, <span class="arithmatex">\(C=\operatorname{Cov}(X\mid\mathscr G)\)</span> 로 둔다. <span class="arithmatex">\(X,Y,Z\)</span> 는 이 정보를 고정했을 때 같은 분포에서 독립으로 뽑은 사본이다. 여기에 <span class="arithmatex">\(X\)</span> 까지 고정해 <span class="arithmatex">\(Y-Z\)</span> 의 요동을 먼저 계산한다.</p>
 <p><span class="arithmatex">\(X\)</span> 를 고정하면 <span class="arithmatex">\(Y-Z\)</span> 는 평균 0, 공분산 <span class="arithmatex">\(2C\)</span> (조건부 독립). <span class="arithmatex">\(\mathbb E[(X\cdot(Y-Z))^2\mid X,\mathscr G]=N^{-2}X^{\mathsf T}(2C)X\)</span>. <span class="arithmatex">\(X\)</span> 에 대해 평균: <span class="arithmatex">\(\frac2{N^2}\mathrm{tr}(C\,\mathbb E[XX^{\mathsf T}\mid\mathscr G])=\frac2{N^2}\mathrm{tr}(C(C+\mu\mu^{\mathsf T}))\)</span> ✓. <span class="arithmatex">\(\mathrm{tr}(C\mu\mu^{\mathsf T})=\mu^{\mathsf T}C\mu\ge0\)</span> (<span class="arithmatex">\(C\succeq0\)</span>) → <span class="arithmatex">\(\ge\frac2{N^2}\mathrm{tr}C^2=\frac2{N^2}\sum_{ij}C_{ij}^2\)</span> ✓.</p>
+<p>등식 <span class="arithmatex">\(\tfrac2{N^2}\operatorname{tr}((C+\mu\mu^{\mathsf T})C)=\tfrac2{N^2}\operatorname{tr}C^2+\tfrac2{N^2}\mu^{\mathsf T}C\mu\)</span> 에서 첫 항은 상태 안 connected 상관, 둘째 항은 평균 방향 <span class="arithmatex">\(\mu\)</span> 쪽 요동이며 <span class="arithmatex">\(C\succeq0\)</span> 이라 음이 아니어서 버려도 하한이 된다.</p>
+<p>비교: 두 사본만 쓰면 <span class="arithmatex">\(\mathbb E[(X\cdot Y)^2\mid\mathscr G]=N^{-2}\operatorname{tr}((C+\mu\mu^{\mathsf T})^2)\)</span> 에서 <span class="arithmatex">\((\mu^{\mathsf T}\mu)^2/N^2\)</span> 를 빼 <span class="arithmatex">\(\operatorname{Var}(X\cdot Y\mid\mathscr G)=N^{-2}(\operatorname{tr}C^2+2\mu^{\mathsf T}C\mu)\)</span> ✓. 셋째 사본으로 <span class="arithmatex">\(X\)</span> 를 고정한 채 비교 상대만 바꾸면 <span class="arithmatex">\(\mu^{\mathsf T}C\mu\)</span> 의 계수가 2 에서 1 로 줄어 위 식 <span class="arithmatex">\(\tfrac2{N^2}(\operatorname{tr}C^2+\mu^{\mathsf T}C\mu)\)</span> 가 된다. <span class="arithmatex">\(\mu=0\)</span> 이면 둘 다 (절반이) <span class="arithmatex">\(N^{-2}\operatorname{tr}C^2=\chi_{SG}/N\)</span> (<span class="arithmatex">\(\chi_{SG}=N^{-1}\sum_{ij}C_{ij}^2\)</span>) ✓.</p>
 </details>
-<p><strong>식 (7.6) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (7.6) — contraction bound</summary>
 <table>
 <thead>
 <tr>
@@ -1429,12 +1445,14 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\lVert(A_S-\mu)\cdot B\rVert_{L^2}\le v_N^{1/4}\)</span></td>
 <td>contraction bound</td>
-<td>clustering → 상태 안 요동의 site 평균이 작음</td>
+<td>조건부 독립 probe 와 축약한 상태 안 요동이 <span class="arithmatex">\(v_N^{1/4}\)</span> 이하</td>
 <td><code>📚</code> §7.2 ¶3</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (7.7) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (7.7) — 세 사본 overlap 차의 하한</summary>
 <table>
 <thead>
 <tr>
@@ -1448,7 +1466,7 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\mathbb E(X\cdot Y-X\cdot Z)^2\)</span></td>
 <td>세 사본 overlap 차</td>
-<td>같은 상태 안 replica overlap 의 요동</td>
+<td>기준 <span class="arithmatex">\(X\)</span> 에 대해 비교 사본을 바꿀 때 overlap 차 (조건부 분산의 2배)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 <tr>
@@ -1459,6 +1477,7 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s7-2-e2)</em></p>
 <p><a id="s7-2-e3"></a></p>
@@ -1486,14 +1505,17 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>s5</strong> 조건부 독립성이 다음을 주며, <span class="arithmatex">\(C\)</span> 가 양의 준정부호이므로 결과가 나온다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> <code>✅</code> 아래 전개</li>
-<li><strong>s4–s5</strong> <code>📚</code> <a href="07-decorrelation-on-prescribed-trees.html#s7-2-p2">§7.2 ¶2</a> 전개</li>
+<li><strong>s1–s3</strong> (7.6) 의 증명: <span class="arithmatex">\(N^{-2}B^{\mathsf T}CB\)</span> 는 probe <span class="arithmatex">\(B\)</span> 가 읽어 내는 잔여 요동의 분산이다. <span class="arithmatex">\(|B_i|\le1\)</span> 로 이를 <span class="arithmatex">\(N^{-2}\sum|C_{ij}|\)</span> 로 누르고, Cauchy–Schwarz 를 <span class="arithmatex">\(i,j\)</span> 와 prefix 에 대해 두 번 써서 <span class="arithmatex">\(v_N^{1/2}\)</span> 에, 제곱근으로 <span class="arithmatex">\(v_N^{1/4}\)</span> 에 닿는다. <code>✅</code> 아래 전개</li>
+<li><strong>s4–s5</strong> (7.7) 의 증명: <span class="arithmatex">\(C\)</span> 를 조건부 공분산 행렬, <span class="arithmatex">\(\mu\)</span> 를 조건부 평균이라 하면, 세 사본 overlap 차의 제곱을 공통 정보 <span class="arithmatex">\(\mathscr G\)</span> 아래에서 평균한 것은 <span class="arithmatex">\(\tfrac2{N^2}\operatorname{tr}C^2\)</span> 와 음이 아닌 항 <span class="arithmatex">\(\tfrac2{N^2}\mu^{\mathsf T}C\mu\)</span> 의 합이라, 뒤 항을 버리면 하한이 나오고 Lemma 7.2 가 끝난다. 다음 문단부터는 이 bound 를 깊이를 옮겨 가며 쓸 수 있게 하는 Lemma 7.3 이다. <code>📚</code> <a href="07-decorrelation-on-prescribed-trees.html#s7-2-p2">§7.2 ¶2</a> 전개</li>
 </ul>
 <details>
 <summary>전개: (7.6) (s1–s3)</summary>
+<p>여기서 <span class="arithmatex">\(A=A_S\)</span>, <span class="arithmatex">\(\mu=\mu_{d,S}\)</span>, <span class="arithmatex">\(C_{ij}=\operatorname{Cov}(A_{S,i},A_{S,j}\mid\mathscr F_d)\)</span> 로 줄여 쓴다. <span class="arithmatex">\(B\)</span> 는 <span class="arithmatex">\(\mathscr F_d\)</span> 가 주어졌을 때 <span class="arithmatex">\(A_S\)</span> 와 조건부 독립이고 <span class="arithmatex">\(|B_i|\le1\)</span> 이다. 그래서 <span class="arithmatex">\(\mathbb E[(A-\mu)_i(A-\mu)_j\mid\mathscr F_d,B]=C_{ij}\)</span> — 가정은 여기서만 쓰인다.</p>
 <p><span class="arithmatex">\(\mathbb E[((A-\mu)\cdot B)^2\mid\mathscr F_d,B]=N^{-2}\sum_{ij}C_{ij}B_iB_j\le N^{-2}\sum_{ij}\lvert C_{ij}\rvert\le\bigl(N^{-2}\sum C_{ij}^2\bigr)^{1/2}\)</span> (Cauchy–Schwarz, <span class="arithmatex">\(N^2\)</span> 항). prefix 에 대해 다시 Cauchy–Schwarz: <span class="arithmatex">\(\mathbb E[\cdot]\le(\mathbb EN^{-2}\sum C^2)^{1/2}=v_N^{1/2}\)</span>, 제곱근 → <span class="arithmatex">\(v_N^{1/4}\)</span> ✓.</p>
+<p>장난감 확인: 상태 안 spin 이 독립(<span class="arithmatex">\(S\)</span> 단일 replica)이면 <span class="arithmatex">\(C\)</span> 는 대각, <span class="arithmatex">\(C_{ii}\le1\)</span>. 실제 값은 <span class="arithmatex">\(\|(A-\mu)\cdot B\|_{L^2}^2=N^{-2}\sum_iC_{ii}B_i^2\le1/N\)</span> 이라 <span class="arithmatex">\(N^{-1/2}\)</span> 크기인데, <span class="arithmatex">\(v_N\le1/N\)</span> 이라 (7.6) 은 <span class="arithmatex">\(N^{-1/4}\)</span> 만 준다. 날카롭지 않지만 이 논문은 <span class="arithmatex">\(\to0\)</span> 만 필요하다.</p>
 </details>
-<p><strong>식 Eq. §7.2 ¶3 #1 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 Eq. §7.2 ¶3 #1 — 세 사본 overlap 차의 조건부 기댓값</summary>
 <table>
 <thead>
 <tr>
@@ -1512,6 +1534,7 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s7-2-e4"></a></p>
@@ -1547,9 +1570,12 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>s7</strong> 상수는 vertex 와 이동의 개수에만 의존하며, <span class="arithmatex">\(N\)</span>, 평가 깊이, 전이 kernel 에 대해 균등하다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s7, (7.8)–(7.9)</strong> Lemma 7.3: overlap 단계를 하나 옮겨도 (깊이 <span class="arithmatex">\(d\to d+1\)</span>, 즉 <span class="arithmatex">\(q_d\to q_{d+1}\)</span>) 조건부 평균은 평균적으로 <span class="arithmatex">\(O(1/L)\)</span> 만 바뀐다 — <strong>overlap 단계에 대한 연속성</strong>. 물리로는 full-RSB 에서 상태 구조가 <span class="arithmatex">\(x\)</span> 에 대해 연속적으로 변한다는 것. <code>📚</code> §7.2 ¶5–¶6 증명</li>
+<li><strong>s1–s5, (7.8)</strong> Lemma 7.3 은 상태 계층에 가하는 두 실험의 비용을 잰다. 첫째(7.8): 조상 평가 깊이 <span class="arithmatex">\(d\)</span> 와 표본 prefix 를 그대로 두고, 고른 분기점 <span class="arithmatex">\(U\)</span> 만 한 단계 늦춘다. 둘째(7.9, s6): 분기 위치를 두고, 첫 분기 전 초기 unary 구간(가지가 하나인 구간)에서 평가 깊이만 <span class="arithmatex">\(d\to d+1\)</span> 로 내린다. 두 경우 모두 같은 표본 경로로 비교한 조건부 평균 변화의 <strong>제곱</strong> norm 이, 깊이 배정 평균 <span class="arithmatex">\(\mathcal A_{L,\eta}\)</span> 에서 <span class="arithmatex">\(C/L\)</span> 이하다(그래서 전형적 변화 자체는 <span class="arithmatex">\(O(L^{-1/2})\)</span>). <code>📚</code> §7.2 ¶5–¶6 증명</li>
+<li><strong>s5–s7</strong> <span class="arithmatex">\(\mathcal A_{L,\eta}\)</span> 는 <span class="arithmatex">\(\eta\)</span>-regular 깊이 배정(정규화 깊이가 <span class="arithmatex">\((\eta,1-\eta)\)</span> 안이고 서로 <span class="arithmatex">\(\eta\)</span> 넘게 떨어짐)에 대해 합하고, 평균하는 깊이 좌표 하나마다 <span class="arithmatex">\(L\)</span> 로 나누는 연산이다: 좌표가 <span class="arithmatex">\(a\)</span> 개이면 <span class="arithmatex">\(L^{-a}\sum\)</span> 이고, 허용된 배정만 합하므로 총 질량 <span class="arithmatex">\(\le1\)</span> 인 비정규화 평균이다. bound 는 충분히 큰 <span class="arithmatex">\(L\)</span> 에서, 상수는 vertex·이동 수에만 의존하고 <span class="arithmatex">\(N\)</span>·평가 깊이·전이 kernel 에 균등하다 — 뒤에서 고정한 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(\limsup_{N\to\infty}\)</span> 를 먼저 취하고 그다음 <span class="arithmatex">\(L\to\infty\)</span> 로 보내는(<span class="arithmatex">\(\lim_L\limsup_N\)</span>) 순서에서, <span class="arithmatex">\(N\)</span> 에 균등한 상수가 limsup 를 그대로 통과하게 하는 조건이다. <code>🔧</code></li>
+<li><strong>🧭 물리 직관과의 차이:</strong> 이것은 full-RSB 를 가정한 Parisi 함수의 연속성이 아니다. 계층을 따라 조건부 평균이 바뀌는 총량이 유한하므로 <span class="arithmatex">\(L\)</span> 단계 중 <strong>전형적인</strong> 단계의 몫이 작다는 평균적 연속성이다(제안 해석). 1RSB 처럼 한 깊이에서만 overlap 이 <span class="arithmatex">\(q_0\to q_1\)</span> 로 뛰어도, 그 점프는 깊이 평균에서 <span class="arithmatex">\((q_1-q_0)/L\le1/L\)</span> 로만 잡히므로 lemma 와 양립한다. <code>📚</code> §7.2 ¶5–¶6 증명</li>
 </ul>
-<p><strong>식 (7.8) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (7.8) — 분기 깊이 이동의 비용</summary>
 <table>
 <thead>
 <tr>
@@ -1563,12 +1589,14 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\mathcal A\mathbb E\lVert\mu_{d,S^U}-\mu_{d,S}\rVert^2\le C/L\)</span></td>
 <td>분기 깊이 연속성</td>
-<td>overlap 단계 하나 이동의 효과 <span class="arithmatex">\(O(dx)\)</span></td>
+<td>분기 깊이를 하나 늦출 때 조건부 평균 변화의 제곱 norm, 깊이 평균으로 <span class="arithmatex">\(O(1/L)\)</span> (변화 자체는 전형적으로 <span class="arithmatex">\(O(L^{-1/2})\)</span>)</td>
 <td><code>📚</code> §7.2 ¶6</td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (7.9) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (7.9) — 평가 깊이 이동의 비용</summary>
 <table>
 <thead>
 <tr>
@@ -1582,11 +1610,12 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\mathcal A\mathbb E\lVert\mu_{d+1,S}-\mu_{d,S}\rVert^2\le C/L\)</span></td>
 <td>평가 깊이 연속성</td>
-<td>상태 계층을 한 단계 내려갈 때의 평균 변화</td>
+<td>초기 unary 구간에서 평가 깊이를 한 단계 내릴 때 조건부 평균 증분의 제곱 norm, 깊이 평균으로 <span class="arithmatex">\(O(1/L)\)</span></td>
 <td><code>📚</code> §7.2 ¶5</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><em>(끝: s7-2-e4)</em></p>
 <p><a id="s7-2-e5"></a></p>
@@ -1609,13 +1638,20 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>s4</strong> 이것이, 범위가 있는 깊이에 대해 합하고 <span class="arithmatex">\(L\)</span> 로 나눈 뒤 평가 깊이 주장을 증명한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4, (7.10)</strong> 상태 계층을 내려가며 국소 자화는 martingale (정보가 늘어남). 총 "에너지" <span class="arithmatex">\(\le1\)</span> 을 <span class="arithmatex">\(L\)</span> 단계에 나누면 평균 한 단계 변화는 <span class="arithmatex">\(1/L\)</span>. 물리: 상태 계층의 각 단계가 전체 요동에 기여하는 몫이 <span class="arithmatex">\(dx\)</span> 차수. <code>✅</code> 아래 전개</li>
+<li><strong>s1–s4, (7.10)</strong> 이 문단은 (7.9)(평가 깊이 이동)를 증명한다. <span class="arithmatex">\(T\)</span> 의 이후 branching 깊이를 고정하고 초기 줄기 위 한 경로를 따라가면, 깊이 <span class="arithmatex">\(t\)</span> 는 상태 계층의 정보를 공개하는 순서(물리적 시간 아님)이고 <span class="arithmatex">\(\mu_{t,T}\)</span> 는 그때까지의 정보로 예측한 multi-replica 관측량이다. 한 단계 더 보고 다시 현재 정보로 평균하면 <span class="arithmatex">\(\mu_{t,T}\)</span> 로 돌아오므로 유계 martingale 이고, 증분이 직교해 증분 <strong>제곱</strong> norm 의 합('에너지' = 제곱 요동 예산, 열역학 에너지 아님)이 <span class="arithmatex">\(\le1\)</span> 이다. 따라서 <span class="arithmatex">\(L\)</span> 단계에 대해 <strong>평균한</strong> 한 단계 제곱 증분이 <span class="arithmatex">\(\le1/L\)</span> 이며, 몇몇 단계(예: 1RSB 형 점프)가 <span class="arithmatex">\(O(1)\)</span> 을 가져가는 것은 배제되지 않는다. <code>✅</code> 아래 전개</li>
+<li><strong>s2–s3</strong> 제안 해석: 단일 replica 이면 <span class="arithmatex">\(q_t:=\mathbb E\|\mu_t\|_N^2\)</span> 은 깊이 <span class="arithmatex">\(t\)</span> 에서 갈라져 <span class="arithmatex">\(\mathscr F_t\)</span> 에 조건부 독립인 두 사본의 overlap 기댓값이고(일반 <span class="arithmatex">\(T\)</span> 는 multioverlap), 직교 증분으로 <span class="arithmatex">\(\mathbb E\|\mu_{t+1}-\mu_t\|_N^2=q_{t+1}-q_t\)</span> 이고, <span class="arithmatex">\(\sigma_i^2=1\)</span> 이라 <span class="arithmatex">\(1-q_t=\mathbb E\|\sigma-\mu_t\|_N^2\)</span> 는 깊이 <span class="arithmatex">\(t\)</span> prefix 로 spin 을 예측할 때의 평균 제곱 오차이므로 각 계단 높이는 한 단계 더 볼 때 줄어드는 예측 오차다. 그래서 (7.10) 은 'overlap 사다리 <span class="arithmatex">\(q_t\)</span> 의 계단 높이 합 <span class="arithmatex">\(\le1\)</span>' 이라는 telescoping 이다. 다음 문단은 같은 예산을 분기 깊이 이동(7.8)에 쓴다. <code>✅</code> 아래 전개 (물리 이름은 제안 해석)</li>
 </ul>
 <details>
 <summary>전개: martingale 에너지 (s3)</summary>
 <p>직교 증분: <span class="arithmatex">\(\sum_t\mathbb E\lVert\mu_{t+1}-\mu_t\rVert_N^2=\mathbb E\lVert\mu_{\rm end}\rVert_N^2-\mathbb E\lVert\mu_{\rm start}\rVert_N^2\le1\)</span> (좌표 <span class="arithmatex">\(\le1\)</span>) ✓. <span class="arithmatex">\(t\)</span> 에 대해 평균하면 <span class="arithmatex">\(\frac1L\sum_t\le\frac1L\)</span> ✓.</p>
+<p>(7.10) 은 고정된 이후 branching 깊이 각각에 대해 같은 상수 1 로 성립한다. <span class="arithmatex">\(\mathcal A_{L,\eta}\)</span> 는 총 질량 <span class="arithmatex">\(\le1\)</span> 인 비정규화 평균이므로 나머지 깊이 좌표에 대해 평균해도 bound <span class="arithmatex">\(1/L\)</span> 이 유지된다.</p>
 </details>
-<p><strong>식 (7.10) 항별 표</strong></p>
+<details>
+<summary>전개: overlap 사다리 (s2–s3)</summary>
+<p><span class="arithmatex">\(\mathbb E[\mu_{t+1}\cdot\mu_t]=\mathbb E\|\mu_t\|_N^2\)</span> (tower) 이므로 <span class="arithmatex">\(\mathbb E\|\mu_{t+1}-\mu_t\|_N^2=q_{t+1}-q_t\ge0\)</span> ✓. 깊이 <span class="arithmatex">\(t\)</span> 에서 갈라진 두 사본 <span class="arithmatex">\(\sigma,\sigma'\)</span> 는 <span class="arithmatex">\(\mathscr F_t\)</span> 조건부 독립이라 <span class="arithmatex">\(\mathbb E[\sigma\cdot\sigma']=\mathbb E\|\mu_t\|_N^2=q_t\)</span> ✓. 단일 replica 에서 <span class="arithmatex">\(\mathbb E\|\sigma-\mu_t\|_N^2=1-2\mathbb E[\sigma\cdot\mu_t]+\mathbb E\|\mu_t\|_N^2=1-q_t\)</span> ✓.</p>
+</details>
+<details>
+<summary>항별 표: 식 (7.10) — martingale 증분의 제곱 합</summary>
 <table>
 <thead>
 <tr>
@@ -1629,11 +1665,12 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <tr>
 <td><span class="arithmatex">\(\sum_t\mathbb E\lVert\mu_{t+1}-\mu_t\rVert^2\le1\)</span></td>
 <td>martingale 에너지</td>
-<td>상태 계층 전체의 국소 자화 요동 총량</td>
+<td>예측값 수정의 제곱 요동 총예산 (단일 replica 이면 overlap 사다리 계단 합)</td>
 <td><code>✅</code> 같은 문단 전개</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s7-2-p6"></a></p>
 <h4 id="72-6">§7.2 ¶6<a class="headerlink" href="#72-6" title="Permanent link">&para;</a></h4>
@@ -1670,15 +1707,33 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 <p><strong>s11</strong> 다른 표본 가지를 생략해도 관련된 단일 prefix marginal 법칙은 바뀌지 않으므로, 이 추정은 더 큰 임의의 표본 tree 에서도 성립한다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s3</strong> 분기점에서 자식들은 조건부 독립 → 평균이 곱 (상태 안 clustering 과 별개로, 서로 다른 하위 상태는 독립). 분기를 한 단계 늦추면 자식들이 한 단계 더 같은 상태를 공유. <code>📚</code> tree 표본추출 규칙 (§3.1 ¶2)</li>
+<li><strong>s1–s3</strong> 이 문단은 (7.8)(분기 깊이 이동)을 증명한다. 깊이 <span class="arithmatex">\(q\)</span> prefix 가 <strong>주어지면</strong> 자식 subtree 들의 이후 표본추출은 독립이라 조건부 평균이 좌표별 곱 <span class="arithmatex">\(\prod_j\mu_{q,T_j}\)</span> 가 된다(무조건적으로는 공통 조상을 통해 상관됨; site 사이 clustering 과는 다른, 표본추출 규칙의 독립성). 분기를 <span class="arithmatex">\(q+1\)</span> 로 늦추면 자식들이 공통 한 단계 연장을 공유하므로 <span class="arithmatex">\(\mu_{q+1,T_j}\)</span> 들은 서로 독립이 아니고, 곱을 만든 뒤 <span class="arithmatex">\(\mathscr F_q\)</span> 로 평균한다. <code>📚</code> tree 표본추출 규칙 (§3.1 ¶2)</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+  subgraph orig["원래: 깊이 q 에서 분기"]
+    R1["root"] --&gt; P1["깊이 q prefix"]
+    P1 --&gt; A1["자식 T1 의 이후 표본"]
+    P1 --&gt; B1["자식 T2 의 이후 표본"]
+  end
+  subgraph late["지연: q+1 에서 분기"]
+    R2["root"] --&gt; P2["깊이 q prefix"]
+    P2 --&gt; Q2["공통 한 단계 연장 (q+1)"]
+    Q2 --&gt; A2["자식 T1 의 이후 표본"]
+    Q2 --&gt; B2["자식 T2 의 이후 표본"]
+  end</code></pre>
+<p>왼쪽은 깊이 <span class="arithmatex">\(q\)</span> prefix 가 주어지면 자식들이 바로 독립으로 갈라져 조건부 평균이 <span class="arithmatex">\(\prod_j\mu_{q,T_j}\)</span> 이고, 오른쪽은 자식들이 한 칸을 공유한 뒤 갈라져 <span class="arithmatex">\(\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]\)</span> 이다. 두 값의 차이는 그 공통 칸에서 각 자식의 예측값이 바뀌는 양, 곧 (7.11) 우변의 자식별 martingale 증분으로 통제된다.</p>
+<ul>
 <li><strong>s4, (7.11)</strong> 곱 차 부등식 <span class="arithmatex">\(\lVert\prod a_j-\prod b_j\rVert^2\le s\sum\lVert a_j-b_j\rVert^2\)</span> (<span class="arithmatex">\(\lvert a_j\rvert,\lvert b_j\rvert\le1\)</span>). <code>✅</code> 아래 전개</li>
-<li><strong>s5–s11</strong> <code>🔧</code> 합쳐서 <span class="arithmatex">\(C/L\)</span>.</li>
+<li><strong>s5–s8</strong> (7.11) 이 분기 지연 효과를 자식별 한 단계 제곱 증분으로 줄이므로, <span class="arithmatex">\(q\)</span> 에 대해 합하면 각 자식의 (7.10) 으로 총량이 제한된다. 이 차이를 조상 평가 깊이 <span class="arithmatex">\(d\)</span> 까지 올리는 연산(조건부 기댓값, 절댓값 1 이하 인자의 곱)은 제곱 norm 을 줄이므로 오차가 증폭되지 않고, 다른 깊이 좌표에 대해 평균하면 이동 하나에 <span class="arithmatex">\(C/L\)</span> 이 된다. 여러 이동·regularity·더 큰 tree 처리는 아래 접힌 전개 끝에 있다. <code>🔧</code></li>
 </ul>
 <details>
 <summary>전개: 곱 차 부등식 (s4)</summary>
+<p><span class="arithmatex">\(\prod_j\mu_{q,T_j}\)</span> 는 <span class="arithmatex">\(\mathscr F_q\)</span>-가측이므로 (7.11) 좌변의 차이는 <span class="arithmatex">\(\mathbb E[\prod_j\mu_{q,T_j}-\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]\)</span> 이다. Jensen 으로 그 제곱 norm 은 <span class="arithmatex">\(\mathbb E\|\prod_j\mu_{q,T_j}-\prod_j\mu_{q+1,T_j}\|_N^2\)</span> 이하이고, 아래 곱 차 부등식을 site 마다 적용한 뒤 <span class="arithmatex">\(N^{-1}\sum_i\)</span> 로 평균한다.</p>
 <p><span class="arithmatex">\(\prod_ja_j-\prod_jb_j=\sum_j(\prod_{i\lt j}b_i)(a_j-b_j)(\prod_{i\gt j}a_i)\)</span>, 각 인자 <span class="arithmatex">\(\le1\)</span> → <span class="arithmatex">\(\lvert\cdot\rvert\le\sum_j\lvert a_j-b_j\rvert\)</span>, Cauchy–Schwarz 로 제곱 <span class="arithmatex">\(\le s\sum_j\lvert a_j-b_j\rvert^2\)</span> ✓. Jensen: <span class="arithmatex">\(\lVert\mathbb E[X\mid\mathscr F]\rVert^2\le\mathbb E[\lVert X\rVert^2\mid\mathscr F]\)</span> ✓.</p>
+<p>증명 세부 (s9–s11): 여러 vertex 는 하나씩 옮기고 제곱 삼각부등식을 써서 상수에 이동 수 인자가 붙는다(상수가 이동 수에 의존하는 이유). regularity 덕에 중간 모양들이 같은 조상 관계를 갖고, 충분히 큰 <span class="arithmatex">\(L\)</span> 에서 <span class="arithmatex">\(\eta/2\)</span>-regular 정의역에 들어간다(lemma 의 'sufficiently large <span class="arithmatex">\(L\)</span>' 의 출처). 단일 prefix marginal 이 다른 가지 생략에 불변이라 더 큰 표본 tree 에서도 성립한다.</p>
 </details>
-<p><strong>식 (7.11) 항별 표</strong></p>
+<details>
+<summary>항별 표: 식 (7.11) — 분기 지연 효과의 bound</summary>
 <table>
 <thead>
 <tr>
@@ -1703,6 +1758,7 @@ v_N(S,d)&amp;=\frac1{N^2}\mathbb E\sum_{i,j=1}^N
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p>∎</p>
 <p><a id="s7-2-p7"></a></p>
@@ -1736,14 +1792,28 @@ a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
 <p><strong>s8</strong> 축약된 오차에 <span class="arithmatex">\(|f|\le1\)</span> 인 임의의 스칼라 test <span class="arithmatex">\(f\)</span> 를 곱해도, 상관이 있더라도, 그 <span class="arithmatex">\(L^1\)</span> bound 는 커지지 않는다.</p>
 <p><strong>물리 해석</strong></p>
 <ul>
-<li><strong>s1–s4, (7.12)–(7.13)</strong> multioverlap <span class="arithmatex">\(R_S\)</span> 를 "첫 분기 상태에서의 자식별 국소 자화 곱" 으로 바꾸는 오차는 자식들의 clustering 척도 <span class="arithmatex">\(v^{1/4}\)</span> 합으로 bound. 물리: 상태가 주어지면 multi-replica 관측량 ≈ 국소 자화들의 곱 (평균장/cavity 의 factorization). <code>✅</code> (7.6) 을 자식마다 적용 — §7.2 ¶3 전개</li>
-<li><strong>s5–s8</strong> <code>🔧</code> 교체 순서와 test 곱의 처리.</li>
+<li><strong>s1–s4, (7.12)–(7.13)</strong> 이 문단은 앞의 도구로 첫 분기 정보만 남기는 관측량의 coarse-graining 을 한다. 첫 분기 깊이 <span class="arithmatex">\(e\)</span> 에서 조건부 평균은 정확히 <span class="arithmatex">\(\mu_{e,S}=\prod_j\mu_{e,T_j}\)</span> 다(prefix 가 주어지면 자식이 조건부 독립 — 근사가 아니라 항등식). 근사는 spin 곱 벡터 <span class="arithmatex">\(A_S\)</span> 를 이 곱 <span class="arithmatex">\(a_{S,e}\)</span> 로 바꾸는 단계이고, 그 오차는 조건부 독립인 유계 <span class="arithmatex">\(B\)</span> 와 <strong>site 평균한 뒤에만</strong> <span class="arithmatex">\(L^2\)</span> 에서 <span class="arithmatex">\(p_N=\sum_jv_N(T_j,e)^{1/4}\)</span> 이하다(좌표별로는 <span class="arithmatex">\(A_{S,i}=\pm1\)</span> 이라 가깝지 않다). <code>✅</code> (7.6) 을 자식마다 적용 — §7.2 ¶3 전개</li>
+<li><strong>s4, s6</strong> 제안 해석: 이 항목은 두 replica 의 overlap <span class="arithmatex">\(R_{12}\)</span> 가 무엇에 가까운지를 다룬다. <span class="arithmatex">\(S\)</span> 가 깊이 <span class="arithmatex">\(e\)</span> 에서 단일 leaf 둘 <span class="arithmatex">\(T_1,T_2\)</span> 로 갈라지고 <span class="arithmatex">\(B=\mathbf1\)</span> 이면, 두 leaf 는 같은 깊이 <span class="arithmatex">\(e\)</span> prefix 에서 같은 kernel 로 독립으로 뻗으므로 두 자식의 조건부 평균은 같은 값 <span class="arithmatex">\(m_i^{(e)}:=\mathbb E[\sigma_i^1\mid\mathscr F_e]=\mathbb E[\sigma_i^2\mid\mathscr F_e]\)</span> (분기점의 자화)이고, (7.13) 은 <span class="arithmatex">\(\|R_{12}-Q_e\|_{L^2}\le v_N(T_1,e)^{1/4}+v_N(T_2,e)^{1/4}\)</span>, <span class="arithmatex">\(Q_e:=\|m^{(e)}\|_N^2\)</span> 를 준다. 곧 깊이 <span class="arithmatex">\(e\)</span> 에서 갈라진 두 replica 의 overlap 은 분기점 조건부 법칙의 self-overlap <span class="arithmatex">\(Q_e\)</span> (prefix 마다 달라지는 표본값; 그 기댓값이 ¶5 의 overlap 사다리 <span class="arithmatex">\(q_e=\mathbb E Q_e\)</span>)에 가깝고, 오차는 깊이 <span class="arithmatex">\(e\)</span> 조건부 법칙의 평균적 clustering 위반으로 통제된다 — 서로 다른 두 자식 상태 사이의 <span class="arithmatex">\(q_{\alpha\beta}\)</span> 가 아니다. <code>✅</code> (7.12)–(7.13) 대입, 아래 전개 / <code>❓</code> 분기점 prefix 를 pure state 로 보고 이것을 '같은 상태 안 두 replica overlap <span class="arithmatex">\(=q_{EA}\)</span>' 의 계층판으로 읽는 것은 이 절에서 확인되지 않는다.</li>
+<li><strong>s5–s8</strong> 적용 범위: <span class="arithmatex">\(B\)</span> 는 깊이 <span class="arithmatex">\(e\)</span> prefix 가 주어졌을 때 <span class="arithmatex">\(S\)</span> 의 연장과 조건부 독립이어야 한다 — <span class="arithmatex">\(B=\mathbf1\)</span> (multioverlap)과 <span class="arithmatex">\(e\)</span> 이전에 갈라진 다른 쪽에서 뽑은 벡터가 이에 해당한다. 두 쪽을 모두 투영하면 총 <span class="arithmatex">\(L^2\)</span> 오차 <span class="arithmatex">\(\le2p_N(S,e)\)</span>. 오차와 상관된 스칼라 <span class="arithmatex">\(|f|\le1\)</span> 을 곱해도 되지만 결론은 <span class="arithmatex">\(L^1\)</span> bound 로 약해진다. <code>🔧</code></li>
 </ul>
+<pre class="mermaid"><code>graph TD
+  R["root"] --&gt; E1["깊이 e₁ 분기점"]
+  E1 --&gt; C["replica c"]
+  E1 --&gt; E2["깊이 e₂ 분기점 (e₁ 보다 깊음)"]
+  E2 --&gt; A["replica a"]
+  E2 --&gt; B["replica b"]</code></pre>
+<p>세 replica 가 깊이 <span class="arithmatex">\(e_1\)</span> 에서 <span class="arithmatex">\(c\)</span> 와 <span class="arithmatex">\(\{a,b\}\)</span> 로, 더 깊은 <span class="arithmatex">\(e_2\)</span> 에서 <span class="arithmatex">\(a\)</span> 와 <span class="arithmatex">\(b\)</span> 로 갈라지는 tree 다. 위 두-replica 읽기를 쌍마다 쓰면 <span class="arithmatex">\(R_{ab}\approx Q_{e_2}\)</span>, <span class="arithmatex">\(R_{ac}\approx R_{bc}\approx Q_{e_1}\)</span> (뒤 둘은 같은 표본값; 오차는 각 쌍의 <span class="arithmatex">\(v_N^{1/4}\)</span> 합)이고, 평균으로는 ¶5 사다리가 단조라 <span class="arithmatex">\(q_{e_1}\le q_{e_2}\)</span> 이므로 '작은 두 overlap 이 같다' 는 ultrametric 모양이 보인다. <code>❓</code> 이것은 Parisi ultrametricity 의 증명이 아니다 — 깊이 구조는 표본추출 규칙에 들어 있고, <span class="arithmatex">\(v_N\)</span> 이 실제로 작아지는지는 다음 절(§7.3)의 몫이다.</p>
 <details>
 <summary>전개: 자식 교체 (s4)</summary>
 <p><span class="arithmatex">\(A_S=\prod_jA_{T_j}\)</span> (좌표별). <span class="arithmatex">\(j\)</span> 번째 자식을 <span class="arithmatex">\(\mu_{e,T_j}\)</span> 로 바꾸는 오차: <span class="arithmatex">\((A_{T_j}-\mu_{e,T_j})\cdot(B\prod_{i\ne j}(\cdot))\)</span>, 승수는 조건부 독립·유계 → (7.6) 으로 <span class="arithmatex">\(\le v_N(T_j,e)^{1/4}\)</span> ✓. <span class="arithmatex">\(s\)</span> 번 합 → <span class="arithmatex">\(p_N(S,e)\)</span> ✓.</p>
+<p>각 교체에서 나머지 자식 벡터와 이미 교체한 평균들은 <span class="arithmatex">\(\mathscr F_e\)</span> 조건부로 교체되는 자식과 독립인 유계 승수가 되므로 (7.6) 이 매번 적용된다(s5).</p>
 </details>
-<p><strong>식 (7.12) 항별 표</strong></p>
+<details>
+<summary>전개: 두 replica 대입 (s4, s6)</summary>
+<p>단일 leaf 두 개, <span class="arithmatex">\(B=\mathbf1\)</span>: <span class="arithmatex">\(A_S\cdot\mathbf1=R_{12}\)</span>. <span class="arithmatex">\(K_d\)</span> 는 prefix 만의 함수이고 두 leaf 는 깊이 <span class="arithmatex">\(e\)</span> 이후 같은 kernel 로 독립으로 뽑히므로 <span class="arithmatex">\(\mu_{e,T_1}=\mu_{e,T_2}=m^{(e)}\)</span>, <span class="arithmatex">\(a_{S,e}\cdot\mathbf1=\|m^{(e)}\|_N^2=Q_e\)</span> ✓. 이것을 (7.13) 에 넣으면 <span class="arithmatex">\(\|R_{12}-Q_e\|_{L^2}\le v_N(T_1,e)^{1/4}+v_N(T_2,e)^{1/4}\)</span> ✓. 기댓값을 취하면 <span class="arithmatex">\(\mathbb EQ_e=\mathbb E\|\mu_e\|_N^2=q_e\)</span> (¶5 의 정의) ✓.</p>
+</details>
+<details>
+<summary>항별 표: 식 (7.12) — 자식별 조건부 평균의 곱과 오차 척도</summary>
 <table>
 <thead>
 <tr>
@@ -1757,18 +1827,20 @@ a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
 <tr>
 <td><span class="arithmatex">\(a_{S,e}=\prod_j\mu_{e,T_j}\)</span></td>
 <td>투영</td>
-<td>첫 분기 상태에서 하위 상태별 국소 자화의 곱</td>
+<td>첫 분기 깊이 <span class="arithmatex">\(e\)</span> prefix 가 주어졌을 때 자식 subtree <span class="arithmatex">\(T_j\)</span> 별 spin 곱 조건부 평균의 좌표별 곱 (<span class="arithmatex">\(T_j\)</span> 가 leaf 하나면 국소 자화); cavity factorization 과 닮았지만 제어하는 것은 site 평균 관측 (제안 해석)</td>
 <td><code>🔧</code></td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(p_N(S,e)=\sum_jv_N(T_j,e)^{1/4}\)</span></td>
 <td>오차 척도</td>
-<td>자식 상태들의 clustering 위반 정도</td>
+<td>깊이 <span class="arithmatex">\(e\)</span> prefix 가 주어졌을 때 각 자식 관측량 <span class="arithmatex">\(A_{T_j}\)</span> 에 남는 connected correlation 의 크기 (분기점 깊이 <span class="arithmatex">\(e\)</span> 조건부 법칙의 평균적 clustering 위반, 제안 해석)</td>
 <td><code>🔧</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>식 (7.13) 항별 표</strong></p>
+</details>
+<details>
+<summary>항별 표: 식 (7.13) — 축약한 투영 오차의 bound</summary>
 <table>
 <thead>
 <tr>
@@ -1782,11 +1854,12 @@ a_{S,e}=\prod_{j=1}^s \mu_{e,T_j},
 <tr>
 <td><span class="arithmatex">\(\lVert(A_S-a_{S,e})\cdot B\rVert_{L^2}\le p_N(S,e)\)</span></td>
 <td>투영 bound</td>
-<td>multi-replica 관측량 ≈ 국소 자화 곱 (cavity factorization)</td>
-<td><code>✅</code> 같은 문단 전개</td>
+<td><span class="arithmatex">\(B\)</span> 와 축약한 multi-replica 관측량 ≈ 자식별 조건부 평균 곱의 축약 (제안 해석)</td>
+<td><code>✅</code> bound 는 같은 문단 전개; 물리 대응은 제안 해석</td>
 </tr>
 </tbody>
 </table>
+</details>
 <hr />
 <p><a id="s7-3"></a></p>
 <h2 id="73-conditional-decorrelation">§7.3 Conditional decorrelation<a class="headerlink" href="#73-conditional-decorrelation" title="Permanent link">&para;</a></h2>
