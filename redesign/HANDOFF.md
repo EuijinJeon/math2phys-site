@@ -16,6 +16,7 @@
 |---|---|
 | `notes/readability-lessons.md` | 왜 이렇게 하는가: readability의 정의, 축약의 네 유형, 분야별 근거 |
 | `notes/redesign.md` | 설계: 노드 카드, 물리판과 수학판, 단면 L0–L4, 재배열 규칙 |
+| `notes/method-prompt.md` | 이 작업에서 얻은 일반 방법론. 다른 원문에 같은 작업을 시작할 때 넘기는 프롬프트 |
 | `redesign/SCHEMA.md` | 형식 규약: 카드 칸, ID, 규칙 표, 용어집, 용어 규율, 적법성 검사 |
 | `redesign/ROADMAP.md` | 단계별 계획, 결정 기록, 날짜별 진행 기록, 시범 결과 |
 
