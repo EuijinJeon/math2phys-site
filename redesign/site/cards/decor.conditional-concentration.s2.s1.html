@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></div><h1>한 층 항등식 (singleton identity)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s2.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><span class="nolink" title="Lemma 3.3 (카드 없음)">tree:extension-expansion</span> <span class="muted">Lemma 3.3</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li></ul></dd><dt>수학 진술</dt><dd><p>old tree는 깊이 $d$에서 갈라지는 두 경로 1, 2이고 경로 1이 spin anchor다. 제약: added color 하나가 anchor와 정확히 깊이 $d$에서 갈라진다. 허용된 선택과 계수는 옛 leaf 2 (계수 $1$), 깊이-$d$ vertex에서 fresh (계수 $-c_d$), 경로 2를 따라가다 깊이 $\ell$ ($d&lt;\ell\le L-1$)의 unary vertex에서 fresh (계수 $-c_\ell$)이며
 $$c_d=2m_{d+1}-m_d=(d+2)\delta,\qquad c_\ell=\delta\quad(d&lt;\ell\le L-1).$$
 anchor 혼자일 때의 총 계수는 $-\delta$이다. $X=R_{12}$, $X_\ell=R_{13}$ (경로 3은 해당 fresh 확장)이라 하면 각 $X_\ell$은 $X$와 같은 marginal law를 갖고 $\sum_{\ell=d}^{L-1}c_\ell=1+\delta$이다. $f=X$로 둔 pert:tree-identity에서

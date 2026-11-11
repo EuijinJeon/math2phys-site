@@ -380,6 +380,9 @@ def main():
         notes.append(f"수 {len(moves)}개")
         rep.add("단면", e, w, notes)
 
+    # --- 용어
+    rep_glossary(rep, root, cards, known, nodes, by_id)
+
     write_report(rep, out, cards, valid, leaf)
     nerr = sum(len(c[2]) for c in rep.checks)
     nwarn = sum(len(c[3]) for c in rep.checks)
@@ -387,6 +390,79 @@ def main():
         print(f"{name}: {status} (오류 {len(errs)}, 경고 {len(warns)})")
     print(f"보고서: {out}")
     sys.exit(1 if nerr else 0)
+
+
+def rep_glossary(rep, root, cards, known, nodes, by_id):
+    """용어 검사: 링크 해소, 항목 칸, 잔존 R번호, 정의 위치의 노드 ID, 슬러그 중복, 안 쓰이는 항목."""
+    gpath = root / "layers" / "glossary.md"
+    entries, problems, exists = C.parse_glossary(gpath)
+    slugs = {}
+    for en in entries:
+        slugs.setdefault(en.slug, []).append(en)
+
+    # 검사 대상 문서: layers/*.md 전부(glossary.md 포함), 카드 파일 전체(머리말 + 본문)
+    docs = []   # (표시 이름, 텍스트, 카드인가)
+    ldir = root / "layers"
+    if ldir.is_dir():
+        for p in sorted(ldir.glob("*.md")):
+            docs.append((f"layers/{p.name}", p.read_text(encoding="utf-8"), False))
+    for c in cards:
+        try:
+            docs.append((f"cards/{c.fname}", c.path.read_text(encoding="utf-8"), True))
+        except Exception:
+            pass
+
+    e, w, notes = [], [], []
+    linked = set()
+    nlinks = 0
+    for name, text, _ in docs:
+        for ln, slug in C.glossary_links(text):
+            nlinks += 1
+            linked.add(slug)
+            if slug not in slugs:
+                e.append(f"{name}:{ln}: `[[g:{slug}]]` 가 용어집에 없다")
+
+    if not exists and nlinks == 0:
+        nrole = sum(len(C.role_refs(t)) for _, t, _ in docs)
+        rep.add("용어", [], [], na="용어집 없음" + (f" (참고: 역할 번호 참조 {nrole}곳이 남아 있다)" if nrole else ""))
+        return
+
+    if not exists:
+        notes.append("layers/glossary.md 가 없다")
+    for ln, msg in problems:
+        e.append(f"layers/glossary.md:{ln}: {msg}")
+    for slug, lst in sorted(slugs.items()):
+        if len(lst) > 1:
+            e.append(f"g:{slug} 가 {len(lst)}번 정의됨 (줄 " + ", ".join(str(x.line) for x in lst) + ")")
+    for en in entries:
+        for fld in ("뜻", "역할", "정의 위치"):
+            if C.is_null(en.fields.get(fld)):
+                e.append(f"layers/glossary.md:{en.line}: `g:{en.slug}` 의 {fld} 칸이 비었다")
+
+    # 역할 번호
+    for name, text, _ in docs:
+        for ln, ref in C.role_refs(text):
+            e.append(f"{name}:{ln}: 역할 번호 {ref} 참조가 남아 있다")
+
+    # 정의 위치의 노드 ID
+    tok = re.compile(r"(?<![A-Za-z0-9_.:/-])([a-z]+):([A-Za-z0-9][A-Za-z0-9_.-]*)")
+    for en in entries:
+        loc = C.mask_math(en.fields.get("정의 위치") or "")
+        for m in tok.finditer(loc):
+            pre, suf = m.group(1), m.group(2).rstrip(".-")
+            if pre == "g" or re.fullmatch(r"[0-9,.-]+", suf):
+                continue
+            nid = f"{pre}:{suf}"
+            if nid not in known:
+                w.append(f"layers/glossary.md:{en.line}: `g:{en.slug}` 정의 위치의 `{nid}` 가 graph.json 에도 카드에도 없다")
+
+    # 어디서도 안 가리키는 항목 (참고)
+    unused = [en.slug for en in entries if en.slug not in linked]
+    if entries:
+        notes.append(f"항목 {len(entries)}개, 링크 {nlinks}개")
+    if unused:
+        notes.append(f"어디서도 링크되지 않은 항목 {len(unused)}개: " + ", ".join(f"`g:{s}`" for s in unused))
+    rep.add("용어", e, w, notes)
 
 
 def parse_moves(text):

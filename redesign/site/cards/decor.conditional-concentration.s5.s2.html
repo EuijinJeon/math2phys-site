@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a></div><h1>class 안에서 결합 법칙이 고정됨</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s5.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s5.s1.html" title="target II 첫 경로의 분류">decor:conditional-concentration.s5.s1</a> <span class="muted">— target II 첫 경로의 분류</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s5.s3.html" title="class별 계수 합 ($-c_\ell J$, $m_eJ$)">decor:conditional-concentration.s5.s3</a>, s6<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>고정된 확장 이력 $E$에서 모든 옛 경로와 target II 첫 경로의 깊이-$e$ prefix만 남기고 나머지 새 가지를 지워도, 옛 경로와 사영된 prefix들의 결합 법칙은 바뀌지 않는다. 남는 tree는 class에만 의존한다(깊이 $\ell&lt;e$에 fresh stem이 붙은 old tree, 또는 old tree 자체). 따라서 $\mathbb E[f\cdot(a\cdot b_\ell)]$, $\mathbb E[f\cdot(a\cdot b)]$는 class 안에서 일정하고, 사영된 항의 합은 class별 (사영된 기대값)×(class의 총 부호 계수)의 합이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>지운 부분 tree는 자기 확률 kernel로 적분하면 1이고, 재사용된 옛 leaf는 새 변수를 들이지 않는다. target I의 사영 $a$는 이미 old anchor prefix에만 의존한다. 이력은 표본값에 대한 조건이 아니라 조합적 선택이다. 그래서 이력마다 tree 모양만 다르고 그 위의 법칙은 표본 규칙이 정한다.</p><details class="src"><summary>원문 (decorrelation.tex:401-413)</summary><h4>decorrelation.tex:401-413</h4><pre class="tex"><code><span class="ln">401</span>For a fixed extension history, retain every old path and the first
 <span class="ln">402</span>target-II prefix through $e$, and delete all other new branches.
 <span class="ln">403</span>The target-I projection $a$ already depends only on the retained old

@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
 <h1>증명 지도</h1><p class="stat">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다 (보조정리 → 그것을 인용하는 정리). 실선은 증명 안의 인용, 점선은 진술 안의 인용이다. 파란 노드는 카드가 있고, 누르면 카드로 간다.</p><pre class="mermaid">
 flowchart LR
   subgraph S0[&quot;§2 The model and the variational principle&quot;]

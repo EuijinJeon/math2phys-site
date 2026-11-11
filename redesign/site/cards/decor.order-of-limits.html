@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></div><h1>Remark 7.5 극한 순서에 관한 주의</h1><p><span class="badge">remark</span><span class="badge proposed">proposed</span> <code>decor:order-of-limits</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a> <span class="muted">— 선택된 수열과 극한 순서</span></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a> <span class="muted">(7.3)</span> <span class="muted">— 항등식 오차의 최대 $\varepsilon_{N,L,k}$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a> <span class="muted">Proposition 7.4</span> <span class="muted">— 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a> <span class="muted">— 상대 절댓값 비용 (relative absolute cost)</span></li><li><a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a> <span class="muted">Lemma 7.3</span> <span class="muted">— 깊이에 대한 평균 연속성</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§7 전체의 극한 순서가 맞다는 점검. §8에서 같은 순서(고정 L에서 N 먼저)로 decor:overlap-concentration을 적용한다 (comparison.tex 153–155)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>이 절에서 상쇄되지 않는 작은 분모($J=\kappa(S^+)^2$, $C(S,e)$로 나누기)는 처방된 tree 항등식의 오차에만 붙는다. 고정 $L$에서 관련 tree는 유한 개이므로 그 오차는 깊이 평균이나 $L$ 극한보다 먼저 $N\to\infty$에서 사라진다 (<a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a>). $N$ 극한 후에 남는 오차는 균등한(uniform) 상대 절댓값 비용 상계 (conditional-concentration.s3.s3), 더 작은 모양의 공분산 평균, martingale 추정 $C/L$ (<a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a>)로 제어된다. $N$에 대한 $L$-균등 수렴 속도는 어디에도 쓰지 않는다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>물리적으로는 "열역학 극한을 먼저, 계층을 촘촘히 하는 극한을 나중에"라는 순서다. 이 순서는 결과의 유효 범위(gap)에 들어가며, 규칙 표에서는 decor:overlap-concentration의 차이 열에 기록된다. 별도의 물리 진술은 두지 않는다.</p>
 <p><strong>균등성의 범위.</strong> 원문(tex 618–621)에서 "uniform"은 상대 절댓값 비용 상계에만 붙는다. 그 상계의 상수 $C_{k,\eta}$가 $L$과 깊이 배정에 무관하다는 것은 <a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a>의 <code>math</code>가 준다. 더 작은 모양의 공분산 평균 $V_{k-1,L}(\eta/2)$와 $C/L$은 $L$의 함수이고 $L\to\infty$에서 0으로 가는 양이므로 "$L$에 균등"하다고 쓰지 않는다. 이들에 곱하는 상수가 $L$에 무관하다는 것은 점화식 (tex 516–517, 601)과 lemma 7.3의 상수 진술(tex 164–165)에서 읽히지만, 이 remark 자체가 말하는 내용은 아니므로 <code>math</code>에 넣지 않았다.</p><details class="src"><summary>원문 (decorrelation.tex:613-623)</summary><h4>decorrelation.tex:613-623</h4><pre class="tex"><code><span class="ln">613</span>\begin{remark}
 <span class="ln">614</span>\label{decor:order-of-limits}

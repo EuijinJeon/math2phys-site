@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a></div><h1>균등 격자 $m_d=d/L$, $\delta=1/L$</h1><p><span class="badge">convention</span><span class="badge proposed">proposed</span> <code>x:decor-mesh</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Lemma 6.2 (카드 없음)">pert:selection</span> <span class="muted">Lemma 6.2</span></li><li><span class="nolink" title="(5.1) (카드 없음)">cavity:grid</span> <span class="muted">(5.1)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§7의 모든 계수 계산 (c_ℓ, J, κ, C(S,e))과 tree:charging의 가정<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.s1.html" title="한 층 항등식 (singleton identity)">decor:conditional-concentration.s2.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.html" title="이동된 사본과 정규화 $J$의 상대 비용">decor:conditional-concentration.s3</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s1.html" title="target II 첫 경로의 분류">decor:conditional-concentration.s5.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s3.html" title="class별 계수 합 ($-c_\ell J$, $m_eJ$)">decor:conditional-concentration.s5.s3</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s2.html" title="marker anchor로 prefix 사영 $M$을 집중시키기">decor:overlap-concentration.s2</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s2.s1.html" title="marker anchor 구성과 계수 $C(S,e)$">decor:overlap-concentration.s2.s1</a></li><li><a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></li></ul></dd><dt>수학 진술</dt><dd><p>이 절 전체에서 $L\ge2$이고 (<span class="nolink" title="Lemma 6.2 (카드 없음)">pert:selection</span>, cavity:grid의 "Fix $L\ge2$"; decorrelation.tex 4에는 $L\ge2$가 따로 적혀 있지 않다) tree의 exponent는 균등 격자 $m_d=d/L$ ($0\le d\le L$)이며 $\delta=L^{-1}$로 쓴다. 따라서 unary vertex에서의 fresh 계수는 $m_d-m_{d+1}=-\delta$이다.</p></dd><dt>물리 진술</dt><dd><p>Parisi 매개변수(R12)를 $x$-축에서 간격 $1/L$의 균등 격자로 둔, 깊이 $L$의 계층, 즉 $r=L-1$개 보조 단계의 $(L-1)$단 RSB이다 (cavity.tex 16 "use $r=L-1$ auxiliary levels", trees.tex 23 "$L=r+1$", comparison.tex 162–166의 $\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$). $L\to\infty$는 계층을 촘촘히 하는 극한이다.</p></dd><dt>차이</dt><dd><p>격자는 최적화된 Parisi 매개변수가 아니라 고정된 선택이다. 연속 극한은 §8 이후 $L\to\infty$에서만 취한다. 물리에서의 $q(x)$ 최적화나 정류점 조건은 여기에 없다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p>이 절의 모든 작은 계수는 $\delta$의 거듭제곱이다. 정규화 계수 $J$가 $\delta^{2b}$ 정도로 작아도 상대 절댓값 비용이 $L$에 균등하게 유계라는 것(<a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a>)이 균등 격자에서 계산된다.</p><details class="src"><summary>원문 (decorrelation.tex:4-4)</summary><h4>decorrelation.tex:4-4</h4><pre class="tex"><code><span class="ln">4</span>Throughout this section $m_d=d/L$ and $\delta=L^{-1}$.  For each fixed</code></pre></details>
 </div>
 

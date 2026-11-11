@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></div><h1>분산 추정 $\limsup_N\mathcal A\operatorname{Var}(R_S)\le C_k(L^{-1}+V_{k-1,L}^{1/2})$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:overlap-concentration.s4</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.overlap-concentration.s2.html" title="marker anchor로 prefix 사영 $M$을 집중시키기">decor:overlap-concentration.s2</a> <span class="muted">— marker anchor로 prefix 사영 $M$을 집중시키기</span></li><li><a class="node" href="../cards/decor.overlap-concentration.s3.html" title="prefix 아래의 조건부 분산: $G$와 $G_-$">decor:overlap-concentration.s3</a> <span class="muted">— prefix 아래의 조건부 분산: $G$와 $G_-$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a> <span class="muted">— 귀납량 $V_{k,L}(\eta)$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s3.html" title="자식 항의 깊이 평균 (fiber bound)">decor:conditional-concentration.s7.s3</a> <span class="muted">— 자식 항의 깊이 평균 (fiber bound)</span></li><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a> <span class="muted">Proposition 7.4</span> <span class="muted">— 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li><li><a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a> <span class="muted">(7.2)</span> <span class="muted">— 깊이 평균의 분수 거듭제곱 부등식</span></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a> <span class="muted">(7.3)</span> <span class="muted">— 항등식 오차의 최대 $\varepsilon_{N,L,k}$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.overlap-concentration.s5.html" title="마무리: conditional-concentration 적용">decor:overlap-concentration.s5</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.overlap-concentration.s5.html" title="마무리: conditional-concentration 적용">decor:overlap-concentration.s5</a></li></ul></dd><dt>수학 진술</dt><dd><p>조건부 기대값이 최적 $L^2$ 사영이므로 $\mathbb E(R_S-M)^2\le\mathbb E(R_S-G_-)^2\le2p_N(S,e)^2+2\mathbb E(G-G_-)^2$이다. 분산 분해 $\operatorname{Var}(R_S)=\mathbb E(R_S-M)^2+\operatorname{Var}(M)$와 s2, s3, 그리고 고정 $L$에서 유한 합인 $\mathcal A_{L,\eta}$와 $\limsup_N$의 교환(<a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a>: 각 고정 배정에서 $\operatorname{Var}(M)\to0$이므로 $\limsup_N\mathcal A_{L,\eta}\operatorname{Var}(M)=0$)에서, $L$이 충분히 크면
 $$\limsup_{N\to\infty}\mathcal A_{L,\eta}\operatorname{Var}(R_S)\le C_k\bigl(L^{-1}+V_{k-1,L}(\eta/2)^{1/2}\bigr).$$
 여기서 $p_N(S,e)^2\le s\sum_jv_N(T_j,e)^{1/2}$와 fiber bound(conditional-concentration.s7.s3)를 $\gamma=1/2$로 쓴다. 이번에는 $d$가 없으므로 전체 평균은 $D=b(S)$개 좌표, 자식 항은 여전히 $D_j=b(T_j)+1$개 좌표를 쓴다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>$G_-$는 $\mathscr F_{e-1}$-가측인 후보이므로 $M$보다 $R_S$에 가까울 수 없다. 이것이 $e$의 사영과 $e-1$의 조건부 평균을 잇는 다리다. $\operatorname{Var}(M)\to0$은 각 고정 배정에서 성립하고 고정 $L$에서 $\mathcal A_{L,\eta}$는 유한 합이므로 평균 후에도 $\limsup_N$이 0이다. 자식 항의 좌표 $(e,\mathbf q|_{T_j})$는 $\eta$-regular 배정의 부분이므로 $\eta$-regular이고, 따라서 $\eta/2$-regular다. 즉 $e$가 $T_j$의 "첫 갈라짐 앞 추가 깊이" 역할을 한다.</p><details class="src"><summary>원문 (decorrelation.tex:591-609)</summary><h4>decorrelation.tex:591-609</h4><pre class="tex"><code><span class="ln">591</span>\[

@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></div><h1>Lemma 7.2 축약 부등식과 세 사본 부등식</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>decor:contractions</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> (축약 부등식). conditional-concentration.s2.s2와 s7.s2 (세 사본 부등식으로 v_N을 overlap 차이로 누름)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.html" title="귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$">decor:conditional-concentration.s7</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a></li></ul></dd><dt>수학 진술</dt><dd><p>(a) $d$가 $S$의 initial stem 위의 깊이이고 확률 벡터 $B\in[-1,1]^N$가 $\mathscr F_d$가 주어지면 $A_S$와 조건부 독립이면
 $$\bigl\|(A_S-\mu_{d,S})\cdot B\bigr\|_{L^2}\le v_N(S,d)^{1/4}.$$
 (b) $X,Y,Z$가 $\sigma$-field $\mathscr G$가 주어지면 조건부 독립이고 같은 조건부 법칙을 갖는 유계 확률 벡터($\mathbb R^N$ 값)이고 $C$가 그 조건부 공분산 행렬이면

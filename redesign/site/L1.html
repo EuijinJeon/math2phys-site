@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a class="cur" href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a class="cur" href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
 <h1 id="l1-증명-한-쪽">L1 — 증명 한 쪽</h1>
 <p><strong>바닥</strong>: 대학원 통계역학, diluted spin glass의 cavity method, replica와 Parisi RSB의 기초(Ruelle cascade, overlap). 규칙 P1–P12는 <a href="rules.html">rules.md</a>, 역할 R1–R22는 역할 표.</p>
 <p><strong>기호</strong>: $\alpha$ 는 spin당 평균 factor 수, $p$ 는 짝수 체수(R3). $F_N$ pressure(R4). $\zeta$, $\mathbf m$ 은 $r$단 RSB order parameter와 Parisi parameter(R11, R12). $\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 는 $r$단 RSB Bethe free entropy(R15; $V_{\rm s}$ R10, $V_{\rm e}$ R9, $T_0$ R13). $\Phi_r=\inf_{\zeta,\mathbf m}\mathcal B_r$(R16). reservoir는 크기 $N$ 과 $N+1$ 을 비교하는 공통 $N$-spin 계, $\Delta_N$ 은 섭동된 계의 $N\to N+1$ 증분(rules.md 추가 기호), $Y_{0,\rm s}$, $Y_{0,\rm b}$ 는 site·bond 삽입의 계층 free entropy 변화(R20). $L$ 은 보조 계층 깊이, 하한에서는 $m_d=d/L$, $\mathbf m^{(L)}=(1/L,\ldots,(L-1)/L)$. $R_S$ 는 replica 집합 $S$ 의 multioverlap $\frac1N\sum_i\prod_{a\in S}\sigma_i^a$. prescribed tree는 깊이 $L$ 의 유한 replica tree, mark는 깊이별 무작위 부호(R21), $Q_k$ 는 $\log$ 전개의 tree 법칙(R18). $\underline F=\liminf_NF_N$(bounded 모형, 모든 크기). 증명할 식은 $\lim_N F_N=\inf_{r\ge0}\Phi_r$ 이다.</p>

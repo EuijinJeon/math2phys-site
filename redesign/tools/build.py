@@ -75,6 +75,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 """
 
@@ -93,7 +109,8 @@ esc = html.escape
 class Ctx:
     """링크 해소에 필요한 정보."""
 
-    def __init__(self, cards, graph, base=""):
+    def __init__(self, cards, graph, base="", gloss=None):
+        self.gloss = gloss or {}   # slug → GlossEntry
         self.cards = {c.id: c for c in cards if c.id and c.fm is not None}
         self.nodes = {n["id"]: n for n in (graph["nodes"] if graph else [])}
         self.base = base
@@ -109,6 +126,16 @@ class Ctx:
         c.__dict__.update(self.__dict__)
         c.base = base
         return c
+
+    def gloss_link(self, slug, label=None):
+        """[[g:slug]] → glossary.html#g-slug 링크 (표제어를 보이고, title 에 뜻). 없는 slug 는 unknown 표시."""
+        en = self.gloss.get(slug)
+        if en is None:
+            return (f'<span class="gterm unknown" title="용어집에 없는 용어: g:{esc(slug)}">'
+                    f'{esc(label or slug)}</span>')
+        title = C.plain_text(en.get("뜻"), 200)
+        return (f'<a class="gterm" href="{esc(self.base)}glossary.html#g-{esc(slug)}" title="{esc(title)}">'
+                f'{esc(label or en.headword)}</a>')
 
     def card_href(self, cid):
         return f"{self.base}cards/{page_name(cid)}"
@@ -188,6 +215,8 @@ class MD:
             body = m.group(1)
             nid, _, lab = body.partition("|")
             nid = nid.strip()
+            if nid.startswith("g:"):
+                return self.stash(self.ctx.gloss_link(nid[2:].strip(), html.unescape(lab).strip() or None))
             return self.stash(self.ctx.link(nid, lab.strip() or None))
         s = re.sub(r"\[\[([^\]\n]+?)\]\]", wiki, s)
 
@@ -356,7 +385,7 @@ def md_inline(text, ctx):
 
 # ============================================================ 페이지 틀
 NAV = [("index.html", "처음"), ("L0.html", "L0"), ("L1.html", "L1"), ("rules.html", "규칙 표"),
-       ("map.html", "증명 지도"), ("cards/index.html", "카드 목록"), ("check-report.html", "검사 보고서")]
+       ("glossary.html", "용어집"), ("map.html", "증명 지도"), ("cards/index.html", "카드 목록"), ("check-report.html", "검사 보고서")]
 
 
 def page(title, body, base="", cur=None, extra_head="", extra_tail=""):
@@ -521,6 +550,60 @@ def card_index(cards, ctx):
                 cur="cards/index.html")
 
 
+# ============================================================ 용어집
+GLOSS_LABELS = (("기호", "기호"), ("뜻", "뜻"), ("역할", "역할"), ("정의 위치", "정의 위치"),
+                ("물리 대응", "물리 대응"), ("쓰지 않는 뜻", "쓰지 않는 뜻"))
+
+
+def glossary_page(path, entries, problems, exists, ctx):
+    if not exists:
+        return page("용어집", '<h1>용어집</h1><p class="muted">layers/glossary.md 가 아직 없다.</p>', cur="glossary.html")
+    text = path.read_text(encoding="utf-8")
+    first = re.search(r"(?m)^##\s", text)
+    intro = text[:first.start()] if first else text
+    m = re.search(r"(?m)^#\s+(.*)$", intro)
+    title = m.group(1).strip() if m else "용어집"
+    intro = re.sub(r"(?m)^#\s+.*$", "", intro).strip()
+    body = f"<h1>{esc(title)}</h1>"
+    if intro:
+        body += md_html(intro, ctx)
+    # 색인: 묶음별
+    groups = []
+    for en in entries:
+        if not groups or groups[-1][0] != en.group:
+            groups.append((en.group, []))
+        groups[-1][1].append(en)
+    idx = ['<nav class="gindex" aria-label="용어 색인">']
+    for g, ens in groups:
+        if g:
+            idx.append(f"<h3>{md_inline(g, ctx)}</h3>")
+        idx.append("<ul>" + "".join(f'<li><a href="#g-{esc(e.slug)}">{esc(e.headword)}</a></li>' for e in ens) + "</ul>")
+    idx.append("</nav>")
+    body += f'<p class="stat">항목 {len(entries)}개</p>' + "".join(idx)
+    if problems:
+        body += ('<div class="iface"><strong style="color:var(--bad)">형식 문제</strong><ul>'
+                 + "".join(f"<li>줄 {ln}: {esc(msg)}</li>" for ln, msg in problems) + "</ul></div>")
+    seen = set()
+    for g, ens in groups:
+        if g:
+            body += f"<h2>{md_inline(g, ctx)}</h2>"
+        for en in ens:
+            dup = en.slug in seen
+            seen.add(en.slug)
+            eid = f"g-{en.slug}" + ("-dup" if dup else "")
+            rows = []
+            for key, label in GLOSS_LABELS:
+                v = en.fields.get(key)
+                if C.is_null(v):
+                    if key in ("뜻", "역할", "정의 위치"):
+                        rows.append(f'<dt>{label}</dt><dd><span style="color:var(--bad)">(비었음)</span></dd>')
+                    continue
+                rows.append(f"<dt>{label}</dt><dd>{md_html(v, ctx)}</dd>")
+            body += (f'<section class="gent" id="{esc(eid)}"><h3>{esc(en.headword)}'
+                     f'<span class="gslug">g:{esc(en.slug)}</span></h3><dl>' + "".join(rows) + "</dl></section>")
+    return page(title, body, cur="glossary.html")
+
+
 # ============================================================ 지도
 def mermaid_text(s, limit=34):
     s = re.sub(r"\$([^$]*)\$", r"\1", s or "")
@@ -605,7 +688,12 @@ def main():
     out = Path(args.out) if args.out else root / "site"
     graph = C.load_graph()
     cards = C.load_cards(root)
-    ctx = Ctx(cards, graph)
+    gpath = root / "layers" / "glossary.md"
+    gentries, gproblems, gexists = C.parse_glossary(gpath)
+    gloss = {}
+    for en in gentries:
+        gloss.setdefault(en.slug, en)   # 중복이면 먼저 나온 것
+    ctx = Ctx(cards, graph, gloss=gloss)
     (out / "cards").mkdir(parents=True, exist_ok=True)
     for old in list(out.glob("*.html")) + list((out / "cards").glob("*.html")):
         old.unlink()
@@ -629,6 +717,12 @@ def main():
             body = f"<h1>{label}</h1><p class=\"muted\">layers/{name}.md 가 아직 없다.</p>"
             layers[name] = False
         w(f"{name}.html", page(label, body, cur=f"{name}.html"))
+
+    # 용어집
+    try:
+        w("glossary.html", glossary_page(gpath, gentries, gproblems, gexists, ctx))
+    except Exception as ex:
+        w("glossary.html", page("용어집", f"<h1>용어집</h1><p>생성 오류: {esc(repr(ex))}</p>", cur="glossary.html"))
 
     # 카드
     n_ok = 0
@@ -666,6 +760,7 @@ def main():
 <li><a href="L0.html">L0</a> — 한 문단: 결과와 의미{'' if layers['L0'] else ' (아직 없음)'}</li>
 <li><a href="L1.html">L1</a> — 한 쪽: 번호 붙은 수의 목록{'' if layers['L1'] else ' (아직 없음)'}</li>
 <li><a href="rules.html">규칙 표</a> — 물리판이 증명 없이 쓰는 명제 P1, P2, …{'' if layers['rules'] else ' (아직 없음)'}</li>
+<li><a href="glossary.html">용어집</a> — 이 문서가 쓰는 용어의 뜻·역할·정의 위치{'' if gexists else ' (아직 없음)'}</li>
 <li><a href="map.html">증명 지도</a> — 정리류 노드 {nn}개의 의존 그래프</li>
 <li><a href="cards/index.html">카드 목록</a> — 카드 {n_ok}개</li>
 <li><a href="check-report.html">검사 보고서</a> — 적법성 검사 결과</li>

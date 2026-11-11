@@ -297,7 +297,9 @@ WIKI = re.compile(r"\[\[([^\]\n]+?)\]\]")
 
 
 def wiki_ids(text):
-    return [m.group(1).split("|")[0].strip() for m in WIKI.finditer(text or "")]
+    """[[id]] 의 노드 ID 들. 용어집 링크 [[g:slug]] 는 노드가 아니므로 뺀다."""
+    ids = [m.group(1).split("|")[0].strip() for m in WIKI.finditer(text or "")]
+    return [i for i in ids if not i.startswith("g:")]
 
 
 # ------------------------------------------------------------ 규칙 표

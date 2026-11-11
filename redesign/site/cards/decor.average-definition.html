@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a></div><h1>(7.1) 깊이 평균 $\mathcal A_{L,\eta}$</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>decor:average-definition</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:overlap-concentration과 decor:conditional-concentration의 진술. comp:shape-error-bound가 같은 평균을 쓴다<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a></li><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s3.html" title="자식 항의 깊이 평균 (fiber bound)">decor:conditional-concentration.s7.s3</a></li><li><a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></li><li><a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a></li><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s3.html" title="prefix 아래의 조건부 분산: $G$와 $G_-$">decor:overlap-concentration.s3</a></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a></li></ul></dd><dt>수학 진술</dt><dd><p>$a$개의 깊이 좌표 위의 음이 아닌 배열 $z(\mathbf q)$에 대해
 $$\mathcal A_{L,\eta}z=L^{-a}\sum_{\mathbf q\ \eta\text{-regular}}z(\mathbf q).$$
 $d&lt;\min_vq_v$ 같은 추가 순서 조건은 합의 범위에 넣는다. $\eta$-regular 배정의 수는 $L^a$ 이하이므로 총 질량 $\mathcal A_{L,\eta}1\le1$이다(정규화하지 않은 평균). $a=0$이면 $\mathcal A_{L,\eta}z=z$.</p></dd><dt>물리 진술</dt><dd><p>계층 깊이 $d$는 Parisi 매개변수 $m_d=d/L$(R12)에 대응하므로, $\mathcal A_{L,\eta}$는 갈라짐 위치를 Parisi 변수 $x\in(\eta,1-\eta)$에 대해 균등하게 평균하는 연산이다.</p></dd><dt>차이</dt><dd><p>대응은 그림일 뿐 논증에 쓰이지 않는다. 평균은 정규화되지 않았고(질량 $&lt;1$일 수 있음), 서로 $\eta L$보다 가까운 갈라짐은 뺀다.</p></dd><dt>축약 유형</dt><dd><code>intuition</code> <span class="muted">— 논증에 쓰이지 않는 그림</span></dd></dl><h2>본문</h2><p>정규화하지 않았기 때문에 Hölder 꼴 부등식 <a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a>가 상수 없이 성립한다.</p><details class="src"><summary>원문 (decorrelation.tex:30-38)</summary><h4>decorrelation.tex:30-38</h4><pre class="tex"><code><span class="ln">30</span>For a nonnegative array $z(\mathbf q)$ on $a$ depth coordinates, put

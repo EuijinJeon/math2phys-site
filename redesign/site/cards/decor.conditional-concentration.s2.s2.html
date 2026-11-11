@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></div><h1>기저의 마무리: 세 사본 부등식</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s2.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s2.s1.html" title="한 층 항등식 (singleton identity)">decor:conditional-concentration.s2.s1</a> <span class="muted">— 한 층 항등식 (singleton identity)</span></li><li><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> <span class="muted">Lemma 7.2</span> <span class="muted">— 축약 부등식과 세 사본 부등식</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$\ell=d$이면 경로 1, 2, 3은 $\mathscr F_d$가 주어지면 조건부 독립이고 같은 조건부 법칙을 가지므로 <a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> (b)에서 $\mathbb E(X-X_d)^2\ge2v_N(S,d)$. $d/L&gt;\eta$이므로 $c_d=(d+2)\delta\ge\eta$. s2.s1의 다른 항은 음이 아니므로 $v_N(S,d)\le\delta/\eta+o_N(1)$ (고정 $L,d$). 질량 $\le1$인 평균을 취하면 $V_{1,L}(\eta)\le\delta/\eta$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>$X=\sigma^1\cdot\sigma^2$, $X_d=\sigma^1\cdot\sigma^3$이고 세 경로가 깊이 $d$에서 서로 갈라지므로 세 사본 부등식이 바로 적용된다. 다른 $\ell$ 항은 버린다. 이 버림이 가능한 것은 항등식이 음이 아닌 항들의 합으로 정리되었기 때문이다.</p><details class="src"><summary>원문 (decorrelation.tex:287-291)</summary><h4>decorrelation.tex:287-291</h4><pre class="tex"><code><span class="ln">287</span>For $\ell=d$, the three spin vectors are conditionally independent
 <span class="ln">288</span>below $d$.  Hence \eqref{decor:three-copy-bound} and $c_d\ge\eta$
 <span class="ln">289</span>give $v_N(S,d)\le\delta/\eta+o_N(1)$ at each fixed $L,d$.

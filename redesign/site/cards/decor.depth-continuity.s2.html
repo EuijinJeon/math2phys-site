@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></div><h1>갈라짐 하나를 한 칸 늦추는 효과</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:depth-continuity.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a> <span class="muted">— martingale energy와 평가 깊이 연속성</span></li><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li><li><a class="node" href="../cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a> <span class="muted">— topology, 깊이 배정, $b(S)$, 자식 모양</span></li><li><a class="node" href="../cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a> <span class="muted">— 곱 차이 부등식</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>깊이 $q$의 branching vertex $v$ (첫 갈라짐이 아니어도 된다)가 자식 모양 $T_1,\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. x:decor-topology의 약속대로 각 $T_j$는 root에서 $v$까지의 경로를 stem으로 갖는 topology이므로 $q$는 $T_j$의 initial stem 위에 있고, $\mathscr F_q$는 root와 그 경로의 깊이 $q$까지 sampled prefix가 생성하는 $\sigma$-field, $\mu_{q,T_j}=\mathbb E[A_{T_j}\mid\mathscr F_q]$는 decor:covariance-definition을 $T_j$에 적용한 것이다. $q+1$이 각 $T_j$의 첫 branching depth보다 작으면(그리고 $T_j$가 leaf 하나이면 $q+1\le L-1$) $\mu_{q+1,T_j}$도 같은 뜻으로 정의된다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\prod_j\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고
 $$\mathbb E\Bigl\|\prod_j\mu_{q,T_j}-\mathbb E\Bigl[\prod_j\mu_{q+1,T_j}\Bigm|\mathscr F_q\Bigr]\Bigr\|_N^2\le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2.$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>갈라지는 순간 자식들은 조건부 독립이므로 평균이 곱으로 분해된다. 갈라짐을 늦추면 자식들이 한 걸음을 공유한 뒤 독립이 된다. martingale 성질 $\mu_{q,T_j}=\mathbb E[\mu_{q+1,T_j}\mid\mathscr F_q]$ 때문에 차이는 $\mathbb E[\prod x_j-\prod y_j\mid\mathscr F_q]$ 꼴이다. 조건부 Jensen으로 제곱을 안으로 넣고 곱 차이 부등식(<a class="node" href="../cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a>)을 쓰면 된다.</p><details class="src"><summary>원문 (decorrelation.tex:178-193)</summary><h4>decorrelation.tex:178-193</h4><pre class="tex"><code><span class="ln">178</span>
 <span class="ln">179</span>Consider a branching vertex at depth $q$ with child shapes

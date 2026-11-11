@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a></div><h1>7 §7 처방된 tree 위의 decorrelation</h1><p><span class="badge">section</span><span class="badge proposed">proposed</span> <code>decor:section</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Lemma 6.2 (카드 없음)">pert:selection</span> <span class="muted">Lemma 6.2</span></li><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><span class="nolink" title="Lemma 3.3 (카드 없음)">tree:extension-expansion</span> <span class="muted">Lemma 3.3</span></li><li><span class="nolink" title="Lemma 3.4 (카드 없음)">tree:reference-total</span> <span class="muted">Lemma 3.4</span></li><li><span class="nolink" title="Lemma 3.5 (카드 없음)">tree:charging</span> <span class="muted">Lemma 3.5</span></li><li><span class="nolink" title="(3.1) (카드 없음)">tree:multioverlap</span> <span class="muted">(3.1)</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li><li><a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a> <span class="muted">— 선택된 수열과 극한 순서</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§8 (comparison.tex 122–156의 <span class="nolink" title="(8.5) (카드 없음)">comp:shape-error-bound</span>/comp:shape-error 논증, 153에서 <a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a> 적용; <span class="nolink" title="Proposition 8.3 (카드 없음)">comp:insertion-comparison</span> 명제는 160부터)이 §7에서 가져가는 카드 전체: <a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a>, <a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a>, <a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a>, <a class="node" href="../cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a>, <a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a>, <a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a>. 이것으로 cavity 삽입의 site 표지를 독립 사본으로 바꾼다<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>받는 것 (§6, §3). 각 고정 $L\ge2$에서 $N\to\infty$ 극한은 pert:selection의 수열을 따라 취하고, 그 수열에서 pert:tree-identity의 처방된 tree 항등식이 모든 고정 old tree, anchor, 유계 multioverlap 다항식 $f$, 유한 개 added color, 제약에 대해 성립한다 (<a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a>). 그 밖에는 §3의 tree 표본 규칙 (<a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a>)과 확장 계수의 계산 (<span class="nolink" title="Lemma 3.3 (카드 없음)">tree:extension-expansion</span>, <span class="nolink" title="Lemma 3.4 (카드 없음)">tree:reference-total</span>, <span class="nolink" title="Lemma 3.5 (카드 없음)">tree:charging</span>)만 쓴다. interaction factorization은 쓰지 않는다. 이 절 전체에서 $m_d=d/L$, $\delta=L^{-1}$ (<a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a>).</p>
 <p>내놓는 것 (§8로). 모든 고정 labeled topology $S$와 모든 $\eta&gt;0$에 대해
 $$\lim_{L\to\infty}\limsup_{N\to\infty}\mathcal A_{L,\eta}\operatorname{Var}(R_S)=0,$$

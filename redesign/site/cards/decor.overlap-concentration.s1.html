@@ -55,6 +55,22 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
 @media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
 </style>
 <script>
@@ -69,7 +85,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></div><h1>singleton: 추가 color 없는 spin anchor</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:overlap-concentration.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:overlap-concentration의 singleton 경우<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>singleton $S$에서 old tree를 $S$ 자신, spin anchor를 그 leaf, added color 없음, $f=R_S$로 둔 pert:tree-identity는 $\mathbb ER_S^2-(\mathbb ER_S)^2\to0$, 즉 각 고정 $L$에서 $\operatorname{Var}(R_S)\to0$을 준다.</p></dd><dt>물리 진술</dt><dd><p>자화 $R_S=N^{-1}\sum_i\sigma_i$는 self-average한다(disorder와 상태 선택에 대해 요동하지 않는다).</p></dd><dt>차이</dt><dd><p>선택된 perturbed 수열을 따라서만, 각 고정 $L$에서 성립한다. 이 경우에는 깊이 평균이 필요 없다.</p></dd><dt>축약 유형</dt><dd><code>approximation</code> <span class="muted">— 유효 범위 안에서만 맞음</span></dd></dl><h2>본문</h2><p>빈 확장은 계수 1이고 spin anchor에서 $k=0$이면 $R_E=R_{\{a_*\}}=R_S$이다. 항등식 $\mathbb E[fR_S]-\mathbb Ef\,\mathbb ER_S\to0$에 $f=R_S$를 넣으면 된다.</p><details class="src"><summary>원문 (decorrelation.tex:532-536)</summary><h4>decorrelation.tex:532-536</h4><pre class="tex"><code><span class="ln">532</span>\begin{proof}[Proof of \cref{decor:overlap-concentration}]
 <span class="ln">533</span>For a singleton, use the spin-anchor identity with no added colors
 <span class="ln">534</span>and $f=R_S$.  It gives
