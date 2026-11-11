@@ -366,3 +366,149 @@ def rule_nodes(cell):
 
 def is_null(v):
     return v is None or (isinstance(v, str) and v.strip().lower() in ("", "null", "~", "none"))
+
+
+# ------------------------------------------------------------ 용어집
+GLINK = re.compile(r"\[\[g:([^\]|\n]*?)(?:\|([^\]\n]*))?\]\]")
+GSLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+GFIELDS = ("기호", "뜻", "역할", "정의 위치", "물리 대응", "쓰지 않는 뜻")
+_GHEAD = re.compile(r"^###\s+g:([^\s—–]*)\s*(?:[—–]|--|-)\s*(.*?)\s*#*\s*$")
+_GFIELD = re.compile(r"^\s*[-*+]\s+\*\*([^*]+?)\*\*\s*[:：]\s*(.*)$")
+
+
+class GlossEntry:
+    def __init__(self, slug, headword, group, line):
+        self.slug = slug
+        self.headword = headword
+        self.group = group
+        self.line = line
+        self.fields = {}      # 칸 이름 → 문자열 (여러 줄이면 \n 으로 잇는다)
+        self.field_lines = {}
+
+    def get(self, name):
+        return (self.fields.get(name) or "").strip()
+
+
+def parse_glossary(path):
+    """layers/glossary.md 를 읽는다. 반환: (entries, problems, exists).
+
+    entries : [GlossEntry] (문서 순서). 슬러그가 겹쳐도 모두 담는다.
+    problems: [(줄, 메시지)]  형식이 깨진 제목·칸. 죽지 않고 모아서 돌려준다.
+    exists  : 파일이 있는가.
+    """
+    p = Path(path)
+    if not p.is_file():
+        return [], [], False
+    try:
+        lines = p.read_text(encoding="utf-8").split("\n")
+    except Exception as ex:
+        return [], [(0, f"읽기 실패: {ex}")], True
+    entries, problems = [], []
+    group = ""
+    cur = None
+    curfield = None
+    in_fence = False
+    for i, l in enumerate(lines, 1):
+        if l.lstrip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        if re.match(r"^##\s+", l) and not l.startswith("###"):
+            group = re.sub(r"\s*#*\s*$", "", l[2:].strip())
+            cur = curfield = None
+            continue
+        if l.startswith("###"):
+            cur = curfield = None
+            m = _GHEAD.match(l)
+            if not m:
+                problems.append((i, f"항목 제목 형식이 아니다(`### g:<slug> — 표제어`): {l.strip()[:60]}"))
+                continue
+            slug, head = m.group(1), m.group(2)
+            if not slug or not GSLUG.fullmatch(slug):
+                problems.append((i, f"slug `{slug}` 는 영문 소문자·숫자·하이픈이어야 한다"))
+                continue
+            if not head:
+                problems.append((i, f"`g:{slug}` 표제어가 비었다"))
+            cur = GlossEntry(slug, head or slug, group, i)
+            entries.append(cur)
+            continue
+        if cur is None:
+            continue
+        m = _GFIELD.match(l)
+        if m:
+            name = m.group(1).strip()
+            if name not in GFIELDS:
+                problems.append((i, f"`g:{cur.slug}`: 알 수 없는 칸 `{name}`"))
+            if name in cur.fields:
+                problems.append((i, f"`g:{cur.slug}`: 칸 `{name}` 가 두 번 나온다"))
+            cur.fields[name] = m.group(2).strip()
+            cur.field_lines[name] = i
+            curfield = name
+            continue
+        if not l.strip():
+            continue
+        if re.match(r"^#{1,6}\s", l):
+            cur = curfield = None
+            continue
+        if curfield is not None and l.startswith((" ", "\t")):
+            cur.fields[curfield] += "\n" + l.strip()   # 칸의 이어지는 줄
+        else:
+            problems.append((i, f"`g:{cur.slug}`: 칸이 아닌 줄: {l.strip()[:50]}"))
+    return entries, problems, True
+
+
+def mask_code(text):
+    """코드 블록·인라인 코드를 같은 길이의 공백으로 가린다 (줄 번호 보존)."""
+    def blank(m):
+        return re.sub(r"[^\n]", " ", m.group(0))
+    text = re.sub(r"(?m)^[ \t]*```[^\n]*\n.*?^[ \t]*```[ \t]*$", blank, text, flags=re.S)
+    return re.sub(r"(`+)(.+?)\1", blank, text)
+
+
+def mask_math(text):
+    """수식($..$, $$..$$, \\[..\\], \\(..\\))을 공백으로 가린다 (줄 번호 보존)."""
+    def blank(m):
+        return re.sub(r"[^\n]", " ", m.group(0))
+    text = re.sub(r"\$\$.+?\$\$", blank, text, flags=re.S)
+    text = re.sub(r"\\\[.+?\\\]", blank, text, flags=re.S)
+    text = re.sub(r"\\\(.+?\\\)", blank, text, flags=re.S)
+    text = re.sub(r"(?<![\\$])\$(?![\s$])((?:\\.|[^$\\\n]|\n(?![ \t]*\n))+?)(?<![\s\\])\$(?!\$)", blank, text)
+    return text
+
+
+def mask_code_math(text):
+    return mask_math(mask_code(text))
+
+
+def glossary_links(text):
+    """코드 밖에서 [[g:slug]] 를 찾는다. 반환: [(줄, slug)]."""
+    t = mask_code(text or "")
+    out = []
+    for m in GLINK.finditer(t):
+        out.append((t.count("\n", 0, m.start()) + 1, m.group(1).strip()))
+    return out
+
+
+# 역할 번호 R1–R22: 수식·코드 밖의 맨 토큰 R + 숫자 1–2자리
+ROLE_REF = re.compile(r"(?<![A-Za-z0-9_\\:/#])R(\d{1,2})(?![A-Za-z0-9_^{(])")
+
+
+def role_refs(text):
+    """역할 번호 참조를 찾는다. 반환: [(줄, 'R5')]. 수식·코드·인라인 코드는 먼저 가린다."""
+    t = mask_code_math(text or "")
+    out = []
+    for m in ROLE_REF.finditer(t):
+        if 1 <= int(m.group(1)) <= 22:
+            out.append((t.count("\n", 0, m.start()) + 1, "R" + m.group(1)))
+    return out
+
+
+def plain_text(s, limit=200):
+    """툴팁용: 줄바꿈·markdown 강조를 걷어낸 평문 (수식은 TeX 원문 그대로), limit 자로 자른다."""
+    s = re.sub(r"\[\[g:([^\]|\n]*?)(?:\|([^\]\n]*))?\]\]", lambda m: (m.group(2) or m.group(1)), s or "")
+    s = re.sub(r"\[\[([^\]|\n]*?)(?:\|([^\]\n]*))?\]\]", lambda m: (m.group(2) or m.group(1)), s)
+    s = re.sub(r"\*\*(.+?)\*\*", r"\1", s)
+    s = s.replace("`", "")
+    s = re.sub(r"\s+", " ", s).strip()
+    return s if len(s) <= limit else s[:limit - 1].rstrip() + "…"
