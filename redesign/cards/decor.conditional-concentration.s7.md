@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-**증명의 뼈대.** [[decor:conditional-concentration.s7.s1]]: s6의 $f$를 $a\cdot b$로 바꾸면 좌변이 음이 아닌 $\frac12\sum c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$가 되고, $\ell=d$ 항이 $C_\eta(\delta+p_N(S,e)+|\rho_N|)$로 눌린다. [[decor:conditional-concentration.s7.s2]]: 세 사본 부등식과 사영으로 $v_N(S,d)\le C_{k,\eta}(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S))+C_{L,k,\eta}\varepsilon_{N,L,k}$. [[decor:conditional-concentration.s7.s3]]: 자식 항의 깊이 평균은 단일 사본 평균으로 눌린다(fiber bound). [[decor:conditional-concentration.s7.s4]]: $\gamma=1/4$로 평균하고 $\limsup_N$을 취해 점화식을 얻고 귀납을 닫는다.
+**증명의 뼈대.** [[decor:conditional-concentration.s7.s1]]: s6의 $f$를 $a\cdot b$로 바꾸면 좌변이 음이 아닌 $\frac12\sum c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$가 되고, $\ell=d$ 항이 $C_\eta(\delta+p_N(S,e)+|\rho_N|)$로 눌린다. [[decor:conditional-concentration.s7.s2]]: 세 사본 부등식과 사영으로 $v_N(S,d)\le C_{k,\eta}(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S))+C_{L,k,\eta}\varepsilon_{N,L,k}$. [[decor:conditional-concentration.s7.s3]]: 자식 항의 깊이 평균은 단일 사본 평균으로 눌린다(fiber bound). [[decor:conditional-concentration.s7.s4]]: $\gamma=1/4$로 평균하고, 고정 $L$에서 유한 합인 $\mathcal A_{L,\eta}$와 $\limsup_N$을 바꾸어(항등식 오차 항이 평균 뒤에도 사라진다) 점화식을 얻고 귀납을 닫는다.

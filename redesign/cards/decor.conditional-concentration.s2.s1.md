@@ -10,9 +10,9 @@ math: |
   anchor 혼자일 때의 총 계수는 $-\delta$이다. $X=R_{12}$, $X_\ell=R_{13}$ (경로 3은 해당 fresh 확장)이라 하면 각 $X_\ell$은 $X$와 같은 marginal law를 갖고 $\sum_{\ell=d}^{L-1}c_\ell=1+\delta$이다. $f=X$로 둔 pert:tree-identity에서
   $$\frac12\sum_{\ell=d}^{L-1}c_\ell\,\mathbb E(X-X_\ell)^2=\delta\operatorname{Var}(X)+o_N(1)\le\delta+o_N(1).$$
 physics: |
-  stochastic stability에서 나오는 Ghirlanda–Guerra 형 항등식의 한 층 판: anchor와 깊이 $d$에서 갈라진 replica 쌍의 overlap $X$와, 새 replica를 tree의 가능한 갈라짐 위치 $\ell$에 가중치 $c_\ell$로 붙였을 때의 overlap $X_\ell$의 차이 제곱 평균의 가중합이 $\delta\operatorname{Var}(X)$와 같다.
+  섭동 도함수의 집중에서 얻는 overlap 항등식의 한 층 판이다. 논문은 이런 항등식의 선행 연구로 Ghirlanda–Guerra의 self-averaging 논법과 Aizenman–Contucci의 stochastic stability 관계를 든다(perturbations.tex 17–21). 내용: anchor와 깊이 $d$에서 갈라진 replica 쌍의 overlap $X$와, 새 replica를 tree의 가능한 갈라짐 위치 $\ell$에 가중치 $c_\ell$로 붙였을 때의 overlap $X_\ell$의 차이 제곱 평균의 가중합이 $\delta\operatorname{Var}(X)$와 같다.
 gap: |
-  pert:selection이 고른 perturbed reservoir의 수열을 따라 고정 $L$에서 $o_N(1)$ 오차로만 성립한다. 가중치 $c_\ell$은 균등 격자 $m_d=d/L$와 tree:extension-expansion의 계수에서 온다. 고전적 GG 항등식의 $P(q)$ 가중치 형태로 바꿔 쓴 것은 아니다.
+  pert:selection이 고른 perturbed reservoir의 수열을 따라 고정 $L$에서 $o_N(1)$ 오차로만 성립한다. 가중치 $c_\ell$은 균등 격자 $m_d=d/L$와 tree:extension-expansion의 계수에서 온다. 논문은 이 항등식을 Ghirlanda–Guerra 항등식과 같다고 하거나 그것에서 유도하지 않는다. GG 계열은 선행 연구로만 언급된다(perturbations.tex 17–18 "has antecedents in the self-averaging argument of Ghirlanda--Guerra"). 고전적 GG 항등식의 $P(q)$ 가중치 형태로 바꿔 쓴 것도 아니다. "상태"는 보조 계층의 prefix다.
 abstraction: approximation
 children: []
 source:

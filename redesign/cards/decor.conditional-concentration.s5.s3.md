@@ -2,10 +2,10 @@
 id: decor:conditional-concentration.s5.s3
 kind: step
 title: 'class별 계수 합 ($-c_\ell J$, $m_eJ$)'
-uses: [decor:conditional-concentration.s5.s1, decor:conditional-concentration.s3.s2, tree:reference-total, x:decor-mesh]
+uses: [decor:conditional-concentration.s3.s1, decor:conditional-concentration.s5.s1, decor:conditional-concentration.s3.s2, tree:reference-total, x:decor-mesh, x:decor-tree-sampling]
 provides: 'decor:conditional-concentration.s6'
 math: |
-  tree:reference-total에 의해, 첫 경로의 각 선택마다 나중 target II color들의 계수를 거꾸로 합하면 $\kappa(S^+)$이고, target I color들의 계수 합은 또 하나의 $\kappa(S^+)$이다. 그래서 class $\ell$의 총 계수는 $-c_\ell J$이다. 기준 모양 전체의 계수는 $(m_d-m_{d+1})\kappa(S^+)^2=-\delta J$이고 이는 old tree에서나 anchor 혼자에서나 같다. $\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta=m_e+\delta$이므로 나머지 class "old prefix through $e$"의 총 계수는 $-\delta J+(m_e+\delta)J=m_eJ$이다.
+  tree:reference-total에 의해, 첫 경로의 각 선택마다 나중 target II color들의 계수를 거꾸로 합하면 $\kappa(S^+)$이고, target I color들의 계수 합은 또 하나의 $\kappa(S^+)$이다. 그래서 class $\ell$의 총 계수는 $-c_\ell J$이다. 기준 모양 전체의 계수는 $(m_d-m_{d+1})\kappa(S^+)^2=-\delta J$이고 이는 old tree에서나 anchor 혼자에서나 같다. $\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta=m_e+\delta$이므로 나머지 class "old prefix through $e$"의 총 계수는 $-\delta J+(m_e+\delta)J=m_eJ$이다. anchor 혼자인 쪽에서는 확장된 tree 전체가 target이고 제약이 그 모양($d$에서 분리된 $S^+$ 두 사본, anchor는 원래 자리)을 정하므로, x:decor-tree-sampling에 의해 anchor 혼자인 쪽의 모든 확장에서 target overlap $R_E$는 같은 법칙을 갖는다. 그 공통 기대값을 $\mathbb ER_{\rm target}$이라 하면 anchor 혼자인 쪽의 합은 $\sum_Ec_E\,\mathbb ER_E=-\delta J\,\mathbb ER_{\rm target}$이다 (tex 362–363 "In every extension", 418–419, 444–445).
 physics: null
 gap: null
 abstraction: blackbox

@@ -2,7 +2,7 @@
 id: decor:overlap-concentration
 kind: theorem
 title: '모든 multioverlap의 깊이 평균 집중'
-uses: [x:decor-topology, x:decor-eta-regular, decor:average-definition, x:decor-spin-product, x:decor-limit-order, x:decor-mesh, pert:tree-identity, tree:reference-total, decor:projection-bound, decor:depth-continuity, decor:conditional-concentration]
+uses: [x:decor-topology, x:decor-eta-regular, decor:average-definition, x:decor-spin-product, x:decor-limit-order, x:decor-mesh, pert:tree-identity, tree:reference-total, decor:projection-bound, decor:depth-continuity, decor:conditional-concentration, decor:identity-error]
 provides: '§8: comparison.tex 153에서 comp:shape-error-bound의 우변을 0으로 보내 comp:shape-error를 얻고, comp:insertion-comparison에서 reservoir site 표지를 독립 사본으로 바꾸는 근거'
 math: |
   모든 고정 labeled topology $S$에 대해
@@ -21,4 +21,4 @@ source:
 status: proposed
 ---
 
-**증명의 뼈대.** singleton은 [[decor:overlap-concentration.s1]]: 추가 color 없는 spin anchor 항등식이 바로 $\operatorname{Var}(R_S)\to0$을 준다. $|S|=k\ge2$이고 첫 갈라짐이 $e$라 하자. $M=\mathbb E[R_S\mid\mathscr F_{e-1}]$로 분산을 $\operatorname{Var}(R_S)=\mathbb E(R_S-M)^2+\operatorname{Var}(M)$으로 나눈다. [[decor:overlap-concentration.s2]]: marker anchor 항등식이 각 고정 $L,e$에서 $\operatorname{Var}(M)\to0$을 준다(상태 사이). [[decor:overlap-concentration.s3]]: $G=\mathbf1\cdot\prod_j\mu_{e,T_j}$, $G_-=\mathbf1\cdot\prod_j\mu_{e-1,T_j}$라 하면 $\mathbb E(R_S-G)^2\le p_N(S,e)^2$, $\mathcal A_{L,\eta}\mathbb E(G-G_-)^2\le C_k/L$이고 $G_-$는 $\mathscr F_{e-1}$-가측이다. [[decor:overlap-concentration.s4]]: $L^2$ 사영의 최적성으로 $\mathbb E(R_S-M)^2\le2p_N^2+2\mathbb E(G-G_-)^2$이고, fiber bound로 $\limsup_N\mathcal A_{L,\eta}\operatorname{Var}(R_S)\le C_k(L^{-1}+V_{k-1,L}(\eta/2)^{1/2})$. [[decor:overlap-concentration.s5]]: decor:conditional-concentration이 $V_{k-1,L}(\eta/2)\to0$을 주므로 끝난다.
+**증명의 뼈대.** singleton은 [[decor:overlap-concentration.s1]]: 추가 color 없는 spin anchor 항등식이 바로 $\operatorname{Var}(R_S)\to0$을 준다. $|S|=k\ge2$이고 첫 갈라짐이 $e$라 하자. $M=\mathbb E[R_S\mid\mathscr F_{e-1}]$로 분산을 $\operatorname{Var}(R_S)=\mathbb E(R_S-M)^2+\operatorname{Var}(M)$으로 나눈다. [[decor:overlap-concentration.s2]]: marker anchor 항등식이 각 고정 $L,e$에서 $\operatorname{Var}(M)\to0$을 준다(상태 사이). [[decor:overlap-concentration.s3]]: $G=\mathbf1\cdot\prod_j\mu_{e,T_j}$, $G_-=\mathbf1\cdot\prod_j\mu_{e-1,T_j}$라 하면 $\mathbb E(R_S-G)^2\le p_N(S,e)^2$, $\mathcal A_{L,\eta}\mathbb E(G-G_-)^2\le C_k/L$이고 $G_-$는 $\mathscr F_{e-1}$-가측이다. [[decor:overlap-concentration.s4]]: $L^2$ 사영의 최적성으로 $\mathbb E(R_S-M)^2\le2p_N^2+2\mathbb E(G-G_-)^2$이고, 고정 $L$에서 유한 합인 깊이 평균과 $\limsup_N$을 바꾸어(각 배정의 $\operatorname{Var}(M)\to0$이 평균 뒤에도 남지 않는다) fiber bound로 $\limsup_N\mathcal A_{L,\eta}\operatorname{Var}(R_S)\le C_k(L^{-1}+V_{k-1,L}(\eta/2)^{1/2})$. [[decor:overlap-concentration.s5]]: decor:conditional-concentration이 $V_{k-1,L}(\eta/2)\to0$을 주므로 끝난다.
