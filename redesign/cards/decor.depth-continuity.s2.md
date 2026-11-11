@@ -2,10 +2,10 @@
 id: decor:depth-continuity.s2
 kind: step
 title: '갈라짐 하나를 한 칸 늦추는 효과'
-uses: [decor:depth-continuity.s1, x:decor-product-difference, x:decor-tree-sampling]
+uses: [decor:depth-continuity.s1, decor:covariance-definition, x:decor-topology, x:decor-product-difference, x:decor-tree-sampling]
 provides: 'decor:depth-continuity.s3'
 math: |
-  깊이 $q$의 branching vertex가 자식 모양 $T_1,\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\prod_j\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고
+  깊이 $q$의 branching vertex $v$ (첫 갈라짐이 아니어도 된다)가 자식 모양 $T_1,\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. x:decor-topology의 약속대로 각 $T_j$는 root에서 $v$까지의 경로를 stem으로 갖는 topology이므로 $q$는 $T_j$의 initial stem 위에 있고, $\mathscr F_q$는 root와 그 경로의 깊이 $q$까지 sampled prefix가 생성하는 $\sigma$-field, $\mu_{q,T_j}=\mathbb E[A_{T_j}\mid\mathscr F_q]$는 decor:covariance-definition을 $T_j$에 적용한 것이다. $q+1$이 각 $T_j$의 첫 branching depth보다 작으면(그리고 $T_j$가 leaf 하나이면 $q+1\le L-1$) $\mu_{q+1,T_j}$도 같은 뜻으로 정의된다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\prod_j\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고
   $$\mathbb E\Bigl\|\prod_j\mu_{q,T_j}-\mathbb E\Bigl[\prod_j\mu_{q+1,T_j}\Bigm|\mathscr F_q\Bigr]\Bigr\|_N^2\le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2.$$
 physics: null
 gap: null

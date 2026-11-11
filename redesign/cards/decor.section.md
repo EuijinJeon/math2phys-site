@@ -3,7 +3,7 @@ id: decor:section
 kind: section
 title: '§7 처방된 tree 위의 decorrelation'
 uses: [pert:selection, pert:tree-identity, tree:extension-expansion, tree:reference-total, tree:charging, tree:multioverlap, x:decor-mesh, x:decor-limit-order, x:decor-tree-sampling]
-provides: '§8: comparison.tex 123–158에서 decor:overlap-concentration으로 comp:shape-error를 얻고, 이것으로 cavity 삽입의 site 표지를 독립 사본으로 바꾼다 (comp:insertion-comparison)'
+provides: '§8 (comparison.tex 122–156의 comp:shape-error-bound/comp:shape-error 논증, 153에서 decor:overlap-concentration 적용; comp:insertion-comparison 명제는 160부터)이 §7에서 가져가는 카드 전체: decor:overlap-concentration, decor:average-definition, x:decor-eta-regular, x:decor-topology, x:decor-spin-product, x:decor-limit-order. 이것으로 cavity 삽입의 site 표지를 독립 사본으로 바꾼다'
 math: |
   받는 것 (§6, §3). 각 고정 $L\ge2$에서 $N\to\infty$ 극한은 pert:selection의 수열을 따라 취하고, 그 수열에서 pert:tree-identity의 처방된 tree 항등식이 모든 고정 old tree, anchor, 유계 multioverlap 다항식 $f$, 유한 개 added color, 제약에 대해 성립한다 (x:decor-limit-order). 그 밖에는 §3의 tree 표본 규칙 (x:decor-tree-sampling)과 확장 계수의 계산 (tree:extension-expansion, tree:reference-total, tree:charging)만 쓴다. interaction factorization은 쓰지 않는다. 이 절 전체에서 $m_d=d/L$, $\delta=L^{-1}$ (x:decor-mesh).
 
@@ -24,3 +24,5 @@ status: proposed
 **증명의 뼈대.** 목표는 [[decor:overlap-concentration]]이다. 세 도구를 먼저 준비한다. [[decor:contractions]]는 조건부 공분산 제곱 $v_N(S,d)$가 작으면 spin 곱 벡터를 조건부 평균으로 바꿀 수 있고(축약 부등식), 반대로 조건부 i.i.d. 세 사본의 overlap 차이가 $v_N$을 위에서 누른다(세 사본 부등식)고 말한다. [[decor:depth-continuity]]는 branching depth나 평가 깊이를 한 칸 옮겨도 조건부 평균이 깊이 평균의 의미로 $C/L$만 바뀐다고 말한다. [[decor:projection-bound]]는 첫 갈라짐 $e$에서 $A_S$를 자식 평균의 곱 $a_{S,e}$로 바꾸는 오차를 자식들의 $v_N$으로 누른다.
 
 이 도구와 처방된 tree 항등식으로 [[decor:conditional-concentration]]($\mathcal A_{L,\eta}v_N(S,d)\to0$)을 잎 수에 대한 귀납으로 얻는다. 이것이 "상태 안" 요동의 제어다. [[decor:overlap-concentration]]은 marker anchor 항등식으로 한 칸 앞 prefix에서의 조건부 평균 $M$의 분산을 0으로 보내고("상태 사이" 요동), 남은 조건부 분산을 projection-bound와 depth-continuity, 그리고 conditional-concentration으로 누른다. [[decor:order-of-limits]]는 전 과정에서 $L$에 의존하는 작은 분모가 항등식 오차에만 붙고, 그 오차는 고정 $L$에서 먼저 사라진다는 점을 정리한다.
+
+**§8 인터페이스 (export 목록).** comparison.tex에서 §7을 쓰는 곳은 122–156 한 군데다(153 `decor:overlap-concentration`; 208–211은 comp:shape-error를 거쳐 간접). 필요한 것과 그것을 담은 카드: (1) 모든 $U\in\mathfrak S_k$와 각 고정 $0<\eta<1/2$에 대한 정리 — [[decor:overlap-concentration]]. (2) singleton은 좌표 없는 평균(comparison.tex 140) — 같은 카드. (3) $\mathcal A_{L,\eta}$가 정규화 $L^{-a'}$의 비정규 평균이고 질량 $\le1$이며 Cauchy–Schwarz로 $(\mathcal A_{L,\eta}\operatorname{Var}(R_U))^{1/2}$가 나옴(144–150) — [[decor:average-definition]]. (4) §7의 $\eta$-regular가 trees.tex 462–465의 regular와 같은 조건(141–143) — [[x:decor-eta-regular]]. (5) labeled topology와 깊이 배정의 뜻 — [[x:decor-topology]]. (6) $\operatorname{Var}(R_U)$가 고정 깊이 배정에서 root를 포함한 분산 — [[x:decor-spin-product]]. (7) 안쪽 극한이 고정 $L$의 선택된 수열을 따름(130, 153–155) — [[x:decor-limit-order]]. 유도된 subtree의 법칙이 단독 사본과 같다는 것(projectivity)은 §7이 아니라 trees.tex 38–39, 482–483에서 온다.

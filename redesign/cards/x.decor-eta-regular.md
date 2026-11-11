@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-trees.tex 452–458의 regular shape 정의와 같은 조건이다. 거기서는 $Q_k$로 뽑은 tree에 대해 비정칙 확률이 $C_k(\eta+L^{-1})$임을 보이고(tree:regular-shapes), §8이 그것으로 비정칙 배정을 버린다. regularity 자체에는 물리 대응이 없다: 경계 근처와 서로 가까운 갈라짐을 기술적으로 빼는 조건이다.
+trees.tex 460–467의 regular shape 정의와 같은 조건이다(그쪽은 $0<\eta<1/2$로 제한하고(462) "A singleton is regular"를 명시한다(465). §8은 $0<\eta<1/2$만 쓴다, comparison.tex 131; 같은 조건임은 comparison.tex 141–143). 거기서는 $Q_k$로 뽑은 tree에 대해 비정칙 확률이 $C_k(\eta+L^{-1})$임을 보이고(tree:regular-shapes), §8이 그것으로 비정칙 배정을 버린다. regularity 자체에는 물리 대응이 없다: 경계 근처와 서로 가까운 갈라짐을 기술적으로 빼는 조건이다.

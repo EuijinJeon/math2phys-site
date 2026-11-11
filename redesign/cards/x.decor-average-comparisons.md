@@ -17,4 +17,4 @@ source:
 status: proposed
 ---
 
-(ii)의 근거: 이동량이 $t$ 이하이면 정규화 깊이는 $t/L$ 이하로, 두 좌표 사이 간격은 $2t/L$ 이하로 바뀐다. $2t/L\le\eta/2$이면 경계 조건과 간격 조건이 $\eta/2$로 유지된다. 간격이 $\eta L>2t$이므로 순서도 뒤집히지 않는다. (iii)은 원문이 $V_{k-1,L}(\eta)\le V_{k-1,L}(\eta/2)$를 말없이 쓰는 곳에 필요해서 적었다.
+(ii)의 근거: 이동량이 $t$ 이하이면 정규화 깊이는 $t/L$ 이하로, 두 좌표 사이 간격은 $2t/L$ 이하로 바뀐다. $2t/L\le\eta/2$이면 경계 조건과 간격 조건이 $\eta/2$로 유지된다. 간격이 $\eta L>2t$이므로 순서도 뒤집히지 않는다. (iii)은 원문이 $V_{k-1,L}(\eta)\le V_{k-1,L}(\eta/2)$를 말없이 쓰는 곳에 필요해서 적었다. 검토 1에서 참이고 실제로 쓰인다고 확인되었다: tex 509 "The unshifted term has the same bound without translating the coordinates"($\eta$-regular ⊂ $\eta/2$-regular), 520–522의 흡수, 601·607의 $\gamma=1/2$ 적용.
