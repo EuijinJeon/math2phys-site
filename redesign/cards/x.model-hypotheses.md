@@ -5,7 +5,7 @@ title: '주정리의 가정 묶음'
 uses: [model:integrability, model:hamiltonian, model:factorization, model:positivity]
 provides: 'main:theorem의 가정. upper:bound 진술의 "Under the hypotheses of main:theorem"(upper.tex 12)이 실제로 받는 것'
 math: |
-  고정한 짝수 $p\ge2$, $\alpha>0$ 과 model:hamiltonian의 모형에 대해 (2.1) $\mathbb EB(\theta)+\mathbb E\lvert h\rvert<\infty$, (2.3)의 표현과 엄격한 곱 한계, (2.4) $\mathbb E[(-b)^n]\ge0$ $(n\ge1)$. 원문 표현은 "Under \eqref{model:integrability}–\eqref{model:positivity}"이며 이 범위가 (2.1)–(2.4)이므로 (2.2) 모형 정의도 포함한다.
+  고정한 짝수 $p\ge2$, $\alpha>0$ 과 model:hamiltonian의 모형에 대해 (2.1) $\mathbb EB(\theta)+\mathbb E\lvert h\rvert<\infty$, (2.3)의 표현과 엄격한 곱 한계, (2.4) $\mathbb E[(-b)^n]\ge0$ $(n\ge1)$. 원문 표현은 "Under (2.1)–(2.4)"(식 라벨 model:integrability–model:positivity)이며 이 범위가 (2.1)–(2.4)이므로 (2.2) 모형 정의도 포함한다.
 physics: |
   [[g:hypotheses|가정]]: 짝수 $p$, 상호작용과 장의 1차 moment, tanh형 [[g:factorization|factor 전개]], coupling의 [[g:positivity|부호 조건]].
 gap: |

@@ -3,7 +3,7 @@ id: model:positivity
 kind: assumption
 title: '부호 조건 (2.4)'
 uses: [model:factorization]
-provides: 'upper:bound(upper.tex 125: 나머지항 \eqref{upper:remainder}가 0 이하). main:theorem의 가정'
+provides: 'upper:bound(upper.tex 125: 나머지항 upper:remainder가 0 이하). main:theorem의 가정'
 math: |
   (2.3)의 $b$ 에 대해
   $$\mathbb E[(-b)^n]\ge0\qquad(n\ge1).\tag{2.4}$$
