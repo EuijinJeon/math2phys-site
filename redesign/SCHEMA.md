@@ -28,7 +28,7 @@ YAML 머리말 + 자유 본문(markdown). 수식은 `$...$`, `$$...$$`.
 ---
 id: decor:overlap-concentration
 kind: theorem            # theorem | proposition | lemma | corollary | definition | remark
-                         # | assumption | step | device | convention
+                         # | assumption | step | device | convention | section
 title: 모든 multioverlap의 집중
 uses: [pert:tree-identity, decor:conditional-concentration]   # 이 노드가 쓰는 노드 ID
 provides: "§8에서 site 표지를 독립 사본으로 바꾸는 근거"        # 누가 무엇에 쓰는지 한 줄

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>증명 지도</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<h1>증명 지도</h1><p class="stat">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다 (보조정리 → 그것을 인용하는 정리). 실선은 증명 안의 인용, 점선은 진술 안의 인용이다. 파란 노드는 카드가 있고, 누르면 카드로 간다.</p><pre class="mermaid">
+flowchart LR
+  subgraph S0[&quot;§2 The model and the variational principle&quot;]
+    n0[&quot;Theorem 2.1&lt;br/&gt;theorem&quot;]
+  end
+  subgraph S1[&quot;§3 Calculus on finite trees&quot;]
+    n1[&quot;Lemma 3.1&lt;br/&gt;Insertion calculus&quot;]
+    n2[&quot;Lemma 3.2&lt;br/&gt;Logarithmic expansion&quot;]
+    n3[&quot;Lemma 3.3&lt;br/&gt;Canceled-anchor expansion&quot;]
+    n4[&quot;Lemma 3.4&lt;br/&gt;Reference-path totals&quot;]
+    n5[&quot;Lemma 3.5&lt;br/&gt;Charging fresh splits&quot;]
+    n6[&quot;Lemma 3.6&lt;br/&gt;Regular shapes&quot;]
+    n7[&quot;Remark 3.7&lt;br/&gt;averaging-remark&quot;]
+  end
+  subgraph S2[&quot;§4 The interpolation upper bound&quot;]
+    n8[&quot;Proposition 4.1&lt;br/&gt;bound&quot;]
+  end
+  subgraph S3[&quot;§5 A perturbed cavity reservoir&quot;]
+    n9[&quot;Lemma 5.1&lt;br/&gt;Cavity increments&quot;]
+  end
+  subgraph S4[&quot;§6 Perturbations and identities on prescri…&quot;]
+    n10[&quot;Lemma 6.1&lt;br/&gt;Averaged score concentration&quot;]
+    n11[&quot;Lemma 6.2&lt;br/&gt;Deterministic parameter selection&quot;]
+    n12[&quot;Lemma 6.3&lt;br/&gt;Palm identity&quot;]
+    n13[&quot;Lemma 6.4&lt;br/&gt;Vanishing insertion coefficients&quot;]
+    n14[&quot;Theorem 6.5&lt;br/&gt;Identity on prescribed trees&quot;]
+    n15[&quot;Remark 6.6&lt;br/&gt;Order of the choices&quot;]
+  end
+  subgraph S5[&quot;§7 Decorrelation on prescribed trees&quot;]
+    n16[&quot;Theorem 7.1&lt;br/&gt;overlap-concentration&quot;]
+    n17[&quot;Lemma 7.2&lt;br/&gt;Contractions and three copies&quot;]
+    n18[&quot;Lemma 7.3&lt;br/&gt;Averaged continuity in depth&quot;]
+    n19[&quot;Proposition 7.4&lt;br/&gt;conditional-concentration&quot;]
+    n20[&quot;Remark 7.5&lt;br/&gt;order-of-limits&quot;]
+  end
+  subgraph S6[&quot;§8 Independent hierarchical messages and t…&quot;]
+    n21[&quot;Lemma 8.1&lt;br/&gt;Recursive law encoding&quot;]
+    n22[&quot;Lemma 8.2&lt;br/&gt;Empirical-pattern comparison&quot;]
+    n23[&quot;Proposition 8.3&lt;br/&gt;insertion-comparison&quot;]
+    n24[&quot;Corollary 8.4&lt;br/&gt;bounded-lower&quot;]
+  end
+  subgraph S7[&quot;§9 Normalization, truncation, and completi…&quot;]
+    n25[&quot;Lemma 9.1&lt;br/&gt;Stability&quot;]
+  end
+  subgraph S8[&quot;§10 Named models and the zero-temperature l…&quot;]
+    n26[&quot;Corollary 10.1&lt;br/&gt;Viana–Bray and diluted even-spin …&quot;]
+    n27[&quot;Corollary 10.2&lt;br/&gt;Soft random even-K SAT&quot;]
+    n28[&quot;Corollary 10.3&lt;br/&gt;Zero-temperature variational limit&quot;]
+    n29[&quot;Remark 10.4&lt;br/&gt;consequences-L131&quot;]
+  end
+  n9 --&gt; n23
+  n9 --&gt; n11
+  n24 --&gt; n0
+  n21 --&gt; n23
+  n21 --&gt; n22
+  n23 --&gt; n24
+  n22 --&gt; n23
+  n19 -.-&gt; n20
+  n19 --&gt; n16
+  n17 --&gt; n19
+  n18 --&gt; n19
+  n18 --&gt; n16
+  n0 --&gt; n28
+  n0 --&gt; n27
+  n0 --&gt; n26
+  n0 -.-&gt; n8
+  n27 -.-&gt; n28
+  n27 -.-&gt; n29
+  n26 -.-&gt; n28
+  n13 --&gt; n14
+  n10 --&gt; n11
+  n12 --&gt; n13
+  n11 --&gt; n13
+  n11 -.-&gt; n14
+  n5 --&gt; n19
+  n3 --&gt; n13
+  n1 --&gt; n12
+  n2 --&gt; n23
+  n2 --&gt; n8
+  n4 --&gt; n19
+  n6 -.-&gt; n7
+  n8 --&gt; n0
+  classDef hascard fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef nocard fill:#f3f3f0,stroke:#999,color:#333;
+  class n0,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14,n15,n16,n17,n18,n19,n20,n21,n22,n23,n24,n25,n26,n27,n28,n29 nocard;
+</pre><h2>노드 표</h2><div class="tablewrap"><table><thead><tr><th>번호</th><th>id</th><th>섹션</th><th>제목</th><th>카드</th></tr></thead><tbody><tr><td>Theorem 2.1</td><td><code>main:theorem</code></td><td>§2 The model and the variational principle</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.1</td><td><code>tree:insertion</code></td><td>§3 Calculus on finite trees</td><td>Insertion calculus</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.2</td><td><code>tree:log-expansion</code></td><td>§3 Calculus on finite trees</td><td>Logarithmic expansion</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.3</td><td><code>tree:extension-expansion</code></td><td>§3 Calculus on finite trees</td><td>Canceled-anchor expansion</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.4</td><td><code>tree:reference-total</code></td><td>§3 Calculus on finite trees</td><td>Reference-path totals</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.5</td><td><code>tree:charging</code></td><td>§3 Calculus on finite trees</td><td>Charging fresh splits</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 3.6</td><td><code>tree:regular-shapes</code></td><td>§3 Calculus on finite trees</td><td>Regular shapes</td><td><span class="muted">—</span></td></tr><tr><td>Remark 3.7</td><td><code>tree:averaging-remark</code></td><td>§3 Calculus on finite trees</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Proposition 4.1</td><td><code>upper:bound</code></td><td>§4 The interpolation upper bound</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Lemma 5.1</td><td><code>cavity:increment</code></td><td>§5 A perturbed cavity reservoir</td><td>Cavity increments</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 6.1</td><td><code>pert:concentration</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Averaged score concentration</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 6.2</td><td><code>pert:selection</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Deterministic parameter selection</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 6.3</td><td><code>pert:palm</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Palm identity</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 6.4</td><td><code>pert:analytic</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Vanishing insertion coefficients</td><td><span class="muted">—</span></td></tr><tr><td>Theorem 6.5</td><td><code>pert:tree-identity</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Identity on prescribed trees</td><td><span class="muted">—</span></td></tr><tr><td>Remark 6.6</td><td><code>x:perturbations-L538</code></td><td>§6 Perturbations and identities on prescribed trees</td><td>Order of the choices</td><td><span class="muted">—</span></td></tr><tr><td>Theorem 7.1</td><td><code>decor:overlap-concentration</code></td><td>§7 Decorrelation on prescribed trees</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Lemma 7.2</td><td><code>decor:contractions</code></td><td>§7 Decorrelation on prescribed trees</td><td>Contractions and three copies</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 7.3</td><td><code>decor:depth-continuity</code></td><td>§7 Decorrelation on prescribed trees</td><td>Averaged continuity in depth</td><td><span class="muted">—</span></td></tr><tr><td>Proposition 7.4</td><td><code>decor:conditional-concentration</code></td><td>§7 Decorrelation on prescribed trees</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Remark 7.5</td><td><code>decor:order-of-limits</code></td><td>§7 Decorrelation on prescribed trees</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Lemma 8.1</td><td><code>comp:encoding</code></td><td>§8 Independent hierarchical messages and the cavity comparison</td><td>Recursive law encoding</td><td><span class="muted">—</span></td></tr><tr><td>Lemma 8.2</td><td><code>comp:patterns</code></td><td>§8 Independent hierarchical messages and the cavity comparison</td><td>Empirical-pattern comparison</td><td><span class="muted">—</span></td></tr><tr><td>Proposition 8.3</td><td><code>comp:insertion-comparison</code></td><td>§8 Independent hierarchical messages and the cavity comparison</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Corollary 8.4</td><td><code>comp:bounded-lower</code></td><td>§8 Independent hierarchical messages and the cavity comparison</td><td></td><td><span class="muted">—</span></td></tr><tr><td>Lemma 9.1</td><td><code>reduction:stability</code></td><td>§9 Normalization, truncation, and completion of the proof</td><td>Stability</td><td><span class="muted">—</span></td></tr><tr><td>Corollary 10.1</td><td><code>models:spin</code></td><td>§10 Named models and the zero-temperature limit</td><td>Viana--Bray and diluted even-spin models</td><td><span class="muted">—</span></td></tr><tr><td>Corollary 10.2</td><td><code>models:sat</code></td><td>§10 Named models and the zero-temperature limit</td><td>Soft random even-$K$ SAT</td><td><span class="muted">—</span></td></tr><tr><td>Corollary 10.3</td><td><code>models:ground</code></td><td>§10 Named models and the zero-temperature limit</td><td>Zero-temperature variational limit</td><td><span class="muted">—</span></td></tr><tr><td>Remark 10.4</td><td><code>x:consequences-L131</code></td><td>§10 Named models and the zero-temperature limit</td><td></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:false,htmlLabels:true}});}</script>
+</body>
+</html>

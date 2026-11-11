@@ -9,7 +9,7 @@ SRC_DIR = REAL_ROOT / "source" / "sections"
 GRAPH_PATH = REAL_ROOT / "build" / "graph.json"
 
 KINDS = {"theorem", "proposition", "lemma", "corollary", "definition", "remark",
-         "assumption", "step", "device", "convention"}
+         "assumption", "step", "device", "convention", "section"}
 ABSTRACTIONS = {"exact", "weakening", "blackbox", "approximation", "intuition"}
 STATUSES = {"proposed", "confirmed", "unverified"}
 THM_KINDS = {"theorem", "proposition", "lemma", "corollary", "definition", "remark"}
@@ -343,7 +343,7 @@ def split_row(line):
             cur.append("|")
             i += 2
             continue
-        if ch == "`":
+        if ch in "`$":
             depth ^= 1
         if ch == "|" and not depth:
             cells.append("".join(cur))
