@@ -11,7 +11,7 @@ math: |
 physics: |
   [[g:hierarchy|보조 계층]]의 뼈대: 깊이 $L=r+1$의 계층이 $r$단 RSB의 자리다([[g:rsb-steps]]). 깊이 $d$까지의 prefix가 [[g:state|상태]]이고, 깊이마다 [[g:parisi-parameters|Parisi parameter]] $m_d$가 하나씩 붙는다($m_0=0$, $m_L=1$).
 gap: |
-  kernel 열 $K_1,\ldots,K_L$은 임의의 확률 kernel이다. 이 절의 모든 항등식은 이 일반성에서 증명되며 cascade 구조나 [[g:physical-pure-state|물리적 pure state]] 분해를 가정하지 않는다(trees.tex 10–12 "for finite sequences of arbitrary probability kernels, without assuming an infinite hierarchy"). $m_d$는 power mean의 지수열일 뿐이고, 여기서는 최적화되지 않는다.
+  kernel 열 $K_1,\ldots,K_L$은 임의의 확률 kernel이다. 이 절의 모든 항등식은 이 일반성에서 증명되며 무한 계층의 가중치 구조나 [[g:physical-pure-state|물리적 pure state]] 분해를 가정하지 않는다(trees.tex 10–12 "for finite sequences of arbitrary probability kernels, without assuming an infinite hierarchy"). $m_d$는 power mean의 지수열일 뿐이고, 여기서는 최적화되지 않는다.
 abstraction: exact
 children: []
 source:
