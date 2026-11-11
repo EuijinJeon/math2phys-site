@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이동된 사본과 정규화 $J$의 상대 비용</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></div><h1>이동된 사본과 정규화 $J$의 상대 비용</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a> <span class="muted">— 귀납량 $V_{k,L}(\eta)$</span></li><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><span class="nolink" title="Lemma 3.4 (카드 없음)">tree:reference-total</span> <span class="muted">Lemma 3.4</span></li><li><span class="nolink" title="Lemma 3.5 (카드 없음)">tree:charging</span> <span class="muted">Lemma 3.5</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s5 (구성과 J), s6 (상대 비용으로 사영 오차를 J로 나눈 뒤에도 제어)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s4.html" title="두 target 측의 사영">decor:conditional-concentration.s4</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a></li></ul></dd><dt>수학 진술</dt><dd><p>$|S|=k\ge2$, 첫 갈라짐 $e&gt;d$, proper child shape $T_1,\ldots,T_s$. old tree는 stem이 깊이 $d$에서 갈라지고 내부 깊이가 aligned인 $S$의 두 사본 I, II이며, I의 한 옛 leaf가 spin anchor다. $S^+$는 모든 내부 branching depth를 1 늘린 $S$다. 제약 $\mathcal C$: anchor와 added color $2k-1$개가 $d$에서 분리된 $S^+$ 두 사본을 이루고 anchor는 첫 사본의 원래 labeled 자리에 있다. $J=\kappa(S^+)^2$ ($\kappa$는 tree:reference-total의 <span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)라 하면, $b=b(S)$에 대해 $L\ge L_0(k,\eta)$에서
+$$|J|\ge c_{k,\eta}\delta^{2b}&gt;0,\qquad\frac1{|J|}\sum_{E\ \text{allowed}}|c_E|\le C_{k,\eta}.$$
+전체 부호 있는 기준 계수는 $(m_d-m_{d+1})J=-\delta J$이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>펼침</h2><details class="child"><summary>두 사본 old tree와 $S^+$ 제약의 구성 <a class="node" href="../cards/decor.conditional-concentration.s3.s1.html">↗</a><span class="cm">$|S|=k\ge2$이고 $(d,\mathbf q)$가 $\eta$-regular이며 $d&lt;e$ ($e$는 $S$의 첫 branching depth)일 때 다음 처방된 tree 항등식 사례를 쓴다. old tree: $S$의 두 사본 I, II, stem은 깊이 $d$에서 갈라지고 내부 깊이 배정은 같은 좌표 $\mathbf q$를 공유한다. anchor: I의 고정된 옛 leaf (spin anchor). 제약 $\mathcal C$: anchor와 added color들이 $d$에서 분리된 $S^+$ 두 사본(target I, target II)을 이루고, anchor는 target I에서 원래 labeled 자리에 있다. 이 제약은 anchor와 added color 사이의 split depth만 처방하므로 pert:tree-identity의 허용 제약이다. color 순서는 target I 쪽 color 전부, 그다음 target II 쪽이다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a> <span class="muted">— 귀납량 $V_{k,L}(\eta)$</span></li><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><a class="node" href="../cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a> <span class="muted">— topology, 깊이 배정, $b(S)$, 자식 모양</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s3.s2, s3.s3, s4, s5<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.s1.html" title="$e+1$에서 사영하고 깊이를 되돌리기">decor:conditional-concentration.s4.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s1.html" title="target II 첫 경로의 분류">decor:conditional-concentration.s5.s1</a></li></ul></dd><dt>수학 진술</dt><dd><p>$|S|=k\ge2$이고 $(d,\mathbf q)$가 $\eta$-regular이며 $d&lt;e$ ($e$는 $S$의 첫 branching depth)일 때 다음 처방된 tree 항등식 사례를 쓴다. old tree: $S$의 두 사본 I, II, stem은 깊이 $d$에서 갈라지고 내부 깊이 배정은 같은 좌표 $\mathbf q$를 공유한다. anchor: I의 고정된 옛 leaf (spin anchor). 제약 $\mathcal C$: anchor와 added color들이 $d$에서 분리된 $S^+$ 두 사본(target I, target II)을 이루고, anchor는 target I에서 원래 labeled 자리에 있다. 이 제약은 anchor와 added color 사이의 split depth만 처방하므로 pert:tree-identity의 허용 제약이다. color 순서는 target I 쪽 color 전부, 그다음 target II 쪽이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>정규화 $J=\kappa(S^+)^2$의 하계 <a class="node" href="../cards/decor.conditional-concentration.s3.s2.html">↗</a><span class="cm">$\kappa(T)=\prod_{v\in\operatorname{Br}(T)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$ (<span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)에 대해 $J=\kappa(S^+)^2$. 각 vertex의 $j=1$ 인자는 $-\delta$이고, $j\ge2$ 인자는 $|m_{d_v}-jm_{d_v+1}|=(j-1)m_{d_v}+j\delta\ge\eta/2$이다 ($L$이 크면, $d_v=q_v+1$). 따라서 $b=b(S)$에 대해 $|J|\ge c_{k,\eta}\delta^{2b}&gt;0$.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a> <span class="muted">— 두 사본 old tree와 $S^+$ 제약의 구성</span></li><li><span class="nolink" title="Lemma 3.4 (카드 없음)">tree:reference-total</span> <span class="muted">Lemma 3.4</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s3.s3, s6 (J로 나눔)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s3.html" title="class별 계수 합 ($-c_\ell J$, $m_eJ$)">decor:conditional-concentration.s5.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>$\kappa(T)=\prod_{v\in\operatorname{Br}(T)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$ (<span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)에 대해 $J=\kappa(S^+)^2$. 각 vertex의 $j=1$ 인자는 $-\delta$이고, $j\ge2$ 인자는 $|m_{d_v}-jm_{d_v+1}|=(j-1)m_{d_v}+j\delta\ge\eta/2$이다 ($L$이 크면, $d_v=q_v+1$). 따라서 $b=b(S)$에 대해 $|J|\ge c_{k,\eta}\delta^{2b}&gt;0$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>상대 절댓값 비용 (relative absolute cost) <a class="node" href="../cards/decor.conditional-concentration.s3.s3.html">↗</a><span class="cm">$L$이 크면 regularity 때문에 각 shifted depth $q_v+1$은 old tree의 모든 branching depth($d$와 모든 $q_w$)와 다르다. 그래서 target의 $2b$개 branching vertex는 모두 fresh unary split로 만들어져야 하고, tree:charging의 (relative-charging) 부등식에서 $$\frac1{|J|}\sum_{\text{allowed extensions}}|c_E|\le C_{k,\eta}$$ ($C_{k,\eta}$는 $L$과 깊이 배정에 무관). 전체 부호 있는 계수에는 깊이 $d$에서의 분리 인자 $-\delta$가 더 붙는다. 이 인자는 $J$로 나눈 뒤에도 항등식 안에 남긴다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a> <span class="muted">— 두 사본 old tree와 $S^+$ 제약의 구성</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a> <span class="muted">— 정규화 $J=\kappa(S^+)^2$의 하계</span></li><li><span class="nolink" title="Lemma 3.5 (카드 없음)">tree:charging</span> <span class="muted">Lemma 3.5</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s6 (사영 오차 합을 J로 나눈 뒤 C_{k,η}로 제어). decor:order-of-limits가 가리키는 균등 상계<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></li></ul></dd><dt>수학 진술</dt><dd><p>$L$이 크면 regularity 때문에 각 shifted depth $q_v+1$은 old tree의 모든 branching depth($d$와 모든 $q_w$)와 다르다. 그래서 target의 $2b$개 branching vertex는 모두 fresh unary split로 만들어져야 하고, tree:charging의 (relative-charging) 부등식에서
+$$\frac1{|J|}\sum_{\text{allowed extensions}}|c_E|\le C_{k,\eta}$$
+($C_{k,\eta}$는 $L$과 깊이 배정에 무관). 전체 부호 있는 계수에는 깊이 $d$에서의 분리 인자 $-\delta$가 더 붙는다. 이 인자는 $J$로 나눈 뒤에도 항등식 안에 남긴다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a>이 old tree와 제약을 세운다. <a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a>가 $J$의 하계 $|J|\ge c_{k,\eta}\delta^{2b}$를 준다. <a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a>은 shifted depth가 old tree의 어떤 branching depth와도 다르므로 $2b$개 target vertex가 모두 fresh unary split로 만들어져야 함을 보이고, tree:charging으로 상대 비용 상계를 얻는다. 깊이를 늦추는 이유가 여기 있다. 늦추지 않으면 target vertex가 옛 branching vertex와 겹쳐 계수 1인 옛 leaf 재사용이 생기고, 절댓값 합이 $|J|$와 같은 차수가 되지 않는다.</p><details class="src"><summary>원문 (decorrelation.tex:292-360)</summary><h4>decorrelation.tex:292-360</h4><pre class="tex"><code><span class="ln">292</span>\paragraph{Shifted copies and their coefficients.}
+<span class="ln">293</span>Let $|S|=k\ge2$, its first split be $e&gt;d$, and its proper child shapes
+<span class="ln">294</span>be $T_1,\ldots,T_s$.  Sample an old tree consisting of two copies of
+<span class="ln">295</span>$S$, denoted I and II, whose stems split at $d$ and whose internal
+<span class="ln">296</span>depth assignments are aligned.  Fix an old leaf in I as the spin
+<span class="ln">297</span>anchor.  Let $S^+$ be the topology $S$ with every internal branching
+<span class="ln">298</span>depth increased by one.  In the prescribed-tree identity require
+<span class="ln">299</span>the anchor and the added colors to form two copies of $S^+$,
+<span class="ln">300</span>separated at $d$, with the anchor in its original labeled position
+<span class="ln">301</span>in the first copy.  These constraints involve only the anchor and
+<span class="ln">302</span>the added colors.  Add all other colors of side I first, then those
+<span class="ln">303</span>of side II. \Cref{decor:shift-figure} illustrates one local shift.
+<span class="ln">304</span>
+<span class="ln">305</span>\begin{figure}[!ht]
+<span class="ln">306</span>\centering
+<span class="ln">307</span>\begin{tikzpicture}[x=1.05cm,y=0.82cm,&gt;=stealth,font=\small]
+<span class="ln">308</span> \draw[gray!45,densely dotted] (-2.9,-1) -- (2.3,-1);
+<span class="ln">309</span> \draw[gray!45,densely dotted] (-2.9,-2) -- (2.3,-2);
+<span class="ln">310</span> \node[left] at (-2.9,-1) {$e$};
+<span class="ln">311</span> \node[left] at (-2.9,-2) {$e+1$};
+<span class="ln">312</span> \draw[thick] (0,0) -- (0,-1) -- (-1,-2) -- (-2,-3.2);
+<span class="ln">313</span> \draw[thick] (0,-1) -- (1.5,-3.2);
+<span class="ln">314</span> \draw[blue!65!black,very thick,dashed] (-1,-2) -- (-0.05,-3.2);
+<span class="ln">315</span> \fill (0,-1) circle (2pt);
+<span class="ln">316</span> \fill[blue!65!black] (-1,-2) circle (2.2pt);
+<span class="ln">317</span> \node[above] at (0,0) {common stem};
+<span class="ln">318</span> \node[below] at (-2,-3.2) {anchor};
+<span class="ln">319</span> \node[below,blue!65!black] at (-0.05,-3.2) {new child};
+<span class="ln">320</span> \node[below] at (1.5,-3.2) {old leaf};
+<span class="ln">321</span> \node[right,blue!65!black] at (-0.5,-2.6) {$-\delta$};
+<span class="ln">322</span>\end{tikzpicture}
+<span class="ln">323</span>\caption{One local effect of delaying a target split. The old tree is solid;
+<span class="ln">324</span>the dashed child creates a split at the previously unary depth-$e+1$ vertex,
+<span class="ln">325</span>with coefficient $m_{e+1}-m_{e+2}=-\delta$.
+<span class="ln">326</span>The proof shifts every internal target depth and charges distinct vertices
+<span class="ln">327</span>separately, even when their depths coincide. Later target colors may reuse
+<span class="ln">328</span>eligible old leaves.}
+<span class="ln">329</span>\label{decor:shift-figure}
+<span class="ln">330</span>\end{figure}
+<span class="ln">331</span>
+<span class="ln">332</span>Let $\kappa(T)$ be the reference coefficient \eqref{tree:K}, and put
+<span class="ln">333</span>\begin{equation}
+<span class="ln">334</span> J=\kappa(S^+)^2.
+<span class="ln">335</span> \label{decor:J-definition}
+<span class="ln">336</span>\end{equation}
+<span class="ln">337</span>At each
+<span class="ln">338</span>vertex the $j=1$ factor is $-\delta$; for $j\ge2$ its absolute value
+<span class="ln">339</span>is at least $\eta/2$ for all sufficiently large $L$.  If $b=b(S)$,
+<span class="ln">340</span>then
+<span class="ln">341</span>\begin{equation}
+<span class="ln">342</span> |J|\ge c_{k,\eta}\delta^{2b}&gt;0.
+<span class="ln">343</span> \label{decor:J-lower-bound}
+<span class="ln">344</span>\end{equation}
+<span class="ln">345</span>For large $L$, regularity ensures that each shifted depth differs from
+<span class="ln">346</span>every branching depth of the old tree, including $d$. Thus these $2b$
+<span class="ln">347</span>target branching vertices must be created by fresh unary splits.
+<span class="ln">348</span>Lemma~\ref{tree:charging} gives
+<span class="ln">349</span>\begin{equation}
+<span class="ln">350</span> \frac1{|J|}\sum_{\text{allowed extensions}}|c|
+<span class="ln">351</span>        \le C_{k,\eta}.
+<span class="ln">352</span> \label{decor:relative-absolute-cost}
+<span class="ln">353</span>\end{equation}
+<span class="ln">354</span>The two copies have aligned depths but distinct branching vertices:
+<span class="ln">355</span>each vertex supplies its own factor $\delta$. This is the reason for
+<span class="ln">356</span>the shift. The full signed coefficient has an additional factor
+<span class="ln">357</span>$-\delta$ from separation at $d$; we divide by $J$ and leave that
+<span class="ln">358</span>factor in the identity. Equation~\eqref{decor:relative-absolute-cost}
+<span class="ln">359</span>then controls every projection error after division.
+<span class="ln">360</span></code></pre></details>
+</div>
+
+</body>
+</html>

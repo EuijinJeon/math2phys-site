@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>여러 이동과 더 큰 tree</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></div><h1>여러 이동과 더 큰 tree</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:depth-continuity.s4</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a> <span class="muted">— 이동 하나의 비용 $C/L$</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:depth-continuity의 첫째 부등식 (branch-depth-continuity) 일반형<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$U=\{v_1,\ldots,v_u\}$이면 $S=S^{U_0},S^{U_1},\ldots,S^{U_u}=S^U$ ($U_r=\{v_1,\ldots,v_r\}$)로 하나씩 바꾸고 $\|\sum_{r=1}^u x_r\|^2\le u\sum_r\|x_r\|^2$를 쓴다. regularity 때문에 중간 모양들은 같은 조상 관계를 갖고, $L$이 크면 그 깊이 배정은 $\eta/2$-regular이다 (<a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> (ii)). 그래서 각 항에 $\eta/2$ 영역에서의 s3을 적용해 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le u^2C/L$. 한 prefix의 marginal law는 다른 sampled branch를 빼도 바뀌지 않으므로 이 추정은 더 큰 sampled tree 안에서도 성립한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>정수 이동은 $\eta$-regular 배정을 단사로 $\eta/2$-regular 배정에 보낸다. 그래서 $\mathcal A_{L,\eta}$ 아래의 중간 모양 평균은 $\mathcal A_{L,\eta/2}$ 아래의 한 이동 평균으로 눌린다. "더 큰 tree" 문장이 필요한 이유: §7.3–7.4에서 $\mu$들은 두 사본이나 확장된 tree 안에서 계산되는데, 비교하는 양이 한 prefix의 marginal에만 의존하므로 단일 사본 추정이 그대로 적용된다.</p><details class="src"><summary>원문 (decorrelation.tex:199-206)</summary><h4>decorrelation.tex:199-206</h4><pre class="tex"><code><span class="ln">199</span>the claimed $C/L$ bound for one shift.  For several shifts, change the
+<span class="ln">200</span>vertices one at a time and use the squared triangle inequality with
+<span class="ln">201</span>a factor equal to the number of shifts.  Regularity ensures that the
+<span class="ln">202</span>intermediate shapes have the same ancestry relations and, for large
+<span class="ln">203</span>$L$, lie in the enlarged $\eta/2$-regular domain.  All relevant
+<span class="ln">204</span>one-prefix marginal laws are unchanged when other sampled branches
+<span class="ln">205</span>are omitted, so these estimates hold in any larger sampled tree.
+<span class="ln">206</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

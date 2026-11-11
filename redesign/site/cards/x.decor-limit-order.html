@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>선택된 수열과 극한 순서</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a></div><h1>선택된 수열과 극한 순서</h1><p><span class="badge">convention</span><span class="badge proposed">proposed</span> <code>x:decor-limit-order</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Lemma 6.2 (카드 없음)">pert:selection</span> <span class="muted">Lemma 6.2</span></li><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§7의 모든 limsup_N과 o_N(1)의 의미. decor:identity-error와 decor:order-of-limits의 전제<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a></li><li><a class="node" href="../cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></li></ul></dd><dt>수학 진술</dt><dd><p>각 고정 $L$에 대해 (그리고 pert:selection의 고정된 $\varepsilon&gt;0$에 대해) $N\to\infty$의 모든 극한과 $\limsup_N$, $o_N(1)$은 pert:selection이 주는 크기 $N_j\uparrow\infty$와 결정적 매개변수 $\mathbf u_j$의 수열을 따라 취한다. 이 수열에서 pert:tree-identity의 항등식
+$$\sum_{E\in\mathfrak E(\mathcal T,a_*,\mathcal C)}c_E\,\mathbb E[fR_E]-\mathbb Ef\sum_{E\in\mathfrak E(\{a_*\},a_*,\mathcal C)}c_E\,\mathbb E[R_E]\longrightarrow0$$
+이 모든 고정 old tree $\mathcal T$, spin/marker anchor $a_*$, 유계 multioverlap 다항식 $f$, 유한 개 added color, 제약 $\mathcal C$에 대해 성립한다. 수열은 $L$마다 다를 수 있다. $\lim_L\limsup_N$ 꼴의 진술은 항상 고정 $L$에서 $N$ 극한을 먼저 취한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>§7은 §6의 항등식과 tree 표본 규칙(<a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a>)만 쓴다. 모형의 interaction factorization은 쓰지 않는다(tex 8–9). 그래서 §7의 결과는 "이 항등식들을 만족하는 임의의 깊이-$L$ tree 계"에 대한 정리로 읽을 수 있다.</p><details class="src"><summary>원문 (decorrelation.tex:4-9)</summary><h4>decorrelation.tex:4-9</h4><pre class="tex"><code><span class="ln">4</span>Throughout this section $m_d=d/L$ and $\delta=L^{-1}$.  For each fixed
+<span class="ln">5</span>$L$, all limits in $N$ are along the sizes and parameter choices supplied
+<span class="ln">6</span>by \cref{pert:selection}; they satisfy the identities of
+<span class="ln">7</span>\cref{pert:tree-identity}. Different values of $L$ may use different
+<span class="ln">8</span>sequences. The argument uses only these identities and the tree sampling
+<span class="ln">9</span>rules; in particular, it does not use the interaction factorization.</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 7.2 축약 부등식과 세 사본 부등식</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></div><h1>Lemma 7.2 축약 부등식과 세 사본 부등식</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>decor:contractions</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> (축약 부등식). conditional-concentration.s2.s2와 s7.s2 (세 사본 부등식으로 v_N을 overlap 차이로 누름)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.html" title="귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$">decor:conditional-concentration.s7</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a></li></ul></dd><dt>수학 진술</dt><dd><p>(a) $d$가 $S$의 initial stem 위의 깊이이고 확률 벡터 $B\in[-1,1]^N$가 $\mathscr F_d$가 주어지면 $A_S$와 조건부 독립이면
+$$\bigl\|(A_S-\mu_{d,S})\cdot B\bigr\|_{L^2}\le v_N(S,d)^{1/4}.$$
+(b) $X,Y,Z$가 $\sigma$-field $\mathscr G$가 주어지면 조건부 독립이고 같은 조건부 법칙을 갖는 유계 확률 벡터($\mathbb R^N$ 값)이고 $C$가 그 조건부 공분산 행렬이면
+$$\mathbb E(X\cdot Y-X\cdot Z)^2\ge\frac2{N^2}\mathbb E\sum_{i,j}C_{ij}^2.$$</p></dd><dt>물리 진술</dt><dd><p>(b) 같은 상태에서 뽑은 replica 세 개 $X,Y,Z$에 대해 overlap $R_{XY}$와 $R_{XZ}$의 차이 제곱 평균은 그 상태 안 connected correlation 제곱 평균의 두 배 이상이다. 따라서 상태 안에서 overlap이 요동하지 않으면 상태는 clustering한다. (a) 반대로 상태가 clustering하면 replica를 상태 평균으로 바꿔도 축약이 거의 변하지 않는다.</p></dd><dt>차이</dt><dd><p>"같은 상태"는 조건부 i.i.d.(공통 $\sigma$-field $\mathscr G$ 또는 $\mathscr F_d$)라는 뜻이다. (b)는 한 방향 부등식뿐이고, (a)의 오차는 $v_N^{1/4}$라는 약한 거듭제곱이다. 물리의 "overlap 집중 ⇔ clustering"의 양방향 등가를 정량적 한 방향 부등식 두 개로 나눈 형태다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>펼침</h2><details class="child"><summary>축약 부등식 <a class="node" href="../cards/decor.contractions.s1.html">↗</a><span class="cm">$C=\operatorname{Cov}(A_S\mid\mathscr F_d)$라 하면, $B$의 조건부 독립성에서 $\mathbb E\bigl[((A_S-\mu_{d,S})\cdot B)^2\mid\mathscr F_d,B\bigr]=N^{-2}\sum_{ij}C_{ij}B_iB_j\le N^{-2}\sum_{ij}|C_{ij}|\le\bigl(N^{-2}\sum_{ij}C_{ij}^2\bigr)^{1/2}$. 기대값을 취하고 Jensen을 쓰면 $\mathbb E((A_S-\mu_{d,S})\cdot B)^2\le v_N(S,d)^{1/2}$.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> (a)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$C=\operatorname{Cov}(A_S\mid\mathscr F_d)$라 하면, $B$의 조건부 독립성에서 $\mathbb E\bigl[((A_S-\mu_{d,S})\cdot B)^2\mid\mathscr F_d,B\bigr]=N^{-2}\sum_{ij}C_{ij}B_iB_j\le N^{-2}\sum_{ij}|C_{ij}|\le\bigl(N^{-2}\sum_{ij}C_{ij}^2\bigr)^{1/2}$. 기대값을 취하고 Jensen을 쓰면 $\mathbb E((A_S-\mu_{d,S})\cdot B)^2\le v_N(S,d)^{1/2}$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>세 사본 부등식 <a class="node" href="../cards/decor.contractions.s2.html">↗</a><span class="cm">$\mu=\mathbb E[X\mid\mathscr G]$라 하면 조건부 독립성에서 $$\mathbb E[(X\cdot Y-X\cdot Z)^2\mid\mathscr G]=\frac2{N^2}\operatorname{tr}\bigl((C+\mu\mu^{\mathsf T})C\bigr)\ge\frac2{N^2}\operatorname{tr}(C^2),$$ $C$가 양반정치이므로 $\operatorname{tr}(\mu\mu^{\mathsf T}C)=\mu^{\mathsf T}C\mu\ge0$. 대칭인 $C$에 대해 $\operatorname{tr}(C^2)=\sum_{ij}C_{ij}^2$.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><span class="muted">없음</span></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> (b)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$\mu=\mathbb E[X\mid\mathscr G]$라 하면 조건부 독립성에서
+$$\mathbb E[(X\cdot Y-X\cdot Z)^2\mid\mathscr G]=\frac2{N^2}\operatorname{tr}\bigl((C+\mu\mu^{\mathsf T})C\bigr)\ge\frac2{N^2}\operatorname{tr}(C^2),$$
+$C$가 양반정치이므로 $\operatorname{tr}(\mu\mu^{\mathsf T}C)=\mu^{\mathsf T}C\mu\ge0$. 대칭인 $C$에 대해 $\operatorname{tr}(C^2)=\sum_{ij}C_{ij}^2$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> (a)는 <a class="node" href="../cards/decor.contractions.s1.html" title="축약 부등식">decor:contractions.s1</a>: 조건부 2차 모멘트가 $N^{-2}\sum C_{ij}B_iB_j$이고 이를 $C$의 Hilbert–Schmidt 노름으로 누른 뒤 prefix에 대해 Jensen을 쓴다. (b)는 <a class="node" href="../cards/decor.contractions.s2.html" title="세 사본 부등식">decor:contractions.s2</a>: 조건부 2차 모멘트가 정확히 $\frac2{N^2}\operatorname{tr}((C+\mu\mu^{\mathsf T})C)$이고 $\mu^{\mathsf T}C\mu\ge0$이다. 증명이 짧아 단계는 두 개다.</p><details class="src"><summary>원문 (decorrelation.tex:108-125, decorrelation.tex:127-140)</summary><h4>decorrelation.tex:108-125</h4><pre class="tex"><code><span class="ln">108</span>\begin{lemma}[Contractions and three copies]
+<span class="ln">109</span>\label{decor:contractions}
+<span class="ln">110</span>If a random vector $B\in[-1,1]^N$ is conditionally independent of $A_S$
+<span class="ln">111</span>given $\mathscr F_d$, then
+<span class="ln">112</span>\begin{equation}
+<span class="ln">113</span> \bigl\|(A_S-\mu_{d,S})\cdot B\bigr\|_{L^2}
+<span class="ln">114</span>        \le v_N(S,d)^{1/4}.
+<span class="ln">115</span> \label{decor:contraction-bound}
+<span class="ln">116</span>\end{equation}
+<span class="ln">117</span>If $X,Y,Z$ are conditionally independent copies of a bounded random
+<span class="ln">118</span>vector given a sigma field $\mathscr G$, and $C$ is its conditional
+<span class="ln">119</span>covariance matrix, then
+<span class="ln">120</span>\begin{equation}
+<span class="ln">121</span> \mathbb E(X\cdot Y-X\cdot Z)^2
+<span class="ln">122</span>       \ge \frac2{N^2}\mathbb E\sum_{i,j}C_{ij}^2.
+<span class="ln">123</span> \label{decor:three-copy-bound}
+<span class="ln">124</span>\end{equation}
+<span class="ln">125</span>\end{lemma}</code></pre><h4>decorrelation.tex:127-140</h4><pre class="tex"><code><span class="ln">127</span>\begin{proof}
+<span class="ln">128</span>Conditional on $\mathscr F_d$ and $B$, the squared contraction has
+<span class="ln">129</span>expectation $N^{-2}\sum_{ij}C_{ij}B_iB_j$.  Its absolute value is at
+<span class="ln">130</span>most $N^{-2}\sum_{ij}|C_{ij}|$.  Cauchy--Schwarz, first over $i,j$
+<span class="ln">131</span>and then over the prefix, proves \eqref{decor:contraction-bound}.
+<span class="ln">132</span>For the second assertion, write $\mu=\mathbb E[X\mid\mathscr G]$.
+<span class="ln">133</span>Conditional independence gives
+<span class="ln">134</span>\[
+<span class="ln">135</span> \mathbb E[(X\cdot Y-X\cdot Z)^2\mid\mathscr G]
+<span class="ln">136</span> =\frac2{N^2}\operatorname{tr}\bigl((C+\mu\mu^{\mathsf T})C\bigr)
+<span class="ln">137</span> \ge\frac2{N^2}\operatorname{tr}(C^2),
+<span class="ln">138</span>\]
+<span class="ln">139</span>since $C$ is positive semidefinite.
+<span class="ln">140</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

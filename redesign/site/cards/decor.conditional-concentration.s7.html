@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></div><h1>귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s7</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a> <span class="muted">— 귀납량 $V_{k,L}(\eta)$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a> <span class="muted">— 기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.html" title="두 target 측의 사영">decor:conditional-concentration.s4</a> <span class="muted">— 두 target 측의 사영</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a> <span class="muted">— 사영된 항등식과 오차 $\rho_N$</span></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> <span class="muted">(7.13)</span> <span class="muted">— 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</span></li><li><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> <span class="muted">Lemma 7.2</span> <span class="muted">— 축약 부등식과 세 사본 부등식</span></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a> <span class="muted">(7.3)</span> <span class="muted">— 항등식 오차의 최대 $\varepsilon_{N,L,k}$</span></li><li><a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a> <span class="muted">(7.2)</span> <span class="muted">— 깊이 평균의 분수 거듭제곱 부등식</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:conditional-concentration의 결론. fiber bound (s7.s3)는 overlap-concentration.s4가 다시 쓴다<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$L$이 충분히 크면 $V_{k,L}(\eta)\le C_{k,\eta}\bigl(L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4}\bigr)$. 이것과 $V_{1,L}(\eta)\le\delta/\eta$에서 귀납으로 모든 고정 $k,\eta$에 대해 $V_{k,L}(\eta)\to0$ ($L\to\infty$).</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>펼침</h2><details class="child"><summary>$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기 <a class="node" href="../cards/decor.conditional-concentration.s7.s1.html">↗</a><span class="cm">decor:projection-bound에서 $\|f-a\cdot b\|_{L^2}\le2p_N(S,e)$이고 $\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1$이다. 그래서 s6의 좌변에서 $f$를 $a\cdot b$로 바꾸는 비용은 $4p_N(S,e)$ 이하이고, 각 $a\cdot b_\ell$이 $a\cdot b$와 같은 marginal law를 가지므로 바뀐 좌변은 $\frac12\sum_{\ell=d}^{e-1}c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$이다. 각 항은 음이 아니고 $c_d\ge\eta$, s6의 우변은 절댓값이 $2\delta+|\rho_N(S,d)|$ 이하이므로 $$\mathbb E(a\cdot b-a\cdot b_d)^2\le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr).$$</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a> <span class="muted">— 사영된 항등식과 오차 $\rho_N$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a> <span class="muted">— 부호 있는 확장 합과 계수 표</span></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> <span class="muted">(7.13)</span> <span class="muted">— 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a></li></ul></dd><dt>수학 진술</dt><dd><p>decor:projection-bound에서 $\|f-a\cdot b\|_{L^2}\le2p_N(S,e)$이고 $\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1$이다. 그래서 s6의 좌변에서 $f$를 $a\cdot b$로 바꾸는 비용은 $4p_N(S,e)$ 이하이고, 각 $a\cdot b_\ell$이 $a\cdot b$와 같은 marginal law를 가지므로 바뀐 좌변은 $\frac12\sum_{\ell=d}^{e-1}c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$이다. 각 항은 음이 아니고 $c_d\ge\eta$, s6의 우변은 절댓값이 $2\delta+|\rho_N(S,d)|$ 이하이므로
+$$\mathbb E(a\cdot b-a\cdot b_d)^2\le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr).$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>$v_N(S,d)$의 귀납 추정 <a class="node" href="../cards/decor.conditional-concentration.s7.s2.html">↗</a><span class="cm">$$v_N(S,d)\le C_{k,\eta}\bigl(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S)\bigr)+C_{L,k,\eta}\,\varepsilon_{N,L,k}.$$ 근거: $A_S$의 세 사본을 $d$ 아래에서 조건부 독립으로 뽑으면 <a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> (b)로 $\mathbb E(X\cdot Y-X\cdot Z)^2\ge2v_N(S,d)$. 첫 사본이 들어간 두 축약을 사영하면 각각 $L^2$에서 $2p_N(S,e)$ 이하로 바뀌어 $a\cdot b-a\cdot b_d$가 된다. s7.s1, s6의 $\rho_N$ 상계, $p_N(S,e)\le k$를 쓴다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s7.s1.html" title="$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기">decor:conditional-concentration.s7.s1</a> <span class="muted">— $f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a> <span class="muted">— 사영된 항등식과 오차 $\rho_N$</span></li><li><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> <span class="muted">Lemma 7.2</span> <span class="muted">— 축약 부등식과 세 사본 부등식</span></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> <span class="muted">(7.13)</span> <span class="muted">— 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</span></li><li><a class="node" href="../cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a> <span class="muted">(7.12)</span> <span class="muted">— 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s7.s4.html" title="점화식과 귀납의 완성">decor:conditional-concentration.s7.s4</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s7.s4.html" title="점화식과 귀납의 완성">decor:conditional-concentration.s7.s4</a></li></ul></dd><dt>수학 진술</dt><dd><p>$$v_N(S,d)\le C_{k,\eta}\bigl(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S)\bigr)+C_{L,k,\eta}\,\varepsilon_{N,L,k}.$$
+근거: $A_S$의 세 사본을 $d$ 아래에서 조건부 독립으로 뽑으면 <a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> (b)로 $\mathbb E(X\cdot Y-X\cdot Z)^2\ge2v_N(S,d)$. 첫 사본이 들어간 두 축약을 사영하면 각각 $L^2$에서 $2p_N(S,e)$ 이하로 바뀌어 $a\cdot b-a\cdot b_d$가 된다. s7.s1, s6의 $\rho_N$ 상계, $p_N(S,e)\le k$를 쓴다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>자식 항의 깊이 평균 (fiber bound) <a class="node" href="../cards/decor.conditional-concentration.s7.s3.html">↗</a><span class="cm">aligned 구성은 $d$와 $e$를 포함해 $D=b(S)+1$개의 서로 다른 깊이 좌표를 갖는다. $T_j$에 속한 항은 $D_j=b(T_j)+1$개 좌표만 쓴다: 이동된 항은 $\pi_j(\mathbf q)=(e+1,(q_v+1)_{v\in\operatorname{Br}(T_j)})$, 이동되지 않은 항은 $(e,(q_v)_{v\in\operatorname{Br}(T_j)})$. 남은 각 배정의 원상은 $L^{D-D_j}$개 이하이고, $L$이 크면 그 좌표는 $\eta/2$-regular이다. $w_j\ge0$가 이 좌표의 함수(자식 공분산)이면 $0&lt;\gamma\le1$에 대해 $$L^{-D}\sum_{\mathbf q\ \eta\text{-regular}}w_j(\pi_j(\mathbf q))^\gamma\le L^{-D_j}\sum_{\mathbf y\ \eta/2\text{-regular}}w_j(\mathbf y)^\gamma\le\Bigl(L^{-D_j}\sum_{\mathbf y\ \eta/2\text{-regular}}w_j(\mathbf y)\Bigr)^\gamma.$$ 이동되지 않은 항도 같은 상계를 갖는다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a> <span class="muted">(7.2)</span> <span class="muted">— 깊이 평균의 분수 거듭제곱 부등식</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li><li><a class="node" href="../cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a> <span class="muted">(7.12)</span> <span class="muted">— 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s7.s4.html" title="점화식과 귀납의 완성">decor:conditional-concentration.s7.s4</a> (γ=1/4), <a class="node" href="../cards/decor.overlap-concentration.s4.html" title="분산 추정 $\limsup_N\mathcal A\operatorname{Var}(R_S)\le C_k(L^{-1}+V_{k-1,L}^{1/2})$">decor:overlap-concentration.s4</a> (γ=1/2, d 없이)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s7.s4.html" title="점화식과 귀납의 완성">decor:conditional-concentration.s7.s4</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s4.html" title="분산 추정 $\limsup_N\mathcal A\operatorname{Var}(R_S)\le C_k(L^{-1}+V_{k-1,L}^{1/2})$">decor:overlap-concentration.s4</a></li></ul></dd><dt>수학 진술</dt><dd><p>aligned 구성은 $d$와 $e$를 포함해 $D=b(S)+1$개의 서로 다른 깊이 좌표를 갖는다. $T_j$에 속한 항은 $D_j=b(T_j)+1$개 좌표만 쓴다: 이동된 항은 $\pi_j(\mathbf q)=(e+1,(q_v+1)_{v\in\operatorname{Br}(T_j)})$, 이동되지 않은 항은 $(e,(q_v)_{v\in\operatorname{Br}(T_j)})$. 남은 각 배정의 원상은 $L^{D-D_j}$개 이하이고, $L$이 크면 그 좌표는 $\eta/2$-regular이다. $w_j\ge0$가 이 좌표의 함수(자식 공분산)이면 $0&lt;\gamma\le1$에 대해
+$$L^{-D}\sum_{\mathbf q\ \eta\text{-regular}}w_j(\pi_j(\mathbf q))^\gamma\le L^{-D_j}\sum_{\mathbf y\ \eta/2\text{-regular}}w_j(\mathbf y)^\gamma\le\Bigl(L^{-D_j}\sum_{\mathbf y\ \eta/2\text{-regular}}w_j(\mathbf y)\Bigr)^\gamma.$$
+이동되지 않은 항도 같은 상계를 갖는다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>점화식과 귀납의 완성 <a class="node" href="../cards/decor.conditional-concentration.s7.s4.html">↗</a><span class="cm">s7.s2를 $\mathcal A_{L,\eta}$로 평균하고 s7.s3을 $\gamma=1/4$로 쓴 뒤 $\limsup_N$을 취한다. $\mathcal A_{L,\eta}h_N\le(\mathcal A_{L,\eta}h_N^2)^{1/2}\le(C_k/L)^{1/2}$이고 $\varepsilon_{N,L,k}\to0$이므로, $L$이 크면 $$V_{k,L}(\eta)\le C_{k,\eta}\bigl(L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4}\bigr).$$ $V_{k,L}$ 정의의 더 작은 모양들은 공분산이 1 이하이므로 우변에 흡수된다. 기저 $V_{1,L}(\eta)\le\delta/\eta$와 이 점화식에서, 모든 $\eta&#x27;$에 대해 $V_{k-1,L}(\eta&#x27;)\to0$이면 $V_{k,L}(\eta)\to0$이다. 그러므로 모든 고정 $k,\eta$에 대해 $V_{k,L}(\eta)\to0$이고 명제가 증명된다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s1.html" title="귀납량 $V_{k,L}(\eta)$">decor:conditional-concentration.s1</a> <span class="muted">— 귀납량 $V_{k,L}(\eta)$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a> <span class="muted">— 기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.html" title="두 target 측의 사영">decor:conditional-concentration.s4</a> <span class="muted">— 두 target 측의 사영</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a> <span class="muted">— $v_N(S,d)$의 귀납 추정</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s3.html" title="자식 항의 깊이 평균 (fiber bound)">decor:conditional-concentration.s7.s3</a> <span class="muted">— 자식 항의 깊이 평균 (fiber bound)</span></li><li><a class="node" href="../cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a> <span class="muted">(7.3)</span> <span class="muted">— 항등식 오차의 최대 $\varepsilon_{N,L,k}$</span></li><li><a class="node" href="../cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a> <span class="muted">(7.2)</span> <span class="muted">— 깊이 평균의 분수 거듭제곱 부등식</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:conditional-concentration의 결론<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>s7.s2를 $\mathcal A_{L,\eta}$로 평균하고 s7.s3을 $\gamma=1/4$로 쓴 뒤 $\limsup_N$을 취한다. $\mathcal A_{L,\eta}h_N\le(\mathcal A_{L,\eta}h_N^2)^{1/2}\le(C_k/L)^{1/2}$이고 $\varepsilon_{N,L,k}\to0$이므로, $L$이 크면
+$$V_{k,L}(\eta)\le C_{k,\eta}\bigl(L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4}\bigr).$$
+$V_{k,L}$ 정의의 더 작은 모양들은 공분산이 1 이하이므로 우변에 흡수된다. 기저 $V_{1,L}(\eta)\le\delta/\eta$와 이 점화식에서, 모든 $\eta&#x27;$에 대해 $V_{k-1,L}(\eta&#x27;)\to0$이면 $V_{k,L}(\eta)\to0$이다. 그러므로 모든 고정 $k,\eta$에 대해 $V_{k,L}(\eta)\to0$이고 명제가 증명된다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/decor.conditional-concentration.s7.s1.html" title="$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기">decor:conditional-concentration.s7.s1</a>: s6의 $f$를 $a\cdot b$로 바꾸면 좌변이 음이 아닌 $\frac12\sum c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$가 되고, $\ell=d$ 항이 $C_\eta(\delta+p_N(S,e)+|\rho_N|)$로 눌린다. <a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a>: 세 사본 부등식과 사영으로 $v_N(S,d)\le C_{k,\eta}(\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S))+C_{L,k,\eta}\varepsilon_{N,L,k}$. <a class="node" href="../cards/decor.conditional-concentration.s7.s3.html" title="자식 항의 깊이 평균 (fiber bound)">decor:conditional-concentration.s7.s3</a>: 자식 항의 깊이 평균은 단일 사본 평균으로 눌린다(fiber bound). <a class="node" href="../cards/decor.conditional-concentration.s7.s4.html" title="점화식과 귀납의 완성">decor:conditional-concentration.s7.s4</a>: $\gamma=1/4$로 평균하고 $\limsup_N$을 취해 점화식을 얻고 귀납을 닫는다.</p><details class="src"><summary>원문 (decorrelation.tex:459-524)</summary><h4>decorrelation.tex:459-524</h4><pre class="tex"><code><span class="ln">459</span>\paragraph{Closing the induction.}
+<span class="ln">460</span>Equation~\eqref{decor:projection-bound} gives
+<span class="ln">461</span>$\|f-a\cdot b\|_{L^2}\le2p_N(S,e)$.
+<span class="ln">462</span>Moreover
+<span class="ln">463</span>$\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1$.
+<span class="ln">464</span>Replacing $f$ by $a\cdot b$ on the left of
+<span class="ln">465</span>\eqref{decor:induction-identity} therefore costs at most
+<span class="ln">466</span>$4p_N(S,e)$.  Each $a\cdot b_\ell$ has the same marginal law as
+<span class="ln">467</span>$a\cdot b$, so that left side becomes
+<span class="ln">468</span>\[
+<span class="ln">469</span> \frac12\sum_{\ell=d}^{e-1}c_\ell
+<span class="ln">470</span>        \mathbb E(a\cdot b-a\cdot b_\ell)^2.
+<span class="ln">471</span>\]
+<span class="ln">472</span>Its summands are nonnegative and $c_d\ge\eta$.  The right side
+<span class="ln">473</span>of \eqref{decor:induction-identity} is bounded in absolute value
+<span class="ln">474</span>by $2\delta+|\rho_N(S,d)|$.  Hence
+<span class="ln">475</span>\begin{equation}
+<span class="ln">476</span> \mathbb E(a\cdot b-a\cdot b_d)^2
+<span class="ln">477</span> \le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr).
+<span class="ln">478</span> \label{decor:projected-three-copy}
+<span class="ln">479</span>\end{equation}
+<span class="ln">480</span>Sample three copies of $A_S$ conditionally independently below
+<span class="ln">481</span>$d$.  Projecting each of the two contractions involving the
+<span class="ln">482</span>first copy changes it in $L^2$ by at most $2p_N(S,e)$.
+<span class="ln">483</span>Using \eqref{decor:three-copy-bound},
+<span class="ln">484</span>\eqref{decor:projected-three-copy}, and $p_N(S,e)\le k$, we obtain
+<span class="ln">485</span>\begin{equation}
+<span class="ln">486</span> v_N(S,d)\le C_{k,\eta}\bigl(
+<span class="ln">487</span>       \delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S)\bigr)
+<span class="ln">488</span>       +C_{L,k,\eta}\varepsilon_{N,L,k}.
+<span class="ln">489</span> \label{decor:covariance-induction-estimate}
+<span class="ln">490</span>\end{equation}
+<span class="ln">491</span>Each child in either $p_N$ has fewer than $k$ leaves. To make the
+<span class="ln">492</span>averaging step explicit, the aligned construction has
+<span class="ln">493</span>$D=b(S)+1$ distinct depth coordinates, including $d$ and $e$.
+<span class="ln">494</span>A term belonging to $T_j$ uses only $D_j=b(T_j)+1$ coordinates.
+<span class="ln">495</span>For the shifted term these are
+<span class="ln">496</span>$\pi_j(\mathbf q)=(e+1,(q_v+1)_{v\in\operatorname{Br}(T_j)})$.
+<span class="ln">497</span>Every retained assignment has at most $L^{D-D_j}$ preimages, and its
+<span class="ln">498</span>coordinates are $\eta/2$-regular for large $L$. If $w_j$ is the child
+<span class="ln">499</span>covariance as a function of these coordinates, then, for $0&lt;\gamma\le1$,
+<span class="ln">500</span>\begin{align}
+<span class="ln">501</span> L^{-D}\sum_{\mathbf q\;\eta\text{-regular}}
+<span class="ln">502</span>       w_j(\pi_j(\mathbf q))^\gamma
+<span class="ln">503</span> &amp;\le L^{-D_j}\sum_{\mathbf y\;\eta/2\text{-regular}}w_j(\mathbf y)^\gamma
+<span class="ln">504</span> \notag\\
+<span class="ln">505</span> &amp;\le\left(L^{-D_j}\sum_{\mathbf y\;\eta/2\text{-regular}}
+<span class="ln">506</span>       w_j(\mathbf y)\right)^\gamma.
+<span class="ln">507</span> \label{decor:fiber-bound}
+<span class="ln">508</span>\end{align}
+<span class="ln">509</span>The unshifted term has the same bound without translating the coordinates.
+<span class="ln">510</span>Thus the two aligned copies use single-copy estimates; there is no
+<span class="ln">511</span>restriction of an independently averaged pair of copies to a diagonal.
+<span class="ln">512</span>Taking $\gamma=1/4$ and then $\limsup_N$, and using
+<span class="ln">513</span>\eqref{decor:projection-shift-error} and
+<span class="ln">514</span>\eqref{decor:identity-error}, gives, for sufficiently large $L$,
+<span class="ln">515</span>\begin{equation}
+<span class="ln">516</span> V_{k,L}(\eta)\le C_{k,\eta}\left(
+<span class="ln">517</span>       L^{-1/2}+V_{k-1,L}(\eta/2)^{1/4}\right).
+<span class="ln">518</span> \label{decor:induction-recursion}
+<span class="ln">519</span>\end{equation}
+<span class="ln">520</span>The maximum over smaller topologies in \eqref{decor:V-definition}
+<span class="ln">521</span>can be absorbed in the right side because these covariances are
+<span class="ln">522</span>bounded by one.  The base case and induction now imply
+<span class="ln">523</span>$V_{k,L}(\eta)\to0$ for every fixed $k,\eta$, proving the proposition.
+<span class="ln">524</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

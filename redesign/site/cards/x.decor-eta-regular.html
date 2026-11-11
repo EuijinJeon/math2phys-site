@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$\eta$-regular 깊이 배정</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a></div><h1>$\eta$-regular 깊이 배정</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>x:decor-eta-regular</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a> <span class="muted">— topology, 깊이 배정, $b(S)$, 자식 모양</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:average-definition의 합 범위. <span class="nolink" title="Lemma 3.5 (카드 없음)">tree:charging</span> 적용 조건(shifted depth가 old branching depth와 다름)과 c_d ≥ η의 근거<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a></li><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.html" title="이동된 사본과 정규화 $J$의 상대 비용">decor:conditional-concentration.s3</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s1.html" title="$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기">decor:conditional-concentration.s7.s1</a></li><li><a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a></li></ul></dd><dt>수학 진술</dt><dd><p>$\eta&gt;0$을 고정한다. 깊이 배정 $\mathbf q$가 $\eta$-regular라는 것은 모든 $v$에 대해 $q_v/L\in(\eta,1-\eta)$이고 서로 다른 branching vertex $v\ne w$에 대해 $|q_v-q_w|/L&gt;\eta$라는 뜻이다. 추가 prefix depth $d$가 지정되면 $d$도 같은 조건을 만족해야 한다: $d/L\in(\eta,1-\eta)$, 모든 $v$에 대해 $|d-q_v|/L&gt;\eta$. 한 topology의 두 사본이 aligned depth를 쓰면 대응하는 vertex는 깊이 좌표 하나를 공유하고, regularity는 이 서로 다른 좌표들에 부과한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>trees.tex 452–458의 regular shape 정의와 같은 조건이다. 거기서는 $Q_k$로 뽑은 tree에 대해 비정칙 확률이 $C_k(\eta+L^{-1})$임을 보이고(<span class="nolink" title="Lemma 3.6 (카드 없음)">tree:regular-shapes</span>), §8이 그것으로 비정칙 배정을 버린다. regularity 자체에는 물리 대응이 없다: 경계 근처와 서로 가까운 갈라짐을 기술적으로 빼는 조건이다.</p><details class="src"><summary>원문 (decorrelation.tex:21-28)</summary><h4>decorrelation.tex:21-28</h4><pre class="tex"><code><span class="ln">21</span>for the number of branching vertices of a topology $S$.  Fix $\eta&gt;0$.
+<span class="ln">22</span>A depth assignment is \emph{$\eta$-regular} if every assigned depth divided
+<span class="ln">23</span>by $L$ lies in $(\eta,1-\eta)$ and the normalized depths of distinct
+<span class="ln">24</span>branching vertices differ by more than $\eta$.  When an additional
+<span class="ln">25</span>prefix depth $d$ is specified, it must satisfy the same restrictions
+<span class="ln">26</span>relative to all branching depths.  When two copies of one topology use
+<span class="ln">27</span>aligned depths, corresponding vertices share one depth coordinate;
+<span class="ln">28</span>regularity is imposed on these distinct coordinates.</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -136,16 +136,24 @@ def main():
             for p in graph.get("proofs", []):
                 if p["node"] is None and p["file"] == fname:
                     spans.append(("증명(연결 없음)", p["lines"]))
+            # 증명 줄은 잎 카드가, 진술 줄은 아무 카드나(보통 그 정리 카드 자신) 덮으면 된다.
+            need_stmt = set()
             for label, (a, b) in spans:
                 for ln in range(a, b + 1):
                     if C.strip_comment(src[ln - 1]).strip():
-                        need.add(ln)
+                        (need_stmt if label.startswith("진술") else need).add(ln)
             have = set()
             for c in leaf:
                 for (f, a, b) in c.source:
                     if f == fname:
                         have.update(range(a, b + 1))
-            miss = sorted(need - have)
+            have_any = set()
+            for c in valid:
+                for (f, a, b) in c.source:
+                    if f == fname:
+                        have_any.update(range(a, b + 1))
+            miss = sorted((need - have) | (need_stmt - have_any))
+            need = need | need_stmt
             if miss:
                 # 줄 번호를 소속 노드별로 묶어 표시
                 by_owner = {}
@@ -157,7 +165,7 @@ def main():
                             break
                     by_owner.setdefault(owner, []).append(ln)
                 for owner, lns in by_owner.items():
-                    e.append(f"{fname}:{ranges_str(lns)} ({owner}) — 잎 카드가 덮지 않음")
+                    e.append(f"{fname}:{ranges_str(lns)} ({owner}) — 덮는 카드가 없음 (증명은 잎 카드, 진술은 아무 카드)")
             else:
                 notes.append(f"{fname}: 필요한 {len(need)}줄 모두 덮임")
     rep.add("포함", e, [], notes, na=na)
@@ -229,6 +237,15 @@ def main():
                     continue
                 dst = ed["dst"]
                 cont = ed.get("dst_container")
+                # 본문(진술·증명 밖)에서 원문상 뒤에 나오는 대상을 가리키면 의존이 아니라 예고다.
+                if ed.get("role") == "text" and dst in label_loc:
+                    order = ["introduction", "model", "overview", "trees", "upper", "cavity",
+                             "perturbations", "decorrelation", "comparison", "reduction", "consequences"]
+                    def pos(f, ln):
+                        s = f[:-4] if f.endswith(".tex") else f
+                        return (order.index(s) if s in order else 99, ln)
+                    if pos(*label_loc[dst]) > pos(ed["file"], ed["line"]):
+                        continue
                 if not ed.get("resolved"):
                     key = (c.id, dst, ed["file"], ed["line"])
                     if key not in seen_w:

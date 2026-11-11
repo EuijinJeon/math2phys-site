@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s7.html" title="귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$">decor:conditional-concentration.s7</a></div><h1>$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s7.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a> <span class="muted">— 사영된 항등식과 오차 $\rho_N$</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a> <span class="muted">— 부호 있는 확장 합과 계수 표</span></li><li><a class="node" href="../cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a> <span class="muted">(7.13)</span> <span class="muted">— 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a></li></ul></dd><dt>수학 진술</dt><dd><p>decor:projection-bound에서 $\|f-a\cdot b\|_{L^2}\le2p_N(S,e)$이고 $\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1$이다. 그래서 s6의 좌변에서 $f$를 $a\cdot b$로 바꾸는 비용은 $4p_N(S,e)$ 이하이고, 각 $a\cdot b_\ell$이 $a\cdot b$와 같은 marginal law를 가지므로 바뀐 좌변은 $\frac12\sum_{\ell=d}^{e-1}c_\ell\mathbb E(a\cdot b-a\cdot b_\ell)^2$이다. 각 항은 음이 아니고 $c_d\ge\eta$, s6의 우변은 절댓값이 $2\delta+|\rho_N(S,d)|$ 이하이므로
+$$\mathbb E(a\cdot b-a\cdot b_d)^2\le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr).$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>s2의 기저와 같은 구조다. $f$를 사영된 overlap 자신으로 바꾸면 $\mathbb E[x(x-y)]=\frac12\mathbb E(x-y)^2$ (같은 marginal의 $x,y$)로 부호 있는 합이 음이 아닌 합이 된다. $(a,b_\ell)$은 $d$에서 갈라진 두 stem 위의 $a_{S,e}$이므로 $(a,b)$와 같은 법칙이다. 비용 $4p_N$은 $|a\cdot b-a\cdot b_\ell|\le2$와 $L^1\le L^2$에서 온다.</p><details class="src"><summary>원문 (decorrelation.tex:459-479)</summary><h4>decorrelation.tex:459-479</h4><pre class="tex"><code><span class="ln">459</span>\paragraph{Closing the induction.}
+<span class="ln">460</span>Equation~\eqref{decor:projection-bound} gives
+<span class="ln">461</span>$\|f-a\cdot b\|_{L^2}\le2p_N(S,e)$.
+<span class="ln">462</span>Moreover
+<span class="ln">463</span>$\sum_{\ell=d}^{e-1}c_\ell=(e+1)\delta\le1$.
+<span class="ln">464</span>Replacing $f$ by $a\cdot b$ on the left of
+<span class="ln">465</span>\eqref{decor:induction-identity} therefore costs at most
+<span class="ln">466</span>$4p_N(S,e)$.  Each $a\cdot b_\ell$ has the same marginal law as
+<span class="ln">467</span>$a\cdot b$, so that left side becomes
+<span class="ln">468</span>\[
+<span class="ln">469</span> \frac12\sum_{\ell=d}^{e-1}c_\ell
+<span class="ln">470</span>        \mathbb E(a\cdot b-a\cdot b_\ell)^2.
+<span class="ln">471</span>\]
+<span class="ln">472</span>Its summands are nonnegative and $c_d\ge\eta$.  The right side
+<span class="ln">473</span>of \eqref{decor:induction-identity} is bounded in absolute value
+<span class="ln">474</span>by $2\delta+|\rho_N(S,d)|$.  Hence
+<span class="ln">475</span>\begin{equation}
+<span class="ln">476</span> \mathbb E(a\cdot b-a\cdot b_d)^2
+<span class="ln">477</span> \le C_\eta\bigl(\delta+p_N(S,e)+|\rho_N(S,d)|\bigr).
+<span class="ln">478</span> \label{decor:projected-three-copy}
+<span class="ln">479</span>\end{equation}</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -57,7 +57,9 @@ status: proposed         # proposed | confirmed | unverified
   - `blackbox` 진술은 정확하고 증명만 숨김
   - `approximation` 유효 범위 안에서만 맞음 (`gap` 필수)
   - `intuition` 논증에 쓰이지 않는 그림
-- `children`: 3–7개를 목표로 한다. 각 child는 자기 카드를 가진다.
+- `children`: 3–7개를 목표로 하되 논리적 경계가 우선이다(짧은 증명은 2개도 된다). 각 child는 자기 카드를 가진다.
+- `physics`가 null이면 `gap`은 null, `abstraction`은 `blackbox`로 둔다.
+- 증명 안의 식 라벨을 다른 노드가 인용하면, 인용하는 쪽 `uses`에 그 식을 담은 단계 카드를 넣는다.
 - `source`: 모든 카드는 원문 범위에 닿아야 한다. 잎 `step`의 범위를 합치면 부모 증명 범위를 빠짐없이 덮어야 한다.
 - `status`: 작성자는 `proposed`로 둔다. `confirmed`는 사용자만 붙인다.
 
@@ -88,8 +90,8 @@ status: proposed         # proposed | confirmed | unverified
 | 검사 | 통과 조건 |
 |---|---|
 | 정초 | 모든 카드에 `source`가 있고 범위가 실제 파일 안에 있다 |
-| 포함 | 대상 섹션의 정리류 환경과 증명의 모든 줄이 어떤 잎 카드의 `source`에 든다 |
-| 의존 | 카드의 `source` 범위 안에 나오는 `\ref`류가 가리키는 노드가 `uses`(또는 조상·자손의 `uses`)에 있다 |
+| 포함 | 대상 섹션에서 증명의 모든 줄이 어떤 잎 카드의 `source`에 들고, 정리류 진술의 모든 줄이 어떤 카드(보통 그 정리 카드 자신)의 `source`에 든다 |
+| 의존 | 카드의 `source` 범위 안에 나오는 `\ref`류가 가리키는 노드가 `uses`(또는 조상·자손의 `uses`)에 있다. 본문에서 원문상 뒤에 나오는 대상을 가리키는 참조는 예고이므로 제외한다 |
 | 연결 | `uses`, `children`, `[[id]]`, 규칙 표의 수학 노드가 모두 존재하는 ID다 |
 | 순환 | `uses` 그래프에 순환이 없다 |
 | 사전 | 규칙 표의 모든 행에 수학 노드와 차이가 있다. `physics`가 있는 카드는 `gap`과 `abstraction`이 있다 |

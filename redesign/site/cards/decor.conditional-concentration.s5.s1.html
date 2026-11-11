@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>target II 첫 경로의 분류</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a></div><h1>target II 첫 경로의 분류</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s5.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a> <span class="muted">— 두 사본 old tree와 $S^+$ 제약의 구성</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.s2.html" title="$h_N$의 균등성과 사영 벡터 $a$, $b$">decor:conditional-concentration.s4.s2</a> <span class="muted">— $h_N$의 균등성과 사영 벡터 $a$, $b$</span></li><li><span class="nolink" title="Lemma 3.3 (카드 없음)">tree:extension-expansion</span> <span class="muted">Lemma 3.3</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s5.s2.html" title="class 안에서 결합 법칙이 고정됨">decor:conditional-concentration.s5.s2</a>, s5.s3<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s5.s2.html" title="class 안에서 결합 법칙이 고정됨">decor:conditional-concentration.s5.s2</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s3.html" title="class별 계수 합 ($-c_\ell J$, $m_eJ$)">decor:conditional-concentration.s5.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>target I의 추가는 모두 깊이 $d$ 아래 anchor 가지 안에 머물므로 old II stem과 그 child count를 바꾸지 않는다. target II의 첫 추가 경로는 anchor와 깊이 $d$에서 갈라져야 하므로 깊이-$e$ prefix에 따라 정확히 다음 중 하나다. (i) 깊이-$d$ vertex에서 fresh divergence ($\ell=d$, 계수 $-c_d$, $c_d=2m_{d+1}-m_d$). (ii) old II stem을 따라가다 깊이 $\ell$ ($d&lt;\ell&lt;e$)의 unary vertex에서 fresh divergence (계수 $-c_\ell=-\delta$). (iii) old II prefix를 깊이 $e$까지 따라감 (그 뒤의 선택은 무엇이든). (i), (ii)에서 $b_\ell$은 새 stem 위의 $a_{S,e}$이고, (iii)에서 최종 사영 벡터는 $b$이다. target II의 나중 경로는 첫 경로와 $e+1$ 이상에서 갈라지므로 깊이 $e$까지 첫 경로를 따른다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>$f$는 old leaf 전체의 multioverlap이므로 허용된 고정 overlap 단항식이고 $|f|\le1$이다. 분류의 요점은 사영된 overlap이 target II 첫 경로의 깊이-$e$ prefix에만 의존한다는 것이다. 첫 경로가 old II에서 언제 떨어지느냐에 따라 $b$를 그대로 쓰거나 $b$와 부분적으로만 prefix를 공유하는 새 사본 $b_\ell$을 쓴다.</p><details class="src"><summary>원문 (decorrelation.tex:386-400)</summary><h4>decorrelation.tex:386-400</h4><pre class="tex"><code><span class="ln">386</span>\paragraph{The signed extension sum.}
+<span class="ln">387</span>Set $f$ to be the overlap of all $2k$ old leaves, an allowed fixed
+<span class="ln">388</span>overlap monomial. All target-I additions stay in the anchor&#x27;s branch
+<span class="ln">389</span>below $d$, so they leave the old-II stem and its child counts unchanged.
+<span class="ln">390</span>Classify the first added path of target side II by its prefix
+<span class="ln">391</span>through $e$.  It may diverge freshly at $\ell=d$, with coefficient
+<span class="ln">392</span>$-c_d$, or follow the old II stem and diverge at $d&lt;\ell&lt;e$, with
+<span class="ln">393</span>coefficient $-c_\ell=-\delta$.  In such a class let $b_\ell$ be
+<span class="ln">394</span>$a_{S,e}$ on the new stem; it shares the old II prefix through
+<span class="ln">395</span>$\ell$.  At $\ell=d$ the stems carrying $a,b,b_d$ are conditionally
+<span class="ln">396</span>independent below $d$.  Every remaining possibility follows the
+<span class="ln">397</span>old II prefix through $e$ and has final projected vector $b$.
+<span class="ln">398</span>All later target paths in side II follow its first path through
+<span class="ln">399</span>$e$, since their earliest split is $e+1$.
+<span class="ln">400</span></code></pre></details>
+</div>
+
+</body>
+</html>

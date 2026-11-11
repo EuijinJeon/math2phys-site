@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></div><h1>(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>decor:projection-bound</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a> <span class="muted">(7.12)</span> <span class="muted">— 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</span></li><li><a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a> <span class="muted">Lemma 7.2</span> <span class="muted">— 축약 부등식과 세 사본 부등식</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s4.s1 (target 측 사영, S^+와 e+1), s7.s1과 s7.s2 (옛 측 사영), overlap-concentration.s3 (B=1)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.html" title="두 target 측의 사영">decor:conditional-concentration.s4</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.s1.html" title="$e+1$에서 사영하고 깊이를 되돌리기">decor:conditional-concentration.s4.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s6.html" title="사영된 항등식과 오차 $\rho_N$">decor:conditional-concentration.s6</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.html" title="귀납 닫기: 점화식 $V_{k,L}\le C(L^{-1/2}+V_{k-1,L}^{1/4})$">decor:conditional-concentration.s7</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s1.html" title="$f$를 $a\cdot b$로 바꾸어 음이 아닌 세 사본 양 얻기">decor:conditional-concentration.s7.s1</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s7.s2.html" title="$v_N(S,d)$의 귀납 추정">decor:conditional-concentration.s7.s2</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s3.html" title="prefix 아래의 조건부 분산: $G$와 $G_-$">decor:overlap-concentration.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>decor:projection-definition의 상황에서, $B\in[-1,1]^N$가 $\mathscr F_e$가 주어지면 $S$의 깊이 $e$ 아래 continuation과 조건부 독립인 확률 벡터이면
+$$\|(A_S-a_{S,e})\cdot B\|_{L^2}\le p_N(S,e).$$
+특히 $B=\mathbf1$일 때, 그리고 $B$가 $e$ 이전에 갈라진 다른 측에서 뽑은 $[-1,1]^N$ 벡터일 때 성립한다. 두 측 I, II가 각각 같은 모양 $S$의 사본이고 $e$ 이전(예: 깊이 $d&lt;e$)에서 갈라졌으면, $\|A_S^{\rm I}\cdot A_S^{\rm II}-a^{\rm I}_{S,e}\cdot a^{\rm II}_{S,e}\|_{L^2}\le2p_N(S,e)$. 마지막으로 $|f|\le1$인 임의의 스칼라 $f$ (오차와 상관이 있어도 됨)에 대해 $\mathbb E|f\,Z|\le\|Z\|_{L^2}$이므로, 위 오차에 $f$를 곱해도 $L^1$ 상계는 커지지 않는다.</p></dd><dt>물리 진술</dt><dd><p>첫 갈라짐 깊이 $e$의 상태 안에서 각 가지가 clustering하면(자식의 $v_N$이 작으면), overlap을 계산할 때 각 가지의 spin 곱을 그 상태의 평균(국소 자화의 곱)으로 바꿔도 된다. cavity 계산에서 "상태 안에서는 평균장으로 대체"하는 단계다.</p></dd><dt>차이</dt><dd><p>math는 대체 오차를 $\sum_jv_N(T_j,e)^{1/4}$로 정량적으로 준다. 그것도 $e$ 아래 continuation과 조건부 독립인 벡터와의 축약에 대해서만이다. 각 가지가 실제로 clustering하는지는 이 lemma가 말하지 않고 decor:conditional-concentration이 깊이 평균의 의미로 따로 준다.</p></dd><dt>축약 유형</dt><dd><code>approximation</code> <span class="muted">— 유효 범위 안에서만 맞음</span></dd></dl><h2>본문</h2><p><strong>근거.</strong> $A_S=\prod_jA_{T_j}$ (좌표별)이므로 자식을 하나씩 평균으로 바꾸는 망원 합
+$$A_S-a_{S,e}=\sum_{r=1}^s\Bigl(\prod_{j&lt;r}\mu_{e,T_j}\Bigr)(A_{T_r}-\mu_{e,T_r})\Bigl(\prod_{j&gt;r}A_{T_j}\Bigr)$$
+을 쓴다. $r$번째 항을 $B$와 축약하면 $(A_{T_r}-\mu_{e,T_r})\cdot B_r$ 꼴이다. 여기서 $B_r=B\prod_{j&lt;r}\mu_{e,T_j}\prod_{j&gt;r}A_{T_j}\in[-1,1]^N$는 $\mathscr F_e$가 주어지면 $T_r$의 continuation과 조건부 독립이다(<a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a>). <a class="node" href="../cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a>의 축약 부등식으로 각 항은 $v_N(T_r,e)^{1/4}$ 이하이고, 삼각부등식으로 합하면 된다. 두 측의 경우: 먼저 $B=A_S^{\rm II}$로 측 I을 사영하고, 다음에 $B=a^{\rm I}_{S,e}$로 측 II를 사영한다. 두 측의 $p_N$은 aligned depth 때문에 같은 법칙을 가지므로 같은 값이다.</p><details class="src"><summary>원문 (decorrelation.tex:216-230)</summary><h4>decorrelation.tex:216-230</h4><pre class="tex"><code><span class="ln">216</span>For any vector $B\in[-1,1]^N$ independent of the continuation of $S$
+<span class="ln">217</span>given its prefix at $e$, successive replacement of the children,
+<span class="ln">218</span>using \eqref{decor:contraction-bound}, gives
+<span class="ln">219</span>\begin{equation}
+<span class="ln">220</span> \|(A_S-a_{S,e})\cdot B\|_{L^2}\le p_N(S,e).
+<span class="ln">221</span> \label{decor:projection-bound}
+<span class="ln">222</span>\end{equation}
+<span class="ln">223</span>At each replacement the other child vectors and the already replaced
+<span class="ln">224</span>means form a bounded multiplier independent of the child being
+<span class="ln">225</span>replaced, conditionally on $\mathscr F_e$.  In particular this applies
+<span class="ln">226</span>to $B=\mathbf1$, and to a vector sampled on another side separated
+<span class="ln">227</span>before $e$.  For two such sides, both can be projected with total
+<span class="ln">228</span>$L^2$ error at most $2p_N(S,e)$.  Multiplication of the contracted
+<span class="ln">229</span>error by any scalar test $f$ with $|f|\le1$, even a correlated one,
+<span class="ln">230</span>does not increase its $L^1$ bound.</code></pre></details>
+</div>
+
+</body>
+</html>

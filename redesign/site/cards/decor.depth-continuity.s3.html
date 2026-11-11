@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이동 하나의 비용 $C/L$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></div><h1>이동 하나의 비용 $C/L$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:depth-continuity.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a> <span class="muted">— martingale energy와 평가 깊이 연속성</span></li><li><a class="node" href="../cards/decor.depth-continuity.s2.html" title="갈라짐 하나를 한 칸 늦추는 효과">decor:depth-continuity.s2</a> <span class="muted">— 갈라짐 하나를 한 칸 늦추는 효과</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.depth-continuity.s4.html" title="여러 이동과 더 큰 tree">decor:depth-continuity.s4</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.depth-continuity.s4.html" title="여러 이동과 더 큰 tree">decor:depth-continuity.s4</a></li></ul></dd><dt>수학 진술</dt><dd><p>$|U|=1$, $U=\{v\}$이면 $L\ge L_0$에서 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L$ ($C$는 $S$의 vertex 수에만 의존). 근거: s2의 우변을 $q=q_v$에 대해 합하면 각 자식 모양에 대해 s1에 의해 $s\cdot s$ 이하다. 깊이 $q_v$에서 바뀐 부분 tree 평균을 조상 깊이 $d$로 올리는 연산은 조건부 기대값과 절댓값 1 이하 인자의 좌표별 곱뿐이므로 $\mathbb E\|\cdot\|_N^2$를 늘리지 않는다. 나머지 좌표에 대한 평균은 $L$의 거듭제곱으로 상쇄된다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>조건부 기대값은 $L^2$ 축약이고(Jensen), $[-1,1]$ 값 인자를 좌표별로 곱해도 각 좌표의 절댓값이 줄 뿐이다. 그래서 바뀐 부분 tree의 차이가 조상으로 전파되어도 커지지 않는다. $q_v$에 대한 합이 $L$에 무관하게 유계이므로 정규화 $L^{-1}$이 남는다. ❓ "$L\ge L_0$"는 갈라짐을 $q_v+1$로 늦춰도 그 자식들의 다음 branching depth보다 앞에 있어야 한다는 조건에서 온다고 읽었다. 원문은 이 단계에서 따로 밝히지 않는다.</p><details class="src"><summary>원문 (decorrelation.tex:194-199)</summary><h4>decorrelation.tex:194-199</h4><pre class="tex"><code><span class="ln">194</span>Summing over $q$ uses \eqref{decor:martingale-energy} with each child
+<span class="ln">195</span>shape fixed.  Propagating a changed subtree mean towards an ancestral
+<span class="ln">196</span>evaluation consists of conditional expectations and multiplication
+<span class="ln">197</span>by factors bounded by one.  Both operations contract this squared
+<span class="ln">198</span>norm.  Averaging over all other depth coordinates therefore proves
+<span class="ln">199</span>the claimed $C/L$ bound for one shift.  For several shifts, change the</code></pre></details>
+</div>
+
+</body>
+</html>

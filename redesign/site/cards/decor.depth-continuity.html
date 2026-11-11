@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 7.3 깊이에 대한 평균 연속성</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.section.html" title="7 §7 처방된 tree 위의 decorrelation">decor:section</a></div><h1>Lemma 7.3 깊이에 대한 평균 연속성</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>decor:depth-continuity</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li><li><a class="node" href="../cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="muted">— $\eta$-regular 깊이 배정</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li><li><a class="node" href="../cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a> <span class="muted">— 곱 차이 부등식</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>conditional-concentration.s4.s1 (S^+에서 S로, 평가 깊이 e+1에서 e로 되돌리는 비용 h_N). overlap-concentration.s3 (G에서 G_-로, martingale energy). decor:order-of-limits의 C/L<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.html" title="두 target 측의 사영">decor:conditional-concentration.s4</a></li><li><a class="node" href="../cards/decor.conditional-concentration.s4.s1.html" title="$e+1$에서 사영하고 깊이를 되돌리기">decor:conditional-concentration.s4.s1</a></li><li><a class="node" href="../cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s3.html" title="prefix 아래의 조건부 분산: $G$와 $G_-$">decor:overlap-concentration.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>topology $S$와 branching vertex의 부분집합 $U$를 고정한다. 각 $\eta$-regular 깊이 배정에 대해 $S^U$는 같은 topology에서 $U$의 vertex 깊이를 1씩 늘린 것이다. 평가 깊이 $d$가 $S$와 $S^U$ 둘 다의 initial stem 위에 있으면(ancestral), 같은 sampled prefix에서 두 평균을 비교한다. 그러면 $L\ge L_0(\eta,S,U)$에서
+$$\mathcal A_{L,\eta}\,\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L.$$
+평균은 모든 branching depth에 대해, 그리고 $d$가 범위를 가지면 $d$에 대해서도 취하며, 그렇지 않으면 $d$는 고정이다. $d$가 $S$의 initial unary 구간을 따라 움직이면($d+1$도 initial stem 위)
+$$\mathcal A_{L,\eta}\,\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le C/L$$
+(평균은 $d$와 모든 branching depth에 대해, 두 평균은 같은 sampled path 위에서). 상수 $C$는 vertex 수와 이동 수에만 의존하며 $N$, 평가 깊이, transition kernel에 균등하다. 같은 부등식은 $S$를 포함한 더 큰 sampled tree 안에서 계산해도 성립한다.</p></dd><dt>물리 진술</dt><dd><p>상태 평균은 계층 깊이에 대해 평균적으로 연속이다. 깊이를 한 단계 옮겨도 상태 평균이 크게 바뀌는 깊이는 드물다. 계층을 따라 쌓이는 정보(martingale 증분의 에너지)가 전체로 유계이기 때문이다. Parisi 함수 $q(x)$가 단조 유계라서 큰 점프가 많을 수 없다는 그림과 같다.</p></dd><dt>차이</dt><dd><p>math는 고정 깊이에서의 연속성을 주지 않는다. 깊이 평균 $\mathcal A_{L,\eta}$에서 $C/L$만 준다. 이 lemma는 모형과 무관하게 임의의 kernel에 대해 성립하는 martingale 사실이며, $q(x)$나 Parisi 측도를 쓰지 않는다.</p></dd><dt>축약 유형</dt><dd><code>intuition</code> <span class="muted">— 논증에 쓰이지 않는 그림</span></dd></dl><h2>펼침</h2><details class="child"><summary>martingale energy와 평가 깊이 연속성 <a class="node" href="../cards/decor.depth-continuity.s1.html">↗</a><span class="cm">모양 $T$의 나중 branching depth를 고정하고 initial stem을 따라 한 경로를 뽑으면 $t\mapsto\mu_{t,T}$는 그 stem의 prefix filtration $(\mathscr F_t)$에 대한 vector martingale이고 좌표가 $[-1,1]$에 있다. 증분의 직교성에서 $$\sum_t\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2\le1$$ (합은 initial stem 위의 $t,t+1$에 대해). 이것을 범위를 갖는 $d$에 대해 합하고 정규화 $L^{-1}$을 곱하면, 나머지 좌표의 합은 $L$의 거듭제곱으로 상쇄되어 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le1/L$.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a> <span class="muted">(7.5)</span> <span class="muted">— 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>depth-continuity의 둘째 부등식 (evaluation-depth-continuity). s3의 q에 대한 합. overlap-concentration.s3의 (adjacent-prefix-error)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.depth-continuity.s2.html" title="갈라짐 하나를 한 칸 늦추는 효과">decor:depth-continuity.s2</a></li><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a></li><li><a class="node" href="../cards/decor.overlap-concentration.s3.html" title="prefix 아래의 조건부 분산: $G$와 $G_-$">decor:overlap-concentration.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>모양 $T$의 나중 branching depth를 고정하고 initial stem을 따라 한 경로를 뽑으면 $t\mapsto\mu_{t,T}$는 그 stem의 prefix filtration $(\mathscr F_t)$에 대한 vector martingale이고 좌표가 $[-1,1]$에 있다. 증분의 직교성에서
+$$\sum_t\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2\le1$$
+(합은 initial stem 위의 $t,t+1$에 대해). 이것을 범위를 갖는 $d$에 대해 합하고 정규화 $L^{-1}$을 곱하면, 나머지 좌표의 합은 $L$의 거듭제곱으로 상쇄되어 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le1/L$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>갈라짐 하나를 한 칸 늦추는 효과 <a class="node" href="../cards/decor.depth-continuity.s2.html">↗</a><span class="cm">깊이 $q$의 branching vertex가 자식 모양 $T_1,\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\prod_j\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고 $$\mathbb E\Bigl\|\prod_j\mu_{q,T_j}-\mathbb E\Bigl[\prod_j\mu_{q+1,T_j}\Bigm|\mathscr F_q\Bigr]\Bigr\|_N^2\le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2.$$</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a> <span class="muted">— martingale energy와 평가 깊이 연속성</span></li><li><a class="node" href="../cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a> <span class="muted">— 곱 차이 부등식</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a></li></ul></dd><dt>수학 진술</dt><dd><p>깊이 $q$의 branching vertex가 자식 모양 $T_1,\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\prod_j\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고
+$$\mathbb E\Bigl\|\prod_j\mu_{q,T_j}-\mathbb E\Bigl[\prod_j\mu_{q+1,T_j}\Bigm|\mathscr F_q\Bigr]\Bigr\|_N^2\le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2.$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>이동 하나의 비용 $C/L$ <a class="node" href="../cards/decor.depth-continuity.s3.html">↗</a><span class="cm">$|U|=1$, $U=\{v\}$이면 $L\ge L_0$에서 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L$ ($C$는 $S$의 vertex 수에만 의존). 근거: s2의 우변을 $q=q_v$에 대해 합하면 각 자식 모양에 대해 s1에 의해 $s\cdot s$ 이하다. 깊이 $q_v$에서 바뀐 부분 tree 평균을 조상 깊이 $d$로 올리는 연산은 조건부 기대값과 절댓값 1 이하 인자의 좌표별 곱뿐이므로 $\mathbb E\|\cdot\|_N^2$를 늘리지 않는다. 나머지 좌표에 대한 평균은 $L$의 거듭제곱으로 상쇄된다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a> <span class="muted">— martingale energy와 평가 깊이 연속성</span></li><li><a class="node" href="../cards/decor.depth-continuity.s2.html" title="갈라짐 하나를 한 칸 늦추는 효과">decor:depth-continuity.s2</a> <span class="muted">— 갈라짐 하나를 한 칸 늦추는 효과</span></li><li><a class="node" href="../cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="muted">(7.1)</span> <span class="muted">— 깊이 평균 $\mathcal A_{L,\eta}$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.depth-continuity.s4.html" title="여러 이동과 더 큰 tree">decor:depth-continuity.s4</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.depth-continuity.s4.html" title="여러 이동과 더 큰 tree">decor:depth-continuity.s4</a></li></ul></dd><dt>수학 진술</dt><dd><p>$|U|=1$, $U=\{v\}$이면 $L\ge L_0$에서 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L$ ($C$는 $S$의 vertex 수에만 의존). 근거: s2의 우변을 $q=q_v$에 대해 합하면 각 자식 모양에 대해 s1에 의해 $s\cdot s$ 이하다. 깊이 $q_v$에서 바뀐 부분 tree 평균을 조상 깊이 $d$로 올리는 연산은 조건부 기대값과 절댓값 1 이하 인자의 좌표별 곱뿐이므로 $\mathbb E\|\cdot\|_N^2$를 늘리지 않는다. 나머지 좌표에 대한 평균은 $L$의 거듭제곱으로 상쇄된다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>여러 이동과 더 큰 tree <a class="node" href="../cards/decor.depth-continuity.s4.html">↗</a><span class="cm">$U=\{v_1,\ldots,v_u\}$이면 $S=S^{U_0},S^{U_1},\ldots,S^{U_u}=S^U$ ($U_r=\{v_1,\ldots,v_r\}$)로 하나씩 바꾸고 $\|\sum_{r=1}^u x_r\|^2\le u\sum_r\|x_r\|^2$를 쓴다. regularity 때문에 중간 모양들은 같은 조상 관계를 갖고, $L$이 크면 그 깊이 배정은 $\eta/2$-regular이다 (<a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> (ii)). 그래서 각 항에 $\eta/2$ 영역에서의 s3을 적용해 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le u^2C/L$. 한 prefix의 marginal law는 다른 sampled branch를 빼도 바뀌지 않으므로 이 추정은 더 큰 sampled tree 안에서도 성립한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a> <span class="muted">— 이동 하나의 비용 $C/L$</span></li><li><a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> <span class="muted">— 깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</span></li><li><a class="node" href="../cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a> <span class="muted">— tree 표본 규칙 (조건부 독립과 사영 일관성)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>decor:depth-continuity의 첫째 부등식 (branch-depth-continuity) 일반형<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>$U=\{v_1,\ldots,v_u\}$이면 $S=S^{U_0},S^{U_1},\ldots,S^{U_u}=S^U$ ($U_r=\{v_1,\ldots,v_r\}$)로 하나씩 바꾸고 $\|\sum_{r=1}^u x_r\|^2\le u\sum_r\|x_r\|^2$를 쓴다. regularity 때문에 중간 모양들은 같은 조상 관계를 갖고, $L$이 크면 그 깊이 배정은 $\eta/2$-regular이다 (<a class="node" href="../cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a> (ii)). 그래서 각 항에 $\eta/2$ 영역에서의 s3을 적용해 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le u^2C/L$. 한 prefix의 marginal law는 다른 sampled branch를 빼도 바뀌지 않으므로 이 추정은 더 큰 sampled tree 안에서도 성립한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/decor.depth-continuity.s1.html" title="martingale energy와 평가 깊이 연속성">decor:depth-continuity.s1</a>: initial stem을 따른 $\mu_{t,T}$는 유계 vector martingale이고 증분 에너지의 합이 1 이하다. 이것을 $d$에 대해 합하고 $L$로 나누면 둘째 부등식이 나온다. <a class="node" href="../cards/decor.depth-continuity.s2.html" title="갈라짐 하나를 한 칸 늦추는 효과">decor:depth-continuity.s2</a>: 깊이 $q$의 branching vertex 하나를 $q+1$로 늦춘 효과는 자식 평균들의 한 걸음 증분으로 눌린다. <a class="node" href="../cards/decor.depth-continuity.s3.html" title="이동 하나의 비용 $C/L$">decor:depth-continuity.s3</a>: 그 증분을 $q$에 대해 합하면 s1에 의해 유계이고, 바뀐 부분 tree 평균을 조상 깊이 $d$까지 올리는 연산(조건부 기대값과 $|\cdot|\le1$ 인자의 곱)은 제곱 노름을 줄인다. 그래서 이동 하나의 비용은 $C/L$이다. <a class="node" href="../cards/decor.depth-continuity.s4.html" title="여러 이동과 더 큰 tree">decor:depth-continuity.s4</a>: 이동 여러 개는 하나씩 바꾸고 제곱 삼각부등식으로 합한다. 중간 모양은 regularity 덕분에 같은 조상 관계를 갖고 $\eta/2$-regular 영역에 놓인다. 더 큰 tree 안에서도 한 prefix의 marginal law가 같으므로 성립한다.</p><details class="src"><summary>원문 (decorrelation.tex:142-166, decorrelation.tex:168-206)</summary><h4>decorrelation.tex:142-166</h4><pre class="tex"><code><span class="ln">142</span>\begin{lemma}[Averaged continuity in depth]
+<span class="ln">143</span>\label{decor:depth-continuity}
+<span class="ln">144</span>Fix a topology $S$ and a subset $U$ of its branching vertices. For each
+<span class="ln">145</span>$\eta$-regular depth assignment, let $S^U$ have the same topology with
+<span class="ln">146</span>the depths of the vertices in $U$ increased by one. At an ancestral
+<span class="ln">147</span>evaluation depth $d$, compare the means using the same sampled prefix.
+<span class="ln">148</span>Then, for all sufficiently large $L$,
+<span class="ln">149</span>\begin{equation}
+<span class="ln">150</span> \mathcal A_{L,\eta}\mathbb E
+<span class="ln">151</span>       \|\mu_{d,S^U}-\mu_{d,S}\|_N^2\le C/L.
+<span class="ln">152</span> \label{decor:branch-depth-continuity}
+<span class="ln">153</span>\end{equation}
+<span class="ln">154</span>The average ranges over all branching depths; the coordinate $d$ is
+<span class="ln">155</span>also averaged if it ranges, and otherwise is held fixed. If $d$ ranges
+<span class="ln">156</span>along an initial unary stretch of $S$, then
+<span class="ln">157</span>\begin{equation}
+<span class="ln">158</span> \mathcal A_{L,\eta}\mathbb E
+<span class="ln">159</span>       \|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le C/L,
+<span class="ln">160</span> \label{decor:evaluation-depth-continuity}
+<span class="ln">161</span>\end{equation}
+<span class="ln">162</span>where this average includes $d$ and all branching depths, and the means
+<span class="ln">163</span>are evaluated along the same sampled path. The constant depends only on
+<span class="ln">164</span>the number of vertices and shifts, uniformly in $N$, the evaluation
+<span class="ln">165</span>depth, and the transition kernels.
+<span class="ln">166</span>\end{lemma}</code></pre><h4>decorrelation.tex:168-206</h4><pre class="tex"><code><span class="ln">168</span>\begin{proof}
+<span class="ln">169</span>Keep the later branching depths of $T$ fixed and sample a single path
+<span class="ln">170</span>along its initial stem. On this path, $\mu_{t,T}$ is a bounded vector
+<span class="ln">171</span>martingale. Orthogonality of its increments gives
+<span class="ln">172</span>\begin{equation}
+<span class="ln">173</span> \sum_t\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2\le1.
+<span class="ln">174</span> \label{decor:martingale-energy}
+<span class="ln">175</span>\end{equation}
+<span class="ln">176</span>This proves the evaluation-depth assertion after summing over the
+<span class="ln">177</span>ranged depth and dividing by $L$.
+<span class="ln">178</span>
+<span class="ln">179</span>Consider a branching vertex at depth $q$ with child shapes
+<span class="ln">180</span>$T_1,\ldots,T_s$.  Holding their later depths fixed, its original
+<span class="ln">181</span>conditional mean is $\prod_j \mu_{q,T_j}$, with products understood
+<span class="ln">182</span>coordinatewise.  If the split is delayed to $q+1$, its conditional mean
+<span class="ln">183</span>at the same prefix of depth $q$ is
+<span class="ln">184</span>$\mathbb E[\prod_j \mu_{q+1,T_j}\mid\mathscr F_q]$, where the child means
+<span class="ln">185</span>are evaluated on a common one-step continuation.  Jensen&#x27;s inequality
+<span class="ln">186</span>and the product difference inequality on $[-1,1]^s$ yield
+<span class="ln">187</span>\begin{equation}
+<span class="ln">188</span> \mathbb E\left\|\prod_j \mu_{q,T_j}
+<span class="ln">189</span>       -\mathbb E\left[\prod_j \mu_{q+1,T_j}\mid\mathscr F_q\right]
+<span class="ln">190</span>       \right\|_N^2
+<span class="ln">191</span> \le s\sum_j\mathbb E\|\mu_{q+1,T_j}-\mu_{q,T_j}\|_N^2.
+<span class="ln">192</span> \label{decor:one-vertex-shift}
+<span class="ln">193</span>\end{equation}
+<span class="ln">194</span>Summing over $q$ uses \eqref{decor:martingale-energy} with each child
+<span class="ln">195</span>shape fixed.  Propagating a changed subtree mean towards an ancestral
+<span class="ln">196</span>evaluation consists of conditional expectations and multiplication
+<span class="ln">197</span>by factors bounded by one.  Both operations contract this squared
+<span class="ln">198</span>norm.  Averaging over all other depth coordinates therefore proves
+<span class="ln">199</span>the claimed $C/L$ bound for one shift.  For several shifts, change the
+<span class="ln">200</span>vertices one at a time and use the squared triangle inequality with
+<span class="ln">201</span>a factor equal to the number of shifts.  Regularity ensures that the
+<span class="ln">202</span>intermediate shapes have the same ancestry relations and, for large
+<span class="ln">203</span>$L$, lie in the enlarged $\eta/2$-regular domain.  All relevant
+<span class="ln">204</span>one-prefix marginal laws are unchanged when other sampled branches
+<span class="ln">205</span>are omitted, so these estimates hold in any larger sampled tree.
+<span class="ln">206</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

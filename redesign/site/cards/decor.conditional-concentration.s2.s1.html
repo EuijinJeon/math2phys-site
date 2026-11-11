@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한 층 항등식 (singleton identity)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a></div><h1>한 층 항등식 (singleton identity)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>decor:conditional-concentration.s2.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><span class="nolink" title="Theorem 6.5 (카드 없음)">pert:tree-identity</span> <span class="muted">Theorem 6.5</span></li><li><span class="nolink" title="Lemma 3.3 (카드 없음)">tree:extension-expansion</span> <span class="muted">Lemma 3.3</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="muted">— 균등 격자 $m_d=d/L$, $\delta=1/L$</span></li><li><a class="node" href="../cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="muted">— spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s2.s2.html" title="기저의 마무리: 세 사본 부등식">decor:conditional-concentration.s2.s2</a></li></ul></dd><dt>수학 진술</dt><dd><p>old tree는 깊이 $d$에서 갈라지는 두 경로 1, 2이고 경로 1이 spin anchor다. 제약: added color 하나가 anchor와 정확히 깊이 $d$에서 갈라진다. 허용된 선택과 계수는 옛 leaf 2 (계수 $1$), 깊이-$d$ vertex에서 fresh (계수 $-c_d$), 경로 2를 따라가다 깊이 $\ell$ ($d&lt;\ell\le L-1$)의 unary vertex에서 fresh (계수 $-c_\ell$)이며
+$$c_d=2m_{d+1}-m_d=(d+2)\delta,\qquad c_\ell=\delta\quad(d&lt;\ell\le L-1).$$
+anchor 혼자일 때의 총 계수는 $-\delta$이다. $X=R_{12}$, $X_\ell=R_{13}$ (경로 3은 해당 fresh 확장)이라 하면 각 $X_\ell$은 $X$와 같은 marginal law를 갖고 $\sum_{\ell=d}^{L-1}c_\ell=1+\delta$이다. $f=X$로 둔 pert:tree-identity에서
+$$\frac12\sum_{\ell=d}^{L-1}c_\ell\,\mathbb E(X-X_\ell)^2=\delta\operatorname{Var}(X)+o_N(1)\le\delta+o_N(1).$$</p></dd><dt>물리 진술</dt><dd><p>stochastic stability에서 나오는 Ghirlanda–Guerra 형 항등식의 한 층 판: anchor와 깊이 $d$에서 갈라진 replica 쌍의 overlap $X$와, 새 replica를 tree의 가능한 갈라짐 위치 $\ell$에 가중치 $c_\ell$로 붙였을 때의 overlap $X_\ell$의 차이 제곱 평균의 가중합이 $\delta\operatorname{Var}(X)$와 같다.</p></dd><dt>차이</dt><dd><p>pert:selection이 고른 perturbed reservoir의 수열을 따라 고정 $L$에서 $o_N(1)$ 오차로만 성립한다. 가중치 $c_\ell$은 균등 격자 $m_d=d/L$와 tree:extension-expansion의 계수에서 온다. 고전적 GG 항등식의 $P(q)$ 가중치 형태로 바꿔 쓴 것은 아니다.</p></dd><dt>축약 유형</dt><dd><code>approximation</code> <span class="muted">— 유효 범위 안에서만 맞음</span></dd></dl><h2>본문</h2><p>계수는 tree:extension-expansion의 규칙 그대로다: 깊이 $d$ vertex는 자식이 둘이므로 $m_d-2m_{d+1}=-c_d$, unary vertex는 $m_\ell-m_{\ell+1}=-\delta$. 총합은 $1-(d+2)\delta-(L-1-d)\delta=-\delta$로 anchor 혼자일 때와 같다(그때는 fresh at $d$, unary, 계수 $-\delta$뿐). 항등식은 $\sum_\ell c_\ell\mathbb E[XX_\ell]=\mathbb EX^2+\delta(\mathbb EX)^2+o_N(1)$을 준다. $\mathbb EX_\ell^2=\mathbb EX^2$와 $\sum c_\ell=1+\delta$를 쓰면 $\frac12\sum c_\ell\mathbb E(X-X_\ell)^2=(1+\delta)\mathbb EX^2-\sum c_\ell\mathbb E[XX_\ell]=\delta\operatorname{Var}X+o_N(1)$이다. trees.tex 316–335의 계산과 같은 구성이다.</p><details class="src"><summary>원문 (decorrelation.tex:263-286)</summary><h4>decorrelation.tex:263-286</h4><pre class="tex"><code><span class="ln">263</span>
+<span class="ln">264</span>\paragraph{One leaf.}
+<span class="ln">265</span>Take two old paths splitting at $d$, with path $1$ a spin anchor, and
+<span class="ln">266</span>add one color required to split from the anchor exactly at $d$.
+<span class="ln">267</span>The available old path $2$ has coefficient $1$.  A fresh path can
+<span class="ln">268</span>split from both old paths at $d$, with coefficient $-c_d$, or follow
+<span class="ln">269</span>path $2$ and leave it at $\ell&gt;d$, with coefficient $-c_\ell$, where
+<span class="ln">270</span>\begin{equation}
+<span class="ln">271</span> c_d=2m_{d+1}-m_d=(d+2)\delta,
+<span class="ln">272</span> \qquad c_\ell=\delta\quad(d&lt;\ell\le L-1).
+<span class="ln">273</span> \label{decor:c-weights}
+<span class="ln">274</span>\end{equation}
+<span class="ln">275</span>From the anchor alone the total coefficient is $-\delta$.
+<span class="ln">276</span>Write $X=R_{12}$ and $X_\ell=R_{13}$ for the corresponding fresh
+<span class="ln">277</span>extension.  Each $X_\ell$ has the marginal law of $X$, and
+<span class="ln">278</span>$\sum_{\ell=d}^{L-1}c_\ell=1+\delta$.  The prescribed-tree identity
+<span class="ln">279</span>with $f=X$ therefore gives
+<span class="ln">280</span>\begin{equation}
+<span class="ln">281</span> \frac12\sum_{\ell=d}^{L-1}c_\ell
+<span class="ln">282</span>      \mathbb E(X-X_\ell)^2
+<span class="ln">283</span>       =\delta\operatorname{Var}(X)+o_N(1)
+<span class="ln">284</span>       \le\delta+o_N(1).
+<span class="ln">285</span> \label{decor:singleton-identity}
+<span class="ln">286</span>\end{equation}</code></pre></details>
+</div>
+
+</body>
+</html>
