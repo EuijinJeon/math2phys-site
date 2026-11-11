@@ -1,0 +1,5991 @@
+{
+ "files": [
+  "introduction.tex",
+  "model.tex",
+  "overview.tex",
+  "trees.tex",
+  "upper.tex",
+  "cavity.tex",
+  "perturbations.tex",
+  "decorrelation.tex",
+  "comparison.tex",
+  "reduction.tex",
+  "consequences.tex"
+ ],
+ "nodes": [
+  {
+   "id": "x:introduction-L1",
+   "kind": "section",
+   "number": "1",
+   "title": "Introduction",
+   "label": null,
+   "file": "introduction.tex",
+   "lines": [
+    1,
+    86
+   ],
+   "ranges": [
+    {
+     "file": "introduction.tex",
+     "lines": [
+      1,
+      86
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "model:section",
+   "kind": "section",
+   "number": "2",
+   "title": "The model and the variational principle",
+   "label": "model:section",
+   "file": "model.tex",
+   "lines": [
+    1,
+    140
+   ],
+   "ranges": [
+    {
+     "file": "model.tex",
+     "lines": [
+      1,
+      140
+     ]
+    },
+    {
+     "file": "overview.tex",
+     "lines": [
+      1,
+      51
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "model:integrability",
+   "kind": "equation",
+   "number": "(2.1)",
+   "label": "model:integrability",
+   "file": "model.tex",
+   "line": 6,
+   "lines": [
+    6,
+    6
+   ],
+   "node": null,
+   "role": "text",
+   "container": "model:section",
+   "section": "model:section",
+   "subsection": null
+  },
+  {
+   "id": "model:hamiltonian",
+   "kind": "equation",
+   "number": "(2.2)",
+   "label": "model:hamiltonian",
+   "file": "model.tex",
+   "line": 12,
+   "lines": [
+    12,
+    12
+   ],
+   "node": null,
+   "role": "text",
+   "container": "model:section",
+   "section": "model:section",
+   "subsection": null
+  },
+  {
+   "id": "model:factorization",
+   "kind": "equation",
+   "number": "(2.3)",
+   "label": "model:factorization",
+   "file": "model.tex",
+   "line": 26,
+   "lines": [
+    26,
+    26
+   ],
+   "node": null,
+   "role": "text",
+   "container": "model:section",
+   "section": "model:section",
+   "subsection": null
+  },
+  {
+   "id": "model:positivity",
+   "kind": "equation",
+   "number": "(2.4)",
+   "label": "model:positivity",
+   "file": "model.tex",
+   "line": 35,
+   "lines": [
+    35,
+    35
+   ],
+   "node": null,
+   "role": "text",
+   "container": "model:section",
+   "section": "model:section",
+   "subsection": null
+  },
+  {
+   "id": "x:model-L46",
+   "kind": "subsection",
+   "number": "2.1",
+   "title": "The hierarchical cavity functional",
+   "label": null,
+   "file": "model.tex",
+   "lines": [
+    46,
+    140
+   ],
+   "ranges": [
+    {
+     "file": "model.tex",
+     "lines": [
+      46,
+      140
+     ]
+    }
+   ],
+   "parent": "model:section"
+  },
+  {
+   "id": "model:edge",
+   "kind": "equation",
+   "number": "(2.5)",
+   "label": "model:edge",
+   "file": "model.tex",
+   "line": 58,
+   "lines": [
+    55,
+    58
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:site-message",
+   "kind": "equation",
+   "number": "(2.6)",
+   "label": "model:site-message",
+   "file": "model.tex",
+   "line": 63,
+   "lines": [
+    55,
+    63
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:chain",
+   "kind": "equation",
+   "number": "(2.7)",
+   "label": "model:chain",
+   "file": "model.tex",
+   "line": 72,
+   "lines": [
+    72,
+    72
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:vs",
+   "kind": "equation",
+   "number": "(2.8)",
+   "label": "model:vs",
+   "file": "model.tex",
+   "line": 87,
+   "lines": [
+    84,
+    87
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:ve",
+   "kind": "equation",
+   "number": "(2.9)",
+   "label": "model:ve",
+   "file": "model.tex",
+   "line": 88,
+   "lines": [
+    84,
+    88
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:power-means",
+   "kind": "equation",
+   "number": "(2.10)",
+   "label": "model:power-means",
+   "file": "model.tex",
+   "line": 92,
+   "lines": [
+    92,
+    92
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:functional",
+   "kind": "equation",
+   "number": "(2.11)",
+   "label": "model:functional",
+   "file": "model.tex",
+   "line": 112,
+   "lines": [
+    112,
+    112
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "model:trial-bounds",
+   "kind": "equation",
+   "number": "(2.12)",
+   "label": "model:trial-bounds",
+   "file": "model.tex",
+   "line": 125,
+   "lines": [
+    125,
+    125
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:model-L46",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "main:formula",
+   "kind": "equation",
+   "number": "(2.13)",
+   "label": "main:formula",
+   "file": "model.tex",
+   "line": 133,
+   "lines": [
+    133,
+    133
+   ],
+   "node": "main:theorem",
+   "role": "statement",
+   "container": "main:theorem",
+   "section": "model:section",
+   "subsection": "x:model-L46"
+  },
+  {
+   "id": "main:theorem",
+   "kind": "theorem",
+   "number": "Theorem 2.1",
+   "title": null,
+   "label": "main:theorem",
+   "file": "model.tex",
+   "lines": [
+    130,
+    136
+   ],
+   "proof": {
+    "file": "reduction.tex",
+    "lines": [
+     45,
+     87
+    ]
+   },
+   "proofs": [
+    {
+     "file": "reduction.tex",
+     "lines": [
+      45,
+      87
+     ]
+    }
+   ],
+   "section": "model:section",
+   "subsection": "x:model-L46",
+   "cites": []
+  },
+  {
+   "id": "x:overview-L1",
+   "kind": "subsection",
+   "number": "2.2",
+   "title": "Proof strategy",
+   "label": null,
+   "file": "overview.tex",
+   "lines": [
+    1,
+    51
+   ],
+   "ranges": [
+    {
+     "file": "overview.tex",
+     "lines": [
+      1,
+      51
+     ]
+    }
+   ],
+   "parent": "model:section"
+  },
+  {
+   "id": "tree:section",
+   "kind": "section",
+   "number": "3",
+   "title": "Calculus on finite trees",
+   "label": "tree:section",
+   "file": "trees.tex",
+   "lines": [
+    1,
+    525
+   ],
+   "ranges": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      1,
+      525
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "x:trees-L14",
+   "kind": "subsection",
+   "number": "3.1",
+   "title": "Path kernels and insertions",
+   "label": null,
+   "file": "trees.tex",
+   "lines": [
+    14,
+    176
+   ],
+   "ranges": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      14,
+      176
+     ]
+    }
+   ],
+   "parent": "tree:section"
+  },
+  {
+   "id": "tree:multioverlap",
+   "kind": "equation",
+   "number": "(3.1)",
+   "label": "tree:multioverlap",
+   "file": "trees.tex",
+   "line": 44,
+   "lines": [
+    44,
+    44
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L14",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "tree:original-tilt",
+   "kind": "equation",
+   "number": "(3.2)",
+   "label": "tree:original-tilt",
+   "file": "trees.tex",
+   "line": 58,
+   "lines": [
+    58,
+    58
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L14",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "tree:Y-recursion",
+   "kind": "equation",
+   "number": "(3.3)",
+   "label": "tree:Y-recursion",
+   "file": "trees.tex",
+   "line": 68,
+   "lines": [
+    68,
+    68
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L14",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "tree:updated-kernel",
+   "kind": "equation",
+   "number": "(3.4)",
+   "label": "tree:updated-kernel",
+   "file": "trees.tex",
+   "line": 76,
+   "lines": [
+    76,
+    76
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L14",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "tree:density",
+   "kind": "equation",
+   "number": "(3.5)",
+   "label": "tree:density",
+   "file": "trees.tex",
+   "line": 98,
+   "lines": [
+    98,
+    98
+   ],
+   "node": "tree:insertion",
+   "role": "statement",
+   "container": "tree:insertion",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "tree:insertion",
+   "kind": "lemma",
+   "number": "Lemma 3.1",
+   "title": "Insertion calculus",
+   "label": "tree:insertion",
+   "file": "trees.tex",
+   "lines": [
+    84,
+    111
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     113,
+     133
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      113,
+      133
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "cites": []
+  },
+  {
+   "id": "tree:first-variation",
+   "kind": "equation",
+   "number": "(3.6)",
+   "label": "tree:first-variation",
+   "file": "trees.tex",
+   "line": 146,
+   "lines": [
+    146,
+    146
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L14",
+   "section": "tree:section",
+   "subsection": "x:trees-L14"
+  },
+  {
+   "id": "x:trees-L178",
+   "kind": "subsection",
+   "number": "3.2",
+   "title": "The two expansion rules",
+   "label": null,
+   "file": "trees.tex",
+   "lines": [
+    178,
+    304
+   ],
+   "ranges": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      178,
+      304
+     ]
+    }
+   ],
+   "parent": "tree:section"
+  },
+  {
+   "id": "tree:telescoping",
+   "kind": "equation",
+   "number": "(3.7)",
+   "label": "tree:telescoping",
+   "file": "trees.tex",
+   "line": 205,
+   "lines": [
+    205,
+    205
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L178",
+   "section": "tree:section",
+   "subsection": "x:trees-L178"
+  },
+  {
+   "id": "tree:Q-rule",
+   "kind": "equation",
+   "number": "(3.8)",
+   "label": "tree:Q-rule",
+   "file": "trees.tex",
+   "line": 213,
+   "lines": [
+    213,
+    213
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:trees-L178",
+   "section": "tree:section",
+   "subsection": "x:trees-L178"
+  },
+  {
+   "id": "tree:log-series",
+   "kind": "equation",
+   "number": "(3.9)",
+   "label": "tree:log-series",
+   "file": "trees.tex",
+   "line": 226,
+   "lines": [
+    226,
+    226
+   ],
+   "node": "tree:log-expansion",
+   "role": "statement",
+   "container": "tree:log-expansion",
+   "section": "tree:section",
+   "subsection": "x:trees-L178"
+  },
+  {
+   "id": "tree:log-tail",
+   "kind": "equation",
+   "number": "(3.10)",
+   "label": "tree:log-tail",
+   "file": "trees.tex",
+   "line": 236,
+   "lines": [
+    236,
+    236
+   ],
+   "node": "tree:log-expansion",
+   "role": "statement",
+   "container": "tree:log-expansion",
+   "section": "tree:section",
+   "subsection": "x:trees-L178"
+  },
+  {
+   "id": "tree:log-expansion",
+   "kind": "lemma",
+   "number": "Lemma 3.2",
+   "title": "Logarithmic expansion",
+   "label": "tree:log-expansion",
+   "file": "trees.tex",
+   "lines": [
+    224,
+    239
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     241,
+     257
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      241,
+      257
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "cites": []
+  },
+  {
+   "id": "tree:mixed-expansion",
+   "kind": "equation",
+   "number": "(3.11)",
+   "label": "tree:mixed-expansion",
+   "file": "trees.tex",
+   "line": 283,
+   "lines": [
+    283,
+    283
+   ],
+   "node": "tree:extension-expansion",
+   "role": "statement",
+   "container": "tree:extension-expansion",
+   "section": "tree:section",
+   "subsection": "x:trees-L178"
+  },
+  {
+   "id": "tree:extension-expansion",
+   "kind": "lemma",
+   "number": "Lemma 3.3",
+   "title": "Canceled-anchor expansion",
+   "label": "tree:extension-expansion",
+   "file": "trees.tex",
+   "lines": [
+    278,
+    296
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     298,
+     304
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      298,
+      304
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "cites": []
+  },
+  {
+   "id": "x:trees-L306",
+   "kind": "subsection",
+   "number": "3.3",
+   "title": "Sums of extension coefficients",
+   "label": null,
+   "file": "trees.tex",
+   "lines": [
+    306,
+    456
+   ],
+   "ranges": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      306,
+      456
+     ]
+    }
+   ],
+   "parent": "tree:section"
+  },
+  {
+   "id": "tree:one-reference-total",
+   "kind": "equation",
+   "number": "(3.12)",
+   "label": "tree:one-reference-total",
+   "file": "trees.tex",
+   "line": 343,
+   "lines": [
+    343,
+    343
+   ],
+   "node": "tree:reference-total",
+   "role": "statement",
+   "container": "tree:reference-total",
+   "section": "tree:section",
+   "subsection": "x:trees-L306"
+  },
+  {
+   "id": "tree:K",
+   "kind": "equation",
+   "number": "(3.13)",
+   "label": "tree:K",
+   "file": "trees.tex",
+   "line": 349,
+   "lines": [
+    349,
+    349
+   ],
+   "node": "tree:reference-total",
+   "role": "statement",
+   "container": "tree:reference-total",
+   "section": "tree:section",
+   "subsection": "x:trees-L306"
+  },
+  {
+   "id": "tree:reference-total",
+   "kind": "lemma",
+   "number": "Lemma 3.4",
+   "title": "Reference-path totals",
+   "label": "tree:reference-total",
+   "file": "trees.tex",
+   "lines": [
+    337,
+    357
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     359,
+     386
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      359,
+      386
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L306",
+   "cites": []
+  },
+  {
+   "id": "tree:charging-bound",
+   "kind": "equation",
+   "number": "(3.14)",
+   "label": "tree:charging-bound",
+   "file": "trees.tex",
+   "line": 400,
+   "lines": [
+    400,
+    400
+   ],
+   "node": "tree:charging",
+   "role": "statement",
+   "container": "tree:charging",
+   "section": "tree:section",
+   "subsection": "x:trees-L306"
+  },
+  {
+   "id": "tree:relative-charging",
+   "kind": "equation",
+   "number": "(3.15)",
+   "label": "tree:relative-charging",
+   "file": "trees.tex",
+   "line": 411,
+   "lines": [
+    411,
+    411
+   ],
+   "node": "tree:charging",
+   "role": "statement",
+   "container": "tree:charging",
+   "section": "tree:section",
+   "subsection": "x:trees-L306"
+  },
+  {
+   "id": "tree:charging",
+   "kind": "lemma",
+   "number": "Lemma 3.5",
+   "title": "Charging fresh splits",
+   "label": "tree:charging",
+   "file": "trees.tex",
+   "lines": [
+    393,
+    415
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     417,
+     456
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      417,
+      456
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L306",
+   "cites": []
+  },
+  {
+   "id": "x:trees-L458",
+   "kind": "subsection",
+   "number": "3.4",
+   "title": "The distribution of branching depths",
+   "label": null,
+   "file": "trees.tex",
+   "lines": [
+    458,
+    525
+   ],
+   "ranges": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      458,
+      525
+     ]
+    }
+   ],
+   "parent": "tree:section"
+  },
+  {
+   "id": "tree:irregular-probability",
+   "kind": "equation",
+   "number": "(3.16)",
+   "label": "tree:irregular-probability",
+   "file": "trees.tex",
+   "line": 472,
+   "lines": [
+    472,
+    472
+   ],
+   "node": "tree:regular-shapes",
+   "role": "statement",
+   "container": "tree:regular-shapes",
+   "section": "tree:section",
+   "subsection": "x:trees-L458"
+  },
+  {
+   "id": "tree:assignment-probability",
+   "kind": "equation",
+   "number": "(3.17)",
+   "label": "tree:assignment-probability",
+   "file": "trees.tex",
+   "line": 478,
+   "lines": [
+    478,
+    478
+   ],
+   "node": "tree:regular-shapes",
+   "role": "statement",
+   "container": "tree:regular-shapes",
+   "section": "tree:section",
+   "subsection": "x:trees-L458"
+  },
+  {
+   "id": "tree:regular-shapes",
+   "kind": "lemma",
+   "number": "Lemma 3.6",
+   "title": "Regular shapes",
+   "label": "tree:regular-shapes",
+   "file": "trees.tex",
+   "lines": [
+    469,
+    484
+   ],
+   "proof": {
+    "file": "trees.tex",
+    "lines": [
+     486,
+     514
+    ]
+   },
+   "proofs": [
+    {
+     "file": "trees.tex",
+     "lines": [
+      486,
+      514
+     ]
+    }
+   ],
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "cites": []
+  },
+  {
+   "id": "tree:averaging-remark",
+   "kind": "remark",
+   "number": "Remark 3.7",
+   "title": null,
+   "label": "tree:averaging-remark",
+   "file": "trees.tex",
+   "lines": [
+    516,
+    525
+   ],
+   "proof": null,
+   "proofs": [],
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "cites": []
+  },
+  {
+   "id": "upper:section",
+   "kind": "section",
+   "number": "4",
+   "title": "The interpolation upper bound",
+   "label": "upper:section",
+   "file": "upper.tex",
+   "lines": [
+    1,
+    128
+   ],
+   "ranges": [
+    {
+     "file": "upper.tex",
+     "lines": [
+      1,
+      128
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "upper:bound",
+   "kind": "proposition",
+   "number": "Proposition 4.1",
+   "title": null,
+   "label": "upper:bound",
+   "file": "upper.tex",
+   "lines": [
+    11,
+    15
+   ],
+   "proof": {
+    "file": "upper.tex",
+    "lines": [
+     17,
+     128
+    ]
+   },
+   "proofs": [
+    {
+     "file": "upper.tex",
+     "lines": [
+      17,
+      128
+     ]
+    }
+   ],
+   "section": "upper:section",
+   "subsection": null,
+   "cites": []
+  },
+  {
+   "id": "upper:derivative",
+   "kind": "equation",
+   "number": "(4.1)",
+   "label": "upper:derivative",
+   "file": "upper.tex",
+   "line": 59,
+   "lines": [
+    59,
+    59
+   ],
+   "node": "upper:bound",
+   "role": "proof",
+   "container": "upper:bound",
+   "section": "upper:section",
+   "subsection": null
+  },
+  {
+   "id": "upper:regularization",
+   "kind": "equation",
+   "number": "(4.2)",
+   "label": "upper:regularization",
+   "file": "upper.tex",
+   "line": 78,
+   "lines": [
+    78,
+    78
+   ],
+   "node": "upper:bound",
+   "role": "proof",
+   "container": "upper:bound",
+   "section": "upper:section",
+   "subsection": null
+  },
+  {
+   "id": "upper:remainder",
+   "kind": "equation",
+   "number": "(4.3)",
+   "label": "upper:remainder",
+   "file": "upper.tex",
+   "line": 115,
+   "lines": [
+    115,
+    115
+   ],
+   "node": "upper:bound",
+   "role": "proof",
+   "container": "upper:bound",
+   "section": "upper:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:section",
+   "kind": "section",
+   "number": "5",
+   "title": "A perturbed cavity reservoir",
+   "label": "cavity:section",
+   "file": "cavity.tex",
+   "lines": [
+    1,
+    121
+   ],
+   "ranges": [
+    {
+     "file": "cavity.tex",
+     "lines": [
+      1,
+      121
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "cavity:grid",
+   "kind": "equation",
+   "number": "(5.1)",
+   "label": "cavity:grid",
+   "file": "cavity.tex",
+   "line": 17,
+   "lines": [
+    17,
+    17
+   ],
+   "node": null,
+   "role": "text",
+   "container": "cavity:section",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:factor-bounds",
+   "kind": "equation",
+   "number": "(5.2)",
+   "label": "cavity:factor-bounds",
+   "file": "cavity.tex",
+   "line": 25,
+   "lines": [
+    25,
+    25
+   ],
+   "node": null,
+   "role": "text",
+   "container": "cavity:section",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:negligible",
+   "kind": "equation",
+   "number": "(5.3)",
+   "label": "cavity:negligible",
+   "file": "cavity.tex",
+   "line": 38,
+   "lines": [
+    38,
+    38
+   ],
+   "node": null,
+   "role": "text",
+   "container": "cavity:section",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:reservoir-mean",
+   "kind": "equation",
+   "number": "(5.4)",
+   "label": "cavity:reservoir-mean",
+   "file": "cavity.tex",
+   "line": 47,
+   "lines": [
+    47,
+    47
+   ],
+   "node": "cavity:increment",
+   "role": "statement",
+   "container": "cavity:increment",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:identity",
+   "kind": "equation",
+   "number": "(5.5)",
+   "label": "cavity:identity",
+   "file": "cavity.tex",
+   "line": 51,
+   "lines": [
+    51,
+    51
+   ],
+   "node": "cavity:increment",
+   "role": "statement",
+   "container": "cavity:increment",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:site-insertion",
+   "kind": "equation",
+   "number": "(5.6)",
+   "label": "cavity:site-insertion",
+   "file": "cavity.tex",
+   "line": 62,
+   "lines": [
+    58,
+    62
+   ],
+   "node": "cavity:increment",
+   "role": "statement",
+   "container": "cavity:increment",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:bond-insertion",
+   "kind": "equation",
+   "number": "(5.7)",
+   "label": "cavity:bond-insertion",
+   "file": "cavity.tex",
+   "line": 65,
+   "lines": [
+    58,
+    65
+   ],
+   "node": "cavity:increment",
+   "role": "statement",
+   "container": "cavity:increment",
+   "section": "cavity:section",
+   "subsection": null
+  },
+  {
+   "id": "cavity:increment",
+   "kind": "lemma",
+   "number": "Lemma 5.1",
+   "title": "Cavity increments",
+   "label": "cavity:increment",
+   "file": "cavity.tex",
+   "lines": [
+    43,
+    69
+   ],
+   "proof": {
+    "file": "cavity.tex",
+    "lines": [
+     71,
+     115
+    ]
+   },
+   "proofs": [
+    {
+     "file": "cavity.tex",
+     "lines": [
+      71,
+      115
+     ]
+    }
+   ],
+   "section": "cavity:section",
+   "subsection": null,
+   "cites": []
+  },
+  {
+   "id": "pert:section",
+   "kind": "section",
+   "number": "6",
+   "title": "Perturbations and identities on prescribed trees",
+   "label": "pert:section",
+   "file": "perturbations.tex",
+   "lines": [
+    1,
+    547
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      1,
+      547
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "x:perturbations-L26",
+   "kind": "subsection",
+   "number": "6.1",
+   "title": "The perturbation family",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    26,
+    71
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      26,
+      71
+     ]
+    }
+   ],
+   "parent": "pert:section"
+  },
+  {
+   "id": "pert:parameters",
+   "kind": "equation",
+   "number": "(6.1)",
+   "label": "pert:parameters",
+   "file": "perturbations.tex",
+   "line": 49,
+   "lines": [
+    46,
+    49
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L26",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L26"
+  },
+  {
+   "id": "pert:factor",
+   "kind": "equation",
+   "number": "(6.2)",
+   "label": "pert:factor",
+   "file": "perturbations.tex",
+   "line": 58,
+   "lines": [
+    56,
+    58
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L26",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L26"
+  },
+  {
+   "id": "x:perturbations-L73",
+   "kind": "subsection",
+   "number": "6.2",
+   "title": "Concentration of each perturbation score",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    73,
+    244
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      73,
+      244
+     ]
+    }
+   ],
+   "parent": "pert:section"
+  },
+  {
+   "id": "pert:score",
+   "kind": "equation",
+   "number": "(6.3)",
+   "label": "pert:score",
+   "file": "perturbations.tex",
+   "line": 81,
+   "lines": [
+    77,
+    81
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L73",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:error",
+   "kind": "equation",
+   "number": "(6.4)",
+   "label": "pert:error",
+   "file": "perturbations.tex",
+   "line": 92,
+   "lines": [
+    86,
+    92
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L73",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:concentration-eq",
+   "kind": "equation",
+   "number": "(6.5)",
+   "label": "pert:concentration-eq",
+   "file": "perturbations.tex",
+   "line": 100,
+   "lines": [
+    98,
+    100
+   ],
+   "node": "pert:concentration",
+   "role": "statement",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:concentration",
+   "kind": "lemma",
+   "number": "Lemma 6.1",
+   "title": "Averaged score concentration",
+   "label": "pert:concentration",
+   "file": "perturbations.tex",
+   "lines": [
+    95,
+    104
+   ],
+   "proof": {
+    "file": "perturbations.tex",
+    "lines": [
+     106,
+     244
+    ]
+   },
+   "proofs": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      106,
+      244
+     ]
+    }
+   ],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "cites": [
+    "EfronStein"
+   ]
+  },
+  {
+   "id": "pert:score-bounds",
+   "kind": "equation",
+   "number": "(6.6)",
+   "label": "pert:score-bounds",
+   "file": "perturbations.tex",
+   "line": 117,
+   "lines": [
+    111,
+    117
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:first-derivative",
+   "kind": "equation",
+   "number": "(6.7)",
+   "label": "pert:first-derivative",
+   "file": "perturbations.tex",
+   "line": 134,
+   "lines": [
+    133,
+    134
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:second-derivative",
+   "kind": "equation",
+   "number": "(6.8)",
+   "label": "pert:second-derivative",
+   "file": "perturbations.tex",
+   "line": 139,
+   "lines": [
+    133,
+    139
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:thermal-variance",
+   "kind": "equation",
+   "number": "(6.9)",
+   "label": "pert:thermal-variance",
+   "file": "perturbations.tex",
+   "line": 153,
+   "lines": [
+    149,
+    153
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:thermal-bound",
+   "kind": "equation",
+   "number": "(6.10)",
+   "label": "pert:thermal-bound",
+   "file": "perturbations.tex",
+   "line": 160,
+   "lines": [
+    157,
+    160
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:root-variance",
+   "kind": "equation",
+   "number": "(6.11)",
+   "label": "pert:root-variance",
+   "file": "perturbations.tex",
+   "line": 174,
+   "lines": [
+    171,
+    174
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "pert:convex-bound",
+   "kind": "equation",
+   "number": "(6.12)",
+   "label": "pert:convex-bound",
+   "file": "perturbations.tex",
+   "line": 231,
+   "lines": [
+    226,
+    231
+   ],
+   "node": "pert:concentration",
+   "role": "proof",
+   "container": "pert:concentration",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73"
+  },
+  {
+   "id": "x:perturbations-L246",
+   "kind": "subsection",
+   "number": "6.3",
+   "title": "One sequence for low increments and all identities",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    246,
+    312
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      246,
+      312
+     ]
+    }
+   ],
+   "parent": "pert:section"
+  },
+  {
+   "id": "pert:selection",
+   "kind": "lemma",
+   "number": "Lemma 6.2",
+   "title": "Deterministic parameter selection",
+   "label": "pert:selection",
+   "file": "perturbations.tex",
+   "lines": [
+    255,
+    267
+   ],
+   "proof": {
+    "file": "perturbations.tex",
+    "lines": [
+     269,
+     306
+    ]
+   },
+   "proofs": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      269,
+      306
+     ]
+    }
+   ],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L246",
+   "cites": []
+  },
+  {
+   "id": "x:perturbations-L314",
+   "kind": "subsection",
+   "number": "6.4",
+   "title": "Poisson insertion and analytic extraction",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    314,
+    425
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      314,
+      425
+     ]
+    }
+   ],
+   "parent": "pert:section"
+  },
+  {
+   "id": "pert:score-identity",
+   "kind": "equation",
+   "number": "(6.13)",
+   "label": "pert:score-identity",
+   "file": "perturbations.tex",
+   "line": 328,
+   "lines": [
+    323,
+    328
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L314",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314"
+  },
+  {
+   "id": "pert:palm-expression",
+   "kind": "equation",
+   "number": "(6.14)",
+   "label": "pert:palm-expression",
+   "file": "perturbations.tex",
+   "line": 342,
+   "lines": [
+    338,
+    342
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L314",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314"
+  },
+  {
+   "id": "pert:analytic-difference",
+   "kind": "equation",
+   "number": "(6.15)",
+   "label": "pert:analytic-difference",
+   "file": "perturbations.tex",
+   "line": 346,
+   "lines": [
+    338,
+    346
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:perturbations-L314",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314"
+  },
+  {
+   "id": "pert:palm-bound",
+   "kind": "equation",
+   "number": "(6.16)",
+   "label": "pert:palm-bound",
+   "file": "perturbations.tex",
+   "line": 355,
+   "lines": [
+    353,
+    355
+   ],
+   "node": "pert:palm",
+   "role": "statement",
+   "container": "pert:palm",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314"
+  },
+  {
+   "id": "pert:palm",
+   "kind": "lemma",
+   "number": "Lemma 6.3",
+   "title": "Palm identity",
+   "label": "pert:palm",
+   "file": "perturbations.tex",
+   "lines": [
+    350,
+    360
+   ],
+   "proof": {
+    "file": "perturbations.tex",
+    "lines": [
+     362,
+     381
+    ]
+   },
+   "proofs": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      362,
+      381
+     ]
+    }
+   ],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "cites": []
+  },
+  {
+   "id": "pert:analytic",
+   "kind": "lemma",
+   "number": "Lemma 6.4",
+   "title": "Vanishing insertion coefficients",
+   "label": "pert:analytic",
+   "file": "perturbations.tex",
+   "lines": [
+    383,
+    388
+   ],
+   "proof": {
+    "file": "perturbations.tex",
+    "lines": [
+     390,
+     425
+    ]
+   },
+   "proofs": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      390,
+      425
+     ]
+    }
+   ],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "cites": []
+  },
+  {
+   "id": "x:perturbations-L427",
+   "kind": "subsection",
+   "number": "6.5",
+   "title": "Prescribing the colored tree",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    427,
+    547
+   ],
+   "ranges": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      427,
+      547
+     ]
+    }
+   ],
+   "parent": "pert:section"
+  },
+  {
+   "id": "pert:identity",
+   "kind": "label",
+   "number": null,
+   "label": "pert:identity",
+   "file": "perturbations.tex",
+   "line": 453,
+   "node": "pert:tree-identity",
+   "role": "statement",
+   "container": "pert:tree-identity",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427"
+  },
+  {
+   "id": "pert:tree-identity-eq",
+   "kind": "equation",
+   "number": "(6.17)",
+   "label": "pert:tree-identity-eq",
+   "file": "perturbations.tex",
+   "line": 463,
+   "lines": [
+    456,
+    463
+   ],
+   "node": "pert:tree-identity",
+   "role": "statement",
+   "container": "pert:tree-identity",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427"
+  },
+  {
+   "id": "pert:tree-identity",
+   "kind": "theorem",
+   "number": "Theorem 6.5",
+   "title": "Identity on prescribed trees",
+   "label": "pert:tree-identity",
+   "file": "perturbations.tex",
+   "lines": [
+    451,
+    470
+   ],
+   "proof": {
+    "file": "perturbations.tex",
+    "lines": [
+     472,
+     536
+    ]
+   },
+   "proofs": [
+    {
+     "file": "perturbations.tex",
+     "lines": [
+      472,
+      536
+     ]
+    }
+   ],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "cites": []
+  },
+  {
+   "id": "pert:mark-selector",
+   "kind": "equation",
+   "number": "(6.18)",
+   "label": "pert:mark-selector",
+   "file": "perturbations.tex",
+   "line": 510,
+   "lines": [
+    505,
+    510
+   ],
+   "node": "pert:tree-identity",
+   "role": "proof",
+   "container": "pert:tree-identity",
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427"
+  },
+  {
+   "id": "x:perturbations-L538",
+   "kind": "remark",
+   "number": "Remark 6.6",
+   "title": "Order of the choices",
+   "label": null,
+   "file": "perturbations.tex",
+   "lines": [
+    538,
+    547
+   ],
+   "proof": null,
+   "proofs": [],
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "cites": []
+  },
+  {
+   "id": "decor:section",
+   "kind": "section",
+   "number": "7",
+   "title": "Decorrelation on prescribed trees",
+   "label": "decor:section",
+   "file": "decorrelation.tex",
+   "lines": [
+    1,
+    623
+   ],
+   "ranges": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      1,
+      623
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "decor:averages",
+   "kind": "subsection",
+   "number": "7.1",
+   "title": "Averages over depths",
+   "label": "decor:averages",
+   "file": "decorrelation.tex",
+   "lines": [
+    15,
+    83
+   ],
+   "ranges": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      15,
+      83
+     ]
+    }
+   ],
+   "parent": "decor:section"
+  },
+  {
+   "id": "decor:average-definition",
+   "kind": "equation",
+   "number": "(7.1)",
+   "label": "decor:average-definition",
+   "file": "decorrelation.tex",
+   "line": 34,
+   "lines": [
+    31,
+    34
+   ],
+   "node": null,
+   "role": "text",
+   "container": "decor:averages",
+   "section": "decor:section",
+   "subsection": "decor:averages"
+  },
+  {
+   "id": "decor:average-holder",
+   "kind": "equation",
+   "number": "(7.2)",
+   "label": "decor:average-holder",
+   "file": "decorrelation.tex",
+   "line": 42,
+   "lines": [
+    39,
+    42
+   ],
+   "node": null,
+   "role": "text",
+   "container": "decor:averages",
+   "section": "decor:section",
+   "subsection": "decor:averages"
+  },
+  {
+   "id": "decor:identity-error",
+   "kind": "equation",
+   "number": "(7.3)",
+   "label": "decor:identity-error",
+   "file": "decorrelation.tex",
+   "line": 56,
+   "lines": [
+    54,
+    56
+   ],
+   "node": null,
+   "role": "text",
+   "container": "decor:averages",
+   "section": "decor:section",
+   "subsection": "decor:averages"
+  },
+  {
+   "id": "decor:overlap-concentration-equation",
+   "kind": "equation",
+   "number": "(7.4)",
+   "label": "decor:overlap-concentration-equation",
+   "file": "decorrelation.tex",
+   "line": 70,
+   "lines": [
+    66,
+    70
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "statement",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "decor:averages"
+  },
+  {
+   "id": "decor:overlap-concentration",
+   "kind": "theorem",
+   "number": "Theorem 7.1",
+   "title": null,
+   "label": "decor:overlap-concentration",
+   "file": "decorrelation.tex",
+   "lines": [
+    63,
+    75
+   ],
+   "proof": {
+    "file": "decorrelation.tex",
+    "lines": [
+     532,
+     611
+    ]
+   },
+   "proofs": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      532,
+      611
+     ]
+    }
+   ],
+   "section": "decor:section",
+   "subsection": "decor:averages",
+   "cites": []
+  },
+  {
+   "id": "x:decorrelation-L85",
+   "kind": "subsection",
+   "number": "7.2",
+   "title": "Conditional covariance and continuity in depth",
+   "label": null,
+   "file": "decorrelation.tex",
+   "lines": [
+    85,
+    230
+   ],
+   "ranges": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      85,
+      230
+     ]
+    }
+   ],
+   "parent": "decor:section"
+  },
+  {
+   "id": "decor:covariance-definition",
+   "kind": "equation",
+   "number": "(7.5)",
+   "label": "decor:covariance-definition",
+   "file": "decorrelation.tex",
+   "line": 101,
+   "lines": [
+    97,
+    101
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:decorrelation-L85",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:contraction-bound",
+   "kind": "equation",
+   "number": "(7.6)",
+   "label": "decor:contraction-bound",
+   "file": "decorrelation.tex",
+   "line": 115,
+   "lines": [
+    112,
+    115
+   ],
+   "node": "decor:contractions",
+   "role": "statement",
+   "container": "decor:contractions",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:three-copy-bound",
+   "kind": "equation",
+   "number": "(7.7)",
+   "label": "decor:three-copy-bound",
+   "file": "decorrelation.tex",
+   "line": 123,
+   "lines": [
+    120,
+    123
+   ],
+   "node": "decor:contractions",
+   "role": "statement",
+   "container": "decor:contractions",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:contractions",
+   "kind": "lemma",
+   "number": "Lemma 7.2",
+   "title": "Contractions and three copies",
+   "label": "decor:contractions",
+   "file": "decorrelation.tex",
+   "lines": [
+    108,
+    125
+   ],
+   "proof": {
+    "file": "decorrelation.tex",
+    "lines": [
+     127,
+     140
+    ]
+   },
+   "proofs": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      127,
+      140
+     ]
+    }
+   ],
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85",
+   "cites": []
+  },
+  {
+   "id": "decor:branch-depth-continuity",
+   "kind": "equation",
+   "number": "(7.8)",
+   "label": "decor:branch-depth-continuity",
+   "file": "decorrelation.tex",
+   "line": 152,
+   "lines": [
+    149,
+    152
+   ],
+   "node": "decor:depth-continuity",
+   "role": "statement",
+   "container": "decor:depth-continuity",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:evaluation-depth-continuity",
+   "kind": "equation",
+   "number": "(7.9)",
+   "label": "decor:evaluation-depth-continuity",
+   "file": "decorrelation.tex",
+   "line": 160,
+   "lines": [
+    157,
+    160
+   ],
+   "node": "decor:depth-continuity",
+   "role": "statement",
+   "container": "decor:depth-continuity",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:depth-continuity",
+   "kind": "lemma",
+   "number": "Lemma 7.3",
+   "title": "Averaged continuity in depth",
+   "label": "decor:depth-continuity",
+   "file": "decorrelation.tex",
+   "lines": [
+    142,
+    166
+   ],
+   "proof": {
+    "file": "decorrelation.tex",
+    "lines": [
+     168,
+     206
+    ]
+   },
+   "proofs": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      168,
+      206
+     ]
+    }
+   ],
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85",
+   "cites": []
+  },
+  {
+   "id": "decor:martingale-energy",
+   "kind": "equation",
+   "number": "(7.10)",
+   "label": "decor:martingale-energy",
+   "file": "decorrelation.tex",
+   "line": 174,
+   "lines": [
+    172,
+    174
+   ],
+   "node": "decor:depth-continuity",
+   "role": "proof",
+   "container": "decor:depth-continuity",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:one-vertex-shift",
+   "kind": "equation",
+   "number": "(7.11)",
+   "label": "decor:one-vertex-shift",
+   "file": "decorrelation.tex",
+   "line": 192,
+   "lines": [
+    187,
+    192
+   ],
+   "node": "decor:depth-continuity",
+   "role": "proof",
+   "container": "decor:depth-continuity",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:projection-definition",
+   "kind": "equation",
+   "number": "(7.12)",
+   "label": "decor:projection-definition",
+   "file": "decorrelation.tex",
+   "line": 214,
+   "lines": [
+    211,
+    214
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:decorrelation-L85",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "decor:projection-bound",
+   "kind": "equation",
+   "number": "(7.13)",
+   "label": "decor:projection-bound",
+   "file": "decorrelation.tex",
+   "line": 221,
+   "lines": [
+    219,
+    221
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:decorrelation-L85",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85"
+  },
+  {
+   "id": "x:decorrelation-L232",
+   "kind": "subsection",
+   "number": "7.3",
+   "title": "Conditional decorrelation",
+   "label": null,
+   "file": "decorrelation.tex",
+   "lines": [
+    232,
+    524
+   ],
+   "ranges": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      232,
+      524
+     ]
+    }
+   ],
+   "parent": "decor:section"
+  },
+  {
+   "id": "decor:conditional-concentration-equation",
+   "kind": "equation",
+   "number": "(7.14)",
+   "label": "decor:conditional-concentration-equation",
+   "file": "decorrelation.tex",
+   "line": 240,
+   "lines": [
+    237,
+    240
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "statement",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:conditional-concentration",
+   "kind": "proposition",
+   "number": "Proposition 7.4",
+   "title": null,
+   "label": "decor:conditional-concentration",
+   "file": "decorrelation.tex",
+   "lines": [
+    234,
+    245
+   ],
+   "proof": {
+    "file": "decorrelation.tex",
+    "lines": [
+     247,
+     524
+    ]
+   },
+   "proofs": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      247,
+      524
+     ]
+    }
+   ],
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "cites": []
+  },
+  {
+   "id": "decor:V-definition",
+   "kind": "equation",
+   "number": "(7.15)",
+   "label": "decor:V-definition",
+   "file": "decorrelation.tex",
+   "line": 256,
+   "lines": [
+    253,
+    256
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:c-weights",
+   "kind": "equation",
+   "number": "(7.16)",
+   "label": "decor:c-weights",
+   "file": "decorrelation.tex",
+   "line": 273,
+   "lines": [
+    270,
+    273
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:singleton-identity",
+   "kind": "equation",
+   "number": "(7.17)",
+   "label": "decor:singleton-identity",
+   "file": "decorrelation.tex",
+   "line": 285,
+   "lines": [
+    280,
+    285
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:shift-figure",
+   "kind": "figure",
+   "number": "Figure 1",
+   "label": "decor:shift-figure",
+   "file": "decorrelation.tex",
+   "line": 329,
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:J-definition",
+   "kind": "equation",
+   "number": "(7.18)",
+   "label": "decor:J-definition",
+   "file": "decorrelation.tex",
+   "line": 335,
+   "lines": [
+    333,
+    335
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:J-lower-bound",
+   "kind": "equation",
+   "number": "(7.19)",
+   "label": "decor:J-lower-bound",
+   "file": "decorrelation.tex",
+   "line": 343,
+   "lines": [
+    341,
+    343
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:relative-absolute-cost",
+   "kind": "equation",
+   "number": "(7.20)",
+   "label": "decor:relative-absolute-cost",
+   "file": "decorrelation.tex",
+   "line": 352,
+   "lines": [
+    349,
+    352
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:projection-shift-error",
+   "kind": "equation",
+   "number": "(7.21)",
+   "label": "decor:projection-shift-error",
+   "file": "decorrelation.tex",
+   "line": 372,
+   "lines": [
+    370,
+    372
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:induction-identity",
+   "kind": "equation",
+   "number": "(7.22)",
+   "label": "decor:induction-identity",
+   "file": "decorrelation.tex",
+   "line": 442,
+   "lines": [
+    436,
+    442
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:induction-error",
+   "kind": "equation",
+   "number": "(7.23)",
+   "label": "decor:induction-error",
+   "file": "decorrelation.tex",
+   "line": 451,
+   "lines": [
+    447,
+    451
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:projected-three-copy",
+   "kind": "equation",
+   "number": "(7.24)",
+   "label": "decor:projected-three-copy",
+   "file": "decorrelation.tex",
+   "line": 478,
+   "lines": [
+    475,
+    478
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:covariance-induction-estimate",
+   "kind": "equation",
+   "number": "(7.25)",
+   "label": "decor:covariance-induction-estimate",
+   "file": "decorrelation.tex",
+   "line": 489,
+   "lines": [
+    485,
+    489
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:fiber-bound",
+   "kind": "equation",
+   "number": "(7.26)",
+   "label": "decor:fiber-bound",
+   "file": "decorrelation.tex",
+   "line": 507,
+   "lines": [
+    500,
+    507
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "decor:induction-recursion",
+   "kind": "equation",
+   "number": "(7.27)",
+   "label": "decor:induction-recursion",
+   "file": "decorrelation.tex",
+   "line": 518,
+   "lines": [
+    515,
+    518
+   ],
+   "node": "decor:conditional-concentration",
+   "role": "proof",
+   "container": "decor:conditional-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232"
+  },
+  {
+   "id": "x:decorrelation-L526",
+   "kind": "subsection",
+   "number": "7.4",
+   "title": "Concentration of every multioverlap",
+   "label": null,
+   "file": "decorrelation.tex",
+   "lines": [
+    526,
+    623
+   ],
+   "ranges": [
+    {
+     "file": "decorrelation.tex",
+     "lines": [
+      526,
+      623
+     ]
+    }
+   ],
+   "parent": "decor:section"
+  },
+  {
+   "id": "decor:marker-coefficient",
+   "kind": "equation",
+   "number": "(7.28)",
+   "label": "decor:marker-coefficient",
+   "file": "decorrelation.tex",
+   "line": 548,
+   "lines": [
+    546,
+    548
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "proof",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526"
+  },
+  {
+   "id": "decor:marker-variance-identity",
+   "kind": "equation",
+   "number": "(7.29)",
+   "label": "decor:marker-variance-identity",
+   "file": "decorrelation.tex",
+   "line": 560,
+   "lines": [
+    557,
+    560
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "proof",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526"
+  },
+  {
+   "id": "decor:prefix-projection-concentration",
+   "kind": "equation",
+   "number": "(7.30)",
+   "label": "decor:prefix-projection-concentration",
+   "file": "decorrelation.tex",
+   "line": 566,
+   "lines": [
+    563,
+    566
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "proof",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526"
+  },
+  {
+   "id": "decor:adjacent-prefix-error",
+   "kind": "equation",
+   "number": "(7.31)",
+   "label": "decor:adjacent-prefix-error",
+   "file": "decorrelation.tex",
+   "line": 586,
+   "lines": [
+    584,
+    586
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "proof",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526"
+  },
+  {
+   "id": "decor:variance-estimate",
+   "kind": "equation",
+   "number": "(7.32)",
+   "label": "decor:variance-estimate",
+   "file": "decorrelation.tex",
+   "line": 603,
+   "lines": [
+    598,
+    603
+   ],
+   "node": "decor:overlap-concentration",
+   "role": "proof",
+   "container": "decor:overlap-concentration",
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526"
+  },
+  {
+   "id": "decor:order-of-limits",
+   "kind": "remark",
+   "number": "Remark 7.5",
+   "title": null,
+   "label": "decor:order-of-limits",
+   "file": "decorrelation.tex",
+   "lines": [
+    613,
+    623
+   ],
+   "proof": null,
+   "proofs": [],
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "cites": []
+  },
+  {
+   "id": "comp:section",
+   "kind": "section",
+   "number": "8",
+   "title": "Independent hierarchical messages and the cavity comparison",
+   "label": "comp:section",
+   "file": "comparison.tex",
+   "lines": [
+    1,
+    246
+   ],
+   "ranges": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      1,
+      246
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "comp:low-increments",
+   "kind": "equation",
+   "number": "(8.1)",
+   "label": "comp:low-increments",
+   "file": "comparison.tex",
+   "line": 13,
+   "lines": [
+    13,
+    13
+   ],
+   "node": null,
+   "role": "text",
+   "container": "comp:section",
+   "section": "comp:section",
+   "subsection": null
+  },
+  {
+   "id": "x:comparison-L17",
+   "kind": "subsection",
+   "number": "8.1",
+   "title": "Encoding a single-site tree",
+   "label": null,
+   "file": "comparison.tex",
+   "lines": [
+    17,
+    83
+   ],
+   "ranges": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      17,
+      83
+     ]
+    }
+   ],
+   "parent": "comp:section"
+  },
+  {
+   "id": "comp:encoding",
+   "kind": "lemma",
+   "number": "Lemma 8.1",
+   "title": "Recursive law encoding",
+   "label": "comp:encoding",
+   "file": "comparison.tex",
+   "lines": [
+    19,
+    25
+   ],
+   "proof": {
+    "file": "comparison.tex",
+    "lines": [
+     27,
+     83
+    ]
+   },
+   "proofs": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      27,
+      83
+     ]
+    }
+   ],
+   "section": "comp:section",
+   "subsection": "x:comparison-L17",
+   "cites": []
+  },
+  {
+   "id": "comp:single-label-moments",
+   "kind": "equation",
+   "number": "(8.2)",
+   "label": "comp:single-label-moments",
+   "file": "comparison.tex",
+   "line": 75,
+   "lines": [
+    75,
+    75
+   ],
+   "node": "comp:encoding",
+   "role": "proof",
+   "container": "comp:encoding",
+   "section": "comp:section",
+   "subsection": "x:comparison-L17"
+  },
+  {
+   "id": "x:comparison-L85",
+   "kind": "subsection",
+   "number": "8.2",
+   "title": "From multioverlaps to spin patterns",
+   "label": null,
+   "file": "comparison.tex",
+   "lines": [
+    85,
+    156
+   ],
+   "ranges": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      85,
+      156
+     ]
+    }
+   ],
+   "parent": "comp:section"
+  },
+  {
+   "id": "comp:pattern-error",
+   "kind": "equation",
+   "number": "(8.3)",
+   "label": "comp:pattern-error",
+   "file": "comparison.tex",
+   "line": 92,
+   "lines": [
+    92,
+    92
+   ],
+   "node": "comp:patterns",
+   "role": "statement",
+   "container": "comp:patterns",
+   "section": "comp:section",
+   "subsection": "x:comparison-L85"
+  },
+  {
+   "id": "comp:patterns",
+   "kind": "lemma",
+   "number": "Lemma 8.2",
+   "title": "Empirical-pattern comparison",
+   "label": "comp:patterns",
+   "file": "comparison.tex",
+   "lines": [
+    87,
+    97
+   ],
+   "proof": {
+    "file": "comparison.tex",
+    "lines": [
+     99,
+     121
+    ]
+   },
+   "proofs": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      99,
+      121
+     ]
+    }
+   ],
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "cites": []
+  },
+  {
+   "id": "comp:shape-error",
+   "kind": "equation",
+   "number": "(8.4)",
+   "label": "comp:shape-error",
+   "file": "comparison.tex",
+   "line": 125,
+   "lines": [
+    125,
+    125
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:comparison-L85",
+   "section": "comp:section",
+   "subsection": "x:comparison-L85"
+  },
+  {
+   "id": "comp:shape-error-bound",
+   "kind": "equation",
+   "number": "(8.5)",
+   "label": "comp:shape-error-bound",
+   "file": "comparison.tex",
+   "line": 133,
+   "lines": [
+    133,
+    133
+   ],
+   "node": null,
+   "role": "text",
+   "container": "x:comparison-L85",
+   "section": "comp:section",
+   "subsection": "x:comparison-L85"
+  },
+  {
+   "id": "x:comparison-L158",
+   "kind": "subsection",
+   "number": "8.3",
+   "title": "Comparison of the insertion logarithms",
+   "label": null,
+   "file": "comparison.tex",
+   "lines": [
+    158,
+    246
+   ],
+   "ranges": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      158,
+      246
+     ]
+    }
+   ],
+   "parent": "comp:section"
+  },
+  {
+   "id": "comp:increment-comparison",
+   "kind": "equation",
+   "number": "(8.6)",
+   "label": "comp:increment-comparison",
+   "file": "comparison.tex",
+   "line": 163,
+   "lines": [
+    163,
+    163
+   ],
+   "node": "comp:insertion-comparison",
+   "role": "statement",
+   "container": "comp:insertion-comparison",
+   "section": "comp:section",
+   "subsection": "x:comparison-L158"
+  },
+  {
+   "id": "comp:insertion-comparison",
+   "kind": "proposition",
+   "number": "Proposition 8.3",
+   "title": null,
+   "label": "comp:insertion-comparison",
+   "file": "comparison.tex",
+   "lines": [
+    160,
+    168
+   ],
+   "proof": {
+    "file": "comparison.tex",
+    "lines": [
+     170,
+     223
+    ]
+   },
+   "proofs": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      170,
+      223
+     ]
+    }
+   ],
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "cites": []
+  },
+  {
+   "id": "comp:bounded-lower",
+   "kind": "corollary",
+   "number": "Corollary 8.4",
+   "title": null,
+   "label": "comp:bounded-lower",
+   "file": "comparison.tex",
+   "lines": [
+    225,
+    231
+   ],
+   "proof": {
+    "file": "comparison.tex",
+    "lines": [
+     233,
+     246
+    ]
+   },
+   "proofs": [
+    {
+     "file": "comparison.tex",
+     "lines": [
+      233,
+      246
+     ]
+    }
+   ],
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "cites": []
+  },
+  {
+   "id": "reduction:section",
+   "kind": "section",
+   "number": "9",
+   "title": "Normalization, truncation, and completion of the proof",
+   "label": "reduction:section",
+   "file": "reduction.tex",
+   "lines": [
+    1,
+    87
+   ],
+   "ranges": [
+    {
+     "file": "reduction.tex",
+     "lines": [
+      1,
+      87
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "reduction:free-stability",
+   "kind": "equation",
+   "number": "(9.1)",
+   "label": "reduction:free-stability",
+   "file": "reduction.tex",
+   "line": 15,
+   "lines": [
+    14,
+    15
+   ],
+   "node": "reduction:stability",
+   "role": "statement",
+   "container": "reduction:stability",
+   "section": "reduction:section",
+   "subsection": null
+  },
+  {
+   "id": "reduction:trial-stability",
+   "kind": "equation",
+   "number": "(9.2)",
+   "label": "reduction:trial-stability",
+   "file": "reduction.tex",
+   "line": 17,
+   "lines": [
+    14,
+    17
+   ],
+   "node": "reduction:stability",
+   "role": "statement",
+   "container": "reduction:stability",
+   "section": "reduction:section",
+   "subsection": null
+  },
+  {
+   "id": "reduction:shift",
+   "kind": "equation",
+   "number": "(9.3)",
+   "label": "reduction:shift",
+   "file": "reduction.tex",
+   "line": 22,
+   "lines": [
+    22,
+    22
+   ],
+   "node": "reduction:stability",
+   "role": "statement",
+   "container": "reduction:stability",
+   "section": "reduction:section",
+   "subsection": null
+  },
+  {
+   "id": "reduction:stability",
+   "kind": "lemma",
+   "number": "Lemma 9.1",
+   "title": "Stability",
+   "label": "reduction:stability",
+   "file": "reduction.tex",
+   "lines": [
+    9,
+    26
+   ],
+   "proof": {
+    "file": "reduction.tex",
+    "lines": [
+     28,
+     43
+    ]
+   },
+   "proofs": [
+    {
+     "file": "reduction.tex",
+     "lines": [
+      28,
+      43
+     ]
+    }
+   ],
+   "section": "reduction:section",
+   "subsection": null,
+   "cites": []
+  },
+  {
+   "id": "models:section",
+   "kind": "section",
+   "number": "10",
+   "title": "Named models and the zero-temperature limit",
+   "label": "models:section",
+   "file": "consequences.tex",
+   "lines": [
+    1,
+    138
+   ],
+   "ranges": [
+    {
+     "file": "consequences.tex",
+     "lines": [
+      1,
+      138
+     ]
+    }
+   ],
+   "parent": null
+  },
+  {
+   "id": "models:spin",
+   "kind": "corollary",
+   "number": "Corollary 10.1",
+   "title": "Viana--Bray and diluted even-spin models",
+   "label": "models:spin",
+   "file": "consequences.tex",
+   "lines": [
+    10,
+    22
+   ],
+   "proof": {
+    "file": "consequences.tex",
+    "lines": [
+     24,
+     34
+    ]
+   },
+   "proofs": [
+    {
+     "file": "consequences.tex",
+     "lines": [
+      24,
+      34
+     ]
+    }
+   ],
+   "section": "models:section",
+   "subsection": null,
+   "cites": [
+    "VB85"
+   ]
+  },
+  {
+   "id": "models:sat",
+   "kind": "corollary",
+   "number": "Corollary 10.2",
+   "title": "Soft random even-$K$ SAT",
+   "label": "models:sat",
+   "file": "consequences.tex",
+   "lines": [
+    36,
+    49
+   ],
+   "proof": {
+    "file": "consequences.tex",
+    "lines": [
+     51,
+     64
+    ]
+   },
+   "proofs": [
+    {
+     "file": "consequences.tex",
+     "lines": [
+      51,
+      64
+     ]
+    }
+   ],
+   "section": "models:section",
+   "subsection": null,
+   "cites": []
+  },
+  {
+   "id": "models:ground-formula",
+   "kind": "equation",
+   "number": "(10.1)",
+   "label": "models:ground-formula",
+   "file": "consequences.tex",
+   "line": 93,
+   "lines": [
+    93,
+    93
+   ],
+   "node": "models:ground",
+   "role": "statement",
+   "container": "models:ground",
+   "section": "models:section",
+   "subsection": null
+  },
+  {
+   "id": "models:ground",
+   "kind": "corollary",
+   "number": "Corollary 10.3",
+   "title": "Zero-temperature variational limit",
+   "label": "models:ground",
+   "file": "consequences.tex",
+   "lines": [
+    86,
+    101
+   ],
+   "proof": {
+    "file": "consequences.tex",
+    "lines": [
+     103,
+     125
+    ]
+   },
+   "proofs": [
+    {
+     "file": "consequences.tex",
+     "lines": [
+      103,
+      125
+     ]
+    }
+   ],
+   "section": "models:section",
+   "subsection": null,
+   "cites": []
+  },
+  {
+   "id": "x:consequences-L131",
+   "kind": "remark",
+   "number": "Remark 10.4",
+   "title": null,
+   "label": null,
+   "file": "consequences.tex",
+   "lines": [
+    131,
+    138
+   ],
+   "proof": null,
+   "proofs": [],
+   "section": "models:section",
+   "subsection": null,
+   "cites": [
+    "OpenAIThreeSAT2026"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "src": "x:introduction-L1",
+   "dst": "model:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 32,
+   "section": "x:introduction-L1",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "x:introduction-L1",
+   "dst": "models:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 34,
+   "section": "x:introduction-L1",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "models:section"
+  },
+  {
+   "src": "x:introduction-L1",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 85,
+   "section": "x:introduction-L1",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "model:section",
+   "dst": "model:positivity",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "model.tex",
+   "line": 38,
+   "section": "model:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "model:section",
+   "dst": "upper:bound",
+   "cmd": "cref",
+   "role": "text",
+   "file": "model.tex",
+   "line": 41,
+   "section": "model:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "proposition",
+   "dst_container": "upper:bound"
+  },
+  {
+   "src": "x:model-L46",
+   "dst": "model:functional",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "model.tex",
+   "line": 122,
+   "section": "model:section",
+   "subsection": "x:model-L46",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "model:integrability",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "model.tex",
+   "line": 131,
+   "section": "model:section",
+   "subsection": "x:model-L46",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "model:positivity",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "model.tex",
+   "line": 131,
+   "section": "model:section",
+   "subsection": "x:model-L46",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "upper:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 4,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "upper:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "cavity:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 18,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "cavity:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "pert:selection",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 18,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "tree:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 24,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "tree:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "pert:tree-identity",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 24,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "pert:tree-identity"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "decor:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 33,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "decor:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "comp:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 40,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "comp:section"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 50,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "x:overview-L1",
+   "dst": "reduction:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "overview.tex",
+   "line": 51,
+   "section": "model:section",
+   "subsection": "x:overview-L1",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "reduction:section"
+  },
+  {
+   "src": "x:trees-L14",
+   "dst": "model:chain",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 26,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:Y-recursion",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "trees.tex",
+   "line": 89,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:updated-kernel",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "trees.tex",
+   "line": 90,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:updated-kernel",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 123,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:updated-kernel",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 126,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:density",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 131,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "tree:insertion",
+   "dst": "tree:Y-recursion",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 132,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "x:trees-L14",
+   "dst": "tree:Y-recursion",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 142,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "x:trees-L14",
+   "dst": "tree:density",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 173,
+   "section": "tree:section",
+   "subsection": "x:trees-L14",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "x:trees-L178",
+   "dst": "tree:density",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 185,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "x:trees-L178",
+   "dst": "tree:first-variation",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 196,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "x:trees-L178",
+   "dst": "tree:telescoping",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 218,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L178"
+  },
+  {
+   "src": "tree:log-expansion",
+   "dst": "tree:first-variation",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 243,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "tree:log-expansion",
+   "dst": "tree:telescoping",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 247,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L178"
+  },
+  {
+   "src": "tree:log-expansion",
+   "dst": "tree:log-series",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 254,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "tree:log-expansion",
+   "dst": "tree:log-tail",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 256,
+   "section": "tree:section",
+   "subsection": "x:trees-L178",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "tree:reference-total",
+   "dst": "tree:K",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 385,
+   "section": "tree:section",
+   "subsection": "x:trees-L306",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:reference-total"
+  },
+  {
+   "src": "tree:charging",
+   "dst": "tree:telescoping",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 418,
+   "section": "tree:section",
+   "subsection": "x:trees-L306",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L178"
+  },
+  {
+   "src": "tree:charging",
+   "dst": "tree:charging-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 446,
+   "section": "tree:section",
+   "subsection": "x:trees-L306",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:charging"
+  },
+  {
+   "src": "tree:regular-shapes",
+   "dst": "tree:Q-rule",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 490,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L178"
+  },
+  {
+   "src": "tree:regular-shapes",
+   "dst": "tree:irregular-probability",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 497,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:regular-shapes"
+  },
+  {
+   "src": "tree:regular-shapes",
+   "dst": "tree:assignment-probability",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 501,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:regular-shapes"
+  },
+  {
+   "src": "tree:regular-shapes",
+   "dst": "tree:Q-rule",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "trees.tex",
+   "line": 504,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L178"
+  },
+  {
+   "src": "tree:averaging-remark",
+   "dst": "tree:assignment-probability",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "trees.tex",
+   "line": 518,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:regular-shapes"
+  },
+  {
+   "src": "tree:averaging-remark",
+   "dst": "tree:irregular-probability",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "trees.tex",
+   "line": 523,
+   "section": "tree:section",
+   "subsection": "x:trees-L458",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:regular-shapes"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "upper.tex",
+   "line": 12,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "model:factorization",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 63,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "tree:log-expansion",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 81,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "upper:regularization",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 90,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "upper:bound"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "tree:log-expansion",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 97,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "tree:log-expansion",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 121,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "model:positivity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 125,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "upper:remainder",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 125,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "upper:bound"
+  },
+  {
+   "src": "upper:bound",
+   "dst": "upper:derivative",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "upper.tex",
+   "line": 126,
+   "section": "upper:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "upper:bound"
+  },
+  {
+   "src": "cavity:section",
+   "dst": "reduction:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "cavity.tex",
+   "line": 11,
+   "section": "cavity:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "reduction:section"
+  },
+  {
+   "src": "cavity:section",
+   "dst": "pert:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "cavity.tex",
+   "line": 32,
+   "section": "cavity:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "pert:section"
+  },
+  {
+   "src": "cavity:increment",
+   "dst": "cavity:identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "cavity.tex",
+   "line": 107,
+   "section": "cavity:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "pert:section",
+   "dst": "cavity:increment",
+   "cmd": "cref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 6,
+   "section": "pert:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "x:perturbations-L26",
+   "dst": "cavity:negligible",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 65,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L26",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "cavity:section"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:second-derivative",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 147,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:second-derivative",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 165,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:root-variance",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 208,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:score-bounds",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 209,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:root-variance",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 225,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:error",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 239,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:perturbations-L73"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:thermal-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 240,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:concentration",
+   "dst": "pert:concentration-eq",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 243,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L73",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "pert:selection",
+   "dst": "cavity:negligible",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 271,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L246",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "cavity:section"
+  },
+  {
+   "src": "pert:selection",
+   "dst": "cavity:increment",
+   "cmd": "Cref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 277,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L246",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "pert:selection",
+   "dst": "pert:concentration",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 282,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L246",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:concentration"
+  },
+  {
+   "src": "x:perturbations-L246",
+   "dst": "pert:selection",
+   "cmd": "ref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 309,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L246",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "x:perturbations-L314",
+   "dst": "pert:error",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 322,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:perturbations-L73"
+  },
+  {
+   "src": "x:perturbations-L314",
+   "dst": "tree:insertion",
+   "cmd": "ref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 334,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "x:perturbations-L314",
+   "dst": "tree:density",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 335,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "pert:palm",
+   "dst": "tree:density",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 370,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:insertion"
+  },
+  {
+   "src": "pert:palm",
+   "dst": "pert:palm-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 378,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:palm"
+  },
+  {
+   "src": "pert:palm",
+   "dst": "pert:score-identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 379,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:perturbations-L314"
+  },
+  {
+   "src": "pert:analytic",
+   "dst": "tree:extension-expansion",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 391,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:extension-expansion"
+  },
+  {
+   "src": "pert:analytic",
+   "dst": "pert:analytic-difference",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 393,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:perturbations-L314"
+  },
+  {
+   "src": "pert:analytic",
+   "dst": "pert:selection",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 406,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "pert:analytic",
+   "dst": "pert:palm",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 412,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:palm"
+  },
+  {
+   "src": "pert:analytic",
+   "dst": "pert:palm",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 419,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L314",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:palm"
+  },
+  {
+   "src": "x:perturbations-L427",
+   "dst": "tree:extension-expansion",
+   "cmd": "ref",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 433,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:extension-expansion"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:selection",
+   "cmd": "ref",
+   "role": "statement",
+   "file": "perturbations.tex",
+   "line": 455,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:analytic",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 474,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:analytic"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:analytic",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 490,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:analytic"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:mark-selector",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 515,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:tree-identity"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:analytic-difference",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 527,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:perturbations-L314"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:analytic",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 529,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:analytic"
+  },
+  {
+   "src": "pert:tree-identity",
+   "dst": "pert:tree-identity-eq",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 531,
+   "section": "pert:section",
+   "subsection": "x:perturbations-L427",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "pert:tree-identity"
+  },
+  {
+   "src": "decor:section",
+   "dst": "pert:selection",
+   "cmd": "cref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 6,
+   "section": "decor:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "decor:section",
+   "dst": "pert:tree-identity",
+   "cmd": "cref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 7,
+   "section": "decor:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "pert:tree-identity"
+  },
+  {
+   "src": "decor:section",
+   "dst": "comp:section",
+   "cmd": "cref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 13,
+   "section": "decor:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "comp:section"
+  },
+  {
+   "src": "decor:averages",
+   "dst": "pert:tree-identity",
+   "cmd": "ref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 51,
+   "section": "decor:section",
+   "subsection": "decor:averages",
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "pert:tree-identity"
+  },
+  {
+   "src": "decor:averages",
+   "dst": "tree:multioverlap",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 61,
+   "section": "decor:section",
+   "subsection": "decor:averages",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "decor:contractions",
+   "dst": "decor:contraction-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 131,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:contractions"
+  },
+  {
+   "src": "decor:depth-continuity",
+   "dst": "decor:martingale-energy",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 194,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:depth-continuity"
+  },
+  {
+   "src": "x:decorrelation-L85",
+   "dst": "decor:contraction-bound",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "decorrelation.tex",
+   "line": 218,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:contractions"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:average-holder",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 262,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:averages"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:three-copy-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 288,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:contractions"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:shift-figure",
+   "cmd": "Cref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 303,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "figure",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "tree:K",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 332,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "tree:reference-total"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "tree:charging",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 348,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:charging"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:relative-absolute-cost",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 358,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:projection-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 364,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:decorrelation-L85"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:depth-continuity",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 368,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "decor:depth-continuity"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:projection-shift-error",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 378,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "tree:reference-total",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 414,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:reference-total"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:relative-absolute-cost",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 456,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:projection-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 460,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:decorrelation-L85"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:induction-identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 465,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:induction-identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 473,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:three-copy-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 483,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:contractions"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:projected-three-copy",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 484,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:projection-shift-error",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 513,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:identity-error",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 514,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:averages"
+  },
+  {
+   "src": "decor:conditional-concentration",
+   "dst": "decor:V-definition",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 520,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L232",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:overlap-concentration",
+   "dst": "decor:projection-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 580,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:decorrelation-L85"
+  },
+  {
+   "src": "decor:overlap-concentration",
+   "dst": "decor:martingale-energy",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 583,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:depth-continuity"
+  },
+  {
+   "src": "decor:overlap-concentration",
+   "dst": "decor:prefix-projection-concentration",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 597,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:overlap-concentration"
+  },
+  {
+   "src": "decor:overlap-concentration",
+   "dst": "decor:fiber-bound",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 607,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:overlap-concentration",
+   "dst": "decor:conditional-concentration",
+   "cmd": "ref",
+   "role": "proof",
+   "file": "decorrelation.tex",
+   "line": 609,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "proposition",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "decor:order-of-limits",
+   "dst": "decor:relative-absolute-cost",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "decorrelation.tex",
+   "line": 620,
+   "section": "decor:section",
+   "subsection": "x:decorrelation-L526",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "decor:conditional-concentration"
+  },
+  {
+   "src": "comp:section",
+   "dst": "pert:selection",
+   "cmd": "cref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 9,
+   "section": "comp:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "pert:selection"
+  },
+  {
+   "src": "comp:encoding",
+   "dst": "model:chain",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 72,
+   "section": "comp:section",
+   "subsection": "x:comparison-L17",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "comp:patterns",
+   "dst": "comp:encoding",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "comparison.tex",
+   "line": 91,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "comp:encoding"
+  },
+  {
+   "src": "comp:patterns",
+   "dst": "comp:single-label-moments",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 110,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "comp:encoding"
+  },
+  {
+   "src": "x:comparison-L85",
+   "dst": "tree:log-expansion",
+   "cmd": "cref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 123,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "x:comparison-L85",
+   "dst": "tree:regular-shapes",
+   "cmd": "cref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 141,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:regular-shapes"
+  },
+  {
+   "src": "x:comparison-L85",
+   "dst": "comp:shape-error-bound",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 153,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:comparison-L85"
+  },
+  {
+   "src": "x:comparison-L85",
+   "dst": "decor:overlap-concentration",
+   "cmd": "cref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 153,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "decor:overlap-concentration"
+  },
+  {
+   "src": "x:comparison-L85",
+   "dst": "comp:shape-error",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "comparison.tex",
+   "line": 156,
+   "section": "comp:section",
+   "subsection": "x:comparison-L85",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:comparison-L85"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "comp:encoding",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "comparison.tex",
+   "line": 161,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "comp:encoding"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "cavity:increment",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 171,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "comp:encoding",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 172,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "comp:encoding"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "tree:Y-recursion",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 175,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:trees-L14"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "model:vs",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 180,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "cavity:identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 195,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "tree:log-expansion",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 205,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "tree:log-expansion"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "comp:patterns",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 208,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "lemma",
+   "dst_container": "comp:patterns"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "comp:shape-error",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 210,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:comparison-L85"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "cavity:identity",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 222,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "cavity:increment"
+  },
+  {
+   "src": "comp:insertion-comparison",
+   "dst": "comp:increment-comparison",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 222,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "comp:insertion-comparison"
+  },
+  {
+   "src": "comp:bounded-lower",
+   "dst": "model:section",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "comparison.tex",
+   "line": 227,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "section",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "comp:bounded-lower",
+   "dst": "model:trial-bounds",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 235,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "comp:bounded-lower",
+   "dst": "comp:low-increments",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 236,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "comp:section"
+  },
+  {
+   "src": "comp:bounded-lower",
+   "dst": "comp:insertion-comparison",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "comparison.tex",
+   "line": 244,
+   "section": "comp:section",
+   "subsection": "x:comparison-L158",
+   "resolved": true,
+   "dst_kind": "proposition",
+   "dst_container": "comp:insertion-comparison"
+  },
+  {
+   "src": "reduction:section",
+   "dst": "comp:bounded-lower",
+   "cmd": "cref",
+   "role": "text",
+   "file": "reduction.tex",
+   "line": 4,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "comp:bounded-lower"
+  },
+  {
+   "src": "reduction:stability",
+   "dst": "model:integrability",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "reduction.tex",
+   "line": 11,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "reduction:stability",
+   "dst": "reduction:free-stability",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 32,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "reduction:stability"
+  },
+  {
+   "src": "reduction:stability",
+   "dst": "reduction:trial-stability",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 37,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "reduction:stability"
+  },
+  {
+   "src": "reduction:stability",
+   "dst": "reduction:shift",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 39,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "reduction:stability"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "comp:bounded-lower",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 64,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "comp:bounded-lower"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "comp:bounded-lower",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 76,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "comp:bounded-lower"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "upper:bound",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 85,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "proposition",
+   "dst_container": "upper:bound"
+  },
+  {
+   "src": "main:theorem",
+   "dst": "main:formula",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "reduction.tex",
+   "line": 86,
+   "section": "reduction:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:section",
+   "dst": "model:hamiltonian",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "consequences.tex",
+   "line": 8,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "model:section"
+  },
+  {
+   "src": "models:spin",
+   "dst": "main:formula",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 19,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:spin",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "consequences.tex",
+   "line": 33,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:sat",
+   "dst": "main:formula",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 47,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:sat",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "consequences.tex",
+   "line": 63,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:section",
+   "dst": "model:functional",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "consequences.tex",
+   "line": 83,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  },
+  {
+   "src": "models:ground",
+   "dst": "models:spin",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 88,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "models:spin"
+  },
+  {
+   "src": "models:ground",
+   "dst": "models:sat",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 88,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "models:sat"
+  },
+  {
+   "src": "models:ground",
+   "dst": "main:theorem",
+   "cmd": "cref",
+   "role": "proof",
+   "file": "consequences.tex",
+   "line": 112,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "theorem",
+   "dst_container": "main:theorem"
+  },
+  {
+   "src": "models:ground",
+   "dst": "models:ground-formula",
+   "cmd": "eqref",
+   "role": "proof",
+   "file": "consequences.tex",
+   "line": 123,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "models:ground"
+  },
+  {
+   "src": "models:section",
+   "dst": "models:ground-formula",
+   "cmd": "eqref",
+   "role": "text",
+   "file": "consequences.tex",
+   "line": 127,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "models:ground"
+  },
+  {
+   "src": "x:consequences-L131",
+   "dst": "models:sat",
+   "cmd": "cref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 132,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "corollary",
+   "dst_container": "models:sat"
+  },
+  {
+   "src": "x:consequences-L131",
+   "dst": "model:functional",
+   "cmd": "eqref",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 137,
+   "section": "models:section",
+   "subsection": null,
+   "resolved": true,
+   "dst_kind": "equation",
+   "dst_container": "x:model-L46"
+  }
+ ],
+ "cites": [
+  {
+   "src": "x:introduction-L1",
+   "key": "VB85",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 14
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "MP01",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 14
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "FL03",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 17
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "Guerra03",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 18
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "PT04",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 21
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "PT04",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 26
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "ASS03",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 38
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "DeSanctis04",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 40
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "Pan13",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 41
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "COP19",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 44
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "Pan16",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 50
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "BCS25",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 54
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "Concetti25",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 58
+  },
+  {
+   "src": "x:introduction-L1",
+   "key": "Pan13",
+   "role": "text",
+   "file": "introduction.tex",
+   "line": 71
+  },
+  {
+   "src": "x:model-L46",
+   "key": "PT04",
+   "role": "text",
+   "file": "model.tex",
+   "line": 49
+  },
+  {
+   "src": "tree:section",
+   "key": "MP01",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 8
+  },
+  {
+   "src": "tree:section",
+   "key": "PT04",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 9
+  },
+  {
+   "src": "tree:section",
+   "key": "Ruelle87",
+   "role": "text",
+   "file": "trees.tex",
+   "line": 10
+  },
+  {
+   "src": "upper:section",
+   "key": "Guerra03",
+   "role": "text",
+   "file": "upper.tex",
+   "line": 3
+  },
+  {
+   "src": "upper:section",
+   "key": "FL03",
+   "role": "text",
+   "file": "upper.tex",
+   "line": 4
+  },
+  {
+   "src": "upper:section",
+   "key": "PT04",
+   "role": "text",
+   "file": "upper.tex",
+   "line": 5
+  },
+  {
+   "src": "cavity:section",
+   "key": "ASS03",
+   "role": "text",
+   "file": "cavity.tex",
+   "line": 5
+  },
+  {
+   "src": "cavity:section",
+   "key": "Pan13",
+   "role": "text",
+   "file": "cavity.tex",
+   "line": 6
+  },
+  {
+   "src": "pert:section",
+   "key": "GG98",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 18
+  },
+  {
+   "src": "pert:section",
+   "key": "AC98",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 20
+  },
+  {
+   "src": "pert:section",
+   "key": "BarraDeSanctis07",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 21
+  },
+  {
+   "src": "pert:section",
+   "key": "Pan13",
+   "role": "text",
+   "file": "perturbations.tex",
+   "line": 22
+  },
+  {
+   "src": "pert:concentration",
+   "key": "EfronStein",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 179
+  },
+  {
+   "src": "pert:concentration",
+   "key": "EfronStein",
+   "role": "proof",
+   "file": "perturbations.tex",
+   "line": 191
+  },
+  {
+   "src": "models:section",
+   "key": "FL03",
+   "role": "text",
+   "file": "consequences.tex",
+   "line": 6
+  },
+  {
+   "src": "models:section",
+   "key": "PT04",
+   "role": "text",
+   "file": "consequences.tex",
+   "line": 6
+  },
+  {
+   "src": "models:spin",
+   "key": "VB85",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 21
+  },
+  {
+   "src": "x:consequences-L131",
+   "key": "OpenAIThreeSAT2026",
+   "role": "statement",
+   "file": "consequences.tex",
+   "line": 133
+  }
+ ],
+ "proofs": [
+  {
+   "node": "tree:insertion",
+   "file": "trees.tex",
+   "lines": [
+    113,
+    133
+   ]
+  },
+  {
+   "node": "tree:log-expansion",
+   "file": "trees.tex",
+   "lines": [
+    241,
+    257
+   ]
+  },
+  {
+   "node": "tree:extension-expansion",
+   "file": "trees.tex",
+   "lines": [
+    298,
+    304
+   ]
+  },
+  {
+   "node": "tree:reference-total",
+   "file": "trees.tex",
+   "lines": [
+    359,
+    386
+   ]
+  },
+  {
+   "node": "tree:charging",
+   "file": "trees.tex",
+   "lines": [
+    417,
+    456
+   ]
+  },
+  {
+   "node": "tree:regular-shapes",
+   "file": "trees.tex",
+   "lines": [
+    486,
+    514
+   ]
+  },
+  {
+   "node": "upper:bound",
+   "file": "upper.tex",
+   "lines": [
+    17,
+    128
+   ]
+  },
+  {
+   "node": "cavity:increment",
+   "file": "cavity.tex",
+   "lines": [
+    71,
+    115
+   ]
+  },
+  {
+   "node": "pert:concentration",
+   "file": "perturbations.tex",
+   "lines": [
+    106,
+    244
+   ]
+  },
+  {
+   "node": "pert:selection",
+   "file": "perturbations.tex",
+   "lines": [
+    269,
+    306
+   ]
+  },
+  {
+   "node": "pert:palm",
+   "file": "perturbations.tex",
+   "lines": [
+    362,
+    381
+   ]
+  },
+  {
+   "node": "pert:analytic",
+   "file": "perturbations.tex",
+   "lines": [
+    390,
+    425
+   ]
+  },
+  {
+   "node": "pert:tree-identity",
+   "file": "perturbations.tex",
+   "lines": [
+    472,
+    536
+   ]
+  },
+  {
+   "node": "decor:contractions",
+   "file": "decorrelation.tex",
+   "lines": [
+    127,
+    140
+   ]
+  },
+  {
+   "node": "decor:depth-continuity",
+   "file": "decorrelation.tex",
+   "lines": [
+    168,
+    206
+   ]
+  },
+  {
+   "node": "decor:conditional-concentration",
+   "file": "decorrelation.tex",
+   "lines": [
+    247,
+    524
+   ]
+  },
+  {
+   "node": "decor:overlap-concentration",
+   "file": "decorrelation.tex",
+   "lines": [
+    532,
+    611
+   ]
+  },
+  {
+   "node": "comp:encoding",
+   "file": "comparison.tex",
+   "lines": [
+    27,
+    83
+   ]
+  },
+  {
+   "node": "comp:patterns",
+   "file": "comparison.tex",
+   "lines": [
+    99,
+    121
+   ]
+  },
+  {
+   "node": "comp:insertion-comparison",
+   "file": "comparison.tex",
+   "lines": [
+    170,
+    223
+   ]
+  },
+  {
+   "node": "comp:bounded-lower",
+   "file": "comparison.tex",
+   "lines": [
+    233,
+    246
+   ]
+  },
+  {
+   "node": "reduction:stability",
+   "file": "reduction.tex",
+   "lines": [
+    28,
+    43
+   ]
+  },
+  {
+   "node": "main:theorem",
+   "file": "reduction.tex",
+   "lines": [
+    45,
+    87
+   ]
+  },
+  {
+   "node": "models:spin",
+   "file": "consequences.tex",
+   "lines": [
+    24,
+    34
+   ]
+  },
+  {
+   "node": "models:sat",
+   "file": "consequences.tex",
+   "lines": [
+    51,
+    64
+   ]
+  },
+  {
+   "node": "models:ground",
+   "file": "consequences.tex",
+   "lines": [
+    103,
+    125
+   ]
+  }
+ ],
+ "labels": {
+  "model:section": "model:section",
+  "model:integrability": "model:integrability",
+  "model:hamiltonian": "model:hamiltonian",
+  "model:factorization": "model:factorization",
+  "model:positivity": "model:positivity",
+  "model:edge": "model:edge",
+  "model:site-message": "model:site-message",
+  "model:chain": "model:chain",
+  "model:vs": "model:vs",
+  "model:ve": "model:ve",
+  "model:power-means": "model:power-means",
+  "model:functional": "model:functional",
+  "model:trial-bounds": "model:trial-bounds",
+  "main:formula": "main:formula",
+  "main:theorem": "main:theorem",
+  "tree:section": "tree:section",
+  "tree:multioverlap": "tree:multioverlap",
+  "tree:original-tilt": "tree:original-tilt",
+  "tree:Y-recursion": "tree:Y-recursion",
+  "tree:updated-kernel": "tree:updated-kernel",
+  "tree:density": "tree:density",
+  "tree:insertion": "tree:insertion",
+  "tree:first-variation": "tree:first-variation",
+  "tree:telescoping": "tree:telescoping",
+  "tree:Q-rule": "tree:Q-rule",
+  "tree:log-series": "tree:log-series",
+  "tree:log-tail": "tree:log-tail",
+  "tree:log-expansion": "tree:log-expansion",
+  "tree:mixed-expansion": "tree:mixed-expansion",
+  "tree:extension-expansion": "tree:extension-expansion",
+  "tree:one-reference-total": "tree:one-reference-total",
+  "tree:K": "tree:K",
+  "tree:reference-total": "tree:reference-total",
+  "tree:charging-bound": "tree:charging-bound",
+  "tree:relative-charging": "tree:relative-charging",
+  "tree:charging": "tree:charging",
+  "tree:irregular-probability": "tree:irregular-probability",
+  "tree:assignment-probability": "tree:assignment-probability",
+  "tree:regular-shapes": "tree:regular-shapes",
+  "tree:averaging-remark": "tree:averaging-remark",
+  "upper:section": "upper:section",
+  "upper:bound": "upper:bound",
+  "upper:derivative": "upper:derivative",
+  "upper:regularization": "upper:regularization",
+  "upper:remainder": "upper:remainder",
+  "cavity:section": "cavity:section",
+  "cavity:grid": "cavity:grid",
+  "cavity:factor-bounds": "cavity:factor-bounds",
+  "cavity:negligible": "cavity:negligible",
+  "cavity:reservoir-mean": "cavity:reservoir-mean",
+  "cavity:identity": "cavity:identity",
+  "cavity:site-insertion": "cavity:site-insertion",
+  "cavity:bond-insertion": "cavity:bond-insertion",
+  "cavity:increment": "cavity:increment",
+  "pert:section": "pert:section",
+  "pert:parameters": "pert:parameters",
+  "pert:factor": "pert:factor",
+  "pert:score": "pert:score",
+  "pert:error": "pert:error",
+  "pert:concentration-eq": "pert:concentration-eq",
+  "pert:concentration": "pert:concentration",
+  "pert:score-bounds": "pert:score-bounds",
+  "pert:first-derivative": "pert:first-derivative",
+  "pert:second-derivative": "pert:second-derivative",
+  "pert:thermal-variance": "pert:thermal-variance",
+  "pert:thermal-bound": "pert:thermal-bound",
+  "pert:root-variance": "pert:root-variance",
+  "pert:convex-bound": "pert:convex-bound",
+  "pert:selection": "pert:selection",
+  "pert:score-identity": "pert:score-identity",
+  "pert:palm-expression": "pert:palm-expression",
+  "pert:analytic-difference": "pert:analytic-difference",
+  "pert:palm-bound": "pert:palm-bound",
+  "pert:palm": "pert:palm",
+  "pert:analytic": "pert:analytic",
+  "pert:identity": "pert:identity",
+  "pert:tree-identity-eq": "pert:tree-identity-eq",
+  "pert:tree-identity": "pert:tree-identity",
+  "pert:mark-selector": "pert:mark-selector",
+  "decor:section": "decor:section",
+  "decor:averages": "decor:averages",
+  "decor:average-definition": "decor:average-definition",
+  "decor:average-holder": "decor:average-holder",
+  "decor:identity-error": "decor:identity-error",
+  "decor:overlap-concentration-equation": "decor:overlap-concentration-equation",
+  "decor:overlap-concentration": "decor:overlap-concentration",
+  "decor:covariance-definition": "decor:covariance-definition",
+  "decor:contraction-bound": "decor:contraction-bound",
+  "decor:three-copy-bound": "decor:three-copy-bound",
+  "decor:contractions": "decor:contractions",
+  "decor:branch-depth-continuity": "decor:branch-depth-continuity",
+  "decor:evaluation-depth-continuity": "decor:evaluation-depth-continuity",
+  "decor:depth-continuity": "decor:depth-continuity",
+  "decor:martingale-energy": "decor:martingale-energy",
+  "decor:one-vertex-shift": "decor:one-vertex-shift",
+  "decor:projection-definition": "decor:projection-definition",
+  "decor:projection-bound": "decor:projection-bound",
+  "decor:conditional-concentration-equation": "decor:conditional-concentration-equation",
+  "decor:conditional-concentration": "decor:conditional-concentration",
+  "decor:V-definition": "decor:V-definition",
+  "decor:c-weights": "decor:c-weights",
+  "decor:singleton-identity": "decor:singleton-identity",
+  "decor:shift-figure": "decor:shift-figure",
+  "decor:J-definition": "decor:J-definition",
+  "decor:J-lower-bound": "decor:J-lower-bound",
+  "decor:relative-absolute-cost": "decor:relative-absolute-cost",
+  "decor:projection-shift-error": "decor:projection-shift-error",
+  "decor:induction-identity": "decor:induction-identity",
+  "decor:induction-error": "decor:induction-error",
+  "decor:projected-three-copy": "decor:projected-three-copy",
+  "decor:covariance-induction-estimate": "decor:covariance-induction-estimate",
+  "decor:fiber-bound": "decor:fiber-bound",
+  "decor:induction-recursion": "decor:induction-recursion",
+  "decor:marker-coefficient": "decor:marker-coefficient",
+  "decor:marker-variance-identity": "decor:marker-variance-identity",
+  "decor:prefix-projection-concentration": "decor:prefix-projection-concentration",
+  "decor:adjacent-prefix-error": "decor:adjacent-prefix-error",
+  "decor:variance-estimate": "decor:variance-estimate",
+  "decor:order-of-limits": "decor:order-of-limits",
+  "comp:section": "comp:section",
+  "comp:low-increments": "comp:low-increments",
+  "comp:encoding": "comp:encoding",
+  "comp:single-label-moments": "comp:single-label-moments",
+  "comp:pattern-error": "comp:pattern-error",
+  "comp:patterns": "comp:patterns",
+  "comp:shape-error": "comp:shape-error",
+  "comp:shape-error-bound": "comp:shape-error-bound",
+  "comp:increment-comparison": "comp:increment-comparison",
+  "comp:insertion-comparison": "comp:insertion-comparison",
+  "comp:bounded-lower": "comp:bounded-lower",
+  "reduction:section": "reduction:section",
+  "reduction:free-stability": "reduction:free-stability",
+  "reduction:trial-stability": "reduction:trial-stability",
+  "reduction:shift": "reduction:shift",
+  "reduction:stability": "reduction:stability",
+  "models:section": "models:section",
+  "models:spin": "models:spin",
+  "models:sat": "models:sat",
+  "models:ground-formula": "models:ground-formula",
+  "models:ground": "models:ground"
+ }
+}
