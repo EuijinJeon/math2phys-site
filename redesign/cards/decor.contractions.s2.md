@@ -17,4 +17,4 @@ source:
 status: proposed
 ---
 
-$X\cdot Y-X\cdot Z=X\cdot(Y-Z)$이고 $W=Y-Z$는 조건부 평균 0, 조건부 공분산 $2C$이며 $X$와 조건부 독립이다. 그래서 $\mathbb E[(X\cdot W)^2\mid\mathscr G]=N^{-2}\mathbb E[X^{\mathsf T}(2C)X\mid\mathscr G]=\frac2{N^2}\operatorname{tr}(C\,\mathbb E[XX^{\mathsf T}\mid\mathscr G])$이고, $\mathbb E[XX^{\mathsf T}\mid\mathscr G]=C+\mu\mu^{\mathsf T}$이다.
+$X\cdot Y-X\cdot Z=X\cdot(Y-Z)$이고 $W=Y-Z$는 조건부 평균 0, [[g:conditional-covariance|조건부 공분산]] $2C$이며 $X$와 조건부 독립이다. 그래서 $\mathbb E[(X\cdot W)^2\mid\mathscr G]=N^{-2}\mathbb E[X^{\mathsf T}(2C)X\mid\mathscr G]=\frac2{N^2}\operatorname{tr}(C\,\mathbb E[XX^{\mathsf T}\mid\mathscr G])$이고, $\mathbb E[XX^{\mathsf T}\mid\mathscr G]=C+\mu\mu^{\mathsf T}$이다.

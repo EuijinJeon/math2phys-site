@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-**증명의 뼈대.** [[decor:conditional-concentration.s4.s1]]: target은 marginal로 $d$에서 분리된 $S^+$ 두 사본이므로 projection-bound로 $e+1$에서 사영하고, depth-continuity로 자식 깊이와 평가 깊이를 되돌린다. [[decor:conditional-concentration.s4.s2]]: 되돌리는 비용 $h_N$은 단일 사본 marginal에만 의존하므로 확장에 균등하다. target I은 anchor의 prefix를 공유하므로 그 사영 벡터는 $a$다.
+**증명의 뼈대.** [[decor:conditional-concentration.s4.s1]]: target은 marginal로 $d$에서 분리된 $S^+$ 두 사본이므로 projection-bound로 $e+1$에서 [[g:projection|사영]]하고, depth-continuity로 자식 깊이와 평가 깊이를 되돌린다. [[decor:conditional-concentration.s4.s2]]: 되돌리는 비용 $h_N$은 단일 사본 marginal에만 의존하므로 확장에 균등하다. target I은 [[g:anchor|anchor]]의 [[g:state|prefix]]를 공유하므로 그 사영 벡터는 $a$다.

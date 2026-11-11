@@ -16,4 +16,4 @@ source:
 status: proposed
 ---
 
-자식 공분산은 깊이 $e$에서 평가한다. $e$는 자식들의 모든 branching depth와 $\eta L$ 넘게 떨어져 있어서 $V$의 정의에 맞는다. $e$에서 $e-1$로 옮기는 것은 공분산 추정 대신 martingale 연속성으로 한다. $(\mathbf1\cdot x)^2\le\|x\|_N^2$, 곱 차이 부등식, 그리고 $e$ 자체가 평균하는 좌표이므로 한 걸음 증분을 $e$에 대해 합한 뒤 $L$로 나눈다(depth-continuity.s1의 martingale energy, 또는 depth-continuity의 평가 깊이 부등식을 각 $T_j$에 적용).
+자식 공분산은 깊이 $e$에서 평가한다. $e$는 자식들의 모든 branching depth와 $\eta L$ 넘게 떨어져 있어서 $V$의 정의에 맞는다. $e$에서 $e-1$로 옮기는 것은 공분산 추정 대신 [[g:depth-continuity|martingale]] 연속성으로 한다. $(\mathbf1\cdot x)^2\le\|x\|_N^2$, 곱 차이 부등식, 그리고 $e$ 자체가 평균하는 좌표이므로 한 걸음 증분을 $e$에 대해 합한 뒤 $L$로 나눈다(depth-continuity.s1의 martingale energy, 또는 depth-continuity의 평가 깊이 부등식을 각 $T_j$에 적용).

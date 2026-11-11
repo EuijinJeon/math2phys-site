@@ -16,4 +16,4 @@ source:
 status: proposed
 ---
 
-두 측 I, II의 spin 곱 벡터의 축약 $A^{\rm I}\cdot A^{\rm II}$은 두 측의 모든 leaf의 multioverlap이다. 증명에서 시험함수 $f$와 target overlap이 모두 이 꼴이다.
+두 측 I, II의 [[g:spin-product|spin 곱 벡터]]의 축약 $A^{\rm I}\cdot A^{\rm II}$은 두 측의 모든 leaf의 [[g:multioverlap|multioverlap]]이다. 증명에서 시험함수 $f$와 target overlap이 모두 이 꼴이다.

@@ -16,4 +16,4 @@ source:
 status: proposed
 ---
 
-갈라지는 순간 자식들은 조건부 독립이므로 평균이 곱으로 분해된다. 갈라짐을 늦추면 자식들이 한 걸음을 공유한 뒤 독립이 된다. martingale 성질 $\mu_{q,T_j}=\mathbb E[\mu_{q+1,T_j}\mid\mathscr F_q]$ 때문에 차이는 $\mathbb E[\prod x_j-\prod y_j\mid\mathscr F_q]$ 꼴이다. 조건부 Jensen으로 제곱을 안으로 넣고 곱 차이 부등식([[x:decor-product-difference]])을 쓰면 된다.
+갈라지는 순간 자식들은 조건부 독립이므로 평균이 곱으로 분해된다. 갈라짐을 늦추면 자식들이 한 걸음을 공유한 뒤 독립이 된다. [[g:depth-continuity|martingale]] 성질 $\mu_{q,T_j}=\mathbb E[\mu_{q+1,T_j}\mid\mathscr F_q]$ 때문에 차이는 $\mathbb E[\prod x_j-\prod y_j\mid\mathscr F_q]$ 꼴이다. 조건부 Jensen으로 제곱을 안으로 넣고 곱 차이 부등식([[x:decor-product-difference]])을 쓰면 된다.

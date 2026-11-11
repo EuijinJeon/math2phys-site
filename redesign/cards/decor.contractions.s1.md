@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-$B$가 $A_S$와 조건부 독립이므로 $B$를 상수처럼 다룰 수 있다. Cauchy–Schwarz는 두 번 쓰인다: $N^2$개 항에 대해 한 번, prefix에 대한 기대값에 대해 $\mathbb E\sqrt{\cdot}\le\sqrt{\mathbb E\cdot}$로 한 번. 그래서 지수가 $1/4$로 떨어진다.
+$B$가 $A_S$와 조건부 독립이므로 $B$를 상수처럼 다룰 수 있다. Cauchy–Schwarz는 두 번 쓰인다: $N^2$개 항에 대해 한 번, [[g:state|prefix]]에 대한 기대값에 대해 $\mathbb E\sqrt{\cdot}\le\sqrt{\mathbb E\cdot}$로 한 번. 그래서 지수가 $1/4$로 떨어진다.

@@ -16,4 +16,4 @@ source:
 status: proposed
 ---
 
-마지막 문장(부분 tree가 prefix가 주어지면 나머지와 조건부 독립)은 유도로서 옳다고 검토 1에서 확인되었다. 근거: kernel은 prefix 전체(root 포함)에 의존한다(trees.tex 20–22), "different children are drawn independently"(trees.tex 31–32), "Conditional independence of children and the projectivity of tree sampling"(trees.tex 200–201). decorrelation.tex도 이 형태로 쓴다: 209, 216–217 "independent of the continuation of $S$ given its prefix at $e$", 550–551.
+마지막 문장(부분 tree가 [[g:state|prefix]]가 주어지면 나머지와 조건부 독립)은 유도로서 옳다고 검토 1에서 확인되었다. 근거: kernel은 prefix 전체(root 포함)에 의존한다(trees.tex 20–22), "different children are drawn independently"(trees.tex 31–32), "Conditional independence of children and the projectivity of tree sampling"(trees.tex 200–201). decorrelation.tex도 이 형태로 쓴다: 209, 216–217 "independent of the continuation of $S$ given its prefix at $e$", 550–551.

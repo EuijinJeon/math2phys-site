@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-지운 부분 tree는 자기 확률 kernel로 적분하면 1이고, 재사용된 옛 leaf는 새 변수를 들이지 않는다. target I의 사영 $a$는 이미 old anchor prefix에만 의존한다. 이력은 표본값에 대한 조건이 아니라 조합적 선택이다. 그래서 이력마다 tree 모양만 다르고 그 위의 법칙은 표본 규칙이 정한다.
+지운 부분 tree는 자기 확률 kernel로 적분하면 1이고, 재사용된 옛 leaf는 새 변수를 들이지 않는다. target I의 [[g:projection|사영]] $a$는 이미 old [[g:anchor|anchor]] [[g:state|prefix]]에만 의존한다. 이력은 표본값에 대한 조건이 아니라 조합적 선택이다. 그래서 이력마다 tree 모양만 다르고 그 위의 법칙은 표본 규칙이 정한다.

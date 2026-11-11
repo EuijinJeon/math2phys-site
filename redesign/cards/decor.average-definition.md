@@ -9,7 +9,7 @@ math: |
   $$\mathcal A_{L,\eta}z=L^{-a}\sum_{\mathbf q\ \eta\text{-regular}}z(\mathbf q).$$
   $d<\min_vq_v$ 같은 추가 순서 조건은 합의 범위에 넣는다. $\eta$-regular 배정의 수는 $L^a$ 이하이므로 총 질량 $\mathcal A_{L,\eta}1\le1$이다(정규화하지 않은 평균). $a=0$이면 $\mathcal A_{L,\eta}z=z$.
 physics: |
-  계층 깊이 $d$는 Parisi 매개변수 $m_d=d/L$(R12)에 대응하므로, $\mathcal A_{L,\eta}$는 갈라짐 위치를 Parisi 변수 $x\in(\eta,1-\eta)$에 대해 균등하게 평균하는 연산이다.
+  계층 깊이 $d$는 [[g:parisi-parameters|Parisi 매개변수]] $m_d=d/L$에 대응하므로, $\mathcal A_{L,\eta}$는 갈라짐 위치를 Parisi 변수 $x\in(\eta,1-\eta)$에 대해 균등하게 평균하는 연산이다.
 gap: |
   대응은 그림일 뿐 논증에 쓰이지 않는다. 평균은 정규화되지 않았고(질량 $<1$일 수 있음), 서로 $\eta L$보다 가까운 갈라짐은 뺀다.
 abstraction: intuition

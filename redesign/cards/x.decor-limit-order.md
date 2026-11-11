@@ -17,4 +17,4 @@ source:
 status: proposed
 ---
 
-§7은 §6의 항등식과 tree 표본 규칙([[x:decor-tree-sampling]])만 쓴다. 모형의 interaction factorization은 쓰지 않는다(tex 8–9). 그래서 §7의 결과는 "이 항등식들을 만족하는 임의의 깊이-$L$ tree 계"에 대한 정리로 읽을 수 있다.
+§7은 §6의 항등식과 [[g:prescribed-tree|tree 표본 규칙]]([[x:decor-tree-sampling]])만 쓴다. 모형의 interaction factorization은 쓰지 않는다(tex 8–9). 그래서 §7의 결과는 "이 항등식들을 만족하는 임의의 깊이-$L$ tree 계"에 대한 정리로 읽을 수 있다.

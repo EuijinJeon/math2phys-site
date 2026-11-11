@@ -218,6 +218,9 @@ class MD:
             if nid.startswith("g:"):
                 return self.stash(self.ctx.gloss_link(nid[2:].strip(), html.unescape(lab).strip() or None))
             return self.stash(self.ctx.link(nid, lab.strip() or None))
+        # 표 칸에서는 표시어를 줄 수 없어 "낱말([[g:slug]])" 꼴로 쓴다. 이때는 표제어를 되풀이하지 않고 작은 표지로 잇는다.
+        s = re.sub(r"\(\[\[g:([a-z0-9-]+)\]\]\)",
+                   lambda m: self.stash('<sup>' + self.ctx.gloss_link(m.group(1), "용어") + '</sup>'), s)
         s = re.sub(r"\[\[([^\]\n]+?)\]\]", wiki, s)
 
         def link(m):

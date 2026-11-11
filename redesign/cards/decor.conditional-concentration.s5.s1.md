@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-$f$는 old leaf 전체의 multioverlap이므로 허용된 고정 overlap 단항식이고 $|f|\le1$이다. 분류의 요점은 사영된 overlap이 target II 첫 경로의 깊이-$e$ prefix에만 의존한다는 것이다. 첫 경로가 old II에서 언제 떨어지느냐에 따라 $b$를 그대로 쓰거나 $b$와 부분적으로만 prefix를 공유하는 새 사본 $b_\ell$을 쓴다.
+$f$는 old leaf 전체의 [[g:multioverlap|multioverlap]]이므로 허용된 고정 overlap 단항식이고 $|f|\le1$이다. 분류의 요점은 [[g:projection|사영]]된 overlap이 target II 첫 경로의 깊이-$e$ [[g:state|prefix]]에만 의존한다는 것이다. 첫 경로가 old II에서 언제 떨어지느냐에 따라 $b$를 그대로 쓰거나 $b$와 부분적으로만 prefix를 공유하는 새 사본 $b_\ell$을 쓴다.

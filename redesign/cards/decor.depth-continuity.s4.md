@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-정수 이동은 $\eta$-regular 배정을 단사로 $\eta/2$-regular 배정에 보낸다. 그래서 $\mathcal A_{L,\eta}$ 아래의 중간 모양 평균은 $\mathcal A_{L,\eta/2}$ 아래의 한 이동 평균으로 눌린다. "더 큰 tree" 문장이 필요한 이유: §7.3–7.4에서 $\mu$들은 두 사본이나 확장된 tree 안에서 계산되는데, 비교하는 양이 한 prefix의 marginal에만 의존하므로 단일 사본 추정이 그대로 적용된다.
+정수 이동은 $\eta$-[[g:eta-regular|regular]] 배정을 단사로 $\eta/2$-regular 배정에 보낸다. 그래서 $\mathcal A_{L,\eta}$ 아래의 중간 모양 평균은 $\mathcal A_{L,\eta/2}$ 아래의 한 이동 평균으로 눌린다. "더 큰 tree" 문장이 필요한 이유: §7.3–7.4에서 $\mu$들은 두 사본이나 확장된 tree 안에서 계산되는데, 비교하는 양이 한 [[g:state|prefix]]의 marginal에만 의존하므로 단일 사본 추정이 그대로 적용된다.

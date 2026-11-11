@@ -338,9 +338,9 @@ def main():
                 ab = r.get("유형", "").strip().strip("`")
                 if ab not in C.ABSTRACTIONS:
                     w.append(f"rules.md {rid}: 유형 `{ab}` 가 규약 값이 아니다")
-                st = r.get("상태", "").strip().strip("`")
+                st = (r.get("승인") or r.get("상태", "")).strip().strip("`")
                 if st not in C.STATUSES:
-                    w.append(f"rules.md {rid}: 상태 `{st}` 가 규약 값이 아니다")
+                    w.append(f"rules.md {rid}: 승인 `{st}` 가 규약 값이 아니다")
         for c in valid:
             if not C.is_null(c.get("physics")):
                 if C.is_null(c.get("gap")):

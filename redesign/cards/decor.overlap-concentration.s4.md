@@ -17,4 +17,4 @@ source:
 status: proposed
 ---
 
-$G_-$는 $\mathscr F_{e-1}$-가측인 후보이므로 $M$보다 $R_S$에 가까울 수 없다. 이것이 $e$의 사영과 $e-1$의 조건부 평균을 잇는 다리다. $\operatorname{Var}(M)\to0$은 각 고정 배정에서 성립하고 고정 $L$에서 $\mathcal A_{L,\eta}$는 유한 합이므로 평균 후에도 $\limsup_N$이 0이다. 자식 항의 좌표 $(e,\mathbf q|_{T_j})$는 $\eta$-regular 배정의 부분이므로 $\eta$-regular이고, 따라서 $\eta/2$-regular다. 즉 $e$가 $T_j$의 "첫 갈라짐 앞 추가 깊이" 역할을 한다.
+$G_-$는 $\mathscr F_{e-1}$-가측인 후보이므로 $M$보다 $R_S$에 가까울 수 없다. 이것이 $e$의 [[g:projection|사영]]과 $e-1$의 조건부 평균을 잇는 다리다. $\operatorname{Var}(M)\to0$은 각 고정 배정에서 성립하고 고정 $L$에서 $\mathcal A_{L,\eta}$는 유한 합이므로 평균 후에도 $\limsup_N$이 0이다. 자식 항의 좌표 $(e,\mathbf q|_{T_j})$는 $\eta$-[[g:eta-regular|regular]] 배정의 부분이므로 $\eta$-regular이고, 따라서 $\eta/2$-regular다. 즉 $e$가 $T_j$의 "첫 갈라짐 앞 추가 깊이" 역할을 한다.

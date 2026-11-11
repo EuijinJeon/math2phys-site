@@ -76,7 +76,7 @@ status: proposed         # proposed | confirmed | unverified
 | `수학 노드` | 대응하는 노드 ID (여럿이면 쉼표) |
 | `차이` | 어긋나는 곳, 유효 범위 |
 | `유형` | `abstraction` 값 |
-| `상태` | `proposed` / `confirmed` |
+| `승인` | `proposed` / `confirmed` ("상태"라는 말은 용어 규율에 따라 여기에 쓰지 않는다) |
 
 ## 단면 문서 (`layers/L0.md`, `L1.md`)
 

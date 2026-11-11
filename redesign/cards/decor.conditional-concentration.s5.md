@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-**증명의 뼈대.** [[decor:conditional-concentration.s5.s1]]이 target II 첫 경로의 가능한 prefix를 세 종류로 나눈다. [[decor:conditional-concentration.s5.s2]]는 같은 class의 확장들이 사영된 항에 대해 같은 결합 법칙을 주므로 class별 계수 합만 필요함을 보인다. [[decor:conditional-concentration.s5.s3]]이 tree:reference-total로 class별 계수 합을 계산하고, anchor 혼자인 쪽의 모든 확장이 같은 법칙의 target을 주어 그 합이 $-\delta J\,\mathbb ER_{\rm target}$으로 묶임을 적는다.
+**증명의 뼈대.** [[decor:conditional-concentration.s5.s1]]이 target II 첫 경로의 가능한 [[g:state|prefix]]를 세 종류로 나눈다. [[decor:conditional-concentration.s5.s2]]는 같은 class의 확장들이 [[g:projection|사영]]된 항에 대해 같은 결합 법칙을 주므로 class별 계수 합만 필요함을 보인다. [[decor:conditional-concentration.s5.s3]]이 tree:reference-total로 class별 계수 합을 계산하고, [[g:anchor|anchor]] 혼자인 쪽의 모든 확장이 같은 법칙의 target을 주어 그 합이 $-\delta J\,\mathbb ER_{\rm target}$으로 묶임을 적는다.

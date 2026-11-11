@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-$X=\sigma^1\cdot\sigma^2$, $X_d=\sigma^1\cdot\sigma^3$이고 세 경로가 깊이 $d$에서 서로 갈라지므로 세 사본 부등식이 바로 적용된다. 다른 $\ell$ 항은 버린다. 이 버림이 가능한 것은 항등식이 음이 아닌 항들의 합으로 정리되었기 때문이다.
+$X=\sigma^1\cdot\sigma^2$, $X_d=\sigma^1\cdot\sigma^3$이고 세 경로가 깊이 $d$에서 서로 갈라지므로 [[g:three-copy|세 사본 부등식]]이 바로 적용된다. 다른 $\ell$ 항은 버린다. 이 버림이 가능한 것은 항등식이 음이 아닌 항들의 합으로 정리되었기 때문이다.

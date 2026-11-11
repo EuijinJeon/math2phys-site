@@ -17,4 +17,4 @@ source:
 status: proposed
 ---
 
-marker anchor는 spin을 내지 않으므로 $R_E$는 target 사본만의 multioverlap이다. 두 사본이 공통 prefix $\mathscr F_{e-1}$를 갖고 그 아래에서 독립이므로 곱의 기대값이 조건부 평균의 제곱이 된다. $\mathbb EM=\mathbb ER_S$이므로 차이가 정확히 $\operatorname{Var}(M)$이다.
+[[g:anchor|marker anchor]]는 spin을 내지 않으므로 $R_E$는 target 사본만의 [[g:multioverlap|multioverlap]]이다. 두 사본이 공통 [[g:state|prefix]] $\mathscr F_{e-1}$를 갖고 그 아래에서 독립이므로 곱의 기대값이 조건부 평균의 제곱이 된다. $\mathbb EM=\mathbb ER_S$이므로 차이가 정확히 $\operatorname{Var}(M)$이다.

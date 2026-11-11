@@ -18,4 +18,4 @@ source:
 status: proposed
 ---
 
-유한 개의 수열이 각각 0으로 가면 그 최대도 0으로 간다. `math`의 사례 집합(크기가 $k$에만 의존하는 상한 이하)은 원문의 "any of the finite collections used below"(tex 49–53)보다 넓게 잡은 유한 집합이다. 실제로 쓰이는 사례(leaf $\le2k$, added color $\le2k-1$, $f$는 특정 overlap 단항식)는 모두 그 안에 있으므로 안전한 쪽이다(검토 1에서 확인). 핵심은 $L$을 먼저 고정한다는 것이다. $J^{-1}$처럼 $L$에 따라 커지는 상수가 이 오차에만 붙으므로 $\limsup_N$에서 사라진다([[decor:order-of-limits]]).
+유한 개의 수열이 각각 0으로 가면 그 최대도 0으로 간다. `math`의 사례 집합(크기가 $k$에만 의존하는 상한 이하)은 원문의 "any of the finite collections used below"(tex 49–53)보다 넓게 잡은 유한 집합이다. 실제로 쓰이는 사례(leaf $\le2k$, added color $\le2k-1$, $f$는 특정 [[g:multioverlap|overlap]] 단항식)는 모두 그 안에 있으므로 안전한 쪽이다(검토 1에서 확인). 핵심은 $L$을 먼저 고정한다는 것이다. $J^{-1}$처럼 $L$에 따라 커지는 상수가 이 오차에만 붙으므로 $\limsup_N$에서 사라진다([[decor:order-of-limits]]).

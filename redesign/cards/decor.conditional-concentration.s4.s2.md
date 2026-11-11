@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-target I의 $S^+$는 $e+1$에서야 처음 갈라지므로 target I 전체가 anchor와 깊이 $e$까지 prefix를 공유한다. 그래서 깊이 $e$에서 평가한 자식 평균의 곱은 old I의 것과 같다. 균등성이 중요한 이유: 확장 합에는 $L$에 따라 개수가 늘어나는 확장이 있으므로, 오차가 확장마다 다른 regularity를 요구하면 합을 제어할 수 없다.
+target I의 $S^+$는 $e+1$에서야 처음 갈라지므로 target I 전체가 [[g:anchor|anchor]]와 깊이 $e$까지 [[g:state|prefix]]를 공유한다. 그래서 깊이 $e$에서 평가한 자식 평균의 곱은 old I의 것과 같다. 균등성이 중요한 이유: 확장 합에는 $L$에 따라 개수가 늘어나는 확장이 있으므로, 오차가 확장마다 다른 regularity를 요구하면 합을 제어할 수 없다.
