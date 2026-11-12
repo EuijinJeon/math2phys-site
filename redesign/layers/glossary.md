@@ -200,14 +200,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:state — 상태
 - **기호**: 깊이 $d$ prefix; $\sigma$-field $\mathscr F_d$ 로 조건을 건 것
 - **뜻**: 보조 계층 path의 [[g:root]](disorder, 섭동 개수·type·site; 섭동 매개변수는 선택된 값으로 고정)부터 깊이 $d$ $(0\le d<L)$ 까지의 prefix다. "상태 안"은 $\mathscr F_d$ 가 주어진 조건부 법칙, "상태 평균"은 $\mathbb E[\,\cdot\mid\mathscr F_d]$ 를 뜻한다. 같은 상태를 공유하는 replica들은 깊이 $d$ 까지 같은 vertex를 지난다(더 깊은 vertex도 공유할 수 있다). 조건부 독립은 갈라짐에 대한 것이다: 깊이 $d$ vertex의 서로 다른 자식 아래에 든 replica 묶음들(곧 정확히 깊이 $d$ 에서 갈라지는 묶음들)이 $\mathscr F_d$ 가 주어지면 조건부 독립이다(`trees.tex` 32–35).
-- **역할**: [[g:conditional-covariance]] $v_N(S,d)$ 와 [[g:clustering]]의 조건(P8), [[g:projection]]의 상태 평균 $\mu_{e,T_j}$, 집중 증명의 "상태 안 / 상태 사이" 분해 $\operatorname{Var}(R_S)=\mathbb E(R_S-M)^2+\operatorname{Var}(M)$, $M=\mathbb E[R_S\mid\mathscr F_{e-1}]$(P9, `decor:overlap-concentration`)에 쓰인다.
+- **역할**: [[g:conditional-covariance]] $v_N(S,d)$ 와 [[g:conditional-decorrelation]]의 조건(P8), [[g:projection]]의 상태 평균 $\mu_{e,T_j}$, 집중 증명의 "상태 안 / 상태 사이" 분해 $\operatorname{Var}(R_S)=\mathbb E(R_S-M)^2+\operatorname{Var}(M)$, $M=\mathbb E[R_S\mid\mathscr F_{e-1}]$(P9, `decor:overlap-concentration`)에 쓰인다.
 - **정의 위치**: `trees.tex` 20–23($\mathscr F_d$ 는 prefix $\sigma$-field), `decorrelation.tex` 94–96; 시행 사슬의 $\mathscr F_d$ 는 `model.tex` 90–91
 - **물리 대응**: intuition — 물리에서 깊이 $d$ 의 물리적 pure state 묶음이 하는 일을 이 prefix가 한다. 그 동일시는 증명되지 않으며 증명에 쓰이지 않는다.
 - **쓰지 않는 뜻**: 물리적 pure state가 아니다([[g:physical-pure-state]]). 섭동된 계 전체의 Gibbs 측도, [[g:selected-sequence]], 극한 Gibbs 측도를 "상태"라고 부르지 않는다. 일반 $\sigma$-field $\mathscr G$ 로 조건을 건 것도 상태라고 부르지 않는다.
 
 ### g:physical-pure-state — 물리적 pure state
 - **기호**: 원문에 없음(물리 문헌의 $\langle\cdot\rangle_\alpha$, 가중치 $w_\alpha$)
-- **뜻**: 물리에서 열역학 극한의 Gibbs 측도를 분해한 극단적 성분이다(물리에서는 그 안에서 connected correlation이 사라진다고 본다). Parisi 그림에서는 성분마다 가중치가 있고 성분 사이 overlap이 계층 구조를 이룬다고 본다.
+- **뜻**: 물리에서 열역학 극한의 Gibbs 측도를 분해한 극단적 성분이다(물리에서는 한 성분 안에서 spin 사이의 상관, 곧 평균의 곱을 뺀 두 점 함수가 사라진다고 본다). Parisi 그림에서는 성분마다 가중치가 있고 성분 사이 overlap이 계층 구조를 이룬다고 본다.
 - **역할**: 논문은 이것을 가정하지도 증명하지도 않는다. 서론은 보조 계층의 branching이 구성의 일부이고 물리적 Gibbs 측도를 물리적 pure state 계층으로 조직하는 것은 가정하지 않는다고 쓰고(`introduction.tex` 75–77), 극한 무한 깊이 Gibbs 측도가 만들어져 있다고 가정하지 않는다고 쓴다(`model.tex` 138–140). 어떤 노드도 이것을 받아 쓰지 않으며, 물리 유도에서 이것이 하던 일은 [[g:state]](보조 계층 prefix)가 한다.
 - **정의 위치**: 원문에 정의 없음. 다루지 않는다는 진술은 `introduction.tex` 75–77, `model.tex` 138–140
 - **물리 대응**: intuition — Parisi 그림의 물리적 pure state와 그 ultrametric 조직이다(원문 표현은 "no ultrametric organization of the physical Gibbs states is assumed", `introduction.tex` 77). 물리 유도의 수 4–6("물리적 pure state 안에서 이웃 cavity field는 독립")이 기대는 대상이며, 이 사이트는 L1 끝 문단과 규칙 차이 칸에서 대조용으로만 쓴다.
@@ -230,7 +230,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:topology — topology, branching pattern, 깊이 배정
 - **기호**: $S$, $\operatorname{Br}(S)$, $b(S)$, $\mathbf q=(q_v)$, initial stem, 자식 모양 $T_j$
-- **뜻**: topology는 labeled leaf를 갖는 유한 rooted tree에서 unary vertex(자식이 하나인 vertex)를 지운 것이다. initial stem은 root에서 첫 branching vertex까지의 경로이고(`decorrelation.tex` 94), 자식 모양 $T_j$ 는 첫 branching vertex 아래의 부분 topology다(`decorrelation.tex` 208). 깊이 배정은 각 branching vertex에 $\{0,\ldots,L-1\}$ 의 정수를 주며 가지를 따라 엄격히 증가한다. branching pattern은 (topology, 깊이 배정)의 짝, 곧 replica들이 어느 깊이에서 갈라지는지다.
+- **뜻**: topology는 labeled leaf를 갖는 유한 rooted tree에서 unary vertex(자식이 하나인 vertex)를 지운 것이다. initial stem은 root에서 첫 branching vertex까지의 경로이고(`decorrelation.tex` 94), 자식 모양 $T_j$ 는 첫 branching vertex 아래의 부분 topology다(`decorrelation.tex` 208). 깊이 배정은 각 branching vertex에 $\{0,\ldots,L-1\}$ 의 정수를 주며 가지를 따라 엄격히 증가한다. branching pattern은 (topology, 깊이 배정)의 짝, 곧 replica들이 어느 깊이에서 갈라지는지이고, 원문의 shape에 해당한다(`trees.tex` 460–462).
 - **역할**: P7의 제약 $\mathcal C$, P8–P9의 대상 $S$, $\mathcal A_{L,\eta}$ 의 좌표다.
 - **정의 위치**: `decorrelation.tex` 18–21, `x:decor-topology`; 원문이 (topology, branching 깊이 좌표)의 짝에 붙이는 말은 "shape"다(`trees.tex` 460–462)
 - **물리 대응**: intuition — replica들의 overlap tree. 갈라짐 깊이는 보조 계층의 정수 깊이이지 overlap 값이 아니다.
@@ -289,10 +289,10 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:score — perturbation score 와 score 오차
 - **기호**: $D_\nu=\sum_{q\le n_\nu}g_{0,q}S_{0,q}/(1+t_\nu g_q\sigma_{i_q}+u_\nu g_{0,q}S_{0,q})$, $e_{\nu,N}(\mathbf u)$
-- **뜻**: $D_\nu$ 는 type $\nu$ 섭동의 $u_\nu$ 미분이 path 위에서 갖는 값이다. $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다([[g:root]], `perturbations.tex` 83–85). $e_{\nu,N}=\frac1{c_\nu s_N}\mathbb E_{\mathbf u}\langle\lvert D_\nu-\mathbb E_{\mathbf u}\langle D_\nu\rangle\rvert\rangle$ 은 그 정규화된 평균 절대 편차이고, "score가 [[g:self-average]]한다"는 $e_{\nu,N}\to0$ 을 뜻한다.
+- **뜻**: $D_\nu$ 는 type $\nu$ 섭동의 $u_\nu$ 미분이 path 위에서 갖는 값이다. $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다([[g:root]], `perturbations.tex` 83–85). $e_{\nu,N}=\frac1{c_\nu s_N}\mathbb E_{\mathbf u}\langle\lvert D_\nu-\mathbb E_{\mathbf u}\langle D_\nu\rangle\rvert\rangle$ 은 그 정규화된 평균 절대 편차이고, "score가 [[g:concentration|집중]]한다"는 $e_{\nu,N}\to0$ 을 뜻한다.
 - **역할**: 매개변수 평균 집중(`pert:concentration`) → 선택(P5(ii)) → [[g:palm-identity|Palm 항등식]](`pert:palm`)의 부등식 $\lvert H_N(t_\nu,u_\nu)\rvert\le\lVert f\rVert_\infty e_{\nu,N}$ → Taylor 계수 소거(`pert:analytic`) → 항등식(P7)으로 이어진다.
 - **정의 위치**: `pert:score`, `pert:error`, `pert:concentration`
-- **물리 대응**: approximation — 섭동 에너지의 self-averaging. type별 진술이고 $L$ 이나 type에 균일하지 않다.
+- **물리 대응**: approximation — 물리에서 섭동 에너지가 요동하지 않는다고 보는 것에 해당한다(물리 이름은 [[g:concentration]]의 물리 대응 칸). type별 진술이고 $L$ 이나 type에 균일하지 않다.
 
 ### g:selected-sequence — 선택된 수열 (선택된 섭동계)
 - **기호**: $(N_j,\mathbf u_j)_{j\ge1}$; 이후 $N\to\infty$ 는 이 수열을 따른다
@@ -341,7 +341,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: 없음.
 
 ### g:reference-path — reference path
-- **기호**: anchor $a_*$와 이미 color를 받은 path; 처방된 reference 모양 $S$, 한 걸음 합 $m_d-jm_{d+1}$, $\kappa(S)$
+- **기호**: anchor $a_*$와 이미 color를 받은 path; 지정된 reference 모양 $S$, 한 걸음 합 $m_d-jm_{d+1}$, $\kappa(S)$
 - **뜻**: extension history에서 anchor와 이미 color를 받은 path를 말한다. 새 color에 대한 제약은 이 path들과의 갈라짐 깊이만 지정하고, 지정된 조상 관계가 같은 쓰지 않은 old path들은 구별하지 않는다("does not distinguish unused old paths with the same specified ancestry", `trees.tex` 311–315).
 - **역할**: 한 걸음 계수 합이 현재 reference tree에만 의존해서 old tree와 무관한 닫힌 꼴 $\kappa(S)$가 된다(`tree:reference-total`). [[g:depth-delay]]에서 처방하는 것이 reference 모양이다(`tree:charging`). §7의 $J=\kappa(S^+)^2$, $C(S,e)=-\delta\kappa(S)$(`decorrelation.tex` 332–335, 547), §6 제약 $\mathcal C$("anchor와 added color 사이의 split 깊이만", `perturbations.tex` 433–436)가 이것을 쓴다.
 - **정의 위치**: `trees.tex` 311–315, `x:tree-reference-paths`
@@ -373,7 +373,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: [[g:selected-sequence]] 위에서, 고정한 old tree $\mathcal T$, anchor 종류, old multioverlap의 유계 다항식 $f$, 추가 color 수, split 깊이 제약 $\mathcal C$ 마다 위 식이 성립한다. 곧 제약을 지키는 [[g:extension-history]]에 대한 부호 있는 계수 합이 시험함수 $f$ 와 분리된다. 오차는 고정 $L$, tree, 제약에서 $N\to\infty$ 로만 사라진다.
 - **역할**: §7이 모형에서 받는 유일한 입력이다: §7은 "these identities and the tree sampling rules"만 쓰고 상호작용 factorization을 쓰지 않으며(`decorrelation.tex` 4–9), 여기에 §3의 유한 tree 조합(`tree:reference-total`, `tree:charging`)과 모형 무관한 확률 부등식(`decor:contractions`, `decor:depth-continuity`)만 더해 모든 multioverlap의 깊이 평균 집중 `decor:overlap-concentration`을 얻는다. §8은 이 항등식에서만 나오지 않는다: §7의 집중에 증분 항등식 `cavity:identity`(P4, `comparison.tex` 195–196, 221–222), 선택된 수열의 낮은 증분 `comp:low-increments`(P5(i), `comparison.tex` 13–15, 235–236), encoding(P10), 균일 site 표본(`comp:patterns`), log 전개(P6), 유계성 $C=H+BM$ 과 Poisson 개수 절단(`comparison.tex` 198–217)을 더해 $\Delta_N\approx\mathcal B_{L-1}$ 과 하한을 얻는다(`comp:shape-error`, `comp:insertion-comparison`, `comp:bounded-lower`). 이 입력들 가운데 어느 것도 factorization이나 positivity를 쓰지 않으므로(`cavity.tex` 13–14, `overview.tex` 46–48), L1 수 5–6은 bounded·순열 불변 상호작용에 대해 상호작용의 구체적 꼴과 무관하다. 받아 쓰는 곳은 P7, P8, P9와 `decor:conditional-concentration`, `decor:overlap-concentration`이다.
 - **정의 위치**: `pert:tree-identity`(`perturbations.tex` 451–470), 제약과 $R_E$ 는 `perturbations.tex` 427–449
-- **물리 대응**: intuition — 논문은 집중으로 overlap 항등식을 얻는 방법의 antecedent로 Ghirlanda–Guerra의 self-averaging 논법, Aizenman–Contucci의 stochastic stability 관계, 그 diluted multioverlap 확장(Barra–De Sanctis)을 들 뿐이고(`perturbations.tex` 17–21), 이 항등식이 그것들과 같다거나 그것들에서 나온다고 하지 않는다. 꼴도 고전적 Ghirlanda–Guerra 항등식("새 replica의 overlap은 확률 $1/n$ 으로 기존 replica를 복사"; 원문에 없는 대조용 요약이고 항등식의 한쪽 항만 말한다)이 아니라 extension history 위의 부호 있는 합이며, 두 꼴의 상호 유도는 여기서 확인하지 않았다. 이 이름이 물리학자에게 주던 "이것만으로 아래가 다 나온다"는 정보는 위 역할 칸이 근거와 함께 대신한다.
+- **물리 대응**: intuition — 논문은 집중으로 overlap 항등식을 얻는 방법의 antecedent로 Ghirlanda–Guerra의 논법, Aizenman–Contucci의 stochastic stability 관계, 그 diluted multioverlap 확장(Barra–De Sanctis)을 이름과 인용으로만 들 뿐이고(`perturbations.tex` 17–21), 이 항등식이 그것들과 같다거나 그것들에서 나온다고 하지 않는다. 이 항등식은 extension history 위의 부호 있는 합이라 고전적 Ghirlanda–Guerra 항등식과 같은 꼴이 아니며, 두 꼴의 상호 유도는 여기서 확인하지 않았다. 이 이름이 물리학자에게 주던 "이것만으로 아래가 다 나온다"는 정보는 위 역할 칸이 근거와 함께 대신한다.
 - **쓰지 않는 뜻**: 계층(tree) 구조는 이 항등식에서 유도되는 것이 아니라 보조 계층의 구성에 들어 있다(`introduction.tex` 75–77). 이것에서 물리적 Gibbs 측도의 계층 구조는 나오지 않고, overlap 극한값이나 분포도 식별되지 않는다. $\lvert S\rvert\ge2$ 의 multioverlap에 대해 논문은 고정 깊이 배정마다의 집중을 얻지 않는다(깊이 평균만, `decorrelation.tex` 63–75; "No uniform concentration in the depth is needed", `overview.tex` 46). 이것은 얻지 않는다는 말이지 거짓이라는 말이 아니다. 반면 항등식에서 고정 깊이로 바로 나오는 것도 있다: singleton의 $\operatorname{Var}(R_S)\to0$(각 고정 $L$, `decorrelation.tex` 72–74, 533–535)과 prefix 사영의 $\operatorname{Var}(M)\to0$(각 고정 $L,S,e$, `decorrelation.tex` 563–566).
 
 ### g:depth-delay — 깊이 미루기 (부호 있는 계수의 상쇄 제어)
@@ -406,13 +406,13 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **정의 위치**: `decor:covariance-definition`
 - **물리 대응**: approximation — singleton이면 상태 안 connected correlation $\langle\sigma_i\sigma_j\rangle_d-\langle\sigma_i\rangle_d\langle\sigma_j\rangle_d$ 제곱의 site 쌍 평균이다. $\lvert S\rvert\ge2$ 이면 여러 replica spin 곱의 공분산이라 단일 replica의 두 점 상관함수가 아니다.
 
-### g:clustering — clustering
+### g:conditional-decorrelation — 조건부 decorrelation
 - **기호**: $\lim_{L\to\infty}\limsup_{N\to\infty}\mathcal A_{L,\eta}v_N(S,d)=0$
-- **뜻**: 이 사이트의 "clustering"은 `decor:conditional-concentration`의 결론 하나만 가리킨다. 모든 고정 labeled topology $S$ 와 $\eta>0$ 에서, [[g:selected-sequence]]를 따라 $N\to\infty$ 한 뒤 $L\to\infty$ 하면 [[g:conditional-covariance]] $v_N(S,d)$ 의 [[g:depth-average]]가 0으로 간다. $\lvert S\rvert\ge2$ 이면 평균은 $S$ 의 모든 branching 깊이와 첫 split보다 엄격히 앞선 추가 깊이 $d$ 의 $\eta$-regular 배정에 대해 취하고, singleton이면 $d$ 하나에 대해 취하며 이때는 더 강하게 각 고정 $L$ 과 $d/L\in(\eta,1-\eta)$ 에서 $\limsup_Nv_N(S,d)\le1/(\eta L)$ 이다(`decorrelation.tex` 287–290).
+- **뜻**: 이 사이트의 "조건부 decorrelation"은 `decor:conditional-concentration`의 결론 하나만 가리킨다(원문 소절 제목 "Conditional decorrelation", `decorrelation.tex` 232). 양 $v_N(S,d)$ 자체는 [[g:conditional-covariance]]이고, 이 항목은 그 양이 깊이 평균으로 0으로 간다는 결론이다. 모든 고정 labeled topology $S$ 와 $\eta>0$ 에서, [[g:selected-sequence]]를 따라 $N\to\infty$ 한 뒤 $L\to\infty$ 하면 [[g:conditional-covariance]] $v_N(S,d)$ 의 [[g:depth-average]]가 0으로 간다. $\lvert S\rvert\ge2$ 이면 평균은 $S$ 의 모든 branching 깊이와 첫 split보다 엄격히 앞선 추가 깊이 $d$ 의 $\eta$-regular 배정에 대해 취하고, singleton이면 $d$ 하나에 대해 취하며 이때는 더 강하게 각 고정 $L$ 과 $d/L\in(\eta,1-\eta)$ 에서 $\limsup_Nv_N(S,d)\le1/(\eta L)$ 이다(`decorrelation.tex` 287–290).
 - **역할**: `decor:overlap-concentration` 증명에서 prefix 아래 조건부 분산을 누르는 재료다($V_{k-1,L}(\eta/2)\to0$, `decor:overlap-concentration.s4`, `.s5`). 여기서 $V_{k,L}(\eta)=\max_{1\le\lvert S\rvert\le k}\limsup_N\mathcal A_{L,\eta}v_N(S,d)$ 는 잎이 $k$ 개 이하인 모든 topology에 대한 최댓값이다(`decor:V-definition`, `decorrelation.tex` 253–257). 귀납 안에서는 자식을 상태 평균으로 바꾸는 [[g:projection]] 오차를 작게 한다. P8이 진술하고 P9가 쓰며, P11에는 P9를 거쳐 간접적으로만 쓰인다.
 - **정의 위치**: `decor:conditional-concentration`, `decor:covariance-definition`, singleton은 `decorrelation.tex` 287–290
-- **물리 대응**: approximation — 물리의 "물리적 pure state 안에서 connected correlation이 사라진다". 여기서 조건은 보조 계층 prefix이고, 양은 site 쌍에 대한 $L^2$ 평균이며, $\lvert S\rvert\ge2$ 에서는 깊이 평균으로만 성립한다.
-- **쓰지 않는 뜻**: 그래프 거리에 따른 상관 감쇠가 아니다(거리 개념을 쓰지 않는다). 모든 site 쌍에 대한 진술이 아니다. 물리적 pure state 안의 clustering이 아니다. 이웃 cavity field의 독립([[g:independent-copies]])을 혼자서 주지 않는다. $\lvert S\rvert\ge2$ 에서 고정 깊이 진술이 아니다.
+- **물리 대응**: approximation — 물리의 "물리적 pure state 안에서는 spin 사이의 상관이 사라진다"에 해당한다. intuition — 물리에서 이것을 부르는 이름 "clustering"은 원문에 없는 낱말이고 이 칸에서 대조용으로만 쓴다. 여기서 조건은 보조 계층 prefix이고, 양은 site 쌍에 대한 $L^2$ 평균이며, $\lvert S\rvert\ge2$ 에서는 깊이 평균으로만 성립한다.
+- **쓰지 않는 뜻**: 그래프 거리에 따른 상관 감쇠가 아니다(거리 개념을 쓰지 않는다). 모든 site 쌍에 대한 진술이 아니다. 물리적 pure state 안의 상관 소멸이 아니다. 이웃 cavity field의 독립([[g:independent-copies]])을 혼자서 주지 않는다. $\lvert S\rvert\ge2$ 에서 고정 깊이 진술이 아니다.
 
 ### g:depth-average — 깊이 평균 $\mathcal A_{L,\eta}$
 - **기호**: $\mathcal A_{L,\eta}z=L^{-a}\sum_{\mathbf q\ \eta\text{-regular}}z(\mathbf q)$
@@ -422,12 +422,12 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: intuition — 갈라짐 위치를 Parisi 변수 $x\in(\eta,1-\eta)$ 에 대해 균등하게 평균하는 것.
 - **쓰지 않는 뜻**: 고정 깊이에서의 진술이 아니다.
 
-### g:self-average — self-average
+### g:concentration — 집중
 - **기호**: 없음
-- **뜻**: 어떤 무작위 양이 [[g:root]](disorder, 섭동 개수·type·site)와 tree 표본추출 전부에 대한 평균 주위로 집중한다는 말이다. 정량은 양마다 정해 둔다: score는 $e_{\nu,N}\to0$([[g:score]]), multioverlap은 [[g:overlap-concentration]]의 식이다.
-- **역할**: P5, P9 문장의 물리 말을 이 두 정량 진술에 묶는다.
+- **뜻**: 어떤 무작위 양이 [[g:root]](disorder, 섭동 개수·type·site)와 tree 표본추출 전부에 대한 평균 주위로 집중한다는 말을 묶는 우산 항목이다. 이 항목은 따로 정량을 두지 않고, 이 사이트에서 "집중한다"는 늘 다음 두 정량 진술 가운데 하나를 가리킨다: score의 집중은 $e_{\nu,N}\to0$([[g:score]]), multioverlap의 집중은 [[g:overlap-concentration]]의 식이다. 곧 [[g:overlap-concentration]]은 이 둘 가운데 둘째 것의 이름이다. 노드 ID `decor:conditional-concentration`에도 concentration이 들어 있지만 그 결론은 [[g:conditional-decorrelation]]으로 부르고 이 우산에 넣지 않는다.
+- **역할**: P5, P9 문장의 "집중한다"를 이 두 정량 진술에 묶는다.
 - **정의 위치**: `pert:error`, `decor:overlap-concentration`
-- **물리 대응**: approximation — 물리의 self-averaging. 수열과 극한 순서는 해당 항목을 따른다.
+- **물리 대응**: approximation — 물리의 self-averaging. 원문은 score와 multioverlap 모두에 concentration을 쓰고("Concentration of each perturbation score", `perturbations.tex` 73; "Concentrate all multioverlaps", `overview.tex` 26), self-averaging이라는 낱말은 집중으로 overlap 항등식을 얻는 방법의 antecedent인 Ghirlanda–Guerra의 논법을 말할 때 한 번만 쓴다(`perturbations.tex` 18). 수열과 극한 순서는 해당 항목을 따른다.
 - **쓰지 않는 뜻**: disorder 표본 하나에 대한 거의 확실한 수렴을 말하지 않는다.
 
 ### g:overlap-concentration — multioverlap 집중
@@ -450,7 +450,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: 첫째는 상태 안에서 조건부 독립인 벡터와의 축약 오차를 $v_N$ 로 누르는 부등식, 둘째는 $\sigma$-field $\mathscr G$ 가 주어지면 조건부 독립인 세 사본의 overlap 차이가 조건부 공분산 제곱을 위에서 누르는 부등식이다.
 - **역할**: 둘째가 P8의 기저와 귀납 단계에서 항등식을 $v_N$ 상계로 바꾸고, 첫째가 [[g:projection]]을 준다.
 - **정의 위치**: `decor:contractions`, `decor:contraction-bound`, `decor:three-copy-bound`
-- **물리 대응**: weakening — 물리의 "조건이 주어졌을 때 overlap이 요동하지 않으면 connected correlation이 작다"의 정량적 한 방향 판. 둘째 부등식의 조건은 일반 $\sigma$-field $\mathscr G$ 이고, 상태 $\mathscr F_d$ 는 그 특수한 경우다.
+- **물리 대응**: weakening — 물리의 "조건이 주어졌을 때 overlap이 요동하지 않으면 조건부 상관이 작다"의 정량적 한 방향 판. 둘째 부등식의 조건은 일반 $\sigma$-field $\mathscr G$ 이고, 상태 $\mathscr F_d$ 는 그 특수한 경우다.
 
 ### g:depth-continuity — 깊이 연속성 (martingale energy)
 - **기호**: $\sum_t\mathbb E\lVert\mu_{t+1,T}-\mu_{t,T}\rVert_N^2\le1$; $\mathcal A_{L,\eta}\mathbb E\lVert\mu_{d,S^U}-\mu_{d,S}\rVert_N^2\le C/L$
@@ -490,7 +490,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: P11. 독립 사본으로 계산한 삽입이 정확히 $\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$ 이므로 하한이 닫힌다(`comp:bounded-lower`).
 - **정의 위치**: `comp:patterns`, `comp:shape-error`, `comp:insertion-comparison`; 서로 다른 label의 독립 구성은 `comparison.tex` 80–82
 - **물리 대응**: approximation — cavity method의 "한 물리적 pure state 안에서 이웃 site들의 cavity field는 독립". 논문의 근거는 국소 tree 구조나 거리에 따른 상관 감쇠가 아니라 균일 무작위 site 표본과 모든 multioverlap의 집중(P9)이다.
-- **쓰지 않는 뜻**: 고정한 두 site의 결합 법칙이 곱이라는 말이 아니다. [[g:clustering]]만으로는 나오지 않는다. 물리적 pure state 안의 독립이 아니다.
+- **쓰지 않는 뜻**: 고정한 두 site의 결합 법칙이 곱이라는 말이 아니다. [[g:conditional-decorrelation]]만으로는 나오지 않는다. 물리적 pure state 안의 독립이 아니다.
 
 ## 축소
 
