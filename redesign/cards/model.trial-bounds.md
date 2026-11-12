@@ -3,7 +3,7 @@ id: model:trial-bounds
 kind: remark
 title: 'moment 조건 없는 유한성 (2.12)'
 uses: [model:functional, x:model-depth-zero, model:power-means, x:model-cavity-bounds, model:integrability]
-provides: 'comp:bounded-lower(comparison.tex 235: $A=\inf_r\Phi_r$ 가 유한), upper:bound("including unbounded messages", upper.tex 7–8), reduction:stability(power mean이 root-가측 한계를 보존)'
+provides: 'comp:bounded-lower(comparison.tex 235: $A=\inf_r\Phi_r$ 가 유한), upper:bound.s2("including unbounded messages", upper.tex 7–8: $\varphi(0)$ 의 $\mathbb E\log T_0V_{\rm s}$ 와 $\varphi(t)$ 의 유한성, `\ref` 없음), reduction:stability(power mean이 root-가측 한계를 보존)'
 math: |
   (2.11)의 양들은 시행 message에 대한 moment 가정 없이 유한하다. power-mean 연산자가 점별 곱셈적 한계를 보존하고
   $$\lvert\log T_0V_{\rm s}\rvert\le\lvert h\rvert+\sum_{j=1}^kB(\theta_j),\qquad\lvert\log T_0V_{\rm e}\rvert\le B(\theta)\tag{2.12}$$

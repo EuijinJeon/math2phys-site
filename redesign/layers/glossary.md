@@ -67,6 +67,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **정의 위치**: `cavity.tex` 11–14, `reduction.tex` 45–63
 - **물리 대응**: 없음.
 
+### g:bounded-law — 유계 법칙 (하한의 가정)
+- **기호**: $B(\theta)\le B$, $\lvert h\rvert\le H$ a.s.
+- **뜻**: 상호작용의 sup-norm $B(\theta)=\max_s\lvert\theta(s)\rvert$ 와 장 $\lvert h\rvert$ 가 결정적 상수 $B$, $H$ 로 a.s. 눌린다는 조건이다. 하한(§5–§8)은 이것과 [[g:permutation-invariance]]를 함께 가정한다(`cavity.tex` 11–14).
+- **역할**: 삽입과 상호작용의 항별 비용 $B$ 와 $\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}$, $\lvert\log Y_{0,\rm b}\rvert\le BK_{\rm b}$ 를 결정적으로 만들어 증분의 균일 유계성을 준다(`cavity:increment`, `cavity.tex` 95–96, 108–110, P4). 섭동 factor 하나의 비용 $\log2$ 는 이 가정이 아니라 factor 한계 (5.2)에서 온다(`cavity:factor-bounds`). §6의 score 집중은 유계 상호작용·장에 기대고(`perturbations.tex` 4, 7–8), §8 비교의 $C=H+BM$, $z=\cosh C$ 정규화(`comparison.tex` 200)도 이것에 기댄다. 일반 법칙은 [[g:truncation]]과 [[g:stability]]로 이 경우에서 넘어온다(P12).
+- **정의 위치**: `x:cavity-bounded`, `cavity.tex` 11–14
+- **물리 대응**: 없음. 물리 유도는 보통 유계 coupling을 놓고 이 조건을 의식하지 않는다.
+- **쓰지 않는 뜻**: 상한(`upper:bound`)의 가정이 아니다. 상한은 1차 moment (2.1)만 요구하고, $b$ 와 $f$ 의 본질적 유계성은 가정이 아니라 (2.3)과 독립성에서 나온 결과다(`upper:bound.s1`). 섭동 factor의 유계 $1/2\le\psi_\nu\le3/2$ (`cavity.tex` 6의 "bounded perturbations", P3의 "bounded")도 가리키지 않는다.
+
 ### g:named-models — 명명 모형
 - **기호**: Viana–Bray, diluted 짝수 $p$-spin, soft random 짝수 $K$-SAT
 - **뜻**: 두 따름정리 모두 모든 $\beta>0$ 에 대한 것이다. `models:spin`은 서로 독립인 실수 확률변수 $J$, $H$ 로 $J$ 의 분포가 대칭이고 $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$, $\theta_\beta=\beta J\prod_\ell s_\ell$, $h_\beta=\beta H$ 이고 $p=2$ 가 Viana–Bray다. `models:sat`은 독립 공정 부호 $\varepsilon_\ell$, 그것과 독립인 $W\ge0$($\mathbb EW<\infty$), $\theta_\beta=-\beta W\prod_\ell(1+\varepsilon_\ell s_\ell)/2$, $h=0$ 이고 $W=1$ 이 soft random 짝수 $K$-SAT다.
@@ -261,7 +269,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:perturbation — 섭동 (Poisson 섭동 factor)
 - **기호**: type $\nu$, $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$, $t_\nu=1/j$, $u_\nu\in I_\nu=[j^{-j},2j^{-j}]$, $n_\nu\sim\mathrm{Poisson}(c_\nu s_N)$, $s_N=N^{3/4}$, $\mathbf u=(u_\nu)$, $\pi$
-- **뜻**: type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다. 각 항은 독립 균일 site 하나와 자기 [[g:mark]] 과정의 독립 사본을 쓴다. $\mathbf u$ 는 고정된 결정적 매개변수이고, $\pi$ 는 그것을 고를 때만 쓰는 균일 측도다.
+- **뜻**: type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다(`perturbations.tex` 60; §5의 틀이 요구하는 것은 닫힌 구간 $1/2\le\psi_\nu\le3/2$, `cavity.tex` 26). 각 항은 독립 균일 site 하나와 자기 [[g:mark]] 과정의 독립 사본을 쓴다. $\mathbf u$ 는 고정된 결정적 매개변수이고, $\pi$ 는 그것을 고를 때만 쓰는 균일 측도다.
 - **역할**: 밀도에 $o(1)$ 만 기여한다(P3). $u$ 미분이 [[g:score]]가 되어 집중하고(P5), 같은 factor의 $t$ 전개가 Taylor 계수 항등식을 낸다(P7, [[g:palm-identity]]).
 - **정의 위치**: `cavity.tex` 20–32, `pert:parameters`, `pert:factor`, `perturbations.tex` 26–71
 - **물리 대응**: intuition — 물리의 무한소 섭동장(generic한 Gibbs 측도를 고르는 것). 여기서는 개수 $N^{3/4}$, 값 $(1/2,3/2)$ 의 구체적인 factor다.

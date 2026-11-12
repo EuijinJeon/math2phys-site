@@ -14,7 +14,7 @@ math: |
   $$A_{\rm b}(\sigma)=\exp\Bigl(\sum_{j=1}^{K_{\rm b}}\theta_j(\sigma_{i_{1,j}},\ldots,\sigma_{i_{p,j}})\Bigr)\tag{5.7}$$
   이다. 여기서 $K_{\rm s}\sim\mathrm{Pois}(\alpha p)$, $K_{\rm b}\sim\mathrm{Pois}(\alpha(p-1))$ 이고 표시된 index는 모두 $[N]$ 의 독립 균일 index다.
 physics: |
-  [[x:cavity-bounded]]의 유계·순열 불변 가정 아래, 섭동된 계의 $N\to N+1$ [[g:increment|증분]]은 공통 $N$-spin [[g:reservoir|reservoir]]에 새 spin 하나를 [[g:field|장]]과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 삽입과, Poisson$(\alpha(p-1))$ 개 factor를 넣는 bond 삽입([[g:site-bond-insertion]])의 계층 free entropy 변화의 차에 $\log2$ 를 더한 것이고, 오차는 $o(1)$ 이다.
+  [[x:cavity-bounded]]의 유계·순열 불변 가정 아래, 섭동된 계의 $N\to N+1$ [[g:increment|증분]]은 공통 $N$-spin [[g:reservoir|reservoir]]에 새 spin 하나를 [[g:field|장]]과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 삽입과, Poisson$(\alpha(p-1))$ 개 factor를 넣는 bond 삽입([[g:site-bond-insertion]])의 [[g:root-logarithm|계층 free entropy]] 변화의 차에 $\log2$ 를 더한 것이고, 오차는 $o(1)$ 이다.
 gap: |
   (1) reservoir의 상호작용 평균 개수는 $\alpha N$ 이 아니라 $\rho_N$ 이다. (2) $\log Y_0$ 는 보통 Gibbs 평균의 free entropy 변화가 아니라 tilted reservoir kernel의 recursion을 거친 [[g:root-logarithm|root logarithm]]의 변화다([[g:insertion]]). (3) $o_N(1)$ 은 $L$, $\mathbf u$ 에 균일하고(실제로 $O(N^{-1/4})$), 증분 자체도 $N,L,\mathbf u$ 에 균일하게 유계다. (4) 이 lemma는 $\lim F_N=\lim\Delta_N$ 을 주지 않는다. 증분 항등식만 준다. (5) 원문은 이 비교가 Aizenman–Sims–Starr 변분 틀과 Panchenko의 spin 분포 꼴을 따른다고 적을 뿐(cavity.tex 4–6), 그 결과를 인용해 증명에 쓰지 않는다.
 abstraction: exact

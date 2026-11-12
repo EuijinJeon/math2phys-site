@@ -43,10 +43,10 @@
 |---|---|
 | 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | ✅ 지적 21건 반영, 67항목. 이름 확정·적용 완료 |
 | §2 model, §3 trees 카드 | ✅ 작성·검토·반영 (§2 25장, §3 39장). 수정본 재검토는 안 함 |
-| §4 upper, §5 cavity 카드 | 🔄 초안 완료(§4 10장, §5 13장), 독립 검토 중 |
-| §6 perturbations 카드 | 🔄 작성 중 |
-| §8 comparison, §9 reduction 카드 | ⬜ |
-| §10 consequences 카드 | ⬜ |
+| §4 upper, §5 cavity 카드 | ✅ 작성·검토·반영 (§4 10장, §5 13장). 수정본 재검토는 안 함 |
+| §6 perturbations 카드 | 🔄 초안 완료(44장), 독립 검토 중 |
+| §8 comparison, §9 reduction 카드 | 🔄 작성 중 |
+| §10 consequences 카드, overview.tex 카드 | 🔄 작성 중 |
 | 증명 지도(전체 DAG) 화면 | ⬜ |
 
 ### 3단계. 물리판 (L2)
@@ -231,3 +231,8 @@
 - 사용 한도 세 번째(이름 적용, §6 작성, §4·§5 검토 중단, 07:50 UTC 초기화). 재개.
 - 이름 적용 완료: 윗단면과 §2·§3·§7 카드. 치환 약 55곳, 문장을 고쳐 쓴 곳은 `build/rename-2026-11-12.md`에 전후 대조. "처방된"은 쓰임에 따라 "prescribed-tree 항등식"/"prescribed tree"/"지정된"으로 나눔. 범위 안 검사 오류 0.
 - `HANDOFF.md`의 "지금 상태"를 고쳐 씀.
+- §4·§5 독립 검토 완료: 통과 11장, 지적 12건(유형 오류 1, 누수 6, 과장 3, 용어 2; 높음 0, 중간 2). 틀린 식·구멍 0. `build/review-2-upper-cavity.md`.
+- §4·§5 검토 반영 완료: 반영 11, 좁힘 1, 기각 0. 섭동 한계가 recursion을 통과하는 근거는 `tree:insertion`(trees.tex 107–110)으로 통일. 빠진 `uses` 네 곳 보충. 규칙 P3의 균일성 범위를 "$L$, $\mathbf u$, $N$"으로, P4 머리표를 "Aizenman–Sims–Starr식 cavity 비교"로 낮춤. `g:bounded-law` 합침(68항목). 검사 9종 통과(§2–§5, §7 범위). `build/review-2-upper-cavity-response.md`.
+- §6 perturbations 초안 도착: 44장(잎 35). §7 인터페이스와 어긋남 없음(작성자 보고). 새 용어 없음, 기존 용어집 항목 메모 4건. 독립 검토 진행 중.
+- §8 comparison·§9 reduction 작성 중(한 에이전트). §10 consequences·overview.tex 작성 시작(한 에이전트). overview는 증명이 없으므로 소절 카드와 L1 대응표 위주로.
+- 사용 한도 네 번째(13:30 UTC 초기화). 재개.
