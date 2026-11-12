@@ -58,7 +58,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: [[g:factorization]]의 $b$ 의 모든 차수 moment에 대한 부호 조건이다(유한 실수 기대값으로 해석).
 - **역할**: 상한의 나머지항 전체를 0 이하로 만든다(P2, `upper:remainder`). 하한에는 쓰이지 않는다.
 - **정의 위치**: `model:positivity`, `model.tex` 35–44
-- **물리 대응**: intuition — 대칭 coupling(홀수 moment 0)과 soft SAT($b<0$)에서 성립한다(`models:spin`, `models:sat` 증명). "frustration이 대칭이거나 반강자성 쪽"이라는 읽기는 일반적인 동치 조건이 아니다.
+- **물리 대응**: weakening(예에서) — 대칭 coupling(홀수 moment 0)과 soft SAT($b=e^{-\beta W}-1$, $W\ge0$ 이라 $-1<b\le0$)에서 성립한다(`models:spin`, `models:sat` 증명, `consequences.tex` 30–31, 40, 59–62). intuition — "frustration이 대칭이거나 반강자성 쪽"이라는 읽기는 일반적인 동치 조건이 아니다.
 
 ### g:permutation-invariance — 순열 불변성
 - **기호**: 없음
@@ -89,6 +89,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **정의 위치**: `perturbations.tex` 249–253, `comp:low-increments`
 - **물리 대응**: 없음. 물리 유도는 $\lim F_N=\lim\Delta_N$ 을 쓰지만 논문은 liminf만 쓴다.
 
+### g:disorder — 물리적 disorder
+- **기호**: $M_N$, $\theta_k$, $h_i$, $i_{\ell,k}$; 시행 functional에서는 $k$, $\theta,\theta_1,\ldots$, $h$
+- **뜻**: 모형과 시행 functional에서 보조 message가 아닌 무작위 변수 전부다: factor 개수, factor의 site index, factor별 상호작용, site별 장. 시행 사슬($\eta^\omega_d$, $x^\omega$)은 이것과 독립이다(`model.tex` 79–80). power mean $T_d$ 의 조건부 기대값은 이것을 고정한 채 보조 message만 적분하고(`model.tex` 97, 109–110), 바깥의 $\mathbb E$ 는 disorder와 $\eta_0$ 을 평균한다($T_0V$ 는 $\mathscr F_0$-가측이고 $\mathscr F_0$ 은 disorder와 $\eta_0^\omega$ 가 생성한다, `model.tex` 90–91).
+- **역할**: $F_N=\frac1N\mathbb E\log Z_N$ 의 quenched 평균(`model:hamiltonian`), $\mathscr F_d$ 의 생성원(`model:power-means`), `model:trial-bounds`의 한계가 disorder만의 함수라 모든 $\mathscr F_d$ 에 가측이라는 점에 쓰인다. reservoir에서는 [[g:root]]가 물리 disorder에 섭동 factor의 개수·type·site를 더한 것이고, 섭동 매개변수는 root의 무작위 변수가 아니라 선택된 고정값이다(`cavity.tex` 29–31).
+- **정의 위치**: `model:hamiltonian`, `model:vs`, `model.tex` 9–23, 79–82, 90–91, 109–110
+- **물리 대응**: exact — quenched disorder. 평균 $\mathbb E\log Z$ 가 quenched 평균이다.
+- **쓰지 않는 뜻**: 시행 message $x$ 와 사슬 $\eta_d$ 는 disorder가 아니다(물리의 annealed 평균과 혼동하지 않는다).
+
 ## 변분 공식
 
 ### g:message — cavity field (message) $x$
@@ -101,7 +109,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:site-term — site 항 $V_{\rm s}$ 와 $U_\theta$
 - **기호**: $U_\theta(x_1,\ldots,x_{p-1};\varepsilon)$, $V_{\rm s}=\frac12\sum_{\varepsilon=\pm1}\exp\bigl(h\varepsilon+\sum_{j\le k}U_{\theta_j}(x^j_1,\ldots,x^j_{p-1};\varepsilon)\bigr)$, $k\sim\mathrm{Poisson}(\alpha p)$
-- **뜻**: $U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. $V_{\rm s}$ 는 새 spin 하나를 장과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 분배함수다.
+- **뜻**: $U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, `model.tex` 59–63). 원래 $\theta$ 의 법칙은 순열 불변이 아닐 수 있으므로(`reduction.tex` 46–47) 상한에 쓰는 $\mathcal B_r$ 의 정의는 이 좌표 선택에 달려 있다(`upper.tex` 37–39, 62–66). $V_{\rm s}$ 는 새 spin 하나를 장과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 분배함수다.
 - **역할**: $\mathcal B_r$ 의 $\mathbb E\log T_0V_{\rm s}$ 항이다. 상한 interpolation의 끝점 $\varphi(0)$(`upper.tex` 47–48)이고, 비교에서 독립 사본으로 계산한 site 삽입이 정확히 $T_0V_{\rm s}$ 다(P11, `comparison.tex` 178–180).
 - **정의 위치**: `model:site-message`, `model:vs`
 - **물리 대응**: exact — $U_\theta$ 는 factor→spin cavity bias($u$-message), $V_{\rm s}$ 는 Bethe free entropy의 site 항.
@@ -153,7 +161,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $r$, $L=r+1$
 - **뜻**: $r$ 은 시행 법칙의 보조 단계 수(RSB 단계 수)다. tree 계산의 깊이는 $L=r+1$ 이고, 깊이 $1,\ldots,r$ 에 보조 변수, 깊이 $L$ 에 spin 배치가 놓인다.
 - **역할**: 하한은 깊이 $L$ 의 reservoir에서 $\mathcal B_{L-1}$ 을 얻는다. $L\to\infty$ 가 하한의 마지막 극한이다(P9, P11, [[g:order-of-limits]]).
-- **정의 위치**: `trees.tex` 24–27, `cavity.tex` 16–19
+- **정의 위치**: $r$ 은 `model:chain`(`model.tex` 70–81, "Fix $r\ge1$"), $r=0$ 은 `model.tex` 118–120; $L=r+1$ 은 `trees.tex` 24–27, `cavity.tex` 16–19
 - **물리 대응**: exact(시행 법칙에서) — $r$단 사슬이 $r$단 RSB 시행 order parameter이고 tree 계산에서 $L=r+1$ 이다(`model.tex` 70–81, `trees.tex` 24–27). intuition(reservoir에서) — 하한의 깊이 $L$ 계층은 섭동 mark로 만든 보조 계층이므로(`cavity.tex` 20–24), 그것을 계의 물리적 $(L-1)$단 RSB 구조로 읽는 것은 증명되지 않는다([[g:depth]], `introduction.tex` 75–77).
 
 ### g:interpolation — interpolation (상한)
@@ -166,7 +174,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ## 보조 계층
 
 ### g:hierarchy — 보조 계층 (path kernel, tilted kernel)
-- **기호**: $K_d(dz\mid\mathscr F_{d-1})$ $(1\le d\le L)$, prior kernel $P_d$, $K_d=e^{m_d(X_d-X_{d-1})}P_d$
+- **기호**: $K_d(dz\mid\mathscr F_{d-1})$ $(1\le d\le L)$; 분배함수에서 만들 때 $1\le d<L$ 에서는 prior kernel $P_d$ 의 tilt $K_d=e^{m_d(X_d-X_{d-1})}P_d$, $K_L$ 은 prefix가 주어진 Gibbs kernel(`trees.tex` 51–65)
 - **뜻**: 깊이 $0,\ldots,L$ 의 path를 뽑는 확률 kernel 열이다. 깊이 0은 [[g:root]], 깊이 $1,\ldots,L-1$ 은 보조 변수, 깊이 $L$ 은 spin 배치다. 분배함수에서 만들 때는 prior $P_d$ 를 $e^{m_dX_d}$ 로 기울인 tilted kernel을 쓰고, 마지막 $K_L$ 은 prefix가 주어진 Gibbs 분포다.
 - **역할**: reservoir에서는 섭동 factor의 [[g:mark]] 변수가 보조 변수이고(`cavity.tex` 23–24, `perturbations.tex` 61–62), 그 tilted kernel이 [[g:state]], [[g:replica]], [[g:prescribed-tree]]를 정한다. 시행 사슬 $\eta_d$ 도 이 틀의 한 예다(`trees.tex` 26–27). P6–P10이 모두 이 위에서 진술된다.
 - **정의 위치**: `trees.tex` 14–27, `tree:original-tilt`(`trees.tex` 51–65)
@@ -183,7 +191,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:root — root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)
 - **기호**: 깊이 0 변수; $\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$
-- **뜻**: root는 보조 계층 path의 깊이 0 변수이고("Its depth-zero variable is the root", `trees.tex` 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(`trees.tex` 23). reservoir에서는 물리 disorder("the reservoir root disorder", `comparison.tex` 20–21, 28–29)와 섭동의 개수·type·site가 root 변수다(`cavity.tex` 29, `perturbations.tex` 60–61). 섭동 매개변수 $\mathbf u$ 는 root 변수가 아니라 고정된 결정적 값이고(`cavity.tex` 29–31), mark 변수는 root가 아니라 지정된 보조 깊이에서 뽑힌다(`perturbations.tex` 61–62). 기대값 표기는 다음과 같다. $E_{\mathcal T}$ 는 root가 주어졌을 때 tree $\mathcal T$ 의 표본추출에 대한 기대값(`trees.tex` 33–34), 첨자 없는 $\mathbb E$ 는 root와 지정된 tree의 표본추출을 모두 포함한 기대값이다(`trees.tex` 48–49). §6의 $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다(`perturbations.tex` 83–85). 매개변수를 지정한 진술의 기대값은 그 값을 고정한 채 취한다(`perturbations.tex` 9–10). §8의 encoding은 독립 균일 site $i$ 도 root에 넣고(`comparison.tex` 28–29), 거기서 $x=\operatorname{arctanh}\langle\sigma_i\rangle$ 의 괄호는 보조 prefix가 주어진 leaf Gibbs 기대값이다(`comparison.tex` 34–36).
+- **뜻**: root는 보조 계층 path의 깊이 0 변수이고("Its depth-zero variable is the root", `trees.tex` 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(`trees.tex` 23). reservoir에서는 [[g:disorder|물리 disorder]]("the reservoir root disorder", `comparison.tex` 20–21, 28–29)와 섭동의 개수·type·site가 root 변수다(`cavity.tex` 29, `perturbations.tex` 60–61). 섭동 매개변수 $\mathbf u$ 는 root 변수가 아니라 고정된 결정적 값이고(`cavity.tex` 29–31), mark 변수는 root가 아니라 지정된 보조 깊이에서 뽑힌다(`perturbations.tex` 61–62). 기대값 표기는 다음과 같다. $E_{\mathcal T}$ 는 root가 주어졌을 때 tree $\mathcal T$ 의 표본추출에 대한 기대값(`trees.tex` 33–34), 첨자 없는 $\mathbb E$ 는 root와 지정된 tree의 표본추출을 모두 포함한 기대값이다(`trees.tex` 48–49). §6의 $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다(`perturbations.tex` 83–85). 매개변수를 지정한 진술의 기대값은 그 값을 고정한 채 취한다(`perturbations.tex` 9–10). §8의 encoding은 독립 균일 site $i$ 도 root에 넣고(`comparison.tex` 28–29), 거기서 $x=\operatorname{arctanh}\langle\sigma_i\rangle$ 의 괄호는 보조 prefix가 주어진 leaf Gibbs 기대값이다(`comparison.tex` 34–36).
 - **역할**: 집중 진술의 뜻이 이 약속에 달려 있다. $\operatorname{Var}(R_S)$ 와 $v_N(S,d)$ 의 바깥 기대값은 root를 포함하고(`decorrelation.tex` 103, [[g:overlap-concentration]], [[g:conditional-covariance]]), score 오차 $e_{\nu,N}$ 은 $\mathbb E_{\mathbf u}\langle\cdot\rangle$ 로 정의된다([[g:score]]). [[g:state]]의 $\mathscr F_d$ 는 root를 포함하고, 깊이 0의 상태는 root 자신이다. P5, P7–P11의 기대값이 모두 이 표기를 따른다.
 - **정의 위치**: `trees.tex` 20–23, 33–34, 48–49; `cavity.tex` 28–31; `perturbations.tex` 9–10, 60–62, 83–85
 - **물리 대응**: approximation — root의 물리 disorder 부분은 quenched disorder이고 첨자 없는 $\mathbb E$ 는 물리의 disorder 평균과 thermal(tree 표본) 평균을 함께 취한 것에 해당한다. 다만 root에는 섭동의 개수·type·site도 들어 있고, $\langle\cdot\rangle$ 은 $L\ge2$ 에서 보조 변수를 tilt해서 적분한 path 기대값이라 보통의 Gibbs 평균이 아니다(보조 계층이 없는 $L=1$ 이면 Gibbs 평균이다, `trees.tex` 63–65).
@@ -298,7 +306,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:insertion — insertion $A$ 와 $\log Y_0$
 - **기호**: $Y_L=A$, $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$, $K_d^A=(Y_d/Y_{d-1})^{m_d}K_d$, $W_{\mathcal T}(A)$
-- **뜻**: spin weight에 양의 path 함수 $A$ 를 곱하면 반복된 root logarithm이 정확히 $\log Y_0$ 만큼 바뀌고 kernel은 $K_d^A$ 로 바뀐다. tree 법칙의 밀도는 $W_{\mathcal T}(A)=\prod_aA^a\prod_\beta Y_\beta^{\gamma_\beta}$ 이다.
+- **뜻**: 반복할 분배함수의 tilted kernel $K_1,\ldots,K_{L-1}$ 과 terminal Gibbs kernel $K_L$ 을 쓰고(`trees.tex` 85–87), $A$ 가 root가 주어진 조건부로 위로 유계이고 0에서 떨어져 있다고 하자(원문이 처음에 두는 가정, `trees.tex` 73–74). 그러면 spin weight에 양의 path 함수 $A$ 를 곱하면 반복된 root logarithm이 정확히 $\log Y_0$ 만큼 바뀌고 kernel은 $K_d^A$ 로 바뀐다. tree 법칙의 밀도는 $W_{\mathcal T}(A)=\prod_aA^a\prod_\beta Y_\beta^{\gamma_\beta}$ 이다.
 - **역할**: 증분(P4), 섭동 효과(P6, P7), 비교(P11)가 모두 이 꼴로 계산된다.
 - **정의 위치**: `tree:insertion`, `tree:Y-recursion`, `tree:updated-kernel`, `tree:density`
 - **물리 대응**: exact — Boltzmann weight 섭동 $-\delta H=\log A$ 에 따른 계층 free entropy 변화. $L=1$ 이면 $\log Y_0=\log(Z_A/Z)$.
