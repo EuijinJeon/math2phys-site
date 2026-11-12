@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 3.4 Reference-path totals (reference 경로 합)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>Lemma 3.4 Reference-path totals (reference 경로 합)</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>tree:reference-total</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span> <span class="muted">— reference path와 제약의 범위</span></li><li><a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a> <span class="stag">§3</span> <span class="muted">(3.7)</span> <span class="muted">— 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§7 <a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a> (J=κ(S^+)^2, <span class="nolink" title="(3.13) (카드 없음)">tree:K</span>), s5.s3 (class별 합; "임의의 이미 만든 reference 집합에서 반복"), <a class="node" href="../cards/decor.overlap-concentration.s2.s1.html" title="marker anchor 구성과 계수 $C(S,e)$">decor:overlap-concentration.s2.s1</a> (C(S,e)=−δκ(S)). glossary g:tree-coefficient의 κ<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.html" title="이동된 사본과 정규화 $J$의 상대 비용">decor:conditional-concentration.s3</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s2.html" title="정규화 $J=\kappa(S^+)^2$의 하계">decor:conditional-concentration.s3.s2</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.html" title="부호 있는 확장 합과 계수 표">decor:conditional-concentration.s5</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s5.s3.html" title="class별 계수 합 ($-c_\ell J$, $m_eJ$)">decor:conditional-concentration.s5.s3</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.overlap-concentration.s2.html" title="marker anchor로 prefix 사영 $M$을 집중시키기">decor:overlap-concentration.s2</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.overlap-concentration.s2.s1.html" title="marker anchor 구성과 계수 $C(S,e)$">decor:overlap-concentration.s2.s1</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a> <span class="stag">§7</span></li></ul></dd><dt>수학 진술</dt><dd><p>다음 color가 지정된 reference prefix를 깊이 $d$까지 따라간 뒤, 그곳에서 reference path를 담은 $j\ge1$개의 자식 모두와 다른 자식으로 들어가야 한다고 하자. 이 조상 제약 말고는 그 이음은 제한이 없다. 그러면 허용된 모든 선택의 계수 합은
+$$m_d-jm_{d+1}$$
+이다. 따라서 anchor와 color들이 지정된 tree $S$를 이루어야 하면, 임의의 old tree의 모든 호환 확장에 대한 총 계수는
+$$\kappa(S)=\prod_{v\in\operatorname{Br}(S)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$$
+이다. 여기서 $a_v$와 $d_v$는 지정된 reference tree의 각 branching vertex의 자식 수와 깊이다. 더 일반적으로, 같은 한 걸음 규칙을 이미 만든 임의의 reference 집합에서 시작해 반복할 수 있다.</p></dd><dt>물리 진술</dt><dd><p>새 <a class="gterm" href="../glossary.html#g-replica" title="prescribed-tree의 깊이 $L$ leaf에 놓인 spin 배치다. 두 replica의 split 깊이는 두 path의 마지막 공통 vertex의 깊이다(&quot;A split at depth $d$ means that the last common vertex is at depth $d$&quot;, trees.tex 34–35). 두 replica는 split…">replica</a>를 지정한 <a class="gterm" href="../glossary.html#g-reference-path" title="extension history에서 anchor와 이미 color를 받은 path를 말한다. 새 color에 대한 제약은 이 path들과의 갈라짐 깊이만 지정하고, 지정된 조상 관계가 같은 쓰지 않은 old path들은 구별하지 않는다(&quot;does not distinguish unused old paths with the same specified ance…">reference</a> replica들과 지정한 깊이에서 갈라지게 붙이는 모든 방법의 계수 합은, 갈라지는 깊이 $d$와 그 vertex에서 이미 reference가 차지한 가지 수 $j$만으로 $m_d-jm_{d+1}$이다. 기존 replica를 재사용하는 방법과 새로 갈라지는 방법이 서로 상쇄해서, old tree(이미 있던 replica들의 배치)는 합에서 사라진다. 지정된 갈라짐 구조 $S$ 전체의 합은 닫힌 꼴 $\kappa(S)$<sup><a class="gterm" href="../glossary.html#g-tree-coefficient" title="$\gamma_\beta$ 는 내부 vertex $\beta$(깊이 $d_\beta$, 자식 $n_\beta$ 개)에서 새 path를 붙일 때의 계수다. $\kappa(S)$ 는 anchor와 color가 모양 $S$ 를 갖는 모든 확장의 계수 합이다.">용어</a></sup>다.</p></dd><dt>차이</dt><dd><p>부호 있는 합에 대한 진술이다. 절댓값 합은 훨씬 클 수 있다(두 path 예에서 $-\delta$ 대 $2+\delta$, <a class="node" href="../cards/x.tree-cancellation-example.html" title="두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$">x:tree-cancellation-example</a>). 제약은 reference와의 갈라짐 깊이만 지정한다. $\kappa(S)$를 replica 계산의 block counting으로 읽는 것은 <a class="gterm" href="../glossary.html#g-tree-coefficient" title="$\gamma_\beta$ 는 내부 vertex $\beta$(깊이 $d_\beta$, 자식 $n_\beta$ 개)에서 새 path를 붙일 때의 계수다. $\kappa(S)$ 는 anchor와 color가 모양 $S$ 를 갖는 모든 확장의 계수 합이다.">tree 계수 $\gamma_\beta$, $\kappa(S)$</a>의 물리 대응 칸에 intuition으로만 있다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>펼침</h2><details class="child"><summary>한 걸음 합 $m_d-jm_{d+1}$ <a class="node" href="../cards/tree.reference-total.s1.html">↗</a><span class="cm">지정된 갈라짐 vertex에서 전체 현재 tree의 자식 수를 $n$이라 하자. 제외되는 $j$개 자식이 그 vertex를 지나는 모든 reference를 담는다. 나머지 $n-j$개 자식은 각각 reference가 없는 부분 tree의 뿌리다. 그 말단 vertex는 따라서 쓰지 않은 old leaf다. 그런 부분 tree가 깊이 $d+1$에 뿌리를 두면 허용되는 선택은 계수 $1$의 old leaf, 또는 부분 tree 안 내부 vertex에서의 fresh divergence다. leaf가 $q$개이면 그 안의 망원 합이 $$q+\sum_{\beta\text{ internal in the subtree}}(m_{d_\beta}-n_\beta m_{d_\beta+1})=m_{d+1}$$ 을 준다. 이 공식은 자식이 말단인 경우(양변이 $1$)도 포함한다. 이 기여들을 지정 vertex에서의 fresh 선택에 더하면 $$m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}.$$</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span> <span class="muted">— reference path와 제약의 범위</span></li><li><a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a> <span class="stag">§3</span> <span class="muted">(3.7)</span> <span class="muted">— 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:reference-total의 (<span class="nolink" title="(3.12) (카드 없음)">tree:one-reference-total</span>), <a class="node" href="../cards/tree.reference-total.s2.html" title="거꾸로 합하기 → $\kappa(S)$">tree:reference-total.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.reference-total.s2.html" title="거꾸로 합하기 → $\kappa(S)$">tree:reference-total.s2</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>지정된 갈라짐 vertex에서 전체 현재 tree의 자식 수를 $n$이라 하자. 제외되는 $j$개 자식이 그 vertex를 지나는 모든 reference를 담는다. 나머지 $n-j$개 자식은 각각 reference가 없는 부분 tree의 뿌리다. 그 말단 vertex는 따라서 쓰지 않은 old leaf다. 그런 부분 tree가 깊이 $d+1$에 뿌리를 두면 허용되는 선택은 계수 $1$의 old leaf, 또는 부분 tree 안 내부 vertex에서의 fresh divergence다. leaf가 $q$개이면 그 안의 망원 합이
+$$q+\sum_{\beta\text{ internal in the subtree}}(m_{d_\beta}-n_\beta m_{d_\beta+1})=m_{d+1}$$
+을 준다. 이 공식은 자식이 말단인 경우(양변이 $1$)도 포함한다. 이 기여들을 지정 vertex에서의 fresh 선택에 더하면
+$$m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}.$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>거꾸로 합하기 → $\kappa(S)$ <a class="node" href="../cards/tree.reference-total.s2.html">↗</a><span class="cm">모든 reference path와의 갈라짐 깊이가 일관되게 처방되면, 가장 깊은 요구 공통 prefix가 갈라지는 vertex와 그 제외 reference 자식들을 정한다. 따라서 한 걸음 합은 현재 reference tree에만 의존하고, 어떤 old path나 fresh path가 그것을 실현했는지에는 의존하지 않는다. 연속된 선택을 거꾸로 합한다. 최종 처방 tree의 branching vertex에서, 새 자식 무리에 처음 들어갈 때의 제외 reference 자식 수는 정확히 $1,\ldots,a_v-1$이다. 그 인자들이 (<span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)를 color 순서와 무관하게 준다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.reference-total.s1.html" title="한 걸음 합 $m_d-jm_{d+1}$">tree:reference-total.s1</a> <span class="stag">§3</span> <span class="muted">— 한 걸음 합 $m_d-jm_{d+1}$</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span> <span class="muted">— reference path와 제약의 범위</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:reference-total의 (<span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)와 "임의의 reference 집합에서 반복"<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>모든 reference path와의 갈라짐 깊이가 일관되게 처방되면, 가장 깊은 요구 공통 prefix가 갈라지는 vertex와 그 제외 reference 자식들을 정한다. 따라서 한 걸음 합은 현재 reference tree에만 의존하고, 어떤 old path나 fresh path가 그것을 실현했는지에는 의존하지 않는다. 연속된 선택을 거꾸로 합한다. 최종 처방 tree의 branching vertex에서, 새 자식 무리에 처음 들어갈 때의 제외 reference 자식 수는 정확히 $1,\ldots,a_v-1$이다. 그 인자들이 (<span class="nolink" title="(3.13) (카드 없음)">tree:K</span>)를 color 순서와 무관하게 준다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/tree.reference-total.s1.html" title="한 걸음 합 $m_d-jm_{d+1}$">tree:reference-total.s1</a>: 지정된 vertex에서 현재 tree의 자식이 $n$개이면, fresh 선택은 $m_d-nm_{d+1}$, reference 없는 $n-j$개 자식의 부분 tree는 각각 망원 합으로 $m_{d+1}$을 낸다. 합이 $m_d-jm_{d+1}$이다. <a class="node" href="../cards/tree.reference-total.s2.html" title="거꾸로 합하기 → $\kappa(S)$">tree:reference-total.s2</a>: 일관된 처방에서는 가장 깊은 공통 prefix가 갈라지는 vertex와 $j$를 정하므로 한 걸음 합이 현재 reference tree에만 의존한다. 거꾸로 합하면 branching vertex $v$마다 $j=1,\ldots,a_v-1$의 인자가 나와 $\kappa(S)$가 된다.</p>
+<p>$\kappa(S)$의 부호: 모든 인자 $m_d-jm_{d+1}$는 음이므로 부호는 $(-1)^{\sum_v(a_v-1)}$이다. 균등 격자에서 $j=1$ 인자는 $-\delta$, $j\ge2$ 인자의 크기는 $(j-1)m_d+j\delta$다(trees.tex 452).</p><details class="src"><summary>원문 (trees.tex:337-357, trees.tex:359-386)</summary><h4>trees.tex:337-357</h4><pre class="tex"><code><span class="ln">337</span>\begin{lemma}[Reference-path totals]\label{tree:reference-total}
+<span class="ln">338</span>Suppose the next color must follow a specified reference prefix to
+<span class="ln">339</span>depth $d$ and then enter a child distinct from all $j\geq1$ children
+<span class="ln">340</span>there that contain reference paths.  Apart from these ancestry
+<span class="ln">341</span>constraints its continuation is unrestricted.  The sum of the
+<span class="ln">342</span>coefficients of all allowed choices is
+<span class="ln">343</span>\begin{equation}\label{tree:one-reference-total}
+<span class="ln">344</span>  m_d-jm_{d+1}.
+<span class="ln">345</span>\end{equation}
+<span class="ln">346</span>Consequently, if the anchor and the colors must have a prescribed
+<span class="ln">347</span>tree $S$, the total coefficient over all compatible extensions of
+<span class="ln">348</span>any old tree is
+<span class="ln">349</span>\begin{equation}\label{tree:K}
+<span class="ln">350</span> \kappa(S)=\prod_{v\in\operatorname{Br}(S)}
+<span class="ln">351</span>           \prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}),
+<span class="ln">352</span>\end{equation}
+<span class="ln">353</span>where $a_v$ and $d_v$ are the child count and depth of each branching
+<span class="ln">354</span>vertex in the prescribed reference tree.  More generally, the same
+<span class="ln">355</span>one-step rule can be iterated starting from any already constructed
+<span class="ln">356</span>set of references.
+<span class="ln">357</span>\end{lemma}</code></pre><h4>trees.tex:359-386</h4><pre class="tex"><code><span class="ln">359</span>\begin{proof}
+<span class="ln">360</span>At the specified divergence vertex, let $n$ be the child count in
+<span class="ln">361</span>the entire current tree.  The $j$ excluded children contain all
+<span class="ln">362</span>references passing through that vertex.  Each of the other $n-j$
+<span class="ln">363</span>children roots a subtree containing no reference.  Its terminal
+<span class="ln">364</span>vertices are therefore unused old leaves.  If such a subtree is
+<span class="ln">365</span>rooted at depth $d+1$, its permitted choices are an old leaf, with
+<span class="ln">366</span>coefficient $1$, or a fresh divergence at an internal vertex in the
+<span class="ln">367</span>subtree.  If it has $q$ leaves, telescoping within it gives
+<span class="ln">368</span>\[
+<span class="ln">369</span>  q+\sum_{\beta\text{ internal in the subtree}}
+<span class="ln">370</span>       (m_{d_\beta}-n_\beta m_{d_\beta+1})=m_{d+1}.
+<span class="ln">371</span>\]
+<span class="ln">372</span>The formula includes the case of a terminal child, when both sides
+<span class="ln">373</span>are $1$.  Adding these contributions to the fresh choice at the
+<span class="ln">374</span>specified vertex gives
+<span class="ln">375</span>$m_d-nm_{d+1}+(n-j)m_{d+1}=m_d-jm_{d+1}$.
+<span class="ln">376</span>
+<span class="ln">377</span>For consistent prescribed splitting depths with all reference paths,
+<span class="ln">378</span>the deepest required common prefix determines the divergence vertex
+<span class="ln">379</span>and its excluded reference children.  Thus the one-step sum depends
+<span class="ln">380</span>only on the current reference tree, not on which old paths or fresh
+<span class="ln">381</span>paths realized it.  Sum backwards over successive choices.  At a
+<span class="ln">382</span>branching vertex of the final prescribed tree, the numbers of
+<span class="ln">383</span>excluded reference children when new child groups are first entered
+<span class="ln">384</span>are exactly $1,\ldots,a_v-1$.  Their factors give
+<span class="ln">385</span>\eqref{tree:K}, independently of the color order.
+<span class="ln">386</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bond 쪽의 인수분해와 trial 증분 $=\mathcal B_{L-1}$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/comp.insertion-comparison.s1.html" title="trial 삽입과 정확한 trial 항등식">comp:insertion-comparison.s1</a> <span class="stag">§8</span> · 섹션: <a href="../map-comparison.html">§8</a></div><h1>bond 쪽의 인수분해와 trial 증분 $=\mathcal B_{L-1}$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>comp:insertion-comparison.s1.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/comp.insertion-comparison.s1.s1.html" title="reservoir spin을 trial spin 과정으로 바꾸기: $\widetilde A$, $\widetilde Y_0$">comp:insertion-comparison.s1.s1</a> <span class="stag">§8</span> <span class="muted">— reservoir spin을 trial spin 과정으로 바꾸기: $\widetilde A$, $\widetilde Y_0$</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s2.html" title="site 쪽: $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$">comp:insertion-comparison.s1.s2</a> <span class="stag">§8</span> <span class="muted">— site 쪽: $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li><li><a class="node" href="../cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a> <span class="stag">§2</span> <span class="muted">(2.5)</span> <span class="muted">— edge 분배함수 $C_\theta$ (2.5)</span></li><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span> <span class="muted">(2.11)</span> <span class="muted">— 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/comp.insertion-comparison.s4.html" title="Poisson 꼬리와 극한의 조립">comp:insertion-comparison.s4</a> (trial 항등식), comp:insertion-comparison의 결론<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.insertion-comparison.s4.html" title="Poisson 꼬리와 극한의 조립">comp:insertion-comparison.s4</a> <span class="stag">§8</span></li></ul></dd><dt>수학 진술</dt><dd><p>$\widetilde A_{\rm b}$ 에서는 같은 전이가 서로 겹치지 않는 message label을 가진 $K_{\rm b}$ 개 edge 인자의 곱을 준다. 한 깊이에서 물리 disorder와 모든 message prefix가 주어지면 이 label 묶음들은 독립으로 남는다. 그러므로 그 곱은 각 조건부 power mean을 마지막 단계부터 첫 단계까지 차례로 통과해 인수분해된다. 따라서
+$$\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e},\qquad\log2+\mathbb E\log\widetilde Y_{0,\rm s}-\mathbb E\log\widetilde Y_{0,\rm b}=\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)}).$$
+(5.5)에 의해 남은 일은 reservoir와 trial의 삽입 logarithm을 주어진 극한에서 비교하는 것이다.</p></dd><dt>물리 진술</dt><dd><p>서로 다른 factor의 이웃 cavity field들이 독립 사본이므로 bond 삽입의 계층 free entropy는 factor마다 <a class="gterm" href="../glossary.html#g-edge-term" title="$p$ 개 spin이 서로 다른 label의 message 분포를 따를 때 factor 하나를 붙이는 분배함수다.">edge 항</a> $\log T_0V_{\rm e}$ 의 합이 되고, 평균 factor 수가 $\alpha(p-1)$ 이다. <a class="gterm" href="../glossary.html#g-power-mean" title="시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.">power mean</a>이 독립 인자의 곱을 곱으로 보내기 때문이다.</p></dd><dt>차이</dt><dd><p>정확하다. 인수분해에는 "같은 prefix 아래 label 묶음들이 조건부 독립"이라는 구성상의 독립이 필요하다. reservoir 쪽에서는 이것이 성립하지 않으며(같은 배치를 공유), 그 차이는 s2–s4가 다룬다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p><strong>인수분해의 한 걸음 (작성자가 풀어 씀).</strong> 깊이 $d$ 에서 $\widetilde Y_d=\prod_{j\le K_{\rm b}}Y_d^{(j)}$ 이고 $Y_d^{(j)}$ 가 $\mathscr F_{d-1}$ 이 주어지면 조건부 독립이라 하자. 그러면 $\mathbb E[\prod_j(Y_d^{(j)})^{m_d}\mid\mathscr F_{d-1}]=\prod_j\mathbb E[(Y_d^{(j)})^{m_d}\mid\mathscr F_{d-1}]$ 이고 $1/m_d$ 거듭제곱이 곱을 보존한다. 깊이 $L$ 에서 $Y_{L-1}^{(j)}=C_{\theta_j}(x^{j}_1,\ldots,x^{j}_p)$ (<a class="node" href="../cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a>) 이므로 귀납으로 $\widetilde Y_{0,\rm b}=\prod_{j\le K_{\rm b}}T_0C_{\theta_j}$. $K_{\rm b}\sim\mathrm{Pois}(\alpha(p-1))$ 가 나머지와 독립이고 각 인자가 (2.9)의 $V_{\rm e}$ 와 같은 법칙이므로 $\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ (Wald; 적분 가능성은 $\lvert\log T_0C_\theta\rvert\le B(\theta)$). 둘째 식은 s1.s2와 이것을 (2.11)에 $r=L-1$, $\zeta=\zeta_{L,N}$, $\mathbf m=\mathbf m^{(L)}$ 로 넣은 것이다. $\mathbf m^{(L)}$ 은 $0&lt;1/L&lt;\cdots&lt;(L-1)/L&lt;1$ 이고 $\zeta_{L,N}\in\mathcal M_L=\mathcal M_{r+1}$ 이므로 <a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>의 정의역 안에 있다.</p>
+<p>power mean이 조건부 독립인 인자의 곱을 인수분해한다는 성질은 §2에 진술되어 있지 않고 이 행(184–185)에서 처음 쓰인다. <a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a>의 provides 칸도 이 사용을 적는다.</p><details class="src"><summary>원문 (comparison.tex:181-196)</summary><h4>comparison.tex:181-196</h4><pre class="tex"><code><span class="ln">181</span>For $\widetilde A_{\rm b}$ the same transition gives a product of
+<span class="ln">182</span>$K_{\rm b}$ edge factors with disjoint message labels. Given the physical
+<span class="ln">183</span>disorder and all message prefixes at a depth, these label groups remain
+<span class="ln">184</span>independent. Their product therefore factors through each conditional
+<span class="ln">185</span>power mean, successively from the last level to the first. Consequently,
+<span class="ln">186</span>\[
+<span class="ln">187</span> \begin{aligned}
+<span class="ln">188</span> \E\log\widetilde Y_{0,\rm b}
+<span class="ln">189</span> &amp;=\alpha(p-1)\E\log T_0V_{\rm e},\\
+<span class="ln">190</span> \log2+\E\log\widetilde Y_{0,\rm s}
+<span class="ln">191</span>       -\E\log\widetilde Y_{0,\rm b}
+<span class="ln">192</span> &amp;=\cB_{L-1}(\zeta_{L,N},\mathbf m^{(L)}).
+<span class="ln">193</span> \end{aligned}
+<span class="ln">194</span>\]
+<span class="ln">195</span>By \eqref{cavity:identity}, it remains to compare the reservoir and trial
+<span class="ln">196</span>insertion logarithms in the stated limits.</code></pre></details>
+</div>
+
+</body>
+</html>

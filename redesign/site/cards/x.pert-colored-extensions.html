@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>x:pert-colored-extensions</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.pert-test-setup.html" title="old tree $\mathcal T$, anchor $a_*$, 시험함수 $f$ 의 고정과 $\mathbb Ef$">x:pert-test-setup</a> <span class="stag">§6</span> <span class="muted">— old tree $\mathcal T$, anchor $a_*$, 시험함수 $f$ 의 고정과 $\mathbb Ef$</span></li><li><a class="node" href="../cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a> <span class="stag">§6</span> <span class="muted">— mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>pert:tree-identity의 진술과 s2–s4. \ref 없이 §7: decorrelation.tex 81, 265, 298–302, 529–560 (spin anchor, marker anchor, added color, 제약), <a class="node" href="../cards/decor.overlap-concentration.s1.html" title="singleton: 추가 color 없는 spin anchor">decor:overlap-concentration.s1</a>, s2.s1, <a class="node" href="../cards/decor.conditional-concentration.s2.s1.html" title="한 층 항등식 (singleton identity)">decor:conditional-concentration.s2.s1</a>, s3.s1<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.s2.s1.html" title="한 층 항등식 (singleton identity)">decor:conditional-concentration.s2.s1</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s1.html" title="두 사본 old tree와 $S^+$ 제약의 구성">decor:conditional-concentration.s3.s1</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.overlap-concentration.s1.html" title="singleton: 추가 color 없는 spin anchor">decor:overlap-concentration.s1</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.overlap-concentration.s2.s1.html" title="marker anchor 구성과 계수 $C(S,e)$">decor:overlap-concentration.s2.s1</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s4.html" title="조립: 혼합 전개, mark 평균, site 평균">pert:tree-identity.s4</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$S_0=\sigma_i$ 일 때 anchor를 spin anchor, $S_0=1$ 일 때 marker anchor라 부른다. 추가 color는 $1,\ldots,k$ 로 순서가 있고 anchor는 color $0$ 이다. 추가 color들은 tree:extension-expansion의 canceled-anchor 확장 규칙에 따라, anchor와 같지 않은 서로 다른 replica 위치를 차지한다. 제약 $\mathcal C$ 는 추가 color들과 anchor만 관여하는 쌍별 split 깊이의 임의의 일관된 모임을 처방한다. 다른 old replica가 관여하는 추가 제한은 두지 않는다. $\mathfrak E(\mathcal T,a_*,\mathcal C)$ 를 허용된 extension history의 집합, $c_E$ 를 그 lemma의 계수라 하자. history $E$ 에 대해
+$$R_E=\frac1N\sum_{i=1}^N\begin{cases}\sigma_i^{a_*}\prod_{j=1}^k\sigma_i^{a_j(E)},&amp;\text{spin anchor},\\ \prod_{j=1}^k\sigma_i^{a_j(E)},&amp;\text{marker anchor}.\end{cases}$$
+$k=0$ 이면 이것은 각각 $R_{\{a_*\}}$ 와 $1$ 이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>확장 규칙 자체(old leaf 재사용 계수 1, fresh path 계수 $\gamma_\beta$)는 <a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a>에 있고, 원문은 그것을 lemma <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>의 이름으로 가리킨다. "anchor와 같지 않은 서로 다른 위치"는 anchor가 protected라 재사용되지 않고 고른 leaf가 다시 고를 수 없다는 규칙에서 온다. <a class="gterm" href="../glossary.html#g-anchor" title="섭동을 넣는 old tree의 구별된 leaf다. 그 leaf에서 삽입 인자 $A^{a_*}$ 가 상쇄된다. spin anchor는 $R_E$ 에 anchor spin을 넣고, marker anchor는 spin을 내지 않는다.">anchor (spin anchor, marker anchor)</a>, <a class="gterm" href="../glossary.html#g-extension-history" title="anchor leaf $a_*$ 가 있는 old tree에서 color $1,\ldots,k$ 를 차례로 (i) 아직 안 쓴 anchor 아닌 old leaf(계수 1) 또는 (ii) 현재 tree의 내부 vertex $\beta$ 에서 새 path(계수 $\gamma_\beta$)에 주는 선택의 기록이다. $c_E$ 는 그 계수들의 곱이다. 어휘: ol…">extension history 와 계수 $c_E$</a>, <a class="gterm" href="../glossary.html#g-mark" title="mark specification은 유한 개의 Rademacher 좌표, 각 좌표의 깊이, 좌표의 유리수값 함수 $g$, $g_0$, 그리고 $S_0$ 의 선택을 묶은 것이다(perturbations.tex 28–35). 좌표는 지정된 깊이에서 path를 따라 뽑히고 공유 vertex에서는 값을 공유한다. 두 color $a,b$ 의 $g_a$, $g_b…">mark 와 selector</a>.</p>
+<p>제약이 "anchor와 추가 color들로 이루어진 집합 안의 쌍"(추가 color끼리의 쌍 포함)으로 한정되는 이유(작성자 읽기): selector(<a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a>)는 mark 함수 $g_0,g_1,\ldots,g_k$ 를 통해서만 작동하고, mark 함수는 anchor(color 0)와 추가 color의 path에만 붙는다. old replica에는 mark 함수가 붙지 않으므로 그것과의 관계는 지정할 수 없다. §3의 <a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a>도 같은 한정을 둔다.</p>
+<p>$R_E$ 는 tree $\mathcal T_E$ 의 <a class="gterm" href="../glossary.html#g-multioverlap" title="replica leaf 집합 $S$ 위 spin 곱의 공간 평균이다. $\lvert S\rvert=2$ 가 보통의 overlap, $\lvert S\rvert=1$ 이 자화다.">multioverlap $R_S$ (overlap)</a>이다(spin anchor이면 anchor 포함). marker anchor에서 $k=0$ 이면 $R_E=1$ 이므로 그 경우의 항등식은 자명하다.</p><details class="src"><summary>원문 (perturbations.tex:429-449)</summary><h4>perturbations.tex:429-449</h4><pre class="tex"><code><span class="ln">429</span>The anchor is called a \emph{spin anchor} when $S_0=\sigma_i$, and a
+<span class="ln">430</span>\emph{marker anchor} when $S_0=1$.  Added colors are ordered
+<span class="ln">431</span>$1,\ldots,k$; the anchor has color $0$.  They occupy distinct replica
+<span class="ln">432</span>positions, none equal to the anchor, according to the canceled-anchor
+<span class="ln">433</span>extension rule of Lemma~\ref{tree:extension-expansion}.  A constraint
+<span class="ln">434</span>$\mathcal C$ prescribes any consistent collection of their pairwise
+<span class="ln">435</span>split depths, involving only the added colors and the anchor.
+<span class="ln">436</span>It imposes no extra restrictions involving the other old replicas.
+<span class="ln">437</span>Let $\mathfrak E(\mathcal T,a_*,\mathcal C)$ be the allowed extension
+<span class="ln">438</span>histories, with coefficients $c_E$ from that lemma.  For a history
+<span class="ln">439</span>$E$, set
+<span class="ln">440</span>\[
+<span class="ln">441</span> R_E=\frac1N\sum_{i=1}^N
+<span class="ln">442</span> \begin{cases}
+<span class="ln">443</span> \displaystyle\sigma_i^{a_*}\prod_{j=1}^k\sigma_i^{a_j(E)},
+<span class="ln">444</span>       &amp;\text{spin anchor},\\[2pt]
+<span class="ln">445</span> \displaystyle\prod_{j=1}^k\sigma_i^{a_j(E)},
+<span class="ln">446</span>       &amp;\text{marker anchor}.
+<span class="ln">447</span> \end{cases}
+<span class="ln">448</span>\]
+<span class="ln">449</span>For $k=0$ these are respectively $R_{\{a_*\}}$ and $1$.</code></pre></details>
+</div>
+
+</body>
+</html>

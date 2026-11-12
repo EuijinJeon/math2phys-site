@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>x:pert-mark-specification</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span> <span class="muted">— path kernel 열, 지수 $m_d$, prefix $\sigma$-field</span></li><li><a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span> <span class="muted">— 유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성</span></li><li><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> <span class="stag">§6</span> <span class="muted">— §6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a>(type의 첨자), <a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>(각 항의 mark 과정), <a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a>, <a class="node" href="../cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a>, <a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a>–s3(polarization 인자와 selector가 이 모임 안에 있음). \ref 없이 §8 comparison.tex 53–56 (보조 prior를 유한 mark 공간의 유한곱으로 잡을 수 있음)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.encoding.s2.html" title="거꾸로 쌓은 측도 $\eta_d$ 와 $\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L$">comp:encoding.s2</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s3.html" title="정확한 split 깊이 $H_d-H_{d+1}$ 과 모양의 선택">pert:tree-identity.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>mark specification은 다음으로 이루어진다: 유한 개 $n\ge0$ 의 이름 붙은 Rademacher 좌표, 각 좌표에 배정된 $\{1,\ldots,L-1\}$ 의 깊이, 두 함수
+$$g,g_0:\{-1,1\}^n\to\mathbb Q\cap[-1,1],$$
+그리고 $S_0=1$ 또는 $S_0=\sigma_i$ 의 선택. 각 좌표는 보조 path를 따라 배정된 깊이에서 뽑힌다. 서로 다른 좌표는 독립이다. 한 좌표의 값은 공유된 vertex에서는 공유되고 서로 다른 vertex에서는 독립이다. $n=0$ 은 상수 함수를 포함한다. 이런 specification을 모두 쓴다. 각 부호 정의역이 유한하므로 이것은 가산 모임이다. 부호의 곱과 그 유리수 평균이 이 모임에 든다. 이것들이 branching pattern을 고른다.</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-hierarchy" title="깊이 $0,\ldots,L$ 의 path를 뽑는 확률 kernel 열이다. 깊이 0은 root, 깊이 $1,\ldots,L-1$ 은 보조 변수, 깊이 $L$ 은 spin 배치다. 분배함수에서 만들 때는 prior $P_d$ 를 $e^{m_dX_d}$ 로 기울인 tilted kernel을 쓰고, 마지막 $K_L$ 은 prefix가 주어진 Gibbs 분포다.">보조 계층</a>의 지정된 깊이마다 놓인 무작위 부호(<a class="gterm" href="../glossary.html#g-mark" title="mark specification은 유한 개의 Rademacher 좌표, 각 좌표의 깊이, 좌표의 유리수값 함수 $g$, $g_0$, 그리고 $S_0$ 의 선택을 묶은 것이다(perturbations.tex 28–35). 좌표는 지정된 깊이에서 path를 따라 뽑히고 공유 vertex에서는 값을 공유한다. 두 color $a,b$ 의 $g_a$, $g_b…">mark</a>)와, 그 부호들의 유리수값 함수를 site 하나의 spin(또는 상수 1)에 붙인 탐침이다. 두 <a class="gterm" href="../glossary.html#g-replica" title="prescribed-tree의 깊이 $L$ leaf에 놓인 spin 배치다. 두 replica의 split 깊이는 두 path의 마지막 공통 vertex의 깊이다(&quot;A split at depth $d$ means that the last common vertex is at depth $d$&quot;, trees.tex 34–35). 두 replica는 split…">replica</a> path가 그 깊이의 vertex를 공유하면 같은 부호를 보고, 아니면 독립인 부호를 본다.</p></dd><dt>차이</dt><dd><p>"탐침"은 그림이고 물리적 국소장이 아니다. 둘째 문장(공유 vertex에서 같은 부호, 다른 vertex에서 독립)은 원문 33–34의 옮김이고 selector의 근거로 쓰인다. 좌표 수가 유한하다는 것, 깊이가 $\{1,\ldots,L-1\}$ 이라는 것, 좌표끼리 독립이라는 것은 뺐다. 부호는 보조 계층의 변수이고 <a class="gterm" href="../glossary.html#g-root" title="root는 보조 계층 path의 깊이 0 변수이고(&quot;Its depth-zero variable is the root&quot;, trees.tex 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(trees.tex 23). reservoir에서는 물리 disorder(&quot;the reservoir root disorder…">root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)</a> 변수가 아니다(<a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>). 함수값을 유리수로 제한한 것은 모임을 가산으로 만들어 pert:selection의 대각 논법과 type 번호 매기기를 가능하게 하려는 것이다. "branching pattern을 고른다"는 것은 <a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a>–s3의 selector 구성으로만 실현된다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>본문</h2><p>"Each coordinate is sampled at its assigned depth along an auxiliary path"는 path마다 그 깊이의 vertex에 좌표값이 하나씩 붙는다는 뜻으로 읽었다. 그래서 같은 vertex를 지나는 path들은 값을 공유한다(<a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a>의 "각 vertex에서 서로 다른 자식은 독립"과 같은 구조). 이 공유 규칙이 <a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a>의 selector(공유하면 기대값 1, 아니면 0)의 근거다.</p>
+<p>"Products of signs and their rational averages belong to this collection"은 <a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a>의 polarization 인자 $k^{-1}\sum_j\epsilon_jg_j$ 와 <a class="node" href="../cards/pert.tree-identity.s3.html" title="정확한 split 깊이 $H_d-H_{d+1}$ 과 모양의 선택">pert:tree-identity.s3</a>의 부호 곱이 다시 이 모임 안에 있다는 것을 미리 확인해 두는 문장이다.</p>
+<p>§8의 comparison.tex 53–56("The auxiliary priors used here may be taken to be finite products of finite mark spaces at each realized root")은 이 정의(좌표 수 $n$ 유한, 값 $\pm1$)와 <a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>(root가 주어지면 항이 유한 개)에서 온다(<code>\ref</code> 없음, 작성자 읽기).</p><details class="src"><summary>원문 (perturbations.tex:28-38)</summary><h4>perturbations.tex:28-38</h4><pre class="tex"><code><span class="ln">28</span>A \emph{mark specification} consists of a finite number $n\geq0$ of
+<span class="ln">29</span>labeled Rademacher coordinates, a depth in $\{1,\ldots,L-1\}$ assigned
+<span class="ln">30</span>to each coordinate, two functions
+<span class="ln">31</span>$g,g_0:\{-1,1\}^n\to\mathbb Q\cap[-1,1]$, and a choice $S_0=1$ or
+<span class="ln">32</span>$S_0=\sigma_i$. Each coordinate is sampled at its assigned depth along
+<span class="ln">33</span>an auxiliary path. Distinct coordinates are independent; the value of
+<span class="ln">34</span>a coordinate is shared at a shared vertex and is independent at
+<span class="ln">35</span>different vertices. The case $n=0$ includes constant functions.
+<span class="ln">36</span>We use all such specifications, a countable collection because each
+<span class="ln">37</span>sign domain is finite. Products of signs and their rational averages
+<span class="ln">38</span>belong to this collection; these will select branching patterns.</code></pre></details>
+</div>
+
+</body>
+</html>

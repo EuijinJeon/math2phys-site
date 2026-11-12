@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a> <span class="stag">§2</span> · 섹션: <a href="../map-model.html">§2</a></div><h1>(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>model:functional</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li><li><a class="node" href="../cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span> <span class="muted">(2.8)</span> <span class="muted">— site 분배함수 $V_{\rm s}$ (2.8)</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li><li><a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span> <span class="muted">(2.1)</span> <span class="muted">— 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>main:theorem의 우변. <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>($F_N\le\mathcal B_r$), <a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>($\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$), <a class="node" href="../cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="../cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="../cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a>($\mathcal B_{r,\beta}$, consequences.tex 83)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.bounded-lower.s1.html" title="고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$">comp:bounded-lower.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.html" title="trial 삽입과 정확한 trial 항등식">comp:insertion-comparison.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s3.html" title="bond 쪽의 인수분해와 trial 증분 $=\mathcal B_{L-1}$">comp:insertion-comparison.s1.s3</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/main.theorem.s3.html" title="$K\to\infty$ 와 상수 되돌리기: $\liminf_NF_N\ge\inf_r\Phi_r$">main:theorem.s3</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s2.html" title="시행 functional 안정성 (reduction:trial-stability)">reduction:stability.s2</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s3.html" title="상수 이동 (reduction:shift)">reduction:stability.s3</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.bound.s1.html" title="퇴화 경우와 $b$, $M$ 의 본질적 유계성">upper:bound.s1</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.bound.s4.html" title="$t\in[0,1]$ 에서 적분">upper:bound.s4</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/x.cons-3sat-remark.html" title="짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)">x:cons-3sat-remark</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a> <span class="stag">§2.2</span></li></ul></dd><dt>수학 진술</dt><dd><p>$$\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\,\mathbb E\log T_0V_{\rm e},\qquad\Phi_r=\inf_{\zeta,\,\mathbf m}\mathcal B_r(\zeta,\mathbf m).\tag{2.11}$$
+$\mathbb E$ 는 물리적 disorder와 $\eta_0$ 을 평균한다($T_0$ 이 나머지 보조 변수를 적분했다). inf는 모든 $\zeta\in\mathcal M_{r+1}$ 과 $0&lt;m_1&lt;\cdots&lt;m_r&lt;1$ 에 대한 것이다.</p></dd><dt>물리 진술</dt><dd><p>$r$단 RSB Mézard–Parisi(Bethe) free entropy를 시행 <a class="gterm" href="../glossary.html#g-order-parameter" title="message label $\omega$ 마다 독립으로 무작위 측도의 사슬을 뽑아 마지막에 message $x$ 를 얻는 $r$단 시행 법칙이다. $r=0$ 이면 $\zeta$ 는 $x$ 의 분포 하나다. 사슬은 물리적 disorder와 독립이다.">order parameter</a>에서 계산한 값<sup><a class="gterm" href="../glossary.html#g-functional" title="$r$단 시행 법칙 $(\zeta,\mathbf m)$ 에서 계산한 계층 cavity functional(Panchenko–Talagrand functional의 power-mean 꼴)이다.">용어</a></sup>: <a class="gterm" href="../glossary.html#g-site-term" title="$U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, model.tex 59–…">site 항</a>에서 <a class="gterm" href="../glossary.html#g-edge-term" title="$p$ 개 spin이 서로 다른 label의 message 분포를 따를 때 factor 하나를 붙이는 분배함수다.">edge 항</a>의 $\alpha(p-1)$ 배를 뺀다. $\alpha(p-1)$ 은 spin 하나를 넣을 때 평균 $\alpha p$ 개 factor 중 새로 생기는 factor 수 $\alpha$ 를 뺀 중복분이다. $\Phi_r$ 는 단계 수 $r$ 에서의 inf<sup><a class="gterm" href="../glossary.html#g-phi" title="고정한 단계 수 $r$ 에서의 inf와, 모든 유한 $r$ 에 대한 inf다.">용어</a></sup>다.</p></dd><dt>차이</dt><dd><p>물리는 정류점(saddle point)에서 평가한 값을 free entropy로 쓰고, 여기서는 모든 시행값의 inf를 쓴다. 모든 시행값이 pressure의 상한(<a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>)이라는 것이 inf를 정당화한다. inf의 달성이나 최적 $(\zeta,\mathbf m)$ 의 존재는 주장하지 않는다. "새로 생기는 factor 수 $\alpha$" 계산은 작성자의 읽기다(원문은 edge 항이 중복을 보정한다고만 한다, model.tex 50–52). $\Phi_r$ 이 $r$ 에 대해 단조인지 원문은 말하지 않는다.</p></dd><dt>축약 유형</dt><dd><code>approximation</code> <span class="muted">— 유효 범위 안에서만 맞음</span></dd></dl><h2>본문</h2><p>$\mathbb E\log T_0V$ 가 잘 정의되고 유한하다는 것은 <a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>에서 온다. $r=0$ 판은 <a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>.</p><details class="src"><summary>원문 (model.tex:111-117)</summary><h4>model.tex:111-117</h4><pre class="tex"><code><span class="ln">111</span>Define
+<span class="ln">112</span>\begin{equation}\label{model:functional}
+<span class="ln">113</span> \cB_r(\zeta,\mathbf m)
+<span class="ln">114</span> =\log2+\E\log T_0V_{\rm s}
+<span class="ln">115</span> -\alpha(p-1)\E\log T_0V_{\rm e},
+<span class="ln">116</span> \qquad \Phi_r=\inf_{\zeta,\,\mathbf m}\cB_r(\zeta,\mathbf m).
+<span class="ln">117</span>\end{equation}</code></pre></details>
+</div>
+
+</body>
+</html>

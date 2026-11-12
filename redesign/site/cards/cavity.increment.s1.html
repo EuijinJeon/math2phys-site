@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>물리 상호작용의 Poisson 분해</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> · 섹션: <a href="../map-cavity.html">§5</a></div><h1>물리 상호작용의 Poisson 분해</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>cavity:increment.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span> <span class="muted">— 하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/cavity.increment.s3.html" title="증분 항등식 (5.5)">cavity:increment.s3</a> (reservoir, site 삽입 개수 평균 $\alpha p+O(N^{-1})$, bond 삽입 개수 평균 $\alpha(p-1)+O(N^{-1})$, 버릴 항의 평균 $O(N^{-1})$)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/cavity.increment.s3.html" title="증분 항등식 (5.5)">cavity:increment.s3</a> <span class="stag">§5</span></li></ul></dd><dt>수학 진술</dt><dd><p>$(N+1)$-spin 계의 Poisson 상호작용 과정을 $N+1$ 과 같은 index의 개수로 쪼갠다. 새 index가 없는 항의 평균은 $\rho_N$ 이다. 새 index가 정확히 하나인 항의 평균은 $\alpha p(N/(N+1))^{p-1}=\alpha p+O(N^{-1})$ 이고, 순열 불변성으로 새 입력을 마지막에 둘 수 있다. 그 항의 다른 index는 $[N]$ 의 독립 균일 index이고 상호작용 함수는 주어진 법칙을 유지한다. 새 index가 둘 이상인 항의 평균 합은 $O(N^{-1})$ 이다. 한편 $N$-spin 계는 같은 reservoir에 평균
+$$\alpha N-\rho_N=\alpha(p-1)+O(N^{-1})$$
+의 Poisson 개수의 옛 상호작용을 더해 얻는다. 이 양들은 충분히 큰 모든 $N$ 에서 음이 아니다.</p></dd><dt>물리 진술</dt><dd><p>spin 하나를 더하면 그 spin이 정확히 한 번 들어가는 factor가 평균 $\alpha p+O(1/N)$ 개 생기고(평균 차수, <a class="gterm" href="../glossary.html#g-hypergraph" title="factor 수 $M_N$ 은 평균 $\alpha N$ 의 Poisson이고 각 factor의 $p$ 개 site는 $[N]$ 에서 독립 균일로 복원추출한다. spin당 평균 factor 수는 $\alpha$, spin 하나의 평균 차수는 $\alpha p$ 다.">밀도 $\alpha$ 와 Poisson hypergraph</a>), 두 번 이상 들어가는 factor는 평균 $O(1/N)$ 개다. 옛 spin들 사이의 factor는 평균 $\alpha N$ 개보다 $\alpha(p-1)+O(1/N)$ 개 적다. 그래서 크기 $N$ 의 계는 공통 <a class="gterm" href="../glossary.html#g-reservoir" title="크기 $N$ 과 $N+1$ 의 계를 비교하는 공통 $N$-spin 계다. 평균 $\rho_N$ 개의 상호작용, 보통의 장, 그리고 type $\nu$ 마다 평균 $c_\nu s_N$ 개(합계 Poisson$(s_N)$)의 섭동 factor를 가진다(cavity.tex 20–28, 45–50).">reservoir</a>에 옛 factor 평균 $\alpha(p-1)+O(1/N)$ 개를 더한 것이고, 크기 $N+1$ 의 계는 같은 reservoir에 새 spin과 그 factor 평균 $\alpha p+O(1/N)$ 개, 그리고 새 spin이 겹친 factor 평균 $O(1/N)$ 개를 더한 것이다.</p></dd><dt>차이</dt><dd><p>Poisson 과정의 분해(thinning)라서 정확하다. 평균의 $O(N^{-1})$ 오차는 물리 문장에도 적었고, <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>.s3에서 상호작용당 비용 $B$ 로 치른다. 개수 평균이 음이 아니라는 것은 충분히 큰 $N$ 에서만 주장된다(cavity.tex 85). 새 입력을 마지막 좌표에 두는 데 <a class="gterm" href="../glossary.html#g-permutation-invariance" title="$\theta$ 의 법칙이 $p$ 개 입력 좌표의 순열에 대해 불변이라는 조건이다.">순열 불변성</a>이 쓰인다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p><strong>확인 (작성자).</strong> 상호작용은 평균 $\alpha(N+1)$ 개이고 각 $p$ 개 index는 $[N+1]$ 에서 독립 균일이다. 새 index가 $j$ 개일 확률은 $\binom pj(N+1)^{-j}(N/(N+1))^{p-j}$ 이므로 Poisson thinning으로 $j=0$ 은 평균 $\rho_N$, $j=1$ 은 $\alpha p(N/(N+1))^{p-1}$, $j\ge2$ 는 $O(N^{-1})$ 이고 서로 독립이다. $\alpha N-\rho_N=\alpha N-\alpha(N+1)(1-\tfrac1{N+1})^p=\alpha(p-1)+O(N^{-1})$. 보통의 장은 옛 site $N$ 개에 그대로 있다.</p><details class="src"><summary>원문 (cavity.tex:71-85)</summary><h4>cavity.tex:71-85</h4><pre class="tex"><code><span class="ln">71</span>\begin{proof}
+<span class="ln">72</span>\emph{The physical interactions.}
+<span class="ln">73</span>Split the Poisson interaction process of the $(N+1)$-spin system according
+<span class="ln">74</span>to the number of indices equal to $N+1$. Terms with no new index have mean
+<span class="ln">75</span>$\rho_N$. Terms with exactly one new index have mean
+<span class="ln">76</span>$\alpha p(N/(N+1))^{p-1}=\alpha p+O(N^{-1})$; by permutation invariance we
+<span class="ln">77</span>may place the new input last. Their other indices are independent uniform
+<span class="ln">78</span>indices in $[N]$, and their interaction functions retain the prescribed
+<span class="ln">79</span>law. Terms with at least two new indices have total mean $O(N^{-1})$.
+<span class="ln">80</span>Meanwhile, the $N$-spin system can be obtained from the same reservoir by
+<span class="ln">81</span>adding a Poisson number of old interactions of mean
+<span class="ln">82</span>\[
+<span class="ln">83</span> \alpha N-\rho_N=\alpha(p-1)+O(N^{-1}).
+<span class="ln">84</span>\]
+<span class="ln">85</span>These quantities are nonnegative for all sufficiently large $N$.</code></pre></details>
+</div>
+
+</body>
+</html>

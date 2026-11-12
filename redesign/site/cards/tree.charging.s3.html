@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>반복 합: $C_{q,k}\delta^b$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>반복 합: $C_{q,k}\delta^b$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>tree:charging.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.charging.s1.html" title="한 걸음의 절댓값 계수 합">tree:charging.s1</a> <span class="stag">§3</span> <span class="muted">— 한 걸음의 절댓값 계수 합</span></li><li><a class="node" href="../cards/tree.charging.s2.html" title="target vertex를 생성 걸음에 배정">tree:charging.s2</a> <span class="stag">§3</span> <span class="muted">— target vertex를 생성 걸음에 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:charging의 (<span class="nolink" title="(3.14) (카드 없음)">tree:charging-bound</span>), <a class="node" href="../cards/tree.charging.s4.html" title="$|J|$ 하계와 상대 경계">tree:charging.s4</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.charging.s4.html" title="$|J|$ 하계와 상대 경계">tree:charging.s4</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>고정된 배정마다, 지정된 걸음이 배정된 깊이에서 unary split를 만든다는 것만 남기고 모든 제약을 버려 history family를 넓힌다. 그 걸음의 합을 $(q+k)\delta$로, 다른 모든 걸음의 합을 $2(q+k)$로 누른다. 선택에 대해 반복해 합하면
+$$\frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b$$
+이하다. 이것이 (<span class="nolink" title="(3.14) (카드 없음)">tree:charging-bound</span>)를 증명한다. 배정된 깊이가 겹쳐도 지정된 걸음들은 서로 다르므로 성립한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>반복 합(작성자 풀이): 넓힌 family에서 마지막 걸음부터 합하면 각 걸음의 절댓값 합 상계가 그 앞 선택에 무관하므로 곱으로 떨어진다. family를 넓혀도 절댓값 합은 줄지 않으므로 원래 허용 history의 합을 누른다. 배정에 대해 합하면 $k!/(k-b)!$가 붙는다. 상수 $C_{q,k}=\max_{b\le k}\frac{k!}{(k-b)!}(q+k)^b(2(q+k))^{k-b}$는 $L$과 깊이에 무관하다.</p><details class="src"><summary>원문 (trees.tex:438-447)</summary><h4>trees.tex:438-447</h4><pre class="tex"><code><span class="ln">438</span>For each fixed assignment, enlarge the family of histories by
+<span class="ln">439</span>discarding all constraints except that a designated step creates a
+<span class="ln">440</span>unary split at its assigned depth.  Bound its step sum by
+<span class="ln">441</span>$(q+k)\delta$ and every other step sum by $2(q+k)$.  Iterated summation
+<span class="ln">442</span>over choices gives at most
+<span class="ln">443</span>\[
+<span class="ln">444</span> \frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b.
+<span class="ln">445</span>\]
+<span class="ln">446</span>This proves \eqref{tree:charging-bound}, including repeated assigned
+<span class="ln">447</span>depths, because the designated steps remain distinct.</code></pre></details>
+</div>
+
+</body>
+</html>

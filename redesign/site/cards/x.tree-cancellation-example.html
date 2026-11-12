@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-trees.html">§3</a></div><h1>두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$</h1><p><span class="badge">remark</span><span class="badge proposed">proposed</span> <code>x:tree-cancellation-example</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span> <span class="muted">— reference path와 제약의 범위</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:reference-total과 tree:charging이 일반화하는 두 계산. §7 <a class="node" href="../cards/decor.conditional-concentration.s2.html" title="기저: 잎 하나, $V_{1,L}(\eta)\le\delta/\eta$">decor:conditional-concentration.s2</a>.s1이 같은 구성을 쓴다. rules.md의 "−δ 대 2+δ"<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>깊이 $d$에서 갈라지는 old path 두 개로 시작하고 첫째를 anchor로 둔다. added color 하나가 anchor와 정확히 깊이 $d$에서 갈라지도록 요구한다. 그 color는 둘째 old leaf를 쓰거나, 깊이 $d$ vertex에서 fresh path를 만들거나, 둘째 old path를 따라가다 깊이 $\ell&gt;d$에서 떠날 수 있다. 각각의 계수를 더하면
+$$1+(m_d-2m_{d+1})+\sum_{\ell=d+1}^{L-1}(m_\ell-m_{\ell+1})=m_d-m_{d+1}.$$
+균등 격자 $m_d=d/L$, $\delta=L^{-1}$에서 이 부호 있는 합은 $-\delta$이지만 절댓값 계수의 합은 $2+\delta$다. 요구한 split을 $d+1&lt;L$로 미루면 허용되는 선택은 anchor path 위 unary인 깊이 $(d+1)$ vertex에서의 fresh split 하나뿐이다. 그 계수는 $-\delta$이므로 절댓값 합은 이제 $\delta$다. 다음 두 lemma가 이 두 계산을 넓힌다: 첫째는 부호 있는 합을 계산하고, 둘째는 지정된 split이 old branching 깊이에서 떨어져 일어날 때 절댓값 합을 제어한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>검산(작성자): 망원 합 $\sum_{\ell=d+1}^{L-1}(m_\ell-m_{\ell+1})=m_{d+1}-m_L=m_{d+1}-1$이므로 총합은 $1+m_d-2m_{d+1}+m_{d+1}-1=m_d-m_{d+1}$. 절댓값: $1+(d+2)\delta+(L-1-d)\delta=1+(L+1)\delta=2+\delta$. 미룬 경우 둘째 old path는 anchor와 깊이 $d$에서 이미 갈라졌으므로 쓸 수 없고, 깊이 $d+1$의 anchor 쪽 vertex는 anchor만 지나는 unary vertex다.</p>
+<p>이 예가 <a class="gterm" href="../glossary.html#g-depth-delay" title="target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다.">깊이 미루기</a>의 동기다: 부호 있는 합은 작은데($-\delta$) 절댓값 합은 $O(1)$이라, 작은 정규화로 나누면 오차가 커진다. split을 old branching 깊이가 아닌 곳으로 미루면 절댓값 합도 정규화와 같은 크기가 된다.</p><details class="src"><summary>원문 (trees.tex:317-335)</summary><h4>trees.tex:317-335</h4><pre class="tex"><code><span class="ln">317</span>To see the cancellation that must be controlled, start with two old
+<span class="ln">318</span>paths splitting at depth $d$, and let the first be the anchor. Require
+<span class="ln">319</span>one added color to split from the anchor exactly at $d$. It may use the
+<span class="ln">320</span>second old leaf, create a fresh path at the depth-$d$ vertex, or follow
+<span class="ln">321</span>the second old path and leave it at a depth $\ell&gt;d$. The respective
+<span class="ln">322</span>coefficients give the total
+<span class="ln">323</span>\[
+<span class="ln">324</span>  1+(m_d-2m_{d+1})
+<span class="ln">325</span>       +\sum_{\ell=d+1}^{L-1}(m_\ell-m_{\ell+1})
+<span class="ln">326</span>  =m_d-m_{d+1}.
+<span class="ln">327</span>\]
+<span class="ln">328</span>On the uniform mesh $m_d=d/L$, with $\delta=L^{-1}$, this signed total
+<span class="ln">329</span>is $-\delta$, but the sum of absolute coefficients is $2+\delta$.
+<span class="ln">330</span>If instead the required split is delayed to $d+1&lt;L$, the only allowed
+<span class="ln">331</span>choice is a fresh split at the unary depth-$(d+1)$ vertex on the anchor
+<span class="ln">332</span>path. Its coefficient is $-\delta$, so the absolute sum is now $\delta$.
+<span class="ln">333</span>The next two lemmas extend these two calculations: the first
+<span class="ln">334</span>computes signed totals, and the second controls absolute sums when
+<span class="ln">335</span>specified splits occur away from old branching depths.</code></pre></details>
+</div>
+
+</body>
+</html>

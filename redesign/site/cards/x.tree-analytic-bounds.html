@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>해석적 경계 (복소 영역에서의 $Y_d$)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-trees.html">§3</a></div><h1>해석적 경계 (복소 영역에서의 $Y_d$)</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>x:tree-analytic-bounds</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/tree.first-variation.html" title="(3.6) 첫 변분: $\partial_{t_j}\log Y_d$ 는 새 path 하나의 조건부 기대값">tree:first-variation</a> <span class="stag">§3</span> <span class="muted">(3.6)</span> <span class="muted">— 첫 변분: $\partial_{t_j}\log Y_d$ 는 새 path 하나의 조건부 기대값</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/tree.log-expansion.s2.html" title="해석성, 수렴 영역, 꼬리 경계">tree:log-expansion.s2</a> (해석성으로 급수 확정), <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> (좌변의 해석적 경계). §6 <a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> (perturbations.tex 391–394: 복소 근방 |t|,|u|&lt;ρ 위의 해석성과 N에 균등한 유계)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.extension-expansion.s1.html" title="미분 규칙의 반복: 선택지는 old leaf 또는 fresh path">tree:extension-expansion.s1</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.log-expansion.s2.html" title="해석성, 수렴 영역, 꼬리 경계">tree:log-expansion.s2</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>유계 실수 path 함수 $D_j$와 $A=A_{\boldsymbol t}=1+\sum_jt_jD_j$ (<a class="node" href="../cards/tree.first-variation.html" title="(3.6) 첫 변분: $\partial_{t_j}\log Y_d$ 는 새 path 하나의 조건부 기대값">tree:first-variation</a>)에 대해, 앞의 식들 — (<a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>)의 $Y_d$와 (<span class="nolink" title="(3.4) (카드 없음)">tree:updated-kernel</span>), (<a class="node" href="../cards/tree.first-variation.html" title="(3.6) 첫 변분: $\partial_{t_j}\log Y_d$ 는 새 path 하나의 조건부 기대값">tree:first-variation</a>) — 은 복소 영역
+$$\sum_j|t_j|\|D_j\|_\infty&lt;1$$
+위에서 해석적이며, 경계는 kernel에 대해 균등하다(원문 157 "The expressions"가 가리키는 대상을 이 셋으로 읽은 것은 작성자 읽기). 이 합이 $\rho&lt;1$ 이하인 더 작은 닫힌 영역에서 $A$의 argument는 $\vartheta=\arcsin\rho&lt;\pi/2$ 이하이고 modulus는 $1-\rho$와 $1+\rho$ 사이다. $Y_d$의 argument가 $[-\vartheta,\vartheta]$에 있으면 principal power를 써서 $K_dY_d^{m_d}$의 argument는 $[-m_d\vartheta,m_d\vartheta]$에 있다. 그것은 0이 아니고, $1/m_d$ 거듭제곱을 취하면 $Y_{d-1}$에 같은 argument 경계가 나온다. 정량적으로, modulus 하계 $a_d&gt;0$은 하계
+$$a_{d-1}=a_d\cos(m_d\vartheta)^{1/m_d}&gt;0$$
+을 주고, modulus 상계 $1+\rho$는 보존된다. 이 경계들이 각 단계의 해석함수 적분과 이후의 모든 미분을 정당화한다. 또 (<span class="nolink" title="(3.5) (카드 없음)">tree:density</span>), 아래의 상쇄된 판들, 그리고 더 작은 영역에서 그 도함수들을 깊이, 지수, tree 크기, 삽입 함수의 경계를 고정하면 kernel에 대해 균등하게 누른다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>argument 경계: $|A-1|\le\rho$이면 $|\arg A|\le\arcsin\rho$. 부채꼴 $\{|\arg z|\le m_d\vartheta\}$는 $m_d\vartheta&lt;\pi/2$이므로 볼록이고, kernel 적분은 볼록 결합이라 그 안에 머문다. modulus 하계는 $\operatorname{Re}K_dY_d^{m_d}\ge K_d|Y_d|^{m_d}\cos(m_d\vartheta)\ge a_d^{m_d}\cos(m_d\vartheta)$에서 온다(작성자 풀이). 시작은 $a_L=1-\rho$.</p>
+<p>"These bounds justify integration of analytic functions at each step and all subsequent differentiations"(171–172)와 "their derivatives on smaller domains"(173–174)는 두 가지로 나눠 읽었다(원문은 방법을 명시하지 않는다). (가) 미분 가능성: 각 단계에서 유계 해석 피적분함수의 kernel 적분이 다시 해석적이고(해석성의 보존), 그래서 적분 기호 아래 미분이 정당하다. (나) 도함수의 크기: 영역을 줄여 도함수를 누르는 것은 Cauchy 추정이다. perturbations.tex 392–393 "Shrinking $\rho$ gives a uniform bound on their $u$-derivatives as well"가 (나)의 쓰임이다. 하계가 깊이마다 $\cos(m_d\vartheta)^{1/m_d}$배씩 줄므로 균등성은 고정된 깊이 $L$과 지수에서의 것이다. $W_{\mathcal T}$의 음의 지수 $\gamma_\beta$ 때문에 modulus 하계가 필요하다.</p><details class="src"><summary>원문 (trees.tex:156-176)</summary><h4>trees.tex:156-176</h4><pre class="tex"><code><span class="ln">156</span>\paragraph{Analytic bounds.}
+<span class="ln">157</span>The expressions are analytic on the complex domain
+<span class="ln">158</span>\[
+<span class="ln">159</span> \sum_j|t_j|\|D_j\|_\infty&lt;1,
+<span class="ln">160</span>\]
+<span class="ln">161</span>with bounds uniform over the kernels.
+<span class="ln">162</span>On a smaller closed domain with this sum at most $\rho&lt;1$, $A$ has argument bounded
+<span class="ln">163</span>by $\vartheta=\arcsin\rho&lt;\pi/2$ and modulus between $1-\rho$ and
+<span class="ln">164</span>$1+\rho$.  If $Y_d$ has argument in $[-\vartheta,\vartheta]$, then
+<span class="ln">165</span>$K_dY_d^{m_d}$ has argument in
+<span class="ln">166</span>$[-m_d\vartheta,m_d\vartheta]$, using the principal powers.  It is
+<span class="ln">167</span>nonzero, and taking its $1/m_d$ power gives the same argument bound
+<span class="ln">168</span>for $Y_{d-1}$.  More quantitatively, a lower modulus bound $a_d&gt;0$
+<span class="ln">169</span>gives the lower bound
+<span class="ln">170</span>$a_{d-1}=a_d\cos(m_d\vartheta)^{1/m_d}&gt;0$, whereas the upper modulus
+<span class="ln">171</span>bound $1+\rho$ is preserved.  These bounds justify integration of
+<span class="ln">172</span>analytic functions at each step and all subsequent differentiations.
+<span class="ln">173</span>They also bound \eqref{tree:density}, its canceled versions below,
+<span class="ln">174</span>and their derivatives on smaller domains, uniformly over the kernels
+<span class="ln">175</span>for fixed depth, exponents, tree size, and bounds on the inserted
+<span class="ln">176</span>functions.</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>퇴화 경우와 $b$, $M$ 의 본질적 유계성</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span> · 섹션: <a href="../map-upper.html">§4</a></div><h1>퇴화 경우와 $b$, $M$ 의 본질적 유계성</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>upper:bound.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span> <span class="muted">(2.1)</span> <span class="muted">— 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span> <span class="muted">(2.11)</span> <span class="muted">— 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</span></li><li><a class="node" href="../cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span> <span class="muted">(2.8)</span> <span class="muted">— site 분배함수 $V_{\rm s}$ (2.8)</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a>, <a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> (모든 moment의 유한성). x:model-moment-finiteness가 예고한 증명(model.tex 39–41)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a> <span class="stag">§2</span></li></ul></dd><dt>수학 진술</dt><dd><p>$M=\max_{s=\pm1}\lvert f(s)\rvert$ 로 둔다. $b=0$ a.s. 이거나 $M=0$ a.s. 이면 상호작용은 spin 무관인 무작위 상수 $c$ 이고, 모든 시행 법칙에 대해
+$$F_N=\mathcal B_r=\log2+\mathbb E\log\cosh h+\alpha\mathbb Ec.$$
+그렇지 않으면 $\mathbb P(M\ge u)&gt;0$, $\mathbb P(\lvert b\rvert\ge v)&gt;0$ 인 $u,v&gt;0$ 을 고른다. $\lvert b\rvert\prod_{\ell=1}^pM_\ell&lt;1$ a.s. 이므로 독립성에서
+$$\lVert b\rVert_\infty\le u^{-p},\qquad\lVert M\rVert_\infty\le(vu^{p-1})^{-1}.$$
+실제로 어느 한계든 양의 확률 집합에서 어기고 나머지 독립 인자를 이 하계로 제한하면 엄격한 곱 조건을 어기게 된다. 따라서 이후에 쓰는 모든 moment는 유한하다.</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-factorization" title="$a&gt;0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.">factor 전개</a>의 곱 항이 없으면 factor는 spin과 무관한 상수 $e^c$ 이고, <a class="gterm" href="../glossary.html#g-pressure" title="quenched pressure다. free energy density $f$ 와는 $F_N=-\beta f$ 관계다.">pressure</a>와 모든 시행값<sup><a class="gterm" href="../glossary.html#g-functional" title="$r$단 시행 법칙 $(\zeta,\mathbf m)$ 에서 계산한 계층 cavity functional(Panchenko–Talagrand functional의 power-mean 꼴)이다.">용어</a></sup>이 같은 값 $\log2+\mathbb E\log\cosh h+\alpha\mathbb Ec$ 가 된다. 곱 항이 있으면 $b$ 와 $f$ 가 서로 독립이고 곱이 a.s. 1 미만이라는 데서 둘 다 본질적으로 유계다.</p></dd><dt>차이</dt><dd><p>같은 내용이다. 유계 상수 $u^{-p}$, $(vu^{p-1})^{-1}$ 은 1보다 클 수 있다($f\mapsto\lambda f$, $b\mapsto\lambda^{-p}b$ 의 척도 자유, <a class="node" href="../cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a> 카드의 관찰). "$b$ 가 tanh처럼 1 미만"을 말하는 것은 아니다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p><strong>확인 (작성자가 보탠 것).</strong> 퇴화 경우: (2.3)에서 $e^{\theta}=a$ 이므로 $c=\log a=\theta(s)$ 이고 $\lvert c\rvert\le B(\theta)$ 라 적분 가능하다. $Z_N=e^{\sum_{k\le M_N}c_k}\prod_i2\cosh h_i$ 이므로 $F_N=\alpha\mathbb Ec+\log2+\mathbb E\log\cosh h$. 시행 쪽은 $U_{\theta_j}=c_j$, $C_\theta=e^c$ 이므로 $V_{\rm s}=\cosh h\,e^{\sum_{j\le k}c_j}$ 가 message에 의존하지 않아 $T_0V_{\rm s}=V_{\rm s}$, $\mathbb E\log T_0V_{\rm s}=\mathbb E\log\cosh h+\alpha p\,\mathbb Ec$, $\mathbb E\log T_0V_{\rm e}=\mathbb Ec$ 이고 $\mathcal B_r=\log2+\mathbb E\log\cosh h+\alpha p\mathbb Ec-\alpha(p-1)\mathbb Ec$ 가 같은 값이다.</p>
+<p>비퇴화 경우의 논증: $\mathbb P(\lvert b\rvert&gt;u^{-p})&gt;0$ 이면 $b$ 와 독립인 $M_1,\ldots,M_p$ 를 모두 $M_\ell\ge u$ 로 제한한 사건(확률 $&gt;0$)에서 $\lvert b\rvert\prod_\ell M_\ell&gt;1$ 이 된다. $M$ 쪽도 $\lvert b\rvert\ge v$ 와 $M_\ell\ge u$ ($\ell\ne1$)로 제한한다. 곱 한계의 꼴 $\lvert b\rvert\prod_\ell M_\ell&lt;1$ 은 <a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> 본문 메모에 있다.</p>
+<p>"degenerate"의 원문 조건은 "$b=0$ almost surely or $M=0$ almost surely"이다. model.tex 41–42의 "product term vanishes identically"(<a class="node" href="../cards/x.model-hypothesis-remarks.html" title="가정에 대한 주석: 퇴화 경우와 승수 $a$">x:model-hypothesis-remarks</a> (ii))와 같은 경우를 가리키지만, 이 단계는 그 카드를 쓰지 않고 스스로 처리한다.</p><details class="src"><summary>원문 (upper.tex:17-34)</summary><h4>upper.tex:17-34</h4><pre class="tex"><code><span class="ln">17</span>\begin{proof}
+<span class="ln">18</span>First dispose of the degenerate factorization. Put
+<span class="ln">19</span>$M=\max_{s=\pm1}|f(s)|$. If $b=0$ almost surely or $M=0$ almost surely,
+<span class="ln">20</span>the interaction is a spin-independent random constant $c$, and
+<span class="ln">21</span>\[
+<span class="ln">22</span> F_N=\cB_r=\log2+\E\log\cosh h+\alpha\E c
+<span class="ln">23</span>\]
+<span class="ln">24</span>for every trial law. Otherwise choose $u,v&gt;0$ with
+<span class="ln">25</span>$\P(M\ge u)&gt;0$ and $\P(|b|\ge v)&gt;0$. Since
+<span class="ln">26</span>$|b|\prod_{\ell=1}^p M_\ell&lt;1$ almost surely, independence gives
+<span class="ln">27</span>\[
+<span class="ln">28</span> \|b\|_\infty\le u^{-p},\qquad
+<span class="ln">29</span> \|M\|_\infty\le(vu^{p-1})^{-1}.
+<span class="ln">30</span>\]
+<span class="ln">31</span>Indeed, violating either bound on a set of positive probability and
+<span class="ln">32</span>restricting the other independent factors to these lower bounds would
+<span class="ln">33</span>violate the strict product condition. All moments used below are
+<span class="ln">34</span>therefore finite.</code></pre></details>
+</div>
+
+</body>
+</html>

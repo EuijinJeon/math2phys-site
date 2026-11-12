@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a> <span class="stag">§2</span> · 섹션: <a href="../map-model.html">§2</a></div><h1>(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>model:chain</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span> <span class="muted">— message $x$ 와 $q_x$; site 항과 edge 항의 뜻</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a>, <a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a>, model:power-means의 message와 $\eta$. trees.tex 26–27(시행 사슬이 path kernel의 한 예: $\eta_d$ 는 깊이 $d$, $x$ 는 깊이 $r$), comparison.tex 72(comp:encoding의 재귀가 이것의 branching 판)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.bounded-lower.s1.html" title="고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$">comp:bounded-lower.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.encoding.s2.html" title="거꾸로 쌓은 측도 $\eta_d$ 와 $\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L$">comp:encoding.s2</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.encoding.s3.html" title="branching pattern마다의 확인: backward recursion $G_T(\eta_d)$">comp:encoding.s3</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.encoding.s4.html" title="root 혼합의 보존, (comp:single-label-moments), label마다의 독립 사본">comp:encoding.s4</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.html" title="trial 삽입과 정확한 trial 항등식">comp:insertion-comparison.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s1.html" title="reservoir spin을 trial spin 과정으로 바꾸기: $\widetilde A$, $\widetilde Y_0$">comp:insertion-comparison.s1.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s3.html" title="bond 쪽의 인수분해와 trial 증분 $=\mathcal B_{L-1}$">comp:insertion-comparison.s1.s3</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s2.html" title="시행 functional 안정성 (reduction:trial-stability)">reduction:stability.s2</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.bound.s2.html" title="interpolation $\varphi(t)$ 와 두 끝점">upper:bound.s2</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>$\mathcal P(E)$ 는 $E$ 위의 Borel 확률측도들이다. $\mathcal M_1=\mathcal P(\mathbb R)$, $\mathcal M_{j+1}=\mathcal P(\mathcal M_j)$ 로 두고 각각 약수렴 위상과 그 Borel $\sigma$-field를 준다. $r\ge1$, $\zeta\in\mathcal M_{r+1}$, $0&lt;m_1&lt;\cdots&lt;m_r&lt;1$ 을 고정한다. 각 message label $\omega$ 마다 독립으로
+$$\eta_0^\omega\sim\zeta,\qquad\eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\ \ (0\le d\le r-2),\qquad x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega\tag{2.7}$$
+를 뽑는다. $r=1$ 이면 각 label이 먼저 법칙 $\zeta$ 의 무작위 확률측도 $\eta_0$ 를 뽑고, 다음에 법칙 $\eta_0$ 의 $x$ 를 뽑는다. 더 높은 단계는 측도 뽑기를 반복한다. 이 변수들은 모두 물리적 disorder와 독립이다. $x_1,\ldots,x_p$ 와 $x_\ell^j$ ($j\ge1$, $1\le\ell&lt;p$) 에는 서로 다른 label을 쓴다.</p></dd><dt>물리 진술</dt><dd><p>$r$단 RSB의 시행 <a class="gterm" href="../glossary.html#g-order-parameter" title="message label $\omega$ 마다 독립으로 무작위 측도의 사슬을 뽑아 마지막에 message $x$ 를 얻는 $r$단 시행 법칙이다. $r=0$ 이면 $\zeta$ 는 $x$ 의 분포 하나다. 사슬은 물리적 disorder와 독립이다.">order parameter</a>: $r=1$ 이면 cavity field의 "분포의 분포"(population of populations)이고, $\mathbf m$ 은 <a class="gterm" href="../glossary.html#g-parisi-parameters" title="power-mean의 지수열이다.">Parisi parameter</a>이다. label이 다른 <a class="gterm" href="../glossary.html#g-message" title="spin 하나 위의 확률분포 $q_x$ 를 정하는 실수다. 시행 법칙에서는 order-parameter 사슬의 마지막 변수이고, 서로 다른 label의 message는 독립이다.">message</a>는 서로 독립이고 <a class="gterm" href="../glossary.html#g-disorder" title="모형과 시행 functional에서 보조 message가 아닌 무작위 변수 전부다: factor 개수, factor의 site index, factor별 상호작용, site별 장. 시행 사슬($\eta^\omega_d$, $x^\omega$)은 이것과 독립이다(model.tex 79–80). power mean $T_d$ 의 조건부 기대값은 이것을 고정한…">disorder</a>와도 독립이다.</p></dd><dt>차이</dt><dd><p>(1) 시행 법칙은 임의다. 실제 계에서 만든 것이 아니고 moment 조건도 없다. (2) 사슬의 깊이 $d$ 를 <a class="gterm" href="../glossary.html#g-physical-pure-state" title="물리에서 열역학 극한의 Gibbs 측도를 분해한 극단적 성분이다(물리에서는 한 성분 안에서 spin 사이의 상관, 곧 평균의 곱을 뺀 두 점 함수가 사라진다고 본다). Parisi 그림에서는 성분마다 가중치가 있고 성분 사이 overlap이 계층 구조를 이룬다고 본다.">물리적 pure state</a> 계층의 단계와 동일시하지 않는다. $\mathbf m$ 은 여기서 임의이고(inf의 범위), 하한에서는 최적화하지 않고 $m_d=d/L$ 로 고정한다<sup><a class="gterm" href="../glossary.html#g-grid" title="하한 내내 쓰는 Parisi parameter의 고정 선택이다.">용어</a></sup>. (3) $r=0$ 은 이 카드가 아니라 x:model-depth-zero에서 따로 정한다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p>$\eta_d^\omega$ 는 $\mathcal M_{r-d}$ 의 값을 갖는다($\eta_0\in\mathcal M_r$, $\eta_{r-1}\in\mathcal M_1$). 원문에 명시되어 있지 않고 (2.7)에서 읽은 것이다. label 집합은 $\{1,\ldots,p\}\sqcup\{(j,\ell):j\ge1,\ 1\le\ell&lt;p\}$ 로 가산 무한이다: model.tex 80–81은 $x_\ell^j$ 의 첨자를 $j\le k$ 가 아니라 $j\ge1$ 로 잡고, 82행도 $\theta,\theta_1,\ldots$ 를 $k$ 와 독립인 무한열로 잡는다. 사슬들은 label끼리 i.i.d.이고 $k$ 와 독립이므로(71, 79–80행) $V_{\rm s}$ 는 처음 $k$ 개 묶음만 쓰는 함수이고, $\mathscr F_d$(90–91행)는 가산 개 변수가 생성하는 $\sigma$-field다. $V_{\rm s}$ 의 label과 $V_{\rm e}$ 의 label도 서로 다르다(80–81행). upper.tex 40, comparison.tex 182도 서로 다른 label의 약속을 쓴다.</p><details class="src"><summary>원문 (model.tex:68-81)</summary><h4>model.tex:68-81</h4><pre class="tex"><code><span class="ln">68</span>Write $\mathcal P(E)$ for the Borel probability measures on $E$.
+<span class="ln">69</span>Let $\mathcal M_1=\mathcal P(\R)$ and
+<span class="ln">70</span>$\mathcal M_{j+1}=\mathcal P(\mathcal M_j)$, equipped with the topology of weak convergence and its Borel sigma-field. Fix $r\ge1$, $\zeta\in\mathcal M_{r+1}$, and
+<span class="ln">71</span>$0&lt;m_1&lt;\cdots&lt;m_r&lt;1$. For each message label $\omega$ independently, draw
+<span class="ln">72</span>\begin{equation}\label{model:chain}
+<span class="ln">73</span> \eta_0^\omega\sim\zeta,\qquad
+<span class="ln">74</span> \eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\ (0\le d\le r-2),
+<span class="ln">75</span> \qquad x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega.
+<span class="ln">76</span>\end{equation}
+<span class="ln">77</span>At $r=1$, this means that each label first draws a random probability
+<span class="ln">78</span>measure $\eta_0$ with law $\zeta$, then draws $x$ with law $\eta_0$.
+<span class="ln">79</span>Higher levels repeat this sampling of measures. All these variables are
+<span class="ln">80</span>independent of the physical disorder. Use different
+<span class="ln">81</span>labels for $x_1,\ldots,x_p$ and for $x_\ell^j$, $j\ge1$, $1\le\ell&lt;p$.</code></pre></details>
+</div>
+
+</body>
+</html>

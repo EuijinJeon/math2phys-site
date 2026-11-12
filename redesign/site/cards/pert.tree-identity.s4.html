@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>조립: 혼합 전개, mark 평균, site 평균</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>조립: 혼합 전개, mark 평균, site 평균</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:tree-identity.s4</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a> <span class="stag">§6</span> <span class="muted">— $k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로</span></li><li><a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a> <span class="stag">§6</span> <span class="muted">— mark selector (6.18)</span></li><li><a class="node" href="../cards/pert.tree-identity.s3.html" title="정확한 split 깊이 $H_d-H_{d+1}$ 과 모양의 선택">pert:tree-identity.s3</a> <span class="stag">§6</span> <span class="muted">— 정확한 split 깊이 $H_d-H_{d+1}$ 과 모양의 선택</span></li><li><a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> <span class="stag">§6</span> <span class="muted">Lemma 6.4</span> <span class="muted">— insertion 계수의 소멸 (Lemma 6.4)</span></li><li><a class="node" href="../cards/pert.analytic-difference.html" title="(6.15) 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)">pert:analytic-difference</a> <span class="stag">§6</span> <span class="muted">(6.15)</span> <span class="muted">— 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a> <span class="stag">§6</span> <span class="muted">— spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>pert:tree-identity의 결론 (6.17)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>마지막으로 혼합 canceled-anchor 전개를 차 (6.15)에 적용하고, selector를 써서 mark를 평균하고, 독립 균일 insertion site를 평균한다. 마지막 평균이 정확히 $R_E$ 다. pert:analytic과 polarization이 계수 차를 0으로 보내 (6.17)을 낳는다. 유한 일차결합이 결론을 overlap 단항식에서 진술된 시험함수로 넓힌다. 이 구성은 깊이 $L-1$ 까지의 mark만 쓴다: 확장 규칙은 anchor나 이미 쓴 color를 다시 쓰지 않으므로 깊이 $L$ 에서의 일치 검사가 필요 없다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀이(작성자). <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>을 $D_j=g_j\sigma_i$ 로 쓰면 혼합 도함수의 old tree 쪽은 $\sum_Ec_E\mathbb E[fg_0^{a_*}S_0^{a_*}\prod_jg_j^{a_j(E)}\sigma_i^{a_j(E)}]$ 이고, mark 평균이 <a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a>의 지시함수를 곱해 허용 history $\mathfrak E(\mathcal T,a_*,\mathcal C)$ 만 남기며, site 평균이 $S_0^{a_*}\prod_j\sigma_i^{a_j(E)}$ 를 $R_E$ 로 바꾼다(<a class="node" href="../cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a>). anchor 하나 쪽도 같다. 그래서 혼합 도함수가 정확히 (6.17)의 좌변(선형결합의 각 항)이고, s1에 의해 0으로 간다. "overlap 단항식에서 시험함수로"는 $f$ 에 대한 선형성이다. 깊이 $L$: 서로 다른 위치에서 $H_L=0$ 이 자동이므로 selector가 필요 없다.</p><details class="src"><summary>원문 (perturbations.tex:526-536)</summary><h4>perturbations.tex:526-536</h4><pre class="tex"><code><span class="ln">526</span>Finally apply the mixed canceled-anchor expansion to the difference
+<span class="ln">527</span>\eqref{pert:analytic-difference}, average the marks using the
+<span class="ln">528</span>selector, and average the independent uniform insertion site.  The
+<span class="ln">529</span>latter average is exactly $R_E$.  Lemma~\ref{pert:analytic} and
+<span class="ln">530</span>polarization make the coefficient difference tend to zero, yielding
+<span class="ln">531</span>\eqref{pert:tree-identity-eq}.  Finite linear combinations extend the
+<span class="ln">532</span>conclusion from overlap monomials to the stated tests.  The
+<span class="ln">533</span>construction uses only marks through depth $L-1$: the extension rule
+<span class="ln">534</span>never reuses the anchor or an already used color, so no test of
+<span class="ln">535</span>coincidence at depth $L$ is required.
+<span class="ln">536</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

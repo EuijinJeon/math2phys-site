@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a> <span class="stag">§10</span> · 섹션: <a href="../map-consequences.html">§10</a></div><h1>$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>x:cons-energy-score</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a> <span class="stag">§10</span> <span class="muted">— 명명 모형도 Poisson 개수와 복원추출을 유지한다</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span> <span class="muted">Corollary 10.1</span> <span class="muted">— Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)</span></li><li><a class="node" href="../cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span> <span class="muted">Corollary 10.2</span> <span class="muted">— soft random 짝수 $K$-SAT (Corollary 10.2)</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span> <span class="muted">(2.11)</span> <span class="muted">— 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span> <span class="muted">— $r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a> ($\mathcal E_N$, $Z_N(\beta)$, $\mathcal B_{r,\beta}$), g:ground-state의 기호<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.ground.s1.html" title="유한 크기 끼움: $g_N\le P_N(\beta)/\beta\le g_N+\log2/\beta$">models:ground.s1</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.ground.s2.html" title="각 $\beta$ 에서 주정리: $\limsup_Ng_N\le I(\beta)/\beta\le\liminf_Ng_N+\log2/\beta$">models:ground.s2</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.ground.s4.html" title="SAT에서 최대화 = 위반 수 최소화">models:ground.s4</a> <span class="stag">§10</span></li></ul></dd><dt>수학 진술</dt><dd><p>spin 모형에서는
+$$\mathcal E_N(\sigma)=\sum_{k=1}^{M_N}J_k\prod_{\ell=1}^p\sigma_{i_{\ell,k}}+\sum_{i=1}^NH_i\sigma_i,$$
+satisfiability 모형에서는
+$$\mathcal E_N(\sigma)=-\sum_{k=1}^{M_N}W_k\prod_{\ell=1}^K\frac{1+\varepsilon_{\ell,k}\sigma_{i_{\ell,k}}}{2}$$
+로 둔다(unscaled energy score). 이 점수와 그 disorder 법칙은 $\beta$ 에 의존하지 않고, 두 경우 모두 분배함수는 $Z_N(\beta)=\sum_\sigma e^{\beta\mathcal E_N(\sigma)}$ 이다. $\mathcal B_{r,\beta}$ 는 역온도 $\beta$ 에서 해당 법칙에 대한 functional (2.11)이다.</p></dd><dt>물리 진술</dt><dd><p>$\mathcal E_N$ 은 역온도를 뗀 에너지의 부호를 바꾼 것이다: $-H_N=\beta\mathcal E_N$. spin 모형에서는 coupling과 장의 에너지 이득, SAT에서는 위반된 clause 가중치 합의 음수다. <a class="gterm" href="../glossary.html#g-disorder" title="모형과 시행 functional에서 보조 message가 아닌 무작위 변수 전부다: factor 개수, factor의 site index, factor별 상호작용, site별 장. 시행 사슬($\eta^\omega_d$, $x^\omega$)은 이것과 독립이다(model.tex 79–80). power mean $T_d$ 의 조건부 기대값은 이것을 고정한…">disorder</a>($M_N$, site, $J_k$, $H_i$, $W_k$, $\varepsilon_{\ell,k}$)는 온도와 무관하게 한 번 뽑고 $\beta$ 만 바꾼다. $\mathcal B_{r,\beta}$ 는 역온도 $\beta$ 의 시행 <a class="gterm" href="../glossary.html#g-functional" title="$r$단 시행 법칙 $(\zeta,\mathbf m)$ 에서 계산한 계층 cavity functional(Panchenko–Talagrand functional의 power-mean 꼴)이다.">functional</a>이다.</p></dd><dt>차이</dt><dd><p>정확하다. $-H_N=\beta\mathcal E_N$ 은 (2.2)에 $\theta_\beta$, $h_\beta$ 를 넣으면 나온다(작성자 확인; 원문은 $Z_N(\beta)$ 의 꼴만 적는다). $\mathcal B_{r,\beta}$ 에서 $r=0$ 은 x:model-depth-zero의 $\mathcal B_0$ 이다(작성자 읽기: models:ground의 $\inf_{r\ge0}$).</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p>$M_N$, $i_{\ell,k}$ 는 (2.2)의 Poisson 개수와 복원추출 index이고(<a class="node" href="../cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a>), $J_k$, $H_i$, $W_k$, $\varepsilon_{\ell,k}$ 는 <a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="../cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>의 법칙에서 뽑은 독립 사본이다. 원문은 이것을 기호로만 쓴다. 83행의 <code>\eqref{model:functional}</code> 이 이 카드의 유일한 <code>\ref</code> 다.</p><details class="src"><summary>원문 (consequences.tex:66-84)</summary><h4>consequences.tex:66-84</h4><pre class="tex"><code><span class="ln">66</span>For the spin model, define the unscaled energy score by
+<span class="ln">67</span>\[
+<span class="ln">68</span> \mathcal E_N(\sigma)
+<span class="ln">69</span> =\sum_{k=1}^{M_N}J_k\prod_{\ell=1}^p\sigma_{i_{\ell,k}}
+<span class="ln">70</span>   +\sum_{i=1}^N H_i\sigma_i.
+<span class="ln">71</span>\]
+<span class="ln">72</span>For the satisfiability model, put
+<span class="ln">73</span>\[
+<span class="ln">74</span> \mathcal E_N(\sigma)
+<span class="ln">75</span> =-\sum_{k=1}^{M_N}W_k
+<span class="ln">76</span>      \prod_{\ell=1}^K\frac{1+\varepsilon_{\ell,k}
+<span class="ln">77</span>       \sigma_{i_{\ell,k}}}{2}.
+<span class="ln">78</span>\]
+<span class="ln">79</span>These scores and their disorder laws do not depend on $\beta$; in
+<span class="ln">80</span>both cases the partition function is
+<span class="ln">81</span>$Z_N(\beta)=\sum_\sigma e^{\beta\mathcal E_N(\sigma)}$.
+<span class="ln">82</span>Let $\cB_{r,\beta}$ denote the functional
+<span class="ln">83</span>\eqref{model:functional} for the corresponding laws at inverse
+<span class="ln">84</span>temperature $\beta$.</code></pre></details>
+</div>
+
+</body>
+</html>

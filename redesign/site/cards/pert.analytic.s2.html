@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taylor 계수의 수렴과 극한 해석함수 $H$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>Taylor 계수의 수렴과 극한 해석함수 $H$</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:analytic.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span> <span class="muted">— 균등한 해석적 경계</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> <span class="muted">Lemma 6.2</span> <span class="muted">— 결정적 매개변수 선택 (Lemma 6.2)</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li><li><a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a> <span class="stag">§6</span> <span class="muted">(6.14)</span> <span class="muted">— insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$H_N(t,0)$ 의 각 Taylor 계수는 prescribed tree 위 multioverlap moment와 그런 moment 두 개의 곱의 유한 일차결합이다. 그 계수는 고정 tree, 지수, mark 법칙, 다항식 시험으로 정해지고 $N$ 에 무관하다. 실제로 canceled anchor 전개는 고정된 차수마다 유한 개의 확장을 주고, 독립 insertion site를 평균하면 그 spin 곱이 multioverlap이 된다. 이 계수들은 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii)으로 수렴한다. 그러면 균등 해석적 경계가 Taylor 꼬리의 기하 경계를 통해 $H_N(t,0)$ 이 각 더 작은 원판에서 해석함수 $H(t)$ 로 균등 수렴함을 함의한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>읽기(작성자). $k$ 차 계수는 <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>에서 같은 방향 $D=g\sigma_i$ 의 $t^k$ 계수(우변을 $k!$ 로 나눈 것)이다. 각 history $E$ 의 항 $E_{\mathcal T_E}[fg_0^{a_*}S_0^{a_*}\prod_j(g\sigma_i)^{a_j(E)}]$ 에서 mark 기대값은 tree의 vertex 공유 구조로 정해지는 수가 되고(mark는 base reservoir와 독립), 새 site $i$ 의 균일 평균이 $\frac1N\sum_i\sigma_i^{a_*}\prod_j\sigma_i^{a_j}$ 같은 multioverlap을 만든다. $f$ 가 multioverlap 다항식이므로 결과는 유한 tree 위 multioverlap 곱의 기대값이다. 두 moment의 곱은 $\mathbb Ef\cdot J_{N,\{a_*\}}$ 쪽에서 나온다. 극한 $H$ 는 존재만 알고 값은 모른다. Cauchy 추정: 균등 경계 $M$ 이면 $k$ 차 계수가 $M\rho^{-k}$ 이하라 작은 원판에서 꼬리가 기하급수로 작고, 각 계수의 수렴과 합쳐 균등 수렴한다.</p><details class="src"><summary>원문 (perturbations.tex:399-409)</summary><h4>perturbations.tex:399-409</h4><pre class="tex"><code><span class="ln">399</span>Each Taylor coefficient of $H_N(t,0)$ is a finite linear combination
+<span class="ln">400</span>of multioverlap moments and products of two such moments on prescribed trees.
+<span class="ln">401</span>Their coefficients are determined by the fixed tree, exponents, mark law,
+<span class="ln">402</span>and polynomial test, and are independent of $N$. Indeed the canceled
+<span class="ln">403</span>anchor expansion supplies finitely many extensions at any fixed
+<span class="ln">404</span>order; averaging the independent insertion site turns its spin
+<span class="ln">405</span>product into a multioverlap.  These coefficients converge by
+<span class="ln">406</span>Lemma~\ref{pert:selection}(iii).  The uniform analytic bound then
+<span class="ln">407</span>implies, by the geometric bound on the Taylor tails, that
+<span class="ln">408</span>$H_N(t,0)$ converges uniformly on each smaller disk to an analytic
+<span class="ln">409</span>function $H(t)$.</code></pre></details>
+</div>
+
+</body>
+</html>

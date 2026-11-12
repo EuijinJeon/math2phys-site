@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>pert:analytic</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.analytic-difference.html" title="(6.15) 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)">pert:analytic-difference</a> <span class="stag">§6</span> <span class="muted">(6.15)</span> <span class="muted">— 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)</span></li><li><a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a> <span class="stag">§6</span> <span class="muted">Lemma 6.3</span> <span class="muted">— Palm 항등식 (Lemma 6.3)</span></li><li><a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a> <span class="stag">§6</span> <span class="muted">(6.1)</span> <span class="muted">— 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> <span class="muted">Lemma 6.2</span> <span class="muted">— 결정적 매개변수 선택 (Lemma 6.2)</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span> <span class="muted">— 이후의 $N\to\infty$ 는 선택된 수열을 따른다</span></li><li><a class="node" href="../cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a> <span class="stag">§6</span> <span class="muted">— mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a>, s4 (k=0의 상수 계수, polarization의 각 항). 규칙 P7, L1 수 4<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s1.html" title="$k=0$ 과 polarization: 혼합 도함수를 같은 방향 계수로">pert:tree-identity.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s4.html" title="조립: 혼합 전개, mark 평균, site 평균">pert:tree-identity.s4</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.pert-order-of-choices.html" title="선택의 순서 (Remark 6.6)">x:pert-order-of-choices</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>섭동 족에 포함된 모든 mark specification, old tree, anchor, 유계 overlap 다항식 시험 $f$ 에 대해, $H_N(t,0)$ 의 $t=0$ 에서의 모든 Taylor 계수가 선택된 수열을 따라 0으로 간다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>펼침</h2><details class="child"><summary>균등한 해석적 경계 <a class="node" href="../cards/pert.analytic.s1.html">↗</a><span class="cm">tree:extension-expansion이 복소 근방 $|t|,|u|&lt;\rho$ 를 주고, 거기서 (6.15)의 함수들은 해석적이며 $N$ 과 선택된 매개변수 벡터에 균등하게 유계다. $\rho$ 를 줄이면 그 $u$-도함수에도 균등한 경계가 나온다. 이 상수들은 고정 tree, $L$, $\|f\|_\infty$ 에 의존해도 되지만 mark specification 안의 type 첨자 $j$ 에는 의존하지 않는다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/x.tree-analytic-bounds.html" title="해석적 경계 (복소 영역에서의 $Y_d$)">x:tree-analytic-bounds</a> <span class="stag">§3</span> <span class="muted">— 해석적 경계 (복소 영역에서의 $Y_d$)</span></li><li><a class="node" href="../cards/pert.analytic-difference.html" title="(6.15) 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)">pert:analytic-difference</a> <span class="stag">§6</span> <span class="muted">(6.15)</span> <span class="muted">— 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)</span></li><li><a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a> <span class="stag">§6</span> <span class="muted">(6.14)</span> <span class="muted">— insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span> <span class="muted">— 이후의 $N\to\infty$ 는 선택된 수열을 따른다</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> (기하 꼬리), s3 (u-도함수 경계 C)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>tree:extension-expansion이 복소 근방 $|t|,|u|&lt;\rho$ 를 주고, 거기서 (6.15)의 함수들은 해석적이며 $N$ 과 선택된 매개변수 벡터에 균등하게 유계다. $\rho$ 를 줄이면 그 $u$-도함수에도 균등한 경계가 나온다. 이 상수들은 고정 tree, $L$, $\|f\|_\infty$ 에 의존해도 되지만 mark specification 안의 type 첨자 $j$ 에는 의존하지 않는다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>Taylor 계수의 수렴과 극한 해석함수 $H$ <a class="node" href="../cards/pert.analytic.s2.html">↗</a><span class="cm">$H_N(t,0)$ 의 각 Taylor 계수는 prescribed tree 위 multioverlap moment와 그런 moment 두 개의 곱의 유한 일차결합이다. 그 계수는 고정 tree, 지수, mark 법칙, 다항식 시험으로 정해지고 $N$ 에 무관하다. 실제로 canceled anchor 전개는 고정된 차수마다 유한 개의 확장을 주고, 독립 insertion site를 평균하면 그 spin 곱이 multioverlap이 된다. 이 계수들은 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii)으로 수렴한다. 그러면 균등 해석적 경계가 Taylor 꼬리의 기하 경계를 통해 $H_N(t,0)$ 이 각 더 작은 원판에서 해석함수 $H(t)$ 로 균등 수렴함을 함의한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span> <span class="muted">— 균등한 해석적 경계</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> <span class="muted">Lemma 6.2</span> <span class="muted">— 결정적 매개변수 선택 (Lemma 6.2)</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.3</span> <span class="muted">— Canceled-anchor expansion (anchor 상쇄 전개)</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li><li><a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a> <span class="stag">§6</span> <span class="muted">(6.14)</span> <span class="muted">— insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$H_N(t,0)$ 의 각 Taylor 계수는 prescribed tree 위 multioverlap moment와 그런 moment 두 개의 곱의 유한 일차결합이다. 그 계수는 고정 tree, 지수, mark 법칙, 다항식 시험으로 정해지고 $N$ 에 무관하다. 실제로 canceled anchor 전개는 고정된 차수마다 유한 개의 확장을 주고, 독립 insertion site를 평균하면 그 spin 곱이 multioverlap이 된다. 이 계수들은 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii)으로 수렴한다. 그러면 균등 해석적 경계가 Taylor 꼬리의 기하 경계를 통해 $H_N(t,0)$ 이 각 더 작은 원판에서 해석함수 $H(t)$ 로 균등 수렴함을 함의한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로 <a class="node" href="../cards/pert.analytic.s3.html">↗</a><span class="cm">충분히 큰 모든 고정 $j$ 에 대해, 해당 type과 pert:palm이 $$\limsup_{N\to\infty}|H_N(j^{-1},0)|\le C\limsup_{N\to\infty}|u_{\nu,N}|\le2Cj^{-j}$$ 를 준다. 여기서 score 오차는 $j$ 고정에서 0으로 가고, pert:palm에 의해 모든 $j$ 에 같은 함수 $H_N$ 이 쓰인다. 따라서 $|H(j^{-1})|\le2Cj^{-j}$ 이다. $H$ 의 첫 0 아닌 Taylor 계수가 차수 $q$ 였다면 충분히 큰 모든 $j$ 에서 $|H(j^{-1})|\ge cj^{-q}$ 가 되어 모순이다. 따라서 $H$ 는 0 근처에서 항등적으로 0이고, 이것이 계수마다 주장을 증명한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span> <span class="muted">— 균등한 해석적 경계</span></li><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> <span class="stag">§6</span> <span class="muted">— Taylor 계수의 수렴과 극한 해석함수 $H$</span></li><li><a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a> <span class="stag">§6</span> <span class="muted">Lemma 6.3</span> <span class="muted">— Palm 항등식 (Lemma 6.3)</span></li><li><a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a> <span class="stag">§6</span> <span class="muted">(6.1)</span> <span class="muted">— 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> <span class="muted">Lemma 6.2</span> <span class="muted">— 결정적 매개변수 선택 (Lemma 6.2)</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span> <span class="muted">— 이후의 $N\to\infty$ 는 선택된 수열을 따른다</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>pert:analytic의 결론<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>충분히 큰 모든 고정 $j$ 에 대해, 해당 type과 pert:palm이
+$$\limsup_{N\to\infty}|H_N(j^{-1},0)|\le C\limsup_{N\to\infty}|u_{\nu,N}|\le2Cj^{-j}$$
+를 준다. 여기서 score 오차는 $j$ 고정에서 0으로 가고, pert:palm에 의해 모든 $j$ 에 같은 함수 $H_N$ 이 쓰인다. 따라서 $|H(j^{-1})|\le2Cj^{-j}$ 이다. $H$ 의 첫 0 아닌 Taylor 계수가 차수 $q$ 였다면 충분히 큰 모든 $j$ 에서 $|H(j^{-1})|\ge cj^{-q}$ 가 되어 모순이다. 따라서 $H$ 는 0 근처에서 항등적으로 0이고, 이것이 계수마다 주장을 증명한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong></p>
+<ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a>: <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>의 해석적 경계로 $J$, $H_N$ 이 $|t|,|u|&lt;\rho$ 에서 해석적이고 $N$ 과 선택된 벡터에 균등하게 유계, $u$-도함수도 균등 유계. 상수는 type 첨자 $j$ 에 무관.</li><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a>: $H_N(t,0)$ 의 각 Taylor 계수는 prescribed tree 위 multioverlap moment(와 그 둘의 곱)의 $N$ 무관 계수 유한 일차결합이라 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii)으로 수렴하고, 해석적 경계로 $H_N(t,0)\to H(t)$ 가 작은 원판에서 균등.</li><li><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a>: 각 큰 고정 $j$ 에서 Palm 경계와 $|u_\nu|\le2j^{-j}$ 로 $|H(1/j)|\le2Cj^{-j}$. $H$ 의 첫 0 아닌 계수의 차수가 $q$ 면 $|H(1/j)|\ge cj^{-q}$ 이라 모순, 따라서 $H\equiv0$.</li></ul>
+<p><strong>극한 순서.</strong> 각 $j$ 를 고정하고 $N\to\infty$ 한 뒤 $j\to\infty$ 다(s3, <a class="node" href="../cards/x.pert-order-of-choices.html" title="선택의 순서 (Remark 6.6)">x:pert-order-of-choices</a>). type에 균등한 score 집중은 쓰지 않는다: 쓰는 것은 각 고정 $\nu$ 의 $e_{\nu,N}\to0$ 과, 같은 함수 $H_N$ 이 모든 $j$ 에 쓰인다는 <a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a>의 둘째 주장이다.</p>
+<p>물리 대응은 두지 않았다<sup><a class="gterm" href="../glossary.html#g-palm-identity" title="Palm 항등식(pert:palm, 원문 이름 &quot;Palm identity&quot;)은 Poisson add-one 항등식으로 score 곱 $\mathbb E[fD_\nu^{a_*}]/(c_\nu s_N)$ 을, reservoir 법칙은 그대로 둔 채 anchor $a_*$ 에 새 섭동 하나($A=1+t_\nu g\sigma_i+u_\nu g_0S_0$)를 넣은…">용어</a></sup>. 이것은 해석함수의 유일성 논법이다: $t$ 의 모든 거듭제곱보다 빨리 작아지는 값을 점열 $t=1/j\to0$ 에서 갖는 해석함수는 0이다.</p><details class="src"><summary>원문 (perturbations.tex:383-388, perturbations.tex:390-425)</summary><h4>perturbations.tex:383-388</h4><pre class="tex"><code><span class="ln">383</span>\begin{lemma}[Vanishing insertion coefficients]
+<span class="ln">384</span>\label[lemma]{pert:analytic}
+<span class="ln">385</span>For every mark specification included in the perturbation family, old tree, anchor, and bounded
+<span class="ln">386</span>overlap-polynomial test $f$, every Taylor coefficient at $t=0$ of
+<span class="ln">387</span>$H_N(t,0)$ tends to zero along the selected sequence.
+<span class="ln">388</span>\end{lemma}</code></pre><h4>perturbations.tex:390-425</h4><pre class="tex"><code><span class="ln">390</span>\begin{proof}
+<span class="ln">391</span>Lemma~\ref{tree:extension-expansion} gives a complex neighborhood
+<span class="ln">392</span>$|t|,|u|&lt;\rho$ on which the functions in
+<span class="ln">393</span>\eqref{pert:analytic-difference} are analytic and uniformly bounded
+<span class="ln">394</span>in $N$ and in the selected parameter vector.  Shrinking $\rho$ gives
+<span class="ln">395</span>a uniform bound on their $u$-derivatives as well.  These constants may
+<span class="ln">396</span>depend on the fixed tree, $L$, and $\|f\|_\infty$, but not on the type
+<span class="ln">397</span>index $j$ in the mark specification.
+<span class="ln">398</span>
+<span class="ln">399</span>Each Taylor coefficient of $H_N(t,0)$ is a finite linear combination
+<span class="ln">400</span>of multioverlap moments and products of two such moments on prescribed trees.
+<span class="ln">401</span>Their coefficients are determined by the fixed tree, exponents, mark law,
+<span class="ln">402</span>and polynomial test, and are independent of $N$. Indeed the canceled
+<span class="ln">403</span>anchor expansion supplies finitely many extensions at any fixed
+<span class="ln">404</span>order; averaging the independent insertion site turns its spin
+<span class="ln">405</span>product into a multioverlap.  These coefficients converge by
+<span class="ln">406</span>Lemma~\ref{pert:selection}(iii).  The uniform analytic bound then
+<span class="ln">407</span>implies, by the geometric bound on the Taylor tails, that
+<span class="ln">408</span>$H_N(t,0)$ converges uniformly on each smaller disk to an analytic
+<span class="ln">409</span>function $H(t)$.
+<span class="ln">410</span>
+<span class="ln">411</span>For every sufficiently large fixed $j$, the corresponding type and
+<span class="ln">412</span>Lemma~\ref{pert:palm} give
+<span class="ln">413</span>\[
+<span class="ln">414</span> \limsup_{N\to\infty}|H_N(j^{-1},0)|
+<span class="ln">415</span> \leq C\limsup_{N\to\infty}|u_{\nu,N}|
+<span class="ln">416</span> \leq2Cj^{-j}.
+<span class="ln">417</span>\]
+<span class="ln">418</span>Here the score error tends to zero with $j$ fixed, and the same
+<span class="ln">419</span>function $H_N$ is used for every $j$, by Lemma~\ref{pert:palm}.
+<span class="ln">420</span>Hence $|H(j^{-1})|\leq2Cj^{-j}$.  If the first nonzero Taylor
+<span class="ln">421</span>coefficient of $H$ had degree $q$, then
+<span class="ln">422</span>$|H(j^{-1})|\geq c j^{-q}$ for all sufficiently large $j$, a
+<span class="ln">423</span>contradiction.  Thus $H$ vanishes identically near zero, proving the
+<span class="ln">424</span>claim coefficient by coefficient.
+<span class="ln">425</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

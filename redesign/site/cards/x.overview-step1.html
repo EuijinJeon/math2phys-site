@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>전략 1단계: cavity reservoir 고르기</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a> <span class="stag">§2.2</span> · 섹션: <a href="../map-overview.html">§2.2</a></div><h1>전략 1단계: cavity reservoir 고르기</h1><p><span class="badge">remark</span><span class="badge proposed">proposed</span> <code>x:overview-step1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a>. L1 수 2, 3<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>reservoir는 크기 $N$ 과 $N+1$ 의 계를 비교하는 데 쓰는 공통 $N$-spin Gibbs 계다. 유계 상호작용 법칙과 장 법칙에 대해, 개수가 계 크기에 대해 sublinear인 유계 Poisson 섭동을 더한다. 그 효과는 pressure에서 사라진다. 각 고정 계층 깊이에서, 보조 power-mean 재귀 뒤의 연속한 기대 로그의 차가 원래 pressure liminf를 임의로 작은 오차보다 더 넘지 않게 하는 계 크기와 결정적 섭동 매개변수를 고른다. 같은 선택이 모든 perturbation score의 집중을 준다.</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-bounded-law" title="상호작용의 sup-norm $B(\theta)=\max_s\lvert\theta(s)\rvert$ 와 장 $\lvert h\rvert$ 가 결정적 상수 $B$, $H$ 로 a.s. 눌린다는 조건이다. 하한(§5–§8)은 이것과 permutation-invariance를 함께 가정한다(cavity.tex 11–14).">유계</a> 상호작용·장에서, 크기 $N$ 과 $N+1$ 을 공통 <a class="gterm" href="../glossary.html#g-reservoir" title="크기 $N$ 과 $N+1$ 의 계를 비교하는 공통 $N$-spin 계다. 평균 $\rho_N$ 개의 상호작용, 보통의 장, 그리고 type $\nu$ 마다 평균 $c_\nu s_N$ 개(합계 Poisson$(s_N)$)의 섭동 factor를 가진다(cavity.tex 20–28, 45–50).">reservoir</a>로 비교한다. sublinear 개수의 유계 <a class="gterm" href="../glossary.html#g-perturbation" title="type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다(perturbations.tex 60; §5의 틀이 요구하는 것은 닫힌 구간 $1/2\le\psi_\nu\le3/2$, cavity.tex 26). 각 항은 독립 균일 site 하나와 자기 mark 과정의 독립 사…">섭동</a>은 밀도를 바꾸지 않는다. 깊이 $L$ 을 고정할 때마다 크기와 섭동 매개변수를 골라, <a class="gterm" href="../glossary.html#g-power-mean" title="시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.">power mean</a> 재귀 뒤의 <a class="gterm" href="../glossary.html#g-increment" title="섭동된 계의 $N\to N+1$ root logarithm 증분이다. $N,L,\mathbf u$ 에 대해 균일하게 유계다.">증분</a>이 <a class="gterm" href="../glossary.html#g-lower-pressure" title="bounded 모형에서 모든 크기 $N$ 에 대해 취한 pressure의 liminf다(선택 전의 것). $\varepsilon$ 은 selected-sequence를 고를 때의 여유다.">$\underline F$</a>를 거의 넘지 않고 모든 <a class="gterm" href="../glossary.html#g-score" title="$D_\nu$ 는 type $\nu$ 섭동의 $u_\nu$ 미분이 path 위에서 갖는 값이다. $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다(root, perturbations.tex 8…">score</a>가 <a class="gterm" href="../glossary.html#g-concentration" title="어떤 무작위 양이 root(disorder, 섭동 개수·type·site)와 tree 표본추출 전부에 대한 평균 주위로 집중한다는 말을 묶는 우산 항목이다. 이 항목은 따로 정량을 두지 않고, 이 사이트에서 &quot;집중한다&quot;는 늘 다음 두 정량 진술 가운데 하나를 가리킨다: score의 집중은 $e_{\nu,N}\to0$(score), multioverlap의…">집중</a>하게 한다. 이것이 <a class="gterm" href="../glossary.html#g-selected-sequence" title="고정한 $L\ge2$ 와 $\varepsilon&gt;0$ 마다 pert:selection이 주는 크기 $N_j\uparrow\infty$ 와 결정적 섭동 매개변수 $\mathbf u_j$ 의 수열로, (i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$, (ii) reservoir에서 모든 고정 type의…">선택된 수열</a>이다.</p></dd><dt>차이</dt><dd><p>(1) "pressure에서 사라진다"의 정확한 대상은 섭동된 계의 pressure가 아니라 power-mean 재귀 뒤의 <a class="gterm" href="../glossary.html#g-root-logarithm" title="root logarithm $X_0$ 는 섭동된 leaf 분배함수 $Z$ 에서 $X_{L-1}=\log Z$, $X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}$ 로 power-mean recursion을 거슬러 올라가 얻은 깊이 0의 값이다(trees.tex 51–56). 그것은 root에 대해 무작위다(&quot;the random root lo…">root logarithm</a> 기대값이고, 진술은 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ 이다(<a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>). (2) "임의로 작은 오차"는 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (i)의 $\Delta_{N_j}\le\underline F+2\varepsilon$ 이다. 상한뿐이고 증분의 극한은 말하지 않는다. (3) 선택은 $L$ 과 $\varepsilon$ 마다 다르다. score 집중은 type마다이고 균등하지 않다(<a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (ii)). (4) <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii)(유한 tree moment의 수렴)은 이 문단에 없다. (5) 원문 문단은 <a class="gterm" href="../glossary.html#g-permutation-invariance" title="$\theta$ 의 법칙이 $p$ 개 입력 좌표의 순열에 대해 불변이라는 조건이다.">순열 불변성</a>을 여기서 말하지 않는다. 하한 전체의 가정으로는 <a class="node" href="../cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a>(46–48행)과 x:cavity-bounded에 있다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>본문</h2><p>8행은 <code>\begin{enumerate}</code> 이다.</p>
+<p><strong>가리키는 곳.</strong></p>
+<div class="tablewrap"><table><thead><tr><th>문장</th><th>본문 노드</th><th>overview.tex</th></tr></thead><tbody><tr><td>reservoir의 정의</td><td><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> (reservoir), <a class="node" href="../cards/cavity.section.html" title="5 §5 섭동된 cavity reservoir">cavity:section</a></td><td>10–11</td></tr><tr><td>유계 법칙, 유계 Poisson 섭동, sublinear 개수</td><td><a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="../cards/cavity.factor-bounds.html" title="(5.2) Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)">cavity:factor-bounds</a>, <a class="node" href="../cards/x.cavity-root-convention.html" title="섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값">x:cavity-root-convention</a> ($s_N=N^{3/4}$)</td><td>12–13</td></tr><tr><td>효과가 사라진다</td><td><a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>, <a class="node" href="../cards/x.cavity-root-logarithm.html" title="섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$">x:cavity-root-logarithm</a></td><td>13–14</td></tr><tr><td>크기와 결정적 매개변수의 선택, 증분 $\le\underline F+$ 오차</td><td><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (i), 증분은 <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a></td><td>14–17</td></tr><tr><td>score 집중</td><td><a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a>, <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (ii)</td><td>17–18 (<code>\cref{cavity:section,pert:selection}</code>)</td></tr></tbody></table></div><details class="src"><summary>원문 (overview.tex:8-18)</summary><h4>overview.tex:8-18</h4><pre class="tex"><code><span class="ln">8</span>\begin{enumerate}[label=\textup{\arabic*.},leftmargin=*]
+<span class="ln">9</span>\item \emph{Select a cavity reservoir.}
+<span class="ln">10</span>A reservoir is a common Gibbs system on $N$ spins used to compare
+<span class="ln">11</span>systems of sizes $N$ and $N+1$.
+<span class="ln">12</span>For bounded interaction and field laws, add bounded Poisson perturbations whose
+<span class="ln">13</span>number is sublinear in the system size. Their effect on the pressure
+<span class="ln">14</span>vanishes. At each fixed hierarchy depth, select system sizes and
+<span class="ln">15</span>deterministic perturbation parameters for which the difference between
+<span class="ln">16</span>successive expected logarithms after the auxiliary power-mean recursion
+<span class="ln">17</span>is at most an arbitrarily small error above the original pressure liminf. The same choices give concentration of every
+<span class="ln">18</span>perturbation score (\cref{cavity:section,pert:selection}).</code></pre></details>
+</div>
+
+</body>
+</html>

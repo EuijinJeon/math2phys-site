@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span> · 섹션: <a href="../map-comparison.html">§8</a></div><h1>Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$</h1><p><span class="badge">corollary</span><span class="badge proposed">proposed</span> <code>comp:bounded-lower</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span> <span class="muted">— 하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span> <span class="muted">(2.11)</span> <span class="muted">— 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span> <span class="muted">— $r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</span></li><li><a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span> <span class="muted">(2.12)</span> <span class="muted">— moment 조건 없는 유한성 (2.12)</span></li><li><a class="node" href="../cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span> <span class="muted">(5.1)</span> <span class="muted">— 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)</span></li><li><a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a> <span class="stag">§8</span> <span class="muted">— §8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</span></li><li><a class="node" href="../cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a> <span class="stag">§8</span> <span class="muted">(8.1)</span> <span class="muted">— 선택된 수열 위의 낮은 증분 (8.1)</span></li><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span> <span class="muted">Lemma 8.1</span> <span class="muted">— Recursive law encoding (재귀적 법칙 부호화)</span></li><li><a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span> <span class="muted">Proposition 8.3</span> <span class="muted">— 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/main.theorem.s2.html" title="truncation과 bounded 하한의 적용">main:theorem.s2</a>, <a class="node" href="../cards/main.theorem.s3.html" title="$K\to\infty$ 와 상수 되돌리기: $\liminf_NF_N\ge\inf_r\Phi_r$">main:theorem.s3</a> (reduction.tex 64, 76: 잘린 모형의 하한), <a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> (reduction.tex 4). model:section의 주정리 증명 경로. 규칙 P11(차이 칸), L1 수 6<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/main.theorem.s2.html" title="truncation과 bounded 하한의 적용">main:theorem.s2</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/main.theorem.s3.html" title="$K\to\infty$ 와 상수 되돌리기: $\liminf_NF_N\ge\inf_r\Phi_r$">main:theorem.s3</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> <span class="stag">§9</span></li></ul></dd><dt>수학 진술</dt><dd><p>모든 bounded이고 순열 불변인 상호작용 법칙과 bounded 장 법칙에 대해, (2.11)과 그 $r=0$ 판으로 정의한 functional로
+$$\liminf_{N\to\infty}F_N\ge\inf_{r\ge0}\Phi_r.$$</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-bounded-law" title="상호작용의 sup-norm $B(\theta)=\max_s\lvert\theta(s)\rvert$ 와 장 $\lvert h\rvert$ 가 결정적 상수 $B$, $H$ 로 a.s. 눌린다는 조건이다. 하한(§5–§8)은 이것과 permutation-invariance를 함께 가정한다(cavity.tex 11–14).">유계</a>이고 입력에 대해 대칭(<a class="gterm" href="../glossary.html#g-permutation-invariance" title="$\theta$ 의 법칙이 $p$ 개 입력 좌표의 순열에 대해 불변이라는 조건이다.">순열 불변</a>)인 <a class="gterm" href="../glossary.html#g-interaction" title="$p$체 factor 하나의 log-weight다. $-H_N(\sigma)=\sum_{k\le M_N}\theta_k(\sigma_{i_{1,k}},\ldots,\sigma_{i_{p,k}})+\sum_ih_i\sigma_i$ 이므로 $\theta$ 가 큰 배치가 선호되고, 역온도는 $\theta$ 안에 흡수되어 있다.">상호작용</a>과 유계 <a class="gterm" href="../glossary.html#g-field" title="site마다 독립인 무작위 외부장이다. 역온도가 흡수되어 $e^{h_i\sigma_i}$ 로 들어간다.">장</a>에서, quenched <a class="gterm" href="../glossary.html#g-pressure" title="quenched pressure다. free energy density $f$ 와는 $F_N=-\beta f$ 관계다.">pressure</a>의 liminf는 모든 유한 단계 시행값의 inf<sup><a class="gterm" href="../glossary.html#g-phi" title="고정한 단계 수 $r$ 에서의 inf와, 모든 유한 $r$ 에 대한 inf다.">용어</a></sup> 이상이다.</p></dd><dt>차이</dt><dd><p>(1) 하한만이고 극한의 존재는 상한(<a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>)과 합칠 때 나온다. (2) <a class="gterm" href="../glossary.html#g-factorization" title="$a&gt;0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.">전개</a>와 <a class="gterm" href="../glossary.html#g-positivity" title="factorization의 $b$ 의 모든 차수 moment에 대한 부호 조건이다(유한 실수 기대값으로 해석).">부호 조건</a>을 쓰지 않는다. 일반 법칙으로는 reduction.tex의 상수 이동·truncation·안정성으로 넘어간다(<a class="node" href="../cards/main.theorem.s1.html" title="상수 이동으로 승수 $a$ 제거와 순열 불변성">main:theorem.s1</a>–s3). (3) 결론은 모든 $N$ 에 대한 liminf다: 증명은 깊이마다의 <a class="gterm" href="../glossary.html#g-selected-sequence" title="고정한 $L\ge2$ 와 $\varepsilon&gt;0$ 마다 pert:selection이 주는 크기 $N_j\uparrow\infty$ 와 결정적 섭동 매개변수 $\mathbf u_j$ 의 수열로, (i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$, (ii) reservoir에서 모든 고정 type의…">선택된 수열</a>을 거치지만 비교 기준 $\underline F$ 가 모든 크기의 liminf이기 때문이다. (4) inf의 달성이나 최적 order parameter는 주장하지 않는다. 증명에 쓰인 시행 법칙 $\zeta_{L,N}$ 은 inf에 대한 상계로만 쓰인다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>펼침</h2><details class="child"><summary>고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$ <a class="node" href="../cards/comp.bounded-lower.s1.html">↗</a><span class="cm">$A=\inf_{r\ge0}\Phi_r$ 로 쓴다. (2.12)에 의해 유한하다. 부호화된 각 시행값은 $A$ 이상이므로, (8.1)이 모든 고정 $L$ 에서 $$A\le\underline F+2\varepsilon+\limsup_{N\to\infty}\Bigl\lvert\Delta_N^{L,\mathbf u_{L,N}}-\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\Bigr\rvert$$ 를 준다. 안쪽 극한은 그 깊이의 선택된 수열을 쓴다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span> <span class="muted">(2.12)</span> <span class="muted">— moment 조건 없는 유한성 (2.12)</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span> <span class="muted">(2.11)</span> <span class="muted">— 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span> <span class="muted">— $r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span> <span class="muted">(5.1)</span> <span class="muted">— 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)</span></li><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span> <span class="muted">Lemma 8.1</span> <span class="muted">— Recursive law encoding (재귀적 법칙 부호화)</span></li><li><a class="node" href="../cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a> <span class="stag">§8</span> <span class="muted">(8.1)</span> <span class="muted">— 선택된 수열 위의 낮은 증분 (8.1)</span></li><li><a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a> <span class="stag">§8</span> <span class="muted">— §8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</span></li><li><a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span> <span class="muted">— 하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/comp.bounded-lower.s2.html" title="$L\to\infty$, 그다음 $\varepsilon\downarrow0$">comp:bounded-lower.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.bounded-lower.s2.html" title="$L\to\infty$, 그다음 $\varepsilon\downarrow0$">comp:bounded-lower.s2</a> <span class="stag">§8</span></li></ul></dd><dt>수학 진술</dt><dd><p>$A=\inf_{r\ge0}\Phi_r$ 로 쓴다. (2.12)에 의해 유한하다. 부호화된 각 시행값은 $A$ 이상이므로, (8.1)이 모든 고정 $L$ 에서
+$$A\le\underline F+2\varepsilon+\limsup_{N\to\infty}\Bigl\lvert\Delta_N^{L,\mathbf u_{L,N}}-\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\Bigr\rvert$$
+를 준다. 안쪽 극한은 그 깊이의 선택된 수열을 쓴다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>$L\to\infty$, 그다음 $\varepsilon\downarrow0$ <a class="node" href="../cards/comp.bounded-lower.s2.html">↗</a><span class="cm">안쪽 극한은 그 깊이의 선택된 수열을 쓴다. comp:insertion-comparison에서 $L\to\infty$ 로 보내면 $A\le\underline F+2\varepsilon$ 이고, 그다음 $\varepsilon\downarrow0$ 이 결론을 증명한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/comp.bounded-lower.s1.html" title="고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$">comp:bounded-lower.s1</a> <span class="stag">§8</span> <span class="muted">— 고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$</span></li><li><a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span> <span class="muted">Proposition 8.3</span> <span class="muted">— 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$</span></li><li><a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a> <span class="stag">§8</span> <span class="muted">— §8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span> <span class="muted">— 이후의 $N\to\infty$ 는 선택된 수열을 따른다</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>comp:bounded-lower의 결론<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>안쪽 극한은 그 깊이의 선택된 수열을 쓴다. comp:insertion-comparison에서 $L\to\infty$ 로 보내면 $A\le\underline F+2\varepsilon$ 이고, 그다음 $\varepsilon\downarrow0$ 이 결론을 증명한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/comp.bounded-lower.s1.html" title="고정 $L$ 의 부등식 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$">comp:bounded-lower.s1</a>: $A=\inf_{r\ge0}\Phi_r$ 는 유한하고, 부호화된 시행값 $\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$ 은 $A$ 이상이다. (8.1)과 합쳐 각 고정 $L$ 에서 $A\le\underline F+2\varepsilon+\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert$ (안쪽은 그 깊이의 선택된 수열). <a class="node" href="../cards/comp.bounded-lower.s2.html" title="$L\to\infty$, 그다음 $\varepsilon\downarrow0$">comp:bounded-lower.s2</a>: comp:insertion-comparison으로 $L\to\infty$, 그다음 $\varepsilon\downarrow0$.</p>
+<p><strong>하한 조립의 극한 순서 (바깥에서 안쪽).</strong> $\varepsilon\downarrow0$ ← $L\to\infty$ ← 고정 $(L,\varepsilon)$ 의 선택된 수열 위 $\limsup_N$. $\eta\downarrow0$, $M$, $q$ 는 이 조립에 나오지 않는다: 그것들은 comp:shape-error와 <a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> 안에서 이미 소진되어 $\lim_L\limsup_N\lvert\Delta_N-\mathcal B_{L-1}\rvert=0$ 이라는 $\eta$, $M$, $q$ 없는 진술로 들어온다. $\underline F$ 는 수열, $L$, $\varepsilon$ 과 무관한 고정 수다(<a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a>).</p>
+<p><strong>순환을 피하는 연결.</strong> 진술의 "with the functionals defined in \cref{<a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a>}"(227)은 섹션 전체를 가리키지만, 이 카드는 <a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>과 <a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>(그리고 사슬 <a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>)만 <code>uses</code>에 넣는다. <a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a>은 주정리를 자식으로 갖고 그 증명이 이 카드를 받으므로, 섹션을 넣으면 <code>uses</code> 순환이 생긴다. 기계 의존 검사는 227행의 <code>\cref{model:section}</code>을 이 연결로 해소하지 못하고 경고를 낸다(보고 대상).</p><details class="src"><summary>원문 (comparison.tex:225-231, comparison.tex:233-246)</summary><h4>comparison.tex:225-231</h4><pre class="tex"><code><span class="ln">225</span>\begin{corollary}\label[corollary]{comp:bounded-lower}
+<span class="ln">226</span>For every bounded permutation-invariant interaction law and bounded field
+<span class="ln">227</span>law, with the functionals defined in \cref{model:section},
+<span class="ln">228</span>\[
+<span class="ln">229</span> \liminf_{N\to\infty}F_N\ge\inf_{r\ge0}\Phi_r.
+<span class="ln">230</span>\]
+<span class="ln">231</span>\end{corollary}</code></pre><h4>comparison.tex:233-246</h4><pre class="tex"><code><span class="ln">233</span>\begin{proof}
+<span class="ln">234</span>Write $A=\inf_{r\ge0}\Phi_r$, which is finite by
+<span class="ln">235</span>\eqref{model:trial-bounds}. Each encoded trial value is at least $A$, so
+<span class="ln">236</span>\eqref{comp:low-increments} gives, at every fixed $L$,
+<span class="ln">237</span>\[
+<span class="ln">238</span> A\le\underline F+2\eps+
+<span class="ln">239</span> \limsup_{N\to\infty}
+<span class="ln">240</span> \left|\Delta_N^{L,\mathbf u_{L,N}}
+<span class="ln">241</span>       -\cB_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\right|.
+<span class="ln">242</span>\]
+<span class="ln">243</span>The inner limit uses that depth&#x27;s selected sequence. Letting $L\to\infty$
+<span class="ln">244</span>in \cref{comp:insertion-comparison} gives
+<span class="ln">245</span>$A\le\underline F+2\eps$, and then $\eps\downarrow0$ proves the result.
+<span class="ln">246</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</h1><p><span class="badge">convention</span><span class="badge proposed">proposed</span> <code>x:pert-standing</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span> <span class="muted">— 하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)</span></li><li><a class="node" href="../cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span> <span class="muted">(5.1)</span> <span class="muted">— 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li><li><a class="node" href="../cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a> <span class="stag">§5</span> <span class="muted">— 하한의 모든 spin tree는 이 reservoir에서 뽑는다</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§6 전체. 특히 pert:concentration의 "reservoir에서도 성립"(perturbations.tex 102)과 그 증명의 Efron–Stein 논증(물리 disorder의 구조), pert:selection의 reservoir 진술, x:pert-parameter-measure와 x:pert-selected-limits의 "고정한 채" 기대값<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.html" title="root 요동의 재료: 볼록 함수 $G$ 와 그 분산 (6.11)">pert:concentration.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.s2.html" title="개수에 조건을 건 Efron–Stein 부등식">pert:concentration.s3.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.error.html" title="(6.4) score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)">pert:error</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>이 절 내내 상호작용과 장은 유계이고(<a class="node" href="../cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>), 깊이 $L\ge2$ 는 고정이다(<a class="node" href="../cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>). 논증은 $N$-spin 계와 cavity:increment의 reservoir 모두에 적용된다. reservoir의 물리적 disorder는 평균 $O(N)$ 의 Poisson 개수를 갖는 독립 유계 상호작용들과 $N$ 개의 독립 유계 장으로 이루어진다. 지정된 매개변수 벡터에서의 진술에 나오는 모든 기대값은 그 벡터를 고정한 채 취한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>"depth $L\ge2$ is fixed"의 $L$ 은 §5가 고정한 깊이이고, 지수는 cavity:grid의 $m_d=d/L$ 이다. 다만 §6의 증명이 지수에 대해 쓰는 것은 $0&lt;m_1\le m_d$ 와 $m_L=1$ 뿐이다(<a class="node" href="../cards/pert.concentration.s2.s1.html" title="root logarithm의 미분 공식 (6.7), (6.8)">pert:concentration.s2.s1</a>). 이 절의 상수가 $L$ 에 의존하는 것은 $1/m_1=L$ 을 통해서다(perturbations.tex 152, 159; 작성자 읽기).</p>
+<p>reservoir에 대한 문장(6–8행)은 <a class="node" href="../cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a>(cavity.tex 117–121 "Thus the concentration argument applies to its slightly modified interaction mean as well")과 같은 내용을 §6 쪽에서 다시 적은 것이다. 이것이 <a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a>의 "root 변수 개수가 $O(N)$"에 쓰인다.</p>
+<p>마지막 문장(9–10행)은 <a class="node" href="../cards/x.cavity-root-convention.html" title="섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값">x:cavity-root-convention</a>(cavity.tex 29–31, 매개변수는 고정값이고 매개변수 평균은 명시할 때만)과 짝이다. <a class="gterm" href="../glossary.html#g-root" title="root는 보조 계층 path의 깊이 0 변수이고(&quot;Its depth-zero variable is the root&quot;, trees.tex 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(trees.tex 23). reservoir에서는 물리 disorder(&quot;the reservoir root disorder…">root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)</a>의 기대값 $\mathbb E$, $\mathbb E_{\mathbf u}$ 는 $\mathbf u$ 를 평균하지 않는다. 매개변수 평균은 $\pi$ 로 쓸 때만이다(<a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a>).</p><details class="src"><summary>원문 (perturbations.tex:4-10)</summary><h4>perturbations.tex:4-10</h4><pre class="tex"><code><span class="ln">4</span>Throughout this section the interaction and field are bounded, and the
+<span class="ln">5</span>depth $L\geq2$ is fixed.  The arguments apply both to the $N$-spin system
+<span class="ln">6</span>and to the reservoir in \cref{cavity:increment}. Its physical disorder
+<span class="ln">7</span>consists of independent bounded interactions with a Poisson count of
+<span class="ln">8</span>mean $O(N)$, together with $N$ independent bounded fields.
+<span class="ln">9</span>All expectations in a statement at a specified parameter vector are
+<span class="ln">10</span>taken with that vector held fixed.</code></pre></details>
+</div>
+
+</body>
+</html>

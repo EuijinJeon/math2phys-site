@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>root logarithm의 미분 공식 (6.7), (6.8)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.concentration.s2.html" title="path 요동: 2차 미분이 조건부 분산을 누른다">pert:concentration.s2</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>root logarithm의 미분 공식 (6.7), (6.8)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:concentration.s2.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a> <span class="stag">§6</span> <span class="muted">— type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)</span></li><li><a class="node" href="../cards/pert.score.html" title="(6.3) perturbation score $D_\nu$ (6.3)">pert:score</a> <span class="stag">§6</span> <span class="muted">(6.3)</span> <span class="muted">— perturbation score $D_\nu$ (6.3)</span></li><li><a class="node" href="../cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a> <span class="stag">§3</span> <span class="muted">(3.2)</span> <span class="muted">— 분배함수에서 만든 tilted kernel</span></li><li><a class="node" href="../cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span> <span class="muted">— path kernel 열, 지수 $m_d$, prefix $\sigma$-field</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s2.s2.html" title="구간 적분과 path 요동의 경계 (6.9), (6.10)">pert:concentration.s2.s2</a> (6.8의 적분), s3.s1 (G의 볼록성, 6.8), s4.s2 (X_0′=⟨D⟩)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s2.s2.html" title="구간 적분과 path 요동의 경계 (6.9), (6.10)">pert:concentration.s2.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.html" title="root 요동의 재료: 볼록 함수 $G$ 와 그 분산 (6.11)">pert:concentration.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.s1.html" title="$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술">pert:concentration.s3.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s4.s2.html" title="$\rho=N^{-1/8}$, 보정 제거, 두 기여의 합">pert:concentration.s4.s2</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$X_0(u)$ 를 root 기대값을 취하기 전의 무작위 root log 분배함수라 하자. 마지막 단계도 미분에 넣기 위해 spin weight의 로그를 $X_L$ 로, spin 분배함수를 지수 $m_L=1$ 의 단계로 본다. backward 한 단계를 미분하면
+$$\partial_uX_{d-1}=K_d(\partial_uX_d),\qquad\partial_u^2X_{d-1}=K_d(\partial_u^2X_d)+m_d\operatorname{Var}_{K_d}(\partial_uX_d).$$
+따라서 $M_d=\langle D_\nu\mid\mathscr F_d\rangle$ 에 대해
+$$X_0&#x27;(u)=\langle D_\nu\rangle,\qquad X_0&#x27;&#x27;(u)=\langle\partial_uD_\nu\rangle+\sum_{d=1}^{L}m_d\langle(M_d-M_{d-1})^2\rangle\ge m_1\operatorname{Var}(D_\nu\mid\mathscr F_0)-4n.$$
+조건부 기대값과 분산은 현재 $u$ 의 tilted path 법칙을 쓴다. root를 고정하면 모든 도함수는 유계 score와 그 도함수로 정당화되고, 유한 recursion이 위 미분 공식을 정당화한다. 그 root 기대값은 Poisson 개수의 유한 moment로 정당화된다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀이(작성자). backward 단계는 <a class="node" href="../cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>의 $X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}$ 이고 tilted kernel이 $K_d=e^{m_d(X_d-X_{d-1})}P_d$ 이므로 한 번 미분하면 $K_d$-평균, 두 번 미분하면 $K_d$-분산에 $m_d$ 가 붙는다. 마지막 단계 $m_L=1$ 에서 $X_L$ 은 spin weight의 로그이고 $K_L$ 은 Gibbs kernel이다. spin weight에서 $u=u_\nu$ 에 의존하는 것은 type-$\nu$ 인자뿐이므로 $\partial_uX_L=D_\nu$, $\partial_u^2X_L=\partial_uD_\nu$. 위로 올라가면 $\partial_uX_d=M_d$ 이고 $\partial_u^2X_0$ 은 각 깊이의 $m_d\operatorname{Var}_{K_d}(M_d)=m_d\langle(M_d-M_{d-1})^2\mid\mathscr F_{d-1}\rangle$ 의 합이다. 부등식은 $m_d\ge m_1$, martingale 차분의 직교성 $\sum_d\langle(M_d-M_{d-1})^2\rangle=\operatorname{Var}(D_\nu\mid\mathscr F_0)$($M_L=D_\nu$, $M_0=\langle D_\nu\rangle$), 그리고 <a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a>의 $\partial_uD_\nu\ge-4n$ 에서 온다. $\mathscr F_d$ 는 <a class="node" href="../cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a>의 prefix $\sigma$-field다.</p>
+<p>$L=1$(보조 계층 없음)이면 $X_0&#x27;&#x27;=\langle\partial_uD\rangle+\operatorname{Var}(D)$ 로 보통의 "2차 미분 = 분산" 관계가 된다.</p><details class="src"><summary>원문 (perturbations.tex:120-145)</summary><h4>perturbations.tex:120-145</h4><pre class="tex"><code><span class="ln">120</span>\paragraph{Fluctuations along a tilted path.}
+<span class="ln">121</span>Let $X_0(u)$ be the random root log partition function before taking the
+<span class="ln">122</span>root expectation.  To include the last step in the differentiation,
+<span class="ln">123</span>regard the logarithm of the spin weight as $X_L$ and the spin partition
+<span class="ln">124</span>function as the step with exponent $m_L=1$.  Differentiation of one
+<span class="ln">125</span>backward step gives
+<span class="ln">126</span>\[
+<span class="ln">127</span> \partial_uX_{d-1}=K_d(\partial_uX_d),\qquad
+<span class="ln">128</span> \partial_u^2X_{d-1}
+<span class="ln">129</span> =K_d(\partial_u^2X_d)
+<span class="ln">130</span>   +m_d\operatorname{Var}_{K_d}(\partial_uX_d).
+<span class="ln">131</span>\]
+<span class="ln">132</span>Thus, for $M_d=\langle D_\nu\mid\mathscr F_d\rangle$,
+<span class="ln">133</span>\begin{align}
+<span class="ln">134</span> X_0&#x27;(u)&amp;=\langle D_\nu\rangle,\label{pert:first-derivative}\\
+<span class="ln">135</span> X_0&#x27;&#x27;(u)&amp;=\langle\partial_uD_\nu\rangle
+<span class="ln">136</span>   +\sum_{d=1}^{L}m_d
+<span class="ln">137</span>        \langle(M_d-M_{d-1})^2\rangle \nonumber\\
+<span class="ln">138</span> &amp;\geq m_1\operatorname{Var}(D_\nu\mid\mathscr F_0)-4n.
+<span class="ln">139</span> \label{pert:second-derivative}
+<span class="ln">140</span>\end{align}
+<span class="ln">141</span>Here the conditional expectations and variances use the tilted path
+<span class="ln">142</span>law at the current $u$.  At fixed root all derivatives are justified by
+<span class="ln">143</span>the bounded score and its derivatives; the finite recursion then
+<span class="ln">144</span>justifies the displayed differentiation formulas.  Their root
+<span class="ln">145</span>expectations are justified by the finite moments of the Poisson counts.</code></pre></details>
+</div>
+
+</body>
+</html>

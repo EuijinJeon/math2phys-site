@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>차분몫과 단조성으로 얻는 (6.12)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.concentration.s4.html" title="볼록 함수에서 도함수로, 그리고 두 기여의 합">pert:concentration.s4</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>차분몫과 단조성으로 얻는 (6.12)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:concentration.s4.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a> <span class="stag">§6</span> <span class="muted">— type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)</span></li><li><a class="node" href="../cards/pert.concentration.s3.s1.html" title="$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술">pert:concentration.s3.s1</a> <span class="stag">§6</span> <span class="muted">— $G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술</span></li><li><a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a> <span class="stag">§6</span> <span class="muted">— 유계 차분, Lipschitz 조건부 평균, Poisson 분산</span></li><li><a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a> <span class="stag">§6</span> <span class="muted">— 매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s4.s2.html" title="$\rho=N^{-1/8}$, 보정 제거, 두 기여의 합">pert:concentration.s4.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s4.s2.html" title="$\rho=N^{-1/8}$, 보정 제거, 두 기여의 합">pert:concentration.s4.s2</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$\bar G=\mathbb E_{\mathbf u}G$, $Z=G-\bar G$ 로 둔다. $u\pm\rho$ 가 $J_\nu$ 안에 있으면 앞·뒤 차분몫이
+$$|G&#x27;(u)-\bar G&#x27;(u)|\le\frac{|Z(u-\rho)|+2|Z(u)|+|Z(u+\rho)|}{\rho}+\bar G&#x27;(u+\rho)-\bar G&#x27;(u-\rho)$$
+를 준다. $\bar G&#x27;$ 의 단조성이
+$$\int_a^b[\bar G&#x27;(u+\rho)-\bar G&#x27;(u-\rho)]\,du\le2\rho[\bar G&#x27;(b+\rho)-\bar G&#x27;(a-\rho)]$$
+를 준다. (6.11)과 함께 이것이
+$$\frac1{|I_\nu|}\int_{I_\nu}\mathbb E_{\mathbf u}|G&#x27;(u)-\mathbb E_{\mathbf u}G&#x27;(u)|\,du\le C_\nu\left(\frac{\sqrt N}{\rho}+\frac{\rho\lambda_\nu}{|I_\nu|}\right)$$
+를 증명한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀이(작성자). 볼록 $G$ 에 대해 $\frac{G(u)-G(u-\rho)}\rho\le G&#x27;(u)\le\frac{G(u+\rho)-G(u)}\rho$ 이고 $\bar G$ 도 볼록이라 $\frac{\bar G(u+\rho)-\bar G(u)}\rho\le\bar G&#x27;(u+\rho)$, $\frac{\bar G(u)-\bar G(u-\rho)}\rho\ge\bar G&#x27;(u-\rho)$. 두 방향을 합치면 위 부등식이다. $\mathbb E_{\mathbf u}|Z(v)|\le(\operatorname{Var}G(v))^{1/2}\le(C_\nu N)^{1/2}$, 그리고 $\bar G&#x27;$ 의 증가량 $\le2C_\nu\lambda_\nu$((6.11)의 둘째 추정). 여기서 $\mathbb E_{\mathbf u}$ 는 점 $u$ 마다 그 점의 벡터를 고정한 root 평균이고 $u$ 의 구간 평균과는 따로 취한다(원문의 $\bar G$ 는 $u$ 의 함수로서의 root 평균이다).</p><details class="src"><summary>원문 (perturbations.tex:211-232)</summary><h4>perturbations.tex:211-232</h4><pre class="tex"><code><span class="ln">211</span>\paragraph{Passing from a convex function to its derivative.}
+<span class="ln">212</span>Put
+<span class="ln">213</span>$\bar G=\mathbb E_{\mathbf u}G$ and $Z=G-\bar G$.  If $u\pm\rho$ lie
+<span class="ln">214</span>in $J_\nu$, forward and backward difference quotients imply
+<span class="ln">215</span>\begin{align*}
+<span class="ln">216</span> |G&#x27;(u)-\bar G&#x27;(u)|
+<span class="ln">217</span> &amp;\leq\frac{|Z(u-\rho)|+2|Z(u)|+|Z(u+\rho)|}{\rho}\\
+<span class="ln">218</span> &amp;\quad+\bar G&#x27;(u+\rho)-\bar G&#x27;(u-\rho).
+<span class="ln">219</span>\end{align*}
+<span class="ln">220</span>The monotonicity of $\bar G&#x27;$ gives
+<span class="ln">221</span>\[
+<span class="ln">222</span> \int_a^b[\bar G&#x27;(u+\rho)-\bar G&#x27;(u-\rho)]\,du
+<span class="ln">223</span> \leq2\rho[\bar G&#x27;(b+\rho)-\bar G&#x27;(a-\rho)].
+<span class="ln">224</span>\]
+<span class="ln">225</span>Together with \eqref{pert:root-variance}, this proves
+<span class="ln">226</span>\begin{equation}
+<span class="ln">227</span> \frac1{|I_\nu|}\int_{I_\nu}
+<span class="ln">228</span> \mathbb E_{\mathbf u}|G&#x27;(u)-\mathbb E_{\mathbf u}G&#x27;(u)|\,du
+<span class="ln">229</span> \leq C_\nu\left(\frac{\sqrt N}{\rho}
+<span class="ln">230</span>              +\frac{\rho\lambda_\nu}{|I_\nu|}\right).
+<span class="ln">231</span> \label{pert:convex-bound}
+<span class="ln">232</span>\end{equation}</code></pre></details>
+</div>
+
+</body>
+</html>

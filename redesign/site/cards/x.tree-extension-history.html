@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>canceled-anchor 확장 규칙과 extension history $E$</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-trees.html">§3</a></div><h1>canceled-anchor 확장 규칙과 extension history $E$</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>x:tree-extension-history</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span> <span class="muted">— 유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:extension-expansion의 합 범위와 c_E. <a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a>, <a class="node" href="../cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a>, <a class="node" href="../cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a>. §6 perturbations.tex 427–436 (added color의 배치와 𝔈(T,a_*,C))<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.charging.s1.html" title="한 걸음의 절댓값 계수 합">tree:charging.s1</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.charging.s2.html" title="target vertex를 생성 걸음에 배정">tree:charging.s2</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.extension-expansion.s1.html" title="미분 규칙의 반복: 선택지는 old leaf 또는 fresh path">tree:extension-expansion.s1</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.reference-total.s1.html" title="한 걸음 합 $m_d-jm_{d+1}$">tree:reference-total.s1</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.tree-cancellation-example.html" title="두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$">x:tree-cancellation-example</a> <span class="stag">§3</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>anchor leaf $a_*$를 가진 tree $\mathcal T$를 고정한다. 그 모든 old path에서 시작해 color $1,\ldots,k$를 그 순서로 준다. 다음 color에 대해 다음 둘 중 하나를 할 수 있다.
+(i) $a_*$가 아닌, 아직 쓰지 않은 old leaf를 고른다. 계수 $1$.
+(ii) 현재 tree의 임의의 내부 vertex $\beta$에서 fresh path를 만든다. 계수 $\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$.
+각 fresh path는 갈라지는 vertex에서 새 자식을 쓰고 그보다 깊은 모든 깊이에서 새 vertex를 쓴다. 고른 leaf는 그 color를 받고 다시 고를 수 없다. 현재 tree는 쓰지 않은 것을 포함한 모든 old path와 이미 더한 모든 path를 포함한다. extension history $E$는 이 선택들을 기록한다. $a_j(E)$는 color $j$를 가진 leaf, $\mathcal T_E$는 최종 tree, $c_E$는 계수들의 곱이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p><a class="gterm" href="../glossary.html#g-extension-history" title="anchor leaf $a_*$ 가 있는 old tree에서 color $1,\ldots,k$ 를 차례로 (i) 아직 안 쓴 anchor 아닌 old leaf(계수 1) 또는 (ii) 현재 tree의 내부 vertex $\beta$ 에서 새 path(계수 $\gamma_\beta$)에 주는 선택의 기록이다. $c_E$ 는 그 계수들의 곱이다. 어휘: ol…">extension history</a>. $n_\beta$는 그 시점의 현재 tree(쓰지 않은 old path와 이미 더한 path를 모두 포함)에서의 자식 수다. 그래서 같은 vertex라도 앞선 선택에 따라 계수가 달라진다. anchor $a_*$는 처음부터 <a class="gterm" href="../glossary.html#g-protected-leaf" title="tree 밀도 $W_{\mathcal T}(A)$의 leaf 인자 $A^a$가 분모 $A^a$로 상쇄된 leaf다. 이 leaf에서는 삽입 매개변수로 미분해도 새 항이 생기지 않는다. 미분으로 $D_j^a/A^a$를 받은 leaf와 새로 붙은 fresh leaf는 곧바로 protected가 된다(trees.tex 180–183, 194–200).">protected</a>이므로(그 인자 $A^{a_*}$가 상쇄되어 있다) (i)에서 고를 수 없다. 이 규칙이 <a class="node" href="../cards/x.tree-differentiation-rule.html" title="미분 규칙: protected leaf와 fresh path">x:tree-differentiation-rule</a>을 $C=\{a_*\}$에서 시작해 반복한 결과와 같다는 것이 <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>이다.</p>
+<p>§6은 이 규칙을 그대로 받아 anchor를 color 0으로 두고 제약 $\mathcal C$로 허용 history를 고른다(perturbations.tex 429–436).</p><details class="src"><summary>원문 (trees.tex:259-276)</summary><h4>trees.tex:259-276</h4><pre class="tex"><code><span class="ln">259</span>Here is the companion rule with old replicas.  Fix a tree
+<span class="ln">260</span>$\mathcal T$ with an anchor leaf $a_*$.  Starting from all its old
+<span class="ln">261</span>paths, assign colors $1,\ldots,k$ in that order.  For the next color,
+<span class="ln">262</span>one may either
+<span class="ln">263</span>\begin{enumerate}[label=(\roman*),nosep]
+<span class="ln">264</span>  \item choose an unused old leaf other than $a_*$, with coefficient
+<span class="ln">265</span>  $1$; or
+<span class="ln">266</span>  \item create a fresh path from any internal vertex $\beta$ of the
+<span class="ln">267</span>  current tree, with coefficient
+<span class="ln">268</span>  $\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$.
+<span class="ln">269</span>\end{enumerate}
+<span class="ln">270</span>Each fresh path uses a new child at its divergence vertex and new
+<span class="ln">271</span>vertices at every greater depth.  Every chosen leaf receives its color
+<span class="ln">272</span>and cannot be chosen again.  The current tree includes all old paths,
+<span class="ln">273</span>including unused ones, and every path already added.  An extension
+<span class="ln">274</span>history $E$ records these choices; write $a_j(E)$ for the leaf carrying
+<span class="ln">275</span>color $j$, $\mathcal T_E$ for its final tree, and $c_E$ for the product
+<span class="ln">276</span>of its coefficients.</code></pre></details>
+</div>
+
+</body>
+</html>

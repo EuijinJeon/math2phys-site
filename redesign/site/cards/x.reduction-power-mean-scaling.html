@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> <span class="stag">§9</span> · 섹션: <a href="../map-model.html">§2</a></div><h1>power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)</h1><p><span class="badge">remark</span><span class="badge proposed">proposed</span> <code>x:reduction-power-mean-scaling</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span> <span class="muted">— $r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</span></li><li><a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span> <span class="muted">(2.12)</span> <span class="muted">— moment 조건 없는 유한성 (2.12)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/reduction.stability.s2.html" title="시행 functional 안정성 (reduction:trial-stability)">reduction:stability.s2</a> (reduction.tex 34–35: 두 시행 값의 곱셈적 비교가 $T_0$ 를 통과), <a class="node" href="../cards/reduction.stability.s3.html" title="상수 이동 (reduction:shift)">reduction:stability.s3</a> (39–40: 물리 상수가 모든 power mean 밖으로 나옴)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s2.html" title="시행 functional 안정성 (reduction:trial-stability)">reduction:stability.s2</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s3.html" title="상수 이동 (reduction:shift)">reduction:stability.s3</a> <span class="stag">§9</span></li></ul></dd><dt>수학 진술</dt><dd><p>(작성자 정식화. 원문은 성질을 쓰기만 하고 진술하지 않는다.) $V,V&#x27;$ 는 양수이고, 유한한 $\mathscr F_0$-가측 $c$ 가 있어 $e^{-c}\le V,V&#x27;\le e^c$ 라 하자(쓰이는 곳에서는 <a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>의 (2.12)에서처럼 $c$ 가 물리 disorder만의 함수다: $V_{\rm s},V_{\rm s}&#x27;$ 에는 $c=\max(\lvert h\rvert,\lvert h&#x27;\rvert)+\sum_{j\le k}\max(B(\theta_j),B(\theta_j&#x27;))$, $V_{\rm e},V_{\rm e}&#x27;$ 에는 $c=\max(B(\theta),B(\theta&#x27;))$). 그러면 $0\le d\le r$ 에서 $T_dV\in[e^{-c},e^c]$ 로 유한하고, (2.10)의 $T_d$ 는 다음을 만족한다.
+(a) 단조성: $V\le V&#x27;$ 이면 $T_dV\le T_dV&#x27;$.
+(b) 동차성: $\lambda&gt;0$ 이 유한하고 $\mathscr F_0$-가측("root-measurable", 특히 물리 disorder만의 함수)이면, $\mathscr F_0\subseteq\mathscr F_j$ 이므로 모든 $\mathscr F_j$ 에 가측이고 $T_d(\lambda V)=\lambda\,T_dV$.
+따라서 $\mathscr F_0$-가측인 $\delta\ge0$ 에 대해 $e^{-\delta}V\le V&#x27;\le e^\delta V$ 이면 $\lvert\log T_0V&#x27;-\log T_0V\rvert\le\delta$. $r=0$ 에서는 $T$ 가 없고 같은 결론이 $V$ 에 바로 성립한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p><strong>왜 따로 두는가.</strong> reduction.tex 34–35("The power means preserve these root-measurable bounds")와 39–40("the physical constants factor out … of every power mean")은 power mean의 성질을 <code>\ref</code> 없이 쓴다. §2에서 가장 가까운 진술은 model.tex 123–124의 "the power-mean operators preserve pointwise multiplicative bounds"(<a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>)다. 그 문장은 $e^{-c}\le V\le e^c$ ($c$ 가 disorder만의 함수)이면 $T_0V$ 도 같은 범위라는 절대 한계에 대한 것이고, 두 서로 다른 $V$, $V&#x27;$ 의 상대 비교(34–35)와 상수 인자의 정확한 분리(39–40)는 진술하지 않는다. 둘 다 정의 (2.10)에서 바로 나오므로 이 카드는 <a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a>만 근거로 둔다.</p>
+<p><strong>증명 (작성자).</strong> (a) 조건부 기대값은 단조이고 $y\mapsto y^{m}$, $y\mapsto y^{1/m}$ ($0&lt;m&lt;1$, model.tex 71)는 증가 함수다. $d=r-1$ 에서 시작해 귀납. 유한성: 상수 $e^{\pm c}$ 에 (b)를 쓰면 $T_de^{\pm c}=e^{\pm c}$ 이고 (a)로 $T_dV\in[e^{-c},e^c]$ (이것이 model.tex 123–124의 절대 경계 보존이다). 이 가정이 없으면 $\mathbb E[(T_{d+1}V)^{m}\mid\mathscr F_d]$ 가 $+\infty$ 일 수 있어 결론의 $\log$ 차가 뜻이 없다. (b) $\lambda$ 가 $\mathscr F_d$-가측이면 $\mathbb E[(\lambda T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]=\lambda^{m_{d+1}}\mathbb E[(T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]$. 물리 disorder는 모든 $\mathscr F_d$ 에 들어 있다(<a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> "generated by all the physical disorder … and all $\eta_j^\omega$, $0\le j\le d$"). 귀납. 결론은 (a)와 (b)를 $e^{\pm\delta}V$ 에 적용한 것이다.</p>
+<p>원문 34행의 "root-measurable"은 시행 쪽에서 물리 disorder(와 $\eta_0$)가 생성하는 가장 거친 $\sigma$-field $\mathscr F_0$ 에 가측이라는 뜻으로 읽었고(작성자 읽기), 진술 (b)를 그 낱말에 맞췄다. 실제로 쓰이는 $\delta$ 와 상수 $c$ 는 물리 disorder만의 함수라 그 특수한 경우다. 결론의 $\delta$ 는 $\mathscr F_0$-가측이면 되며, 증명은 (b)를 $\lambda=e^{\pm\delta}$ 에 쓴다. §3의 <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>도 같은 단조·동차성을 tree recursion에 대해 진술하지만, 대상이 시행 functional의 $T_d$ 이므로 그 lemma를 부르지 않는다(<a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a>의 본문과 같은 판단).</p><details class="src"><summary>원문 (model.tex:90-97, reduction.tex:34-35, reduction.tex:39-40)</summary><h4>model.tex:90-97</h4><pre class="tex"><code><span class="ln">90</span>For $0\le d&lt;r$, let $\mathscr F_d$ be generated by all the physical disorder in these
+<span class="ln">91</span>expressions and all $\eta_j^\omega$, $0\le j\le d$. Set
+<span class="ln">92</span>\begin{equation}\label{model:power-means}
+<span class="ln">93</span> T_rV=V,\qquad
+<span class="ln">94</span> T_dV=\left(\E[(T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]\right)^{1/m_{d+1}}
+<span class="ln">95</span> \quad(d=r-1,\ldots,0).
+<span class="ln">96</span>\end{equation}
+<span class="ln">97</span>Only auxiliary messages are integrated in these conditional expectations.</code></pre><h4>reduction.tex:34-35</h4><pre class="tex"><code><span class="ln">34</span>interaction difference, and so does each edge logarithm. The power means
+<span class="ln">35</span>preserve these root-measurable bounds. The site term has mean $\alpha p$</code></pre><h4>reduction.tex:39-40</h4><pre class="tex"><code><span class="ln">39</span>For \eqref{reduction:shift}, the physical constants factor out of the spin
+<span class="ln">40</span>partition function and of every power mean. In the functional, the site</code></pre></details>
+</div>
+
+</body>
+</html>

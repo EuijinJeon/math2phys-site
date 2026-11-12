@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>주정리의 가정 묶음</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a> <span class="stag">§2</span> · 섹션: <a href="../map-model.html">§2</a></div><h1>주정리의 가정 묶음</h1><p><span class="badge">assumption</span><span class="badge proposed">proposed</span> <code>x:model-hypotheses</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span> <span class="muted">(2.1)</span> <span class="muted">— 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span> <span class="muted">(2.4)</span> <span class="muted">— 부호 조건 (2.4)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>main:theorem의 가정. <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> 진술의 "Under the hypotheses of <a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>"(upper.tex 12)이 실제로 받는 것<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/main.theorem.s4.html" title="상한과 합쳐 극한의 존재와 (2.13)">main:theorem.s4</a> <span class="stag">주정리</span></li><li><a class="node" href="../cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.sat.s3.html" title="(2.1) 확인과 주정리 적용">models:sat.s3</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/models.spin.s3.html" title="(2.1) 확인과 주정리 적용">models:spin.s3</a> <span class="stag">§10</span></li><li><a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a> <span class="stag">§4</span></li></ul></dd><dt>수학 진술</dt><dd><p>고정한 짝수 $p\ge2$, $\alpha&gt;0$ 과 model:hamiltonian의 모형에 대해 (2.1) $\mathbb EB(\theta)+\mathbb E\lvert h\rvert&lt;\infty$, (2.3)의 표현과 엄격한 곱 한계, (2.4) $\mathbb E[(-b)^n]\ge0$ $(n\ge1)$ (유한한 실수 기대값으로 해석). 원문 표현은 "Under (2.1)–(2.4)"(식 라벨 <a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>–<a class="node" href="../cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a>)이며 이 범위가 (2.1)–(2.4)이므로 (2.2) 모형 정의도 포함한다.</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-hypotheses" title="짝수 $p\ge2$, $\mathbb EB(\theta)+\mathbb E\lvert h\rvert&lt;\infty$, factorization, positivity. 정확한 목록과 각 가정이 쓰이는 곳은 규칙 P1 행에 있다.">가정</a>: 짝수 $p$, 상호작용과 장의 1차 moment, tanh형 <a class="gterm" href="../glossary.html#g-factorization" title="$a&gt;0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.">factor 전개</a>, 그 전개 계수 $b$ 의 <a class="gterm" href="../glossary.html#g-positivity" title="factorization의 $b$ 의 모든 차수 moment에 대한 부호 조건이다(유한 실수 기대값으로 해석).">부호 조건</a>.</p></dd><dt>차이</dt><dd><p>역할이 갈린다. 상한(<a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>)은 모두 쓴다. 하한은 bounded이고 <a class="gterm" href="../glossary.html#g-permutation-invariance" title="$\theta$ 의 법칙이 $p$ 개 입력 좌표의 순열에 대해 불변이라는 조건이다.">순열 불변</a>인 상호작용과 bounded 장만 요구하며(<a class="node" href="../cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>) factorization과 positivity를 쓰지 않는다. 주정리 증명은 factorization을 상수 이동의 대칭화에 한 번 쓰고(<a class="node" href="../cards/main.theorem.s1.html" title="상수 이동으로 승수 $a$ 제거와 순열 불변성">main:theorem.s1</a>), (2.1)을 <a class="gterm" href="../glossary.html#g-truncation" title="$\widehat\theta$ 의 각 값과 $h$ 를 $[-K,K]$ 로 자르는 것이다. 순열 불변성을 보존하고, $D_K=\mathbb E\max_s\lvert\widehat\theta-\widehat\theta^{(K)}\rvert\to0$, $d_K=\mathbb E\lvert h-h^{(K)}\rvert\to0$ 이다.">truncation</a>의 dominated convergence에 쓴다(<a class="node" href="../cards/main.theorem.s2.html" title="truncation과 bounded 하한의 적용">main:theorem.s2</a>).</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p>이 카드는 원문에 없는 묶음이다. <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> 카드가 <a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> 대신 이 카드를 <code>uses</code>에 넣으면 <a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> → <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> 방향과 순환하지 않는다. 원문 범위는 가정의 진술(model.tex 3–8의 (2.1), 25–38의 (2.3)·(2.4))과 그것을 이름으로 부르는 <a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>의 줄 130–131이다. 뒤의 범위를 함께 두는 것은 의존 검사가 대상 라벨(<a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, model.tex 130)의 위치가 <code>uses</code>한 카드의 범위에 드는지로 허용 여부를 보기 때문이다. (2.2) 모형 정의(9–23)는 가정이 아니라 대상이므로 <code>uses</code>의 model:hamiltonian으로 가리키고 범위에 넣지 않았다.</p><details class="src"><summary>원문 (model.tex:3-8, model.tex:25-38, model.tex:130-131)</summary><h4>model.tex:3-8</h4><pre class="tex"><code><span class="ln">3</span>Fix an even integer $p\ge2$ and $\alpha&gt;0$. Let $\theta$ be a random real
+<span class="ln">4</span>function on $\{-1,1\}^p$ and let $h$ be a real random variable. Write
+<span class="ln">5</span>$B(\theta)=\max_s\abs{\theta(s)}$ and assume
+<span class="ln">6</span>\begin{equation}\label{model:integrability}
+<span class="ln">7</span> \E B(\theta)+\E\abs h&lt;\infty.
+<span class="ln">8</span>\end{equation}</code></pre><h4>model.tex:25-38</h4><pre class="tex"><code><span class="ln">25</span>The interaction hypotheses are the existence of a representation
+<span class="ln">26</span>\begin{equation}\label{model:factorization}
+<span class="ln">27</span> e^{\theta(s_1,\ldots,s_p)}
+<span class="ln">28</span> =a\left(1+b\prod_{\ell=1}^p f_\ell(s_\ell)\right),
+<span class="ln">29</span> \qquad
+<span class="ln">30</span> \abs{b\prod_{\ell=1}^p f_\ell(s_\ell)}&lt;1\quad\text{a.s.},
+<span class="ln">31</span>\end{equation}
+<span class="ln">32</span>for every spin tuple, where $a&gt;0$ and $b$ are real random variables,
+<span class="ln">33</span>the $f_\ell:\{-1,1\}\to\R$ are independent copies of one random
+<span class="ln">34</span>function, $b$ is independent of them, and
+<span class="ln">35</span>\begin{equation}\label{model:positivity}
+<span class="ln">36</span> \E[(-b)^n]\ge0\qquad(n\ge1).
+<span class="ln">37</span>\end{equation}
+<span class="ln">38</span>The expectations in \eqref{model:positivity} are interpreted as finite real</code></pre><h4>model.tex:130-131</h4><pre class="tex"><code><span class="ln">130</span>\begin{theorem}\label{main:theorem}
+<span class="ln">131</span>Under \eqref{model:integrability}--\eqref{model:positivity}, the thermodynamic</code></pre></details>
+</div>
+
+</body>
+</html>

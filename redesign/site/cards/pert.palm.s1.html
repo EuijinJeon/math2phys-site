@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Poisson add-one 항등식으로 score를 insertion으로</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>Poisson add-one 항등식으로 score를 insertion으로</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:palm.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.score.html" title="(6.3) perturbation score $D_\nu$ (6.3)">pert:score</a> <span class="stag">§6</span> <span class="muted">(6.3)</span> <span class="muted">— perturbation score $D_\nu$ (6.3)</span></li><li><a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span> <span class="muted">(6.2)</span> <span class="muted">— Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)</span></li><li><a class="node" href="../cards/pert.palm-expression.html" title="(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)">pert:palm-expression</a> <span class="stag">§6</span> <span class="muted">(6.14)</span> <span class="muted">— insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.palm.s2.html" title="(6.16)과 $H_N$ 의 type 무관성">pert:palm.s2</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.palm.s2.html" title="(6.16)과 $H_N$ 의 type 무관성">pert:palm.s2</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>$D_\nu$ 의 type-$\nu$ 항 합에 Poisson add-one 항등식을 적용한다. 평균 $c_\nu s_N$ 으로 나눈 뒤, 남은 개수는 다시 평균 $c_\nu s_N$ 의 Poisson이고 다른 모든 개수는 바뀌지 않는다. 따라서 남은 모형은 정확히 원래 reservoir 법칙을 가진다. 구별된 항은 매개변수 $t_\nu,u_\nu$ 의 독립 새 insertion이 된다. 그 score는 $g_0^{a_*}S_0^{a_*}/A^{a_*}$ 이다. updated tree 밀도는 (<span class="nolink" title="(3.5) (카드 없음)">tree:density</span>)이므로 anchor 인자 $A^{a_*}$ 가 상쇄된다. 이로써
+$$\frac{\mathbb E[fD_\nu^{a_*}]}{c_\nu s_N}=J_{N,\mathcal T}(t_\nu,u_\nu),\qquad\frac{\mathbb E\langle D_\nu\rangle}{c_\nu s_N}=J_{N,\{a_*\}}(t_\nu,u_\nu).$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀이(작성자). Poisson add-one(Mecke) 항등식: 평균 측도 $\lambda\mu$ 의 Poisson 과정 $\Pi$ 에 대해 $\mathbb E\sum_{x\in\Pi}F(x,\Pi)=\lambda\int\mathbb EF(x,\Pi\cup\{x\})\,\mu(dx)$. 여기서 Poisson 과정은 <a class="gterm" href="../glossary.html#g-root" title="root는 보조 계층 path의 깊이 0 변수이고(&quot;Its depth-zero variable is the root&quot;, trees.tex 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(trees.tex 23). reservoir에서는 물리 disorder(&quot;the reservoir root disorder…">root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)</a>의 것이고 점 $x$ 는 type-$\nu$ 항 하나의 root label(균일 site)이다. 그 항의 mark 변수는 root 변수가 아니라 배정된 보조 깊이의 새 변수이고, 점을 더한 계에서는 prior로 덧붙인 뒤 insertion으로 다룬다(perturbations.tex 60–62, 367–368). $F$ 는 $f\cdot(\text{그 항의 anchor score})$ 다. 점 $x$ 를 더한 계의 tree 법칙은 base reservoir의 tree 법칙에 <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>의 밀도 $W_{\mathcal T}(A)$ 를 곱한 것이므로(새 항이 쓰는 변수는 <a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a>대로 prior로 붙음) $\mathbb E[fD^{a_*}_\nu]=\lambda\,\mathbb E[f\,(g_0^{a_*}S_0^{a_*}/A^{a_*})W_{\mathcal T}(A)]$ 이다. 둘째 식은 tree를 anchor 하나로 두고 $f=1$ 로 둔 같은 계산이다. 여기서 "기대값"은 고른 벡터를 고정하고 root(개수 포함)와 path에 대해 취한다. add-one 항등식이 평균하는 것은 root의 Poisson 개수이지 매개변수가 아니다.</p><details class="src"><summary>원문 (perturbations.tex:362-377)</summary><h4>perturbations.tex:362-377</h4><pre class="tex"><code><span class="ln">362</span>\begin{proof}
+<span class="ln">363</span>Apply the Poisson add-one identity to the sum over type-$\nu$ terms
+<span class="ln">364</span>in $D_\nu$.  After division by its mean $c_\nu s_N$, the remaining
+<span class="ln">365</span>count is again Poisson with mean $c_\nu s_N$, and all the other counts
+<span class="ln">366</span>are unchanged.  Thus the remaining model has exactly the original
+<span class="ln">367</span>reservoir law.  The distinguished term becomes an independent new
+<span class="ln">368</span>insertion with parameters $t_\nu,u_\nu$.  Its score is
+<span class="ln">369</span>$g_0^{a_*}S_0^{a_*}/A^{a_*}$.  The updated tree density is
+<span class="ln">370</span>\eqref{tree:density}, so the anchor factor $A^{a_*}$ cancels.
+<span class="ln">371</span>This proves
+<span class="ln">372</span>\[
+<span class="ln">373</span> \frac{\mathbb E[fD_\nu^{a_*}]}{c_\nu s_N}
+<span class="ln">374</span> =J_{N,\mathcal T}(t_\nu,u_\nu),\qquad
+<span class="ln">375</span> \frac{\mathbb E\langle D_\nu\rangle}{c_\nu s_N}
+<span class="ln">376</span> =J_{N,\{a_*\}}(t_\nu,u_\nu).
+<span class="ln">377</span>\]</code></pre></details>
+</div>
+
+</body>
+</html>

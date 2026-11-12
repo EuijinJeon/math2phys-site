@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>§5 A perturbed cavity reservoir — 지도</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§5 A perturbed cavity reservoir — 지도</h1><p class="stat">이 섹션의 카드 13장 가운데 증명 단계를 뺀 8장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 21장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/cavity.section.html" title="5 §5 섭동된 cavity reservoir">cavity:section</a></p><pre class="mermaid" data-map="sec-cavity">
+flowchart LR
+  subgraph IN[&quot;§5 A perturbed cavity reservoir&quot;]
+    a0[&quot;Poisson 섭동 factor 족과 한계 1/2_3…&lt;br/&gt;cavity:factor-bounds&quot;]
+    a1[&quot;깊이 L2, r=L-1, 균등 격자 m_d=d/L (…&lt;br/&gt;cavity:grid&quot;]
+    a2[&quot;Cavity increments (cavity 증분)&lt;br/&gt;cavity:increment&quot;]
+    a3[&quot;섭동의 비용 P_N^L, u-NF_N(2)s_N (5…&lt;br/&gt;cavity:negligible&quot;]
+    a4[&quot;하한의 유계·순열 불변 가정 (B() B, h H)&lt;br/&gt;x:cavity-bounded&quot;]
+    a5[&quot;섭동의 개수·type·site는 root, 매개변수 …&lt;br/&gt;x:cavity-root-convention&quot;]
+    a6[&quot;섭동된 계의 기대 root logarithm P_N^…&lt;br/&gt;x:cavity-root-logarithm&quot;]
+    a7[&quot;하한의 모든 spin tree는 이 reservoir…&lt;br/&gt;x:cavity-tree-sampling&quot;]
+  end
+  subgraph X0[&quot;밖: §8&quot;]
+    e0[&quot;bounded 법칙의 하한: _NF_N_r0_r&lt;br/&gt;comp:bounded-lower&quot;]
+    e1[&quot;Recursive law encoding (재귀적 법…&lt;br/&gt;comp:encoding&quot;]
+    e2[&quot;삽입 logarithm의 비교: _N B_L-1(_L…&lt;br/&gt;comp:insertion-comparison&quot;]
+    e3[&quot;선택된 수열 위의 낮은 증분 (8.1)&lt;br/&gt;comp:low-increments&quot;]
+    e4[&quot;Empirical-pattern comparison …&lt;br/&gt;comp:patterns&quot;]
+    e5[&quot;tree 법칙 평균한 multioverlap 요동이 …&lt;br/&gt;comp:shape-error&quot;]
+    e6[&quot;§8의 고정된 선택: , 깊이마다의 선택된 수열, 선…&lt;br/&gt;x:comp-standing&quot;]
+  end
+  subgraph X1[&quot;밖: §7&quot;]
+    e7[&quot;균등 격자 m_d=d/L, =1/L&lt;br/&gt;x:decor-mesh&quot;]
+  end
+  subgraph X2[&quot;밖: §2&quot;]
+    e8[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
+    e9[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
+  end
+  subgraph X3[&quot;밖: §6&quot;]
+    e10[&quot;Poisson 섭동 factor _=1+t_ g_i+…&lt;br/&gt;pert:factor&quot;]
+    e11[&quot;결정적 매개변수 선택 (Lemma 6.2)&lt;br/&gt;pert:selection&quot;]
+    e12[&quot;F 와 섭동된 증분 _N( u)&lt;br/&gt;x:pert-increment&quot;]
+    e13[&quot;매개변수 측도 (결정적 벡터를 고르는 데만 씀)&lt;br/&gt;x:pert-parameter-measure&quot;]
+    e14[&quot;§6의 약속: 유계 모형, 고정 깊이 L2, 두 계,…&lt;br/&gt;x:pert-standing&quot;]
+  end
+  subgraph X4[&quot;밖: §3&quot;]
+    e15[&quot;insertion recursion Y_d 와 바뀐 …&lt;br/&gt;tree:Y-recursion&quot;]
+    e16[&quot;Insertion calculus (삽입 미적분)&lt;br/&gt;tree:insertion&quot;]
+    e17[&quot;분배함수에서 만든 tilted kernel&lt;br/&gt;tree:original-tilt&quot;]
+    e18[&quot;원래 모형에 없던 변수를 쓰는 insertion&lt;br/&gt;x:tree-extra-variables&quot;]
+    e19[&quot;path kernel 열, 지수 m_d, prefix…&lt;br/&gt;x:tree-path-kernels&quot;]
+    e20[&quot;유한 tree, 표본 기대값 E_ T, split, …&lt;br/&gt;x:tree-sampling&quot;]
+  end
+  a0 --&gt; a2
+  a0 --&gt; a3
+  a0 --&gt; a5
+  a0 --&gt; a6
+  a0 --&gt; e10
+  a1 --&gt; a0
+  a1 --&gt; a2
+  a1 --&gt; a6
+  a1 --&gt; e0
+  a1 --&gt; e14
+  a1 --&gt; e2
+  a1 --&gt; e5
+  a1 --&gt; e6
+  a1 --&gt; e7
+  a2 --&gt; a7
+  a2 --&gt; e1
+  a2 --&gt; e11
+  a2 --&gt; e12
+  a2 --&gt; e14
+  a2 --&gt; e2
+  a2 --&gt; e3
+  a2 --&gt; e4
+  a3 --&gt; a2
+  a3 --&gt; e10
+  a3 --&gt; e11
+  a4 --&gt; a2
+  a4 --&gt; a7
+  a4 --&gt; e0
+  a4 --&gt; e12
+  a4 --&gt; e14
+  a4 --&gt; e2
+  a4 --&gt; e6
+  a5 --&gt; a2
+  a5 --&gt; a3
+  a5 --&gt; a6
+  a5 --&gt; e10
+  a5 --&gt; e13
+  a6 --&gt; a2
+  a6 --&gt; a3
+  a6 --&gt; e12
+  a7 --&gt; e1
+  a7 --&gt; e14
+  a7 --&gt; e2
+  e15 --&gt; a2
+  e16 --&gt; a2
+  e16 --&gt; a3
+  e17 --&gt; a0
+  e17 --&gt; a2
+  e17 --&gt; a3
+  e17 --&gt; a6
+  e17 --&gt; a7
+  e18 --&gt; a2
+  e18 --&gt; a3
+  e19 --&gt; a1
+  e20 --&gt; a7
+  e8 --&gt; a0
+  e8 --&gt; a2
+  e8 --&gt; a3
+  e8 --&gt; a4
+  e8 --&gt; a6
+  e9 --&gt; a4
+  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
+  classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
+  class a2 thm;
+  class a0,a1,a3,a4,a5,a6,a7 oth;
+  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20 ext;
+  click a0 &quot;cards/cavity.factor-bounds.html&quot;
+  click a1 &quot;cards/cavity.grid.html&quot;
+  click a2 &quot;cards/cavity.increment.html&quot;
+  click a3 &quot;cards/cavity.negligible.html&quot;
+  click a4 &quot;cards/x.cavity-bounded.html&quot;
+  click a5 &quot;cards/x.cavity-root-convention.html&quot;
+  click a6 &quot;cards/x.cavity-root-logarithm.html&quot;
+  click a7 &quot;cards/x.cavity-tree-sampling.html&quot;
+  click e0 &quot;cards/comp.bounded-lower.html&quot;
+  click e1 &quot;cards/comp.encoding.html&quot;
+  click e2 &quot;cards/comp.insertion-comparison.html&quot;
+  click e3 &quot;cards/comp.low-increments.html&quot;
+  click e4 &quot;cards/comp.patterns.html&quot;
+  click e5 &quot;cards/comp.shape-error.html&quot;
+  click e6 &quot;cards/x.comp-standing.html&quot;
+  click e7 &quot;cards/x.decor-mesh.html&quot;
+  click e8 &quot;cards/model.hamiltonian.html&quot;
+  click e9 &quot;cards/model.integrability.html&quot;
+  click e10 &quot;cards/pert.factor.html&quot;
+  click e11 &quot;cards/pert.selection.html&quot;
+  click e12 &quot;cards/x.pert-increment.html&quot;
+  click e13 &quot;cards/x.pert-parameter-measure.html&quot;
+  click e14 &quot;cards/x.pert-standing.html&quot;
+  click e15 &quot;cards/tree.Y-recursion.html&quot;
+  click e16 &quot;cards/tree.insertion.html&quot;
+  click e17 &quot;cards/tree.original-tilt.html&quot;
+  click e18 &quot;cards/x.tree-extra-variables.html&quot;
+  click e19 &quot;cards/x.tree-path-kernels.html&quot;
+  click e20 &quot;cards/x.tree-sampling.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/cavity.factor-bounds.html" title="(5.2) Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)">cavity:factor-bounds</a></td><td>definition</td><td>Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a></td><td><a class="node" href="cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a></td></tr><tr><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a></td><td>convention</td><td>깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)</td><td><a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a>, <a class="node" href="cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a>, <a class="node" href="cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a>, <a class="node" href="cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a></td></tr><tr><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a></td><td>lemma</td><td>Cavity increments (cavity 증분)</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a></td><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a>, <a class="node" href="cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a>, <a class="node" href="cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a></td></tr><tr><td><a class="node" href="cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a></td><td>remark</td><td>섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a></td><td><a class="node" href="cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a></td></tr><tr><td><a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a></td><td>assumption</td><td>하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a>, <a class="node" href="cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a></td></tr><tr><td><a class="node" href="cards/x.cavity-root-convention.html" title="섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값">x:cavity-root-convention</a></td><td>convention</td><td>섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값</td><td><span class="muted">—</span></td><td><a class="node" href="cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>, <a class="node" href="cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a></td></tr><tr><td><a class="node" href="cards/x.cavity-root-logarithm.html" title="섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$">x:cavity-root-logarithm</a></td><td>definition</td><td>섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a></td><td><a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a></td></tr><tr><td><a class="node" href="cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a></td><td>convention</td><td>하한의 모든 spin tree는 이 reservoir에서 뽑는다</td><td><a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a></td></tr></tbody></table></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>
+</body>
+</html>

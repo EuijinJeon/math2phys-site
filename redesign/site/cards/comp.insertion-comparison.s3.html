@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>log 전개의 차수별 비교와 차수 절단</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span> · 섹션: <a href="../map-comparison.html">§8</a></div><h1>log 전개의 차수별 비교와 차수 절단</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>comp:insertion-comparison.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/comp.insertion-comparison.s2.html" title="개수 절단 $K\le M$ 과 정규화 $A=z(1+D)$, $\lvert D\rvert\le c&lt;1$">comp:insertion-comparison.s2</a> <span class="stag">§8</span> <span class="muted">— 개수 절단 $K\le M$ 과 정규화 $A=z(1+D)$, $\lvert D\rvert\le c&lt;1$</span></li><li><a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.2</span> <span class="muted">— Logarithmic expansion (log 전개)</span></li><li><a class="node" href="../cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a> <span class="stag">§3</span> <span class="muted">(3.8)</span> <span class="muted">— tree 법칙 $Q_k$</span></li><li><a class="node" href="../cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a> <span class="stag">§8</span> <span class="muted">Lemma 8.2</span> <span class="muted">— Empirical-pattern comparison (경험 pattern 비교)</span></li><li><a class="node" href="../cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span> <span class="muted">(8.4)</span> <span class="muted">— tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)</span></li><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span> <span class="muted">Lemma 8.1</span> <span class="muted">— Recursive law encoding (재귀적 법칙 부호화)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li><li><a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a> <span class="stag">§8</span> <span class="muted">— §8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/comp.insertion-comparison.s4.html" title="Poisson 꼬리와 극한의 조립">comp:insertion-comparison.s4</a> (고정 $M$, $q$ 에서 남은 유한 개 전개 항의 극한과 꼬리 경계)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.insertion-comparison.s4.html" title="Poisson 꼬리와 극한의 조립">comp:insertion-comparison.s4</a> <span class="stag">§8</span></li></ul></dd><dt>수학 진술</dt><dd><p>tree:log-expansion의 각 차수 $k$ 에서, $D$ 의 $k$ 사본의 곱은 많아야 $pM$ 개 label의 replica-spin pattern과 독립인 insertion disorder의 유계 함수다. comp:patterns에 의해 고정 tree 위에서 그 평가 오차는 $pM\sum_{S\ne\varnothing}\mathbb E\lvert R_S-\mathbb ER_S\rvert$ 이하다. 그러므로 (<a class="node" href="../cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a>)가 tree 평균한 오차를 순서 있는 극한에서 0으로 보낸다. 모든 고정 $M$ 에 대해, 전개를 $q$ 항 뒤에서 자르면 양쪽 모두에서 오차가 $N,L$ 에 균일하게 많아야 $\sum_{k&gt;q}c^k/k$ 다.</p></dd><dt>물리 진술</dt><dd><p>삽입 log를 <a class="gterm" href="../glossary.html#g-tree-law" title="path 하나에서 시작해, leaf가 $n$ 개일 때 내부 vertex $\beta$ 를 확률 $(n_\beta m_{d_\beta+1}-m_{d_\beta})/n$ 로 골라 새 path를 붙여 가는 무작위 tree 법칙이다. $A=1+tD$ 의 $\log Y_0$ 가 이 법칙의 tree 평균 급수로 정확히 쓰인다($\lvert t\rvert\lVert…">tree 법칙</a> $Q_k$ 위 <a class="gterm" href="../glossary.html#g-replica" title="prescribed-tree의 깊이 $L$ leaf에 놓인 spin 배치다. 두 replica의 split 깊이는 두 path의 마지막 공통 vertex의 깊이다(&quot;A split at depth $d$ means that the last common vertex is at depth $d$&quot;, trees.tex 34–35). 두 replica는 split…">replica</a> 평균의 급수로 쓰면, 각 항은 이웃 site들의 <a class="gterm" href="../glossary.html#g-spin-pattern" title="site $i$ 에서 $k$ 개 replica leaf의 spin 값 묶음이다. 균일 site에서 그 경험분포는 $\pi(\mathbf e)=2^{-k}\sum_{S\subseteq[k]}R_S\prod_{b\in S}e_b$ 이고, encoded law의 한 label 분포는 $\bar\pi=\mathbb E\pi$ 다.">spin pattern</a>의 유계 함수다. 그래서 차수마다 이웃을 독립 사본으로 바꾸는 비용은 tree 평균한 <a class="gterm" href="../glossary.html#g-multioverlap" title="replica leaf 집합 $S$ 위 spin 곱의 공간 평균이다. $\lvert S\rvert=2$ 가 보통의 overlap, $\lvert S\rvert=1$ 이 자화다.">multioverlap</a> 요동이고, 그것은 극한에서 사라진다.</p></dd><dt>차이</dt><dd><p>(1) 차수별 비교는 고정 $k$ 에서만 하고 높은 차수는 균일한 기하 꼬리로 버린다. 그래서 $M$ 이 고정이어야 한다($c=\tanh(H+BM)$). (2) "순서 있는 극한"은 고정 $L$ 의 선택된 수열 위 $\limsup_N$ 뒤 $L\to\infty$ 다<sup><a class="gterm" href="../glossary.html#g-order-of-limits" title="하한의 극한은 $L$, $\varepsilon$, $\eta$ 를 고정하고 selected-sequence를 따라 $N\to\infty$, 그다음 $L\to\infty$, 그다음 $\eta\downarrow0$(§8의 shape error), 마지막으로 $\varepsilon\downarrow0$ 의 순서로만 취한다. §6 안에서는 type 지수 $j$…">용어</a></sup>. (3) 이웃 수가 $pM$ 으로 유한한 것은 절단 덕분이다.</p></dd><dt>축약 유형</dt><dd><code>approximation</code> <span class="muted">— 유효 범위 안에서만 맞음</span></dd></dl><h2>본문</h2><p><strong>양쪽의 같은 꼴 (작성자 읽기).</strong> <a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>은 임의의 kernel 열에서 성립하는 root 조건부 항등식이라, reservoir 쪽(tilted reservoir kernel)과 trial 쪽(trial kernel)에 같은 $t=1$, 같은 $D$ 의 꼴로 적용된다. 두 쪽의 $Q_k$ 는 같은 지수열 $m_d=d/L$ 의 같은 법칙이다(<a class="node" href="../cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a>은 $\mathbf m$ 만으로 정해진다). 차수 $k$ 항은 $\frac{(-1)^{k-1}}k\mathbb E\,\mathbb E_{Q_k}E_{\mathcal T}\prod_{a=1}^kD^a$ 이고, $\mathcal T$ 를 고정하면 $\mathbb E\,E_{\mathcal T}\prod_aD^a$ 가 <a class="node" href="../cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a>의 "고정 tree 위 관측량의 기대값"이다: 관측량 $\mathbf1_{\{K\le M\}}\prod_aD^a$ 는 절댓값 1 이하이고 $k$ 개 leaf의 pattern을 site label마다 쓴다. reservoir 쪽 site label은 <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>의 독립 균일 index이고 trial 쪽은 <a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a>의 독립 label이다.</p>
+<p>$pM$: site 삽입은 $(p-1)K_{\rm s}\le(p-1)M$ 개, bond 삽입은 $pK_{\rm b}\le pM$ 개 label을 쓴다.</p>
+<p>꼬리: $\lvert\frac1k\mathbb E_{Q_k}E_{\mathcal T}\prod D^a\rvert\le c^k/k$ (<a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>의 나머지 경계).</p><details class="src"><summary>원문 (comparison.tex:205-213)</summary><h4>comparison.tex:205-213</h4><pre class="tex"><code><span class="ln">205</span>At each order $k$ of \cref{tree:log-expansion}, the product of the $k$
+<span class="ln">206</span>copies of $D$ is a bounded function of replica-spin patterns at at most
+<span class="ln">207</span>$pM$ labels and of independent insertion disorder. By
+<span class="ln">208</span>\cref{comp:patterns}, its evaluation error on a fixed tree is bounded by
+<span class="ln">209</span>$pM\sum_{S\ne\varnothing}\E|R_S-\E R_S|$. Hence
+<span class="ln">210</span>\eqref{comp:shape-error} makes its tree-averaged error tend to zero in the
+<span class="ln">211</span>ordered limits. For every fixed $M$, truncating the expansion after $q$
+<span class="ln">212</span>terms leaves an error at most
+<span class="ln">213</span>$\sum_{k&gt;q}c^k/k$ on either side, uniformly in $N,L$.</code></pre></details>
+</div>
+
+</body>
+</html>

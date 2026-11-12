@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/upper.derivative.html" title="(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)">upper:derivative</a> <span class="stag">§4</span> · 섹션: <a href="../map-upper.html">§4</a></div><h1>(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>upper:regularization</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a> <span class="stag">§4</span> <span class="muted">— 세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$</span></li><li><a class="node" href="../cards/upper.bound.s1.html" title="퇴화 경우와 $b$, $M$ 의 본질적 유계성">upper:bound.s1</a> <span class="stag">§4</span> <span class="muted">— 퇴화 경우와 $b$, $M$ 의 본질적 유계성</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li><li><a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.2</span> <span class="muted">— Logarithmic expansion (log 전개)</span></li><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span> <span class="muted">(2.1)</span> <span class="muted">— 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</span></li><li><a class="node" href="../cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span> <span class="muted">— message $x$ 와 $q_x$; site 항과 edge 항의 뜻</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> (전개할 정규화된 증분과 그 한계, $\lambda\uparrow1$ 극한의 정당화)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> <span class="stag">§4</span></li></ul></dd><dt>수학 진술</dt><dd><p>기대값을 취하기 전에 $a$ 를 떼므로 $\log a$ 의 적분 가능성은 필요 없다. $D_*=b\prod_\ell f_\ell(1)$, $c=\theta(1,\ldots,1)$ 로 두고 각 삽입 증분에서 $c$ 를 뺀다. 이 적분 가능한 뺄셈은 계수 $1,-p,p-1$ 의 결합에서 상쇄된다. 보간된 계는 고정한다. $0&lt;\lambda&lt;1$ 에 대해 정규화된 증분 각각을
+$$\log Y_0(1+\lambda D)-\log(1+\lambda D_*)\tag{4.2}$$
+로 바꾼다. 여기서 $Y_0$ 는 tree:log-expansion의 insertion recursion이다. 모든 spin 입력에 대해 비
+$$\frac{1+\lambda D}{1+\lambda D_*}=(1-w)+w\frac{1+D}{1+D_*},\qquad w=\frac{\lambda(1+D_*)}{1+\lambda D_*}\in[0,1]$$
+는 $e^{-2B(\theta)}$ 와 $e^{2B(\theta)}$ 사이에 있다. spin 입력의 임의 부분집합을 $q_x$ 들로 평균한 뒤에도 같다. 따라서 (4.2)의 절댓값은 $2B(\theta)$ 이하다. 각 고정 상호작용에 대해 $\lambda\uparrow1$ 의 수렴은 spin 입력과 message에 균일하고 유한 recursion이 그것을 보존한다. dominated convergence가 원하는 정규화된 증분을 회복한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p><strong>풀이 (작성자).</strong> $a$ 와 $1+\lambda D_*$ 는 새 상호작용의 disorder만의 함수(새 root 변수)이므로 <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>의 동차성으로 recursion 밖으로 나온다: $\log Y_0(a(1+D))=\log a+\log Y_0(1+D)$, 그리고 $c=\log a+\log(1+D_*)$ 이므로 $\log Y_0(a(1+D))-c=\log Y_0(1+D)-\log(1+D_*)$ 에 $\log a$ 가 없다. $\lvert c\rvert\le B(\theta)$ 라 $c$ 는 적분 가능하고, 세 삽입이 같은 법칙의 새 $\theta$ 를 쓰므로 $\mathbb Ec$ 가 $1-p+(p-1)=0$ 으로 상쇄된다.</p>
+<p>$\frac{1+D}{1+D_*}=e^{\theta(s)-\theta(1,\ldots,1)}\in[e^{-2B},e^{2B}]$ 이고, 1과 이 값의 볼록 결합도 같은 구간에 있다. $q_x$ 평균도 볼록 결합이다. 이 root-가측 한계를 recursion이 보존한다(<a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>의 단조성). 지배 함수 $2B(\theta)$ 는 (2.1)로 적분 가능하다. $1+D&gt;0$, $1+D_*&gt;0$ 은 $\lvert D\rvert,\lvert D_*\rvert&lt;1$(엄격한 곱 한계와 $\lvert\bar f\rvert\le M$, <a class="node" href="../cards/upper.bound.s1.html" title="퇴화 경우와 $b$, $M$ 의 본질적 유계성">upper:bound.s1</a>)에서 온다.</p>
+<p>원문 81행이 <code>\cref{tree:log-expansion}</code>을 부르는 것은 $Y_0$ 의 정의 때문이다. 그 정의 자체는 <a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>에 있다. <a class="node" href="../cards/x.model-hypothesis-remarks.html" title="가정에 대한 주석: 퇴화 경우와 승수 $a$">x:model-hypothesis-remarks</a> (iii)("$\log a$ 의 별도 적분 가능성은 가정하지 않는다")이 예고한 일이 이 단계다. 이 카드는 그 주석 카드를 쓰지 않고 스스로 처리한다.</p><details class="src"><summary>원문 (upper.tex:70-94)</summary><h4>upper.tex:70-94</h4><pre class="tex"><code><span class="ln">70</span>\emph{Normalization.}
+<span class="ln">71</span>We remove $a$ before taking expectations, so no integrability of
+<span class="ln">72</span>$\log a$ is needed. Put
+<span class="ln">73</span>$D_*=b\prod_\ell f_\ell(1)$ and $c=\theta(1,\ldots,1)$.
+<span class="ln">74</span>Subtract $c$ from each insertion increment. These integrable subtractions
+<span class="ln">75</span>cancel in the combination with coefficients $1,-p,p-1$.
+<span class="ln">76</span>Keep the interpolated system fixed. For $0&lt;\lambda&lt;1$, replace
+<span class="ln">77</span>each normalized increment by
+<span class="ln">78</span>\begin{equation}\label{upper:regularization}
+<span class="ln">79</span> \log Y_0(1+\lambda D)-\log(1+\lambda D_*),
+<span class="ln">80</span>\end{equation}
+<span class="ln">81</span>where $Y_0$ is the insertion recursion of \cref{tree:log-expansion}.
+<span class="ln">82</span>For every spin input, the ratio
+<span class="ln">83</span>\[
+<span class="ln">84</span> \frac{1+\lambda D}{1+\lambda D_*}
+<span class="ln">85</span> =(1-w)+w\frac{1+D}{1+D_*},
+<span class="ln">86</span> \qquad w=\frac{\lambda(1+D_*)}{1+\lambda D_*}\in[0,1],
+<span class="ln">87</span>\]
+<span class="ln">88</span>lies between $e^{-2B(\theta)}$ and $e^{2B(\theta)}$. The same is true
+<span class="ln">89</span>after averaging any subset of the spin inputs against the $q_x$&#x27;s.
+<span class="ln">90</span>It follows that \eqref{upper:regularization} is bounded in absolute value by
+<span class="ln">91</span>$2B(\theta)$. For each fixed interaction, convergence as $\lambda\uparrow1$
+<span class="ln">92</span>is uniform in the spin inputs and messages and is preserved by the finite
+<span class="ln">93</span>recursion. Dominated convergence therefore recovers the desired normalized
+<span class="ln">94</span>increments.</code></pre></details>
+</div>
+
+</body>
+</html>

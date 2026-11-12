@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>root 혼합의 보존, (comp:single-label-moments), label마다의 독립 사본</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span> · 섹션: <a href="../map-comparison.html">§8</a></div><h1>root 혼합의 보존, (comp:single-label-moments), label마다의 독립 사본</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>comp:encoding.s4</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/comp.encoding.s3.html" title="branching pattern마다의 확인: backward recursion $G_T(\eta_d)$">comp:encoding.s3</a> <span class="stag">§8</span> <span class="muted">— branching pattern마다의 확인: backward recursion $G_T(\eta_d)$</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/comp.patterns.s1.html" title="균일 site pattern의 경험분포 $\pi$ 와 $\bar\pi=\mathbb E\pi$">comp:patterns.s1</a> ($\bar\pi=\mathbb E\pi$ 의 근거 식, comparison.tex 110), <a class="node" href="../cards/comp.insertion-comparison.s1.s1.html" title="reservoir spin을 trial spin 과정으로 바꾸기: $\widetilde A$, $\widetilde Y_0$">comp:insertion-comparison.s1.s1</a> (독립 label과 새 물리 disorder의 독립)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.insertion-comparison.s1.html" title="trial 삽입과 정확한 trial 항등식">comp:insertion-comparison.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s1.html" title="reservoir spin을 trial spin 과정으로 바꾸기: $\widetilde A$, $\widetilde Y_0$">comp:insertion-comparison.s1.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.patterns.s1.html" title="균일 site pattern의 경험분포 $\pi$ 와 $\bar\pi=\mathbb E\pi$">comp:patterns.s1</a> <span class="stag">§8</span></li></ul></dd><dt>수학 진술</dt><dd><p>$\zeta_{L,N}=\operatorname{Law}(\eta_0)$ 로 두면 root 혼합도 보존된다. 특히 leaf의 모든 부분집합 $S$ 에 대해
+$$\mathbb E\prod_{a\in S}\tau^a=\frac1N\sum_{i=1}^N\mathbb E\prod_{a\in S}\sigma_i^a=\mathbb ER_S.\tag{comp:single-label-moments}$$
+여기서 $\tau^a$ 는 trial label 하나의 leaf $a$ spin이다(작성자; 원문은 $\tau$ 를 정의하지 않고 17–24행 lemma의 "single-label spin process"에서 읽음). 서로 다른 label에는 reservoir root와 균일 site를 포함한 전체 구성의 독립 사본을 쓴다. 그렇게 얻은 message들은 cavity insertion의 새 물리 disorder와 독립이다.</p></dd><dt>물리 진술</dt><dd><p>trial label 하나의 replica spin 곱의 평균은 reservoir의 <a class="gterm" href="../glossary.html#g-multioverlap" title="replica leaf 집합 $S$ 위 spin 곱의 공간 평균이다. $\lvert S\rvert=2$ 가 보통의 overlap, $\lvert S\rvert=1$ 이 자화다.">multioverlap</a> 평균 $\mathbb ER_S$ 와 같다. 이웃 site마다 서로 독립인 cavity field 사본을 쓴다.</p></dd><dt>차이</dt><dd><p>첫 등식은 균일 site $i$ 의 평균이다. 독립 사본은 구성상의 선택이고, reservoir의 서로 다른 site들이 독립이라는 주장이 아니다(그 차이가 comp:patterns의 오차다).</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>본문</h2><p>첫 등식: $i$ 가 $\mathscr G_0$ 에 든 독립 균일 변수이므로 $i$ 에 대해 먼저 평균하면 $\frac1N\sum_i$ 가 된다. 둘째 등식은 <a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a>의 정의 $R_S=\frac1N\sum_i\prod_{a\in S}\sigma_i^a$ 와 기대값의 선형성이다. 첫 등식의 좌변은 <a class="node" href="../cards/comp.encoding.s3.html" title="branching pattern마다의 확인: backward recursion $G_T(\eta_d)$">comp:encoding.s3</a>의 출력 법칙 보존을 $\mathscr G_0$ 위에서 평균한 것이다(작성자 풀이). 기대값 $\mathbb E$ 는 양쪽 모두 root와 tree 표본추출을 포함한다.</p>
+<p>"new physical disorder in the cavity insertions"는 <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>의 $A_{\rm s}$, $A_{\rm b}$ 의 $h,\theta_j,K$ 와 index다. 서로 다른 label이 독립이라는 것은 <a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>의 "각 message label $\omega$ 마다 독립으로"와 같은 구조다.</p><details class="src"><summary>원문 (comparison.tex:73-83)</summary><h4>comparison.tex:73-83</h4><pre class="tex"><code><span class="ln">73</span>preserves the root mixture as well. In particular, for every subset $S$
+<span class="ln">74</span>of the leaves,
+<span class="ln">75</span>\begin{equation}\label{comp:single-label-moments}
+<span class="ln">76</span> \E\prod_{a\in S}\tau^a
+<span class="ln">77</span> =\frac1N\sum_{i=1}^N\E\prod_{a\in S}\sigma_i^a
+<span class="ln">78</span> =\E R_S.
+<span class="ln">79</span>\end{equation}
+<span class="ln">80</span>Use independent copies of the entire construction, including the reservoir
+<span class="ln">81</span>root and uniform site, for different labels. The resulting messages are
+<span class="ln">82</span>independent of the new physical disorder in the cavity insertions.
+<span class="ln">83</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

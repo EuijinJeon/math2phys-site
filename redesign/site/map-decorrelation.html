@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>§7 Decorrelation on prescribed trees — 지도</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§7 Decorrelation on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 54장 가운데 증명 단계를 뺀 19장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 10장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a></p><pre class="mermaid" data-map="sec-decorrelation">
+flowchart LR
+  subgraph IN[&quot;§7 Decorrelation on prescribed trees&quot;]
+    a0[&quot;깊이 평균 A_L,&lt;br/&gt;decor:average-definition&quot;]
+    a1[&quot;깊이 평균의 분수 거듭제곱 부등식&lt;br/&gt;decor:average-holder&quot;]
+    a2[&quot;조건부 decorrelation: A_L,v_N(S,…&lt;br/&gt;decor:conditional-concentration&quot;]
+    a3[&quot;축약 부등식과 세 사본 부등식&lt;br/&gt;decor:contractions&quot;]
+    a4[&quot;조건부 평균 _d,S와 조건부 공분산 제곱 v_N(S…&lt;br/&gt;decor:covariance-definition&quot;]
+    a5[&quot;깊이에 대한 평균 연속성&lt;br/&gt;decor:depth-continuity&quot;]
+    a6[&quot;항등식 오차의 최대 _N,L,k&lt;br/&gt;decor:identity-error&quot;]
+    a7[&quot;극한 순서에 관한 주의&lt;br/&gt;decor:order-of-limits&quot;]
+    a8[&quot;모든 multioverlap의 깊이 평균 집중&lt;br/&gt;decor:overlap-concentration&quot;]
+    a9[&quot;첫 갈라짐에서 자식을 평균으로 바꾸는 오차&lt;br/&gt;decor:projection-bound&quot;]
+    a10[&quot;첫 갈라짐에서의 사영 a_S,e와 오차량 p_N(S,…&lt;br/&gt;decor:projection-definition&quot;]
+    a11[&quot;깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이…&lt;br/&gt;x:decor-average-comparisons&quot;]
+    a12[&quot;-regular 깊이 배정&lt;br/&gt;x:decor-eta-regular&quot;]
+    a13[&quot;선택된 수열과 극한 순서&lt;br/&gt;x:decor-limit-order&quot;]
+    a14[&quot;균등 격자 m_d=d/L, =1/L&lt;br/&gt;x:decor-mesh&quot;]
+    a15[&quot;곱 차이 부등식&lt;br/&gt;x:decor-product-difference&quot;]
+    a16[&quot;spin 곱 벡터 A_S, 내적 x y, R_S&lt;br/&gt;x:decor-spin-product&quot;]
+    a17[&quot;topology, 깊이 배정, b(S), 자식 모양&lt;br/&gt;x:decor-topology&quot;]
+    a18[&quot;tree 표본 규칙 (조건부 독립과 사영 일관성)&lt;br/&gt;x:decor-tree-sampling&quot;]
+  end
+  subgraph X0[&quot;밖: §5&quot;]
+    e0[&quot;깊이 L2, r=L-1, 균등 격자 m_d=d/L (…&lt;br/&gt;cavity:grid&quot;]
+  end
+  subgraph X1[&quot;밖: §8&quot;]
+    e1[&quot;tree 법칙 평균한 multioverlap 요동이 …&lt;br/&gt;comp:shape-error&quot;]
+  end
+  subgraph X2[&quot;밖: §6&quot;]
+    e2[&quot;결정적 매개변수 선택 (Lemma 6.2)&lt;br/&gt;pert:selection&quot;]
+    e3[&quot;prescribed tree 위의 항등식 (Theor…&lt;br/&gt;pert:tree-identity&quot;]
+    e4[&quot;spin/marker anchor, 추가 color,…&lt;br/&gt;x:pert-colored-extensions&quot;]
+  end
+  subgraph X3[&quot;밖: §3&quot;]
+    e5[&quot;Charging fresh splits (fresh …&lt;br/&gt;tree:charging&quot;]
+    e6[&quot;Canceled-anchor expansion (an…&lt;br/&gt;tree:extension-expansion&quot;]
+    e7[&quot;multioverlap R_S 와 기대값 E 의 약속&lt;br/&gt;tree:multioverlap&quot;]
+    e8[&quot;Reference-path totals (refere…&lt;br/&gt;tree:reference-total&quot;]
+    e9[&quot;유한 tree, 표본 기대값 E_ T, split, …&lt;br/&gt;x:tree-sampling&quot;]
+  end
+  a0 --&gt; a1
+  a0 --&gt; a11
+  a0 --&gt; a2
+  a0 --&gt; a5
+  a0 --&gt; a6
+  a0 --&gt; a8
+  a0 --&gt; e1
+  a1 --&gt; a2
+  a1 --&gt; a8
+  a10 --&gt; a2
+  a10 --&gt; a8
+  a10 --&gt; a9
+  a11 --&gt; a2
+  a11 --&gt; a5
+  a11 --&gt; a8
+  a12 --&gt; a0
+  a12 --&gt; a11
+  a12 --&gt; a2
+  a12 --&gt; a5
+  a12 --&gt; a8
+  a12 --&gt; a9
+  a12 --&gt; e1
+  a13 --&gt; a2
+  a13 --&gt; a6
+  a13 --&gt; a7
+  a13 --&gt; a8
+  a13 --&gt; e1
+  a14 --&gt; a2
+  a14 --&gt; a8
+  a15 --&gt; a2
+  a15 --&gt; a5
+  a15 --&gt; a8
+  a16 --&gt; a15
+  a16 --&gt; a2
+  a16 --&gt; a3
+  a16 --&gt; a4
+  a16 --&gt; a8
+  a16 --&gt; a9
+  a16 --&gt; e1
+  a17 --&gt; a10
+  a17 --&gt; a12
+  a17 --&gt; a16
+  a17 --&gt; a2
+  a17 --&gt; a4
+  a17 --&gt; a5
+  a17 --&gt; a6
+  a17 --&gt; a8
+  a17 --&gt; e1
+  a18 --&gt; a10
+  a18 --&gt; a17
+  a18 --&gt; a2
+  a18 --&gt; a5
+  a18 --&gt; a8
+  a18 --&gt; a9
+  a2 --&gt; a7
+  a2 --&gt; a8
+  a3 --&gt; a2
+  a3 --&gt; a9
+  a4 --&gt; a10
+  a4 --&gt; a2
+  a4 --&gt; a3
+  a4 --&gt; a5
+  a5 --&gt; a2
+  a5 --&gt; a7
+  a5 --&gt; a8
+  a6 --&gt; a2
+  a6 --&gt; a7
+  a6 --&gt; a8
+  a8 --&gt; e1
+  a9 --&gt; a2
+  a9 --&gt; a8
+  e0 --&gt; a14
+  e2 --&gt; a13
+  e2 --&gt; a14
+  e3 --&gt; a13
+  e3 --&gt; a2
+  e3 --&gt; a6
+  e3 --&gt; a8
+  e4 --&gt; a2
+  e4 --&gt; a8
+  e5 --&gt; a2
+  e6 --&gt; a2
+  e7 --&gt; a16
+  e8 --&gt; a2
+  e8 --&gt; a8
+  e9 --&gt; a18
+  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
+  classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
+  class a1,a2,a3,a5,a8,a9,a11,a15 thm;
+  class a0,a4,a6,a7,a10,a12,a13,a14,a16,a17,a18 oth;
+  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9 ext;
+  click a0 &quot;cards/decor.average-definition.html&quot;
+  click a1 &quot;cards/decor.average-holder.html&quot;
+  click a2 &quot;cards/decor.conditional-concentration.html&quot;
+  click a3 &quot;cards/decor.contractions.html&quot;
+  click a4 &quot;cards/decor.covariance-definition.html&quot;
+  click a5 &quot;cards/decor.depth-continuity.html&quot;
+  click a6 &quot;cards/decor.identity-error.html&quot;
+  click a7 &quot;cards/decor.order-of-limits.html&quot;
+  click a8 &quot;cards/decor.overlap-concentration.html&quot;
+  click a9 &quot;cards/decor.projection-bound.html&quot;
+  click a10 &quot;cards/decor.projection-definition.html&quot;
+  click a11 &quot;cards/x.decor-average-comparisons.html&quot;
+  click a12 &quot;cards/x.decor-eta-regular.html&quot;
+  click a13 &quot;cards/x.decor-limit-order.html&quot;
+  click a14 &quot;cards/x.decor-mesh.html&quot;
+  click a15 &quot;cards/x.decor-product-difference.html&quot;
+  click a16 &quot;cards/x.decor-spin-product.html&quot;
+  click a17 &quot;cards/x.decor-topology.html&quot;
+  click a18 &quot;cards/x.decor-tree-sampling.html&quot;
+  click e0 &quot;cards/cavity.grid.html&quot;
+  click e1 &quot;cards/comp.shape-error.html&quot;
+  click e2 &quot;cards/pert.selection.html&quot;
+  click e3 &quot;cards/pert.tree-identity.html&quot;
+  click e4 &quot;cards/x.pert-colored-extensions.html&quot;
+  click e5 &quot;cards/tree.charging.html&quot;
+  click e6 &quot;cards/tree.extension-expansion.html&quot;
+  click e7 &quot;cards/tree.multioverlap.html&quot;
+  click e8 &quot;cards/tree.reference-total.html&quot;
+  click e9 &quot;cards/x.tree-sampling.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a></td><td>definition</td><td>깊이 평균 $\mathcal A_{L,\eta}$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a></td><td>lemma</td><td>깊이 평균의 분수 거듭제곱 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></td><td>proposition</td><td>조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a>, <a class="node" href="cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a>, <a class="node" href="cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a></td><td>lemma</td><td>축약 부등식과 세 사본 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a></td><td>definition</td><td>조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></td><td>lemma</td><td>깊이에 대한 평균 연속성</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a></td><td>definition</td><td>항등식 오차의 최대 $\varepsilon_{N,L,k}$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></td><td>remark</td><td>극한 순서에 관한 주의</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></td><td>theorem</td><td>모든 multioverlap의 깊이 평균 집중</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a></td><td>lemma</td><td>첫 갈라짐에서 자식을 평균으로 바꾸는 오차</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a></td><td>definition</td><td>첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a></td><td>lemma</td><td>깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a></td><td>definition</td><td>$\eta$-regular 깊이 배정</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a></td><td>convention</td><td>선택된 수열과 극한 순서</td><td><a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a></td><td>convention</td><td>균등 격자 $m_d=d/L$, $\delta=1/L$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a></td><td>lemma</td><td>곱 차이 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a></td><td>definition</td><td>spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</td><td><a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a></td><td>definition</td><td>topology, 깊이 배정, $b(S)$, 자식 모양</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a></td><td>convention</td><td>tree 표본 규칙 (조건부 독립과 사영 일관성)</td><td><a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>
+</body>
+</html>

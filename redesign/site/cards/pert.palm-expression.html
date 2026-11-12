@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>(6.14) insertion 기대값 $J_{N,\mathcal T}(t,u)$ (6.14)</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>pert:palm-expression</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.pert-test-setup.html" title="old tree $\mathcal T$, anchor $a_*$, 시험함수 $f$ 의 고정과 $\mathbb Ef$">x:pert-test-setup</a> <span class="stag">§6</span> <span class="muted">— old tree $\mathcal T$, anchor $a_*$, 시험함수 $f$ 의 고정과 $\mathbb Ef$</span></li><li><a class="node" href="../cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a> <span class="stag">§6</span> <span class="muted">— mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.analytic-difference.html" title="(6.15) 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)">pert:analytic-difference</a>, <a class="node" href="../cards/pert.palm.s1.html" title="Poisson add-one 항등식으로 score를 insertion으로">pert:palm.s1</a>, <a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a>–s2<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.analytic-difference.html" title="(6.15) 차 $H_N(t,u)=J_{N,\mathcal T}-\mathbb Ef\,J_{N,\{a_*\}}$ (6.15)">pert:analytic-difference</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.palm.s1.html" title="Poisson add-one 항등식으로 score를 insertion으로">pert:palm.s1</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.s2.html" title="mark selector (6.18)">pert:tree-identity.s2</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>고정된 mark specification에 대해 독립인 새 균일 site와 그 mark 과정의 독립 사본을 도입하고 $A=1+tg\sigma_i+ug_0S_0$ 로 둔다. $Y$ 를 tree:insertion의 insertion recursion, $W_{\mathcal T}(A)$ 를 updated-tree 밀도 (<span class="nolink" title="(3.5) (카드 없음)">tree:density</span>)라 하자. 아래 식의 기대값은 수정하지 않은 reservoir를 독립 insertion 변수와 그 prior kernel로 넓힌 것을 쓴다:
+$$J_{N,\mathcal T}(t,u)=\mathbb E\left[f\,\frac{g_0^{a_*}S_0^{a_*}}{A^{a_*}}W_{\mathcal T}(A)\right].$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>$W_{\mathcal T}(A)=\prod_aA^a\prod_\beta Y_\beta^{\gamma_\beta}$(<a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>)이므로 $W_{\mathcal T}(A)/A^{a_*}$ 에서 anchor의 leaf 인자가 상쇄된다. 곧 $J_{N,\mathcal T}=\mathbb E\,E^A_{\mathcal T}[fg_0^{a_*}S_0^{a_*}/A^{a_*}]$ 이고 이것이 <a class="node" href="../cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> 좌변의 꼴이다(작성자 읽기). "extended by the independent insertion variables with their prior kernels"는 <a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a>의 약속이다: 새 site는 root에, mark 좌표는 배정된 보조 깊이에 prior로 들어가고 원래 tilt는 그 prior를 바꾸지 않는다. $Y$ 의 정의 자체는 <a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>에 있다(원문은 tree:insertion을 가리킨다). $J$ 는 $N$ 과 선택된 벡터(base reservoir의 법칙)에 의존한다.</p><details class="src"><summary>원문 (perturbations.tex:331-342)</summary><h4>perturbations.tex:331-342</h4><pre class="tex"><code><span class="ln">331</span>For a fixed mark specification, introduce an independent new uniform
+<span class="ln">332</span>site and an independent copy of its mark process, and set
+<span class="ln">333</span>$A=1+tg\sigma_i+ug_0S_0$.  Let $Y$ be its insertion recursion from
+<span class="ln">334</span>Lemma~\ref{tree:insertion}, and let $W_{\mathcal T}(A)$ be the updated-tree
+<span class="ln">335</span>density \eqref{tree:density}. The expectations in the following display use
+<span class="ln">336</span>the unmodified reservoir, extended by the independent insertion
+<span class="ln">337</span>variables with their prior kernels:
+<span class="ln">338</span>\begin{align}
+<span class="ln">339</span> J_{N,\mathcal T}(t,u)
+<span class="ln">340</span> &amp;=\mathbb E\left[
+<span class="ln">341</span> f\,\frac{g_0^{a_*}S_0^{a_*}}{A^{a_*}}
+<span class="ln">342</span>          W_{\mathcal T}(A)\right],\label{pert:palm-expression}\\</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/cavity.section.html" title="5 §5 섭동된 cavity reservoir">cavity:section</a> <span class="stag">§5</span> · 섹션: <a href="../map-cavity.html">§5</a></div><h1>(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)</h1><p><span class="badge">remark</span><span class="badge proposed">proposed</span> <code>cavity:negligible</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.cavity-root-logarithm.html" title="섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$">x:cavity-root-logarithm</a> <span class="stag">§5</span> <span class="muted">— 섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$</span></li><li><a class="node" href="../cards/cavity.factor-bounds.html" title="(5.2) Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)">cavity:factor-bounds</a> <span class="stag">§5</span> <span class="muted">(5.2)</span> <span class="muted">— Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)</span></li><li><a class="node" href="../cards/x.cavity-root-convention.html" title="섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값">x:cavity-root-convention</a> <span class="stag">§5</span> <span class="muted">— 섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값</span></li><li><a class="node" href="../cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a> <span class="stag">§3</span> <span class="muted">(3.2)</span> <span class="muted">— 분배함수에서 만든 tilted kernel</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li><li><a class="node" href="../cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span> <span class="muted">(2.2)</span> <span class="muted">— Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (perturbations.tex 271: $\liminf_N\frac1N\int P_N^{L,\mathbf u}\pi(d\mathbf u)=\underline F$), perturbations.tex 65–67 (항별 비교의 본보기), <a class="node" href="../cards/cavity.increment.s4.html" title="$\lvert\log Y_0\rvert$ 상계와 증분의 균일 유계성">cavity:increment.s4</a> (작은 $N$ 의 상수, 작성자 읽기). 규칙 P3, L1 수 2<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/cavity.increment.s4.html" title="$\lvert\log Y_0\rvert$ 상계와 증분의 균일 유계성">cavity:increment.s4</a> <span class="stag">§5</span></li><li><a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.selection.s1.html" title="매개변수 평균한 증분이 낮은 크기가 무한히 많다">pert:selection.s1</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>섭동되지 않은 spin weight와 점별로 비교한 뒤 recursion을 적용하면
+$$\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N\tag{5.3}$$
+이고, 이것은 계층, 그 매개변수, $N$ 에 대해 균일하다.</p></dd><dt>물리 진술</dt><dd><p>sublinear한 수 $N^{3/4}$ 의 <a class="gterm" href="../glossary.html#g-perturbation" title="type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다(perturbations.tex 60; §5의 틀이 요구하는 것은 닫힌 구간 $1/2\le\psi_\nu\le3/2$, cavity.tex 26). 각 항은 독립 균일 site 하나와 자기 mark 과정의 독립 사…">섭동</a>은 계층 free entropy(<a class="gterm" href="../glossary.html#g-root-logarithm" title="root logarithm $X_0$ 는 섭동된 leaf 분배함수 $Z$ 에서 $X_{L-1}=\log Z$, $X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}$ 로 power-mean recursion을 거슬러 올라가 얻은 깊이 0의 값이다(trees.tex 51–56). 그것은 root에 대해 무작위다(&quot;the random root lo…">root logarithm</a>)의 밀도를 <a class="gterm" href="../glossary.html#g-pressure" title="quenched pressure다. free energy density $f$ 와는 $F_N=-\beta f$ 관계다.">pressure</a> $F_N$ 에서 $o(1)$ 만큼만 옮긴다: $P_N^{L,\mathbf u}/N-F_N\to0$.</p></dd><dt>차이</dt><dd><p>정확한 진술은 $(\log2)N^{3/4}$ 의 균일한 부등식이고, 물리 문장은 밀도 수준의 결론만 남겼다. "그 매개변수(its parameters)"는 섭동 매개변수 $\mathbf u$ 로 읽는다(작성자 읽기, 검토자 동의. 근거: $P_N^{L,\mathbf u}$ 의 세 첨자 $L$, $\mathbf u$, $N$ 이 "the hierarchy, its parameters, and $N$"에 하나씩 대응한다; 바로 앞 29–30행이 "The parameters of the factors are denoted by $\mathbf u$"로 이 말을 들여온다; 16–19행이 $m_d=d/L$ 을 고정해 계층의 지수는 $L$ 로 정해진다; lemma가 "uniform in $L,\mathbf u$"라 쓰고(45, 55, 114) perturbations.tex 271–273이 $\pi(d\mathbf u)$ 로 적분하며 이 균일성을 쓴다). 증명이 한계 (5.2)와 개수만 쓰므로 지수 $m_d$ 의 선택에도 균일하다(작성자 확인).</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>본문</h2><p><strong>확인 (작성자).</strong> 섭동되지 않은 spin weight의 분배함수 $Z_N$ 은 보조 변수에 의존하지 않으므로 recursion 뒤에도 root logarithm이 $\log Z_N$ 이다. 섭동 factor가 $n$ 개면 $2^{-n}Z_N\le Z\le(3/2)^nZ_N\le2^nZ_N$ 이고, $n$ 이 root 변수(<a class="node" href="../cards/x.cavity-root-convention.html" title="섭동의 개수·type·site는 root, 매개변수 $\mathbf u$ 는 고정값">x:cavity-root-convention</a>)라서 이 곱셈적 한계가 backward recursion을 그대로 통과한다. 근거는 <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>의 단조성이다(작성자 읽기, <code>\ref</code> 없음): 섭동 factor의 곱 $A=\prod\psi$ 를 섭동되지 않은 spin weight에 대한 insertion으로 보면(섭동 factor의 보조 변수는 섭동되지 않은 계에 없으므로 <a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a>대로 path kernel을 그 prior로 넓힌다) root logarithm의 변화가 $\log Y_0$ 이고, $2^{-n}\le A\le(3/2)^n$ 의 한계가 root-가측이므로 $2^{-n}\le Y_0\le(3/2)^n$ 이다. 따라서 $\lvert X_0-\log Z_N\rvert\le n\log2$, 기대값에서 $\mathbb En=s_N$.</p>
+<p>원문 36–37 "Comparing pointwise with the unperturbed spin weight and then applying the recursion"은 어느 결과도 가리키지 않는다. 논문에서 recursion의 단조성이 진술된 곳은 trees.tex 107–110(<a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>) 하나뿐이고, <a class="node" href="../cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>는 recursion과 tilted kernel을 정의할 뿐 단조성을 진술하지 않는다. 그래서 단조성은 <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>에서 받는다(검토 2 F2). power mean $X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}$ 가 점별 단조라는 직접 논법도 같은 backward induction이다.</p><details class="src"><summary>원문 (cavity.tex:35-41)</summary><h4>cavity.tex:35-41</h4><pre class="tex"><code><span class="ln">35</span>Write $P_N^{L,\mathbf u}$ for its expected root logarithm. Comparing
+<span class="ln">36</span>pointwise with the unperturbed spin weight and then applying the recursion
+<span class="ln">37</span>gives
+<span class="ln">38</span>\begin{equation}\label{cavity:negligible}
+<span class="ln">39</span> |P_N^{L,\mathbf u}-NF_N|\le (\log2)s_N,
+<span class="ln">40</span>\end{equation}
+<span class="ln">41</span>uniformly in the hierarchy, its parameters, and $N$.</code></pre></details>
+</div>
+
+</body>
+</html>

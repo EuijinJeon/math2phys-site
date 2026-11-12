@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(2.10) 조건부 power mean $T_d$ (2.10)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a> <span class="stag">§2</span> · 섹션: <a href="../map-model.html">§2</a></div><h1>(2.10) 조건부 power mean $T_d$ (2.10)</h1><p><span class="badge">definition</span><span class="badge proposed">proposed</span> <code>model:power-means</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span> <span class="muted">(2.8)</span> <span class="muted">— site 분배함수 $V_{\rm s}$ (2.8)</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>model:functional의 $T_0V_{\rm s}$, $T_0V_{\rm e}$. <a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>. upper.tex(interpolation의 root logarithm), tree:Y-recursion과 cavity.tex의 같은 꼴 재귀, comparison.tex 181–188(독립 label 묶음이 각 power mean을 통과해 인수분해됨)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.html" title="trial 삽입과 정확한 trial 항등식">comp:insertion-comparison.s1</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s2.html" title="site 쪽: $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$">comp:insertion-comparison.s1.s2</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.insertion-comparison.s1.s3.html" title="bond 쪽의 인수분해와 trial 증분 $=\mathcal B_{L-1}$">comp:insertion-comparison.s1.s3</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span></li><li><a class="node" href="../cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s2.html" title="시행 functional 안정성 (reduction:trial-stability)">reduction:stability.s2</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/reduction.stability.s3.html" title="상수 이동 (reduction:shift)">reduction:stability.s3</a> <span class="stag">§9</span></li><li><a class="node" href="../cards/upper.bound.s2.html" title="interpolation $\varphi(t)$ 와 두 끝점">upper:bound.s2</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.derivative.html" title="(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)">upper:derivative</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a> <span class="stag">§2.2</span></li><li><a class="node" href="../cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a> <span class="stag">§2</span></li></ul></dd><dt>수학 진술</dt><dd><p>$0\le d&lt;r$ 에 대해 $\mathscr F_d$ 는 이 식들($V_{\rm s}$, $V_{\rm e}$)의 모든 물리적 disorder와 모든 $\eta^\omega_j$ ($0\le j\le d$) 가 생성하는 $\sigma$-field다.
+$$T_rV=V,\qquad T_dV=\Bigl(\mathbb E\bigl[(T_{d+1}V)^{m_{d+1}}\bigm|\mathscr F_d\bigr]\Bigr)^{1/m_{d+1}}\quad(d=r-1,\ldots,0).\tag{2.10}$$
+이 조건부 기대값에서는 보조 message만 적분된다. 예: 깊이 1($r=1$)에서 $T_0V=(\mathbb E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}$. 깊이 2($r=2$)에서는 각 label이 $\eta_0\sim\zeta$, $\eta_1\mid\eta_0\sim\eta_0$, $x\mid\eta_1\sim\eta_1$ 을 뽑고
+$$T_0V=\Bigl(\mathbb E_{\boldsymbol\eta_1}\Bigl[\bigl(\mathbb E_{\boldsymbol x}[V^{m_2}\mid\boldsymbol\eta_1]\bigr)^{m_1/m_2}\Bigm|\boldsymbol\eta_0\Bigr]\Bigr)^{1/m_1}.$$
+굵은 기호는 $V$ 안의 모든 message label을 모은 것이고, 두 줄임 표기를 포함해 물리적 disorder는 내내 고정된다.</p></dd><dt>물리 진술</dt><dd><p>계층별 <a class="gterm" href="../glossary.html#g-power-mean" title="시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.">power mean</a>: 깊이 $d+1$ 의 보조 변수를 $m_{d+1}$ 거듭제곱 평균으로 적분하는 일을 깊이 $r-1$ 부터 0까지 반복한다. 조건으로 거는 $\mathscr F_d$ 는 시행 사슬의 깊이 $d$ prefix이고, 이 사이트의 <a class="gterm" href="../glossary.html#g-state" title="보조 계층 path의 root(disorder, 섭동 개수·type·site; 섭동 매개변수는 선택된 값으로 고정)부터 깊이 $d$ $(0\le d&lt;L)$ 까지의 prefix다. &quot;상태 안&quot;은 $\mathscr F_d$ 가 주어진 조건부 법칙, &quot;상태 평균&quot;은 $\mathbb E[\,\cdot\mid\mathscr F_d]$ 를 뜻한다. 같은 상태를 공유…">상태</a>는 바로 이런 prefix를 가리킨다. <a class="gterm" href="../glossary.html#g-disorder" title="모형과 시행 functional에서 보조 message가 아닌 무작위 변수 전부다: factor 개수, factor의 site index, factor별 상호작용, site별 장. 시행 사슬($\eta^\omega_d$, $x^\omega$)은 이것과 독립이다(model.tex 79–80). power mean $T_d$ 의 조건부 기대값은 이것을 고정한…">disorder</a>는 적분되지 않고 바깥의 $\mathbb E\log$ 가 평균한다.</p></dd><dt>차이</dt><dd><p>물리 문장은 (2.10)의 식을 말하지 않는다. 이 꼴을 물리 쪽 계층별 재가중으로 읽는 그림은 용어집 power mean 항목의 물리 대응 칸(intuition)에 두고, 이 카드는 그 읽기를 쓰지 않는다. 물리에서 이 꼴은 <a class="gterm" href="../glossary.html#g-physical-pure-state" title="물리에서 열역학 극한의 Gibbs 측도를 분해한 극단적 성분이다(물리에서는 한 성분 안에서 spin 사이의 상관, 곧 평균의 곱을 뺀 두 점 함수가 사라진다고 본다). Parisi 그림에서는 성분마다 가중치가 있고 성분 사이 overlap이 계층 구조를 이룬다고 본다.">물리적 pure state</a> 계층 위의 가중 평균을 적분해 낸 것으로 유도되지만, 논문은 그런 계층을 가정하지 않고 (2.10)을 정의로 둔다. $\eta_0$ 은 어떤 $T_d$ 로도 적분되지 않고 $\mathscr F_0$ 에 들어 있어 바깥 $\mathbb E$ 가 평균한다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>본문</h2><p>$m_{d+1}\in(0,1)$ 이고 $T_{d+1}V&gt;0$ 이므로 조건부 기대값은 양의 (무한일 수도 있는) 값으로 잘 정의된다. 실제로는 model:trial-bounds의 곱셈적 상·하한 때문에 유한하다. 이 관찰은 작성자가 보탠 것이다.</p>
+<p>$V$ 가 $V_{\rm s}$ 일 때 $k$ 는 $\mathscr F_0$ 에 들어 있는 물리적 disorder이므로 $V_{\rm s}$ 안의 label 수는 $\mathscr F_0$-가측이다.</p>
+<p>깊이 1 식의 $\mathbb E_x$ 는 원문(model.tex 99) 그대로다. 깊이 2 식(103–107)은 원문이 $\mathbb E_{\boldsymbol x}$ 로 굵게 쓴다. 109행 "bold symbols collect all message labels in $V$"에 비추면 깊이 1에서도 모든 label의 $x$ 를 적분하는 뜻이다.</p><details class="src"><summary>원문 (model.tex:90-110)</summary><h4>model.tex:90-110</h4><pre class="tex"><code><span class="ln">90</span>For $0\le d&lt;r$, let $\mathscr F_d$ be generated by all the physical disorder in these
+<span class="ln">91</span>expressions and all $\eta_j^\omega$, $0\le j\le d$. Set
+<span class="ln">92</span>\begin{equation}\label{model:power-means}
+<span class="ln">93</span> T_rV=V,\qquad
+<span class="ln">94</span> T_dV=\left(\E[(T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]\right)^{1/m_{d+1}}
+<span class="ln">95</span> \quad(d=r-1,\ldots,0).
+<span class="ln">96</span>\end{equation}
+<span class="ln">97</span>Only auxiliary messages are integrated in these conditional expectations.
+<span class="ln">98</span>For example, at depth one,
+<span class="ln">99</span>$T_0V=(\E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}$.
+<span class="ln">100</span>At depth two, each label draws
+<span class="ln">101</span>$\eta_0\sim\zeta$, then $\eta_1\mid\eta_0\sim\eta_0$, and then
+<span class="ln">102</span>$x\mid\eta_1\sim\eta_1$, and
+<span class="ln">103</span>\[
+<span class="ln">104</span> T_0V=\left(\E_{\boldsymbol\eta_1}
+<span class="ln">105</span>   \left[\left(\E_{\boldsymbol x}
+<span class="ln">106</span>      [V^{m_2}\mid\boldsymbol\eta_1]\right)^{m_1/m_2}
+<span class="ln">107</span>      \,\middle|\,\boldsymbol\eta_0\right]\right)^{1/m_1}.
+<span class="ln">108</span>\]
+<span class="ln">109</span>Here bold symbols collect all message labels in $V$; physical disorder is
+<span class="ln">110</span>held fixed throughout, including in the two abbreviated displays.</code></pre></details>
+</div>
+
+</body>
+</html>

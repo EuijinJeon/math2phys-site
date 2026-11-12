@@ -53,6 +53,7 @@ pre.tex{white-space:pre;font-size:.78rem}
 ul.links li{margin:.35rem 0}
 blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
 .hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
@@ -90,13 +91,20 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <p>원문은 diluted spin glass에 대한 Mézard–Parisi 위계 cavity 공식의 증명이다. 이 사이트는 그 논문을
 정리·보조정리·증명 단계 단위의 <strong>노드 카드</strong>로 나누고, 물리 언어의 <strong>단면 문서</strong>(L0, L1)와 연결한 것이다.
 각 카드는 받는 것과 내놓는 것을 밝히고, 펼치면 더 잘게 쪼개진 증명 단계가 나온다.</p>
+<h2>위에서부터 읽기</h2>
 <ul class="links">
 <li><a href="L0.html">L0</a> — 한 문단: 결과와 의미</li>
 <li><a href="L1.html">L1</a> — 한 쪽: 번호 붙은 수의 목록</li>
 <li><a href="rules.html">규칙 표</a> — 물리판이 증명 없이 쓰는 명제 P1, P2, …</li>
 <li><a href="glossary.html">용어집</a> — 이 문서가 쓰는 용어의 뜻·역할·정의 위치</li>
-<li><a href="map.html">증명 지도</a> — 정리류 노드 30개의 의존 그래프</li>
-<li><a href="cards/index.html">카드 목록</a> — 카드 54개</li>
+</ul>
+<h2>섹션별로 들어가기</h2>
+<p class="stat">카드 244장을 한 번씩만 센다. 주정리와 그 증명 단계는 진술이 §2, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이지만 &ldquo;주정리&rdquo; 한 묶음으로 센다. 섹션 카드에서 펼치며 내려간다.</p>
+<div class="tablewrap"><table><thead><tr><th>섹션</th><th>제목</th><th>카드</th><th>들어가는 길</th><th>증명 지도</th></tr></thead><tbody><tr><td>§2</td><td>The model and the variational principle</td><td>21</td><td><a class="node" href="cards/model.section.html" title="2 §2 모형과 변분 원리">섹션 카드</a></td><td><a href="map-model.html">지도</a></td></tr><tr><td>§2.2</td><td>Proof strategy</td><td>7</td><td><a class="node" href="cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">섹션 카드</a></td><td><a href="map-overview.html">지도</a></td></tr><tr><td>주정리</td><td>Theorem 2.1 (주정리)</td><td>5</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">섹션 카드</a></td><td><a href="map-main.html">지도</a></td></tr><tr><td>§3</td><td>Calculus on finite trees</td><td>39</td><td><a class="node" href="cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">섹션 카드</a></td><td><a href="map-trees.html">지도</a></td></tr><tr><td>§4</td><td>The interpolation upper bound</td><td>10</td><td><a class="node" href="cards/upper.section.html" title="4 §4 interpolation 상한">섹션 카드</a></td><td><a href="map-upper.html">지도</a></td></tr><tr><td>§5</td><td>A perturbed cavity reservoir</td><td>13</td><td><a class="node" href="cards/cavity.section.html" title="5 §5 섭동된 cavity reservoir">섹션 카드</a></td><td><a href="map-cavity.html">지도</a></td></tr><tr><td>§6</td><td>Perturbations and identities on prescribed trees</td><td>44</td><td><a class="node" href="cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">섹션 카드</a></td><td><a href="map-perturbations.html">지도</a></td></tr><tr><td>§7</td><td>Decorrelation on prescribed trees</td><td>54</td><td><a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">섹션 카드</a></td><td><a href="map-decorrelation.html">지도</a></td></tr><tr><td>§8</td><td>Independent hierarchical messages and the cavity comparison</td><td>28</td><td><a class="node" href="cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">섹션 카드</a></td><td><a href="map-comparison.html">지도</a></td></tr><tr><td>§9</td><td>Normalization, truncation, and completion of the proof</td><td>5</td><td><a class="node" href="cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">섹션 카드</a></td><td><a href="map-reduction.html">지도</a></td></tr><tr><td>§10</td><td>Named models and the zero-temperature limit</td><td>18</td><td><a class="node" href="cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">섹션 카드</a></td><td><a href="map-consequences.html">지도</a></td></tr></tbody></table></div>
+<h2>그 밖</h2>
+<ul class="links">
+<li><a href="map.html">증명 지도</a> — 섹션 단위 지도와 섹션별 지도</li>
+<li><a href="cards/index.html">카드 목록</a> — 카드 244개 전부</li>
 <li><a href="check-report.html">검사 보고서</a> — 적법성 검사 결과</li>
 </ul>
 <p class="stat">수식은 MathJax, 지도는 Mermaid로 그리며 둘 다 CDN에서 불러온다(인터넷 연결 필요).</p>

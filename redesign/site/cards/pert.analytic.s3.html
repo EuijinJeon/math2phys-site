@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:analytic.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a> <span class="stag">§6</span> <span class="muted">— 균등한 해석적 경계</span></li><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> <span class="stag">§6</span> <span class="muted">— Taylor 계수의 수렴과 극한 해석함수 $H$</span></li><li><a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a> <span class="stag">§6</span> <span class="muted">Lemma 6.3</span> <span class="muted">— Palm 항등식 (Lemma 6.3)</span></li><li><a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a> <span class="stag">§6</span> <span class="muted">(6.1)</span> <span class="muted">— 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)</span></li><li><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> <span class="muted">Lemma 6.2</span> <span class="muted">— 결정적 매개변수 선택 (Lemma 6.2)</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span> <span class="muted">— 이후의 $N\to\infty$ 는 선택된 수열을 따른다</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>pert:analytic의 결론<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>충분히 큰 모든 고정 $j$ 에 대해, 해당 type과 pert:palm이
+$$\limsup_{N\to\infty}|H_N(j^{-1},0)|\le C\limsup_{N\to\infty}|u_{\nu,N}|\le2Cj^{-j}$$
+를 준다. 여기서 score 오차는 $j$ 고정에서 0으로 가고, pert:palm에 의해 모든 $j$ 에 같은 함수 $H_N$ 이 쓰인다. 따라서 $|H(j^{-1})|\le2Cj^{-j}$ 이다. $H$ 의 첫 0 아닌 Taylor 계수가 차수 $q$ 였다면 충분히 큰 모든 $j$ 에서 $|H(j^{-1})|\ge cj^{-q}$ 가 되어 모순이다. 따라서 $H$ 는 0 근처에서 항등적으로 0이고, 이것이 계수마다 주장을 증명한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀이(작성자). type $\nu=(\text{specification},j)$ 에서 $|H_N(1/j,0)|\le|H_N(1/j,u_{\nu,N})|+|u_{\nu,N}|\sup|\partial_uH_N|\le\|f\|_\infty e_{\nu,N}+C|u_{\nu,N}|$(<a class="node" href="../cards/pert.palm.html" title="Lemma 6.3 Palm 항등식 (Lemma 6.3)">pert:palm</a>, <a class="node" href="../cards/pert.analytic.s1.html" title="균등한 해석적 경계">pert:analytic.s1</a>). $e_{\nu,N}\to0$ 은 <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (ii)이고 $u_{\nu,N}\in I_\nu=[j^{-j},2j^{-j}]$ 는 선택된 벡터의 성분이다(<a class="node" href="../cards/pert.parameters.html" title="(6.1) 섭동 type $\nu$ 와 매개변수 $t_\nu=1/j$, $u_\nu\in[j^{-j},2j^{-j}]$ (6.1)">pert:parameters</a>). "충분히 큰 $j$"는 $1/j$ 가 s1, s2의 원판 안에 들어가기 위해서다. 상수 $C$ 가 $j$ 에 무관한 것(s1)이 결정적이다: 그래서 $j^{-j}$ 가 $j^{-q}$ 를 이긴다. "$H$ 가 0 근처에서 0"이면 모든 계수가 0이고, s2의 계수 수렴으로 $H_N(t,0)$ 의 각 계수가 0으로 간다.</p><details class="src"><summary>원문 (perturbations.tex:411-425)</summary><h4>perturbations.tex:411-425</h4><pre class="tex"><code><span class="ln">411</span>For every sufficiently large fixed $j$, the corresponding type and
+<span class="ln">412</span>Lemma~\ref{pert:palm} give
+<span class="ln">413</span>\[
+<span class="ln">414</span> \limsup_{N\to\infty}|H_N(j^{-1},0)|
+<span class="ln">415</span> \leq C\limsup_{N\to\infty}|u_{\nu,N}|
+<span class="ln">416</span> \leq2Cj^{-j}.
+<span class="ln">417</span>\]
+<span class="ln">418</span>Here the score error tends to zero with $j$ fixed, and the same
+<span class="ln">419</span>function $H_N$ is used for every $j$, by Lemma~\ref{pert:palm}.
+<span class="ln">420</span>Hence $|H(j^{-1})|\leq2Cj^{-j}$.  If the first nonzero Taylor
+<span class="ln">421</span>coefficient of $H$ had degree $q$, then
+<span class="ln">422</span>$|H(j^{-1})|\geq c j^{-q}$ for all sufficiently large $j$, a
+<span class="ln">423</span>contradiction.  Thus $H$ vanishes identically near zero, proving the
+<span class="ln">424</span>claim coefficient by coefficient.
+<span class="ln">425</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

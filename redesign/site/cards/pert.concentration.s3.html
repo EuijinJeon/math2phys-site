@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>root 요동의 재료: 볼록 함수 $G$ 와 그 분산 (6.11)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>root 요동의 재료: 볼록 함수 $G$ 와 그 분산 (6.11)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:concentration.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a> <span class="stag">§6</span> <span class="muted">— type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)</span></li><li><a class="node" href="../cards/pert.concentration.s2.s1.html" title="root logarithm의 미분 공식 (6.7), (6.8)">pert:concentration.s2.s1</a> <span class="stag">§6</span> <span class="muted">— root logarithm의 미분 공식 (6.7), (6.8)</span></li><li><a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span> <span class="muted">(6.2)</span> <span class="muted">— Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)</span></li><li><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> <span class="stag">§6</span> <span class="muted">— §6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s4.html" title="볼록 함수에서 도함수로, 그리고 두 기여의 합">pert:concentration.s4</a> (6.11)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s4.html" title="볼록 함수에서 도함수로, 그리고 두 기여의 합">pert:concentration.s4</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>무작위 함수 $G(u)=X_0(u)+2nu^2$ 는 $J_\nu$ 에서 볼록이고, $u\in J_\nu$ 와 다른 모든 매개변수에 균등하게
+$$\operatorname{Var}(G(u))\le C_\nu N,\qquad|\mathbb E_{\mathbf u}G&#x27;(u)|\le C_\nu\lambda_\nu.$$</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-root-logarithm" title="root logarithm $X_0$ 는 섭동된 leaf 분배함수 $Z$ 에서 $X_{L-1}=\log Z$, $X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}$ 로 power-mean recursion을 거슬러 올라가 얻은 깊이 0의 값이다(trees.tex 51–56). 그것은 root에 대해 무작위다(&quot;the random root lo…">root logarithm</a> 자체의 <a class="gterm" href="../glossary.html#g-root" title="root는 보조 계층 path의 깊이 0 변수이고(&quot;Its depth-zero variable is the root&quot;, trees.tex 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(trees.tex 23). reservoir에서는 물리 disorder(&quot;the reservoir root disorder…">root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)</a> 요동(물리 disorder와 섭동 항들에 대한 분산)은 $O(N)$, 곧 표준편차로 $O(\sqrt N)$ 이다. root 변수 하나(상호작용 하나, 장 하나, 섭동 항 하나)를 바꾸면 root logarithm이 유계만큼만 바뀌고, 그런 변수의 개수가 $O(N)$ 이기 때문이다.</p></dd><dt>차이</dt><dd><p>이 상계는 함수 $G$ 의 값의 root 요동(표준편차 $O(\sqrt N)$)에 대한 것이고, 그 도함수, 곧 score의 root 평균 $X_0&#x27;=\langle D_\nu\rangle$ 의 요동에 대한 것이 아니다. 함수값의 요동이 작다는 것만으로는 도함수의 요동이 작다는 것이 나오지 않으므로, 도함수로 옮기려면 볼록성을 쓰는 s4가 필요하다. 규모로는 $\sqrt N$ 이 score 규모 $\lambda_\nu=c_\nu N^{3/4}$ 보다 작고, 이 여유 $\sqrt N\ll\lambda_\nu$ 가 s4에서 차분 간격 $\rho$ 를 고를 자리를 준다. 상수 $C_\nu$ 는 type에 의존한다. 분산은 $\mathbf u$ 를 고정한 root 분산이다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>펼침</h2><details class="child"><summary>$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술 <a class="node" href="../cards/pert.concentration.s3.s1.html">↗</a><span class="cm">남은 일은 $X_0&#x27;$ 을 root에 대해 집중시키는 것이다. (6.8)에 의해 무작위 함수 $$G(u)=X_0(u)+2nu^2$$ 는 $J_\nu$ 에서 볼록이다. $u\in J_\nu$ 와 다른 모든 매개변수에 균등하게 $$\operatorname{Var}(G(u))\le C_\nu N,\qquad|\mathbb E_{\mathbf u}G&#x27;(u)|\le C_\nu\lambda_\nu.$$</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s2.s1.html" title="root logarithm의 미분 공식 (6.7), (6.8)">pert:concentration.s2.s1</a> <span class="stag">§6</span> <span class="muted">— root logarithm의 미분 공식 (6.7), (6.8)</span></li><li><a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a> <span class="stag">§6</span> <span class="muted">— type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s3.s2.html" title="개수에 조건을 건 Efron–Stein 부등식">pert:concentration.s3.s2</a>–s3.s3 (첫 추정의 증명), s4.s1 (볼록성과 (6.11))<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s3.s2.html" title="개수에 조건을 건 Efron–Stein 부등식">pert:concentration.s3.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.concentration.s4.s1.html" title="차분몫과 단조성으로 얻는 (6.12)">pert:concentration.s4.s1</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>남은 일은 $X_0&#x27;$ 을 root에 대해 집중시키는 것이다. (6.8)에 의해 무작위 함수
+$$G(u)=X_0(u)+2nu^2$$
+는 $J_\nu$ 에서 볼록이다. $u\in J_\nu$ 와 다른 모든 매개변수에 균등하게
+$$\operatorname{Var}(G(u))\le C_\nu N,\qquad|\mathbb E_{\mathbf u}G&#x27;(u)|\le C_\nu\lambda_\nu.$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>개수에 조건을 건 Efron–Stein 부등식 <a class="node" href="../cards/pert.concentration.s3.s2.html">↗</a><span class="cm">첫 추정을 증명하려고 물리적 개수와 섭동 총 개수에 조건을 건다. 섭동 총 개수가 주어지면 그 type과 site는 독립 label이고, label 하나를 바꾸면 유계 인자 하나가 바뀐다. Efron–Stein 분산 부등식 $$\operatorname{Var}Z\le\frac12\sum_j\mathbb E(Z-Z^{(j)})^2$$ 을 쓴다. $Z^{(j)}$ 는 $j$ 번째 입력을 독립으로 다시 뽑아 얻는다. 완전성을 위해: 독립 입력 $X_1,\ldots,X_k$ 에 대해 $E_j$ 는 $X_j$ 만 적분하고 $\mathscr G_j=\sigma(X_1,\ldots,X_j)$ 라 하자. Doob 차분은 $D_j=\mathbb E[Z-E_jZ\mid\mathscr G_j]$ 이다. 직교성과 Jensen이 $$\operatorname{Var}Z=\sum_j\mathbb ED_j^2\le\sum_j\mathbb E(Z-E_jZ)^2=\frac12\sum_j\mathbb E(Z-Z^{(j)})^2$$ 을 준다. 이 독립 입력 분해는 같은 법칙도 대칭 통계량도 요구하지 않는다(Efron–Stein, Section 2).</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s3.s1.html" title="$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술">pert:concentration.s3.s1</a> <span class="stag">§6</span> <span class="muted">— $G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술</span></li><li><a class="node" href="../cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span> <span class="muted">(6.2)</span> <span class="muted">— Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)</span></li><li><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> <span class="stag">§6</span> <span class="muted">— §6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>첫 추정을 증명하려고 물리적 개수와 섭동 총 개수에 조건을 건다. 섭동 총 개수가 주어지면 그 type과 site는 독립 label이고, label 하나를 바꾸면 유계 인자 하나가 바뀐다. Efron–Stein 분산 부등식
+$$\operatorname{Var}Z\le\frac12\sum_j\mathbb E(Z-Z^{(j)})^2$$
+을 쓴다. $Z^{(j)}$ 는 $j$ 번째 입력을 독립으로 다시 뽑아 얻는다. 완전성을 위해: 독립 입력 $X_1,\ldots,X_k$ 에 대해 $E_j$ 는 $X_j$ 만 적분하고 $\mathscr G_j=\sigma(X_1,\ldots,X_j)$ 라 하자. Doob 차분은 $D_j=\mathbb E[Z-E_jZ\mid\mathscr G_j]$ 이다. 직교성과 Jensen이
+$$\operatorname{Var}Z=\sum_j\mathbb ED_j^2\le\sum_j\mathbb E(Z-E_jZ)^2=\frac12\sum_j\mathbb E(Z-Z^{(j)})^2$$
+을 준다. 이 독립 입력 분해는 같은 법칙도 대칭 통계량도 요구하지 않는다(Efron–Stein, Section 2).</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>유계 차분, Lipschitz 조건부 평균, Poisson 분산 <a class="node" href="../cards/pert.concentration.s3.s3.html">↗</a><span class="cm">상호작용, 장, 섭동 항 하나를 다시 뽑으면 $X_0$ 는 유계만큼 바뀐다: spin weight에서는 바로 보이고 각 power mean이 이를 보존한다. 항을 없앨 때는 쓰지 않는 그 독립 mark 변수를 적분해 없앨 수 있으므로 항의 추가나 삭제에도 같은 주장이 성립한다. 따라서 조건부 분산은 root 변수 개수의 상수배 이하다. 조건부 평균은 개수의 Lipschitz 함수이고 Lipschitz 상수가 유계다. $Q,Q&#x27;$ 이 Poisson 변수의 독립 사본이고 $b$ 가 $C$-Lipschitz이면 $$\operatorname{Var}(b(Q))=\tfrac12\mathbb E(b(Q)-b(Q&#x27;))^2\le C^2\operatorname{Var}(Q).$$ 이것을 독립 개수들에 적용하면 $O(N)$ 추정이 끝난다. 보정 $2nu^2$ 도 같은 추정을 따른다. (6.11)의 도함수 경계는 (6.6)에서 바로 나온다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.concentration.s3.s2.html" title="개수에 조건을 건 Efron–Stein 부등식">pert:concentration.s3.s2</a> <span class="stag">§6</span> <span class="muted">— 개수에 조건을 건 Efron–Stein 부등식</span></li><li><a class="node" href="../cards/pert.concentration.s3.s1.html" title="$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술">pert:concentration.s3.s1</a> <span class="stag">§6</span> <span class="muted">— $G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술</span></li><li><a class="node" href="../cards/pert.concentration.s1.html" title="type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)">pert:concentration.s1</a> <span class="stag">§6</span> <span class="muted">— type 하나 고정, 구간 $J_\nu$ 와 score 경계 (6.6)</span></li><li><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> <span class="stag">§6</span> <span class="muted">— §6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.concentration.s4.s1.html" title="차분몫과 단조성으로 얻는 (6.12)">pert:concentration.s4.s1</a> ((6.11) 완성)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.concentration.s4.s1.html" title="차분몫과 단조성으로 얻는 (6.12)">pert:concentration.s4.s1</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>상호작용, 장, 섭동 항 하나를 다시 뽑으면 $X_0$ 는 유계만큼 바뀐다: spin weight에서는 바로 보이고 각 power mean이 이를 보존한다. 항을 없앨 때는 쓰지 않는 그 독립 mark 변수를 적분해 없앨 수 있으므로 항의 추가나 삭제에도 같은 주장이 성립한다. 따라서 조건부 분산은 root 변수 개수의 상수배 이하다. 조건부 평균은 개수의 Lipschitz 함수이고 Lipschitz 상수가 유계다. $Q,Q&#x27;$ 이 Poisson 변수의 독립 사본이고 $b$ 가 $C$-Lipschitz이면
+$$\operatorname{Var}(b(Q))=\tfrac12\mathbb E(b(Q)-b(Q&#x27;))^2\le C^2\operatorname{Var}(Q).$$
+이것을 독립 개수들에 적용하면 $O(N)$ 추정이 끝난다. 보정 $2nu^2$ 도 같은 추정을 따른다. (6.11)의 도함수 경계는 (6.6)에서 바로 나온다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>뼈대.</strong> <a class="node" href="../cards/pert.concentration.s3.s1.html" title="$G=X_0+2nu^2$ 의 볼록성과 두 추정의 진술">pert:concentration.s3.s1</a>: (6.8)에서 $G&#x27;&#x27;\ge0$, 그리고 (6.11)의 진술. <a class="node" href="../cards/pert.concentration.s3.s2.html" title="개수에 조건을 건 Efron–Stein 부등식">pert:concentration.s3.s2</a>: 개수에 조건을 건 Efron–Stein 부등식(증명 포함). <a class="node" href="../cards/pert.concentration.s3.s3.html" title="유계 차분, Lipschitz 조건부 평균, Poisson 분산">pert:concentration.s3.s3</a>: 입력 하나를 다시 뽑을 때 $X_0$ 의 변화가 유계(spin weight에서, 그리고 power mean이 보존), 조건부 평균은 개수의 Lipschitz 함수, Poisson 분산 $=$ 평균으로 $O(N)$. 도함수 경계는 (6.6)에서.</p><details class="src"><summary>원문 (perturbations.tex:163-209)</summary><h4>perturbations.tex:163-209</h4><pre class="tex"><code><span class="ln">163</span>\paragraph{Fluctuations of the root mean.}
+<span class="ln">164</span>It remains to concentrate $X_0&#x27;$ over the root. By
+<span class="ln">165</span>\eqref{pert:second-derivative}, the random function
+<span class="ln">166</span>\[
+<span class="ln">167</span> G(u)=X_0(u)+2nu^2
+<span class="ln">168</span>\]
+<span class="ln">169</span>is convex on $J_\nu$.  Uniformly for $u\in J_\nu$ and all the other
+<span class="ln">170</span>parameters,
+<span class="ln">171</span>\begin{equation}
+<span class="ln">172</span> \operatorname{Var}(G(u))\leq C_\nu N,
+<span class="ln">173</span> \qquad |\mathbb E_{\mathbf u}G&#x27;(u)|\leq C_\nu\lambda_\nu.
+<span class="ln">174</span> \label{pert:root-variance}
+<span class="ln">175</span>\end{equation}
+<span class="ln">176</span>To prove the first estimate, condition on the physical and total
+<span class="ln">177</span>perturbation counts. Conditional on the latter count, its types and sites
+<span class="ln">178</span>are independent labels; changing a label replaces a single bounded
+<span class="ln">179</span>factor. Apply the Efron--Stein variance inequality~\cite{EfronStein}
+<span class="ln">180</span>$\Var Z\le\frac12\sum_j\E(Z-Z^{(j)})^2$, where $Z^{(j)}$ is obtained
+<span class="ln">181</span>by independently resampling the $j$th input. For completeness, with
+<span class="ln">182</span>independent inputs $X_1,\ldots,X_k$, let $E_j$ integrate only $X_j$ and
+<span class="ln">183</span>let $\mathscr G_j=\sigma(X_1,\ldots,X_j)$. The Doob differences are
+<span class="ln">184</span>$D_j=\E[Z-E_jZ\mid\mathscr G_j]$. Orthogonality and Jensen give
+<span class="ln">185</span>\[
+<span class="ln">186</span> \Var Z=\sum_j\E D_j^2
+<span class="ln">187</span> \le\sum_j\E(Z-E_jZ)^2
+<span class="ln">188</span> =\frac12\sum_j\E(Z-Z^{(j)})^2.
+<span class="ln">189</span>\]
+<span class="ln">190</span>This independent-input decomposition requires neither identical laws
+<span class="ln">191</span>nor a symmetric statistic; see Efron--Stein~\cite[Section~2]{EfronStein}.
+<span class="ln">192</span>Resampling one interaction, field, or
+<span class="ln">193</span>perturbation term changes $X_0$ by a bounded amount: this is immediate
+<span class="ln">194</span>for the spin weights and is preserved by each power mean.  When a term
+<span class="ln">195</span>is removed, its unused independent mark variables can be integrated
+<span class="ln">196</span>out, so the same assertion holds for addition or deletion of a term.
+<span class="ln">197</span>Conditional variances are therefore bounded by a constant times the
+<span class="ln">198</span>number of root variables.  Conditional means are Lipschitz functions
+<span class="ln">199</span>of the counts, with bounded Lipschitz constants.  If $Q,Q&#x27;$ are
+<span class="ln">200</span>independent copies of a Poisson variable and $b$ is $C$-Lipschitz, then
+<span class="ln">201</span>\[
+<span class="ln">202</span> \operatorname{Var}(b(Q))
+<span class="ln">203</span> =\tfrac12\mathbb E(b(Q)-b(Q&#x27;))^2
+<span class="ln">204</span> \leq C^2\operatorname{Var}(Q).
+<span class="ln">205</span>\]
+<span class="ln">206</span>Applying this to the independent counts completes the $O(N)$ estimate.
+<span class="ln">207</span>The correction $2nu^2$ obeys the same estimates.  The derivative bound
+<span class="ln">208</span>in \eqref{pert:root-variance} follows directly from
+<span class="ln">209</span>\eqref{pert:score-bounds}.</code></pre></details>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>pert:selection</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a> <span class="stag">§6</span> <span class="muted">— $\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$</span></li><li><a class="node" href="../cards/pert.error.html" title="(6.4) score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)">pert:error</a> <span class="stag">§6</span> <span class="muted">(6.4)</span> <span class="muted">— score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)</span></li><li><a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a> <span class="stag">§6</span> <span class="muted">Lemma 6.1</span> <span class="muted">— 매개변수 평균한 score 집중 (Lemma 6.1)</span></li><li><a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a> <span class="stag">§6</span> <span class="muted">— 매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)</span></li><li><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> <span class="stag">§6</span> <span class="muted">— §6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값</span></li><li><a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a> <span class="stag">§5</span> <span class="muted">(5.3)</span> <span class="muted">— 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li><li><a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span> <span class="muted">— 유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§6: <a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a>, <a class="node" href="../cards/pert.score-identity.html" title="(6.13) anchor score와 시험함수의 분리 부등식 (6.13)">pert:score-identity</a>, <a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> (iii), <a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a>. §7: <a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a>, <a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a>, <a class="node" href="../cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a> (decorrelation.tex 4–9). §8: comparison.tex 8–15 (<a class="node" href="../cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a> = (i)), 20 (선택된 매개변수 벡터), 130, 243. overview.tex 18. 규칙 P5, L1 수 3<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/pert.analytic.html" title="Lemma 6.4 insertion 계수의 소멸 (Lemma 6.4)">pert:analytic</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.analytic.s3.html" title="$u_\nu\le2j^{-j}$ 로 극한 함수를 0으로">pert:analytic.s3</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.score-identity.html" title="(6.13) anchor score와 시험함수의 분리 부등식 (6.13)">pert:score-identity</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a> <span class="stag">§8</span></li><li><a class="node" href="../cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/x.pert-order-of-choices.html" title="선택의 순서 (Remark 6.6)">x:pert-order-of-choices</a> <span class="stag">§6</span></li><li><a class="node" href="../cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>고정한 모든 $L\ge2$ 와 $\varepsilon&gt;0$ 에 대해, 크기 $N_j\uparrow\infty$ 와 결정적 벡터 $\mathbf u_j$ 가 있어 다음이 성립한다.
+(i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$;
+(ii) 모든 고정 type $\nu$ 에 대해 reservoir에서 $e_{\nu,N_j}(\mathbf u_j)\longrightarrow0$;
+(iii) reservoir에서, 깊이 $L$ 의 모든 고정 유한 prescribed tree 위 multioverlap의 모든 유한곱의 기대값이 이 수열을 따라 수렴한다.</p></dd><dt>물리 진술</dt><dd><p><a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a>의 유계 모형에서, 깊이 $L$ 과 여유 $\varepsilon$ 을 고정할 때마다, 크기들의 수열과 그 크기마다 고정된 <a class="gterm" href="../glossary.html#g-perturbation" title="type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다(perturbations.tex 60; §5의 틀이 요구하는 것은 닫힌 구간 $1/2\le\psi_\nu\le3/2$, cavity.tex 26). 각 항은 독립 균일 site 하나와 자기 mark 과정의 독립 사…">섭동</a> 매개변수를 골라 (i) <a class="gterm" href="../glossary.html#g-increment" title="섭동된 계의 $N\to N+1$ root logarithm 증분이다. $N,L,\mathbf u$ 에 대해 균일하게 유계다.">cavity 증분</a>이 $\underline F+2\varepsilon$<sup><a class="gterm" href="../glossary.html#g-lower-pressure" title="bounded 모형에서 모든 크기 $N$ 에 대해 취한 pressure의 liminf다(선택 전의 것). $\varepsilon$ 은 selected-sequence를 고를 때의 여유다.">용어</a></sup> 이하이고, (ii) <a class="gterm" href="../glossary.html#g-reservoir" title="크기 $N$ 과 $N+1$ 의 계를 비교하는 공통 $N$-spin 계다. 평균 $\rho_N$ 개의 상호작용, 보통의 장, 그리고 type $\nu$ 마다 평균 $c_\nu s_N$ 개(합계 Poisson$(s_N)$)의 섭동 factor를 가진다(cavity.tex 20–28, 45–50).">reservoir</a>에서 각 type의 <a class="gterm" href="../glossary.html#g-score" title="$D_\nu$ 는 type $\nu$ 섭동의 $u_\nu$ 미분이 path 위에서 갖는 값이다. $\langle\cdot\rangle$ 은 root가 주어졌을 때 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root에 대한 평균이다(root, perturbations.tex 8…">score</a>가 <a class="gterm" href="../glossary.html#g-concentration" title="어떤 무작위 양이 root(disorder, 섭동 개수·type·site)와 tree 표본추출 전부에 대한 평균 주위로 집중한다는 말을 묶는 우산 항목이다. 이 항목은 따로 정량을 두지 않고, 이 사이트에서 &quot;집중한다&quot;는 늘 다음 두 정량 진술 가운데 하나를 가리킨다: score의 집중은 $e_{\nu,N}\to0$(score), multioverlap의…">집중</a>하며, (iii) reservoir의 유한 <a class="gterm" href="../glossary.html#g-prescribed-tree" title="공통 root와 깊이 $L$ 에서 끝나는 유한 개의 labeled path로 된 tree다. 각 vertex에서 서로 다른 자식은 그 prefix가 주어지면 kernel로 독립으로 뽑히고, 일부 leaf를 지워도 나머지 tree의 표본 법칙은 바뀌지 않는다(사영 일관성). 이 두 성질이 tree 표본 규칙이다. $E_{\mathcal T}$ 는 root가…">prescribed tree</a> 위 <a class="gterm" href="../glossary.html#g-multioverlap" title="replica leaf 집합 $S$ 위 spin 곱의 공간 평균이다. $\lvert S\rvert=2$ 가 보통의 overlap, $\lvert S\rvert=1$ 이 자화다.">multioverlap</a> moment가 모두 수렴하게 할 수 있다. 이 수열이 <a class="gterm" href="../glossary.html#g-selected-sequence" title="고정한 $L\ge2$ 와 $\varepsilon&gt;0$ 마다 pert:selection이 주는 크기 $N_j\uparrow\infty$ 와 결정적 섭동 매개변수 $\mathbf u_j$ 의 수열로, (i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$, (ii) reservoir에서 모든 고정 type의…">선택된 수열</a>이다.</p></dd><dt>차이</dt><dd><p>(1) 존재 진술이다: 크기의 부분수열 하나와 크기마다 매개변수 벡터 하나를 고른다. 모든 $N$ 이나 거의 모든 매개변수에서 성립한다고 말하지 않는다. (2) (ii)는 type마다의 수렴이고 type이나 $L$ 에 균등하지 않다. (3) (i)은 상한뿐이고 증분의 극한이나 $\lim F_N$ 의 존재를 말하지 않는다. (4) (iii)은 수렴만 주고 극한값을 식별하지 않는다(대각 부분수열). (5) 수열은 $L$ 과 $\varepsilon$ 마다 다르다. 물리 그림의 "무한소 섭동으로 generic한 계를 고른다"와의 관계는 <a class="gterm" href="../glossary.html#g-selected-sequence" title="고정한 $L\ge2$ 와 $\varepsilon&gt;0$ 마다 pert:selection이 주는 크기 $N_j\uparrow\infty$ 와 결정적 섭동 매개변수 $\mathbf u_j$ 의 수열로, (i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$, (ii) reservoir에서 모든 고정 type의…">선택된 수열 (선택된 섭동계)</a>의 물리 대응 칸에 intuition으로만 있다. 이 수열은 <a class="gterm" href="../glossary.html#g-state" title="보조 계층 path의 root(disorder, 섭동 개수·type·site; 섭동 매개변수는 선택된 값으로 고정)부터 깊이 $d$ $(0\le d&lt;L)$ 까지의 prefix다. &quot;상태 안&quot;은 $\mathscr F_d$ 가 주어진 조건부 법칙, &quot;상태 평균&quot;은 $\mathbb E[\,\cdot\mid\mathscr F_d]$ 를 뜻한다. 같은 상태를 공유…">상태</a>가 아니다.</p></dd><dt>축약 유형</dt><dd><code>weakening</code> <span class="muted">— 덜 말하지만 정확함</span></dd></dl><h2>펼침</h2><details class="child"><summary>매개변수 평균한 증분이 낮은 크기가 무한히 많다 <a class="node" href="../cards/pert.selection.s1.html">↗</a><span class="cm">균일 섭동 경계 (<a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>)가 $$\liminf_N\frac1N\int P_N^{L,\mathbf u}\,\pi(d\mathbf u)=\underline F$$ 를 준다. 따라서 무한히 많은 $N$ 이 $\int\Delta_N\,d\pi\le\underline F+\varepsilon$ 을 만족한다: 그렇지 않으면 평균 증분의 telescoping이 이 liminf와 모순이다. cavity:increment가 $|\Delta_N(\mathbf u)|\le C$ 가 균등하게 성립하는 상수 $C$ 를 준다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a> <span class="stag">§6</span> <span class="muted">— $\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$</span></li><li><a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a> <span class="stag">§5</span> <span class="muted">(5.3)</span> <span class="muted">— 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)</span></li><li><a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span> <span class="muted">Lemma 5.1</span> <span class="muted">— Cavity increments (cavity 증분)</span></li><li><a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a> <span class="stag">§6</span> <span class="muted">— 매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.selection.s2.html" title="score 오차가 작은 매개변수를 Markov 부등식으로 고르기">pert:selection.s2</a> (N_j를 고를 무한 집합과 상수 C)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.selection.s2.html" title="score 오차가 작은 매개변수를 Markov 부등식으로 고르기">pert:selection.s2</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>균일 섭동 경계 (<a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>)가
+$$\liminf_N\frac1N\int P_N^{L,\mathbf u}\,\pi(d\mathbf u)=\underline F$$
+를 준다. 따라서 무한히 많은 $N$ 이 $\int\Delta_N\,d\pi\le\underline F+\varepsilon$ 을 만족한다: 그렇지 않으면 평균 증분의 telescoping이 이 liminf와 모순이다. cavity:increment가 $|\Delta_N(\mathbf u)|\le C$ 가 균등하게 성립하는 상수 $C$ 를 준다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>score 오차가 작은 매개변수를 Markov 부등식으로 고르기 <a class="node" href="../cards/pert.selection.s2.html">↗</a><span class="cm">유한 개 type 모임에 대해 pert:concentration과 Markov 부등식은 그 오차가 모두 작은 집합의 매개변수 측도가 1로 감을 보인다. 구체적으로, 앞의 무한 집합에서 $N_j$ 를 차례로 충분히 크게 골라 $$\sum_{\nu\le j}\int e_{\nu,N_j}(\mathbf u)\,\pi(d\mathbf u)\le j^{-3}$$ 이 되게 한다. 그러면 모든 $\nu\le j$ 에서 $e_{\nu,N_j}\le j^{-1}$ 인 집합 $G_j$ 의 여집합 측도는 $q_j\le j^{-2}$ 이다. $G_j$ 위 조건부 평균 증분은 충분히 큰 모든 $j$ 에서 $$\frac{\underline F+\varepsilon+Cq_j}{1-q_j}\le\underline F+2\varepsilon$$ 이하다. 따라서 $G_j$ 안에서 증분이 $\underline F+2\varepsilon$ 이하인 벡터를 고를 수 있다. 꼬리를 다시 번호 매기면 (i)과 (ii)가 증명된다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.selection.s1.html" title="매개변수 평균한 증분이 낮은 크기가 무한히 많다">pert:selection.s1</a> <span class="stag">§6</span> <span class="muted">— 매개변수 평균한 증분이 낮은 크기가 무한히 많다</span></li><li><a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a> <span class="stag">§6</span> <span class="muted">Lemma 6.1</span> <span class="muted">— 매개변수 평균한 score 집중 (Lemma 6.1)</span></li><li><a class="node" href="../cards/pert.error.html" title="(6.4) score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)">pert:error</a> <span class="stag">§6</span> <span class="muted">(6.4)</span> <span class="muted">— score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)</span></li><li><a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a> <span class="stag">§6</span> <span class="muted">— 매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (i), (ii)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.selection.s3.html" title="대각 부분수열로 모든 유한 tree moment를 수렴시키기">pert:selection.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>유한 개 type 모임에 대해 pert:concentration과 Markov 부등식은 그 오차가 모두 작은 집합의 매개변수 측도가 1로 감을 보인다. 구체적으로, 앞의 무한 집합에서 $N_j$ 를 차례로 충분히 크게 골라
+$$\sum_{\nu\le j}\int e_{\nu,N_j}(\mathbf u)\,\pi(d\mathbf u)\le j^{-3}$$
+이 되게 한다. 그러면 모든 $\nu\le j$ 에서 $e_{\nu,N_j}\le j^{-1}$ 인 집합 $G_j$ 의 여집합 측도는 $q_j\le j^{-2}$ 이다. $G_j$ 위 조건부 평균 증분은 충분히 큰 모든 $j$ 에서
+$$\frac{\underline F+\varepsilon+Cq_j}{1-q_j}\le\underline F+2\varepsilon$$
+이하다. 따라서 $G_j$ 안에서 증분이 $\underline F+2\varepsilon$ 이하인 벡터를 고를 수 있다. 꼬리를 다시 번호 매기면 (i)과 (ii)가 증명된다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>대각 부분수열로 모든 유한 tree moment를 수렴시키기 <a class="node" href="../cards/pert.selection.s3.html">↗</a><span class="cm">고정 $L$ 에서 유한 labeled tree 모양과 그 multioverlap의 유한곱은 가산 모임을 이룬다. 각 곱은 절댓값이 1 이하다. 대각 부분수열이 (iii)을 주고 (i)이나 (ii)에 영향을 주지 않는다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.selection.s2.html" title="score 오차가 작은 매개변수를 Markov 부등식으로 고르기">pert:selection.s2</a> <span class="stag">§6</span> <span class="muted">— score 오차가 작은 매개변수를 Markov 부등식으로 고르기</span></li><li><a class="node" href="../cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span> <span class="muted">(3.1)</span> <span class="muted">— multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속</span></li><li><a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span> <span class="muted">— 유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (iii) → <a class="node" href="../cards/pert.analytic.s2.html" title="Taylor 계수의 수렴과 극한 해석함수 $H$">pert:analytic.s2</a> (Taylor 계수의 수렴)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>고정 $L$ 에서 유한 labeled tree 모양과 그 multioverlap의 유한곱은 가산 모임을 이룬다. 각 곱은 절댓값이 1 이하다. 대각 부분수열이 (iii)을 주고 (i)이나 (ii)에 영향을 주지 않는다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong></p>
+<ul><li><a class="node" href="../cards/pert.selection.s1.html" title="매개변수 평균한 증분이 낮은 크기가 무한히 많다">pert:selection.s1</a>: <a class="node" href="../cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>에서 $\liminf_N\frac1N\int P_N^{L,\mathbf u}\pi(d\mathbf u)=\underline F$. telescoping으로 $\int\Delta_N\,d\pi\le\underline F+\varepsilon$ 인 $N$ 이 무한히 많다. <a class="node" href="../cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>가 $|\Delta_N|\le C$ 를 준다.</li><li><a class="node" href="../cards/pert.selection.s2.html" title="score 오차가 작은 매개변수를 Markov 부등식으로 고르기">pert:selection.s2</a>: 그 $N$ 들 가운데 $\sum_{\nu\le j}\int e_{\nu,N_j}\,d\pi\le j^{-3}$ 이 되게 $N_j$ 를 고르고(<a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a>), Markov로 좋은 집합 $G_j$ 의 여집합 측도가 $j^{-2}$ 이하. $G_j$ 위 조건부 평균 증분이 $\underline F+2\varepsilon$ 이하이므로 그 안에서 한 점 $\mathbf u_j$ 를 고른다.</li><li><a class="node" href="../cards/pert.selection.s3.html" title="대각 부분수열로 모든 유한 tree moment를 수렴시키기">pert:selection.s3</a>: 고정 $L$ 의 유한 tree moment는 가산 개이고 유계라 대각 부분수열로 (iii).</li></ul>
+<p><strong>두 평균의 구별.</strong> $\pi$ 에 대한 적분은 s1, s2에서 점 $\mathbf u_j$ 를 고르는 데만 쓰인다. 결론 (i)–(iii)은 모두 고른 점 $\mathbf u_j$ 를 고정한 값이다: (i)의 $\Delta_{N_j}(\mathbf u_j)$, (ii)의 $e_{\nu,N_j}(\mathbf u_j)$, (iii)의 기대값은 그 벡터에서 <a class="gterm" href="../glossary.html#g-root" title="root는 보조 계층 path의 깊이 0 변수이고(&quot;Its depth-zero variable is the root&quot;, trees.tex 20), tree의 모든 path가 공유한다. 그 분포는 insertion을 해도 바뀌지 않는다(trees.tex 23). reservoir에서는 물리 disorder(&quot;the reservoir root disorder…">root 와 기대값 표기 ($\mathbb E$, $E_{\mathcal T}$, $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$)</a>와 tree 표본에 대해서만 평균한다(<a class="node" href="../cards/x.pert-standing.html" title="§6의 약속: 유계 모형, 고정 깊이 $L\ge2$, 두 계, 고정 매개변수의 기대값">x:pert-standing</a> 9–10행).</p>
+<p><strong>양화사와 극한.</strong> "for every fixed type $\nu$, $e_{\nu,N_j}(\mathbf u_j)\to0$"은 $\nu$ 를 고정하고 $j\to\infty$ 한 것이다. type에 균등한 수렴은 주지 않는다(s2에서 $j\ge\nu$ 부터 $e_{\nu,N_j}\le j^{-1}$). (ii)와 (iii)은 "in the reservoir"이고 (i)은 $N$-spin 계와 $(N+1)$-spin 계의 증분이다. 규칙 P5가 이 lemma를 blackbox로 쓴다.</p><details class="src"><summary>원문 (perturbations.tex:255-267, perturbations.tex:269-306)</summary><h4>perturbations.tex:255-267</h4><pre class="tex"><code><span class="ln">255</span>\begin{lemma}[Deterministic parameter selection]
+<span class="ln">256</span>\label[lemma]{pert:selection}
+<span class="ln">257</span>For every fixed $L\geq2$ and $\varepsilon&gt;0$, there are sizes
+<span class="ln">258</span>$N_j\uparrow\infty$ and deterministic vectors $\mathbf u_j$ such that
+<span class="ln">259</span>\begin{enumerate}[label=\textup{(\roman*)}]
+<span class="ln">260</span> \item $\Delta_{N_j}(\mathbf u_j)\leq \underline F+2\varepsilon$;
+<span class="ln">261</span> \item for every fixed type $\nu$,
+<span class="ln">262</span> $e_{\nu,N_j}(\mathbf u_j)\longrightarrow0$ in the reservoir;
+<span class="ln">263</span> \item in the reservoir, the expectations of every finite product of multioverlaps on
+<span class="ln">264</span> every fixed finite prescribed tree of depth $L$ converge along this
+<span class="ln">265</span> sequence.
+<span class="ln">266</span>\end{enumerate}
+<span class="ln">267</span>\end{lemma}</code></pre><h4>perturbations.tex:269-306</h4><pre class="tex"><code><span class="ln">269</span>\begin{proof}
+<span class="ln">270</span>\emph{Find low averaged increments.}
+<span class="ln">271</span>The uniform perturbation bound \eqref{cavity:negligible} gives
+<span class="ln">272</span>\[
+<span class="ln">273</span> \liminf_N\frac1N\int P_N^{L,\mathbf u}\,\pi(d\mathbf u)=\underline F.
+<span class="ln">274</span>\]
+<span class="ln">275</span>Hence infinitely many $N$ satisfy
+<span class="ln">276</span>$\int\Delta_N\,d\pi\leq \underline F+\varepsilon$: otherwise telescoping the
+<span class="ln">277</span>averaged increments would contradict this liminf.  \Cref{cavity:increment}
+<span class="ln">278</span>supplies a constant $C$ such that
+<span class="ln">279</span>$|\Delta_N(\mathbf u)|\leq C$ uniformly.
+<span class="ln">280</span>
+<span class="ln">281</span>\paragraph{Choose parameters with small score errors.}
+<span class="ln">282</span>For a finite collection of types, Lemma~\ref{pert:concentration} and
+<span class="ln">283</span>Markov&#x27;s inequality show that the set where all its errors are small
+<span class="ln">284</span>has parameter measure tending to one.  More explicitly, choose
+<span class="ln">285</span>$N_j$ successively among the preceding infinite set so large that
+<span class="ln">286</span>\[
+<span class="ln">287</span> \sum_{\nu\leq j}\int e_{\nu,N_j}(\mathbf u)\,\pi(d\mathbf u)
+<span class="ln">288</span> \leq j^{-3}.
+<span class="ln">289</span>\]
+<span class="ln">290</span>Then the set $G_j$ where $e_{\nu,N_j}\leq j^{-1}$ for all $\nu\leq j$
+<span class="ln">291</span>has complement of measure $q_j\leq j^{-2}$.  Its conditional mean
+<span class="ln">292</span>increment is at most
+<span class="ln">293</span>\[
+<span class="ln">294</span> \frac{\underline F+\varepsilon+Cq_j}{1-q_j}
+<span class="ln">295</span> \leq \underline F+2\varepsilon
+<span class="ln">296</span>\]
+<span class="ln">297</span>for all sufficiently large $j$.  A vector in $G_j$ with increment at
+<span class="ln">298</span>most $\underline F+2\varepsilon$ can therefore be chosen. Relabeling the tail
+<span class="ln">299</span>proves (i) and (ii).
+<span class="ln">300</span>
+<span class="ln">301</span>\paragraph{Make all finite-tree moments converge.}
+<span class="ln">302</span>At fixed $L$ the finite labeled tree
+<span class="ln">303</span>shapes and finite products of their multioverlaps form a countable
+<span class="ln">304</span>collection.  Each such product is bounded by one in absolute value.
+<span class="ln">305</span>A diagonal subsequence gives (iii), without affecting (i) or (ii).
+<span class="ln">306</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>

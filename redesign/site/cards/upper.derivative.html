@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span> · 섹션: <a href="../map-upper.html">§4</a></div><h1>(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>upper:derivative</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/upper.bound.s2.html" title="interpolation $\varphi(t)$ 와 두 끝점">upper:bound.s2</a> <span class="stag">§4</span> <span class="muted">— interpolation $\varphi(t)$ 와 두 끝점</span></li><li><a class="node" href="../cards/upper.bound.s3.html" title="Poisson 미분: $\varphi^\prime(t)/\alpha$ 를 삽입 증분으로">upper:bound.s3</a> <span class="stag">§4</span> <span class="muted">— Poisson 미분: $\varphi^\prime(t)/\alpha$ 를 삽입 증분으로</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.bound.s4.html" title="$t\in[0,1]$ 에서 적분">upper:bound.s4</a> (적분). 규칙 P2, L1 수 1<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/upper.bound.s4.html" title="$t\in[0,1]$ 에서 적분">upper:bound.s4</a> <span class="stag">§4</span></li></ul></dd><dt>수학 진술</dt><dd><p>모든 $t\in(0,1)$ 에서 (작성자 보탬: 원문 58–61은 범위를 적지 않는다. 55행 "justifies the derivative on $(0,1)$"에서 온 범위다)
+$$\varphi&#x27;(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0.\tag{4.1}$$
+(작성자 정리: <a class="node" href="../cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>.s3와 함께 읽으면, 보간된 계에 실제 상호작용 하나, 균일 site의 cavity 상호작용 하나, edge 삽입 하나를 넣는 증분을 $I_{\rm real}$, $I_{\rm cav}$, $I_{\rm e}$ 라 할 때 $\mathbb E[I_{\rm real}-pI_{\rm cav}+(p-1)I_{\rm e}]\le0$ 과 같다. $I_{\rm e}=\log T_0V_{\rm e}$ 는 <a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a>.)</p></dd><dt>물리 진술</dt><dd><p><a class="gterm" href="../glossary.html#g-hypotheses" title="짝수 $p\ge2$, $\mathbb EB(\theta)+\mathbb E\lvert h\rvert&lt;\infty$, factorization, positivity. 정확한 목록과 각 가정이 쓰이는 곳은 규칙 P1 행에 있다.">가정</a> 아래, <a class="gterm" href="../glossary.html#g-interpolation" title="평균 $t\alpha N$ 개의 실제 factor와, site마다 평균 $(1-t)\alpha p$ 개의 cavity factor $U_\theta(x_1,\ldots,x_{p-1};\sigma_i)$ 사이를 잇는 경로다. $\varphi(t)$ 는 power-mean recursion 뒤의 root logarithm의 기대값을 $N$ 으로 나눈 것이다(…">interpolation</a> 경로의 각 점에서 disorder와 tree에 대해 평균하면, 실제 $p$체 factor 하나를 더하는 효과는 <a class="gterm" href="../glossary.html#g-site-term" title="$U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, model.tex 59–…">cavity factor</a> $p$ 개를 더하는 효과에서 <a class="gterm" href="../glossary.html#g-edge-term" title="$p$ 개 spin이 서로 다른 label의 message 분포를 따를 때 factor 하나를 붙이는 분배함수다.">edge 항</a> $p-1$ 개만큼을 뺀 것을 넘지 않는다. 그래서 $\varphi$ 의 기울기가 $-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 이하다.</p></dd><dt>차이</dt><dd><p>같은 내용이다. 부등식은 기대값에 대한 것이고 표본별 부등식이 아니다(upper.tex 51 "expected insertion increment"). 짝수 $p$ 와 (2.4)가 쓰인다(<a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a>). 증분은 보통 Gibbs 평균의 free entropy 변화가 아니라 <a class="gterm" href="../glossary.html#g-power-mean" title="시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.">power mean</a> recursion을 거친 root logarithm의 변화(<a class="gterm" href="../glossary.html#g-insertion" title="반복할 분배함수의 tilted kernel $K_1,\ldots,K_{L-1}$ 과 terminal Gibbs kernel $K_L$ 을 쓰고(trees.tex 85–87), $A$ 가 root가 주어진 조건부로 위로 유계이고 0에서 떨어져 있다고 하자(원문이 처음에 두는 가정, trees.tex 73–74). 그러면 spin weight에 양의 path…">insertion $A$ 와 $\log Y_0$</a>의 $\log Y_0$)다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><h2>펼침</h2><details class="child"><summary>세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$ <a class="node" href="../cards/upper.derivative.s1.html">↗</a><span class="cm">주장 (4.1)을 세운다(<a class="node" href="../cards/upper.derivative.html" title="(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)">upper:derivative</a>). (2.3) 아래 세 삽입은 모두 $a(1+D)$ 꼴이다. 실제 상호작용이면 $D=b\prod_\ell f_\ell(\sigma_{i_\ell})$, cavity 상호작용이면 $p-1$ 개 인자를 $$\bar f(x)=\sum_sf(s)q_x(s)$$ 로 바꾸고, edge 삽입이면 $p$ 개 모두 바꾼다. 마지막 경우 독립 message 과정은 섭동되지 않은 tilted tree에 덧붙여지므로 그 증분은 $\log T_0V_{\rm e}$ 이다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a> <span class="stag">§2</span> <span class="muted">(2.6)</span> <span class="muted">— cavity log-weight $U_\theta$ (2.6)</span></li><li><a class="node" href="../cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a> <span class="stag">§2</span> <span class="muted">(2.5)</span> <span class="muted">— edge 분배함수 $C_\theta$ (2.5)</span></li><li><a class="node" href="../cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span> <span class="muted">(2.9)</span> <span class="muted">— edge 항 $V_{\rm e}$ (2.9)</span></li><li><a class="node" href="../cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span> <span class="muted">— message $x$ 와 $q_x$; site 항과 edge 항의 뜻</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span> <span class="muted">— 원래 모형에 없던 변수를 쓰는 insertion</span></li><li><a class="node" href="../cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span> <span class="muted">(2.10)</span> <span class="muted">— 조건부 power mean $T_d$ (2.10)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a> ($D$, $D_*$), <a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> (각 삽입의 $D^a$ 꼴)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a> <span class="stag">§4</span></li><li><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> <span class="stag">§4</span></li></ul></dd><dt>수학 진술</dt><dd><p>주장 (4.1)을 세운다(<a class="node" href="../cards/upper.derivative.html" title="(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)">upper:derivative</a>). (2.3) 아래 세 삽입은 모두 $a(1+D)$ 꼴이다. 실제 상호작용이면 $D=b\prod_\ell f_\ell(\sigma_{i_\ell})$, cavity 상호작용이면 $p-1$ 개 인자를
+$$\bar f(x)=\sum_sf(s)q_x(s)$$
+로 바꾸고, edge 삽입이면 $p$ 개 모두 바꾼다. 마지막 경우 독립 message 과정은 섭동되지 않은 tilted tree에 덧붙여지므로 그 증분은 $\log T_0V_{\rm e}$ 이다.</p></dd><dt>물리 진술</dt><dd><p>실제 factor는 $p$ 개 실제 spin에, <a class="gterm" href="../glossary.html#g-site-term" title="$U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, model.tex 59–…">cavity factor</a>는 실제 spin 하나와 $p-1$ 개 독립 <a class="gterm" href="../glossary.html#g-message" title="spin 하나 위의 확률분포 $q_x$ 를 정하는 실수다. 시행 법칙에서는 order-parameter 사슬의 마지막 변수이고, 서로 다른 label의 message는 독립이다.">cavity field</a>에, <a class="gterm" href="../glossary.html#g-edge-term" title="$p$ 개 spin이 서로 다른 label의 message 분포를 따를 때 factor 하나를 붙이는 분배함수다.">edge 항</a>은 $p$ 개 cavity field에만 붙는다. <a class="gterm" href="../glossary.html#g-factorization" title="$a&gt;0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.">factor 전개</a> 덕에 셋 모두 $a(1+b\prod(\text{spin 인자}))$ 꼴이고, cavity field 쪽 인자는 그 field 아래의 평균 $\bar f(x)$ 다.</p></dd><dt>차이</dt><dd><p>같은 내용이다. edge 삽입은 spin에 의존하지 않으므로 그 증분은 보조 message 변수만의 <a class="gterm" href="../glossary.html#g-power-mean" title="시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.">power mean</a> $\log T_0V_{\rm e}$ 다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl></details><details class="child"><summary>정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2) <a class="node" href="../cards/upper.regularization.html">↗</a><span class="cm">기대값을 취하기 전에 $a$ 를 떼므로 $\log a$ 의 적분 가능성은 필요 없다. $D_*=b\prod_\ell f_\ell(1)$, $c=\theta(1,\ldots,1)$ 로 두고 각 삽입 증분에서 $c$ 를 뺀다. 이 적분 가능한 뺄셈은 계수 $1,-p,p-1$ 의 결합에서 상쇄된다. 보간된 계는 고정한다. $0&lt;\lambda&lt;1$ 에 대해 정규화된 증분 각각을 $$\log Y_0(1+\lambda D)-\log(1+\lambda D_*)\tag{4.2}$$ 로 바꾼다. 여기서 $Y_0$ 는 tree:log-expansion의 insertion recursion이다. 모든 spin 입력에 대해 비 $$\frac{1+\lambda D}{1+\lambda D_*}=(1-w)+w\frac{1+D}{1+D_*},\qquad w=\frac{\lambda(1+D_*)}{1+\lambda D_*}\in[0,1]$$ 는 $e^{-2B(\theta)}$ 와 $e^{2B(\theta)}$ 사이에 있다. spin 입력의 임의 부분집합을 $q_x$ 들로 평균한 뒤에도 같다. 따라서 (4.2)의 절댓값은 $2B(\theta)$ 이하다. 각 고정 상호작용에 대해 $\lambda\uparrow1$ 의 수렴은 spin 입력과 message에 균일하고 유한 recursion이 그것을 보존한다. dominated convergence가 원하는 정규화된 증분을 회복한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a> <span class="stag">§4</span> <span class="muted">— 세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$</span></li><li><a class="node" href="../cards/upper.bound.s1.html" title="퇴화 경우와 $b$, $M$ 의 본질적 유계성">upper:bound.s1</a> <span class="stag">§4</span> <span class="muted">— 퇴화 경우와 $b$, $M$ 의 본질적 유계성</span></li><li><a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.1</span> <span class="muted">— Insertion calculus (삽입 미적분)</span></li><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li><li><a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.2</span> <span class="muted">— Logarithmic expansion (log 전개)</span></li><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span> <span class="muted">(2.1)</span> <span class="muted">— 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</span></li><li><a class="node" href="../cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span> <span class="muted">— message $x$ 와 $q_x$; site 항과 edge 항의 뜻</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> (전개할 정규화된 증분과 그 한계, $\lambda\uparrow1$ 극한의 정당화)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a> <span class="stag">§4</span></li></ul></dd><dt>수학 진술</dt><dd><p>기대값을 취하기 전에 $a$ 를 떼므로 $\log a$ 의 적분 가능성은 필요 없다. $D_*=b\prod_\ell f_\ell(1)$, $c=\theta(1,\ldots,1)$ 로 두고 각 삽입 증분에서 $c$ 를 뺀다. 이 적분 가능한 뺄셈은 계수 $1,-p,p-1$ 의 결합에서 상쇄된다. 보간된 계는 고정한다. $0&lt;\lambda&lt;1$ 에 대해 정규화된 증분 각각을
+$$\log Y_0(1+\lambda D)-\log(1+\lambda D_*)\tag{4.2}$$
+로 바꾼다. 여기서 $Y_0$ 는 tree:log-expansion의 insertion recursion이다. 모든 spin 입력에 대해 비
+$$\frac{1+\lambda D}{1+\lambda D_*}=(1-w)+w\frac{1+D}{1+D_*},\qquad w=\frac{\lambda(1+D_*)}{1+\lambda D_*}\in[0,1]$$
+는 $e^{-2B(\theta)}$ 와 $e^{2B(\theta)}$ 사이에 있다. spin 입력의 임의 부분집합을 $q_x$ 들로 평균한 뒤에도 같다. 따라서 (4.2)의 절댓값은 $2B(\theta)$ 이하다. 각 고정 상호작용에 대해 $\lambda\uparrow1$ 의 수렴은 spin 입력과 message에 균일하고 유한 recursion이 그것을 보존한다. dominated convergence가 원하는 정규화된 증분을 회복한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>볼록성: 나머지항의 $n$차 계수 (4.3)와 부호 <a class="node" href="../cards/upper.remainder.html">↗</a><span class="cm">정규화된 증분에 tree:log-expansion을 적용한다. replica leaf $n$ 개의 tree $\mathcal T$ 위에서 $$P_{\mathcal T}=\frac1N\sum_{i=1}^N\mathbb E_f\prod_{a=1}^nf(\sigma_i^a),\qquad B_{\mathcal T}=\mathbb E_{f,x}\prod_{a=1}^n\bar f(x^a).$$ $\mathbb E_f$ 는 새 함수 $f$ 하나를 평균하며 곱의 $n$ 개 replica 인자가 그것을 공유한다. $\mathbb E_{f,x}$ 는 root를 포함해 새 message-label tree 전체도 평균한다. 이 함수와 message tree는 서로 독립이고 옛 tilted 계와도 독립이다. 따라서 $B_{\mathcal T}$ 는 고정 tree에서 결정적이고 $P_{\mathcal T}$ 는 옛 spin replica에 의존한다. $r=0$ 에서는 message 자체가 모든 replica leaf가 공유하는 root 변수다. 독립 균일 index와 $f$, 새 message label의 독립 사본을 평균하면 세 삽입에서 각각 $P_{\mathcal T}^p$, $P_{\mathcal T}B_{\mathcal T}^{p-1}$, $B_{\mathcal T}^p$ 가 나온다. 삽입된 $b$ 는 이 변수들과 독립이다. 그래서 결합된 정규화 증분의 $n$차 계수는 $$-\frac{\lambda^n}{n}\mathbb E[(-b)^n]\,\mathbb E_{Q_n}\mathbb E\bigl[P_{\mathcal T}^p-pP_{\mathcal T}B_{\mathcal T}^{p-1}+(p-1)B_{\mathcal T}^p\bigr]\tag{4.3}$$ 이다. 정규화된 기준항들은 상쇄된다. tree 법칙 $Q_n$ 은 tree:log-expansion의 것이고 세 삽입에 공통이다. $\lambda&lt;1$ 이면 급수는 절대수렴하고 각 삽입은 $\sum_{n\ge1}\lambda^n/n$ 으로 눌린다. $p$ 가 짝수이므로 $x\mapsto x^p$ 의 볼록성이 괄호를 0 이상으로 만들고, (2.4)가 (4.3)을 0 이하로 만든다. $\lambda\uparrow1$ 이 (4.1)을 증명한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a> <span class="stag">§4</span> <span class="muted">(4.2)</span> <span class="muted">— 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)</span></li><li><a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a> <span class="stag">§4</span> <span class="muted">— 세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$</span></li><li><a class="node" href="../cards/upper.bound.s1.html" title="퇴화 경우와 $b$, $M$ 의 본질적 유계성">upper:bound.s1</a> <span class="stag">§4</span> <span class="muted">— 퇴화 경우와 $b$, $M$ 의 본질적 유계성</span></li><li><a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span> <span class="muted">Lemma 3.2</span> <span class="muted">— Logarithmic expansion (log 전개)</span></li><li><a class="node" href="../cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a> <span class="stag">§3</span> <span class="muted">(3.8)</span> <span class="muted">— tree 법칙 $Q_k$</span></li><li><a class="node" href="../cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span> <span class="muted">— 유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성</span></li><li><a class="node" href="../cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span> <span class="muted">(2.3)</span> <span class="muted">— factor weight 전개 (2.3)</span></li><li><a class="node" href="../cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span> <span class="muted">(2.4)</span> <span class="muted">— 부호 조건 (2.4)</span></li><li><a class="node" href="../cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span> <span class="muted">(2.7)</span> <span class="muted">— 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</span></li><li><a class="node" href="../cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span> <span class="muted">— message $x$ 와 $q_x$; site 항과 edge 항의 뜻</span></li><li><a class="node" href="../cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span> <span class="muted">— $r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/upper.derivative.html" title="(4.1) 핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0$ (4.1)">upper:derivative</a> ($\lambda\uparrow1$ 에서 (4.1)). 규칙 P2<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>정규화된 증분에 tree:log-expansion을 적용한다. replica leaf $n$ 개의 tree $\mathcal T$ 위에서
+$$P_{\mathcal T}=\frac1N\sum_{i=1}^N\mathbb E_f\prod_{a=1}^nf(\sigma_i^a),\qquad B_{\mathcal T}=\mathbb E_{f,x}\prod_{a=1}^n\bar f(x^a).$$
+$\mathbb E_f$ 는 새 함수 $f$ 하나를 평균하며 곱의 $n$ 개 replica 인자가 그것을 공유한다. $\mathbb E_{f,x}$ 는 root를 포함해 새 message-label tree 전체도 평균한다. 이 함수와 message tree는 서로 독립이고 옛 tilted 계와도 독립이다. 따라서 $B_{\mathcal T}$ 는 고정 tree에서 결정적이고 $P_{\mathcal T}$ 는 옛 spin replica에 의존한다. $r=0$ 에서는 message 자체가 모든 replica leaf가 공유하는 root 변수다. 독립 균일 index와 $f$, 새 message label의 독립 사본을 평균하면 세 삽입에서 각각 $P_{\mathcal T}^p$, $P_{\mathcal T}B_{\mathcal T}^{p-1}$, $B_{\mathcal T}^p$ 가 나온다. 삽입된 $b$ 는 이 변수들과 독립이다. 그래서 결합된 정규화 증분의 $n$차 계수는
+$$-\frac{\lambda^n}{n}\mathbb E[(-b)^n]\,\mathbb E_{Q_n}\mathbb E\bigl[P_{\mathcal T}^p-pP_{\mathcal T}B_{\mathcal T}^{p-1}+(p-1)B_{\mathcal T}^p\bigr]\tag{4.3}$$
+이다. 정규화된 기준항들은 상쇄된다. tree 법칙 $Q_n$ 은 tree:log-expansion의 것이고 세 삽입에 공통이다. $\lambda&lt;1$ 이면 급수는 절대수렴하고 각 삽입은 $\sum_{n\ge1}\lambda^n/n$ 으로 눌린다. $p$ 가 짝수이므로 $x\mapsto x^p$ 의 볼록성이 괄호를 0 이상으로 만들고, (2.4)가 (4.3)을 0 이하로 만든다. $\lambda\uparrow1$ 이 (4.1)을 증명한다.</p></dd><dt>물리 진술</dt><dd><p>나머지항을 <a class="gterm" href="../glossary.html#g-tree-law" title="path 하나에서 시작해, leaf가 $n$ 개일 때 내부 vertex $\beta$ 를 확률 $(n_\beta m_{d_\beta+1}-m_{d_\beta})/n$ 로 골라 새 path를 붙여 가는 무작위 tree 법칙이다. $A=1+tD$ 의 $\log Y_0$ 가 이 법칙의 tree 평균 급수로 정확히 쓰인다($\lvert t\rvert\lVert…">tree 법칙</a> $Q_n$ 으로 뽑은 $n$ 개 <a class="gterm" href="../glossary.html#g-replica" title="prescribed-tree의 깊이 $L$ leaf에 놓인 spin 배치다. 두 replica의 split 깊이는 두 path의 마지막 공통 vertex의 깊이다(&quot;A split at depth $d$ means that the last common vertex is at depth $d$&quot;, trees.tex 34–35). 두 replica는 split…">replica</a>의 tree 위에서 전개하면, 실제 spin 쪽 평균 $P$ 와 시행 <a class="gterm" href="../glossary.html#g-message" title="spin 하나 위의 확률분포 $q_x$ 를 정하는 실수다. 시행 법칙에서는 order-parameter 사슬의 마지막 변수이고, 서로 다른 label의 message는 독립이다.">message</a> 쪽 평균 $B$ 에 대한 볼록성 잔차 $P^p-pPB^{p-1}+(p-1)B^p$ (짝수 $p$ 에서 $\ge0$)에 $-\mathbb E[(-b)^n]$ 을 곱한 꼴이 된다. <a class="gterm" href="../glossary.html#g-positivity" title="factorization의 $b$ 의 모든 차수 moment에 대한 부호 조건이다(유한 실수 기대값으로 해석).">부호 조건</a>이 모든 차수에서 이것을 0 이하로 만든다.</p></dd><dt>차이</dt><dd><p>같은 내용이다. $P_{\mathcal T}$ 는 보간된 계에서 tilted kernel로 뽑은 replica tree 위의 무작위 양이고 $B_{\mathcal T}$ 는 고정 tree에서 결정적이다. 짝수 $p$ 와 (2.4)가 둘 다 여기서 쓰인다(홀수 $p$ 에서 괄호의 부호는 보장되지 않는다). $Q_n$ 을 물리 그림의 overlap tree 법칙으로 읽는 것은 <a class="gterm" href="../glossary.html#g-tree-law" title="path 하나에서 시작해, leaf가 $n$ 개일 때 내부 vertex $\beta$ 를 확률 $(n_\beta m_{d_\beta+1}-m_{d_\beta})/n$ 로 골라 새 path를 붙여 가는 무작위 tree 법칙이다. $A=1+tD$ 의 $\log Y_0$ 가 이 법칙의 tree 평균 급수로 정확히 쓰인다($\lvert t\rvert\lVert…">tree 법칙 $Q_k$ 와 log 전개</a>의 물리 대응 칸에 intuition으로만 있다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl></details><h2>본문</h2><p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a>: (2.3) 아래 세 삽입이 모두 $a(1+D)$ 꼴이다(실제: $D=b\prod_\ell f_\ell(\sigma_{i_\ell})$, cavity: $p-1$ 개 인자를 $\bar f(x)$ 로, edge: $p$ 개 모두). <a class="node" href="../cards/upper.regularization.html" title="(4.2) 정규화: $a$ 떼기, $c$ 빼기, $\lambda&lt;1$ 정규화 (4.2)">upper:regularization</a>: $a$ 를 기대값 전에 떼고 $c=\theta(1,\ldots,1)$ 을 빼 정규화한 뒤 $\lambda&lt;1$ 로 정규화한 증분 (4.2)를 쓴다. 한계 $2B(\theta)$ 와 dominated convergence로 $\lambda\uparrow1$ 에서 원래 증분을 회복한다. <a class="node" href="../cards/upper.remainder.html" title="(4.3) 볼록성: 나머지항의 $n$차 계수 (4.3)와 부호">upper:remainder</a>: <a class="node" href="../cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>으로 전개하면 $n$차 계수가 $-\frac{\lambda^n}{n}\mathbb E[(-b)^n]\mathbb E_{Q_n}\mathbb E[P_{\mathcal T}^p-pP_{\mathcal T}B_{\mathcal T}^{p-1}+(p-1)B_{\mathcal T}^p]$ (4.3)이고, 짝수 $p$ 의 볼록성과 (2.4)가 그것을 0 이하로 만든다. $\lambda\uparrow1$ 이 (4.1)을 준다.</p>
+<p>이 카드의 원문 범위 중 58–61(주장)은 잎 <a class="node" href="../cards/upper.derivative.s1.html" title="세 삽입의 꼴 $a(1+D)$ 와 edge 증분 $\log T_0V_{\rm e}$">upper:derivative.s1</a>도 덮는다(포함 검사가 증명 줄을 잎으로 요구하기 때문).</p><details class="src"><summary>원문 (upper.tex:58-61, upper.tex:62-126)</summary><h4>upper.tex:58-61</h4><pre class="tex"><code><span class="ln">58</span>We claim that
+<span class="ln">59</span>\begin{equation}\label{upper:derivative}
+<span class="ln">60</span> \varphi&#x27;(t)+\alpha(p-1)\E\log T_0V_{\rm e}\le0.
+<span class="ln">61</span>\end{equation}</code></pre><h4>upper.tex:62-126</h4><pre class="tex"><code><span class="ln">62</span>All three insertions have the form $a(1+D)$ under
+<span class="ln">63</span>\eqref{model:factorization}. For a real interaction,
+<span class="ln">64</span>$D=b\prod_\ell f_\ell(\sigma_{i_\ell})$; for a cavity interaction, replace
+<span class="ln">65</span>$p-1$ of the factors by
+<span class="ln">66</span>$\bar f(x)=\sum_s f(s)q_x(s)$; for an edge insertion, replace all $p$.
+<span class="ln">67</span>In the last case the independent message process is appended to the
+<span class="ln">68</span>unperturbed tilted tree, so its increment is $\log T_0V_{\rm e}$.
+<span class="ln">69</span>
+<span class="ln">70</span>\emph{Normalization.}
+<span class="ln">71</span>We remove $a$ before taking expectations, so no integrability of
+<span class="ln">72</span>$\log a$ is needed. Put
+<span class="ln">73</span>$D_*=b\prod_\ell f_\ell(1)$ and $c=\theta(1,\ldots,1)$.
+<span class="ln">74</span>Subtract $c$ from each insertion increment. These integrable subtractions
+<span class="ln">75</span>cancel in the combination with coefficients $1,-p,p-1$.
+<span class="ln">76</span>Keep the interpolated system fixed. For $0&lt;\lambda&lt;1$, replace
+<span class="ln">77</span>each normalized increment by
+<span class="ln">78</span>\begin{equation}\label{upper:regularization}
+<span class="ln">79</span> \log Y_0(1+\lambda D)-\log(1+\lambda D_*),
+<span class="ln">80</span>\end{equation}
+<span class="ln">81</span>where $Y_0$ is the insertion recursion of \cref{tree:log-expansion}.
+<span class="ln">82</span>For every spin input, the ratio
+<span class="ln">83</span>\[
+<span class="ln">84</span> \frac{1+\lambda D}{1+\lambda D_*}
+<span class="ln">85</span> =(1-w)+w\frac{1+D}{1+D_*},
+<span class="ln">86</span> \qquad w=\frac{\lambda(1+D_*)}{1+\lambda D_*}\in[0,1],
+<span class="ln">87</span>\]
+<span class="ln">88</span>lies between $e^{-2B(\theta)}$ and $e^{2B(\theta)}$. The same is true
+<span class="ln">89</span>after averaging any subset of the spin inputs against the $q_x$&#x27;s.
+<span class="ln">90</span>It follows that \eqref{upper:regularization} is bounded in absolute value by
+<span class="ln">91</span>$2B(\theta)$. For each fixed interaction, convergence as $\lambda\uparrow1$
+<span class="ln">92</span>is uniform in the spin inputs and messages and is preserved by the finite
+<span class="ln">93</span>recursion. Dominated convergence therefore recovers the desired normalized
+<span class="ln">94</span>increments.
+<span class="ln">95</span>
+<span class="ln">96</span>\emph{Convexity.}
+<span class="ln">97</span>Apply \cref{tree:log-expansion} to the regularized increments. On a tree
+<span class="ln">98</span>$\cT$ with $n$ replica leaves define
+<span class="ln">99</span>\[
+<span class="ln">100</span> P_{\cT}=\frac1N\sum_{i=1}^N\E_f\prod_{a=1}^n f(\sigma_i^a),\qquad
+<span class="ln">101</span> B_{\cT}=\E_{f,x}\prod_{a=1}^n\bar f(x^a).
+<span class="ln">102</span>\]
+<span class="ln">103</span>Here $\E_f$ averages one fresh function $f$, shared by all $n$ replica
+<span class="ln">104</span>factors in the product. The expectation $\E_{f,x}$ also averages an
+<span class="ln">105</span>entire fresh message-label tree, including its root. This function and
+<span class="ln">106</span>message tree are independent of one another and of the old tilted system.
+<span class="ln">107</span>Thus $B_{\cT}$ is deterministic for a fixed tree, while $P_{\cT}$ still
+<span class="ln">108</span>depends on the old spin replicas. At $r=0$, the message itself is a root
+<span class="ln">109</span>variable shared by all replica leaves. Averaging the
+<span class="ln">110</span>independent uniform indices and the independent copies of $f$ and of
+<span class="ln">111</span>the new message label gives, respectively,
+<span class="ln">112</span>$P_{\cT}^p$, $P_{\cT}B_{\cT}^{p-1}$, and $B_{\cT}^p$.
+<span class="ln">113</span>The inserted $b$ is independent of these variables. Thus the order-$n$
+<span class="ln">114</span>coefficient of the combined regularized increment is
+<span class="ln">115</span>\begin{equation}\label{upper:remainder}
+<span class="ln">116</span> -\frac{\lambda^n}{n}\E[(-b)^n]\,
+<span class="ln">117</span> \E_{Q_n}\E\left[
+<span class="ln">118</span> P_{\cT}^p-pP_{\cT}B_{\cT}^{p-1}+(p-1)B_{\cT}^p\right].
+<span class="ln">119</span>\end{equation}
+<span class="ln">120</span>The regularized baseline terms cancel. The tree law $Q_n$ is that of
+<span class="ln">121</span>\cref{tree:log-expansion}; it is common to the three insertions.
+<span class="ln">122</span>The series is absolutely convergent for $\lambda&lt;1$, with each insertion
+<span class="ln">123</span>controlled by $\sum_{n\ge1}\lambda^n/n$. Since $p$ is even,
+<span class="ln">124</span>convexity of $x\mapsto x^p$ makes the bracket nonnegative, and
+<span class="ln">125</span>\eqref{model:positivity} makes \eqref{upper:remainder} nonpositive.
+<span class="ln">126</span>Taking $\lambda\uparrow1$ proves \eqref{upper:derivative}. Integration over</code></pre></details>
+</div>
+
+</body>
+</html>

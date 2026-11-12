@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)</title>
+<style>
+:root{--bg:#fbfbf9;--fg:#1d1f23;--muted:#60646c;--line:#dcdcd4;--accent:#1f5fbf;--card:#ffffff;
+--code:#f0efe9;--ok:#1d7a46;--warn:#a86400;--bad:#b3261e;--tag:#e8eef9;}
+@media (prefers-color-scheme:dark){:root{--bg:#16181c;--fg:#e4e6ea;--muted:#9aa0aa;--line:#33373e;
+--accent:#7fb0ff;--card:#1d2026;--code:#262a31;--ok:#58c58a;--warn:#e0a14a;--bad:#ff8a80;--tag:#243049;}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,"Segoe UI","Noto Sans KR",
+"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:1rem 1rem 4rem}
+nav.top{display:flex;flex-wrap:wrap;gap:.2rem .9rem;padding:.6rem 0 .8rem;border-bottom:1px solid var(--line);
+margin-bottom:1.2rem;font-size:.92rem}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a:hover{color:var(--accent)}
+nav.top a.cur{color:var(--fg);font-weight:600}
+a{color:var(--accent)}
+h1{font-size:1.65rem;line-height:1.3;margin:.2rem 0 .6rem}
+h2{font-size:1.25rem;margin:2rem 0 .6rem;border-bottom:1px solid var(--line);padding-bottom:.2rem}
+h3{font-size:1.07rem;margin:1.4rem 0 .4rem}
+code{background:var(--code);padding:.08em .3em;border-radius:3px;font-size:.88em;word-break:break-word}
+pre{background:var(--code);padding:.7rem .9rem;border-radius:6px;overflow-x:auto;font-size:.82rem;line-height:1.45}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
+th{background:var(--code)}
+.tablewrap{overflow-x:auto;margin:.8rem 0}
+.badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
+margin-right:.3rem;color:var(--fg)}
+.badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.badge.unverified{background:color-mix(in srgb,var(--warn) 25%,transparent)}
+.muted{color:var(--muted)}
+.nolink{color:var(--muted);border-bottom:1px dotted var(--muted)}
+a.node,.nolink{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86em}
+.iface{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.3rem 1rem;margin:1rem 0}
+.iface dt{font-weight:600;margin-top:.7rem;font-size:.9rem;color:var(--muted)}
+.iface dd{margin:.15rem 0 .5rem}
+.iface ul{margin:.2rem 0;padding-left:1.2rem}
+details.child{border-left:3px solid var(--line);margin:.5rem 0 .5rem .1rem;padding:.1rem 0 .1rem .8rem}
+details.child>summary{cursor:pointer;font-weight:600;list-style-position:outside}
+details.child>summary .cm{font-weight:400;display:block;color:var(--fg);font-size:.95rem}
+details.child .iface{font-size:.95rem}
+details.src{margin-top:1.2rem}
+details.src summary{cursor:pointer;font-weight:600}
+pre.tex{white-space:pre;font-size:.78rem}
+.ln{display:inline-block;width:3.2rem;color:var(--muted);user-select:none;text-align:right;margin-right:.8rem}
+.mermaid{overflow-x:auto;text-align:left;width:min(96vw,1500px);position:relative;left:50%;transform:translateX(-50%);box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.5rem;margin:1rem 0}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+ul.links li{margin:.35rem 0}
+blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
+.hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
+.stat{color:var(--muted);font-size:.9rem}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
+a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
+.gindex{columns:14rem auto;column-gap:1.5rem;font-size:.92rem;margin:.4rem 0 1rem}
+.gindex h3{font-size:.85rem;color:var(--muted);margin:.8rem 0 .2rem;break-after:avoid}
+.gindex ul{list-style:none;margin:0;padding:0}
+.gindex li{margin:.1rem 0;break-inside:avoid}
+.gent{margin:1rem 0;padding:.1rem 1rem .4rem;background:var(--card);border:1px solid var(--line);border-radius:8px;scroll-margin-top:1rem}
+.gent:target,.gent.hl{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.gent h3{margin:.7rem 0 .2rem}
+.gent .gslug{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:.4rem}
+.gent dl{margin:.2rem 0}
+.gent dt{font-weight:600;font-size:.85rem;color:var(--muted);margin-top:.5rem}
+.gent dd{margin:.1rem 0 .3rem}
+.gent dd p{margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.gent{transition:none}}
+@media (max-width:600px){body{font-size:15.5px}h1{font-size:1.4rem}}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,
+macros:{E:'\\mathbb E',P:'\\mathbb P',R:'\\mathbb R',N:'\\mathbb N',cB:'\\mathcal B',cF:'\\mathcal F',cT:'\\mathcal T',
+eps:'\\varepsilon',dd:'\\,\\mathrm d',norm:['\\lVert#1\\rVert',1],abs:['\\lvert#1\\rvert',1],angles:['\\langle#1\\rangle',1],
+Var:'\\operatorname{Var}',Cov:'\\operatorname{Cov}',arctanh:'\\operatorname{arctanh}',Pois:'\\operatorname{Poisson}',
+supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)</h1><p><span class="badge">lemma</span><span class="badge proposed">proposed</span> <code>tree:charging</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li><li><a class="node" href="../cards/x.tree-reference-paths.html" title="reference path와 제약의 범위">x:tree-reference-paths</a> <span class="stag">§3</span> <span class="muted">— reference path와 제약의 범위</span></li><li><a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a> <span class="stag">§3</span> <span class="muted">(3.7)</span> <span class="muted">— 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>§7 <a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a> (relative-charging: 상대 절댓값 비용 ≤ C_{k,η}), <a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a> (decorrelation.tex 348). glossary g:depth-delay<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.html" title="이동된 사본과 정규화 $J$의 상대 비용">decor:conditional-concentration.s3</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a> <span class="stag">§7</span></li><li><a class="node" href="../cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a> <span class="stag">§7</span></li></ul></dd><dt>수학 진술</dt><dd><p>($m_d=d/L$, $\delta=L^{-1}$로 둔다.) $q$개 leaf를 가진 old tree에서 시작해 canceled-anchor 확장 규칙으로 $k$개 color를 준다. anchor와 color들의 reference 모양을 처방한다. 허용 확장에 추가 제한이 있어도 된다. 그 모양의 지정된 branching vertex $b$개의 깊이가 old tree 어디에서도 branching 깊이가 아니라고 하자. 그러면
+$$\sum_{E\text{ allowed}}|c_E|\leq C_{q,k}\delta^b.$$
+상수는 $L$, 지정된 깊이, 서로 다른 vertex에서의 깊이 일치에 무관하다.</p>
+<p>특히 이 $b$개 vertex에 대해
+$$J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$$
+라 하자. 그 모두에서 $m_{d_v}\geq\eta&gt;0$이면 $J\ne0$이고
+$$\frac{1}{|J|}\sum_{E\text{ allowed}}|c_E|\leq C_{q,k,\eta}.$$</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>펼침</h2><details class="child"><summary>한 걸음의 절댓값 계수 합 <a class="node" href="../cards/tree.charging.s1.html">↗</a><span class="cm">현재 tree의 leaf가 $s$개이면 (<a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a>)은 모든 fresh 선택의 절댓값 계수 합이 $s$라고 말한다. 자격 있는 old 선택은 많아야 $s$개다. 그래서 제한 없는 걸음의 절댓값 계수 합은 $2s\leq2(q+k)$ 이하다. 고정된 깊이에는 vertex가 많아야 $s$개다. 걸음을 지정된 깊이의 unary vertex에서의 fresh divergence로 제한하면 절댓값 계수 합은 $s\delta$ 이하다. 그런 divergence의 계수가 각각 $m_d-m_{d+1}=-\delta$이기 때문이다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a> <span class="stag">§3</span> <span class="muted">(3.7)</span> <span class="muted">— 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$</span></li><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>현재 tree의 leaf가 $s$개이면 (<a class="node" href="../cards/tree.telescoping.html" title="(3.7) 망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$">tree:telescoping</a>)은 모든 fresh 선택의 절댓값 계수 합이 $s$라고 말한다. 자격 있는 old 선택은 많아야 $s$개다. 그래서 제한 없는 걸음의 절댓값 계수 합은 $2s\leq2(q+k)$ 이하다. 고정된 깊이에는 vertex가 많아야 $s$개다. 걸음을 지정된 깊이의 unary vertex에서의 fresh divergence로 제한하면 절댓값 계수 합은 $s\delta$ 이하다. 그런 divergence의 계수가 각각 $m_d-m_{d+1}=-\delta$이기 때문이다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>target vertex를 생성 걸음에 배정 <a class="node" href="../cards/tree.charging.s2.html">↗</a><span class="cm">허용된 history 하나와 그 지정된 target branching vertex 하나를 생각한다. 그 vertex는 old tree에서 이미 branching일 수 없다. 현재 tree에서 그것이 처음 branching이 된 걸음에서, 따라서 fresh path가 그것이 unary일 때 거기서 갈라졌어야 한다. 그 vertex 자체는 더 앞서 새 unary path의 일부로 만들어졌을 수 있다. 그때도 같은 결론이 성립한다. 서로 다른 target vertex는 서로 다른 걸음에서 branching이 된다. fresh path 하나는 branching vertex를 하나만 만들기 때문이다. $b$개 vertex 각각을 그 생성 걸음에 배정한다. 가능한 배정은 많아야 $k!/(k-b)!$가지다(그리고 반드시 $b\leq k$).</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/x.tree-extension-history.html" title="canceled-anchor 확장 규칙과 extension history $E$">x:tree-extension-history</a> <span class="stag">§3</span> <span class="muted">— canceled-anchor 확장 규칙과 extension history $E$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>허용된 history 하나와 그 지정된 target branching vertex 하나를 생각한다. 그 vertex는 old tree에서 이미 branching일 수 없다. 현재 tree에서 그것이 처음 branching이 된 걸음에서, 따라서 fresh path가 그것이 unary일 때 거기서 갈라졌어야 한다. 그 vertex 자체는 더 앞서 새 unary path의 일부로 만들어졌을 수 있다. 그때도 같은 결론이 성립한다. 서로 다른 target vertex는 서로 다른 걸음에서 branching이 된다. fresh path 하나는 branching vertex를 하나만 만들기 때문이다. $b$개 vertex 각각을 그 생성 걸음에 배정한다. 가능한 배정은 많아야 $k!/(k-b)!$가지다(그리고 반드시 $b\leq k$).</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>반복 합: $C_{q,k}\delta^b$ <a class="node" href="../cards/tree.charging.s3.html">↗</a><span class="cm">고정된 배정마다, 지정된 걸음이 배정된 깊이에서 unary split를 만든다는 것만 남기고 모든 제약을 버려 history family를 넓힌다. 그 걸음의 합을 $(q+k)\delta$로, 다른 모든 걸음의 합을 $2(q+k)$로 누른다. 선택에 대해 반복해 합하면 $$\frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b$$ 이하다. 이것이 (<span class="nolink" title="(3.14) (카드 없음)">tree:charging-bound</span>)를 증명한다. 배정된 깊이가 겹쳐도 지정된 걸음들은 서로 다르므로 성립한다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.charging.s1.html" title="한 걸음의 절댓값 계수 합">tree:charging.s1</a> <span class="stag">§3</span> <span class="muted">— 한 걸음의 절댓값 계수 합</span></li><li><a class="node" href="../cards/tree.charging.s2.html" title="target vertex를 생성 걸음에 배정">tree:charging.s2</a> <span class="stag">§3</span> <span class="muted">— target vertex를 생성 걸음에 배정</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:charging의 (<span class="nolink" title="(3.14) (카드 없음)">tree:charging-bound</span>), <a class="node" href="../cards/tree.charging.s4.html" title="$|J|$ 하계와 상대 경계">tree:charging.s4</a><br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/tree.charging.s4.html" title="$|J|$ 하계와 상대 경계">tree:charging.s4</a> <span class="stag">§3</span></li></ul></dd><dt>수학 진술</dt><dd><p>고정된 배정마다, 지정된 걸음이 배정된 깊이에서 unary split를 만든다는 것만 남기고 모든 제약을 버려 history family를 넓힌다. 그 걸음의 합을 $(q+k)\delta$로, 다른 모든 걸음의 합을 $2(q+k)$로 누른다. 선택에 대해 반복해 합하면
+$$\frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b$$
+이하다. 이것이 (<span class="nolink" title="(3.14) (카드 없음)">tree:charging-bound</span>)를 증명한다. 배정된 깊이가 겹쳐도 지정된 걸음들은 서로 다르므로 성립한다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><details class="child"><summary>$|J|$ 하계와 상대 경계 <a class="node" href="../cards/tree.charging.s4.html">↗</a><span class="cm">지정된 각 vertex에서 $j=1$ 인자의 절댓값은 $\delta$이고, $j\geq2$이면 $$|m_d-jm_{d+1}|=(j-1)m_d+j\delta\geq\eta.$$ 뒤쪽 인자의 수는 크기에만 의존한다. 따라서 $|J|\geq\delta^b\eta^{\sum_v(a_v-2)}$이고 결과가 따라 나온다.</span></summary><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a> <span class="stag">§3</span> <span class="muted">— 반복 합: $C_{q,k}\delta^b$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:charging의 (<span class="nolink" title="(3.15) (카드 없음)">tree:relative-charging</span>)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>지정된 각 vertex에서 $j=1$ 인자의 절댓값은 $\delta$이고, $j\geq2$이면
+$$|m_d-jm_{d+1}|=(j-1)m_d+j\delta\geq\eta.$$
+뒤쪽 인자의 수는 크기에만 의존한다. 따라서 $|J|\geq\delta^b\eta^{\sum_v(a_v-2)}$이고 결과가 따라 나온다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl></details><h2>본문</h2><p><strong>왜 필요한가</strong> (trees.tex 388–391). prescribed-tree 항등식을 작은 reference 계수로 나눈 뒤 오차를 제어하려면 절댓값 합의 상계가 필요하다. target branching 깊이를 모든 old branching 깊이에서 떼어 놓으면 그 vertex는 fresh unary split로만 생길 수 있고, 이 lemma가 그런 vertex마다 작은 인자 $\delta$ 하나를 매긴다. <a class="node" href="../cards/x.tree-cancellation-example.html" title="두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$">x:tree-cancellation-example</a>의 둘째 계산(절댓값 합 $\delta$)의 일반화이고, <a class="gterm" href="../glossary.html#g-depth-delay" title="target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다.">깊이 미루기</a>의 핵심이다. 물리 대응은 없다.</p>
+<p><strong>증명의 뼈대.</strong> <a class="node" href="../cards/tree.charging.s1.html" title="한 걸음의 절댓값 계수 합">tree:charging.s1</a>: 한 걸음의 절댓값 계수 합은 제한이 없으면 $2(q+k)$ 이하, 지정 깊이의 unary fresh split로 제한하면 $(q+k)\delta$ 이하. <a class="node" href="../cards/tree.charging.s2.html" title="target vertex를 생성 걸음에 배정">tree:charging.s2</a>: 허용 history에서 각 target vertex는 어느 한 걸음에서 fresh unary split로 처음 branching이 되고, 서로 다른 vertex는 서로 다른 걸음이다. 배정은 $k!/(k-b)!$가지 이하. <a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a>: 배정마다 제약을 줄인 큰 family에서 걸음별 상계를 곱해 $C_{q,k}\delta^b$. <a class="node" href="../cards/tree.charging.s4.html" title="$|J|$ 하계와 상대 경계">tree:charging.s4</a>: $J$의 하계 $\delta^b\eta^{\sum_v(a_v-2)}$로 나눈다.</p>
+<p>§7에서의 쓰임: target이 $S^+$ 두 사본이고 $2b$개 shifted 깊이가 old branching 깊이와 다르며, $J=\kappa(S^+)^2$가 정확히 이 lemma의 $J$다(<a class="node" href="../cards/decor.conditional-concentration.s3.s3.html" title="상대 절댓값 비용 (relative absolute cost)">decor:conditional-concentration.s3.s3</a>). 거기서 $\eta$ 자리에는 $L$이 클 때의 하계가 들어간다(decor 카드는 $\eta/2$를 쓴다).</p><details class="src"><summary>원문 (trees.tex:388-391, trees.tex:393-415, trees.tex:417-456)</summary><h4>trees.tex:388-391</h4><pre class="tex"><code><span class="ln">388</span>To control errors after division by a small reference coefficient, we
+<span class="ln">389</span>also need an absolute bound.  Moving a target branching depth away from
+<span class="ln">390</span>all old branching depths forces a fresh unary split.  The next estimate
+<span class="ln">391</span>charges one small factor to each such vertex.</code></pre><h4>trees.tex:393-415</h4><pre class="tex"><code><span class="ln">393</span>\begin{lemma}[Charging fresh splits]\label{tree:charging}
+<span class="ln">394</span>Assume $m_d=d/L$ and put $\delta=L^{-1}$.  Start with an old tree having
+<span class="ln">395</span>$q$ leaves and assign $k$ colors by the canceled-anchor extension
+<span class="ln">396</span>rule.  Prescribe the reference shape of the anchor and the colors,
+<span class="ln">397</span>possibly with additional restrictions on allowed extensions.  Suppose
+<span class="ln">398</span>$b$ specified branching vertices of that shape have depths which
+<span class="ln">399</span>are not branching depths anywhere in the old tree.  Then
+<span class="ln">400</span>\begin{equation}\label{tree:charging-bound}
+<span class="ln">401</span>   \sum_{E\text{ allowed}}|c_E|\leq C_{q,k}\delta^b.
+<span class="ln">402</span>\end{equation}
+<span class="ln">403</span>The constant is independent of $L$, the prescribed depths, and their
+<span class="ln">404</span>coincidences at different vertices.
+<span class="ln">405</span>
+<span class="ln">406</span>In particular, for these $b$ vertices let
+<span class="ln">407</span>\[
+<span class="ln">408</span> J=\prod_v\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1}).
+<span class="ln">409</span>\]
+<span class="ln">410</span>If $m_{d_v}\geq\eta&gt;0$ at all of them, then $J\ne0$ and
+<span class="ln">411</span>\begin{equation}\label{tree:relative-charging}
+<span class="ln">412</span>   \frac{1}{|J|}\sum_{E\text{ allowed}}|c_E|
+<span class="ln">413</span>        \leq C_{q,k,\eta}.
+<span class="ln">414</span>\end{equation}
+<span class="ln">415</span>\end{lemma}</code></pre><h4>trees.tex:417-456</h4><pre class="tex"><code><span class="ln">417</span>\begin{proof}
+<span class="ln">418</span>If the current tree has $s$ leaves, \eqref{tree:telescoping} says
+<span class="ln">419</span>that the total absolute coefficient of all fresh choices is $s$.
+<span class="ln">420</span>There are at most $s$ eligible old choices.  Hence the total absolute
+<span class="ln">421</span>coefficient at an unrestricted step is at most $2s\leq2(q+k)$.
+<span class="ln">422</span>At any fixed depth there are at most $s$ vertices.  Restricting a
+<span class="ln">423</span>step to fresh divergences at unary vertices of a prescribed depth
+<span class="ln">424</span>therefore gives total absolute coefficient at most $s\delta$, because
+<span class="ln">425</span>each such divergence has coefficient $m_d-m_{d+1}=-\delta$.
+<span class="ln">426</span>
+<span class="ln">427</span>Consider an allowed history and one of its specified target
+<span class="ln">428</span>branching vertices.  That vertex cannot already be branching in the
+<span class="ln">429</span>old tree.  At the first step at which it became branching in the
+<span class="ln">430</span>current tree, a fresh path must therefore have diverged there while
+<span class="ln">431</span>it was unary.  The vertex may itself have been created earlier as
+<span class="ln">432</span>part of a new unary path; the same conclusion then applies.  Distinct
+<span class="ln">433</span>target vertices become branching at distinct steps, since a fresh
+<span class="ln">434</span>path creates only one branching vertex.  Assign each of the $b$
+<span class="ln">435</span>vertices to its creation step.  There are at most
+<span class="ln">436</span>$k!/(k-b)!$ possible assignments (and necessarily $b\leq k$).
+<span class="ln">437</span>
+<span class="ln">438</span>For each fixed assignment, enlarge the family of histories by
+<span class="ln">439</span>discarding all constraints except that a designated step creates a
+<span class="ln">440</span>unary split at its assigned depth.  Bound its step sum by
+<span class="ln">441</span>$(q+k)\delta$ and every other step sum by $2(q+k)$.  Iterated summation
+<span class="ln">442</span>over choices gives at most
+<span class="ln">443</span>\[
+<span class="ln">444</span> \frac{k!}{(k-b)!}(q+k)^b\bigl(2(q+k)\bigr)^{k-b}\delta^b.
+<span class="ln">445</span>\]
+<span class="ln">446</span>This proves \eqref{tree:charging-bound}, including repeated assigned
+<span class="ln">447</span>depths, because the designated steps remain distinct.
+<span class="ln">448</span>
+<span class="ln">449</span>For the final assertion, the $j=1$ factor at each designated vertex
+<span class="ln">450</span>has absolute value $\delta$, whereas for $j\geq2$
+<span class="ln">451</span>\[
+<span class="ln">452</span>  |m_d-jm_{d+1}|=(j-1)m_d+j\delta\geq\eta.
+<span class="ln">453</span>\]
+<span class="ln">454</span>There are only a size-dependent number of the latter factors.  Thus
+<span class="ln">455</span>$|J|\geq\delta^b\eta^{\sum_v(a_v-2)}$, and the result follows.
+<span class="ln">456</span>\end{proof}</code></pre></details>
+</div>
+
+</body>
+</html>
