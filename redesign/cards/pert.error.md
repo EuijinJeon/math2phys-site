@@ -2,7 +2,7 @@
 id: pert:error
 kind: definition
 title: 'score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)'
-uses: [pert:score, x:pert-standing, x:tree-sampling]
+uses: [pert:score, x:pert-standing]
 provides: 'pert:concentration (진술과 s4.s2), pert:selection (ii)와 s2, pert:score-identity, pert:palm, pert:analytic.s3'
 math: |
   $\langle\cdot\rangle$ 은 root가 주어진 조건부로 tilted path 하나를 따른 기대값, $\mathbb E_{\mathbf u}$ 는 고정된 $\mathbf u$ 에서 root를 평균하는 것이다.
