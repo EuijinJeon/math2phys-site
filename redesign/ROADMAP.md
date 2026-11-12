@@ -41,10 +41,10 @@
 
 | 작업 | 상태 |
 |---|---|
-| 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | 🔄 검토 완료(지적 21건), 반영 중 → `build/review-2-glossary.md` |
-| §2 model, §3 trees 카드 | 🔄 초안 완료(§2 24장, §3 39장). §2 검토 완료·반영 중, §3 검토 중 |
-| §4 upper, §5 cavity 카드 | ⬜ |
-| §6 perturbations 카드 | ⬜ |
+| 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | ✅ 지적 21건 반영, 67항목. 이름 확정·적용 완료 |
+| §2 model, §3 trees 카드 | ✅ 작성·검토·반영 (§2 25장, §3 39장). 수정본 재검토는 안 함 |
+| §4 upper, §5 cavity 카드 | 🔄 초안 완료(§4 10장, §5 13장), 독립 검토 중 |
+| §6 perturbations 카드 | 🔄 작성 중 |
 | §8 comparison, §9 reduction 카드 | ⬜ |
 | §10 consequences 카드 | ⬜ |
 | 증명 지도(전체 DAG) 화면 | ⬜ |
@@ -224,3 +224,10 @@
 - §4 upper·§5 cavity 카드 작성(opus, 한 에이전트), §6 perturbations 카드 작성(opus) 진행 중.
 - 사용자가 이름 선택을 "권고대로"로 확정(결정 기록 참조). 작성 중인 에이전트에는 새 이름을 바로 알렸고, 기존 파일의 일괄 치환은 §3 수정이 끝난 뒤(용어집 동시 편집을 피하려고) 맡긴다.
 - 수정본(용어집, §2)은 재검토하지 않았다.
+- §3 검토 반영 완료: 10건 중 반영 9, 좁힘 1(reduction.tex 34–35, 39–40은 §2의 $T_d$에 대한 말이라 §3 인터페이스에 넣지 않음). 용어집 67항목(`g:protected-leaf`, `g:reference-path`). §7 두 장(`decor:section`의 projectivity 출처, `x:decor-tree-sampling`의 `uses`) 수정. `build/review-2-trees-response.md`.
+  - 남은 숙제: power mean의 동차성(reduction.tex 39–40)은 §2에 명시 진술이 없다. §9 작성 때 둘 곳을 정한다.
+- §4 upper(10장, 잎 7)·§5 cavity(13장, 잎 11) 초안 도착. 순환 회피: `upper:bound`는 `x:model-hypotheses`를 `uses`, 방향은 main:theorem → upper:bound ← x:model-moment-finiteness. 새 용어 `g:bounded-law`. ❓ 3곳. 독립 검토 진행 중.
+  - 작성자 지적(검토자 확인 대기): `tree:section` export 표의 `\ref` 없는 사용 누락, `model:trial-bounds`의 provides, P3 "섭동 매개변수에 균일", P4의 "(Aizenman–Sims–Starr cavity)" 표기, `g:perturbation`의 $\psi_\nu$ 구간.
+- 사용 한도 세 번째(이름 적용, §6 작성, §4·§5 검토 중단, 07:50 UTC 초기화). 재개.
+- 이름 적용 완료: 윗단면과 §2·§3·§7 카드. 치환 약 55곳, 문장을 고쳐 쓴 곳은 `build/rename-2026-11-12.md`에 전후 대조. "처방된"은 쓰임에 따라 "prescribed-tree 항등식"/"prescribed tree"/"지정된"으로 나눔. 범위 안 검사 오류 0.
+- `HANDOFF.md`의 "지금 상태"를 고쳐 씀.
