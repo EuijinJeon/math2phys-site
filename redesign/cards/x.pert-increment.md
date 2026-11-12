@@ -3,7 +3,7 @@ id: x:pert-increment
 kind: definition
 title: '$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$'
 uses: [model:hamiltonian, x:cavity-bounded, x:cavity-root-logarithm, cavity:increment]
-provides: 'pert:selection (i)과 s1–s2. 규칙 P5, g:lower-pressure의 정의 위치'
+provides: 'pert:selection (i)과 s1–s2. §8 x:comp-standing, comp:low-increments ($\underline F$ 는 선택 전 모든 크기의 liminf, comparison.tex 11–14, \ref 없음). 규칙 P5, g:lower-pressure의 정의 위치'
 math: |
   매개변수 선택은 집중과 낮은 cavity 증분을 동시에 만족해야 한다. $\underline F=\liminf_NF_N$ 은 bounded 모형의 모든 크기에 대한 liminf다. $P_N^{L,\mathbf u}$ 는 root 평균한 섭동된 log 분배함수(x:cavity-root-logarithm)이고
   $$\Delta_N(\mathbf u)=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}$$

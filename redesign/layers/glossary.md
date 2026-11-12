@@ -50,7 +50,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: $a>0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.
 - **역할**: 상한(P2)에서 나머지항을 $P^p-pPB^{p-1}+(p-1)B^p$ 꼴로 나누고 $b$, $f$ 를 본질적으로 유계로 만든다(`upper.tex` 17–34). 여기서 $n$ 개 replica leaf의 tree $\mathcal T$ 위에서 $P=P_{\mathcal T}=\frac1N\sum_i\mathbb E_f\prod_{a=1}^nf(\sigma_i^a)$ 는 실제 spin 위 $f$ 곱의 site 평균(새 $f$ 하나를 모든 leaf가 공유), $B=B_{\mathcal T}=\mathbb E_{f,x}\prod_{a=1}^n\bar f(x^a)$, $\bar f(x)=\sum_sf(s)q_x(s)$ 는 새 시행 message tree 위의 같은 양이다(`upper.tex` 62–66, 98–112). 하한 쪽에서는 `main:theorem` 증명에서 $c=\theta(1,\ldots,1)$ 을 빼 $a$ 를 없애고 $\widehat\theta$ 의 법칙을 순열 불변으로 만드는 데 한 번만 쓰인다(P1, P12).
 - **정의 위치**: `model:factorization`, `model.tex` 25–44
-- **물리 대응**: exact(예에서) — Viana–Bray에서 $a=\cosh\beta J$, $b=\tanh\beta J$, $f(s)=s$ 인 tanh 전개다(`models:spin` 증명). 일반 꼴을 high-temperature(loop) 전개로 읽는 것은 intuition이다.
+- **물리 대응**: exact(예에서) — `models:spin` 의 모형(대칭 coupling의 희석 짝수 $p$-spin, Viana–Bray는 $p=2$)에서 $a=\cosh\beta J$, $b=\tanh\beta J$, $f(s)=s$ 인 tanh 전개다(`models:spin` 증명, `consequences.tex` 26–29). 일반 꼴을 high-temperature(loop) 전개로 읽는 것은 intuition이다.
 - **쓰지 않는 뜻**: §5–§8의 bounded 하한은 이 전개를 쓰지 않는다(`cavity.tex` 13–14, `decorrelation.tex` 8–9).
 
 ### g:positivity — 부호 조건 $\mathbb E[(-b)^n]\ge0$
@@ -86,7 +86,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\mathcal E_N$, $g=\lim_N\frac1N\mathbb E\max_\sigma\mathcal E_N(\sigma)$
 - **뜻**: $\beta$ 를 뗀 에너지 점수 $\mathcal E_N$($Z_N(\beta)=\sum_\sigma e^{\beta\mathcal E_N(\sigma)}$)의 최댓값 밀도로, ground-state 에너지 밀도의 부호를 바꾼 것이다. 단위 가중치 SAT에서 $-g$ 는 변수당 위반 clause 최소 개수 기대값의 극한이다.
 - **역할**: `models:ground`가 극한의 존재와 $\frac1\beta\inf_r\inf_{\zeta,\mathbf m}\mathcal B_{r,\beta}\in[g,g+\log2/\beta]$ 를 준다.
-- **정의 위치**: `models:ground`, `consequences.tex` 66–101
+- **정의 위치**: `x:cons-energy-score`(`consequences.tex` 66–84, $\mathcal E_N$ 의 정의), `models:ground`(`consequences.tex` 86–101)
 - **물리 대응**: exact.
 - **쓰지 않는 뜻**: 영온도 order parameter나 inf의 달성을 말하지 않는다. inf는 각 $\beta$ 에서 따로 취한다.
 
@@ -149,7 +149,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: 시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.
 - **역할**: $\mathcal B_r$ 의 $T_0V_{\rm s}$, $T_0V_{\rm e}$ 를 만든다. 곱셈적 상·하한을 보존해서 $\mathcal B_r$ 이 시행 message에 대한 moment 조건 없이 유한하다(`model:trial-bounds`, `model.tex` 122–128; 상계 $\lvert h\rvert+\sum_jB(\theta_j)$ 의 유한성에는 물리 disorder의 1차 moment `model:integrability`가 여전히 쓰인다). reservoir에서는 같은 recursion이 [[g:root-logarithm]]을 정의한다(P3, P4).
 - **정의 위치**: `model:power-means`, `model.tex` 90–110, `tree:Y-recursion`
-- **물리 대응**: intuition — 물리에서는 물리적 pure state 계층 위의 Ruelle cascade 평균을 적분해 낸 꼴로 읽는다. 논문은 Panchenko–Talagrand가 cascade 가중치를 쓴다고만 적고, 필요한 항등식을 임의의 유한 kernel 열에 대해 직접 세운다(`trees.tex` 7–12). 이 동일시는 증명에 쓰이지 않는다.
+- **물리 대응**: intuition — 물리에서는 물리적 pure state 계층 위의 Ruelle cascade 평균을 적분해 낸 꼴로 읽는다. 논문은 Panchenko–Talagrand가 cascade 가중치를 쓴다고만 적고, 필요한 항등식을 임의의 유한 kernel 열에 대해 직접 세운다(`trees.tex` 7–12). 이 동일시는 증명에 쓰이지 않는다. intuition — 깊이 하나($r=1$)에서 $T_0V=(\mathbb E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}$ 은 1RSB cavity 계산의 $Z^m$ 재가중(Monasson)과 같은 꼴이고, $T_d$ 를 반복하는 것은 그것을 계층마다 쓴 꼴로 읽을 수 있다. 논문은 이 읽기를 쓰지 않고 (2.10)을 정의로 둔다(`model.tex` 90–110). [[g:hierarchy]]의 물리 대응 칸(tilt 쪽)과 같은 그림이다.
 
 ### g:functional — 시행 functional $\mathcal B_r$
 - **기호**: $\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$
@@ -163,14 +163,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: 고정한 단계 수 $r$ 에서의 inf와, 모든 유한 $r$ 에 대한 inf다.
 - **역할**: 주정리의 우변 $\lim F_N=\inf_{r\ge0}\Phi_r$ 이다. 상한(P2)과 하한(`comp:bounded-lower`)이 이 값에서 만난다.
 - **정의 위치**: `model:functional`, `main:formula`
-- **물리 대응**: approximation — 물리의 "saddle point 선택"에 해당한다. 수학은 inf이고, inf의 달성이나 무한 깊이 극한은 주장하지 않는다(`model.tex` 138–140).
+- **물리 대응**: approximation — 물리의 정류점(saddle point) 선택, 곧 시행 order parameter에 대한 극값 조건에 해당한다. 수학은 모든 유한 $r$ 과 모든 시행 법칙에 대한 inf이고(`model.tex` 116, 134), inf의 달성이나 무한 깊이 극한은 주장하지 않는다(`model.tex` 138–140). inf를 쓸 수 있는 것은 모든 시행값이 상한이기 때문이다(`upper:bound`).
 
 ### g:rsb-steps — RSB 단계 수 $r$ 와 계층 깊이 $L=r+1$
 - **기호**: $r$, $L=r+1$
 - **뜻**: $r$ 은 시행 법칙의 보조 단계 수(RSB 단계 수)다. tree 계산의 깊이는 $L=r+1$ 이고, 깊이 $1,\ldots,r$ 에 보조 변수, 깊이 $L$ 에 spin 배치가 놓인다.
 - **역할**: 하한은 깊이 $L$ 의 reservoir에서 $\mathcal B_{L-1}$ 을 얻는다. $L\to\infty$ 가 하한의 마지막 극한이다(P9, P11, [[g:order-of-limits]]).
 - **정의 위치**: $r$ 은 `model:chain`(`model.tex` 70–81, "Fix $r\ge1$"), $r=0$ 은 `model.tex` 118–120; $L=r+1$ 은 `trees.tex` 24–27, `cavity.tex` 16–19
-- **물리 대응**: exact(시행 법칙에서) — $r$단 사슬이 $r$단 RSB 시행 order parameter이고 tree 계산에서 $L=r+1$ 이다(`model.tex` 70–81, `trees.tex` 24–27). intuition(reservoir에서) — 하한의 깊이 $L$ 계층은 섭동 mark로 만든 보조 계층이므로(`cavity.tex` 20–24), 그것을 계의 물리적 $(L-1)$단 RSB 구조로 읽는 것은 증명되지 않는다([[g:depth]], `introduction.tex` 75–77).
+- **물리 대응**: exact(시행 법칙에서) — $r$단 사슬이 $r$단 RSB 시행 order parameter이고 tree 계산에서 $L=r+1$ 이다(`model.tex` 70–81, `trees.tex` 24–27). intuition(reservoir에서) — 하한의 깊이 $L$ 계층은 섭동 mark로 만든 보조 계층이므로(`cavity.tex` 20–24), 그것을 계의 물리적 $(L-1)$단 RSB 구조로 읽는 것은 증명되지 않는다([[g:depth]], `introduction.tex` 75–77). 물리의 이름으로 $r=0$ 은 RS(replica symmetric), $r=1$ 은 1RSB다(`model.tex` 77–78, 118–120). 물리의 full RSB는 $r\to\infty$ 극한의 order parameter를 말하지만, 주정리는 유한 $r$ 에 대한 inf만 말하고 그 극한 대상을 다루지 않는다(`model.tex` 138–140, `x:model-theorem-scope`).
 
 ### g:interpolation — interpolation (상한)
 - **기호**: $\varphi(t)$, $t\in[0,1]$
@@ -351,7 +351,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:reference-path — reference path
 - **기호**: anchor $a_*$와 이미 color를 받은 path; 지정된 reference 모양 $S$, 한 걸음 합 $m_d-jm_{d+1}$, $\kappa(S)$
 - **뜻**: extension history에서 anchor와 이미 color를 받은 path를 말한다. 새 color에 대한 제약은 이 path들과의 갈라짐 깊이만 지정하고, 지정된 조상 관계가 같은 쓰지 않은 old path들은 구별하지 않는다("does not distinguish unused old paths with the same specified ancestry", `trees.tex` 311–315).
-- **역할**: 한 걸음 계수 합이 현재 reference tree에만 의존해서 old tree와 무관한 닫힌 꼴 $\kappa(S)$가 된다(`tree:reference-total`). [[g:depth-delay]]에서 처방하는 것이 reference 모양이다(`tree:charging`). §7의 $J=\kappa(S^+)^2$, $C(S,e)=-\delta\kappa(S)$(`decorrelation.tex` 332–335, 547), §6 제약 $\mathcal C$("anchor와 added color 사이의 split 깊이만", `perturbations.tex` 433–436)가 이것을 쓴다.
+- **역할**: 한 걸음 계수 합이 현재 reference tree에만 의존해서 old tree와 무관한 닫힌 꼴 $\kappa(S)$가 된다(`tree:reference-total`). [[g:depth-delay]]에서 처방하는 것이 reference 모양이다(`tree:charging`). §7의 $J=\kappa(S^+)^2$, $C(S,e)=-\delta\kappa(S)$(`decorrelation.tex` 332–335, 547), §6 제약 $\mathcal C$(anchor와 추가 color들로 이루어진 집합 안의 쌍별 split 깊이만, 추가 color끼리 포함, `perturbations.tex` 433–436, 495–496)가 이것을 쓴다.
 - **정의 위치**: `trees.tex` 311–315, `x:tree-reference-paths`
 - **물리 대응**: 없음.
 

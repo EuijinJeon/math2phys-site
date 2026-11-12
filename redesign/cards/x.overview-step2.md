@@ -5,7 +5,7 @@ title: '전략 2단계: branching pattern 처방'
 uses: []
 provides: 'x:overview-strategy. L1 수 4'
 math: |
-  유한 확률 tree에 대한 초등적 계산이 insertion을 추가된 replica path들에 대한 부호 있는 합으로 전개한다. 독립 mark가 임의의 처방된 branching pattern을 고른다. 그러면 score 집중이 이 부호 있는 합들에 대한 항등식을 준다.
+  유한 확률 tree에 대한 초등적 계산이 insertion을 추가된 replica path들에 대한 부호 있는 합으로 전개한다. 독립 mark가 임의의 지정된 branching pattern을 고른다. 그러면 score 집중이 이 부호 있는 합들에 대한 항등식을 준다.
 physics: |
   섭동 하나를 [[g:power-mean|power mean]] 안에 넣은 효과는 새 [[g:replica|replica]] path를 붙이는 방법([[g:extension-history|extension history]])에 대한 부호 있는 합으로 정확히 전개된다([[g:tree-coefficient|tree 계수]]). 깊이별 무작위 부호 [[g:mark|mark]]로 원하는 갈라짐 깊이를 골라내고, [[g:score|score]]의 [[g:concentration|집중]]을 넣으면 [[g:tree-identity|prescribed-tree 항등식]]이 나온다.
 gap: |

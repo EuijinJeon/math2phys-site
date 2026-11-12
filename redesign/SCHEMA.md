@@ -19,6 +19,8 @@
 - 증명 단계 노드는 부모 ID에 `.s1`, `.s2`, …를 붙인다. 더 내려가면 `.s2.s1`.
 - 라벨 없는 노드(작성자가 새로 묶은 것)는 `x:<섹션 접두어>-<짧은 이름>`. 예: `x:decor-limit-order`.
 - 파일 이름은 ID에서 `:`를 `.`로 바꾼 것 + `.md`. 예: `cards/decor.overlap-concentration.md`.
+- 식 `\label`이 있는 정의·가정·단계도 그 라벨이 ID다. `x:<섹션>-*`는 라벨 없는 묶음에만 쓴다. 예외: §10은 원문 라벨 접두사가 `models:`라서 §2의 `x:model-*`와 헷갈리지 않게 `x:cons-*`를 쓴다.
+- 식 라벨을 증명 첫 단계의 ID로 쓰면 `.s1`이 비고 `.s2`부터 시작할 수 있다(`comp:shape-error`의 자식 `comp:shape-error-bound`, `comp:shape-error.s2`).
 
 ## 카드
 
@@ -62,6 +64,10 @@ status: proposed         # proposed | confirmed | unverified
 - 증명 안의 식 라벨을 다른 노드가 인용하면, 인용하는 쪽 `uses`에 그 식을 담은 단계 카드를 넣는다.
 - `source`: 모든 카드는 원문 범위에 닿아야 한다. 잎 `step`의 범위를 합치면 부모 증명 범위를 빠짐없이 덮어야 한다.
 - `status`: 작성자는 `proposed`로 둔다. `confirmed`는 사용자만 붙인다.
+- 묶음 카드의 `source`에는 묶은 진술의 범위와 함께 그것을 이름으로 부르는 줄도 둔다. 예: `x:model-hypotheses`는 model.tex 130–131을 담아, `upper:bound`가 `main:theorem` 대신 이것을 `uses`로 가리킬 수 있다.
+- `\ref` 없는 사용은 기계 검사가 잡지 못한다. 받는 쪽 `uses`, 주는 쪽 `provides`, 섹션 카드의 "밖에서 받는 것 / 밖에 내주는 것" 표에 손으로 적고 검토자가 손으로 확인한다.
+- 한 카드가 두 섹션 카드의 자식일 수 있다(`main:theorem`: `model:section`과 `reduction:section`).
+- 예고(뒤의 결과를 미리 가리키는 문장)는 `uses`가 아니라 본문 링크나 "가리키는 곳" 표로 잇는다(overview 카드).
 
 본문에는 칸에 안 들어가는 메모, 그림, 검증 기록을 쓴다. 다른 노드를 가리킬 때는 `[[id]]`.
 
@@ -90,8 +96,8 @@ status: proposed         # proposed | confirmed | unverified
 | 검사 | 통과 조건 |
 |---|---|
 | 정초 | 모든 카드에 `source`가 있고 범위가 실제 파일 안에 있다 |
-| 포함 | 대상 섹션에서 증명의 모든 줄이 어떤 잎 카드의 `source`에 들고, 정리류 진술의 모든 줄이 어떤 카드(보통 그 정리 카드 자신)의 `source`에 든다 |
-| 의존 | 카드의 `source` 범위 안에 나오는 `\ref`류가 가리키는 노드가 `uses`(또는 조상·자손의 `uses`)에 있다. 본문에서 원문상 뒤에 나오는 대상을 가리키는 참조는 예고이므로 제외한다 |
+| 포함 | 대상 섹션(`--sections`를 생략하면 섹션 카드가 있는 모든 원문 파일)에서 증명의 모든 줄이 어떤 잎 카드의 `source`에 들고, 정리류 진술의 모든 줄이 어떤 카드(보통 그 정리 카드 자신)의 `source`에 든다 |
+| 의존 | 카드의 `source` 범위 안에 나오는 `\ref`류가 가리키는 노드가 `uses`(또는 조상·자손의 `uses`)에 있다. 본문에서 원문상 뒤에 나오는 대상을 가리키는 참조는 예고이므로 제외한다. 섹션 라벨을 가리키는 참조는 그 섹션 카드의 자손 가운데 하나 이상이 해당 카드(또는 그 조상)의 `uses`에 있으면 충족된 것으로 본다 |
 | 연결 | `uses`, `children`, `[[id]]`, 규칙 표의 수학 노드가 모두 존재하는 ID다 |
 | 순환 | `uses` 그래프에 순환이 없다 |
 | 사전 | 규칙 표의 모든 행에 수학 노드와 차이가 있다. `physics`가 있는 카드는 `gap`과 `abstraction`이 있다 |
@@ -122,6 +128,8 @@ status: proposed         # proposed | confirmed | unverified
 2. "상태"는 `g:state`(보조 계층의 깊이 $d$ prefix) 하나만 가리킨다. 물리적 Gibbs 측도의 pure state를 말할 때는 반드시 "물리적 pure state"라고 쓰고 `g:physical-pure-state`를 가리킨다(논문이 다루지 않는 대상임이 그 항목에 적혀 있다). 섭동된 계 전체의 Gibbs 측도를 "상태"라고 부르지 않는다.
 3. 논문이 증명하지 않는 동일시를 담은 이름(Ruelle cascade, Ghirlanda–Guerra 항등식, stochastic stability, ultrametricity)은 규칙 문장과 `physics`에 쓰지 않는다. 용어집 항목의 "물리 대응" 칸에 intuition으로만 적는다.
 4. 이름이 주던 직관은 역할로 대신 적는다. 예: "이 항등식만 있으면 뒤의 모든 것이 따라 나온다"는 사실은 이름이 아니라 해당 항목의 "역할" 칸과 규칙의 차이 칸에 근거 행과 함께 쓴다.
+5. 섭동 매개변수 $\mathbf u$는 root 변수가 아니라 고정값이다(cavity.tex 29–31). root 변수처럼 쓰지 않는다.
+6. 새 용어는 작성자가 `build/glossary-additions-<섹션>.md`에 제안하고 수정자가 용어집에 합친다.
 
 ### 검사 추가
 

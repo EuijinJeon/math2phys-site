@@ -15,4 +15,4 @@ source:
 status: proposed
 ---
 
-[[g:reference-path|reference path]]. 이 약속 때문에 한 걸음 계수 합이 old tree가 아니라 현재 reference tree에만 의존한다([[tree:reference-total]]). 쓰지 않은 old leaf는 reference가 아니므로, 제약은 그것을 "다른 old replica"로서 지정하지 못한다. §6의 제약 $\mathcal C$가 "anchor와 added color 사이의 split 깊이만" 지정한다는 것과 같은 내용이다(perturbations.tex 433–436).
+[[g:reference-path|reference path]]. 이 약속 때문에 한 걸음 계수 합이 old tree가 아니라 현재 reference tree에만 의존한다([[tree:reference-total]]). 쓰지 않은 old leaf는 reference가 아니므로, 제약은 그것을 "다른 old replica"로서 지정하지 못한다. §6의 제약 $\mathcal C$가 anchor와 added color들로 이루어진 집합 안의 쌍별 split 깊이(added color끼리 포함)만 지정하고 다른 old replica에 대한 제약을 두지 않는다는 것과 같은 내용이다(perturbations.tex 433–436). color를 하나씩 더할 때 보면, 새 color의 제약은 anchor와 이미 color를 받은 path, 곧 reference path와의 갈라짐 깊이다.

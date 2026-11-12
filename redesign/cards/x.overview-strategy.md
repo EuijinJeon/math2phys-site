@@ -7,7 +7,7 @@ provides: 'layers/L1.md(일곱 수)가 이 소절에 고정되어 있다. 원문
 math: |
   저자가 쓴 증명 전략 요약이다. 증명은 없다.
   상한: interpolation 상한은 모든 계 크기와 모든 유한 깊이에서 성립하고, $\log a$ 의 적분 가능성을 가정하지 않는 정규화를 포함해 다시 증명한다 (x:overview-upper).
-  하한 네 단계: (1) cavity reservoir를 고르고, sublinear 유계 Poisson 섭동 아래 증분이 원래 pressure liminf를 거의 넘지 않으며 모든 score가 집중하는 크기와 결정적 매개변수를 고른다 (x:overview-step1). (2) 유한 tree 계산과 독립 mark, score 집중으로 처방된 branching pattern의 부호 있는 합에 대한 항등식을 얻는다 (x:overview-step2). (3) 깊이를 한 단계 늦추는 장치와 상대 계수 한계로, replica 수에 대한 귀납으로 조건부 공분산을 없애고 두 번째 항등식으로 조건부 평균을 집중시킨다 (x:overview-step3). (4) 한 site의 계층을 부호화하고 site label을 독립 사본으로 바꿔 선택된 증분에 가까운 시행값을 얻는다 (x:overview-step4).
+  하한 네 단계: (1) cavity reservoir를 고르고, sublinear 유계 Poisson 섭동 아래 증분이 원래 pressure liminf를 거의 넘지 않으며 모든 score가 집중하는 크기와 결정적 매개변수를 고른다 (x:overview-step1). (2) 유한 tree 계산과 독립 mark, score 집중으로 지정된 branching pattern의 부호 있는 합에 대한 항등식을 얻는다 (x:overview-step2). (3) 깊이를 한 단계 늦추는 장치와 상대 계수 한계로, replica 수에 대한 귀납으로 조건부 공분산을 없애고 두 번째 항등식으로 조건부 평균을 집중시킨다 (x:overview-step3). (4) 한 site의 계층을 부호화하고 site label을 독립 사본으로 바꿔 선택된 증분에 가까운 시행값을 얻는다 (x:overview-step4).
   마무리: 3단계의 추정은 깊이 평균이지만 4단계에 충분하다. 하한은 유계·순열 불변 상호작용에서 factorization과 positivity 없이 성립하고, 정규화와 균일 추정으로 1차 moment 가정 아래 main:theorem에 이른다 (x:overview-closing).
 physics: |
   상한은 Guerra–Franz–Leone–Panchenko–Talagrand [[g:interpolation|interpolation]]이다. 하한은 cavity 비교다: 섭동된 [[g:reservoir|reservoir]]에서 [[g:selected-sequence|선택된 수열]]을 고르고, [[g:tree-identity|prescribed-tree 항등식]]으로 모든 [[g:multioverlap|multioverlap]]을 [[g:concentration|집중]]시킨 뒤, 이웃 cavity field를 독립 사본으로 바꿔([[g:independent-copies]]) [[g:increment|증분]]을 시행 [[g:functional|functional]] 값과 비교한다. 물리 유도가 [[g:physical-pure-state|물리적 pure state]]들의 계층과 그 안의 독립성을 가정해 건너뛰는 단계를, 논문은 그 가정 없이 섭동으로 만든 [[g:hierarchy|보조 계층]] 위의 항등식으로 대신한다.
@@ -38,7 +38,7 @@ status: proposed
 | 1f 같은 선택이 score 집중 (17–18) | [[x:overview-step1]] | 3 | 맞음. **L1이 더 말함**: 유한 tree moment 수렴(pert:selection (iii))은 overview에 없다. 본문에는 있다 |
 | (없음) 증분 항등식 $\Delta_N=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o(1)$ | — | 2 | **L1이 더 말함.** overview는 증분을 정의로만 쓰고(14–16) 이 식을 적지 않는다. 본문 cavity:increment에 있다 |
 | 2b tree 계산이 insertion을 부호 있는 합으로 전개 (21–22) | [[x:overview-step2]] | 4 | 맞음 |
-| 2c 독립 mark가 임의의 처방된 pattern을 고름 (22–23) | [[x:overview-step2]] | 4 | 맞음. L1은 "mark가 anchor와 새 replica들로 이루어진 집합 안의 쌍별 split 깊이(새 replica끼리 포함)를 지정한다"로 범위를 적는다. 본문(perturbations.tex 433–436)과 맞는 쪽은 L1이고, overview의 "any"는 범위(일관성, 다른 old replica가 관여하는 쌍은 지정하지 못함, mark 깊이 $1,\ldots,L-1$)를 적지 않은 요약이다 |
+| 2c 독립 mark가 임의의 지정된 pattern을 고름 (22–23) | [[x:overview-step2]] | 4 | 맞음. L1은 "mark가 anchor와 새 replica들로 이루어진 집합 안의 쌍별 split 깊이(새 replica끼리 포함)를 지정한다"로 범위를 적는다. 본문(perturbations.tex 433–436)과 맞는 쪽은 L1이고, overview의 "any"는 범위(일관성, 다른 old replica가 관여하는 쌍은 지정하지 못함, mark 깊이 $1,\ldots,L-1$)를 적지 않은 요약이다 |
 | 2d score 집중에서 항등식 (23–24) | [[x:overview-step2]] | 4 | 맞음. L1은 수 5–6이 factorization을 쓰지 않는다는 것도 적는다(overview는 46–48행에서) |
 | 3b 내부 branching 깊이를 한 단계 늦춤 (27) | [[x:overview-step3]] | 5 | 맞음. 처음에는 수 5 본문이 빠뜨렸고(마지막 문단의 "깊이 미루기", $-\delta$ 대 $2+\delta$ 에만 있었다) 검토 2 반영에서 수 5 첫 문장에 넣었다 |
 | 3c 첫 fresh split이 정규화 계수와 같은 작은 인자 (28–29) | [[x:overview-step3]] | 5 | 맞음. 검토 2 반영에서 수 5에 넣었다("정규화 계수와 같은 작은 인자 $\delta=1/L$") |

@@ -5,7 +5,7 @@ title: '정확한 split 깊이 $H_d-H_{d+1}$ 과 모양의 선택'
 uses: [pert:tree-identity.s2, pert:tree-identity.s1, x:pert-mark-specification, x:tree-sampling]
 provides: 'pert:tree-identity.s4'
 math: |
-  $H_d(a,b)$ 를 (6.18)의 공유 지시함수라 하고, 서로 다른 replica 위치에 대해 $H_0=1$, $H_L=0$ 으로 둔다. 이것은 sampled tree 안의 위치이며, 그 spin 배치가 우연히 같아도 그렇다. 깊이 $d$ 에서의 정확한 갈라짐은 $0\le d\le L-1$ 에 대해 $H_d-H_{d+1}$ 로 표현된다. 따라서 곱과 유한 일차결합이 처방된 임의의 일관된 colored 모양이나 허용 모양의 모임을 고른다. 이 유한 일차결합의 각 항에서 함수 $g_0,\ldots,g_k$ 는 부호의 곱이므로 값이 $\{-1,1\}$ 에 있다. 이 함수들과 그 polarization 평균은 절의 처음에 고정한 mark 족에 든다. 상수 mark가 $k=0$ 을 덮는다.
+  $H_d(a,b)$ 를 (6.18)의 공유 지시함수라 하고, 서로 다른 replica 위치에 대해 $H_0=1$, $H_L=0$ 으로 둔다. 이것은 sampled tree 안의 위치이며, 그 spin 배치가 우연히 같아도 그렇다. 깊이 $d$ 에서의 정확한 갈라짐은 $0\le d\le L-1$ 에 대해 $H_d-H_{d+1}$ 로 표현된다. 따라서 곱과 유한 일차결합이 지정된 임의의 일관된 colored 모양이나 허용 모양의 모임을 고른다. 이 유한 일차결합의 각 항에서 함수 $g_0,\ldots,g_k$ 는 부호의 곱이므로 값이 $\{-1,1\}$ 에 있다. 이 함수들과 그 polarization 평균은 절의 처음에 고정한 mark 족에 든다. 상수 mark가 $k=0$ 을 덮는다.
 physics: null
 gap: null
 abstraction: blackbox

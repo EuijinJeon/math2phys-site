@@ -2,7 +2,7 @@
 id: model:vs
 kind: definition
 title: 'site 분배함수 $V_{\rm s}$ (2.8)'
-uses: [model:site-message, model:chain, model:hamiltonian]
+uses: [model:site-message, model:chain]
 provides: 'model:functional의 $\mathbb E\log T_0V_{\rm s}$. comparison.tex 180($\widetilde Y_{0,\rm s}=T_0V_{\rm s}$), upper.tex 47–48(interpolation 끝점 $\varphi(0)$)'
 math: |
   서로 독립인 $k\sim\mathrm{Pois}(\alpha p)$, $\theta,\theta_1,\ldots$ ($\theta$ 의 사본), $h$ 를 잡고

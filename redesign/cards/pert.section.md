@@ -21,7 +21,7 @@ source:
 status: proposed
 ---
 
-**뼈대.** 원문 12–16행의 요약 그대로: 도함수가 집중하는 섭동을 고르고, 동시에 cavity 증분을 섭동 없는 liminf보다 임의로 작은 오차 이상 넘지 않게 고른다. Poisson insertion이 집중을 Taylor 계수 항등식으로 바꾼다. 삽입된 path들 위의 독립 부호가 처방된 갈라짐 깊이를 고른다.
+**뼈대.** 원문 12–16행의 요약 그대로: 도함수가 집중하는 섭동을 고르고, 동시에 cavity 증분을 섭동 없는 liminf보다 임의로 작은 오차 이상 넘지 않게 고른다. Poisson insertion이 집중을 Taylor 계수 항등식으로 바꾼다. 삽입된 path들 위의 독립 부호가 지정된 갈라짐 깊이를 고른다.
 - §6.1 섭동 족: [[x:pert-standing]] → [[x:pert-mark-specification]] → [[pert:parameters]] → [[pert:factor]] → [[x:pert-parameter-measure]].
 - §6.2 score 집중: [[pert:score]], [[pert:error]] → [[pert:concentration]] (path 요동은 2차 미분, root 요동은 Efron–Stein과 볼록성).
 - §6.3 수열 하나: [[x:pert-increment]] → [[pert:selection]] → [[x:pert-selected-limits]].

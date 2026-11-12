@@ -3,7 +3,7 @@ id: main:theorem
 kind: theorem
 title: '주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$'
 uses: [x:model-hypotheses, model:integrability, model:positivity, model:hamiltonian, model:functional, x:model-depth-zero, upper:bound, comp:bounded-lower, reduction:stability]
-provides: '논문의 결론. models:spin, models:sat(consequences.tex 19, 47: main:formula를 만족), models:ground(consequences.tex 112), L0, L1 마지막 수'
+provides: '논문의 결론. models:spin, models:sat(consequences.tex 19, 47: main:formula를 만족; 33, 63: 가정이 성립하므로 적용), models:ground(consequences.tex 112), L0, L1 마지막 수'
 math: |
   (2.1)–(2.4) 아래 열역학 극한이 존재하고
   $$\lim_{N\to\infty}F_N=\inf_{r\ge0}\Phi_r.\tag{2.13}$$
@@ -27,4 +27,4 @@ status: proposed
 3. [[main:theorem.s3]] [[g:stability|$L^1$ 안정성]]으로 $K\to\infty$ 를 보내 $\liminf_NF_N\ge\inf_r\Phi_r$ 를 얻는다.
 4. [[main:theorem.s4]] 상한 [[upper:bound]] $\limsup_NF_N\le\inf_r\Phi_r$ 와 합친다.
 
-증명 단계 카드의 원문은 reduction.tex에 있다. 이 카드 묶음(§2)에서 함께 썼으므로, §9(reduction) 카드를 쓸 때 겹쳐 쓰지 않도록 조율이 필요하다.
+증명 단계 카드의 원문은 reduction.tex에 있다. reduction.tex 45–87은 [[main:theorem.s1]]–[[main:theorem.s4]]가 덮고, §9에는 이 줄을 겹쳐 쓴 카드가 없다. 대신 [[reduction:section]]이 이 카드를 자식으로 건다. 그래서 이 카드의 부모는 [[model:section]](진술, model.tex 130–136)과 [[reduction:section]](증명, reduction.tex 45–87) 둘이다.

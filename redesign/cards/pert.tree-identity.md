@@ -7,7 +7,7 @@ provides: '§7 전체: x:decor-limit-order, decor:identity-error (decorrelation.
 math: |
   위에서 정의한 섭동 족에 대해, pert:selection의 모든 수열을 따라
   $$\sum_{E\in\mathfrak E(\mathcal T,a_*,\mathcal C)}c_E\,\mathbb E[fR_E]-\mathbb Ef\sum_{E\in\mathfrak E(\{a_*\},a_*,\mathcal C)}c_E\,\mathbb E[R_E]\longrightarrow0.$$
-  이것은 모든 고정 old tree, 두 종류의 anchor 모두, 그 multioverlap의 모든 유계 다항식 $f$, 순서 붙은 추가 color의 모든 유한 개수, 처방된 모든 제약 $\mathcal C$ 에 대해 성립한다. 빈 추가도 허용된다. 오차는 고정 $L$, 고정 tree, 고정 제약에서, $L$ 에 대한 어떤 극한보다도 먼저 0으로 보낸다.
+  이것은 모든 고정 old tree, 두 종류의 anchor 모두, 그 multioverlap의 모든 유계 다항식 $f$, 순서 붙은 추가 color의 모든 유한 개수, 지정된 모든 제약 $\mathcal C$ 에 대해 성립한다. 빈 추가도 허용된다. 오차는 고정 $L$, 고정 tree, 고정 제약에서, $L$ 에 대한 어떤 극한보다도 먼저 0으로 보낸다.
 physics: |
   [[g:selected-sequence|선택된 수열]]을 따라 [[g:reservoir|reservoir]]에서 다음이 성립한다. old [[g:prescribed-tree|prescribed tree]]의 [[g:anchor|anchor]] [[g:replica|replica]]에 섭동 방향 $k$ 개를 넣으면 새 replica $k$ 개를 붙이는 모든 방법([[g:extension-history|extension history]])에 대한 부호 있는 계수 합이 나온다. 그 합을 old tree의 overlap 시험함수 $f$ 와 곱해 평균한 것은, 같은 합을 anchor 하나만 있는 tree에서 계산한 것에 $\mathbb Ef$ 를 곱한 것과 같아진다. 깊이별 [[g:mark|mark]]로 anchor와 새 replica들로 이루어진 집합 안의 쌍별 split 깊이(새 replica끼리의 쌍 포함)를, 서로 일관되는 한 임의로 지정할 수 있다(다른 old replica가 관여하는 쌍은 지정하지 못한다). 이것이 [[g:tree-identity|prescribed-tree 항등식]]이다.
 gap: |

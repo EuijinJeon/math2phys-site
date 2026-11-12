@@ -75,7 +75,7 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .hascard{}
 .stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
-mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
+mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0!important}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
 a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
 .gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
@@ -767,7 +767,7 @@ def section_map(S):
             hu = S.home(u)
             if hu and hu != hc:
                 agg[(hu, hc)] = agg.get((hu, hc), 0) + 1
-    L = ["flowchart LR"]
+    L = ["flowchart TB"]
     for k in keys:
         sc = S.by_key[k]
         n = len(S.members[k])
