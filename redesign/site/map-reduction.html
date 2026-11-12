@@ -87,61 +87,24 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§9 Normalization, truncation, and completion of the proof — 지도</h1><p class="stat">이 섹션의 카드 5장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 13장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a></p><pre class="mermaid" data-map="sec-reduction">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§9 Normalization, truncation, and completion of the proof — 지도</h1><p class="stat">이 섹션의 카드 5장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 13장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/reduction.section.html" title="9 §9 정규화, truncation, 증명의 완성">reduction:section</a></p><pre class="mermaid" data-map="sec-reduction">
+flowchart TB
   subgraph IN[&quot;§9 Normalization, truncation, and completi…&quot;]
     a0[&quot;Stability (L^1 안정성과 상수 이동)&lt;br/&gt;reduction:stability&quot;]
   end
-  subgraph X0[&quot;밖: 주정리&quot;]
-    e0[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X1[&quot;밖: §2&quot;]
-    e1[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
-    e2[&quot;edge 분배함수 C_ (2.5)&lt;br/&gt;model:edge&quot;]
-    e3[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e4[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e5[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
-    e6[&quot;조건부 power mean T_d (2.10)&lt;br/&gt;model:power-means&quot;]
-    e7[&quot;cavity log-weight U_ (2.6)&lt;br/&gt;model:site-message&quot;]
-    e8[&quot;moment 조건 없는 유한성 (2.12)&lt;br/&gt;model:trial-bounds&quot;]
-    e9[&quot;edge 항 V_ e (2.9)&lt;br/&gt;model:ve&quot;]
-    e10[&quot;site 분배함수 V_ s (2.8)&lt;br/&gt;model:vs&quot;]
-    e11[&quot;r=0 (replica symmetric) 경우: B…&lt;br/&gt;x:model-depth-zero&quot;]
-    e12[&quot;power mean의 단조성과 root-가측 인자에 …&lt;br/&gt;x:reduction-power-mean-scaling&quot;]
-  end
-  a0 --&gt; e0
-  e1 --&gt; a0
-  e10 --&gt; a0
-  e11 --&gt; a0
-  e12 --&gt; a0
-  e2 --&gt; a0
-  e3 --&gt; a0
-  e4 --&gt; a0
-  e5 --&gt; a0
-  e6 --&gt; a0
-  e7 --&gt; a0
-  e8 --&gt; a0
-  e9 --&gt; a0
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 12장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
+  X0 -.-&gt;|12| a0
+  a0 -.-&gt;|1| X1
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0 thm;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12 ext;
+  class X0,X1 ext;
   click a0 &quot;cards/reduction.stability.html&quot;
-  click e0 &quot;cards/main.theorem.html&quot;
-  click e1 &quot;cards/model.chain.html&quot;
-  click e2 &quot;cards/model.edge.html&quot;
-  click e3 &quot;cards/model.functional.html&quot;
-  click e4 &quot;cards/model.hamiltonian.html&quot;
-  click e5 &quot;cards/model.integrability.html&quot;
-  click e6 &quot;cards/model.power-means.html&quot;
-  click e7 &quot;cards/model.site-message.html&quot;
-  click e8 &quot;cards/model.trial-bounds.html&quot;
-  click e9 &quot;cards/model.ve.html&quot;
-  click e10 &quot;cards/model.vs.html&quot;
-  click e11 &quot;cards/x.model-depth-zero.html&quot;
-  click e12 &quot;cards/x.reduction-power-mean-scaling.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a></td><td>lemma</td><td>Stability ($L^1$ 안정성과 상수 이동)</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>, <a class="node" href="cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-main.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a></td><td>lemma</td><td>Stability ($L^1$ 안정성과 상수 이동)</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a> <span class="stag">§2</span>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span>, <a class="node" href="cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a> <span class="stag">§2</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

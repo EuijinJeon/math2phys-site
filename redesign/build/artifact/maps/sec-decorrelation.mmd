@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§7 Decorrelation on prescribed trees"]
     a0["깊이 평균 A_L,<br/>decor:average-definition"]
     a1["깊이 평균의 분수 거듭제곱 부등식<br/>decor:average-holder"]
@@ -20,116 +20,57 @@ flowchart LR
     a17["topology, 깊이 배정, b(S), 자식 모양<br/>x:decor-topology"]
     a18["tree 표본 규칙 (조건부 독립과 사영 일관성)<br/>x:decor-tree-sampling"]
   end
-  subgraph X0["밖: §5"]
-    e0["깊이 L2, r=L-1, 균등 격자 m_d=d/L (…<br/>cavity:grid"]
-  end
-  subgraph X1["밖: §8"]
-    e1["tree 법칙 평균한 multioverlap 요동이 …<br/>comp:shape-error"]
-  end
-  subgraph X2["밖: §6"]
-    e2["결정적 매개변수 선택 (Lemma 6.2)<br/>pert:selection"]
-    e3["prescribed tree 위의 항등식 (Theor…<br/>pert:tree-identity"]
-    e4["spin/marker anchor, 추가 color,…<br/>x:pert-colored-extensions"]
-  end
-  subgraph X3["밖: §3"]
-    e5["Charging fresh splits (fresh …<br/>tree:charging"]
-    e6["Canceled-anchor expansion (an…<br/>tree:extension-expansion"]
-    e7["multioverlap R_S 와 기대값 E 의 약속<br/>tree:multioverlap"]
-    e8["Reference-path totals (refere…<br/>tree:reference-total"]
-    e9["유한 tree, 표본 기대값 E_ T, split, …<br/>x:tree-sampling"]
-  end
+  X0["밖: §3 Calculus on finite trees<br/>카드 5장"]
+  X1["밖: §5 A perturbed cavity reservoir<br/>카드 1장"]
+  X2["밖: §6 Perturbations and identitie…<br/>카드 3장"]
+  X3["밖: §8 Independent hierarchical me…<br/>카드 1장"]
   a0 --> a1
-  a0 --> a11
-  a0 --> a2
-  a0 --> a5
   a0 --> a6
-  a0 --> a8
-  a0 --> e1
+  a0 --> a11
   a1 --> a2
-  a1 --> a8
-  a10 --> a2
-  a10 --> a8
-  a10 --> a9
-  a11 --> a2
-  a11 --> a5
-  a11 --> a8
-  a12 --> a0
-  a12 --> a11
-  a12 --> a2
-  a12 --> a5
-  a12 --> a8
-  a12 --> a9
-  a12 --> e1
-  a13 --> a2
-  a13 --> a6
-  a13 --> a7
-  a13 --> a8
-  a13 --> e1
-  a14 --> a2
-  a14 --> a8
-  a15 --> a2
-  a15 --> a5
-  a15 --> a8
-  a16 --> a15
-  a16 --> a2
-  a16 --> a3
-  a16 --> a4
-  a16 --> a8
-  a16 --> a9
-  a16 --> e1
-  a17 --> a10
-  a17 --> a12
-  a17 --> a16
-  a17 --> a2
-  a17 --> a4
-  a17 --> a5
-  a17 --> a6
-  a17 --> a8
-  a17 --> e1
-  a18 --> a10
-  a18 --> a17
-  a18 --> a2
-  a18 --> a5
-  a18 --> a8
-  a18 --> a9
   a2 --> a7
   a2 --> a8
-  a3 --> a2
   a3 --> a9
-  a4 --> a10
-  a4 --> a2
   a4 --> a3
   a4 --> a5
+  a4 --> a10
   a5 --> a2
-  a5 --> a7
-  a5 --> a8
   a6 --> a2
-  a6 --> a7
-  a6 --> a8
-  a8 --> e1
   a9 --> a2
-  a9 --> a8
-  e0 --> a14
-  e2 --> a13
-  e2 --> a14
-  e3 --> a13
-  e3 --> a2
-  e3 --> a6
-  e3 --> a8
-  e4 --> a2
-  e4 --> a8
-  e5 --> a2
-  e6 --> a2
-  e7 --> a16
-  e8 --> a2
-  e8 --> a8
-  e9 --> a18
+  a10 --> a9
+  a11 --> a5
+  a12 --> a0
+  a12 --> a9
+  a13 --> a6
+  a14 --> a2
+  a15 --> a5
+  a16 --> a4
+  a16 --> a15
+  a17 --> a12
+  a17 --> a16
+  a18 --> a17
+  a0 -.->|1| X3
+  a12 -.->|1| X3
+  X2 -.->|2| a13
+  a13 -.->|1| X3
+  X1 -.->|1| a14
+  X2 -.->|1| a14
+  X0 -.->|1| a16
+  a16 -.->|1| X3
+  a17 -.->|1| X3
+  X0 -.->|1| a18
+  X0 -.->|3| a2
+  X2 -.->|2| a2
+  X2 -.->|1| a6
+  X0 -.->|1| a8
+  X2 -.->|2| a8
+  a8 -.->|1| X3
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a1,a2,a3,a5,a8,a9,a11,a15 thm;
   class a0,a4,a6,a7,a10,a12,a13,a14,a16,a17,a18 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9 ext;
+  class X0,X1,X2,X3 ext;
   click a0 "cards/decor.average-definition.html"
   click a1 "cards/decor.average-holder.html"
   click a2 "cards/decor.conditional-concentration.html"
@@ -149,13 +90,7 @@ flowchart LR
   click a16 "cards/x.decor-spin-product.html"
   click a17 "cards/x.decor-topology.html"
   click a18 "cards/x.decor-tree-sampling.html"
-  click e0 "cards/cavity.grid.html"
-  click e1 "cards/comp.shape-error.html"
-  click e2 "cards/pert.selection.html"
-  click e3 "cards/pert.tree-identity.html"
-  click e4 "cards/x.pert-colored-extensions.html"
-  click e5 "cards/tree.charging.html"
-  click e6 "cards/tree.extension-expansion.html"
-  click e7 "cards/tree.multioverlap.html"
-  click e8 "cards/tree.reference-total.html"
-  click e9 "cards/x.tree-sampling.html"
+  click X0 "map-trees.html"
+  click X1 "map-cavity.html"
+  click X2 "map-perturbations.html"
+  click X3 "map-comparison.html"

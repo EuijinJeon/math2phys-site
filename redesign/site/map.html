@@ -88,7 +88,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
 <h1>증명 지도</h1><p class="stat">두 단계로 본다. 이 쪽은 섹션 단위 지도이고, 섹션마다 그 안의 정리류 카드와 밖과 오가는 간선을 보이는 지도가 따로 있다(아래 표의 &ldquo;지도&rdquo;).</p><h2>섹션 지도</h2><p class="stat">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 숫자는 그 방향의 <code>uses</code> 항목 수(카드 쌍 단위)다. 주정리(<code>main:theorem</code>)는 진술이 §2에, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이므로, §2와 §8·§9가 서로 쓰는 것처럼 보이지 않게 따로 노드로 세웠다(주정리와 그 증명 단계 카드는 이 노드에만 센다). 서로 쓰는 섹션 쌍이 있다: §2–주정리, §2–§4. 서로 다른 카드 사이의 쓰임이 양쪽으로 있어서 생긴 것이고, 카드 단위로는 순환이 없다(검사 &ldquo;순환&rdquo;). 노드를 누르면 섹션 카드로 간다.</p><pre class="mermaid" data-map="sections">
-flowchart LR
+flowchart TB
   S0[&quot;§2&lt;br/&gt;The model and the variational princ…&lt;br/&gt;21장&quot;]
   S1[&quot;§2.2&lt;br/&gt;Proof strategy&lt;br/&gt;7장&quot;]
   S2[&quot;주정리&lt;br/&gt;Theorem 2.1&lt;br/&gt;5장 (진술 + 증명 단계)&quot;]

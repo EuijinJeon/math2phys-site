@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2 The model and the variational principle — 지도</h1><p class="stat">이 섹션의 카드 21장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 22장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a></p><pre class="mermaid" data-map="sec-model">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2 The model and the variational principle — 지도</h1><p class="stat">이 섹션의 카드 21장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 22장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a></p><pre class="mermaid" data-map="sec-model">
+flowchart TB
   subgraph IN[&quot;§2 The model and the variational principle&quot;]
     a0[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
     a1[&quot;edge 분배함수 C_ (2.5)&lt;br/&gt;model:edge&quot;]
@@ -111,183 +111,112 @@ flowchart LR
     a18[&quot;주정리가 말하지 않는 것&lt;br/&gt;x:model-theorem-scope&quot;]
     a19[&quot;power mean의 단조성과 root-가측 인자에 …&lt;br/&gt;x:reduction-power-mean-scaling&quot;]
   end
-  subgraph X0[&quot;밖: §5&quot;]
-    e0[&quot;Poisson 섭동 factor 족과 한계 1/2_3…&lt;br/&gt;cavity:factor-bounds&quot;]
-    e1[&quot;Cavity increments (cavity 증분)&lt;br/&gt;cavity:increment&quot;]
-    e2[&quot;섭동의 비용 P_N^L, u-NF_N(2)s_N (5…&lt;br/&gt;cavity:negligible&quot;]
-    e3[&quot;하한의 유계·순열 불변 가정 (B() B, h H)&lt;br/&gt;x:cavity-bounded&quot;]
-    e4[&quot;섭동된 계의 기대 root logarithm P_N^…&lt;br/&gt;x:cavity-root-logarithm&quot;]
-  end
-  subgraph X1[&quot;밖: §8&quot;]
-    e5[&quot;bounded 법칙의 하한: _NF_N_r0_r&lt;br/&gt;comp:bounded-lower&quot;]
-    e6[&quot;Recursive law encoding (재귀적 법…&lt;br/&gt;comp:encoding&quot;]
-    e7[&quot;삽입 logarithm의 비교: _N B_L-1(_L…&lt;br/&gt;comp:insertion-comparison&quot;]
-  end
-  subgraph X2[&quot;밖: §10&quot;]
-    e8[&quot;soft random 짝수 K-SAT (Corolla…&lt;br/&gt;models:sat&quot;]
-    e9[&quot;Viana–Bray와 희석 짝수 p-spin 모형 (…&lt;br/&gt;models:spin&quot;]
-    e10[&quot;짝수 체수 가정은 random 3-SAT을 제외한다 …&lt;br/&gt;x:cons-3sat-remark&quot;]
-    e11[&quot;를 뗀 에너지 점수 E_N 과 B_r,&lt;br/&gt;x:cons-energy-score&quot;]
-    e12[&quot;명명 모형도 Poisson 개수와 복원추출을 유지한다&lt;br/&gt;x:cons-standard-examples&quot;]
-  end
-  subgraph X3[&quot;밖: 주정리&quot;]
-    e13[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X4[&quot;밖: §2.2&quot;]
-    e14[&quot;전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…&lt;br/&gt;x:overview-closing&quot;]
-    e15[&quot;전략 1단계: cavity reservoir 고르기&lt;br/&gt;x:overview-step1&quot;]
-    e16[&quot;전략 4단계: 독립 cavity message 되찾기&lt;br/&gt;x:overview-step4&quot;]
-    e17[&quot;전략: 상한은 모든 크기·모든 유한 깊이에서&lt;br/&gt;x:overview-upper&quot;]
-  end
-  subgraph X5[&quot;밖: §6&quot;]
-    e18[&quot;F 와 섭동된 증분 _N( u)&lt;br/&gt;x:pert-increment&quot;]
-  end
-  subgraph X6[&quot;밖: §9&quot;]
-    e19[&quot;Stability (L^1 안정성과 상수 이동)&lt;br/&gt;reduction:stability&quot;]
-  end
-  subgraph X7[&quot;밖: §3&quot;]
-    e20[&quot;path kernel 열, 지수 m_d, prefix…&lt;br/&gt;x:tree-path-kernels&quot;]
-  end
-  subgraph X8[&quot;밖: §4&quot;]
-    e21[&quot;interpolation 상한 F_N B_r(, m)&lt;br/&gt;upper:bound&quot;]
-  end
+  X0[&quot;밖: §2.2 Proof strategy&lt;br/&gt;카드 4장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
+  X2[&quot;밖: §3 Calculus on finite trees&lt;br/&gt;카드 1장&quot;]
+  X3[&quot;밖: §4 The interpolation upper bou…&lt;br/&gt;카드 1장&quot;]
+  X4[&quot;밖: §5 A perturbed cavity reservoir&lt;br/&gt;카드 5장&quot;]
+  X5[&quot;밖: §6 Perturbations and identitie…&lt;br/&gt;카드 1장&quot;]
+  X6[&quot;밖: §8 Independent hierarchical me…&lt;br/&gt;카드 3장&quot;]
+  X7[&quot;밖: §9 Normalization, truncation, …&lt;br/&gt;카드 1장&quot;]
+  X8[&quot;밖: §10 Named models and the zero-t…&lt;br/&gt;카드 5장&quot;]
   a0 --&gt; a10
   a0 --&gt; a11
-  a0 --&gt; a13
-  a0 --&gt; a19
-  a0 --&gt; a7
-  a0 --&gt; e16
-  a0 --&gt; e19
-  a0 --&gt; e20
-  a0 --&gt; e21
-  a0 --&gt; e5
-  a0 --&gt; e6
-  a0 --&gt; e7
   a1 --&gt; a10
   a1 --&gt; a12
-  a1 --&gt; e19
-  a1 --&gt; e21
-  a1 --&gt; e7
-  a10 --&gt; a13
-  a10 --&gt; a3
+  a2 --&gt; a6
+  a2 --&gt; a15
+  a3 --&gt; a13
+  a4 --&gt; a0
+  a4 --&gt; a14
+  a5 --&gt; a1
+  a5 --&gt; a2
+  a5 --&gt; a4
+  a5 --&gt; a8
+  a6 --&gt; a14
+  a6 --&gt; a17
+  a7 --&gt; a3
+  a8 --&gt; a11
+  a8 --&gt; a12
+  a9 --&gt; a19
   a10 --&gt; a7
-  a10 --&gt; e19
-  a10 --&gt; e21
-  a10 --&gt; e7
-  a11 --&gt; a13
-  a11 --&gt; a3
   a11 --&gt; a7
-  a11 --&gt; e19
-  a11 --&gt; e21
-  a11 --&gt; e7
   a12 --&gt; a9
-  a12 --&gt; e21
-  a13 --&gt; a19
   a13 --&gt; a9
-  a13 --&gt; e11
-  a13 --&gt; e13
-  a13 --&gt; e19
-  a13 --&gt; e21
-  a13 --&gt; e5
-  a14 --&gt; e13
-  a14 --&gt; e21
-  a14 --&gt; e8
-  a14 --&gt; e9
   a16 --&gt; a0
   a16 --&gt; a1
   a16 --&gt; a8
-  a16 --&gt; e21
-  a16 --&gt; e6
-  a19 --&gt; e19
-  a2 --&gt; a14
-  a2 --&gt; a15
-  a2 --&gt; a17
-  a2 --&gt; a6
-  a2 --&gt; e12
-  a2 --&gt; e13
-  a2 --&gt; e14
-  a2 --&gt; e17
-  a2 --&gt; e21
-  a2 --&gt; e8
-  a2 --&gt; e9
-  a3 --&gt; a13
-  a3 --&gt; a9
-  a3 --&gt; e10
-  a3 --&gt; e11
-  a3 --&gt; e13
-  a3 --&gt; e16
-  a3 --&gt; e17
-  a3 --&gt; e19
-  a3 --&gt; e21
-  a3 --&gt; e5
-  a3 --&gt; e7
-  a3 --&gt; e8
-  a3 --&gt; e9
-  a4 --&gt; a0
-  a4 --&gt; a14
-  a4 --&gt; e0
-  a4 --&gt; e1
-  a4 --&gt; e11
-  a4 --&gt; e12
-  a4 --&gt; e13
-  a4 --&gt; e15
-  a4 --&gt; e17
-  a4 --&gt; e18
-  a4 --&gt; e19
-  a4 --&gt; e2
-  a4 --&gt; e21
-  a4 --&gt; e3
-  a4 --&gt; e4
-  a4 --&gt; e5
-  a4 --&gt; e8
-  a4 --&gt; e9
-  a5 --&gt; a1
-  a5 --&gt; a10
-  a5 --&gt; a12
-  a5 --&gt; a14
-  a5 --&gt; a2
-  a5 --&gt; a3
-  a5 --&gt; a4
-  a5 --&gt; a8
-  a5 --&gt; a9
-  a5 --&gt; e13
-  a5 --&gt; e14
-  a5 --&gt; e19
-  a5 --&gt; e21
-  a5 --&gt; e3
-  a5 --&gt; e8
-  a5 --&gt; e9
-  a6 --&gt; a14
-  a6 --&gt; a17
-  a6 --&gt; e13
-  a6 --&gt; e14
-  a6 --&gt; e21
-  a6 --&gt; e8
-  a6 --&gt; e9
-  a7 --&gt; a19
-  a7 --&gt; a3
-  a7 --&gt; a9
-  a7 --&gt; e15
-  a7 --&gt; e19
-  a7 --&gt; e21
-  a7 --&gt; e7
-  a8 --&gt; a11
-  a8 --&gt; a12
-  a8 --&gt; e19
-  a8 --&gt; e21
-  a8 --&gt; e7
-  a9 --&gt; a19
-  a9 --&gt; e19
-  a9 --&gt; e21
-  a9 --&gt; e5
-  a9 --&gt; e7
-  e13 --&gt; a18
-  e21 --&gt; a17
+  a0 -.-&gt;|1| X0
+  a0 -.-&gt;|1| X2
+  a0 -.-&gt;|1| X3
+  a0 -.-&gt;|3| X6
+  a0 -.-&gt;|1| X7
+  a1 -.-&gt;|1| X3
+  a1 -.-&gt;|1| X6
+  a1 -.-&gt;|1| X7
+  a10 -.-&gt;|1| X3
+  a10 -.-&gt;|1| X6
+  a10 -.-&gt;|1| X7
+  a11 -.-&gt;|1| X3
+  a11 -.-&gt;|1| X6
+  a11 -.-&gt;|1| X7
+  a12 -.-&gt;|1| X3
+  a13 -.-&gt;|1| X1
+  a13 -.-&gt;|1| X3
+  a13 -.-&gt;|1| X6
+  a13 -.-&gt;|1| X7
+  a13 -.-&gt;|1| X8
+  a14 -.-&gt;|1| X1
+  a14 -.-&gt;|1| X3
+  a14 -.-&gt;|2| X8
+  a16 -.-&gt;|1| X3
+  a16 -.-&gt;|1| X6
+  X3 -.-&gt;|1| a17
+  X1 -.-&gt;|1| a18
+  a19 -.-&gt;|1| X7
+  a2 -.-&gt;|2| X0
+  a2 -.-&gt;|1| X1
+  a2 -.-&gt;|1| X3
+  a2 -.-&gt;|3| X8
+  a3 -.-&gt;|2| X0
+  a3 -.-&gt;|1| X1
+  a3 -.-&gt;|1| X3
+  a3 -.-&gt;|2| X6
+  a3 -.-&gt;|1| X7
+  a3 -.-&gt;|4| X8
+  a4 -.-&gt;|2| X0
+  a4 -.-&gt;|1| X1
+  a4 -.-&gt;|1| X3
+  a4 -.-&gt;|5| X4
+  a4 -.-&gt;|1| X5
+  a4 -.-&gt;|1| X6
+  a4 -.-&gt;|1| X7
+  a4 -.-&gt;|4| X8
+  a5 -.-&gt;|1| X0
+  a5 -.-&gt;|1| X1
+  a5 -.-&gt;|1| X3
+  a5 -.-&gt;|1| X4
+  a5 -.-&gt;|1| X7
+  a5 -.-&gt;|2| X8
+  a6 -.-&gt;|1| X0
+  a6 -.-&gt;|1| X1
+  a6 -.-&gt;|1| X3
+  a6 -.-&gt;|2| X8
+  a7 -.-&gt;|1| X0
+  a7 -.-&gt;|1| X3
+  a7 -.-&gt;|1| X6
+  a7 -.-&gt;|1| X7
+  a8 -.-&gt;|1| X3
+  a8 -.-&gt;|1| X6
+  a8 -.-&gt;|1| X7
+  a9 -.-&gt;|1| X3
+  a9 -.-&gt;|2| X6
+  a9 -.-&gt;|1| X7
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21 ext;
+  class X0,X1,X2,X3,X4,X5,X6,X7,X8 ext;
   click a0 &quot;cards/model.chain.html&quot;
   click a1 &quot;cards/model.edge.html&quot;
   click a2 &quot;cards/model.factorization.html&quot;
@@ -308,29 +237,16 @@ flowchart LR
   click a17 &quot;cards/x.model-moment-finiteness.html&quot;
   click a18 &quot;cards/x.model-theorem-scope.html&quot;
   click a19 &quot;cards/x.reduction-power-mean-scaling.html&quot;
-  click e0 &quot;cards/cavity.factor-bounds.html&quot;
-  click e1 &quot;cards/cavity.increment.html&quot;
-  click e2 &quot;cards/cavity.negligible.html&quot;
-  click e3 &quot;cards/x.cavity-bounded.html&quot;
-  click e4 &quot;cards/x.cavity-root-logarithm.html&quot;
-  click e5 &quot;cards/comp.bounded-lower.html&quot;
-  click e6 &quot;cards/comp.encoding.html&quot;
-  click e7 &quot;cards/comp.insertion-comparison.html&quot;
-  click e8 &quot;cards/models.sat.html&quot;
-  click e9 &quot;cards/models.spin.html&quot;
-  click e10 &quot;cards/x.cons-3sat-remark.html&quot;
-  click e11 &quot;cards/x.cons-energy-score.html&quot;
-  click e12 &quot;cards/x.cons-standard-examples.html&quot;
-  click e13 &quot;cards/main.theorem.html&quot;
-  click e14 &quot;cards/x.overview-closing.html&quot;
-  click e15 &quot;cards/x.overview-step1.html&quot;
-  click e16 &quot;cards/x.overview-step4.html&quot;
-  click e17 &quot;cards/x.overview-upper.html&quot;
-  click e18 &quot;cards/x.pert-increment.html&quot;
-  click e19 &quot;cards/reduction.stability.html&quot;
-  click e20 &quot;cards/x.tree-path-kernels.html&quot;
-  click e21 &quot;cards/upper.bound.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a></td><td>definition</td><td>시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a></td></tr><tr><td><a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a></td><td>definition</td><td>edge 분배함수 $C_\theta$ (2.5)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a></td><td>assumption</td><td>factor weight 전개 (2.3)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a></td></tr><tr><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a></td><td>definition</td><td>시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.cons-3sat-remark.html" title="짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)">x:cons-3sat-remark</a>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a>, <a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a></td></tr><tr><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a></td><td>definition</td><td>Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/cavity.factor-bounds.html" title="(5.2) Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)">cavity:factor-bounds</a>, <a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>, <a class="node" href="cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a>, <a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="cards/x.cavity-root-logarithm.html" title="섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$">x:cavity-root-logarithm</a>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a>, <a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a>, <a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a></td></tr><tr><td><a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a></td><td>assumption</td><td>매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a></td></tr><tr><td><a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a></td><td>assumption</td><td>부호 조건 (2.4)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a></td></tr><tr><td><a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a></td><td>definition</td><td>조건부 power mean $T_d$ (2.10)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a></td></tr><tr><td><a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a></td><td>definition</td><td>cavity log-weight $U_\theta$ (2.6)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a></td><td>remark</td><td>moment 조건 없는 유한성 (2.12)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a></td><td>definition</td><td>edge 항 $V_{\rm e}$ (2.9)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a></td><td>definition</td><td>site 분배함수 $V_{\rm s}$ (2.8)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/x.model-cavity-bounds.html" title="$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$">x:model-cavity-bounds</a></td><td>remark</td><td>$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a></td><td>definition</td><td>$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a></td></tr><tr><td><a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a></td><td>assumption</td><td>주정리의 가정 묶음</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/x.model-hypothesis-remarks.html" title="가정에 대한 주석: 퇴화 경우와 승수 $a$">x:model-hypothesis-remarks</a></td><td>remark</td><td>가정에 대한 주석: 퇴화 경우와 승수 $a$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a></td><td>definition</td><td>message $x$ 와 $q_x$; site 항과 edge 항의 뜻</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td></tr><tr><td><a class="node" href="cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a></td><td>remark</td><td>(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)</td><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.model-theorem-scope.html" title="주정리가 말하지 않는 것">x:model-theorem-scope</a></td><td>remark</td><td>주정리가 말하지 않는 것</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a></td><td>remark</td><td>power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a></td></tr></tbody></table></div>
+  click X0 &quot;map-overview.html&quot;
+  click X1 &quot;map-main.html&quot;
+  click X2 &quot;map-trees.html&quot;
+  click X3 &quot;map-upper.html&quot;
+  click X4 &quot;map-cavity.html&quot;
+  click X5 &quot;map-perturbations.html&quot;
+  click X6 &quot;map-comparison.html&quot;
+  click X7 &quot;map-reduction.html&quot;
+  click X8 &quot;map-consequences.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a></td><td>definition</td><td>시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a> <span class="stag">§2.2</span>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span></td></tr><tr><td><a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a></td><td>definition</td><td>edge 분배함수 $C_\theta$ (2.5)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a></td><td>assumption</td><td>factor weight 전개 (2.3)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a> <span class="stag">§10</span>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a> <span class="stag">§2.2</span>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a> <span class="stag">§2.2</span></td></tr><tr><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a></td><td>definition</td><td>시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.cons-3sat-remark.html" title="짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)">x:cons-3sat-remark</a> <span class="stag">§10</span>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a> <span class="stag">§10</span>, <a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a> <span class="stag">§2.2</span>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a> <span class="stag">§2.2</span></td></tr><tr><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a></td><td>definition</td><td>Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/cavity.factor-bounds.html" title="(5.2) Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)">cavity:factor-bounds</a> <span class="stag">§5</span>, <a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span>, <a class="node" href="cards/cavity.negligible.html" title="(5.3) 섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)">cavity:negligible</a> <span class="stag">§5</span>, <a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span>, <a class="node" href="cards/x.cavity-root-logarithm.html" title="섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$">x:cavity-root-logarithm</a> <span class="stag">§5</span>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a> <span class="stag">§10</span>, <a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a> <span class="stag">§10</span>, <a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a> <span class="stag">§2.2</span>, <a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a> <span class="stag">§2.2</span>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a> <span class="stag">§6</span></td></tr><tr><td><a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a></td><td>assumption</td><td>매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a> <span class="stag">§2.2</span></td></tr><tr><td><a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a></td><td>assumption</td><td>부호 조건 (2.4)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a> <span class="stag">§2.2</span></td></tr><tr><td><a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a></td><td>definition</td><td>조건부 power mean $T_d$ (2.10)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a> <span class="stag">§2.2</span></td></tr><tr><td><a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a></td><td>definition</td><td>cavity log-weight $U_\theta$ (2.6)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a></td><td>remark</td><td>moment 조건 없는 유한성 (2.12)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a></td><td>definition</td><td>edge 항 $V_{\rm e}$ (2.9)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a></td><td>definition</td><td>site 분배함수 $V_{\rm s}$ (2.8)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a> <span class="stag">§8</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/x.model-cavity-bounds.html" title="$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$">x:model-cavity-bounds</a></td><td>remark</td><td>$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a></td><td>definition</td><td>$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a> <span class="stag">§10</span></td></tr><tr><td><a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a></td><td>assumption</td><td>주정리의 가정 묶음</td><td><span class="muted">—</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/x.model-hypothesis-remarks.html" title="가정에 대한 주석: 퇴화 경우와 승수 $a$">x:model-hypothesis-remarks</a></td><td>remark</td><td>가정에 대한 주석: 퇴화 경우와 승수 $a$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a></td><td>definition</td><td>message $x$ 와 $q_x$; site 항과 edge 항의 뜻</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a> <span class="stag">§8</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td></tr><tr><td><a class="node" href="cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a></td><td>remark</td><td>(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)</td><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.model-theorem-scope.html" title="주정리가 말하지 않는 것">x:model-theorem-scope</a></td><td>remark</td><td>주정리가 말하지 않는 것</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.reduction-power-mean-scaling.html" title="power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)">x:reduction-power-mean-scaling</a></td><td>remark</td><td>power mean의 단조성과 root-가측 인자에 대한 동차성 (작성자 정식화)</td><td><span class="muted">—</span></td><td><a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

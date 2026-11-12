@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§7 Decorrelation on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 54장 가운데 증명 단계를 뺀 19장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 10장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a></p><pre class="mermaid" data-map="sec-decorrelation">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§7 Decorrelation on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 54장 가운데 증명 단계를 뺀 19장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 10장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a></p><pre class="mermaid" data-map="sec-decorrelation">
+flowchart TB
   subgraph IN[&quot;§7 Decorrelation on prescribed trees&quot;]
     a0[&quot;깊이 평균 A_L,&lt;br/&gt;decor:average-definition&quot;]
     a1[&quot;깊이 평균의 분수 거듭제곱 부등식&lt;br/&gt;decor:average-holder&quot;]
@@ -110,116 +110,57 @@ flowchart LR
     a17[&quot;topology, 깊이 배정, b(S), 자식 모양&lt;br/&gt;x:decor-topology&quot;]
     a18[&quot;tree 표본 규칙 (조건부 독립과 사영 일관성)&lt;br/&gt;x:decor-tree-sampling&quot;]
   end
-  subgraph X0[&quot;밖: §5&quot;]
-    e0[&quot;깊이 L2, r=L-1, 균등 격자 m_d=d/L (…&lt;br/&gt;cavity:grid&quot;]
-  end
-  subgraph X1[&quot;밖: §8&quot;]
-    e1[&quot;tree 법칙 평균한 multioverlap 요동이 …&lt;br/&gt;comp:shape-error&quot;]
-  end
-  subgraph X2[&quot;밖: §6&quot;]
-    e2[&quot;결정적 매개변수 선택 (Lemma 6.2)&lt;br/&gt;pert:selection&quot;]
-    e3[&quot;prescribed tree 위의 항등식 (Theor…&lt;br/&gt;pert:tree-identity&quot;]
-    e4[&quot;spin/marker anchor, 추가 color,…&lt;br/&gt;x:pert-colored-extensions&quot;]
-  end
-  subgraph X3[&quot;밖: §3&quot;]
-    e5[&quot;Charging fresh splits (fresh …&lt;br/&gt;tree:charging&quot;]
-    e6[&quot;Canceled-anchor expansion (an…&lt;br/&gt;tree:extension-expansion&quot;]
-    e7[&quot;multioverlap R_S 와 기대값 E 의 약속&lt;br/&gt;tree:multioverlap&quot;]
-    e8[&quot;Reference-path totals (refere…&lt;br/&gt;tree:reference-total&quot;]
-    e9[&quot;유한 tree, 표본 기대값 E_ T, split, …&lt;br/&gt;x:tree-sampling&quot;]
-  end
+  X0[&quot;밖: §3 Calculus on finite trees&lt;br/&gt;카드 5장&quot;]
+  X1[&quot;밖: §5 A perturbed cavity reservoir&lt;br/&gt;카드 1장&quot;]
+  X2[&quot;밖: §6 Perturbations and identitie…&lt;br/&gt;카드 3장&quot;]
+  X3[&quot;밖: §8 Independent hierarchical me…&lt;br/&gt;카드 1장&quot;]
   a0 --&gt; a1
-  a0 --&gt; a11
-  a0 --&gt; a2
-  a0 --&gt; a5
   a0 --&gt; a6
-  a0 --&gt; a8
-  a0 --&gt; e1
+  a0 --&gt; a11
   a1 --&gt; a2
-  a1 --&gt; a8
-  a10 --&gt; a2
-  a10 --&gt; a8
-  a10 --&gt; a9
-  a11 --&gt; a2
-  a11 --&gt; a5
-  a11 --&gt; a8
-  a12 --&gt; a0
-  a12 --&gt; a11
-  a12 --&gt; a2
-  a12 --&gt; a5
-  a12 --&gt; a8
-  a12 --&gt; a9
-  a12 --&gt; e1
-  a13 --&gt; a2
-  a13 --&gt; a6
-  a13 --&gt; a7
-  a13 --&gt; a8
-  a13 --&gt; e1
-  a14 --&gt; a2
-  a14 --&gt; a8
-  a15 --&gt; a2
-  a15 --&gt; a5
-  a15 --&gt; a8
-  a16 --&gt; a15
-  a16 --&gt; a2
-  a16 --&gt; a3
-  a16 --&gt; a4
-  a16 --&gt; a8
-  a16 --&gt; a9
-  a16 --&gt; e1
-  a17 --&gt; a10
-  a17 --&gt; a12
-  a17 --&gt; a16
-  a17 --&gt; a2
-  a17 --&gt; a4
-  a17 --&gt; a5
-  a17 --&gt; a6
-  a17 --&gt; a8
-  a17 --&gt; e1
-  a18 --&gt; a10
-  a18 --&gt; a17
-  a18 --&gt; a2
-  a18 --&gt; a5
-  a18 --&gt; a8
-  a18 --&gt; a9
   a2 --&gt; a7
   a2 --&gt; a8
-  a3 --&gt; a2
   a3 --&gt; a9
-  a4 --&gt; a10
-  a4 --&gt; a2
   a4 --&gt; a3
   a4 --&gt; a5
+  a4 --&gt; a10
   a5 --&gt; a2
-  a5 --&gt; a7
-  a5 --&gt; a8
   a6 --&gt; a2
-  a6 --&gt; a7
-  a6 --&gt; a8
-  a8 --&gt; e1
   a9 --&gt; a2
-  a9 --&gt; a8
-  e0 --&gt; a14
-  e2 --&gt; a13
-  e2 --&gt; a14
-  e3 --&gt; a13
-  e3 --&gt; a2
-  e3 --&gt; a6
-  e3 --&gt; a8
-  e4 --&gt; a2
-  e4 --&gt; a8
-  e5 --&gt; a2
-  e6 --&gt; a2
-  e7 --&gt; a16
-  e8 --&gt; a2
-  e8 --&gt; a8
-  e9 --&gt; a18
+  a10 --&gt; a9
+  a11 --&gt; a5
+  a12 --&gt; a0
+  a12 --&gt; a9
+  a13 --&gt; a6
+  a14 --&gt; a2
+  a15 --&gt; a5
+  a16 --&gt; a4
+  a16 --&gt; a15
+  a17 --&gt; a12
+  a17 --&gt; a16
+  a18 --&gt; a17
+  a0 -.-&gt;|1| X3
+  a12 -.-&gt;|1| X3
+  X2 -.-&gt;|2| a13
+  a13 -.-&gt;|1| X3
+  X1 -.-&gt;|1| a14
+  X2 -.-&gt;|1| a14
+  X0 -.-&gt;|1| a16
+  a16 -.-&gt;|1| X3
+  a17 -.-&gt;|1| X3
+  X0 -.-&gt;|1| a18
+  X0 -.-&gt;|3| a2
+  X2 -.-&gt;|2| a2
+  X2 -.-&gt;|1| a6
+  X0 -.-&gt;|1| a8
+  X2 -.-&gt;|2| a8
+  a8 -.-&gt;|1| X3
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a1,a2,a3,a5,a8,a9,a11,a15 thm;
   class a0,a4,a6,a7,a10,a12,a13,a14,a16,a17,a18 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9 ext;
+  class X0,X1,X2,X3 ext;
   click a0 &quot;cards/decor.average-definition.html&quot;
   click a1 &quot;cards/decor.average-holder.html&quot;
   click a2 &quot;cards/decor.conditional-concentration.html&quot;
@@ -239,17 +180,11 @@ flowchart LR
   click a16 &quot;cards/x.decor-spin-product.html&quot;
   click a17 &quot;cards/x.decor-topology.html&quot;
   click a18 &quot;cards/x.decor-tree-sampling.html&quot;
-  click e0 &quot;cards/cavity.grid.html&quot;
-  click e1 &quot;cards/comp.shape-error.html&quot;
-  click e2 &quot;cards/pert.selection.html&quot;
-  click e3 &quot;cards/pert.tree-identity.html&quot;
-  click e4 &quot;cards/x.pert-colored-extensions.html&quot;
-  click e5 &quot;cards/tree.charging.html&quot;
-  click e6 &quot;cards/tree.extension-expansion.html&quot;
-  click e7 &quot;cards/tree.multioverlap.html&quot;
-  click e8 &quot;cards/tree.reference-total.html&quot;
-  click e9 &quot;cards/x.tree-sampling.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a></td><td>definition</td><td>깊이 평균 $\mathcal A_{L,\eta}$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a></td><td>lemma</td><td>깊이 평균의 분수 거듭제곱 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></td><td>proposition</td><td>조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a>, <a class="node" href="cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a>, <a class="node" href="cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a></td><td>lemma</td><td>축약 부등식과 세 사본 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a></td><td>definition</td><td>조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></td><td>lemma</td><td>깊이에 대한 평균 연속성</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a></td><td>definition</td><td>항등식 오차의 최대 $\varepsilon_{N,L,k}$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></td><td>remark</td><td>극한 순서에 관한 주의</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></td><td>theorem</td><td>모든 multioverlap의 깊이 평균 집중</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a></td><td>lemma</td><td>첫 갈라짐에서 자식을 평균으로 바꾸는 오차</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a></td><td>definition</td><td>첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a></td><td>lemma</td><td>깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a></td><td>definition</td><td>$\eta$-regular 깊이 배정</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a></td><td>convention</td><td>선택된 수열과 극한 순서</td><td><a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a></td><td>convention</td><td>균등 격자 $m_d=d/L$, $\delta=1/L$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a></td><td>lemma</td><td>곱 차이 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a></td><td>definition</td><td>spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</td><td><a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a></td><td>definition</td><td>topology, 깊이 배정, $b(S)$, 자식 모양</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td></tr><tr><td><a class="node" href="cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a></td><td>convention</td><td>tree 표본 규칙 (조건부 독립과 사영 일관성)</td><td><a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+  click X0 &quot;map-trees.html&quot;
+  click X1 &quot;map-cavity.html&quot;
+  click X2 &quot;map-perturbations.html&quot;
+  click X3 &quot;map-comparison.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a></td><td>definition</td><td>깊이 평균 $\mathcal A_{L,\eta}$</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/decor.average-holder.html" title="(7.2) 깊이 평균의 분수 거듭제곱 부등식">decor:average-holder</a></td><td>lemma</td><td>깊이 평균의 분수 거듭제곱 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.conditional-concentration.html" title="Proposition 7.4 조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$">decor:conditional-concentration</a></td><td>proposition</td><td>조건부 decorrelation: $\mathcal A_{L,\eta}v_N(S,d)\to0$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span>, <a class="node" href="cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.extension-expansion.html" title="Lemma 3.3 Canceled-anchor expansion (anchor 상쇄 전개)">tree:extension-expansion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a> <span class="stag">§3</span>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a> <span class="stag">§6</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.contractions.html" title="Lemma 7.2 축약 부등식과 세 사본 부등식">decor:contractions</a></td><td>lemma</td><td>축약 부등식과 세 사본 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.covariance-definition.html" title="(7.5) 조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$">decor:covariance-definition</a></td><td>definition</td><td>조건부 평균 $\mu_{d,S}$와 조건부 공분산 제곱 $v_N(S,d)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.depth-continuity.html" title="Lemma 7.3 깊이에 대한 평균 연속성">decor:depth-continuity</a></td><td>lemma</td><td>깊이에 대한 평균 연속성</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.identity-error.html" title="(7.3) 항등식 오차의 최대 $\varepsilon_{N,L,k}$">decor:identity-error</a></td><td>definition</td><td>항등식 오차의 최대 $\varepsilon_{N,L,k}$</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.order-of-limits.html" title="Remark 7.5 극한 순서에 관한 주의">decor:order-of-limits</a></td><td>remark</td><td>극한 순서에 관한 주의</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a></td><td>theorem</td><td>모든 multioverlap의 깊이 평균 집중</td><td><a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span>, <a class="node" href="cards/tree.reference-total.html" title="Lemma 3.4 Reference-path totals (reference 경로 합)">tree:reference-total</a> <span class="stag">§3</span>, <a class="node" href="cards/x.pert-colored-extensions.html" title="spin/marker anchor, 추가 color, 제약 $\mathcal C$, 허용 history와 $R_E$">x:pert-colored-extensions</a> <span class="stag">§6</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/decor.projection-bound.html" title="(7.13) 첫 갈라짐에서 자식을 평균으로 바꾸는 오차">decor:projection-bound</a></td><td>lemma</td><td>첫 갈라짐에서 자식을 평균으로 바꾸는 오차</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/decor.projection-definition.html" title="(7.12) 첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$">decor:projection-definition</a></td><td>definition</td><td>첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-average-comparisons.html" title="깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)">x:decor-average-comparisons</a></td><td>lemma</td><td>깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a></td><td>definition</td><td>$\eta$-regular 깊이 배정</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a></td><td>convention</td><td>선택된 수열과 극한 순서</td><td><a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span>, <a class="node" href="cards/pert.tree-identity.html" title="Theorem 6.5 prescribed tree 위의 항등식 (Theorem 6.5)">pert:tree-identity</a> <span class="stag">§6</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/x.decor-mesh.html" title="균등 격자 $m_d=d/L$, $\delta=1/L$">x:decor-mesh</a></td><td>convention</td><td>균등 격자 $m_d=d/L$, $\delta=1/L$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-product-difference.html" title="곱 차이 부등식">x:decor-product-difference</a></td><td>lemma</td><td>곱 차이 부등식</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a></td><td>definition</td><td>spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$</td><td><a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a></td><td>definition</td><td>topology, 깊이 배정, $b(S)$, 자식 모양</td><td><span class="muted">—</span></td><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a> <span class="stag">§8</span></td></tr><tr><td><a class="node" href="cards/x.decor-tree-sampling.html" title="tree 표본 규칙 (조건부 독립과 사영 일관성)">x:decor-tree-sampling</a></td><td>convention</td><td>tree 표본 규칙 (조건부 독립과 사영 일관성)</td><td><a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

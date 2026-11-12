@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§10 Named models and the zero-temperature l…"]
     a0["영온도 변분 극한 (Corollary 10.3, 식 …<br/>models:ground"]
     a1["soft random 짝수 K-SAT (Corolla…<br/>models:sat"]
@@ -8,55 +8,29 @@ flowchart LR
     a5["영온도 공식이 요구하지 않는 것<br/>x:cons-ground-scope"]
     a6["명명 모형도 Poisson 개수와 복원추출을 유지한다<br/>x:cons-standard-examples"]
   end
-  subgraph X0["밖: 주정리"]
-    e0["주정리: _NF_N=_r0_r<br/>main:theorem"]
-  end
-  subgraph X1["밖: §2"]
-    e1["factor weight 전개 (2.3)<br/>model:factorization"]
-    e2["시행 functional B_r 와 변분값 _r (2…<br/>model:functional"]
-    e3["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
-    e4["매개변수 p, , 법칙 , h 와 1차 moment …<br/>model:integrability"]
-    e5["부호 조건 (2.4)<br/>model:positivity"]
-    e6["r=0 (replica symmetric) 경우: B…<br/>x:model-depth-zero"]
-    e7["주정리의 가정 묶음<br/>x:model-hypotheses"]
-  end
+  X0["밖: §2 The model and the variation…<br/>카드 7장"]
+  X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
   a0 --> a5
-  a1 --> a0
   a1 --> a3
   a1 --> a4
-  a2 --> a0
   a2 --> a4
   a4 --> a0
   a6 --> a1
   a6 --> a2
-  a6 --> a4
-  e0 --> a0
-  e0 --> a1
-  e0 --> a2
-  e1 --> a1
-  e1 --> a2
-  e1 --> a6
-  e2 --> a1
-  e2 --> a2
-  e2 --> a3
-  e2 --> a4
-  e3 --> a1
-  e3 --> a2
-  e3 --> a4
-  e3 --> a6
-  e4 --> a1
-  e4 --> a2
-  e5 --> a1
-  e5 --> a2
-  e6 --> a4
-  e7 --> a1
-  e7 --> a2
+  X1 -.->|1| a0
+  X0 -.->|6| a1
+  X1 -.->|1| a1
+  X0 -.->|6| a2
+  X1 -.->|1| a2
+  X0 -.->|1| a3
+  X0 -.->|3| a4
+  X0 -.->|2| a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2 thm;
   class a3,a4,a5,a6 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7 ext;
+  class X0,X1 ext;
   click a0 "cards/models.ground.html"
   click a1 "cards/models.sat.html"
   click a2 "cards/models.spin.html"
@@ -64,11 +38,5 @@ flowchart LR
   click a4 "cards/x.cons-energy-score.html"
   click a5 "cards/x.cons-ground-scope.html"
   click a6 "cards/x.cons-standard-examples.html"
-  click e0 "cards/main.theorem.html"
-  click e1 "cards/model.factorization.html"
-  click e2 "cards/model.functional.html"
-  click e3 "cards/model.hamiltonian.html"
-  click e4 "cards/model.integrability.html"
-  click e5 "cards/model.positivity.html"
-  click e6 "cards/x.model-depth-zero.html"
-  click e7 "cards/x.model-hypotheses.html"
+  click X0 "map-model.html"
+  click X1 "map-main.html"

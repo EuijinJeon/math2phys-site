@@ -846,33 +846,59 @@ def section_detail_map(S, key):
                 edges.setdefault((b, a), 0)
                 edges[(b, a)] += 1
     ext = sorted({x for e in edges for x in e if x not in iset}, key=lambda i: (S.home(i) or "", i))
-    ids = {}
-    for k, i in enumerate(internal):
-        ids[i] = f"a{k}"
-    for k, i in enumerate(ext):
-        ids[i] = f"e{k}"
+    ids = {i: f"a{k}" for k, i in enumerate(internal)}
 
     def node(i):
         c = cards[i]
         t = mermaid_text(str(c.get("title") or i), 30)
         return f'{ids[i]}["{t}<br/>{mermaid_text(i, 40)}"]'
-    L = ["flowchart LR"]
+    # 안쪽 간선은 이행 축약: 다른 안쪽 경로로 이어지는 간선은 그리지 않는다(읽을 수 없는 털뭉치를 피한다).
+    inner = {(b, a) for (b, a) in edges if b in iset and a in iset}
+    succ = {}
+    for b, a in inner:
+        succ.setdefault(b, set()).add(a)
+
+    def reach(src, dst, skip):
+        st, seen = [src], {src}
+        while st:
+            x = st.pop()
+            for y in succ.get(x, ()):
+                if (x, y) == skip or y in seen:
+                    continue
+                if y == dst:
+                    return True
+                seen.add(y)
+                st.append(y)
+        return False
+    kept = sorted(e for e in inner if not reach(e[0], e[1], e))
+    # 밖의 카드는 섹션별로 한 노드로 묶고, 안쪽 카드 하나와 그 섹션 사이의 연결을 카드 수와 함께 한 간선으로 그린다.
+    # 밖 카드 하나하나의 연결은 아래 표에 있다.
+    xs = {}
+    for (b, a) in edges:
+        if b in iset and a not in iset:
+            xs.setdefault((b, S.home(a), "out"), set()).add(a)
+        elif a in iset and b not in iset:
+            xs.setdefault((a, S.home(b), "in"), set()).add(b)
+    xhomes = sorted({h for (_, h, _) in xs}, key=lambda h: [sc["key"] for sc in S.secs].index(h) if h in S.by_key else 99)
+    xid = {h: f"X{k}" for k, h in enumerate(xhomes)}
+    L = ["flowchart TB"]
     sc = S.by_key[key]
     head = "주정리" if key == "main" else f'§{sc["num"]} {mermaid_text(sc["title"], 40)}'
     L.append(f'  subgraph IN["{head}"]')
     for i in internal:
         L.append("    " + node(i))
     L.append("  end")
-    by_home = {}
-    for i in ext:
-        by_home.setdefault(S.home(i), []).append(i)
-    for gi, (h, lst) in enumerate(by_home.items()):
-        L.append(f'  subgraph X{gi}["밖: {S.label(h) if h in S.by_key else "?"}"]')
-        for i in lst:
-            L.append("    " + node(i))
-        L.append("  end")
-    for (b, a), n in sorted(edges.items(), key=lambda kv: (ids[kv[0][0]], ids[kv[0][1]])):
+    for h in xhomes:
+        n_ext = len({x for (_, hh, _), v in xs.items() if hh == h for x in v})
+        lab = (S.label(h) + " " + mermaid_text(S.by_key[h]["title"], 28)) if h in S.by_key else "?"
+        L.append(f'  {xid[h]}["밖: {lab}<br/>카드 {n_ext}장"]')
+    for (b, a) in kept:
         L.append(f"  {ids[b]} --> {ids[a]}")
+    for (i, h, d), v in sorted(xs.items(), key=lambda kv: (ids[kv[0][0]], xid[kv[0][1]], kv[0][2])):
+        if d == "in":
+            L.append(f"  {xid[h]} -.->|{len(v)}| {ids[i]}")
+        else:
+            L.append(f"  {ids[i]} -.->|{len(v)}| {xid[h]}")
     thm = [ids[i] for i in internal if cards[i].get("kind") in KIND_GROUP]
     oth = [ids[i] for i in internal if cards[i].get("kind") not in KIND_GROUP]
     L.append("  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
@@ -882,10 +908,13 @@ def section_detail_map(S, key):
         L.append("  class " + ",".join(thm) + " thm;")
     if oth:
         L.append("  class " + ",".join(oth) + " oth;")
-    if ext:
-        L.append("  class " + ",".join(ids[i] for i in ext) + " ext;")
-    for i in internal + ext:
+    if xhomes:
+        L.append("  class " + ",".join(xid[h] for h in xhomes) + " ext;")
+    for i in internal:
         L.append(f'  click {ids[i]} "cards/{page_name(i)}"')
+    for h in xhomes:
+        if h in S.by_key:
+            L.append(f'  click {xid[h]} "{map_href(h)}"')
     incoming = {i: set() for i in internal}
     outgoing = {i: set() for i in internal}
     for (b, a) in edges:
@@ -960,15 +989,16 @@ def map_section_page(S, key, ctx):
     rows = []
     for i in internal:
         c = S.cards[i]
-        inn = ", ".join(ctx.link(x) for x in sorted(incoming[i])) or '<span class="muted">—</span>'
-        outg = ", ".join(ctx.link(x) for x in sorted(outgoing[i])) or '<span class="muted">—</span>'
+        inn = ", ".join(ctx.link(x) + sec_tag(ctx, x) for x in sorted(incoming[i])) or '<span class="muted">—</span>'
+        outg = ", ".join(ctx.link(x) + sec_tag(ctx, x) for x in sorted(outgoing[i])) or '<span class="muted">—</span>'
         rows.append("<tr><td>" + ctx.link(i) + "</td><td>" + esc(str(c.get("kind") or "")) + "</td><td>"
                     + esc(str(c.get("title") or "")) + "</td><td>" + inn + "</td><td>" + outg + "</td></tr>")
     body = (f'<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>{esc(head)} — 지도</h1>'
             f'<p class="stat">이 섹션의 카드 {len(S.members[key])}장 가운데 증명 단계를 뺀 {len(internal)}장(파랑: 정리·명제·보조정리·따름정리, '
-            "회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 "
-            f"{next_}장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. "
-            "섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. "
+            "회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), "
+            f"점선은 밖의 {next_}장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. "
+            "카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, "
+            "섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. "
             f'섹션 카드: {ctx.link(sc["card"])}</p>'
             f'<pre class="mermaid" data-map="sec-{esc(key)}">\n{esc(text)}\n</pre>'
             "<h2>카드와 밖의 연결</h2>"

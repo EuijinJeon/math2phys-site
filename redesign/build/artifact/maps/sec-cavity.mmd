@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§5 A perturbed cavity reservoir"]
     a0["Poisson 섭동 factor 족과 한계 1/2_3…<br/>cavity:factor-bounds"]
     a1["깊이 L2, r=L-1, 균등 격자 m_d=d/L (…<br/>cavity:grid"]
@@ -9,104 +9,48 @@ flowchart LR
     a6["섭동된 계의 기대 root logarithm P_N^…<br/>x:cavity-root-logarithm"]
     a7["하한의 모든 spin tree는 이 reservoir…<br/>x:cavity-tree-sampling"]
   end
-  subgraph X0["밖: §8"]
-    e0["bounded 법칙의 하한: _NF_N_r0_r<br/>comp:bounded-lower"]
-    e1["Recursive law encoding (재귀적 법…<br/>comp:encoding"]
-    e2["삽입 logarithm의 비교: _N B_L-1(_L…<br/>comp:insertion-comparison"]
-    e3["선택된 수열 위의 낮은 증분 (8.1)<br/>comp:low-increments"]
-    e4["Empirical-pattern comparison …<br/>comp:patterns"]
-    e5["tree 법칙 평균한 multioverlap 요동이 …<br/>comp:shape-error"]
-    e6["§8의 고정된 선택: , 깊이마다의 선택된 수열, 선…<br/>x:comp-standing"]
-  end
-  subgraph X1["밖: §7"]
-    e7["균등 격자 m_d=d/L, =1/L<br/>x:decor-mesh"]
-  end
-  subgraph X2["밖: §2"]
-    e8["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
-    e9["매개변수 p, , 법칙 , h 와 1차 moment …<br/>model:integrability"]
-  end
-  subgraph X3["밖: §6"]
-    e10["Poisson 섭동 factor _=1+t_ g_i+…<br/>pert:factor"]
-    e11["결정적 매개변수 선택 (Lemma 6.2)<br/>pert:selection"]
-    e12["F 와 섭동된 증분 _N( u)<br/>x:pert-increment"]
-    e13["매개변수 측도 (결정적 벡터를 고르는 데만 씀)<br/>x:pert-parameter-measure"]
-    e14["§6의 약속: 유계 모형, 고정 깊이 L2, 두 계,…<br/>x:pert-standing"]
-  end
-  subgraph X4["밖: §3"]
-    e15["insertion recursion Y_d 와 바뀐 …<br/>tree:Y-recursion"]
-    e16["Insertion calculus (삽입 미적분)<br/>tree:insertion"]
-    e17["분배함수에서 만든 tilted kernel<br/>tree:original-tilt"]
-    e18["원래 모형에 없던 변수를 쓰는 insertion<br/>x:tree-extra-variables"]
-    e19["path kernel 열, 지수 m_d, prefix…<br/>x:tree-path-kernels"]
-    e20["유한 tree, 표본 기대값 E_ T, split, …<br/>x:tree-sampling"]
-  end
-  a0 --> a2
-  a0 --> a3
+  X0["밖: §2 The model and the variation…<br/>카드 2장"]
+  X1["밖: §3 Calculus on finite trees<br/>카드 6장"]
+  X2["밖: §6 Perturbations and identitie…<br/>카드 5장"]
+  X3["밖: §7 Decorrelation on prescribed…<br/>카드 1장"]
+  X4["밖: §8 Independent hierarchical me…<br/>카드 7장"]
   a0 --> a5
-  a0 --> a6
-  a0 --> e10
   a1 --> a0
-  a1 --> a2
-  a1 --> a6
-  a1 --> e0
-  a1 --> e14
-  a1 --> e2
-  a1 --> e5
-  a1 --> e6
-  a1 --> e7
   a2 --> a7
-  a2 --> e1
-  a2 --> e11
-  a2 --> e12
-  a2 --> e14
-  a2 --> e2
-  a2 --> e3
-  a2 --> e4
   a3 --> a2
-  a3 --> e10
-  a3 --> e11
   a4 --> a2
-  a4 --> a7
-  a4 --> e0
-  a4 --> e12
-  a4 --> e14
-  a4 --> e2
-  a4 --> e6
-  a5 --> a2
-  a5 --> a3
   a5 --> a6
-  a5 --> e10
-  a5 --> e13
-  a6 --> a2
   a6 --> a3
-  a6 --> e12
-  a7 --> e1
-  a7 --> e14
-  a7 --> e2
-  e15 --> a2
-  e16 --> a2
-  e16 --> a3
-  e17 --> a0
-  e17 --> a2
-  e17 --> a3
-  e17 --> a6
-  e17 --> a7
-  e18 --> a2
-  e18 --> a3
-  e19 --> a1
-  e20 --> a7
-  e8 --> a0
-  e8 --> a2
-  e8 --> a3
-  e8 --> a4
-  e8 --> a6
-  e9 --> a4
+  X0 -.->|1| a0
+  X1 -.->|1| a0
+  a0 -.->|1| X2
+  X1 -.->|1| a1
+  a1 -.->|1| X2
+  a1 -.->|1| X3
+  a1 -.->|4| X4
+  X0 -.->|1| a2
+  X1 -.->|4| a2
+  a2 -.->|3| X2
+  a2 -.->|4| X4
+  X0 -.->|1| a3
+  X1 -.->|3| a3
+  a3 -.->|2| X2
+  X0 -.->|2| a4
+  a4 -.->|2| X2
+  a4 -.->|3| X4
+  a5 -.->|2| X2
+  X0 -.->|1| a6
+  X1 -.->|1| a6
+  a6 -.->|1| X2
+  X1 -.->|2| a7
+  a7 -.->|1| X2
+  a7 -.->|2| X4
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a2 thm;
   class a0,a1,a3,a4,a5,a6,a7 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20 ext;
+  class X0,X1,X2,X3,X4 ext;
   click a0 "cards/cavity.factor-bounds.html"
   click a1 "cards/cavity.grid.html"
   click a2 "cards/cavity.increment.html"
@@ -115,24 +59,8 @@ flowchart LR
   click a5 "cards/x.cavity-root-convention.html"
   click a6 "cards/x.cavity-root-logarithm.html"
   click a7 "cards/x.cavity-tree-sampling.html"
-  click e0 "cards/comp.bounded-lower.html"
-  click e1 "cards/comp.encoding.html"
-  click e2 "cards/comp.insertion-comparison.html"
-  click e3 "cards/comp.low-increments.html"
-  click e4 "cards/comp.patterns.html"
-  click e5 "cards/comp.shape-error.html"
-  click e6 "cards/x.comp-standing.html"
-  click e7 "cards/x.decor-mesh.html"
-  click e8 "cards/model.hamiltonian.html"
-  click e9 "cards/model.integrability.html"
-  click e10 "cards/pert.factor.html"
-  click e11 "cards/pert.selection.html"
-  click e12 "cards/x.pert-increment.html"
-  click e13 "cards/x.pert-parameter-measure.html"
-  click e14 "cards/x.pert-standing.html"
-  click e15 "cards/tree.Y-recursion.html"
-  click e16 "cards/tree.insertion.html"
-  click e17 "cards/tree.original-tilt.html"
-  click e18 "cards/x.tree-extra-variables.html"
-  click e19 "cards/x.tree-path-kernels.html"
-  click e20 "cards/x.tree-sampling.html"
+  click X0 "map-model.html"
+  click X1 "map-trees.html"
+  click X2 "map-perturbations.html"
+  click X3 "map-decorrelation.html"
+  click X4 "map-comparison.html"

@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§2.2 Proof strategy"]
     a0["전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…<br/>x:overview-closing"]
     a1["전략 1단계: cavity reservoir 고르기<br/>x:overview-step1"]
@@ -7,45 +7,23 @@ flowchart LR
     a4["전략 4단계: 독립 cavity message 되찾기<br/>x:overview-step4"]
     a5["전략: 상한은 모든 크기·모든 유한 깊이에서<br/>x:overview-upper"]
   end
-  subgraph X0["밖: 주정리"]
-    e0["주정리: _NF_N=_r0_r<br/>main:theorem"]
-  end
-  subgraph X1["밖: §2"]
-    e1["시행 법칙: M_j, M_r+1, m, label별 …<br/>model:chain"]
-    e2["factor weight 전개 (2.3)<br/>model:factorization"]
-    e3["시행 functional B_r 와 변분값 _r (2…<br/>model:functional"]
-    e4["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
-    e5["매개변수 p, , 법칙 , h 와 1차 moment …<br/>model:integrability"]
-    e6["부호 조건 (2.4)<br/>model:positivity"]
-    e7["조건부 power mean T_d (2.10)<br/>model:power-means"]
-  end
-  e0 --> a0
-  e1 --> a4
-  e2 --> a0
-  e2 --> a5
-  e3 --> a4
-  e3 --> a5
-  e4 --> a1
-  e4 --> a5
-  e5 --> a0
-  e6 --> a0
-  e7 --> a1
+  X0["밖: §2 The model and the variation…<br/>카드 7장"]
+  X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
+  X0 -.->|3| a0
+  X1 -.->|1| a0
+  X0 -.->|2| a1
+  X0 -.->|2| a4
+  X0 -.->|3| a5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a3,a4,a5 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7 ext;
+  class X0,X1 ext;
   click a0 "cards/x.overview-closing.html"
   click a1 "cards/x.overview-step1.html"
   click a2 "cards/x.overview-step2.html"
   click a3 "cards/x.overview-step3.html"
   click a4 "cards/x.overview-step4.html"
   click a5 "cards/x.overview-upper.html"
-  click e0 "cards/main.theorem.html"
-  click e1 "cards/model.chain.html"
-  click e2 "cards/model.factorization.html"
-  click e3 "cards/model.functional.html"
-  click e4 "cards/model.hamiltonian.html"
-  click e5 "cards/model.integrability.html"
-  click e6 "cards/model.positivity.html"
-  click e7 "cards/model.power-means.html"
+  click X0 "map-model.html"
+  click X1 "map-main.html"

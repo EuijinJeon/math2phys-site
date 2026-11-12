@@ -87,99 +87,28 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§4 The interpolation upper bound — 지도</h1><p class="stat">이 섹션의 카드 10장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 25장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a></p><pre class="mermaid" data-map="sec-upper">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§4 The interpolation upper bound — 지도</h1><p class="stat">이 섹션의 카드 10장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 25장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/upper.section.html" title="4 §4 interpolation 상한">upper:section</a></p><pre class="mermaid" data-map="sec-upper">
+flowchart TB
   subgraph IN[&quot;§4 The interpolation upper bound&quot;]
     a0[&quot;interpolation 상한 F_N B_r(, m)&lt;br/&gt;upper:bound&quot;]
   end
-  subgraph X0[&quot;밖: 주정리&quot;]
-    e0[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X1[&quot;밖: §2&quot;]
-    e1[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
-    e2[&quot;edge 분배함수 C_ (2.5)&lt;br/&gt;model:edge&quot;]
-    e3[&quot;factor weight 전개 (2.3)&lt;br/&gt;model:factorization&quot;]
-    e4[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e5[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e6[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
-    e7[&quot;부호 조건 (2.4)&lt;br/&gt;model:positivity&quot;]
-    e8[&quot;조건부 power mean T_d (2.10)&lt;br/&gt;model:power-means&quot;]
-    e9[&quot;cavity log-weight U_ (2.6)&lt;br/&gt;model:site-message&quot;]
-    e10[&quot;moment 조건 없는 유한성 (2.12)&lt;br/&gt;model:trial-bounds&quot;]
-    e11[&quot;edge 항 V_ e (2.9)&lt;br/&gt;model:ve&quot;]
-    e12[&quot;site 분배함수 V_ s (2.8)&lt;br/&gt;model:vs&quot;]
-    e13[&quot;C_, U_ B()&lt;br/&gt;x:model-cavity-bounds&quot;]
-    e14[&quot;r=0 (replica symmetric) 경우: B…&lt;br/&gt;x:model-depth-zero&quot;]
-    e15[&quot;주정리의 가정 묶음&lt;br/&gt;x:model-hypotheses&quot;]
-    e16[&quot;message x 와 q_x site 항과 edge …&lt;br/&gt;x:model-message&quot;]
-    e17[&quot;(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 …&lt;br/&gt;x:model-moment-finiteness&quot;]
-  end
-  subgraph X2[&quot;밖: §3&quot;]
-    e18[&quot;tree 법칙 Q_k&lt;br/&gt;tree:Q-rule&quot;]
-    e19[&quot;insertion recursion Y_d 와 바뀐 …&lt;br/&gt;tree:Y-recursion&quot;]
-    e20[&quot;Insertion calculus (삽입 미적분)&lt;br/&gt;tree:insertion&quot;]
-    e21[&quot;Logarithmic expansion (log 전개)&lt;br/&gt;tree:log-expansion&quot;]
-    e22[&quot;분배함수에서 만든 tilted kernel&lt;br/&gt;tree:original-tilt&quot;]
-    e23[&quot;원래 모형에 없던 변수를 쓰는 insertion&lt;br/&gt;x:tree-extra-variables&quot;]
-    e24[&quot;유한 tree, 표본 기대값 E_ T, split, …&lt;br/&gt;x:tree-sampling&quot;]
-  end
-  a0 --&gt; e0
-  a0 --&gt; e17
-  e1 --&gt; a0
-  e10 --&gt; a0
-  e11 --&gt; a0
-  e12 --&gt; a0
-  e13 --&gt; a0
-  e14 --&gt; a0
-  e15 --&gt; a0
-  e16 --&gt; a0
-  e18 --&gt; a0
-  e19 --&gt; a0
-  e2 --&gt; a0
-  e20 --&gt; a0
-  e21 --&gt; a0
-  e22 --&gt; a0
-  e23 --&gt; a0
-  e24 --&gt; a0
-  e3 --&gt; a0
-  e4 --&gt; a0
-  e5 --&gt; a0
-  e6 --&gt; a0
-  e7 --&gt; a0
-  e8 --&gt; a0
-  e9 --&gt; a0
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 17장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
+  X2[&quot;밖: §3 Calculus on finite trees&lt;br/&gt;카드 7장&quot;]
+  X0 -.-&gt;|16| a0
+  a0 -.-&gt;|1| X0
+  a0 -.-&gt;|1| X1
+  X2 -.-&gt;|7| a0
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0 thm;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21,e22,e23,e24 ext;
+  class X0,X1,X2 ext;
   click a0 &quot;cards/upper.bound.html&quot;
-  click e0 &quot;cards/main.theorem.html&quot;
-  click e1 &quot;cards/model.chain.html&quot;
-  click e2 &quot;cards/model.edge.html&quot;
-  click e3 &quot;cards/model.factorization.html&quot;
-  click e4 &quot;cards/model.functional.html&quot;
-  click e5 &quot;cards/model.hamiltonian.html&quot;
-  click e6 &quot;cards/model.integrability.html&quot;
-  click e7 &quot;cards/model.positivity.html&quot;
-  click e8 &quot;cards/model.power-means.html&quot;
-  click e9 &quot;cards/model.site-message.html&quot;
-  click e10 &quot;cards/model.trial-bounds.html&quot;
-  click e11 &quot;cards/model.ve.html&quot;
-  click e12 &quot;cards/model.vs.html&quot;
-  click e13 &quot;cards/x.model-cavity-bounds.html&quot;
-  click e14 &quot;cards/x.model-depth-zero.html&quot;
-  click e15 &quot;cards/x.model-hypotheses.html&quot;
-  click e16 &quot;cards/x.model-message.html&quot;
-  click e17 &quot;cards/x.model-moment-finiteness.html&quot;
-  click e18 &quot;cards/tree.Q-rule.html&quot;
-  click e19 &quot;cards/tree.Y-recursion.html&quot;
-  click e20 &quot;cards/tree.insertion.html&quot;
-  click e21 &quot;cards/tree.log-expansion.html&quot;
-  click e22 &quot;cards/tree.original-tilt.html&quot;
-  click e23 &quot;cards/x.tree-extra-variables.html&quot;
-  click e24 &quot;cards/x.tree-sampling.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td><td>proposition</td><td>interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a>, <a class="node" href="cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>, <a class="node" href="cards/x.model-cavity-bounds.html" title="$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$">x:model-cavity-bounds</a>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a>, <a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-main.html&quot;
+  click X2 &quot;map-trees.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a></td><td>proposition</td><td>interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a> <span class="stag">§2</span>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a> <span class="stag">§2</span>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a> <span class="stag">§3</span>, <a class="node" href="cards/x.model-cavity-bounds.html" title="$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$">x:model-cavity-bounds</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/x.model-moment-finiteness.html" title="(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)">x:model-moment-finiteness</a> <span class="stag">§2</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

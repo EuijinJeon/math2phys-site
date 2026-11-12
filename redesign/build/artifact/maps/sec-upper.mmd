@@ -1,91 +1,20 @@
-flowchart LR
+flowchart TB
   subgraph IN["§4 The interpolation upper bound"]
     a0["interpolation 상한 F_N B_r(, m)<br/>upper:bound"]
   end
-  subgraph X0["밖: 주정리"]
-    e0["주정리: _NF_N=_r0_r<br/>main:theorem"]
-  end
-  subgraph X1["밖: §2"]
-    e1["시행 법칙: M_j, M_r+1, m, label별 …<br/>model:chain"]
-    e2["edge 분배함수 C_ (2.5)<br/>model:edge"]
-    e3["factor weight 전개 (2.3)<br/>model:factorization"]
-    e4["시행 functional B_r 와 변분값 _r (2…<br/>model:functional"]
-    e5["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
-    e6["매개변수 p, , 법칙 , h 와 1차 moment …<br/>model:integrability"]
-    e7["부호 조건 (2.4)<br/>model:positivity"]
-    e8["조건부 power mean T_d (2.10)<br/>model:power-means"]
-    e9["cavity log-weight U_ (2.6)<br/>model:site-message"]
-    e10["moment 조건 없는 유한성 (2.12)<br/>model:trial-bounds"]
-    e11["edge 항 V_ e (2.9)<br/>model:ve"]
-    e12["site 분배함수 V_ s (2.8)<br/>model:vs"]
-    e13["C_, U_ B()<br/>x:model-cavity-bounds"]
-    e14["r=0 (replica symmetric) 경우: B…<br/>x:model-depth-zero"]
-    e15["주정리의 가정 묶음<br/>x:model-hypotheses"]
-    e16["message x 와 q_x site 항과 edge …<br/>x:model-message"]
-    e17["(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 …<br/>x:model-moment-finiteness"]
-  end
-  subgraph X2["밖: §3"]
-    e18["tree 법칙 Q_k<br/>tree:Q-rule"]
-    e19["insertion recursion Y_d 와 바뀐 …<br/>tree:Y-recursion"]
-    e20["Insertion calculus (삽입 미적분)<br/>tree:insertion"]
-    e21["Logarithmic expansion (log 전개)<br/>tree:log-expansion"]
-    e22["분배함수에서 만든 tilted kernel<br/>tree:original-tilt"]
-    e23["원래 모형에 없던 변수를 쓰는 insertion<br/>x:tree-extra-variables"]
-    e24["유한 tree, 표본 기대값 E_ T, split, …<br/>x:tree-sampling"]
-  end
-  a0 --> e0
-  a0 --> e17
-  e1 --> a0
-  e10 --> a0
-  e11 --> a0
-  e12 --> a0
-  e13 --> a0
-  e14 --> a0
-  e15 --> a0
-  e16 --> a0
-  e18 --> a0
-  e19 --> a0
-  e2 --> a0
-  e20 --> a0
-  e21 --> a0
-  e22 --> a0
-  e23 --> a0
-  e24 --> a0
-  e3 --> a0
-  e4 --> a0
-  e5 --> a0
-  e6 --> a0
-  e7 --> a0
-  e8 --> a0
-  e9 --> a0
+  X0["밖: §2 The model and the variation…<br/>카드 17장"]
+  X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
+  X2["밖: §3 Calculus on finite trees<br/>카드 7장"]
+  X0 -.->|16| a0
+  a0 -.->|1| X0
+  a0 -.->|1| X1
+  X2 -.->|7| a0
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0 thm;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21,e22,e23,e24 ext;
+  class X0,X1,X2 ext;
   click a0 "cards/upper.bound.html"
-  click e0 "cards/main.theorem.html"
-  click e1 "cards/model.chain.html"
-  click e2 "cards/model.edge.html"
-  click e3 "cards/model.factorization.html"
-  click e4 "cards/model.functional.html"
-  click e5 "cards/model.hamiltonian.html"
-  click e6 "cards/model.integrability.html"
-  click e7 "cards/model.positivity.html"
-  click e8 "cards/model.power-means.html"
-  click e9 "cards/model.site-message.html"
-  click e10 "cards/model.trial-bounds.html"
-  click e11 "cards/model.ve.html"
-  click e12 "cards/model.vs.html"
-  click e13 "cards/x.model-cavity-bounds.html"
-  click e14 "cards/x.model-depth-zero.html"
-  click e15 "cards/x.model-hypotheses.html"
-  click e16 "cards/x.model-message.html"
-  click e17 "cards/x.model-moment-finiteness.html"
-  click e18 "cards/tree.Q-rule.html"
-  click e19 "cards/tree.Y-recursion.html"
-  click e20 "cards/tree.insertion.html"
-  click e21 "cards/tree.log-expansion.html"
-  click e22 "cards/tree.original-tilt.html"
-  click e23 "cards/x.tree-extra-variables.html"
-  click e24 "cards/x.tree-sampling.html"
+  click X0 "map-model.html"
+  click X1 "map-main.html"
+  click X2 "map-trees.html"

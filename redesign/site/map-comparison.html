@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§8 Independent hierarchical messages and the cavity comparison — 지도</h1><p class="stat">이 섹션의 카드 28장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 39장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a></p><pre class="mermaid" data-map="sec-comparison">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§8 Independent hierarchical messages and the cavity comparison — 지도</h1><p class="stat">이 섹션의 카드 28장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 39장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/comp.section.html" title="8 §8 독립 계층 message와 cavity 비교">comp:section</a></p><pre class="mermaid" data-map="sec-comparison">
+flowchart TB
   subgraph IN[&quot;§8 Independent hierarchical messages and t…&quot;]
     a0[&quot;bounded 법칙의 하한: _NF_N_r0_r&lt;br/&gt;comp:bounded-lower&quot;]
     a1[&quot;Recursive law encoding (재귀적 법…&lt;br/&gt;comp:encoding&quot;]
@@ -98,139 +98,47 @@ flowchart LR
     a5[&quot;tree 법칙 평균한 multioverlap 요동이 …&lt;br/&gt;comp:shape-error&quot;]
     a6[&quot;§8의 고정된 선택: , 깊이마다의 선택된 수열, 선…&lt;br/&gt;x:comp-standing&quot;]
   end
-  subgraph X0[&quot;밖: §5&quot;]
-    e0[&quot;깊이 L2, r=L-1, 균등 격자 m_d=d/L (…&lt;br/&gt;cavity:grid&quot;]
-    e1[&quot;Cavity increments (cavity 증분)&lt;br/&gt;cavity:increment&quot;]
-    e2[&quot;하한의 유계·순열 불변 가정 (B() B, h H)&lt;br/&gt;x:cavity-bounded&quot;]
-    e3[&quot;하한의 모든 spin tree는 이 reservoir…&lt;br/&gt;x:cavity-tree-sampling&quot;]
-  end
-  subgraph X1[&quot;밖: §7&quot;]
-    e4[&quot;깊이 평균 A_L,&lt;br/&gt;decor:average-definition&quot;]
-    e5[&quot;모든 multioverlap의 깊이 평균 집중&lt;br/&gt;decor:overlap-concentration&quot;]
-    e6[&quot;-regular 깊이 배정&lt;br/&gt;x:decor-eta-regular&quot;]
-    e7[&quot;선택된 수열과 극한 순서&lt;br/&gt;x:decor-limit-order&quot;]
-    e8[&quot;spin 곱 벡터 A_S, 내적 x y, R_S&lt;br/&gt;x:decor-spin-product&quot;]
-    e9[&quot;topology, 깊이 배정, b(S), 자식 모양&lt;br/&gt;x:decor-topology&quot;]
-  end
-  subgraph X2[&quot;밖: 주정리&quot;]
-    e10[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X3[&quot;밖: §2&quot;]
-    e11[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
-    e12[&quot;edge 분배함수 C_ (2.5)&lt;br/&gt;model:edge&quot;]
-    e13[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e14[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e15[&quot;조건부 power mean T_d (2.10)&lt;br/&gt;model:power-means&quot;]
-    e16[&quot;cavity log-weight U_ (2.6)&lt;br/&gt;model:site-message&quot;]
-    e17[&quot;moment 조건 없는 유한성 (2.12)&lt;br/&gt;model:trial-bounds&quot;]
-    e18[&quot;edge 항 V_ e (2.9)&lt;br/&gt;model:ve&quot;]
-    e19[&quot;site 분배함수 V_ s (2.8)&lt;br/&gt;model:vs&quot;]
-    e20[&quot;r=0 (replica symmetric) 경우: B…&lt;br/&gt;x:model-depth-zero&quot;]
-    e21[&quot;message x 와 q_x site 항과 edge …&lt;br/&gt;x:model-message&quot;]
-  end
-  subgraph X4[&quot;밖: §6&quot;]
-    e22[&quot;Poisson 섭동 factor _=1+t_ g_i+…&lt;br/&gt;pert:factor&quot;]
-    e23[&quot;결정적 매개변수 선택 (Lemma 6.2)&lt;br/&gt;pert:selection&quot;]
-    e24[&quot;F 와 섭동된 증분 _N( u)&lt;br/&gt;x:pert-increment&quot;]
-    e25[&quot;mark specification (깊이별 Radem…&lt;br/&gt;x:pert-mark-specification&quot;]
-    e26[&quot;이후의 N 는 선택된 수열을 따른다&lt;br/&gt;x:pert-selected-limits&quot;]
-  end
-  subgraph X5[&quot;밖: §3&quot;]
-    e27[&quot;tree 법칙 Q_k&lt;br/&gt;tree:Q-rule&quot;]
-    e28[&quot;insertion recursion Y_d 와 바뀐 …&lt;br/&gt;tree:Y-recursion&quot;]
-    e29[&quot;깊이 평균을 Q_k 평균으로 옮기기&lt;br/&gt;tree:averaging-remark&quot;]
-    e30[&quot;Insertion calculus (삽입 미적분)&lt;br/&gt;tree:insertion&quot;]
-    e31[&quot;Logarithmic expansion (log 전개)&lt;br/&gt;tree:log-expansion&quot;]
-    e32[&quot;multioverlap R_S 와 기대값 E 의 약속&lt;br/&gt;tree:multioverlap&quot;]
-    e33[&quot;분배함수에서 만든 tilted kernel&lt;br/&gt;tree:original-tilt&quot;]
-    e34[&quot;Regular shapes (Q_k 아래 예외 깊이의…&lt;br/&gt;tree:regular-shapes&quot;]
-    e35[&quot;원래 모형에 없던 변수를 쓰는 insertion&lt;br/&gt;x:tree-extra-variables&quot;]
-    e36[&quot;path kernel 열, 지수 m_d, prefix…&lt;br/&gt;x:tree-path-kernels&quot;]
-    e37[&quot;tree 하나의 regular shape (§3.4,…&lt;br/&gt;x:tree-regular-shape&quot;]
-    e38[&quot;유한 tree, 표본 기대값 E_ T, split, …&lt;br/&gt;x:tree-sampling&quot;]
-  end
-  a0 --&gt; e10
-  a1 --&gt; a0
-  a1 --&gt; a2
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 11장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
+  X2[&quot;밖: §3 Calculus on finite trees&lt;br/&gt;카드 12장&quot;]
+  X3[&quot;밖: §5 A perturbed cavity reservoir&lt;br/&gt;카드 4장&quot;]
+  X4[&quot;밖: §6 Perturbations and identitie…&lt;br/&gt;카드 5장&quot;]
+  X5[&quot;밖: §7 Decorrelation on prescribed…&lt;br/&gt;카드 6장&quot;]
   a1 --&gt; a4
   a2 --&gt; a0
   a3 --&gt; a0
   a4 --&gt; a2
   a5 --&gt; a2
-  a6 --&gt; a0
   a6 --&gt; a1
-  a6 --&gt; a2
   a6 --&gt; a3
   a6 --&gt; a5
-  e0 --&gt; a0
-  e0 --&gt; a2
-  e0 --&gt; a5
-  e0 --&gt; a6
-  e1 --&gt; a1
-  e1 --&gt; a2
-  e1 --&gt; a3
-  e1 --&gt; a4
-  e11 --&gt; a0
-  e11 --&gt; a1
-  e11 --&gt; a2
-  e12 --&gt; a2
-  e13 --&gt; a0
-  e13 --&gt; a2
-  e14 --&gt; a0
-  e15 --&gt; a2
-  e16 --&gt; a2
-  e17 --&gt; a0
-  e17 --&gt; a2
-  e18 --&gt; a2
-  e19 --&gt; a2
-  e2 --&gt; a0
-  e2 --&gt; a2
-  e2 --&gt; a6
-  e20 --&gt; a0
-  e21 --&gt; a1
-  e22 --&gt; a1
-  e23 --&gt; a1
-  e23 --&gt; a3
-  e23 --&gt; a6
-  e24 --&gt; a3
-  e24 --&gt; a6
-  e25 --&gt; a1
-  e26 --&gt; a0
-  e26 --&gt; a5
-  e26 --&gt; a6
-  e27 --&gt; a2
-  e27 --&gt; a5
-  e28 --&gt; a2
-  e29 --&gt; a5
-  e3 --&gt; a1
-  e3 --&gt; a2
-  e30 --&gt; a2
-  e31 --&gt; a2
-  e31 --&gt; a5
-  e32 --&gt; a1
-  e32 --&gt; a4
-  e32 --&gt; a5
-  e33 --&gt; a1
-  e34 --&gt; a5
-  e35 --&gt; a1
-  e36 --&gt; a1
-  e36 --&gt; a2
-  e37 --&gt; a5
-  e38 --&gt; a1
-  e38 --&gt; a4
-  e38 --&gt; a5
-  e4 --&gt; a5
-  e5 --&gt; a5
-  e6 --&gt; a5
-  e7 --&gt; a5
-  e8 --&gt; a5
-  e9 --&gt; a5
+  X0 -.-&gt;|5| a0
+  a0 -.-&gt;|1| X1
+  X3 -.-&gt;|2| a0
+  X4 -.-&gt;|1| a0
+  X0 -.-&gt;|2| a1
+  X2 -.-&gt;|5| a1
+  X3 -.-&gt;|2| a1
+  X4 -.-&gt;|3| a1
+  X0 -.-&gt;|8| a2
+  X2 -.-&gt;|5| a2
+  X3 -.-&gt;|4| a2
+  X3 -.-&gt;|1| a3
+  X4 -.-&gt;|2| a3
+  X2 -.-&gt;|2| a4
+  X3 -.-&gt;|1| a4
+  X2 -.-&gt;|7| a5
+  X3 -.-&gt;|1| a5
+  X4 -.-&gt;|1| a5
+  X5 -.-&gt;|6| a5
+  X3 -.-&gt;|2| a6
+  X4 -.-&gt;|3| a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a4,a5 thm;
   class a3,a6 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21,e22,e23,e24,e25,e26,e27,e28,e29,e30,e31,e32,e33,e34,e35,e36,e37,e38 ext;
+  class X0,X1,X2,X3,X4,X5 ext;
   click a0 &quot;cards/comp.bounded-lower.html&quot;
   click a1 &quot;cards/comp.encoding.html&quot;
   click a2 &quot;cards/comp.insertion-comparison.html&quot;
@@ -238,46 +146,13 @@ flowchart LR
   click a4 &quot;cards/comp.patterns.html&quot;
   click a5 &quot;cards/comp.shape-error.html&quot;
   click a6 &quot;cards/x.comp-standing.html&quot;
-  click e0 &quot;cards/cavity.grid.html&quot;
-  click e1 &quot;cards/cavity.increment.html&quot;
-  click e2 &quot;cards/x.cavity-bounded.html&quot;
-  click e3 &quot;cards/x.cavity-tree-sampling.html&quot;
-  click e4 &quot;cards/decor.average-definition.html&quot;
-  click e5 &quot;cards/decor.overlap-concentration.html&quot;
-  click e6 &quot;cards/x.decor-eta-regular.html&quot;
-  click e7 &quot;cards/x.decor-limit-order.html&quot;
-  click e8 &quot;cards/x.decor-spin-product.html&quot;
-  click e9 &quot;cards/x.decor-topology.html&quot;
-  click e10 &quot;cards/main.theorem.html&quot;
-  click e11 &quot;cards/model.chain.html&quot;
-  click e12 &quot;cards/model.edge.html&quot;
-  click e13 &quot;cards/model.functional.html&quot;
-  click e14 &quot;cards/model.hamiltonian.html&quot;
-  click e15 &quot;cards/model.power-means.html&quot;
-  click e16 &quot;cards/model.site-message.html&quot;
-  click e17 &quot;cards/model.trial-bounds.html&quot;
-  click e18 &quot;cards/model.ve.html&quot;
-  click e19 &quot;cards/model.vs.html&quot;
-  click e20 &quot;cards/x.model-depth-zero.html&quot;
-  click e21 &quot;cards/x.model-message.html&quot;
-  click e22 &quot;cards/pert.factor.html&quot;
-  click e23 &quot;cards/pert.selection.html&quot;
-  click e24 &quot;cards/x.pert-increment.html&quot;
-  click e25 &quot;cards/x.pert-mark-specification.html&quot;
-  click e26 &quot;cards/x.pert-selected-limits.html&quot;
-  click e27 &quot;cards/tree.Q-rule.html&quot;
-  click e28 &quot;cards/tree.Y-recursion.html&quot;
-  click e29 &quot;cards/tree.averaging-remark.html&quot;
-  click e30 &quot;cards/tree.insertion.html&quot;
-  click e31 &quot;cards/tree.log-expansion.html&quot;
-  click e32 &quot;cards/tree.multioverlap.html&quot;
-  click e33 &quot;cards/tree.original-tilt.html&quot;
-  click e34 &quot;cards/tree.regular-shapes.html&quot;
-  click e35 &quot;cards/x.tree-extra-variables.html&quot;
-  click e36 &quot;cards/x.tree-path-kernels.html&quot;
-  click e37 &quot;cards/x.tree-regular-shape.html&quot;
-  click e38 &quot;cards/x.tree-sampling.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a></td><td>corollary</td><td>bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td></tr><tr><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a></td><td>lemma</td><td>Recursive law encoding (재귀적 법칙 부호화)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a>, <a class="node" href="cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a>, <a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a>, <a class="node" href="cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a></td><td>proposition</td><td>삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a>, <a class="node" href="cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a></td><td>remark</td><td>선택된 수열 위의 낮은 증분 (8.1)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a></td><td>lemma</td><td>Empirical-pattern comparison (경험 pattern 비교)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td><td>proposition</td><td>tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a>, <a class="node" href="cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a>, <a class="node" href="cards/tree.averaging-remark.html" title="Remark 3.7 깊이 평균을 $Q_k$ 평균으로 옮기기">tree:averaging-remark</a>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a>, <a class="node" href="cards/tree.regular-shapes.html" title="Lemma 3.6 Regular shapes ($Q_k$ 아래 예외 깊이의 확률)">tree:regular-shapes</a>, <a class="node" href="cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a>, <a class="node" href="cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a>, <a class="node" href="cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a>, <a class="node" href="cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a>, <a class="node" href="cards/x.tree-regular-shape.html" title="tree 하나의 regular shape (§3.4, $m_d=d/L$)">x:tree-regular-shape</a>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a></td><td>convention</td><td>§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-main.html&quot;
+  click X2 &quot;map-trees.html&quot;
+  click X3 &quot;map-cavity.html&quot;
+  click X4 &quot;map-perturbations.html&quot;
+  click X5 &quot;map-decorrelation.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a></td><td>corollary</td><td>bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span></td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></td></tr><tr><td><a class="node" href="cards/comp.encoding.html" title="Lemma 8.1 Recursive law encoding (재귀적 법칙 부호화)">comp:encoding</a></td><td>lemma</td><td>Recursive law encoding (재귀적 법칙 부호화)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/pert.factor.html" title="(6.2) Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)">pert:factor</a> <span class="stag">§6</span>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a> <span class="stag">§3</span>, <a class="node" href="cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a> <span class="stag">§5</span>, <a class="node" href="cards/x.model-message.html" title="message $x$ 와 $q_x$; site 항과 edge 항의 뜻">x:model-message</a> <span class="stag">§2</span>, <a class="node" href="cards/x.pert-mark-specification.html" title="mark specification (깊이별 Rademacher 좌표와 그 함수 $g$, $g_0$, $S_0$)">x:pert-mark-specification</a> <span class="stag">§6</span>, <a class="node" href="cards/x.tree-extra-variables.html" title="원래 모형에 없던 변수를 쓰는 insertion">x:tree-extra-variables</a> <span class="stag">§3</span>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.insertion-comparison.html" title="Proposition 8.3 삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$">comp:insertion-comparison</a></td><td>proposition</td><td>삽입 logarithm의 비교: $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span>, <a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span>, <a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/model.edge.html" title="(2.5) edge 분배함수 $C_\theta$ (2.5)">model:edge</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span>, <a class="node" href="cards/model.site-message.html" title="(2.6) cavity log-weight $U_\theta$ (2.6)">model:site-message</a> <span class="stag">§2</span>, <a class="node" href="cards/model.trial-bounds.html" title="(2.12) moment 조건 없는 유한성 (2.12)">model:trial-bounds</a> <span class="stag">§2</span>, <a class="node" href="cards/model.ve.html" title="(2.9) edge 항 $V_{\rm e}$ (2.9)">model:ve</a> <span class="stag">§2</span>, <a class="node" href="cards/model.vs.html" title="(2.8) site 분배함수 $V_{\rm s}$ (2.8)">model:vs</a> <span class="stag">§2</span>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span>, <a class="node" href="cards/x.cavity-tree-sampling.html" title="하한의 모든 spin tree는 이 reservoir에서 뽑는다">x:cavity-tree-sampling</a> <span class="stag">§5</span>, <a class="node" href="cards/x.tree-path-kernels.html" title="path kernel 열, 지수 $m_d$, prefix $\sigma$-field">x:tree-path-kernels</a> <span class="stag">§3</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.low-increments.html" title="(8.1) 선택된 수열 위의 낮은 증분 (8.1)">comp:low-increments</a></td><td>remark</td><td>선택된 수열 위의 낮은 증분 (8.1)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a> <span class="stag">§6</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.patterns.html" title="Lemma 8.2 Empirical-pattern comparison (경험 pattern 비교)">comp:patterns</a></td><td>lemma</td><td>Empirical-pattern comparison (경험 pattern 비교)</td><td><a class="node" href="cards/cavity.increment.html" title="Lemma 5.1 Cavity increments (cavity 증분)">cavity:increment</a> <span class="stag">§5</span>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/comp.shape-error.html" title="(8.4) tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)">comp:shape-error</a></td><td>proposition</td><td>tree 법칙 평균한 multioverlap 요동이 사라진다 (shape error)</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span>, <a class="node" href="cards/decor.average-definition.html" title="(7.1) 깊이 평균 $\mathcal A_{L,\eta}$">decor:average-definition</a> <span class="stag">§7</span>, <a class="node" href="cards/decor.overlap-concentration.html" title="Theorem 7.1 모든 multioverlap의 깊이 평균 집중">decor:overlap-concentration</a> <span class="stag">§7</span>, <a class="node" href="cards/tree.Q-rule.html" title="(3.8) tree 법칙 $Q_k$">tree:Q-rule</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.averaging-remark.html" title="Remark 3.7 깊이 평균을 $Q_k$ 평균으로 옮기기">tree:averaging-remark</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.log-expansion.html" title="Lemma 3.2 Logarithmic expansion (log 전개)">tree:log-expansion</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.multioverlap.html" title="(3.1) multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속">tree:multioverlap</a> <span class="stag">§3</span>, <a class="node" href="cards/tree.regular-shapes.html" title="Lemma 3.6 Regular shapes ($Q_k$ 아래 예외 깊이의 확률)">tree:regular-shapes</a> <span class="stag">§3</span>, <a class="node" href="cards/x.decor-eta-regular.html" title="$\eta$-regular 깊이 배정">x:decor-eta-regular</a> <span class="stag">§7</span>, <a class="node" href="cards/x.decor-limit-order.html" title="선택된 수열과 극한 순서">x:decor-limit-order</a> <span class="stag">§7</span>, <a class="node" href="cards/x.decor-spin-product.html" title="spin 곱 벡터 $A_S$, 내적 $x\cdot y$, $R_S$">x:decor-spin-product</a> <span class="stag">§7</span>, <a class="node" href="cards/x.decor-topology.html" title="topology, 깊이 배정, $b(S)$, 자식 모양">x:decor-topology</a> <span class="stag">§7</span>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span>, <a class="node" href="cards/x.tree-regular-shape.html" title="tree 하나의 regular shape (§3.4, $m_d=d/L$)">x:tree-regular-shape</a> <span class="stag">§3</span>, <a class="node" href="cards/x.tree-sampling.html" title="유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성">x:tree-sampling</a> <span class="stag">§3</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.comp-standing.html" title="§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$">x:comp-standing</a></td><td>convention</td><td>§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열, 선택 전의 $\underline F$</td><td><a class="node" href="cards/cavity.grid.html" title="(5.1) 깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)">cavity:grid</a> <span class="stag">§5</span>, <a class="node" href="cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span>, <a class="node" href="cards/x.cavity-bounded.html" title="하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)">x:cavity-bounded</a> <span class="stag">§5</span>, <a class="node" href="cards/x.pert-increment.html" title="$\underline F$ 와 섭동된 증분 $\Delta_N(\mathbf u)$">x:pert-increment</a> <span class="stag">§6</span>, <a class="node" href="cards/x.pert-selected-limits.html" title="이후의 $N\to\infty$ 는 선택된 수열을 따른다">x:pert-selected-limits</a> <span class="stag">§6</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

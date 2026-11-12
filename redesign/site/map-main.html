@@ -87,75 +87,37 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>주정리 — 지도</h1><p class="stat">이 섹션의 카드 5장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 15장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></p><pre class="mermaid" data-map="sec-main">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>주정리 — 지도</h1><p class="stat">이 섹션의 카드 5장 가운데 증명 단계를 뺀 1장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 15장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></p><pre class="mermaid" data-map="sec-main">
+flowchart TB
   subgraph IN[&quot;주정리&quot;]
     a0[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
   end
-  subgraph X0[&quot;밖: §8&quot;]
-    e0[&quot;bounded 법칙의 하한: _NF_N_r0_r&lt;br/&gt;comp:bounded-lower&quot;]
-  end
-  subgraph X1[&quot;밖: §10&quot;]
-    e1[&quot;영온도 변분 극한 (Corollary 10.3, 식 …&lt;br/&gt;models:ground&quot;]
-    e2[&quot;soft random 짝수 K-SAT (Corolla…&lt;br/&gt;models:sat&quot;]
-    e3[&quot;Viana–Bray와 희석 짝수 p-spin 모형 (…&lt;br/&gt;models:spin&quot;]
-  end
-  subgraph X2[&quot;밖: §2&quot;]
-    e4[&quot;factor weight 전개 (2.3)&lt;br/&gt;model:factorization&quot;]
-    e5[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e6[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e7[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
-    e8[&quot;부호 조건 (2.4)&lt;br/&gt;model:positivity&quot;]
-    e9[&quot;r=0 (replica symmetric) 경우: B…&lt;br/&gt;x:model-depth-zero&quot;]
-    e10[&quot;주정리의 가정 묶음&lt;br/&gt;x:model-hypotheses&quot;]
-    e11[&quot;주정리가 말하지 않는 것&lt;br/&gt;x:model-theorem-scope&quot;]
-  end
-  subgraph X3[&quot;밖: §2.2&quot;]
-    e12[&quot;전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…&lt;br/&gt;x:overview-closing&quot;]
-  end
-  subgraph X4[&quot;밖: §9&quot;]
-    e13[&quot;Stability (L^1 안정성과 상수 이동)&lt;br/&gt;reduction:stability&quot;]
-  end
-  subgraph X5[&quot;밖: §4&quot;]
-    e14[&quot;interpolation 상한 F_N B_r(, m)&lt;br/&gt;upper:bound&quot;]
-  end
-  a0 --&gt; e1
-  a0 --&gt; e11
-  a0 --&gt; e12
-  a0 --&gt; e2
-  a0 --&gt; e3
-  e0 --&gt; a0
-  e10 --&gt; a0
-  e13 --&gt; a0
-  e14 --&gt; a0
-  e4 --&gt; a0
-  e5 --&gt; a0
-  e6 --&gt; a0
-  e7 --&gt; a0
-  e8 --&gt; a0
-  e9 --&gt; a0
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 8장&quot;]
+  X1[&quot;밖: §2.2 Proof strategy&lt;br/&gt;카드 1장&quot;]
+  X2[&quot;밖: §4 The interpolation upper bou…&lt;br/&gt;카드 1장&quot;]
+  X3[&quot;밖: §8 Independent hierarchical me…&lt;br/&gt;카드 1장&quot;]
+  X4[&quot;밖: §9 Normalization, truncation, …&lt;br/&gt;카드 1장&quot;]
+  X5[&quot;밖: §10 Named models and the zero-t…&lt;br/&gt;카드 3장&quot;]
+  X0 -.-&gt;|7| a0
+  a0 -.-&gt;|1| X0
+  a0 -.-&gt;|1| X1
+  X2 -.-&gt;|1| a0
+  X3 -.-&gt;|1| a0
+  X4 -.-&gt;|1| a0
+  a0 -.-&gt;|3| X5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0 thm;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14 ext;
+  class X0,X1,X2,X3,X4,X5 ext;
   click a0 &quot;cards/main.theorem.html&quot;
-  click e0 &quot;cards/comp.bounded-lower.html&quot;
-  click e1 &quot;cards/models.ground.html&quot;
-  click e2 &quot;cards/models.sat.html&quot;
-  click e3 &quot;cards/models.spin.html&quot;
-  click e4 &quot;cards/model.factorization.html&quot;
-  click e5 &quot;cards/model.functional.html&quot;
-  click e6 &quot;cards/model.hamiltonian.html&quot;
-  click e7 &quot;cards/model.integrability.html&quot;
-  click e8 &quot;cards/model.positivity.html&quot;
-  click e9 &quot;cards/x.model-depth-zero.html&quot;
-  click e10 &quot;cards/x.model-hypotheses.html&quot;
-  click e11 &quot;cards/x.model-theorem-scope.html&quot;
-  click e12 &quot;cards/x.overview-closing.html&quot;
-  click e13 &quot;cards/reduction.stability.html&quot;
-  click e14 &quot;cards/upper.bound.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td><td>theorem</td><td>주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$</td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a></td><td><a class="node" href="cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, <a class="node" href="cards/x.model-theorem-scope.html" title="주정리가 말하지 않는 것">x:model-theorem-scope</a>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-overview.html&quot;
+  click X2 &quot;map-upper.html&quot;
+  click X3 &quot;map-comparison.html&quot;
+  click X4 &quot;map-reduction.html&quot;
+  click X5 &quot;map-consequences.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td><td>theorem</td><td>주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$</td><td><a class="node" href="cards/comp.bounded-lower.html" title="Corollary 8.4 bounded 법칙의 하한: $\liminf_NF_N\ge\inf_{r\ge0}\Phi_r$">comp:bounded-lower</a> <span class="stag">§8</span>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span>, <a class="node" href="cards/reduction.stability.html" title="Lemma 9.1 Stability ($L^1$ 안정성과 상수 이동)">reduction:stability</a> <span class="stag">§9</span>, <a class="node" href="cards/upper.bound.html" title="Proposition 4.1 interpolation 상한 $F_N\le\mathcal B_r(\zeta,\mathbf m)$">upper:bound</a> <span class="stag">§4</span>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a> <span class="stag">§2</span></td><td><a class="node" href="cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a> <span class="stag">§10</span>, <a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span>, <a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span>, <a class="node" href="cards/x.model-theorem-scope.html" title="주정리가 말하지 않는 것">x:model-theorem-scope</a> <span class="stag">§2</span>, <a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a> <span class="stag">§2.2</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

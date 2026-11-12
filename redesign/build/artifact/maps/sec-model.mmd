@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§2 The model and the variational principle"]
     a0["시행 법칙: M_j, M_r+1, m, label별 …<br/>model:chain"]
     a1["edge 분배함수 C_ (2.5)<br/>model:edge"]
@@ -21,183 +21,112 @@ flowchart LR
     a18["주정리가 말하지 않는 것<br/>x:model-theorem-scope"]
     a19["power mean의 단조성과 root-가측 인자에 …<br/>x:reduction-power-mean-scaling"]
   end
-  subgraph X0["밖: §5"]
-    e0["Poisson 섭동 factor 족과 한계 1/2_3…<br/>cavity:factor-bounds"]
-    e1["Cavity increments (cavity 증분)<br/>cavity:increment"]
-    e2["섭동의 비용 P_N^L, u-NF_N(2)s_N (5…<br/>cavity:negligible"]
-    e3["하한의 유계·순열 불변 가정 (B() B, h H)<br/>x:cavity-bounded"]
-    e4["섭동된 계의 기대 root logarithm P_N^…<br/>x:cavity-root-logarithm"]
-  end
-  subgraph X1["밖: §8"]
-    e5["bounded 법칙의 하한: _NF_N_r0_r<br/>comp:bounded-lower"]
-    e6["Recursive law encoding (재귀적 법…<br/>comp:encoding"]
-    e7["삽입 logarithm의 비교: _N B_L-1(_L…<br/>comp:insertion-comparison"]
-  end
-  subgraph X2["밖: §10"]
-    e8["soft random 짝수 K-SAT (Corolla…<br/>models:sat"]
-    e9["Viana–Bray와 희석 짝수 p-spin 모형 (…<br/>models:spin"]
-    e10["짝수 체수 가정은 random 3-SAT을 제외한다 …<br/>x:cons-3sat-remark"]
-    e11["를 뗀 에너지 점수 E_N 과 B_r,<br/>x:cons-energy-score"]
-    e12["명명 모형도 Poisson 개수와 복원추출을 유지한다<br/>x:cons-standard-examples"]
-  end
-  subgraph X3["밖: 주정리"]
-    e13["주정리: _NF_N=_r0_r<br/>main:theorem"]
-  end
-  subgraph X4["밖: §2.2"]
-    e14["전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…<br/>x:overview-closing"]
-    e15["전략 1단계: cavity reservoir 고르기<br/>x:overview-step1"]
-    e16["전략 4단계: 독립 cavity message 되찾기<br/>x:overview-step4"]
-    e17["전략: 상한은 모든 크기·모든 유한 깊이에서<br/>x:overview-upper"]
-  end
-  subgraph X5["밖: §6"]
-    e18["F 와 섭동된 증분 _N( u)<br/>x:pert-increment"]
-  end
-  subgraph X6["밖: §9"]
-    e19["Stability (L^1 안정성과 상수 이동)<br/>reduction:stability"]
-  end
-  subgraph X7["밖: §3"]
-    e20["path kernel 열, 지수 m_d, prefix…<br/>x:tree-path-kernels"]
-  end
-  subgraph X8["밖: §4"]
-    e21["interpolation 상한 F_N B_r(, m)<br/>upper:bound"]
-  end
+  X0["밖: §2.2 Proof strategy<br/>카드 4장"]
+  X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
+  X2["밖: §3 Calculus on finite trees<br/>카드 1장"]
+  X3["밖: §4 The interpolation upper bou…<br/>카드 1장"]
+  X4["밖: §5 A perturbed cavity reservoir<br/>카드 5장"]
+  X5["밖: §6 Perturbations and identitie…<br/>카드 1장"]
+  X6["밖: §8 Independent hierarchical me…<br/>카드 3장"]
+  X7["밖: §9 Normalization, truncation, …<br/>카드 1장"]
+  X8["밖: §10 Named models and the zero-t…<br/>카드 5장"]
   a0 --> a10
   a0 --> a11
-  a0 --> a13
-  a0 --> a19
-  a0 --> a7
-  a0 --> e16
-  a0 --> e19
-  a0 --> e20
-  a0 --> e21
-  a0 --> e5
-  a0 --> e6
-  a0 --> e7
   a1 --> a10
   a1 --> a12
-  a1 --> e19
-  a1 --> e21
-  a1 --> e7
-  a10 --> a13
-  a10 --> a3
+  a2 --> a6
+  a2 --> a15
+  a3 --> a13
+  a4 --> a0
+  a4 --> a14
+  a5 --> a1
+  a5 --> a2
+  a5 --> a4
+  a5 --> a8
+  a6 --> a14
+  a6 --> a17
+  a7 --> a3
+  a8 --> a11
+  a8 --> a12
+  a9 --> a19
   a10 --> a7
-  a10 --> e19
-  a10 --> e21
-  a10 --> e7
-  a11 --> a13
-  a11 --> a3
   a11 --> a7
-  a11 --> e19
-  a11 --> e21
-  a11 --> e7
   a12 --> a9
-  a12 --> e21
-  a13 --> a19
   a13 --> a9
-  a13 --> e11
-  a13 --> e13
-  a13 --> e19
-  a13 --> e21
-  a13 --> e5
-  a14 --> e13
-  a14 --> e21
-  a14 --> e8
-  a14 --> e9
   a16 --> a0
   a16 --> a1
   a16 --> a8
-  a16 --> e21
-  a16 --> e6
-  a19 --> e19
-  a2 --> a14
-  a2 --> a15
-  a2 --> a17
-  a2 --> a6
-  a2 --> e12
-  a2 --> e13
-  a2 --> e14
-  a2 --> e17
-  a2 --> e21
-  a2 --> e8
-  a2 --> e9
-  a3 --> a13
-  a3 --> a9
-  a3 --> e10
-  a3 --> e11
-  a3 --> e13
-  a3 --> e16
-  a3 --> e17
-  a3 --> e19
-  a3 --> e21
-  a3 --> e5
-  a3 --> e7
-  a3 --> e8
-  a3 --> e9
-  a4 --> a0
-  a4 --> a14
-  a4 --> e0
-  a4 --> e1
-  a4 --> e11
-  a4 --> e12
-  a4 --> e13
-  a4 --> e15
-  a4 --> e17
-  a4 --> e18
-  a4 --> e19
-  a4 --> e2
-  a4 --> e21
-  a4 --> e3
-  a4 --> e4
-  a4 --> e5
-  a4 --> e8
-  a4 --> e9
-  a5 --> a1
-  a5 --> a10
-  a5 --> a12
-  a5 --> a14
-  a5 --> a2
-  a5 --> a3
-  a5 --> a4
-  a5 --> a8
-  a5 --> a9
-  a5 --> e13
-  a5 --> e14
-  a5 --> e19
-  a5 --> e21
-  a5 --> e3
-  a5 --> e8
-  a5 --> e9
-  a6 --> a14
-  a6 --> a17
-  a6 --> e13
-  a6 --> e14
-  a6 --> e21
-  a6 --> e8
-  a6 --> e9
-  a7 --> a19
-  a7 --> a3
-  a7 --> a9
-  a7 --> e15
-  a7 --> e19
-  a7 --> e21
-  a7 --> e7
-  a8 --> a11
-  a8 --> a12
-  a8 --> e19
-  a8 --> e21
-  a8 --> e7
-  a9 --> a19
-  a9 --> e19
-  a9 --> e21
-  a9 --> e5
-  a9 --> e7
-  e13 --> a18
-  e21 --> a17
+  a0 -.->|1| X0
+  a0 -.->|1| X2
+  a0 -.->|1| X3
+  a0 -.->|3| X6
+  a0 -.->|1| X7
+  a1 -.->|1| X3
+  a1 -.->|1| X6
+  a1 -.->|1| X7
+  a10 -.->|1| X3
+  a10 -.->|1| X6
+  a10 -.->|1| X7
+  a11 -.->|1| X3
+  a11 -.->|1| X6
+  a11 -.->|1| X7
+  a12 -.->|1| X3
+  a13 -.->|1| X1
+  a13 -.->|1| X3
+  a13 -.->|1| X6
+  a13 -.->|1| X7
+  a13 -.->|1| X8
+  a14 -.->|1| X1
+  a14 -.->|1| X3
+  a14 -.->|2| X8
+  a16 -.->|1| X3
+  a16 -.->|1| X6
+  X3 -.->|1| a17
+  X1 -.->|1| a18
+  a19 -.->|1| X7
+  a2 -.->|2| X0
+  a2 -.->|1| X1
+  a2 -.->|1| X3
+  a2 -.->|3| X8
+  a3 -.->|2| X0
+  a3 -.->|1| X1
+  a3 -.->|1| X3
+  a3 -.->|2| X6
+  a3 -.->|1| X7
+  a3 -.->|4| X8
+  a4 -.->|2| X0
+  a4 -.->|1| X1
+  a4 -.->|1| X3
+  a4 -.->|5| X4
+  a4 -.->|1| X5
+  a4 -.->|1| X6
+  a4 -.->|1| X7
+  a4 -.->|4| X8
+  a5 -.->|1| X0
+  a5 -.->|1| X1
+  a5 -.->|1| X3
+  a5 -.->|1| X4
+  a5 -.->|1| X7
+  a5 -.->|2| X8
+  a6 -.->|1| X0
+  a6 -.->|1| X1
+  a6 -.->|1| X3
+  a6 -.->|2| X8
+  a7 -.->|1| X0
+  a7 -.->|1| X3
+  a7 -.->|1| X6
+  a7 -.->|1| X7
+  a8 -.->|1| X3
+  a8 -.->|1| X6
+  a8 -.->|1| X7
+  a9 -.->|1| X3
+  a9 -.->|2| X6
+  a9 -.->|1| X7
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21 ext;
+  class X0,X1,X2,X3,X4,X5,X6,X7,X8 ext;
   click a0 "cards/model.chain.html"
   click a1 "cards/model.edge.html"
   click a2 "cards/model.factorization.html"
@@ -218,25 +147,12 @@ flowchart LR
   click a17 "cards/x.model-moment-finiteness.html"
   click a18 "cards/x.model-theorem-scope.html"
   click a19 "cards/x.reduction-power-mean-scaling.html"
-  click e0 "cards/cavity.factor-bounds.html"
-  click e1 "cards/cavity.increment.html"
-  click e2 "cards/cavity.negligible.html"
-  click e3 "cards/x.cavity-bounded.html"
-  click e4 "cards/x.cavity-root-logarithm.html"
-  click e5 "cards/comp.bounded-lower.html"
-  click e6 "cards/comp.encoding.html"
-  click e7 "cards/comp.insertion-comparison.html"
-  click e8 "cards/models.sat.html"
-  click e9 "cards/models.spin.html"
-  click e10 "cards/x.cons-3sat-remark.html"
-  click e11 "cards/x.cons-energy-score.html"
-  click e12 "cards/x.cons-standard-examples.html"
-  click e13 "cards/main.theorem.html"
-  click e14 "cards/x.overview-closing.html"
-  click e15 "cards/x.overview-step1.html"
-  click e16 "cards/x.overview-step4.html"
-  click e17 "cards/x.overview-upper.html"
-  click e18 "cards/x.pert-increment.html"
-  click e19 "cards/reduction.stability.html"
-  click e20 "cards/x.tree-path-kernels.html"
-  click e21 "cards/upper.bound.html"
+  click X0 "map-overview.html"
+  click X1 "map-main.html"
+  click X2 "map-trees.html"
+  click X3 "map-upper.html"
+  click X4 "map-cavity.html"
+  click X5 "map-perturbations.html"
+  click X6 "map-comparison.html"
+  click X7 "map-reduction.html"
+  click X8 "map-consequences.html"

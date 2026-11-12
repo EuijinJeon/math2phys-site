@@ -1,4 +1,4 @@
-flowchart LR
+flowchart TB
   subgraph IN["§8 Independent hierarchical messages and t…"]
     a0["bounded 법칙의 하한: _NF_N_r0_r<br/>comp:bounded-lower"]
     a1["Recursive law encoding (재귀적 법…<br/>comp:encoding"]
@@ -8,139 +8,47 @@ flowchart LR
     a5["tree 법칙 평균한 multioverlap 요동이 …<br/>comp:shape-error"]
     a6["§8의 고정된 선택: , 깊이마다의 선택된 수열, 선…<br/>x:comp-standing"]
   end
-  subgraph X0["밖: §5"]
-    e0["깊이 L2, r=L-1, 균등 격자 m_d=d/L (…<br/>cavity:grid"]
-    e1["Cavity increments (cavity 증분)<br/>cavity:increment"]
-    e2["하한의 유계·순열 불변 가정 (B() B, h H)<br/>x:cavity-bounded"]
-    e3["하한의 모든 spin tree는 이 reservoir…<br/>x:cavity-tree-sampling"]
-  end
-  subgraph X1["밖: §7"]
-    e4["깊이 평균 A_L,<br/>decor:average-definition"]
-    e5["모든 multioverlap의 깊이 평균 집중<br/>decor:overlap-concentration"]
-    e6["-regular 깊이 배정<br/>x:decor-eta-regular"]
-    e7["선택된 수열과 극한 순서<br/>x:decor-limit-order"]
-    e8["spin 곱 벡터 A_S, 내적 x y, R_S<br/>x:decor-spin-product"]
-    e9["topology, 깊이 배정, b(S), 자식 모양<br/>x:decor-topology"]
-  end
-  subgraph X2["밖: 주정리"]
-    e10["주정리: _NF_N=_r0_r<br/>main:theorem"]
-  end
-  subgraph X3["밖: §2"]
-    e11["시행 법칙: M_j, M_r+1, m, label별 …<br/>model:chain"]
-    e12["edge 분배함수 C_ (2.5)<br/>model:edge"]
-    e13["시행 functional B_r 와 변분값 _r (2…<br/>model:functional"]
-    e14["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
-    e15["조건부 power mean T_d (2.10)<br/>model:power-means"]
-    e16["cavity log-weight U_ (2.6)<br/>model:site-message"]
-    e17["moment 조건 없는 유한성 (2.12)<br/>model:trial-bounds"]
-    e18["edge 항 V_ e (2.9)<br/>model:ve"]
-    e19["site 분배함수 V_ s (2.8)<br/>model:vs"]
-    e20["r=0 (replica symmetric) 경우: B…<br/>x:model-depth-zero"]
-    e21["message x 와 q_x site 항과 edge …<br/>x:model-message"]
-  end
-  subgraph X4["밖: §6"]
-    e22["Poisson 섭동 factor _=1+t_ g_i+…<br/>pert:factor"]
-    e23["결정적 매개변수 선택 (Lemma 6.2)<br/>pert:selection"]
-    e24["F 와 섭동된 증분 _N( u)<br/>x:pert-increment"]
-    e25["mark specification (깊이별 Radem…<br/>x:pert-mark-specification"]
-    e26["이후의 N 는 선택된 수열을 따른다<br/>x:pert-selected-limits"]
-  end
-  subgraph X5["밖: §3"]
-    e27["tree 법칙 Q_k<br/>tree:Q-rule"]
-    e28["insertion recursion Y_d 와 바뀐 …<br/>tree:Y-recursion"]
-    e29["깊이 평균을 Q_k 평균으로 옮기기<br/>tree:averaging-remark"]
-    e30["Insertion calculus (삽입 미적분)<br/>tree:insertion"]
-    e31["Logarithmic expansion (log 전개)<br/>tree:log-expansion"]
-    e32["multioverlap R_S 와 기대값 E 의 약속<br/>tree:multioverlap"]
-    e33["분배함수에서 만든 tilted kernel<br/>tree:original-tilt"]
-    e34["Regular shapes (Q_k 아래 예외 깊이의…<br/>tree:regular-shapes"]
-    e35["원래 모형에 없던 변수를 쓰는 insertion<br/>x:tree-extra-variables"]
-    e36["path kernel 열, 지수 m_d, prefix…<br/>x:tree-path-kernels"]
-    e37["tree 하나의 regular shape (§3.4,…<br/>x:tree-regular-shape"]
-    e38["유한 tree, 표본 기대값 E_ T, split, …<br/>x:tree-sampling"]
-  end
-  a0 --> e10
-  a1 --> a0
-  a1 --> a2
+  X0["밖: §2 The model and the variation…<br/>카드 11장"]
+  X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
+  X2["밖: §3 Calculus on finite trees<br/>카드 12장"]
+  X3["밖: §5 A perturbed cavity reservoir<br/>카드 4장"]
+  X4["밖: §6 Perturbations and identitie…<br/>카드 5장"]
+  X5["밖: §7 Decorrelation on prescribed…<br/>카드 6장"]
   a1 --> a4
   a2 --> a0
   a3 --> a0
   a4 --> a2
   a5 --> a2
-  a6 --> a0
   a6 --> a1
-  a6 --> a2
   a6 --> a3
   a6 --> a5
-  e0 --> a0
-  e0 --> a2
-  e0 --> a5
-  e0 --> a6
-  e1 --> a1
-  e1 --> a2
-  e1 --> a3
-  e1 --> a4
-  e11 --> a0
-  e11 --> a1
-  e11 --> a2
-  e12 --> a2
-  e13 --> a0
-  e13 --> a2
-  e14 --> a0
-  e15 --> a2
-  e16 --> a2
-  e17 --> a0
-  e17 --> a2
-  e18 --> a2
-  e19 --> a2
-  e2 --> a0
-  e2 --> a2
-  e2 --> a6
-  e20 --> a0
-  e21 --> a1
-  e22 --> a1
-  e23 --> a1
-  e23 --> a3
-  e23 --> a6
-  e24 --> a3
-  e24 --> a6
-  e25 --> a1
-  e26 --> a0
-  e26 --> a5
-  e26 --> a6
-  e27 --> a2
-  e27 --> a5
-  e28 --> a2
-  e29 --> a5
-  e3 --> a1
-  e3 --> a2
-  e30 --> a2
-  e31 --> a2
-  e31 --> a5
-  e32 --> a1
-  e32 --> a4
-  e32 --> a5
-  e33 --> a1
-  e34 --> a5
-  e35 --> a1
-  e36 --> a1
-  e36 --> a2
-  e37 --> a5
-  e38 --> a1
-  e38 --> a4
-  e38 --> a5
-  e4 --> a5
-  e5 --> a5
-  e6 --> a5
-  e7 --> a5
-  e8 --> a5
-  e9 --> a5
+  X0 -.->|5| a0
+  a0 -.->|1| X1
+  X3 -.->|2| a0
+  X4 -.->|1| a0
+  X0 -.->|2| a1
+  X2 -.->|5| a1
+  X3 -.->|2| a1
+  X4 -.->|3| a1
+  X0 -.->|8| a2
+  X2 -.->|5| a2
+  X3 -.->|4| a2
+  X3 -.->|1| a3
+  X4 -.->|2| a3
+  X2 -.->|2| a4
+  X3 -.->|1| a4
+  X2 -.->|7| a5
+  X3 -.->|1| a5
+  X4 -.->|1| a5
+  X5 -.->|6| a5
+  X3 -.->|2| a6
+  X4 -.->|3| a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a4,a5 thm;
   class a3,a6 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21,e22,e23,e24,e25,e26,e27,e28,e29,e30,e31,e32,e33,e34,e35,e36,e37,e38 ext;
+  class X0,X1,X2,X3,X4,X5 ext;
   click a0 "cards/comp.bounded-lower.html"
   click a1 "cards/comp.encoding.html"
   click a2 "cards/comp.insertion-comparison.html"
@@ -148,42 +56,9 @@ flowchart LR
   click a4 "cards/comp.patterns.html"
   click a5 "cards/comp.shape-error.html"
   click a6 "cards/x.comp-standing.html"
-  click e0 "cards/cavity.grid.html"
-  click e1 "cards/cavity.increment.html"
-  click e2 "cards/x.cavity-bounded.html"
-  click e3 "cards/x.cavity-tree-sampling.html"
-  click e4 "cards/decor.average-definition.html"
-  click e5 "cards/decor.overlap-concentration.html"
-  click e6 "cards/x.decor-eta-regular.html"
-  click e7 "cards/x.decor-limit-order.html"
-  click e8 "cards/x.decor-spin-product.html"
-  click e9 "cards/x.decor-topology.html"
-  click e10 "cards/main.theorem.html"
-  click e11 "cards/model.chain.html"
-  click e12 "cards/model.edge.html"
-  click e13 "cards/model.functional.html"
-  click e14 "cards/model.hamiltonian.html"
-  click e15 "cards/model.power-means.html"
-  click e16 "cards/model.site-message.html"
-  click e17 "cards/model.trial-bounds.html"
-  click e18 "cards/model.ve.html"
-  click e19 "cards/model.vs.html"
-  click e20 "cards/x.model-depth-zero.html"
-  click e21 "cards/x.model-message.html"
-  click e22 "cards/pert.factor.html"
-  click e23 "cards/pert.selection.html"
-  click e24 "cards/x.pert-increment.html"
-  click e25 "cards/x.pert-mark-specification.html"
-  click e26 "cards/x.pert-selected-limits.html"
-  click e27 "cards/tree.Q-rule.html"
-  click e28 "cards/tree.Y-recursion.html"
-  click e29 "cards/tree.averaging-remark.html"
-  click e30 "cards/tree.insertion.html"
-  click e31 "cards/tree.log-expansion.html"
-  click e32 "cards/tree.multioverlap.html"
-  click e33 "cards/tree.original-tilt.html"
-  click e34 "cards/tree.regular-shapes.html"
-  click e35 "cards/x.tree-extra-variables.html"
-  click e36 "cards/x.tree-path-kernels.html"
-  click e37 "cards/x.tree-regular-shape.html"
-  click e38 "cards/x.tree-sampling.html"
+  click X0 "map-model.html"
+  click X1 "map-main.html"
+  click X2 "map-trees.html"
+  click X3 "map-cavity.html"
+  click X4 "map-perturbations.html"
+  click X5 "map-decorrelation.html"

@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§10 Named models and the zero-temperature limit — 지도</h1><p class="stat">이 섹션의 카드 18장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 8장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a></p><pre class="mermaid" data-map="sec-consequences">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§10 Named models and the zero-temperature limit — 지도</h1><p class="stat">이 섹션의 카드 18장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 8장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a></p><pre class="mermaid" data-map="sec-consequences">
+flowchart TB
   subgraph IN[&quot;§10 Named models and the zero-temperature l…&quot;]
     a0[&quot;영온도 변분 극한 (Corollary 10.3, 식 …&lt;br/&gt;models:ground&quot;]
     a1[&quot;soft random 짝수 K-SAT (Corolla…&lt;br/&gt;models:sat&quot;]
@@ -98,55 +98,29 @@ flowchart LR
     a5[&quot;영온도 공식이 요구하지 않는 것&lt;br/&gt;x:cons-ground-scope&quot;]
     a6[&quot;명명 모형도 Poisson 개수와 복원추출을 유지한다&lt;br/&gt;x:cons-standard-examples&quot;]
   end
-  subgraph X0[&quot;밖: 주정리&quot;]
-    e0[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X1[&quot;밖: §2&quot;]
-    e1[&quot;factor weight 전개 (2.3)&lt;br/&gt;model:factorization&quot;]
-    e2[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e3[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e4[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
-    e5[&quot;부호 조건 (2.4)&lt;br/&gt;model:positivity&quot;]
-    e6[&quot;r=0 (replica symmetric) 경우: B…&lt;br/&gt;x:model-depth-zero&quot;]
-    e7[&quot;주정리의 가정 묶음&lt;br/&gt;x:model-hypotheses&quot;]
-  end
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 7장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
   a0 --&gt; a5
-  a1 --&gt; a0
   a1 --&gt; a3
   a1 --&gt; a4
-  a2 --&gt; a0
   a2 --&gt; a4
   a4 --&gt; a0
   a6 --&gt; a1
   a6 --&gt; a2
-  a6 --&gt; a4
-  e0 --&gt; a0
-  e0 --&gt; a1
-  e0 --&gt; a2
-  e1 --&gt; a1
-  e1 --&gt; a2
-  e1 --&gt; a6
-  e2 --&gt; a1
-  e2 --&gt; a2
-  e2 --&gt; a3
-  e2 --&gt; a4
-  e3 --&gt; a1
-  e3 --&gt; a2
-  e3 --&gt; a4
-  e3 --&gt; a6
-  e4 --&gt; a1
-  e4 --&gt; a2
-  e5 --&gt; a1
-  e5 --&gt; a2
-  e6 --&gt; a4
-  e7 --&gt; a1
-  e7 --&gt; a2
+  X1 -.-&gt;|1| a0
+  X0 -.-&gt;|6| a1
+  X1 -.-&gt;|1| a1
+  X0 -.-&gt;|6| a2
+  X1 -.-&gt;|1| a2
+  X0 -.-&gt;|1| a3
+  X0 -.-&gt;|3| a4
+  X0 -.-&gt;|2| a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2 thm;
   class a3,a4,a5,a6 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7 ext;
+  class X0,X1 ext;
   click a0 &quot;cards/models.ground.html&quot;
   click a1 &quot;cards/models.sat.html&quot;
   click a2 &quot;cards/models.spin.html&quot;
@@ -154,15 +128,9 @@ flowchart LR
   click a4 &quot;cards/x.cons-energy-score.html&quot;
   click a5 &quot;cards/x.cons-ground-scope.html&quot;
   click a6 &quot;cards/x.cons-standard-examples.html&quot;
-  click e0 &quot;cards/main.theorem.html&quot;
-  click e1 &quot;cards/model.factorization.html&quot;
-  click e2 &quot;cards/model.functional.html&quot;
-  click e3 &quot;cards/model.hamiltonian.html&quot;
-  click e4 &quot;cards/model.integrability.html&quot;
-  click e5 &quot;cards/model.positivity.html&quot;
-  click e6 &quot;cards/x.model-depth-zero.html&quot;
-  click e7 &quot;cards/x.model-hypotheses.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a></td><td>corollary</td><td>영온도 변분 극한 (Corollary 10.3, 식 (10.1))</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a></td><td>corollary</td><td>soft random 짝수 $K$-SAT (Corollary 10.2)</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a></td><td>corollary</td><td>Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-3sat-remark.html" title="짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)">x:cons-3sat-remark</a></td><td>remark</td><td>짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)</td><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a></td><td>definition</td><td>$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$</td><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-ground-scope.html" title="영온도 공식이 요구하지 않는 것">x:cons-ground-scope</a></td><td>remark</td><td>영온도 공식이 요구하지 않는 것</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a></td><td>convention</td><td>명명 모형도 Poisson 개수와 복원추출을 유지한다</td><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-main.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/models.ground.html" title="Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))">models:ground</a></td><td>corollary</td><td>영온도 변분 극한 (Corollary 10.3, 식 (10.1))</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a></td><td>corollary</td><td>soft random 짝수 $K$-SAT (Corollary 10.2)</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a></td><td>corollary</td><td>Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-hypotheses.html" title="주정리의 가정 묶음">x:model-hypotheses</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-3sat-remark.html" title="짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)">x:cons-3sat-remark</a></td><td>remark</td><td>짝수 체수 가정은 random 3-SAT을 제외한다 (Remark 10.4)</td><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a></td><td>definition</td><td>$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$</td><td><a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/x.model-depth-zero.html" title="$r=0$ (replica symmetric) 경우: $\mathcal B_0(\zeta)$, $\Phi_0$">x:model-depth-zero</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-ground-scope.html" title="영온도 공식이 요구하지 않는 것">x:cons-ground-scope</a></td><td>remark</td><td>영온도 공식이 요구하지 않는 것</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.cons-standard-examples.html" title="명명 모형도 Poisson 개수와 복원추출을 유지한다">x:cons-standard-examples</a></td><td>convention</td><td>명명 모형도 Poisson 개수와 복원추출을 유지한다</td><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>

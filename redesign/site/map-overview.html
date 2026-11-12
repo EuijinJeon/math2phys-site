@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2.2 Proof strategy — 지도</h1><p class="stat">이 섹션의 카드 7장 가운데 증명 단계를 뺀 6장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 8장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. 섹션 카드: <a class="node" href="cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a></p><pre class="mermaid" data-map="sec-overview">
-flowchart LR
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2.2 Proof strategy — 지도</h1><p class="stat">이 섹션의 카드 7장 가운데 증명 단계를 뺀 6장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 8장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a></p><pre class="mermaid" data-map="sec-overview">
+flowchart TB
   subgraph IN[&quot;§2.2 Proof strategy&quot;]
     a0[&quot;전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…&lt;br/&gt;x:overview-closing&quot;]
     a1[&quot;전략 1단계: cavity reservoir 고르기&lt;br/&gt;x:overview-step1&quot;]
@@ -97,49 +97,27 @@ flowchart LR
     a4[&quot;전략 4단계: 독립 cavity message 되찾기&lt;br/&gt;x:overview-step4&quot;]
     a5[&quot;전략: 상한은 모든 크기·모든 유한 깊이에서&lt;br/&gt;x:overview-upper&quot;]
   end
-  subgraph X0[&quot;밖: 주정리&quot;]
-    e0[&quot;주정리: _NF_N=_r0_r&lt;br/&gt;main:theorem&quot;]
-  end
-  subgraph X1[&quot;밖: §2&quot;]
-    e1[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
-    e2[&quot;factor weight 전개 (2.3)&lt;br/&gt;model:factorization&quot;]
-    e3[&quot;시행 functional B_r 와 변분값 _r (2…&lt;br/&gt;model:functional&quot;]
-    e4[&quot;Hamiltonian H_N, 분배함수 Z_N, pr…&lt;br/&gt;model:hamiltonian&quot;]
-    e5[&quot;매개변수 p, , 법칙 , h 와 1차 moment …&lt;br/&gt;model:integrability&quot;]
-    e6[&quot;부호 조건 (2.4)&lt;br/&gt;model:positivity&quot;]
-    e7[&quot;조건부 power mean T_d (2.10)&lt;br/&gt;model:power-means&quot;]
-  end
-  e0 --&gt; a0
-  e1 --&gt; a4
-  e2 --&gt; a0
-  e2 --&gt; a5
-  e3 --&gt; a4
-  e3 --&gt; a5
-  e4 --&gt; a1
-  e4 --&gt; a5
-  e5 --&gt; a0
-  e6 --&gt; a0
-  e7 --&gt; a1
+  X0[&quot;밖: §2 The model and the variation…&lt;br/&gt;카드 7장&quot;]
+  X1[&quot;밖: 주정리 Main theorem (진술 §2.1, 증명 §…&lt;br/&gt;카드 1장&quot;]
+  X0 -.-&gt;|3| a0
+  X1 -.-&gt;|1| a0
+  X0 -.-&gt;|2| a1
+  X0 -.-&gt;|2| a4
+  X0 -.-&gt;|3| a5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
   class a0,a1,a2,a3,a4,a5 oth;
-  class e0,e1,e2,e3,e4,e5,e6,e7 ext;
+  class X0,X1 ext;
   click a0 &quot;cards/x.overview-closing.html&quot;
   click a1 &quot;cards/x.overview-step1.html&quot;
   click a2 &quot;cards/x.overview-step2.html&quot;
   click a3 &quot;cards/x.overview-step3.html&quot;
   click a4 &quot;cards/x.overview-step4.html&quot;
   click a5 &quot;cards/x.overview-upper.html&quot;
-  click e0 &quot;cards/main.theorem.html&quot;
-  click e1 &quot;cards/model.chain.html&quot;
-  click e2 &quot;cards/model.factorization.html&quot;
-  click e3 &quot;cards/model.functional.html&quot;
-  click e4 &quot;cards/model.hamiltonian.html&quot;
-  click e5 &quot;cards/model.integrability.html&quot;
-  click e6 &quot;cards/model.positivity.html&quot;
-  click e7 &quot;cards/model.power-means.html&quot;
-</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a></td><td>remark</td><td>전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a></td><td>remark</td><td>전략 1단계: cavity reservoir 고르기</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step2.html" title="전략 2단계: branching pattern 처방">x:overview-step2</a></td><td>remark</td><td>전략 2단계: branching pattern 처방</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step3.html" title="전략 3단계: 모든 multioverlap의 집중">x:overview-step3</a></td><td>remark</td><td>전략 3단계: 모든 multioverlap의 집중</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a></td><td>remark</td><td>전략 4단계: 독립 cavity message 되찾기</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a></td><td>remark</td><td>전략: 상한은 모든 크기·모든 유한 깊이에서</td><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+  click X0 &quot;map-model.html&quot;
+  click X1 &quot;map-main.html&quot;
+</pre><h2>카드와 밖의 연결</h2><div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th><th>밖에서 쓰는 카드</th></tr></thead><tbody><tr><td><a class="node" href="cards/x.overview-closing.html" title="전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로">x:overview-closing</a></td><td>remark</td><td>전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법칙으로</td><td><a class="node" href="cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span>, <a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.integrability.html" title="(2.1) 매개변수 $p$, $\alpha$, 법칙 $\theta$, $h$ 와 1차 moment 가정 (2.1)">model:integrability</a> <span class="stag">§2</span>, <a class="node" href="cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step1.html" title="전략 1단계: cavity reservoir 고르기">x:overview-step1</a></td><td>remark</td><td>전략 1단계: cavity reservoir 고르기</td><td><a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span>, <a class="node" href="cards/model.power-means.html" title="(2.10) 조건부 power mean $T_d$ (2.10)">model:power-means</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step2.html" title="전략 2단계: branching pattern 처방">x:overview-step2</a></td><td>remark</td><td>전략 2단계: branching pattern 처방</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step3.html" title="전략 3단계: 모든 multioverlap의 집중">x:overview-step3</a></td><td>remark</td><td>전략 3단계: 모든 multioverlap의 집중</td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-step4.html" title="전략 4단계: 독립 cavity message 되찾기">x:overview-step4</a></td><td>remark</td><td>전략 4단계: 독립 cavity message 되찾기</td><td><a class="node" href="cards/model.chain.html" title="(2.7) 시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)">model:chain</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr><tr><td><a class="node" href="cards/x.overview-upper.html" title="전략: 상한은 모든 크기·모든 유한 깊이에서">x:overview-upper</a></td><td>remark</td><td>전략: 상한은 모든 크기·모든 유한 깊이에서</td><td><a class="node" href="cards/model.factorization.html" title="(2.3) factor weight 전개 (2.3)">model:factorization</a> <span class="stag">§2</span>, <a class="node" href="cards/model.functional.html" title="(2.11) 시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)">model:functional</a> <span class="stag">§2</span>, <a class="node" href="cards/model.hamiltonian.html" title="(2.2) Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$">model:hamiltonian</a> <span class="stag">§2</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>
