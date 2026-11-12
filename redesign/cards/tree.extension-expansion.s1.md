@@ -2,10 +2,10 @@
 id: tree:extension-expansion.s1
 kind: step
 title: '미분 규칙의 반복: 선택지는 old leaf 또는 fresh path'
-uses: [x:tree-differentiation-rule, x:tree-extension-history]
+uses: [x:tree-differentiation-rule, x:tree-extension-history, x:tree-analytic-bounds]
 provides: 'tree:extension-expansion.s2'
 math: |
-  $C=\{a_*\}$, $G=H$에서 시작한다. 앞의 규칙(x:tree-differentiation-rule)을 차례로 적용하며 각 새 $D_j$를 $G$에 넣는다. fresh leaf는 곧바로 protected이므로 protected가 아닌 leaf는 쓰지 않은 old leaf뿐이다.
+  $C=\{a_*\}$, $G=H$에서 시작한다. 앞의 규칙(x:tree-differentiation-rule)을 차례로 적용하며 각 새 $D_j$를 $G$에 넣는다. fresh leaf는 곧바로 protected이므로 protected가 아닌 leaf는 쓰지 않은 old leaf뿐이다. (작성자) 혼합 편미분은 순서에 무관하므로(좌변은 $\boldsymbol t$에 해석적, x:tree-analytic-bounds) 어떤 color 순서로 규칙을 적용해도 같은 좌변을 준다. 그래서 공식은 color의 어떤 고정된 순서에서도 성립한다.
 physics: null
 gap: null
 abstraction: blackbox

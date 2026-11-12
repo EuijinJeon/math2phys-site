@@ -4,7 +4,7 @@
 
 ## 새 세션을 시작하는 법
 
-브랜치 `claude/challenging-content-readability-cimxto`에서 새 세션을 열고 아래를 붙여 넣는다.
+브랜치 `claude/sharp-feynman-x1cirk`에서 새 세션을 열고 아래를 붙여 넣는다.
 
 > `redesign/HANDOFF.md`를 읽고 이어서 진행해줘. 이 세션은 조율만 하고 작성·검토·도구 작업은 하위 에이전트에 맡겨줘. 로드맵과 진행 기록은 `redesign/ROADMAP.md`에 계속 갱신해줘.
 

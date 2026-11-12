@@ -5,7 +5,7 @@ title: '$\boldsymbol t=0$ 에서 계수만 남는다'
 uses: [tree:extension-expansion.s1, tree:Y-recursion]
 provides: 'tree:extension-expansion의 (tree:mixed-expansion)'
 math: |
-  $\boldsymbol t=0$에서 모든 인자 $A$와 $Y$는 $1$이다. 이것이 주장한 규칙과 그 계수를 증명한다.
+  $\boldsymbol t=0$에서 모든 인자 $A$와 $Y$는 $1$이다. 이것이 주장한 규칙과 그 계수를 증명한다. (작성자) $D_j=D$이면 좌변은 $s=\sum_jt_j$의 함수의 $k$계 도함수이므로 $t^k$의 계수는 우변$/k!$이다. $k=0$이면 유일한 항은 빈 history($c=1$, $\mathcal T_E=\mathcal T$)이므로 빈 확장의 무게는 $1$이다.
 physics: null
 gap: null
 abstraction: blackbox

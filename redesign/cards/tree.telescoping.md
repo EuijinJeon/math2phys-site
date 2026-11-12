@@ -5,7 +5,7 @@ title: '망원 항등식 $\sum_\beta(n_\beta m_{d_\beta+1}-m_{d_\beta})=n$'
 uses: [x:tree-sampling, x:tree-path-kernels]
 provides: 'tree:Q-rule의 정규화, tree:log-expansion.s1 ((k−1)!), tree:reference-total.s1 (부분 tree 판), tree:charging.s1 (fresh 선택의 절댓값 합 = s)'
 math: |
-  leaf가 $n$개인 tree에 대해 망원 합이
+  leaf가 $n$개인 tree $\mathcal T$ (x:tree-sampling)에서 $\operatorname{Int}(\mathcal T)$를 내부 vertex(root와 unary vertex 포함)의 집합, 내부 vertex $\beta$의 깊이를 $d_\beta$, 자식 수를 $n_\beta$라 하자(trees.tex 92–93의 정의). 망원 합이
   $$\sum_{\beta\in\operatorname{Int}(\mathcal T)}\bigl(n_\beta m_{d_\beta+1}-m_{d_\beta}\bigr)=n$$
   을 준다. 모든 항은 양이다.
 physics: null

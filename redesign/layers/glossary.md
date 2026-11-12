@@ -326,11 +326,25 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **정의 위치**: `tree:Q-rule`, `tree:log-expansion`
 - **물리 대응**: intuition — cascade에서 뽑은 $k$ 개 replica의 overlap tree 법칙(nested Chinese restaurant). 논문은 이 동일시를 증명하거나 쓰지 않는다.
 
+### g:protected-leaf — protected leaf
+- **기호**: protected leaf 집합 $C$, $E_{\mathcal T}^A[G\prod_{a\in C}(A^a)^{-1}]$
+- **뜻**: tree 밀도 $W_{\mathcal T}(A)$의 leaf 인자 $A^a$가 분모 $A^a$로 상쇄된 leaf다. 이 leaf에서는 삽입 매개변수로 미분해도 새 항이 생기지 않는다. 미분으로 $D_j^a/A^a$를 받은 leaf와 새로 붙은 fresh leaf는 곧바로 protected가 된다(`trees.tex` 180–183, 190–196).
+- **역할**: 미분 규칙(`x:tree-differentiation-rule`)의 회계다. 모든 leaf가 protected이면 미분은 fresh path만 붙이고 이것이 log 전개의 $Q_k$를 낳는다(`tree:log-expansion`). anchor를 처음부터 protected로 두는 것이 canceled-anchor 전개(`tree:extension-expansion`)이고, 그래서 [[g:extension-history]]의 선택지에서 anchor가 빠진다. §6의 Palm 단계에서 anchor 인자 $A^{a_*}$가 상쇄되는 것(`perturbations.tex` 370–371)이 이 상황이다.
+- **정의 위치**: `trees.tex` 180–183, `x:tree-differentiation-rule`
+- **물리 대응**: 없음.
+
 ### g:extension-history — extension history 와 계수 $c_E$
 - **기호**: $E$, $a_j(E)$, $\mathcal T_E$, $c_E$, color $1,\ldots,k$
-- **뜻**: anchor leaf $a_*$ 가 있는 old tree에서 color $1,\ldots,k$ 를 차례로 (i) 아직 안 쓴 anchor 아닌 old leaf(계수 1) 또는 (ii) 현재 tree의 내부 vertex $\beta$ 에서 새 path(계수 $\gamma_\beta$)에 주는 선택의 기록이다. $c_E$ 는 그 계수들의 곱이다. 어휘: old tree는 섭동을 넣기 전에 주어진 tree이고 그 path와 leaf가 old path, old leaf다(`trees.tex` 259–261). fresh path는 (ii)로 새로 만든 path로, 갈라지는 vertex에서 새 자식을 쓰고 그보다 깊은 모든 깊이에서 새 vertex를 쓴다(`trees.tex` 270–271). anchor와 이미 color를 받은 path들을 reference path라 하고, 제약은 새 color와 reference path 사이의 split 깊이만 지정한다(`trees.tex` 311–315). $c_E$ 는 부호가 섞인다: old leaf는 $+1$, fresh path는 음수 $\gamma_\beta$ 다([[g:tree-coefficient]]).
+- **뜻**: anchor leaf $a_*$ 가 있는 old tree에서 color $1,\ldots,k$ 를 차례로 (i) 아직 안 쓴 anchor 아닌 old leaf(계수 1) 또는 (ii) 현재 tree의 내부 vertex $\beta$ 에서 새 path(계수 $\gamma_\beta$)에 주는 선택의 기록이다. $c_E$ 는 그 계수들의 곱이다. 어휘: old tree는 섭동을 넣기 전에 주어진 tree이고 그 path와 leaf가 old path, old leaf다(`trees.tex` 259–261). fresh path는 (ii)로 새로 만든 path로, 갈라지는 vertex에서 새 자식을 쓰고 그보다 깊은 모든 깊이에서 새 vertex를 쓴다(`trees.tex` 270–271). 제약이 쓰는 기준 path는 [[g:reference-path]]다. $c_E$ 는 부호가 섞인다: old leaf는 $+1$, fresh path는 음수 $\gamma_\beta$ 다([[g:tree-coefficient]]).
 - **역할**: canceled-anchor 전개(`tree:extension-expansion`)의 합 범위이고, P7 항등식은 이 합에 대한 것이다.
 - **정의 위치**: `trees.tex` 259–276, `tree:extension-expansion`
+- **물리 대응**: 없음.
+
+### g:reference-path — reference path
+- **기호**: anchor $a_*$와 이미 color를 받은 path; 처방된 reference 모양 $S$, 한 걸음 합 $m_d-jm_{d+1}$, $\kappa(S)$
+- **뜻**: extension history에서 anchor와 이미 color를 받은 path를 말한다. 새 color에 대한 제약은 이 path들과의 갈라짐 깊이만 지정하고, 지정된 조상 관계가 같은 쓰지 않은 old path들은 구별하지 않는다("does not distinguish unused old paths with the same specified ancestry", `trees.tex` 311–315).
+- **역할**: 한 걸음 계수 합이 현재 reference tree에만 의존해서 old tree와 무관한 닫힌 꼴 $\kappa(S)$가 된다(`tree:reference-total`). [[g:depth-delay]]에서 처방하는 것이 reference 모양이다(`tree:charging`). §7의 $J=\kappa(S^+)^2$, $C(S,e)=-\delta\kappa(S)$(`decorrelation.tex` 332–335), §6 제약 $\mathcal C$("anchor와 added color 사이의 split 깊이만", `perturbations.tex` 433–436)가 이것을 쓴다.
+- **정의 위치**: `trees.tex` 311–315, `x:tree-reference-paths`
 - **물리 대응**: 없음.
 
 ### g:anchor — anchor (spin anchor, marker anchor)

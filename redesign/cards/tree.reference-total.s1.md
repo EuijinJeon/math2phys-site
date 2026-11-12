@@ -2,7 +2,7 @@
 id: tree:reference-total.s1
 kind: step
 title: '한 걸음 합 $m_d-jm_{d+1}$'
-uses: [x:tree-extension-history, tree:telescoping]
+uses: [x:tree-extension-history, x:tree-reference-paths, tree:telescoping]
 provides: 'tree:reference-total의 (tree:one-reference-total), tree:reference-total.s2'
 math: |
   지정된 갈라짐 vertex에서 전체 현재 tree의 자식 수를 $n$이라 하자. 제외되는 $j$개 자식이 그 vertex를 지나는 모든 reference를 담는다. 나머지 $n-j$개 자식은 각각 reference가 없는 부분 tree의 뿌리다. 그 말단 vertex는 따라서 쓰지 않은 old leaf다. 그런 부분 tree가 깊이 $d+1$에 뿌리를 두면 허용되는 선택은 계수 $1$의 old leaf, 또는 부분 tree 안 내부 vertex에서의 fresh divergence다. leaf가 $q$개이면 그 안의 망원 합이
