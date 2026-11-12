@@ -2,7 +2,7 @@
 id: decor:overlap-concentration.s1
 kind: step
 title: 'singleton: 추가 color 없는 spin anchor'
-uses: [pert:tree-identity, x:decor-spin-product]
+uses: [pert:tree-identity, x:pert-colored-extensions, x:decor-spin-product]
 provides: 'decor:overlap-concentration의 singleton 경우'
 math: |
   singleton $S$에서 old tree를 $S$ 자신, spin anchor를 그 leaf, added color 없음, $f=R_S$로 둔 pert:tree-identity는 $\mathbb ER_S^2-(\mathbb ER_S)^2\to0$, 즉 각 고정 $L$에서 $\operatorname{Var}(R_S)\to0$을 준다.

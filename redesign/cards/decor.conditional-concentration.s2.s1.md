@@ -2,7 +2,7 @@
 id: decor:conditional-concentration.s2.s1
 kind: step
 title: '한 층 항등식 (singleton identity)'
-uses: [pert:tree-identity, tree:extension-expansion, x:decor-mesh, x:decor-spin-product]
+uses: [pert:tree-identity, x:pert-colored-extensions, tree:extension-expansion, x:decor-mesh, x:decor-spin-product]
 provides: 'decor:conditional-concentration.s2.s2'
 math: |
   old tree는 깊이 $d$에서 갈라지는 두 경로 1, 2이고 경로 1이 spin anchor다. 제약: added color 하나가 anchor와 정확히 깊이 $d$에서 갈라진다. 허용된 선택과 계수는 옛 leaf 2 (계수 $1$), 깊이-$d$ vertex에서 fresh (계수 $-c_d$), 경로 2를 따라가다 깊이 $\ell$ ($d<\ell\le L-1$)의 unary vertex에서 fresh (계수 $-c_\ell$)이며

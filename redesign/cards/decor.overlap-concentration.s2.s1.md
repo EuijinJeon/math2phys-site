@@ -2,7 +2,7 @@
 id: decor:overlap-concentration.s2.s1
 kind: step
 title: 'marker anchor 구성과 계수 $C(S,e)$'
-uses: [pert:tree-identity, tree:reference-total, x:decor-mesh, x:decor-topology]
+uses: [pert:tree-identity, x:pert-colored-extensions, tree:reference-total, x:decor-mesh, x:decor-topology]
 provides: 'decor:overlap-concentration.s2.s2'
 math: |
   old tree는 $S$의 sampled copy, 그 leaf 하나가 marker anchor다. added color $k=|S|$개가 $S$의 사본 하나를 이루고 그 모든 leaf가 anchor와 깊이 $e-1$에서 갈라진다는 제약을 둔다. 그러면 첫 target 경로는 깊이 $e-1$에서 fresh여야 하고(old tree는 거기서 아직 갈라지지 않았고 옛 leaf들은 anchor와 깊이 $e$까지 prefix를 공유하므로 쓸 수 없다), 나머지 target 경로는 그렇게 생긴 fresh 부분 tree 안에 놓인다. 확장 계수의 총합은 old tree 쪽과 anchor 혼자인 쪽 모두

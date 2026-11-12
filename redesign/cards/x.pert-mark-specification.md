@@ -11,8 +11,8 @@ math: |
 physics: |
   [[g:hierarchy|보조 계층]]의 지정된 깊이마다 놓인 무작위 부호([[g:mark|mark]])와, 그 부호들의 유리수값 함수를 site 하나의 spin(또는 상수 1)에 붙인 탐침이다. 두 [[g:replica|replica]] path가 그 깊이의 vertex를 공유하면 같은 부호를 보고, 아니면 독립인 부호를 본다.
 gap: |
-  물리적 국소장이 아니다. 부호는 보조 계층의 변수이고 [[g:root]] 변수가 아니다(pert:factor). 함수값을 유리수로 제한한 것은 모임을 가산으로 만들어 pert:selection의 대각 논법과 type 번호 매기기를 가능하게 하려는 것이다. "branching pattern을 고른다"는 것은 pert:tree-identity.s2–s3의 selector 구성으로만 실현된다.
-abstraction: intuition
+  "탐침"은 그림이고 물리적 국소장이 아니다. 둘째 문장(공유 vertex에서 같은 부호, 다른 vertex에서 독립)은 원문 33–34의 옮김이고 selector의 근거로 쓰인다. 좌표 수가 유한하다는 것, 깊이가 $\{1,\ldots,L-1\}$ 이라는 것, 좌표끼리 독립이라는 것은 뺐다. 부호는 보조 계층의 변수이고 [[g:root]] 변수가 아니다(pert:factor). 함수값을 유리수로 제한한 것은 모임을 가산으로 만들어 pert:selection의 대각 논법과 type 번호 매기기를 가능하게 하려는 것이다. "branching pattern을 고른다"는 것은 pert:tree-identity.s2–s3의 selector 구성으로만 실현된다.
+abstraction: weakening
 children: []
 source:
   - {file: perturbations.tex, lines: [28, 38]}

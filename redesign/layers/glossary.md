@@ -272,7 +272,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: type마다 독립인 Poisson 개수의 단일 site factor $\psi_\nu\in(1/2,3/2)$ 를 spin weight에 곱한다(`perturbations.tex` 60; §5의 틀이 요구하는 것은 닫힌 구간 $1/2\le\psi_\nu\le3/2$, `cavity.tex` 26). 각 항은 독립 균일 site 하나와 자기 [[g:mark]] 과정의 독립 사본을 쓴다. $\mathbf u$ 는 고정된 결정적 매개변수이고, $\pi$ 는 그것을 고를 때만 쓰는 균일 측도다.
 - **역할**: 밀도에 $o(1)$ 만 기여한다(P3). $u$ 미분이 [[g:score]]가 되어 집중하고(P5), 같은 factor의 $t$ 전개가 Taylor 계수 항등식을 낸다(P7, [[g:palm-identity]]).
 - **정의 위치**: `cavity.tex` 20–32, `pert:parameters`, `pert:factor`, `perturbations.tex` 26–71
-- **물리 대응**: intuition — 물리의 무한소 섭동장(generic한 Gibbs 측도를 고르는 것). 여기서는 개수 $N^{3/4}$, 값 $(1/2,3/2)$ 의 구체적인 factor다.
+- **물리 대응**: intuition — 물리의 무한소 섭동장(generic한 Gibbs 측도를 고르는 것). 여기서는 "무한소"가 아니다: 인자 하나의 크기는 $O(1)$($\lvert t_\nu\rvert\le1/4$, $\psi_\nu\in(1/2,3/2)$)이고 작은 것은 개수의 site당 밀도 $N^{-1/4}$(평균 개수 $s_N=N^{3/4}$)다(`pert:factor`, `perturbations.tex` 51–60).
 
 ### g:root-logarithm — root logarithm $X_0$ 와 그 기대값 $P_N^{L,\mathbf u}$
 - **기호**: $X_0$, $P_N^{L,\mathbf u}=\mathbb EX_0$
@@ -305,7 +305,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:selected-sequence — 선택된 수열 (선택된 섭동계)
 - **기호**: $(N_j,\mathbf u_j)_{j\ge1}$; 이후 $N\to\infty$ 는 이 수열을 따른다
 - **뜻**: 고정한 $L\ge2$ 와 $\varepsilon>0$ 마다 `pert:selection`이 주는 크기 $N_j\uparrow\infty$ 와 결정적 섭동 매개변수 $\mathbf u_j$ 의 수열로, (i) $\Delta_{N_j}(\mathbf u_j)\le\underline F+2\varepsilon$, (ii) reservoir에서 모든 고정 type의 $e_{\nu,N_j}(\mathbf u_j)\to0$, (iii) reservoir에서 깊이 $L$ 의 모든 유한 prescribed tree 위 multioverlap 유한곱의 기대값이 수렴한다. "선택된 섭동계"는 이 수열의 각 항에서 그 매개변수로 섭동한 reservoir(와 $N$-spin 계)를 말한다.
-- **역할**: §6–§8의 모든 $N$ 극한이 이 수열을 따른다(`perturbations.tex` 308–312, `decorrelation.tex` 4–8, `comparison.tex` 8–15). (i)은 하한의 마지막 부등식(`comp:bounded-lower`), (ii)는 [[g:palm-identity|Palm 항등식]](`pert:palm`)의 부등식을 거쳐 [[g:tree-identity]], (iii)은 Taylor 계수의 수렴(`perturbations.tex` 399–409)에 쓰인다. P5가 이것을 진술하고 P7–P11이 받아 쓴다.
+- **역할**: §6–§8의 모든 $N$ 극한이 이 수열을 따른다(`perturbations.tex` 308–312, `decorrelation.tex` 4–8, `comparison.tex` 8–15). (i)은 하한의 마지막 부등식(`comp:bounded-lower`), (ii)는 [[g:palm-identity|Palm 항등식]](`pert:palm`)의 부등식 $\lvert H_N(t_\nu,u_\nu)\rvert\le\lVert f\rVert_\infty e_{\nu,N}$ 의 우변을 0으로 보내는 데 쓰이고(부등식 자체는 모든 $N$, $\mathbf u$ 에서 성립한다; 쓰이는 줄은 `perturbations.tex` 327의 "$\longrightarrow0$"(`pert:score-identity`)과 418 "Here the score error tends to zero with $j$ fixed"(`pert:analytic.s3`)), 그렇게 Taylor 계수 소거(`pert:analytic`)를 거쳐 [[g:tree-identity]]에, (iii)은 Taylor 계수의 수렴(`perturbations.tex` 399–409)에 쓰인다. P5가 이것을 진술하고 P7–P11이 받아 쓴다.
 - **정의 위치**: `pert:selection`, `perturbations.tex` 308–312, 538–547
 - **물리 대응**: intuition — 물리의 "무한소 섭동으로 generic한 계를 고른다". 실제 대상은 크기마다 다른 섭동계의 수열이며 극한 측도가 아니다.
 - **쓰지 않는 뜻**: [[g:state]]가 아니다. "모든 $N$ 에서 generic"하다는 말이 아니고, $L$ 과 $\varepsilon$ 마다 다른 수열이며, 집중은 type별이라 $L$ 이나 type에 균일하지 않다. 예전 판의 "generic 상태"가 이것이다.
@@ -363,10 +363,10 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: 없음.
 
 ### g:mark — mark 와 selector
-- **기호**: Rademacher 좌표(깊이 $1,\ldots,L-1$), 좌표의 함수 $g,g_0:\{-1,1\}^n\to\mathbb Q\cap[-1,1]$, $S_0\in\{1,\sigma_i\}$, 공유 지시함수 $H_d$, 제약 $\mathcal C$, `pert:mark-selector`
+- **기호**: Rademacher 좌표(깊이 $1,\ldots,L-1$), 좌표의 함수 $g,g_0:\{-1,1\}^n\to\mathbb Q\cap[-1,1]$, $S_0\in\{1,\sigma_i\}$, 공유 지시함수 $H_d$, 제약 $\mathcal C$, selector 식 (6.18)
 - **뜻**: mark specification은 유한 개의 Rademacher 좌표, 각 좌표의 깊이, 좌표의 유리수값 함수 $g$, $g_0$, 그리고 $S_0$ 의 선택을 묶은 것이다(`perturbations.tex` 28–35). 좌표는 지정된 깊이에서 path를 따라 뽑히고 공유 vertex에서는 값을 공유한다. 두 color $a,b$ 의 $g_a$, $g_b$ 에 같은 새 좌표의 인자를 넣으면 mark 기대값이 "$a,b$ 가 깊이 $d$ vertex를 공유", 곧 "split 깊이 $\ge d$"의 지시함수 $H_d(a,b)$ 가 된다(selector, `perturbations.tex` 494–511). 정확히 깊이 $d$ 의 split은 $H_d-H_{d+1}$ 로 쓰고, 그 곱과 유한 일차결합으로 원하는 split 깊이 제약 $\mathcal C$ 를 고른다(`perturbations.tex` 514–520).
-- **역할**: P7에서 anchor와 새 color 사이의 split 깊이를 지정한다(다른 old replica와의 관계는 지정하지 않는다). reservoir에서는 mark 변수가 [[g:hierarchy]]의 보조 변수다.
-- **정의 위치**: `perturbations.tex` 28–38, 494–524, `pert:mark-selector`
+- **역할**: P7에서 anchor와 추가 color들로 이루어진 집합 $\{0,\ldots,k\}$ 안의 쌍별 split 깊이(추가 color끼리의 쌍 포함)를 서로 일관되는 한 지정한다(`perturbations.tex` 434–436, 495–496; 다른 old replica가 관여하는 쌍은 지정하지 않는다). §7은 추가 color끼리의 쌍도 쓴다($S^+$ 두 사본, `decorrelation.tex` 298–302; $S$ 사본, 540–541). reservoir에서는 mark 변수가 [[g:hierarchy]]의 보조 변수다.
+- **정의 위치**: `perturbations.tex` 28–38, 494–524, `x:pert-mark-specification`, `pert:tree-identity.s2`(selector 식 (6.18))
 - **물리 대응**: intuition — 계층 깊이마다 무작위 부호를 갖는 탐침장. 물리적 국소장이 아니라 selector를 만드는 장치다.
 
 ### g:palm-identity — Palm 항등식과 Taylor 계수 소거
@@ -434,7 +434,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: 없음
 - **뜻**: 어떤 무작위 양이 [[g:root]](disorder, 섭동 개수·type·site)와 tree 표본추출 전부에 대한 평균 주위로 집중한다는 말을 묶는 우산 항목이다. 이 항목은 따로 정량을 두지 않고, 이 사이트에서 "집중한다"는 늘 다음 두 정량 진술 가운데 하나를 가리킨다: score의 집중은 $e_{\nu,N}\to0$([[g:score]]), multioverlap의 집중은 [[g:overlap-concentration]]의 식이다. 곧 [[g:overlap-concentration]]은 이 둘 가운데 둘째 것의 이름이다. 노드 ID `decor:conditional-concentration`에도 concentration이 들어 있지만 그 결론은 [[g:conditional-decorrelation]]으로 부르고 이 우산에 넣지 않는다.
 - **역할**: P5, P9 문장의 "집중한다"를 이 두 정량 진술에 묶는다.
-- **정의 위치**: `pert:error`, `decor:overlap-concentration`
+- **정의 위치**: `pert:error`, `decor:overlap-concentration`. score에 대해 `pert:concentration`(Lemma 6.1)이 증명하는 것은 매개변수 평균 $\int e_{\nu,N}\,d\pi\to0$ 이고(`perturbations.tex` 97–101), 선택된 점에서의 점별 수렴 $e_{\nu,N_j}(\mathbf u_j)\to0$ 은 `pert:selection` (ii)에서 나온다(`perturbations.tex` 261–262, 281–299).
 - **물리 대응**: approximation — 물리의 self-averaging. 원문은 score와 multioverlap 모두에 concentration을 쓰고("Concentration of each perturbation score", `perturbations.tex` 73; "Concentrate all multioverlaps", `overview.tex` 26), self-averaging이라는 낱말은 집중으로 overlap 항등식을 얻는 방법의 antecedent인 Ghirlanda–Guerra의 논법을 말할 때 한 번만 쓴다(`perturbations.tex` 18). 수열과 극한 순서는 해당 항목을 따른다.
 - **쓰지 않는 뜻**: disorder 표본 하나에 대한 거의 확실한 수렴을 말하지 않는다.
 

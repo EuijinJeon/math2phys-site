@@ -44,7 +44,7 @@
 | 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | ✅ 지적 21건 반영, 67항목. 이름 확정·적용 완료 |
 | §2 model, §3 trees 카드 | ✅ 작성·검토·반영 (§2 25장, §3 39장). 수정본 재검토는 안 함 |
 | §4 upper, §5 cavity 카드 | ✅ 작성·검토·반영 (§4 10장, §5 13장). 수정본 재검토는 안 함 |
-| §6 perturbations 카드 | 🔄 초안 완료(44장), 독립 검토 중 |
+| §6 perturbations 카드 | ✅ 작성·검토·반영 (44장). 수정본 재검토는 안 함 |
 | §8 comparison, §9 reduction 카드 | 🔄 작성 중 |
 | §10 consequences 카드, overview.tex 카드 | 🔄 작성 중 |
 | 증명 지도(전체 DAG) 화면 | ⬜ |
@@ -236,3 +236,18 @@
 - §6 perturbations 초안 도착: 44장(잎 35). §7 인터페이스와 어긋남 없음(작성자 보고). 새 용어 없음, 기존 용어집 항목 메모 4건. 독립 검토 진행 중.
 - §8 comparison·§9 reduction 작성 중(한 에이전트). §10 consequences·overview.tex 작성 시작(한 에이전트). overview는 증명이 없으므로 소절 카드와 L1 대응표 위주로.
 - 사용 한도 네 번째(13:30 UTC 초기화). 재개.
+- §6 독립 검토 완료: 통과 34장, 지적 8건(높음 0, 중간 1). 식 전사 오류·구멍 0. `build/review-2-pert.md`.
+- §6 검토 반영 완료: 반영 7, 좁힘 1, 기각 0. `build/review-2-pert-response.md`.
+  - F1: 집중 증명의 규모 비교 설명을 바로잡음(견줄 것은 표준편차 $\sqrt N\ll N^{3/4}$. 볼록성이 필요한 이유는 (6.11)이 $G$ 값의 요동만 누르기 때문).
+  - F2: prescribed-tree 항등식의 제약은 anchor와 추가 color 전체 안의 쌍별 split 깊이(추가 color끼리 포함). 정리 카드, 섹션 카드, `g:mark`, 규칙 P7, L1 수 4를 함께 고침.
+  - 용어집 메모 4건 반영, `tree:section` 표 §6 행 보충, §7 카드 네 장의 `uses`에 `x:pert-colored-extensions` 추가.
+
+**정리 묶음 (전 섹션이 끝난 뒤 한 번에 맡길 잔여 건)**
+1. 👤 규칙 P6: 문장이 $\log Y_0$ 전개만 말하는데 §6이 쓰는 것은 canceled-anchor 전개. 한 구절을 넣을지(근거는 `build/review-2-pert-response.md`).
+2. `decor:conditional-concentration.s3.s1`의 math 칸과 `x:tree-reference-paths` 본문 18행의 "anchor와 added color 사이" → 쌍별 제약 문구로.
+3. `x:tree-extra-variables`의 `provides`에 perturbations.tex 195–196. `x:tree-sampling`, `tree:original-tilt`, `x:tree-path-kernels`의 `provides` 확인.
+4. `model:vs`의 `uses`에서 `model:hamiltonian` 제거 여부. `upper:bound`의 `uses`에 `x:tree-extra-variables` 추가 여부.
+5. 용어집 보강 제안 3건(`build/glossary-additions-model-2.md`).
+6. SCHEMA에 관행 추가: 묶음 카드의 `source`에는 그것을 이름으로 부르는 줄도 둔다. `\ref` 없는 사용은 `uses`·`provides`·섹션 표에 손으로 적는다.
+7. 규칙 P4의 수학 노드 열에 있는 카드 없는 식 라벨(`cavity:identity` 등)을 카드 ID로 바꿀지.
+8. 도구: 같은 파일 안 의존과 `\ref` 없는 사용을 검사가 잡지 못함. `provides`와 `uses`의 대칭 검사를 넣을 수 있는지.

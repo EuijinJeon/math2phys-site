@@ -19,6 +19,6 @@ status: proposed
 
 확장 규칙 자체(old leaf 재사용 계수 1, fresh path 계수 $\gamma_\beta$)는 [[x:tree-extension-history]]에 있고, 원문은 그것을 lemma [[tree:extension-expansion]]의 이름으로 가리킨다. "anchor와 같지 않은 서로 다른 위치"는 anchor가 protected라 재사용되지 않고 고른 leaf가 다시 고를 수 없다는 규칙에서 온다. [[g:anchor]], [[g:extension-history]], [[g:mark]].
 
-제약이 "anchor와 추가 color 사이"로 한정되는 이유(작성자 읽기): selector([[pert:tree-identity.s2]])는 mark 함수 $g_0,g_1,\ldots,g_k$ 를 통해서만 작동하고, mark 함수는 anchor(color 0)와 추가 color의 path에만 붙는다. old replica에는 mark 함수가 붙지 않으므로 그것과의 관계는 지정할 수 없다. §3의 [[x:tree-reference-paths]]도 같은 한정을 둔다.
+제약이 "anchor와 추가 color들로 이루어진 집합 안의 쌍"(추가 color끼리의 쌍 포함)으로 한정되는 이유(작성자 읽기): selector([[pert:tree-identity.s2]])는 mark 함수 $g_0,g_1,\ldots,g_k$ 를 통해서만 작동하고, mark 함수는 anchor(color 0)와 추가 color의 path에만 붙는다. old replica에는 mark 함수가 붙지 않으므로 그것과의 관계는 지정할 수 없다. §3의 [[x:tree-reference-paths]]도 같은 한정을 둔다.
 
 $R_E$ 는 tree $\mathcal T_E$ 의 [[g:multioverlap]]이다(spin anchor이면 anchor 포함). marker anchor에서 $k=0$ 이면 $R_E=1$ 이므로 그 경우의 항등식은 자명하다.

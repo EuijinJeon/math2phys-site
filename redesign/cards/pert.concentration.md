@@ -26,6 +26,6 @@ status: proposed
 - [[pert:concentration.s3]] (root 요동의 재료): $G=X_0+2nu^2$ 는 볼록이고 $\operatorname{Var}G(u)\le C_\nu N$(Efron–Stein과 Poisson 개수), $|\mathbb E_{\mathbf u}G'|\le C_\nu\lambda_\nu$.
 - [[pert:concentration.s4]]: 볼록 함수의 차분몫으로 $G'$ 의 요동을 $G$ 의 요동과 평균 도함수의 증가량으로 누르고 $\rho=N^{-1/8}$ 을 고르면, $\lambda_\nu=c_\nu N^{3/4}$ 로 나눈 root 기여가 0으로 간다. 두 기여를 합하고 나머지 매개변수로 적분한다.
 
-핵심은 규모의 차이다: root logarithm의 root 분산은 $O(N)$ 이지만 score는 $\lambda_\nu\sim N^{3/4}$ 규모이므로 $\sqrt N/\rho+\rho\lambda_\nu$ 를 $\lambda_\nu$ 로 나눈 것이 0으로 갈 수 있다. 이것이 $s_N=N^{3/4}$ 를 고른 이유로 읽힌다(작성자 읽기; 원문은 이유를 따로 적지 않는다).
+핵심은 규모의 차이다: root logarithm의 root 분산은 $O(N)$, 곧 표준편차 $O(\sqrt N)$ 이고 score는 $\lambda_\nu\sim N^{3/4}$ 규모라 $\sqrt N\ll\lambda_\nu$ 이므로, $\sqrt N/\rho+\rho\lambda_\nu$ 를 $\lambda_\nu$ 로 나눈 것이 0으로 가도록 $\rho\to0$ 을 고를 수 있다($\rho=N^{-1/8}$). 다만 이 규모만으로는 부족하고 도함수로 옮기는 데 볼록성이 필요하다([[pert:concentration.s4]]). $s_N=N^{3/4}$ 를 고른 이유는 두 조건 $\sqrt N\ll s_N\ll N$ 사이의 한 선택으로 읽힌다(작성자 읽기; 원문은 이유를 따로 적지 않는다). 아래쪽 $\sqrt N\ll s_N$ 은 이 집중 논증이, 위쪽 $s_N\ll N$ 은 섭동이 밀도에 $o(1)$ 만 기여하는 [[cavity:negligible]] $|P_N^{L,\mathbf u}-NF_N|\le(\log2)s_N$ 과 증분 계산의 섭동 맞춤 비용 $|s_{N+1}-s_N|+2s_{N+1}/(N+1)$(cavity.tex 91–93)이 요구한다.
 
 "reservoir에서도"는 [[x:pert-standing]]의 reservoir 구조(평균 $O(N)$ 의 독립 Poisson 상호작용, $N$ 개 독립 유계 장)가 s3.s3의 "root 변수 개수가 $O(N)$"을 그대로 주기 때문이다.

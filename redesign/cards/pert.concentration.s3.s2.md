@@ -2,7 +2,7 @@
 id: pert:concentration.s3.s2
 kind: step
 title: '개수에 조건을 건 Efron–Stein 부등식'
-uses: [pert:concentration.s3.s1, pert:factor]
+uses: [pert:concentration.s3.s1, pert:factor, x:pert-standing]
 provides: 'pert:concentration.s3.s3'
 math: |
   첫 추정을 증명하려고 물리적 개수와 섭동 총 개수에 조건을 건다. 섭동 총 개수가 주어지면 그 type과 site는 독립 label이고, label 하나를 바꾸면 유계 인자 하나가 바뀐다. Efron–Stein 분산 부등식

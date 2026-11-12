@@ -2,7 +2,7 @@
 id: pert:analytic.s1
 kind: step
 title: '균등한 해석적 경계'
-uses: [tree:extension-expansion, pert:analytic-difference, pert:palm-expression, x:pert-selected-limits]
+uses: [tree:extension-expansion, x:tree-analytic-bounds, pert:analytic-difference, pert:palm-expression, x:pert-selected-limits]
 provides: 'pert:analytic.s2 (기하 꼬리), s3 (u-도함수 경계 C)'
 math: |
   tree:extension-expansion이 복소 근방 $|t|,|u|<\rho$ 를 주고, 거기서 (6.15)의 함수들은 해석적이며 $N$ 과 선택된 매개변수 벡터에 균등하게 유계다. $\rho$ 를 줄이면 그 $u$-도함수에도 균등한 경계가 나온다. 이 상수들은 고정 tree, $L$, $\|f\|_\infty$ 에 의존해도 되지만 mark specification 안의 type 첨자 $j$ 에는 의존하지 않는다.
