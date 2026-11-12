@@ -11,7 +11,7 @@ math: |
 physics: |
   첫 갈라짐 깊이 $e$의 [[g:state|상태]] 안에서 각 가지의 [[g:conditional-covariance|조건부 공분산]] 제곱 평균(자식의 $v_N$)이 작으면, [[g:multioverlap|overlap]]을 계산할 때 각 가지 $T_j$의 [[g:replica|replica]]들 spin 곱을 그 상태 평균으로 바꿔도 된다([[g:projection]]; $T_j$가 replica 하나뿐이면 이것은 국소 자화이고, 그때 $a_{S,e}$는 국소 자화의 곱이다). cavity 계산에서 "한 물리적 pure state 안에서는 spin을 평균장으로 대체"하는 단계에 해당하고, 여기서는 [[g:hierarchy|보조 계층]] prefix가 물리적 pure state 자리에 있다.
 gap: |
-  math는 대체 오차를 $\sum_jv_N(T_j,e)^{1/4}$로 정량적으로 준다. 그것도 $e$ 아래 continuation과 조건부 독립인 벡터와의 축약에 대해서만이다. 각 가지의 $v_N$ 이 실제로 작은지는 이 lemma가 말하지 않고 decor:conditional-concentration([[g:clustering]])이 [[g:depth-average|깊이 평균]]의 의미로 따로 준다. "상태"는 perturbed [[g:reservoir|reservoir]]의 보조 계층 prefix $\mathscr F_e$([[g:root]] 포함)이며 [[g:physical-pure-state|물리적 pure state]]가 아니다. 일반적인 $T_j$에서 상태 평균은 단일 spin의 자화가 아니라 $T_j$의 여러 replica spin 곱의 조건부 평균이다.
+  math는 대체 오차를 $\sum_jv_N(T_j,e)^{1/4}$로 정량적으로 준다. 그것도 $e$ 아래 continuation과 조건부 독립인 벡터와의 축약에 대해서만이다. 각 가지의 $v_N$ 이 실제로 작은지는 이 lemma가 말하지 않고 decor:conditional-concentration([[g:conditional-decorrelation]])이 [[g:depth-average|깊이 평균]]의 의미로 따로 준다. "상태"는 perturbed [[g:reservoir|reservoir]]의 보조 계층 prefix $\mathscr F_e$([[g:root]] 포함)이며 [[g:physical-pure-state|물리적 pure state]]가 아니다. 일반적인 $T_j$에서 상태 평균은 단일 spin의 자화가 아니라 $T_j$의 여러 replica spin 곱의 조건부 평균이다.
 abstraction: approximation
 children: []
 source:

@@ -7,7 +7,7 @@ provides: '§4 upper (\ref 없음: upper.tex 51–54 삽입 증분 = log Y_0와 
 math: |
   leaf 분배함수를 지수 $m_1,\ldots,m_{L-1}$의 power mean으로 반복하고 $K_1,\ldots,K_{L-1}$이 그 tilted kernel (tree:original-tilt), $K_L$이 말단 Gibbs kernel이라 하자. 각 spin weight에 $A$를 곱하면 반복된 root logarithm이 $\log Y_0$만큼 바뀐다. 여기서 (tree:Y-recursion)은 insertion 전의 kernel을 쓴다. 새 kernel은 (tree:updated-kernel)이다.
 
-  처방된 tree의 내부 vertex $\beta$에 대해 $d_\beta$를 깊이, $n_\beta$를 자식 수라 하고
+  prescribed tree의 내부 vertex $\beta$에 대해 $d_\beta$를 깊이, $n_\beta$를 자식 수라 하고
   $$\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$$
   로 둔다. 바뀐 tree 법칙의 조건부 결합 밀도는
   $$W_{\mathcal T}(A):=\frac{dP_{\mathcal T}^A}{dP_{\mathcal T}}=\prod_{a\in\operatorname{Leaves}(\mathcal T)}A^a\prod_{\beta\in\operatorname{Int}(\mathcal T)}Y_\beta^{\gamma_\beta}$$
