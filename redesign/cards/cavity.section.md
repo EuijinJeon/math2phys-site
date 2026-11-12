@@ -14,7 +14,7 @@ math: |
   $$\Delta_N^{L,\mathbf u}=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o_N(1),\quad\sup_{N,L,\mathbf u}\lvert\Delta_N^{L,\mathbf u}\rvert<\infty\qquad\text{(cavity:increment)}.$$
   그리고 이후 모든 spin tree를 이 reservoir에서 뽑는다는 약속 (x:cavity-tree-sampling).
 physics: |
-  Aizenman–Sims–Starr식 cavity 비교의 준비다: 크기 $N$ 과 $N+1$ 의 계를 공통 $N$-spin [[g:reservoir|reservoir]]로 비교해, [[g:increment|증분]]을 site 삽입과 bond 삽입([[g:site-bond-insertion]])의 차로 쓴다. 이 비교를 [[g:grid|균등 격자]]의 [[g:hierarchy|보조 계층]] 위에서 하려고 sublinear한 수의 유계 [[g:perturbation|섭동]] factor를 넣는다. 섭동은 [[g:root-logarithm|root logarithm]]의 밀도를 $o(1)$ 만 옮기고 증분 식을 보존한다.
+  Aizenman–Sims–Starr식 cavity 비교의 준비다: 크기 $N$ 과 $N+1$ 의 계를 공통 $N$-spin [[g:reservoir|reservoir]]로 비교해, [[g:increment|증분]]을 site 삽입과 bond 삽입([[g:site-bond-insertion]])의 차로 쓴다. reservoir의 spin tree에 대한 항등식을 얻으려고(§6) 값이 $[1/2,3/2]$ 안인 [[g:perturbation|섭동]] factor를 sublinear한 수만큼 넣는다. [[g:grid|균등 격자]]의 [[g:hierarchy|보조 계층]]은 그 factor의 보조 변수로 만든다. 섭동은 [[g:root-logarithm|root logarithm]]의 밀도를 $o(1)$ 만 옮기고 증분 식을 보존한다.
 gap: |
   (1) 원문은 이 비교가 Aizenman–Sims–Starr 변분 틀과 Panchenko의 spin 분포 꼴을 "따른다"고만 적고(cavity.tex 4–6), 그 결과를 증명에 쓰지 않는다. (2) 대상은 [[g:bounded-law|유계]]이고 [[g:permutation-invariance|순열 불변]]인 상호작용이다(x:cavity-bounded). (3) $P_N^{L,\mathbf u}$ 와 $\log Y_0$ 는 보조 변수를 tilt해 적분한 양이라 $L\ge2$ 에서 보통 뜻의 pressure와 그 변화가 아니다. (4) reservoir의 평균 상호작용 수는 $\rho_N\ne\alpha N$. (5) 물리의 $\lim F_N=\lim\Delta_N$ 은 주장하지 않는다. (6) 섭동 매개변수 $\mathbf u$ 는 고정값이고 평균하지 않는다. 보조 계층을 [[g:physical-pure-state|물리적 pure state]] 계층으로 읽는 것은 증명되지 않는다.
 abstraction: approximation
@@ -34,7 +34,7 @@ status: proposed
 | 계층 틀, $L=r+1$ | [[x:tree-path-kernels]] | 16–19 |
 | power-mean recursion, tilted kernel | [[tree:original-tilt]] | 34–37, 55–56, 117–118 |
 | insertion recursion $Y_0$ | [[tree:Y-recursion]] | 53–57 |
-| insertion 항등식, 단조·동차성($\lvert\log Y_0\rvert$ 상계) | [[tree:insertion]] | 105–111 |
+| insertion 항등식, 단조·동차성($\lvert\log Y_0\rvert$ 상계, 섭동 없는 weight와의 점별 비교, factor 하나의 비용 $\log2$·$B$) | [[tree:insertion]] | 36–38, 95–98, 105–111 |
 | 새 root disorder, 안 쓰는 보조 변수 | [[x:tree-extra-variables]] | 56, 96–98 |
 | tree 표본 규칙 | [[x:tree-sampling]] | 117–118 |
 
@@ -47,9 +47,13 @@ status: proposed
 | pert:selection 증명 | [[cavity:negligible]], [[cavity:increment]] (균일 유계) | perturbations.tex 271, 277 |
 | §7 | [[cavity:grid]] (x:decor-mesh), [[x:cavity-tree-sampling]] | decorrelation.tex 4 (`\ref` 없음) |
 | comp:encoding | reservoir root disorder, tilted reservoir kernel ([[x:cavity-tree-sampling]]) | comparison.tex 20–29 (`\ref` 없음) |
+| comp:low-increments | [[cavity:increment]]의 증분 $\Delta_N^{L,\mathbf u_{L,N}}$ | comparison.tex 13–14 (`\ref` 없음) |
+| comp:insertion-comparison 진술 | [[cavity:grid]] ($\mathbf m^{(L)}=(1/L,\ldots,(L-1)/L)$) | comparison.tex 162 (`\ref` 없음) |
 | comp:insertion-comparison 증명 | [[cavity:increment]] ($A_{\rm s}$, $A_{\rm b}$), (5.5) | comparison.tex 171, 195, 222 |
+| comp:insertion-comparison 증명 | [[x:cavity-bounded]] ($C=H+BM$) | comparison.tex 200 (`\ref` 없음) |
+| comp:insertion-comparison 증명 | [[cavity:increment.s4]] (원래 insertion logarithm의 상계 $H+BK$) | comparison.tex 215–216 (`\ref` 없음) |
 | reduction / main:theorem | [[x:cavity-bounded]]를 푸는 쪽 | reduction.tex 45–87 |
 
-**인터페이스 점검.** [[tree:section]]의 export 표(§5: [[tree:insertion]], $\lvert\log Y_0\rvert$ 상계, [[x:tree-extra-variables]], 표본 규칙)는 이 카드들이 쓰는 것과 맞는다. 다만 그 표에는 [[tree:original-tilt]]("tilted reservoir kernels", 34행의 recursion)와 [[tree:Y-recursion]]이 빠져 있다(provides 칸에는 tree:Y-recursion이 있다). §2에서는 `\ref` 없이 [[model:hamiltonian]], [[model:integrability]]만 받는다. (2.3), (2.4)를 쓰지 않는다는 원문의 말(13–14)과 맞다.
+**인터페이스 점검.** [[tree:section]]의 export 표(§5: [[tree:insertion]]과 그 단조성, $\lvert\log Y_0\rvert$ 상계, [[tree:original-tilt]], [[tree:Y-recursion]], [[x:tree-extra-variables]], 표본 규칙)는 이 카드들이 쓰는 것과 맞는다(검토 2 F2·F10 대응으로 [[tree:original-tilt]]와 [[tree:Y-recursion]]을 그 표에 더했다). 섭동의 곱셈적 한계가 recursion을 통과하는 근거(36–38, 95–98)는 양쪽 모두 [[tree:insertion]]의 단조성으로 적는다. §2에서는 `\ref` 없이 [[model:hamiltonian]], [[model:integrability]]만 받는다. (2.3), (2.4)를 쓰지 않는다는 원문의 말(13–14)과 맞다.
 
 **섭동 매개변수.** 원문 29–31: $\mathbf u$ 는 "fixed, not quenched random variables, unless a parameter average is explicitly taken". 이 절의 모든 균일성("uniform in $L,\mathbf u$")은 고정된 $\mathbf u$ 각각에서의 한계가 $\mathbf u$ 에 무관하다는 뜻이다.

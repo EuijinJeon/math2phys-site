@@ -7,9 +7,9 @@ provides: 'cavity:increment의 (5.5)'
 math: |
   따라서 새 index가 반복된 상호작용을 버리고, 섭동을 맞추고, 두 삽입 개수의 평균을 극한값으로 바꾸는 데 드는 기대 비용은 모두 합해 $O(N^{-1/4})$ 이다. 새 spin에 대해 합하면 $2A_{\rm s}$ 가 나오고, 옛 계의 보정은 $A_{\rm b}$ 를 준다. 인수 $2$ 가 증분의 $\log2$ 항을 준다. 이제 power mean의 insertion 항등식이 (5.5)를 증명한다.
 physics: |
-  $N+1$ 계의 새 spin을 합해 없애면 [[g:reservoir|reservoir]]에 site 삽입 $2A_{\rm s}$ 를 곱한 것이 되고, $N$ 계는 reservoir에 bond 삽입 $A_{\rm b}$ 를 곱한 것이다([[g:site-bond-insertion]]). [[g:insertion|insertion]] 하나가 계층 free entropy를 정확히 $\log Y_0$ 만큼 바꾸므로 두 계의 차가 $\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}$ 이다.
+  새 spin이 두 번 이상 들어간 factor를 버리고, 섭동 개수를 [[g:reservoir|reservoir]]에 맞추고, 두 삽입 개수의 평균을 극한값 $\alpha p$, $\alpha(p-1)$ 로 바꾸면 기대 비용이 모두 합해 $O(N^{-1/4})$ 이다. 그렇게 바꾼 뒤에는 $N+1$ 계의 새 spin을 합해 없애면 reservoir에 site 삽입 $2A_{\rm s}$ 를 곱한 것이 되고, $N$ 계는 reservoir에 bond 삽입 $A_{\rm b}$ 를 곱한 것이다([[g:site-bond-insertion]]). [[g:insertion|insertion]] 하나가 [[g:root-logarithm|계층 free entropy]]를 정확히 $\log Y_0$ 만큼 바꾸므로 두 계의 차는 $\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}$ 에 $O(N^{-1/4})$ 을 더한 것이다.
 gap: |
-  오차 $O(N^{-1/4})$ 은 $L$, $\mathbf u$ 에 균일하다. $\log Y_0$ 는 [[g:root-logarithm|root logarithm]]의 변화이고 tilted reservoir kernel로 계산한다.
+  오차 $O(N^{-1/4})$ 은 물리 문장에도 적었고 $L$, $\mathbf u$ 에 균일하다(원문은 lemma에서 $o_N(1)$ 로만 진술한다). $\log Y_0$ 는 [[g:root-logarithm|root logarithm]]의 변화이고 tilted reservoir kernel로 계산한다.
 abstraction: exact
 children: []
 source:

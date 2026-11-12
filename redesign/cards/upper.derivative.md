@@ -5,13 +5,13 @@ title: '핵심 부등식 $\varphi^\prime(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e
 uses: [upper:bound.s2, upper:bound.s3, model:ve, model:power-means]
 provides: 'upper:bound.s4 (적분). 규칙 P2, L1 수 1'
 math: |
-  모든 $t\in(0,1)$ 에서
+  모든 $t\in(0,1)$ 에서 (작성자 보탬: 원문 58–61은 범위를 적지 않는다. 55행 "justifies the derivative on $(0,1)$"에서 온 범위다)
   $$\varphi'(t)+\alpha(p-1)\mathbb E\log T_0V_{\rm e}\le0.\tag{4.1}$$
   (작성자 정리: upper:bound.s3와 함께 읽으면, 보간된 계에 실제 상호작용 하나, 균일 site의 cavity 상호작용 하나, edge 삽입 하나를 넣는 증분을 $I_{\rm real}$, $I_{\rm cav}$, $I_{\rm e}$ 라 할 때 $\mathbb E[I_{\rm real}-pI_{\rm cav}+(p-1)I_{\rm e}]\le0$ 과 같다. $I_{\rm e}=\log T_0V_{\rm e}$ 는 upper:derivative.s1.)
 physics: |
-  [[g:interpolation|interpolation]] 경로의 각 점에서, 실제 $p$체 factor 하나를 더하는 효과는 [[g:site-term|cavity factor]] $p$ 개를 더하는 효과에서 [[g:edge-term|edge 항]] $p-1$ 개만큼을 뺀 것을 넘지 않는다. 그래서 $\varphi$ 의 기울기가 $-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 이하다.
+  [[g:hypotheses|가정]] 아래, [[g:interpolation|interpolation]] 경로의 각 점에서 disorder와 tree에 대해 평균하면, 실제 $p$체 factor 하나를 더하는 효과는 [[g:site-term|cavity factor]] $p$ 개를 더하는 효과에서 [[g:edge-term|edge 항]] $p-1$ 개만큼을 뺀 것을 넘지 않는다. 그래서 $\varphi$ 의 기울기가 $-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 이하다.
 gap: |
-  같은 내용이다. 증분은 보통 Gibbs 평균의 free entropy 변화가 아니라 [[g:power-mean|power mean]] recursion을 거친 root logarithm의 변화([[g:insertion]]의 $\log Y_0$)다.
+  같은 내용이다. 부등식은 기대값에 대한 것이고 표본별 부등식이 아니다(upper.tex 51 "expected insertion increment"). 짝수 $p$ 와 (2.4)가 쓰인다(upper:remainder). 증분은 보통 Gibbs 평균의 free entropy 변화가 아니라 [[g:power-mean|power mean]] recursion을 거친 root logarithm의 변화([[g:insertion]]의 $\log Y_0$)다.
 abstraction: exact
 children: [upper:derivative.s1, upper:regularization, upper:remainder]
 source:

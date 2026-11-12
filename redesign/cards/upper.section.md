@@ -47,4 +47,4 @@ status: proposed
 
 **순환.** [[main:theorem]] → [[upper:bound]] 방향만 있다. [[upper:bound]]와 자손은 [[main:theorem]], [[x:model-moment-finiteness]], [[x:model-hypothesis-remarks]]를 `uses`에 넣지 않는다. 앞의 둘은 `upper:bound`에 기대므로 넣으면 순환이고, 마지막은 증명이 같은 사실을 스스로 적어서 필요가 없다.
 
-**인터페이스 점검.** [[tree:section]]의 export 표는 §4에 [[tree:log-expansion]]만 적지만, `\ref` 없이 [[tree:insertion]](단조·동차성), [[tree:Y-recursion]], [[tree:Q-rule]], [[x:tree-extra-variables]], [[x:tree-sampling]], [[tree:original-tilt]]도 쓴다. [[model:section]]의 표(upper.tex 12/63/125)는 `\ref` 기준으로 맞고, 기호로만 쓰는 것($V_{\rm s}$, $V_{\rm e}$, $T_0$)도 그 카드가 따로 적었다.
+**인터페이스 점검.** [[tree:section]]의 export 표는 §4에 [[tree:log-expansion]](`\cref`)과 `\ref` 없는 [[tree:insertion]](증분 $=\log Y_0$, 단조·동차성), [[x:tree-extra-variables]], [[tree:original-tilt]](41–43, 68)를 적는다([[tree:original-tilt]]는 검토 2 F10 대응으로 더했다). [[tree:Y-recursion]], [[tree:Q-rule]], [[x:tree-sampling]]은 원문이 81, 120–121에서 [[tree:log-expansion]]을 통해 가리키므로 그 표의 §4 행에도 함께 적었다. [[model:section]]의 표(upper.tex 12/63/125)는 `\ref` 기준으로 맞고, 기호로만 쓰는 것($V_{\rm s}$, $V_{\rm e}$, $T_0$)도 그 카드가 따로 적었다.

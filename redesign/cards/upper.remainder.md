@@ -2,7 +2,7 @@
 id: upper:remainder
 kind: step
 title: '볼록성: 나머지항의 $n$차 계수 (4.3)와 부호'
-uses: [upper:regularization, upper:derivative.s1, tree:log-expansion, tree:Q-rule, x:tree-sampling, model:factorization, model:positivity, model:integrability, model:chain, x:model-message, x:model-depth-zero]
+uses: [upper:regularization, upper:derivative.s1, upper:bound.s1, tree:log-expansion, tree:Q-rule, x:tree-sampling, model:factorization, model:positivity, model:chain, x:model-message, x:model-depth-zero]
 provides: 'upper:derivative ($\lambda\uparrow1$ 에서 (4.1)). 규칙 P2'
 math: |
   정규화된 증분에 tree:log-expansion을 적용한다. replica leaf $n$ 개의 tree $\mathcal T$ 위에서

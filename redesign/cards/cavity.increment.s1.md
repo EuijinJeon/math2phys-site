@@ -9,9 +9,9 @@ math: |
   $$\alpha N-\rho_N=\alpha(p-1)+O(N^{-1})$$
   의 Poisson 개수의 옛 상호작용을 더해 얻는다. 이 양들은 충분히 큰 모든 $N$ 에서 음이 아니다.
 physics: |
-  spin 하나를 더하면 그 spin에 붙는 factor가 평균 $\alpha p$ 개 생기고(평균 차수, [[g:hypergraph]]), 옛 spin들 사이의 factor는 평균 $\alpha N$ 개보다 $\alpha(p-1)$ 개 적다. 그래서 크기 $N$ 과 $N+1$ 의 계는 공통 [[g:reservoir|reservoir]]에 각각 "옛 factor $\alpha(p-1)$ 개"와 "새 spin과 그 factor $\alpha p$ 개"를 더한 것이다.
+  spin 하나를 더하면 그 spin이 정확히 한 번 들어가는 factor가 평균 $\alpha p+O(1/N)$ 개 생기고(평균 차수, [[g:hypergraph]]), 두 번 이상 들어가는 factor는 평균 $O(1/N)$ 개다. 옛 spin들 사이의 factor는 평균 $\alpha N$ 개보다 $\alpha(p-1)+O(1/N)$ 개 적다. 그래서 크기 $N$ 의 계는 공통 [[g:reservoir|reservoir]]에 옛 factor 평균 $\alpha(p-1)+O(1/N)$ 개를 더한 것이고, 크기 $N+1$ 의 계는 같은 reservoir에 새 spin과 그 factor 평균 $\alpha p+O(1/N)$ 개, 그리고 새 spin이 겹친 factor 평균 $O(1/N)$ 개를 더한 것이다.
 gap: |
-  Poisson 과정의 분해(thinning)라서 정확하다. 평균은 $O(N^{-1})$ 오차를 갖고 그 오차는 cavity:increment.s3에서 상호작용당 비용 $B$ 로 치른다. 새 입력을 마지막 좌표에 두는 데 [[g:permutation-invariance|순열 불변성]]이 쓰인다.
+  Poisson 과정의 분해(thinning)라서 정확하다. 평균의 $O(N^{-1})$ 오차는 물리 문장에도 적었고, cavity:increment.s3에서 상호작용당 비용 $B$ 로 치른다. 개수 평균이 음이 아니라는 것은 충분히 큰 $N$ 에서만 주장된다(cavity.tex 85). 새 입력을 마지막 좌표에 두는 데 [[g:permutation-invariance|순열 불변성]]이 쓰인다.
 abstraction: exact
 children: []
 source:

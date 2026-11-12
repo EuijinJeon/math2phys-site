@@ -8,7 +8,7 @@ math: |
   main:theorem의 가정(x:model-hypotheses) 아래, 모든 $N$ 과 모든 admissible 유한 단계 시행 법칙에 대해
   $$F_N\le\mathcal B_r(\zeta,\mathbf m).$$
   따라서 $F_N\le\inf_{r\ge0}\Phi_r$.
-  (작성자 읽기 ❓: "admissible"은 원문에 정의가 없다. $r\ge1$ 이면 $\zeta\in\mathcal M_{r+1}$, $0<m_1<\cdots<m_r<1$ (model:chain), $r=0$ 이면 $\zeta\in\mathcal P(\mathbb R)$ (x:model-depth-zero)로 읽었다. 이것이 $\Phi_r$ 의 inf 범위와 같다.)
+  (작성자 읽기: "admissible"은 원문에 정의가 없다. $r\ge1$ 이면 $\zeta\in\mathcal M_{r+1}$, $0<m_1<\cdots<m_r<1$ (model:chain), $r=0$ 이면 $\zeta\in\mathcal P(\mathbb R)$ (x:model-depth-zero)로 읽었다. 이것이 $\Phi_r$ 의 inf 범위와 같다. 근거: model.tex 70–71, 118–120이 시행 법칙을 그렇게만 정의한다; upper.tex 14 "Consequently $F_N\le\inf_{r\ge0}\Phi_r$"가 따르려면 inf 범위 전체가 admissible이어야 한다; upper.tex 7–9 "the full trial class, including unbounded messages"; overview.tex 39–40과 reduction.tex 19 "all trial laws, including $r=0$". 검토자 동의.)
 physics: |
   [[x:model-hypotheses]]의 [[g:hypotheses|가정]] 아래에서, 임의의 $r\ge0$ 단 시행 [[g:order-parameter|order parameter]] $\zeta$ 와 [[g:parisi-parameters|Parisi parameter]] $\mathbf m$ 으로 계산한 Mézard–Parisi Bethe free entropy $\mathcal B_r$([[g:functional]])는 모든 크기 $N$ 에서 quenched [[g:pressure|pressure]] $F_N$ 의 상한이다(free energy로는 하한). 그래서 모든 시행값의 inf([[g:phi]])도 상한이다.
 gap: |
