@@ -9,7 +9,7 @@ math: |
 physics: |
   고정 $L$에서, 깊이 $d$ ($d/L\in(\eta,1-\eta)$)의 각 [[g:state|상태]] 안에서 단일 spin의 [[g:conditional-covariance|connected correlation]] $\langle\sigma_i\sigma_j\rangle_d-\langle\sigma_i\rangle_d\langle\sigma_j\rangle_d$의 제곱을 site 쌍에 대해 평균한 양은 $N\to\infty$에서 $1/(\eta L)$ 이하다. [[g:depth-average|깊이 평균]] 없이 각 깊이에서 성립한다는 점에서 부모 명제(깊이 평균)보다 강한 정보다.
 gap: |
-  (1) "상태"는 perturbed [[g:reservoir|reservoir]]의 [[g:hierarchy|보조 계층]] prefix $\mathscr F_d$(root 포함)이고 $\langle\cdot\rangle_d$는 그 prefix에 대한 조건부 기대값이다. [[g:physical-pure-state|물리적 pure state]]가 아니다. (2) 성립하는 것은 [[g:selected-sequence|선택된 수열]]을 따른 고정 $L$의 $\limsup_N$이고, 상계 $1/(\eta L)=\delta/\eta$는 $L\to\infty$에서만 0이 된다. 고정 $L$에서는 [[g:clustering|clustering]]이 완전하다고 말하지 않는다. (3) $N^{-2}\sum_{ij}\operatorname{Cov}^2$의 $L^2$ 평균 의미이고, 상태와 disorder에 대해서도 평균한다. (4) $\eta$-[[g:eta-regular|regular]] $d$, 즉 경계 근처 깊이를 뺀 깊이에서만이다. 상계는 $c_d=(d+2)\delta\ge\eta$에 기대므로 $\eta$가 작을수록 약하다.
+  (1) "상태"는 perturbed [[g:reservoir|reservoir]]의 [[g:hierarchy|보조 계층]] prefix $\mathscr F_d$([[g:root]] 포함)이고 $\langle\cdot\rangle_d$는 그 prefix에 대한 조건부 기대값이다. [[g:physical-pure-state|물리적 pure state]]가 아니다. (2) 성립하는 것은 [[g:selected-sequence|선택된 수열]]을 따른 고정 $L$의 $\limsup_N$이고, 상계 $1/(\eta L)=\delta/\eta$는 $L\to\infty$에서만 0이 된다. 고정 $L$에서는 [[g:clustering|clustering]]이 완전하다고 말하지 않는다. (3) $N^{-2}\sum_{ij}\operatorname{Cov}^2$의 $L^2$ 평균 의미이고, 상태와 disorder에 대해서도 평균한다. (4) $\eta$-[[g:eta-regular|regular]] $d$, 즉 경계 근처 깊이를 뺀 깊이에서만이다. 상계는 $c_d=(d+2)\delta\ge\eta$에 기대므로 $\eta$가 작을수록 약하다.
 abstraction: approximation
 children: [decor:conditional-concentration.s2.s1, decor:conditional-concentration.s2.s2]
 source:

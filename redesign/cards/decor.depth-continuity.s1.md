@@ -11,7 +11,7 @@ math: |
 physics: |
   깊이 $t$ [[g:state|상태]] 평균의 자기 [[g:multioverlap|overlap]] $q_t=\mathbb E\|\mu_{t,T}\|_N^2$ ($T$가 [[g:replica|replica]] 하나면 $\mathbb E\,N^{-1}\sum_i\langle\sigma_i\rangle_t^2$)은 계층 깊이를 따라 증가하고, 그 증가분의 합은 1 이하다. 한 깊이에서 다음 깊이로 상태 평균이 바뀌는 양의 제곱 평균이 정확히 그 증가분이다.
 gap: |
-  "상태"는 [[g:hierarchy|보조 계층]]의 prefix $\mathscr F_t$(root 포함)이고 [[g:physical-pure-state|물리적 pure state]]가 아니다. $q_t$는 보조 계층 깊이 $t$의 양이며 Parisi 함수 $q(x)$의 값으로 식별되지 않는다. $T$가 여러 leaf를 가지면 $\mu_{t,T}$는 여러 replica spin 곱의 조건부 평균이다.
+  "상태"는 [[g:hierarchy|보조 계층]]의 prefix $\mathscr F_t$([[g:root]] 포함)이고 [[g:physical-pure-state|물리적 pure state]]가 아니다. $q_t$는 보조 계층 깊이 $t$의 양이며 Parisi 함수 $q(x)$의 값으로 식별되지 않는다. $T$가 여러 leaf를 가지면 $\mu_{t,T}$는 여러 replica spin 곱의 조건부 평균이다.
 abstraction: exact
 children: []
 source:

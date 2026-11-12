@@ -9,7 +9,7 @@ math: |
 physics: |
   깊이 $e-1$ [[g:state|상태]]에서의 평균 [[g:multioverlap|overlap]] $M$은 상태와 disorder에 따라 요동하지 않는다(상태 사이 요동의 소멸). marker [[g:anchor|anchor]]를 쓴 [[g:tree-identity|prescribed-tree 항등식]]에서 나온다.
 gap: |
-  고정 $L$과 고정 깊이에서, [[g:selected-sequence|선택된 perturbed 수열]]을 따라 $N\to\infty$로만 성립한다. 계수 $C(S,e)=-\delta\kappa(S)$로 나누므로 $L$에 균등한 진술이 아니다. 논문은 이 항등식이 Ghirlanda–Guerra 항등식과 같다고 주장하지 않고(선행 연구와의 관계는 intuition으로만 [[g:tree-identity]]의 물리 대응 칸에 있다), overlap 분포의 형태를 정하지도 않는다. "상태"는 perturbed [[g:reservoir|reservoir]]의 [[g:hierarchy|보조 계층]] prefix $\mathscr F_{e-1}$(root 포함)이며 [[g:physical-pure-state|물리적 pure state]]가 아니다.
+  고정 $L$과 고정 깊이에서, [[g:selected-sequence|선택된 perturbed 수열]]을 따라 $N\to\infty$로만 성립한다. 계수 $C(S,e)=-\delta\kappa(S)$로 나누므로 $L$에 균등한 진술이 아니다. 논문은 이 항등식이 Ghirlanda–Guerra 항등식과 같다고 주장하지 않고(선행 연구와의 관계는 intuition으로만 [[g:tree-identity]]의 물리 대응 칸에 있다), overlap 분포의 형태를 정하지도 않는다. "상태"는 perturbed [[g:reservoir|reservoir]]의 [[g:hierarchy|보조 계층]] prefix $\mathscr F_{e-1}$([[g:root]] 포함)이며 [[g:physical-pure-state|물리적 pure state]]가 아니다.
 abstraction: approximation
 children: [decor:overlap-concentration.s2.s1, decor:overlap-concentration.s2.s2]
 source:

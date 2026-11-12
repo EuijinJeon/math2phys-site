@@ -41,8 +41,8 @@
 
 | 작업 | 상태 |
 |---|---|
-| 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | 🔄 검토 중 → `build/review-2-glossary.md` |
-| §2 model, §3 trees 카드 | 🔄 작성 중 (opus 둘) |
+| 용어집 독립 검토와 반영 (1단계에서 넘어온 일) | 🔄 검토 완료(지적 21건), 반영 중 → `build/review-2-glossary.md` |
+| §2 model, §3 trees 카드 | 🔄 초안 완료(§2 24장, §3 39장). §2 검토 완료·반영 중, §3 검토 중 |
 | §4 upper, §5 cavity 카드 | ⬜ |
 | §6 perturbations 카드 | ⬜ |
 | §8 comparison, §9 reduction 카드 | ⬜ |
@@ -197,3 +197,13 @@
   - §3 trees 카드 작성(opus).
 - 동시 편집 충돌을 피하려고 작성 에이전트는 `layers/glossary.md`를 고치지 않고 새 용어를 `build/glossary-additions-<섹션>.md`에 적는다. 용어집 검토 반영이 끝난 뒤 조율 세션이 합친다.
 - 세 에이전트 모두 시작 직후 사용 한도(5시간)에 걸려 산출물 없이 중단. 한도 초기화(20:50 UTC) 뒤 같은 에이전트를 재개함.
+- 용어집 독립 검토 완료: 62항목 중 통과 40, 지적 21건(틀림 1, 과장 4, 가정 누락 3, 정의 위치 1, 모순 1, 누락 5, 기타 6; 높음 0, 중간 4, 낮음 17). 수식 불일치 0. `build/review-2-glossary.md`.
+  - 중간: `g:tree-identity` 역할 범위 과장(원문 근거는 §7에만 해당, §8은 `cavity:identity`·`comp:low-increments`·유계성을 따로 받음), `g:tree-coefficient`의 부호 서술 틀림, root와 기대값 표기의 항목 누락, `g:encoded-law`·`g:rsb-steps` 물리 대응 유형(확신 낮음).
+  - 이름 선택에 대한 검토자 권고(👤 대기, 미반영): "prescribed-tree 항등식"으로 통일, "clustering" → "조건부 decorrelation", `g:self-average` → "집중", 고전적 GG 요약 삭제, "branching pattern" → "shape".
+  - 수정자(opus)가 건별 재대조 후 반영 중. 이름 변경은 하지 않게 함.
+- §2 model 카드 초안: 24장(잎 22). 주정리 `main:theorem`과 증명 단계 s1–s4(reduction.tex 45–87)를 여기서 덮음 → §9 카드는 이 줄을 겹쳐 쓰지 않는다. 새 용어 `g:disorder`. overview.tex는 범위 밖(담당 미정).
+  - 뒤 섹션 작성 시 순환 주의: `upper:bound` 카드는 `main:theorem`이 아니라 `x:model-hypotheses`를, `comp:bounded-lower`는 `model:section`이 아니라 `model:functional`·`x:model-depth-zero`를 `uses`에 넣는다.
+- §2 독립 검토 완료: 통과 11장, 지적 15건(과장 3, 누수 5, 유형·ID 2, 용어 1, 표기 4; 높음 0, 중간 4). 수식 전사 오류 0, 작성자가 보탠 계산 전부 재계산해 옳음, 증명 분해의 구멍 0. `build/review-2-model.md`. 수정자(opus) 반영 중.
+- §3 trees 카드 초안: 39장(잎 32). §7 카드가 기대하는 인터페이스와 어긋남 없음(작성자 보고). 새 용어 `g:protected-leaf`, `g:reference-path`. 독립 검토 진행 중.
+  - 검사의 약점: 섹션 카드가 파일 전체를 덮어 같은 파일 안 참조는 의존 검사가 늘 통과한다. 섹션 안 `uses`는 검토자가 손으로 확인한다. (도구 개선 후보)
+- 사용 한도에 두 번째로 걸림(용어집 수정자와 §3 검토자 중단, 01:50 UTC 초기화). 사용자 지시로 재개.
