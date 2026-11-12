@@ -11,9 +11,9 @@ math: |
   $$g=\lim_{\beta\to\infty}\frac1\beta\inf_{r\ge0}\inf_{\zeta,\mathbf m}\mathcal B_{r,\beta}(\zeta,\mathbf m)\tag{10.1}$$
   를 만족한다. 더 정확히는 온도 극한 안의 식이 $[g,g+\log(2)/\beta]$ 안에 있다. 단위 가중치 SAT에서는 변수당 위반 clause 최소 개수 기대값의 극한이 $-g$ 이다.
 physics: |
-  [[models:spin]]의 희석 $p$-spin 모형(Viana–Bray 포함)과 [[models:sat]]의 soft $K$-SAT에서, ground-state 에너지 밀도 $-g$([[g:ground-state]])의 열역학 극한이 존재한다. 각 $\beta$ 에서 free energy density $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 $[-g-\frac{\log2}{\beta},-g]$ 안에 있고(엔트로피 밀도가 $0$ 과 $\log2$ 사이), 그래서 $-g=\lim_{\beta\to\infty}f(\beta)$ 이다. 단위 가중치 SAT에서 $-g$ 는 변수당 최소 위반 clause 수(그 기대값의 밀도 극한)다.
+  [[models:spin]]의 희석 $p$-spin 모형(Viana–Bray 포함)과 [[models:sat]]의 soft $K$-SAT에서, ground-state 에너지 밀도 $-g$([[g:ground-state]])의 열역학 극한이 존재한다. 각 $\beta$ 에서 free energy density $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 $[-g-\frac{\log2}{\beta},-g]$ 안에 있고, 그래서 $-g=\lim_{\beta\to\infty}f(\beta)$ 이다. 단위 가중치 SAT에서 $-g$ 는 변수당 최소 위반 clause 수(그 기대값의 밀도 극한)다.
 gap: |
-  (1) 극한 순서는 각 고정 $\beta$ 에서 $N\to\infty$, 그다음 $\beta\to\infty$ 다. $\beta=\infty$ 에서 직접 세운 변분 공식(영온도 cavity functional)은 주지 않는다. (2) 각 $\beta$ 에서 inf를 따로 취하고, inf의 달성이나 극한 계층, 영온도 [[g:order-parameter|order parameter]]를 요구하지도 주장하지도 않는다(x:cons-ground-scope). (3) 엔트로피로 읽는 것은 작성자의 읽기다. 원문의 근거는 "$2^N$ 개 배치"라는 한 줄이다(models:ground.s1). (4) 물리 문장의 $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 주정리로 $\lim_NF_N(\beta)$ 와 같다(models:ground.s2). (5) $\max$ 의 기대값 밀도이고 전형적인 표본의 값이라는 진술은 아니다.
+  (1) 극한 순서는 각 고정 $\beta$ 에서 $N\to\infty$, 그다음 $\beta\to\infty$ 다. $\beta=\infty$ 에서 직접 세운 변분 공식(영온도 cavity functional)은 주지 않는다. (2) 각 $\beta$ 에서 inf를 따로 취하고, inf의 달성이나 극한 계층, 영온도 [[g:order-parameter|order parameter]]를 요구하지도 주장하지도 않는다(x:cons-ground-scope). (3) 폭 $\log2/\beta$ 의 근거는 "$2^N$ 개 배치"라는 한 줄이다(models:ground.s1). 이 폭을 엔트로피 밀도의 상한으로 읽는 것은 작성자의 읽기이고 원문에 없다. (4) 물리 문장의 $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 주정리로 $\lim_NF_N(\beta)$ 와 같다(models:ground.s2). (5) $\max$ 의 기대값 밀도이고 전형적인 표본의 값이라는 진술은 아니다.
 abstraction: exact
 children: [models:ground.s1, models:ground.s2, models:ground.s3, models:ground.s4]
 source:

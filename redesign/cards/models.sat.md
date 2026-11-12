@@ -9,7 +9,7 @@ math: |
   $$\theta_\beta(s_1,\ldots,s_K)=-\beta W\prod_{\ell=1}^K\frac{1+\varepsilon_\ell s_\ell}{2},\qquad h=0$$
   은 (2.13)을 만족한다. $W=1$ 이 soft random 짝수 $K$-SAT 모형이고, 일반 $W$ 는 독립인 음이 아닌 clause 가중치를 준다.
 physics: |
-  clause 밀도 $\alpha$ 의 random 짝수 $K$-SAT([[x:cons-standard-examples]]의 Poisson 개수·복원추출)에서, 각 clause $k$ 는 모든 literal이 $\sigma_{i_{\ell,k}}=\varepsilon_{\ell,k}$ 일 때 위반되고, 위반된 clause마다 에너지 $W_k\ge0$ 을 치른다(Boltzmann weight $e^{-\beta W_k}$ 의 soft constraint, 외부장 없음). $W$ 가 부호와 독립이고 $\mathbb EW<\infty$ 이면 모든 온도 $\beta>0$ 에서 quenched [[g:pressure|pressure]]의 열역학 극한이 존재하고 모든 유한 [[g:rsb-steps|RSB 단계 수]]의 시행값([[g:functional]])의 [[g:phi|inf]]와 같다.
+  clause 밀도 $\alpha$ 의 random 짝수 $K$-SAT([[x:cons-standard-examples]]의 Poisson 개수·복원추출)에서, 각 clause $k$ 는 모든 자리 $\ell$ 에서 $\sigma_{i_{\ell,k}}=\varepsilon_{\ell,k}$ 일 때 위반되고, 위반된 clause마다 에너지 $W_k\ge0$ 을 치른다(Boltzmann weight $e^{-\beta W_k}$ 의 soft constraint, 외부장 없음). $W$ 가 부호와 독립이고 $\mathbb EW<\infty$ 이면 모든 온도 $\beta>0$ 에서 quenched [[g:pressure|pressure]]의 열역학 극한이 존재하고 모든 유한 [[g:rsb-steps|RSB 단계 수]]의 시행값([[g:functional]])의 [[g:phi|inf]]와 같다.
 gap: |
   (1) $K$ 는 짝수다. 3-SAT 같은 홀수 $K$ 는 제외된다(x:cons-3sat-remark). (2) "모든 $\beta>0$"이 원문의 범위다. $\beta=\infty$ 의 hard constraint(해의 존재나 해 공간)는 이 따름정리가 다루지 않고, 영온도 쪽은 models:ground의 최댓값 밀도로만 다룬다. (3) clause 개수는 Poisson$(\alpha N)$ 이고 변수는 복원추출이라 한 clause 안에 같은 변수가 되풀이될 수 있다(작성자 관찰). 고정 개수·서로 다른 변수의 표준 앙상블과의 동치는 다루지 않는다. (4) 어느 온도에서 몇 단 RSB가 필요한지, inf가 달성되는지는 말하지 않는다(x:model-theorem-scope). (5) 증명은 주정리의 [[g:hypotheses|가정]]을 확인할 뿐이다.
 abstraction: exact
@@ -28,4 +28,4 @@ status: proposed
 
 모형의 체수 $p$ 가 여기서는 $K$ 다. 장은 $h=0$(0에 놓인 점질량)이라 $\mathbb E\lvert h\rvert=0$ 이다.
 
-**위반의 약속.** $I_\varepsilon(s)=1$ 은 모든 $\ell$ 에서 $s_\ell=\varepsilon_\ell$ 일 때다(작성자 확인: 각 인자 $(1+\varepsilon_\ell s_\ell)/2$ 는 $s_\ell=\varepsilon_\ell$ 이면 1, 아니면 0). 원문은 이것을 "indicates a violated clause"라고만 적는다(54행). 그러니 $\varepsilon_\ell$ 은 clause를 위반하게 하는 literal 값이다.
+**위반의 약속.** $I_\varepsilon(s)=1$ 은 모든 $\ell$ 에서 $s_\ell=\varepsilon_\ell$ 일 때다(작성자 확인: 각 인자 $(1+\varepsilon_\ell s_\ell)/2$ 는 $s_\ell=\varepsilon_\ell$ 이면 1, 아니면 0). 원문은 이것을 "indicates a violated clause"라고만 적는다(54행). 그러니 $\varepsilon_\ell$ 은 clause를 위반하게 하는 $\ell$ 번째 변수의 값이다.
