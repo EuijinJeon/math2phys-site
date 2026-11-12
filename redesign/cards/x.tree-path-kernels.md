@@ -19,6 +19,6 @@ source:
 status: proposed
 ---
 
-"$\mathscr F_d$ is the prefix sigma-field"(trees.tex 22)는 깊이를 명시하지 않는다. $K_d(dz\mid\mathscr F_{d-1})$ 표기(trees.tex 59, 77)와 "given the whole prefix through depth $d-1$"(21–22)에 맞춰 $\mathscr F_d$를 깊이 $d$까지의 prefix $\sigma$-field로 읽었다. root는 깊이 0의 변수이므로 $\mathscr F_0$은 root를 담는다. 쓰이는 곳에서 root는 disorder와 매개변수를 포함한다([[x:tree-extra-variables]]의 "additional root variables remain quenched").
+"$\mathscr F_d$ is the prefix sigma-field"(trees.tex 22)는 깊이를 명시하지 않는다. $K_d(dz\mid\mathscr F_{d-1})$ 표기(trees.tex 59, 77)와 "given the whole prefix through depth $d-1$"(21–22)에 맞춰 $\mathscr F_d$를 깊이 $d$까지의 prefix $\sigma$-field로 읽었다. root는 깊이 0의 변수이므로 $\mathscr F_0$은 root를 담는다. 쓰이는 곳에서 root는 물리 disorder와 섭동의 개수·type·site를 담는다(cavity.tex 29, perturbations.tex 60–61; [[x:tree-extra-variables]]의 "additional root variables remain quenched"). 섭동 매개변수 $\mathbf u$는 root 변수가 아니라 고정된 결정적 값이다(cavity.tex 29–31 "fixed, not quenched random variables, unless a parameter average is explicitly taken"; perturbations.tex 68–69). 이 절의 삽입 매개변수 $t_j$도 무작위 변수가 아니라 미분 변수다. [[g:root]]의 약속과 같다.
 
 시행 법칙 쪽 대응(26–27)에서 $\eta_0$은 root다. 이 대응은 §4 upper의 message-label tree가 쓴다(upper.tex 97–105).

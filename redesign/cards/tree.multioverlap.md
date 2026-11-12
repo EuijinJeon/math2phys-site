@@ -11,7 +11,7 @@ math: |
 physics: |
   [[g:multioverlap|multioverlap]]: $|S|=2$이면 보통의 [[g:replica|replica]] overlap $q_{ab}$, $|S|=1$이면 자화, 일반 $S$는 여러 replica의 spin 곱의 공간 평균이다.
 gap: |
-  replica들은 [[x:tree-sampling]]의 tree 규칙으로 뽑힌다. 따라서 $R_S$의 분포는 replica들이 공유하는 prefix 깊이(tree 모양)에 의존한다. $\mathbb E$는 root(쓰이는 곳에서는 disorder와 매개변수)까지 평균한 것이다.
+  replica들은 [[x:tree-sampling]]의 tree 규칙으로 뽑힌다. 따라서 $R_S$의 분포는 replica들이 공유하는 prefix 깊이(tree 모양)에 의존한다. $\mathbb E$는 [[g:root|root]]까지 평균한 것이다. 쓰이는 곳에서 root는 물리 disorder와 섭동의 개수·type·site를 담는다. 섭동 매개변수 $\mathbf u$는 root가 아니라 고정값이고 $\mathbb E$는 그것을 평균하지 않는다(cavity.tex 29–31 "fixed, not quenched random variables", perturbations.tex 68–69).
 abstraction: exact
 children: []
 source:
