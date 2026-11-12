@@ -5,7 +5,7 @@ title: '$K\to\infty$ 와 상수 되돌리기: $\liminf_NF_N\ge\inf_r\Phi_r$'
 uses: [main:theorem.s1, main:theorem.s2, reduction:stability, comp:bounded-lower, model:functional, x:model-depth-zero]
 provides: 'main:theorem.s4의 하한'
 math: |
-  $\widehat I$ 를 정규화된(상수 이동한) 시행 functional의 모든 깊이와 시행 법칙에 대한 inf, $I_K$ 를 잘린 물리 법칙으로 같은 inf라 하자. 균일한 시행 안정성(reduction:stability의 시행 functional 부등식)이
+  $\widehat I$ 를 정규화된(상수 이동한) 시행 functional의 모든 깊이와 시행 법칙에 대한 inf, $I_K$ 를 잘린 물리 법칙으로 같은 inf라 하자. $\widehat\theta$ 와 $h$ 는 (2.1)을 만족하고($\mathbb EB(\widehat\theta)\le2\mathbb EB(\theta)$, main:theorem.s1) 잘린 $\widehat\theta^{(K)}$, $h^{(K)}$ 는 bounded이며, $c$ 는 적분 가능하므로(main:theorem.s1) reduction:stability가 적용된다. 균일한 시행 안정성(reduction:stability의 시행 functional 부등식)이
   $$\lvert\widehat I-I_K\rvert\le\alpha(2p-1)D_K+d_K$$
   를 준다. pressure 안정성(reduction:stability의 $\lvert F_N-F_N'\rvert\le\alpha D+d$)과 comp:bounded-lower는
   $$\liminf_N\widehat F_N\ge I_K-\alpha D_K-d_K\ge\widehat I-2\alpha pD_K-2d_K$$

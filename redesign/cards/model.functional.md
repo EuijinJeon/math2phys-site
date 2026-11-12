@@ -2,7 +2,7 @@
 id: model:functional
 kind: definition
 title: '시행 functional $\mathcal B_r$ 와 변분값 $\Phi_r$ (2.11)'
-uses: [model:power-means, model:vs, model:ve, model:hamiltonian]
+uses: [model:power-means, model:vs, model:ve, model:integrability]
 provides: 'main:theorem의 우변. upper:bound($F_N\le\mathcal B_r$), comp:insertion-comparison($\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$), comp:bounded-lower, reduction:stability, models:ground($\mathcal B_{r,\beta}$, consequences.tex 83)'
 math: |
   $$\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\,\mathbb E\log T_0V_{\rm e},\qquad\Phi_r=\inf_{\zeta,\,\mathbf m}\mathcal B_r(\zeta,\mathbf m).\tag{2.11}$$

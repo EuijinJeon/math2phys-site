@@ -9,9 +9,9 @@ math: |
   $$\lim_{N\to\infty}F_N=\inf_{r\ge0}\Phi_r.\tag{2.13}$$
   여기서 $\Phi_r=\inf_{\zeta,\mathbf m}\mathcal B_r(\zeta,\mathbf m)$ ($r\ge1$), $\Phi_0=\inf_\zeta\mathcal B_0(\zeta)$ 이다.
 physics: |
-  Poisson [[g:hypergraph|hypergraph]] 위의 짝수 $p$체 Ising spin glass에서 quenched [[g:pressure|pressure]] $F_N$($=-\beta f$)의 열역학 극한이 존재하고, 모든 유한 [[g:rsb-steps|RSB 단계 수]]의 Mézard–Parisi free entropy 시행값([[g:functional]])의 inf([[g:phi]])와 같다.
+  [[g:hypotheses|가정]]([[x:model-hypotheses]]) 아래, Poisson [[g:hypergraph|hypergraph]] 위의 짝수 $p$체 Ising spin glass에서 quenched [[g:pressure|pressure]] $F_N$($=-\beta f$)의 열역학 극한이 존재하고, 모든 유한 [[g:rsb-steps|RSB 단계 수]]의 Mézard–Parisi free entropy 시행값([[g:functional]])의 inf([[g:phi]])와 같다.
 gap: |
-  (1) 물리의 "정류점에서 평가한다"가 아니라 inf다. inf의 달성, 최적 order parameter, $r\to\infty$ 의 극한 order parameter, 극한 무한 깊이 Gibbs 측도는 주장하지 않는다(x:model-theorem-scope). (2) [[g:physical-pure-state|물리적 pure state]]들의 계층 구조는 가정하지도 증명하지도 않는다. (3) [[g:hypotheses|가정]]은 (2.1)–(2.4)이고 짝수 $p$ 를 포함한다. (4) 물리 유도가 흔히 쓰는 $\lim F_N=\lim\Delta_N$ 은 가정하지 않는다. 극한의 존재는 $\limsup F_N\le\inf_r\Phi_r\le\liminf F_N$ 에서 나온다(main:theorem.s4).
+  (1) 물리의 "정류점에서 평가한다"가 아니라 inf다. inf의 달성, 최적 order parameter, $r\to\infty$ 의 극한 order parameter, 극한 무한 깊이 Gibbs 측도는 주장하지 않는다(x:model-theorem-scope). (2) [[g:physical-pure-state|물리적 pure state]]들의 계층 구조는 가정하지도 증명하지도 않는다. (3) 물리 문장의 "가정 아래"는 x:model-hypotheses의 (2.1)–(2.4)(짝수 $p$, 1차 moment, 전개 (2.3), 부호 조건 (2.4))를 가리킨다. 이 가정 밖의 희석 모형에 대해서는 아무것도 주장하지 않는다. (4) 물리 유도가 흔히 쓰는 $\lim F_N=\lim\Delta_N$ 은 가정하지 않는다. 극한의 존재는 $\limsup F_N\le\inf_r\Phi_r\le\liminf F_N$ 에서 나온다(main:theorem.s4).
 abstraction: exact
 children: [main:theorem.s1, main:theorem.s2, main:theorem.s3, main:theorem.s4]
 source:

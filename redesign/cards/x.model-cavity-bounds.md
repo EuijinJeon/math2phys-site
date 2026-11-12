@@ -3,7 +3,7 @@ id: x:model-cavity-bounds
 kind: remark
 title: '$\lvert\log C_\theta\rvert,\ \lvert U_\theta\rvert\le B(\theta)$'
 uses: [model:edge, model:site-message, model:integrability]
-provides: 'model:trial-bounds의 재료. upper.tex와 reduction:stability(각 cavity 상호작용과 edge 로그가 sup-norm 차이만큼만 변함)'
+provides: 'model:trial-bounds의 재료. upper.tex 53–54(각 삽입 증분의 절댓값이 $B(\theta)$ 이하). reduction:stability(reduction.tex 33–34)는 같은 확률 가중 평균 논법을 두 상호작용의 차이에 다시 쓴다(이 진술을 받는 것은 아님)'
 math: |
   $\lvert\log C_\theta\rvert$ 와 $\lvert U_\theta\rvert$ 는 message에 대해 균일하게 $B(\theta)$ 이하이다.
 physics: null

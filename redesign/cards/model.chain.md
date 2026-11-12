@@ -19,4 +19,4 @@ source:
 status: proposed
 ---
 
-$\eta_d^\omega$ 는 $\mathcal M_{r-d}$ 의 값을 갖는다($\eta_0\in\mathcal M_r$, $\eta_{r-1}\in\mathcal M_1$). 원문에 명시되어 있지 않고 (2.7)에서 읽은 것이다. label은 셀 수 있게 많고, site 항의 label $x^j_\ell$ 은 $k$ 가 무작위이므로 무한히 미리 준비해 둔다고 읽었다(❓ 원문은 label 집합의 크기를 적지 않는다).
+$\eta_d^\omega$ 는 $\mathcal M_{r-d}$ 의 값을 갖는다($\eta_0\in\mathcal M_r$, $\eta_{r-1}\in\mathcal M_1$). 원문에 명시되어 있지 않고 (2.7)에서 읽은 것이다. label 집합은 $\{1,\ldots,p\}\sqcup\{(j,\ell):j\ge1,\ 1\le\ell<p\}$ 로 가산 무한이다: model.tex 80–81은 $x_\ell^j$ 의 첨자를 $j\le k$ 가 아니라 $j\ge1$ 로 잡고, 82행도 $\theta,\theta_1,\ldots$ 를 $k$ 와 독립인 무한열로 잡는다. 사슬들은 label끼리 i.i.d.이고 $k$ 와 독립이므로(71, 79–80행) $V_{\rm s}$ 는 처음 $k$ 개 묶음만 쓰는 함수이고, $\mathscr F_d$(90–91행)는 가산 개 변수가 생성하는 $\sigma$-field다. $V_{\rm s}$ 의 label과 $V_{\rm e}$ 의 label도 서로 다르다(80–81행). upper.tex 40, comparison.tex 182도 서로 다른 label의 약속을 쓴다.

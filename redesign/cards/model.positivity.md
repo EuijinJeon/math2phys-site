@@ -9,9 +9,9 @@ math: |
   $$\mathbb E[(-b)^n]\ge0\qquad(n\ge1).\tag{2.4}$$
   이 기대값들은 유한한 실수 기대값으로 해석한다.
 physics: |
-  coupling의 tanh $b$ 에 대한 부호 조건([[g:positivity]])이다. 대칭 coupling(홀수 moment가 0, 짝수 moment는 자동으로 $\ge0$)과 soft SAT($-1<b\le0$)에서 성립한다(models:spin, models:sat 증명).
+  [[g:factorization|전개]]의 계수 $b$ 에 대한 부호 조건([[g:positivity]])이다. 대칭 coupling(홀수 moment가 0, 짝수 moment는 자동으로 $\ge0$)과 soft SAT($-1<b\le0$)에서 성립한다(models:spin, models:sat 증명).
 gap: |
-  "frustration이 대칭이거나 반강자성 쪽"이라는 읽기는 그림이고 일반적인 동치 조건이 아니다. 이 조건은 상한에만 쓰이고 하한에는 쓰이지 않는다(cavity.tex 13–14). 기대값의 유한성이 자동인 경우는 [[x:model-hypothesis-remarks]].
+  "frustration이 대칭이거나 반강자성 쪽"이라는 읽기는 그림이고 일반적인 동치 조건이 아니다. 이 조건은 상한에만 쓰이고 하한에는 쓰이지 않는다(cavity.tex 13–14). 기대값의 유한성이 자동인 경우(비퇴화 경우)는 [[x:model-moment-finiteness]], 퇴화 경우의 $b=0$ 은 [[x:model-hypothesis-remarks]].
 abstraction: weakening
 children: []
 source:
