@@ -2,7 +2,8 @@
 """적법성 검사 (SCHEMA.md 마지막 표). build/graph.json, cards/*.md, layers/*.md 를 읽어
 build/check-report.md 를 쓴다. 오류가 없으면 종료 코드 0, 있으면 1.
 
-사용: python3 tools/check.py [--sections decorrelation,trees] [--root DIR] [--out FILE]
+사용: python3 tools/check.py [--sections decorrelation,trees]   (--sections 를 생략하면 섹션 카드가 있는 모든 원문 파일)
+  [--root DIR] [--out FILE]
   --root  cards/ 와 layers/ 를 담은 디렉터리 (기본: redesign/). source/ 와 graph.json 은 항상 실제 것을 쓴다.
 """
 import argparse
@@ -45,7 +46,8 @@ class Report:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sections", default=None, help="포함 검사를 적용할 파일 stem (쉼표 구분)")
+    ap.add_argument("--sections", default=None,
+                    help="포함 검사를 적용할 파일 stem (쉼표 구분). 없으면 섹션 카드가 있는 모든 원문 파일")
     ap.add_argument("--root", default=None)
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
@@ -116,7 +118,8 @@ def main():
         if args.sections:
             targets = [s.strip() for s in args.sections.split(",") if s.strip()]
         else:
-            targets = sorted({f[:-4] for c in valid for (f, a, b) in c.source})
+            # 인자가 없으면 섹션 카드(kind: section)가 덮는 원문 파일 전부
+            targets = sorted({f[:-4] for c in valid if c.get("kind") == "section" for (f, a, b) in c.source})
         notes.append(f"대상 섹션(파일): {', '.join(targets) if targets else '(없음)'}")
         notes.append(f"카드 {len(valid)}개 중 잎 {len(leaf)}개")
         for stem in targets:
@@ -259,6 +262,15 @@ def main():
                     # 대상 라벨의 위치가 허용된 카드 범위 안이면 통과
                     dl = label_loc.get(dst)
                     if dl and any(dl[0] == f and a <= dl[1] <= b for (f, a, b) in allowed_ranges):
+                        ok = True
+                if not ok and ed.get("dst_kind") == "section" and dst in by_id:
+                    # 섹션 라벨을 가리키는 참조: 그 섹션 카드의 자손 가운데 하나라도 이 카드(또는 그 조상)의 uses 에 있으면 충족.
+                    own_uses = set(c.uses)
+                    for a_id in ancestors(c.id):
+                        ac = by_id.get(a_id)
+                        if ac:
+                            own_uses.update(ac.uses)
+                    if descendants(dst) & own_uses:
                         ok = True
                 if not ok:
                     key = (c.id, dst, ed["file"], ed["line"])

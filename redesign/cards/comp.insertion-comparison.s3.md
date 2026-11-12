@@ -10,7 +10,7 @@ physics: |
   삽입 log를 [[g:tree-law|tree 법칙]] $Q_k$ 위 [[g:replica|replica]] 평균의 급수로 쓰면, 각 항은 이웃 site들의 [[g:spin-pattern|spin pattern]]의 유계 함수다. 그래서 차수마다 이웃을 독립 사본으로 바꾸는 비용은 tree 평균한 [[g:multioverlap|multioverlap]] 요동이고, 그것은 극한에서 사라진다.
 gap: |
   (1) 차수별 비교는 고정 $k$ 에서만 하고 높은 차수는 균일한 기하 꼬리로 버린다. 그래서 $M$ 이 고정이어야 한다($c=\tanh(H+BM)$). (2) "순서 있는 극한"은 고정 $L$ 의 선택된 수열 위 $\limsup_N$ 뒤 $L\to\infty$ 다([[g:order-of-limits]]). (3) 이웃 수가 $pM$ 으로 유한한 것은 절단 덕분이다.
-abstraction: weakening
+abstraction: approximation
 children: []
 source:
   - {file: comparison.tex, lines: [205, 213]}

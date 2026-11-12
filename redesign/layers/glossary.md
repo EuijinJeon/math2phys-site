@@ -468,7 +468,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: intuition — Parisi 함수 $q(x)$ 가 단조 유계라 큰 점프가 드물다는 그림과 닮았다. 실제로 쓰는 단조량은 깊이별 자기 overlap $\mathbb E\lVert\mu_{t,T}\rVert_N^2$ 이다.
 
 ### g:order-of-limits — 극한 순서
-- **기호**: $\lim_{\varepsilon\downarrow0}\lim_{\eta\downarrow0}\lim_{L\to\infty}\limsup_{N\to\infty}$(바깥에서 안쪽 순)
+- **기호**: 바깥 조립(`comp:bounded-lower`): $\varepsilon\downarrow0$ ← $L\to\infty$ ← $\limsup_{N\to\infty}$(그 $(L,\varepsilon)$ 의 선택된 수열). 안쪽 명제: (comp:shape-error)에서 고정 $\eta$ 로 $N$, $L$ 뒤 $\eta\downarrow0$; (comp:increment-comparison)에서 $M$, $q$ 를 먼저 고정.
 - **뜻**: 하한의 극한은 $L$, $\varepsilon$, $\eta$ 를 고정하고 [[g:selected-sequence]]를 따라 $N\to\infty$, 그다음 $L\to\infty$, 그다음 $\eta\downarrow0$(§8의 shape error), 마지막으로 $\varepsilon\downarrow0$ 의 순서로만 취한다. §6 안에서는 type 지수 $j$ 를 고정하고 $N\to\infty$ 한 뒤 $j\to\infty$ 이고, 비교 안에서는 Poisson 절단 $M$ 과 전개 차수 $q$ 를 먼저 고정한다.
 - **역할**: P5, P7–P11의 차이 칸이 이 순서를 가리킨다. `decor:order-of-limits`는 $L$ 에 의존하는 작은 분모가 고정 $L$ 에서 먼저 사라지는 항등식 오차에만 붙는다는 것을 정리한다.
 - **정의 위치**: `decor:order-of-limits`, `x:decor-limit-order`, `perturbations.tex` 538–547, `comparison.tex` 130, 153–156, 218–222

@@ -5,7 +5,7 @@ title: '§8의 고정된 선택: $\varepsilon$, 깊이마다의 선택된 수열
 uses: [pert:selection, x:pert-selected-limits, x:pert-increment, x:cavity-bounded, cavity:grid]
 provides: 'comp:low-increments, comp:encoding("selected parameter vector"), comp:shape-error(130 "the inner limit is along the selected fixed-$L$ sequence"), comp:insertion-comparison, comp:bounded-lower(243 "that depth''s selected sequence")의 모든 $N$ 과 기대값의 뜻'
 math: |
-  $\varepsilon>0$ 을 고정한다. 각 깊이 $L\ge2$ 에서 pert:selection이 주는 크기 수열과 결정적 매개변수 선택을 쓴다. 이 수열 위의 크기를 $N$ 으로 쓰고, 그 크기의 선택된 벡터를 $\mathbf u_{L,N}$ 으로 쓴다. 선택은 $L$ 에 의존할 수 있고, 아래의 모든 진술은 이 선택에 관한 것이다. $\underline F$ 는 선택 전과 같이 bounded 모형의 **모든** 크기에 대한 liminf로 남겨 둔다.
+  $\varepsilon>0$ 을 고정한다. 각 깊이 $L\ge2$ 에서 pert:selection이 주는 크기 수열과 결정적 매개변수 선택을 쓴다. 이 수열 위의 크기를 $N$ 으로 쓰고, 그 크기의 선택된 벡터를 $\mathbf u_{L,N}$ 으로 쓴다(작성자; 표기는 14행에서 처음 나온다). 선택은 $L$ 에 의존할 수 있고, 아래의 모든 진술은 이 선택에 관한 것이다. $\underline F$ 는 선택 전과 같이 bounded 모형의 **모든** 크기에 대한 liminf로 남겨 둔다.
 physics: null
 gap: null
 abstraction: blackbox

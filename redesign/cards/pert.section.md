@@ -3,7 +3,7 @@ id: pert:section
 kind: section
 title: '§6 섭동과 prescribed tree 위의 항등식'
 uses: [x:pert-standing, x:pert-mark-specification, pert:parameters, pert:factor, x:pert-parameter-measure, pert:score, pert:error, x:pert-increment, x:pert-selected-limits, x:pert-test-setup, pert:palm-expression, pert:analytic-difference, x:pert-colored-extensions, x:cavity-bounded, cavity:grid, cavity:increment, cavity:negligible, cavity:factor-bounds, x:cavity-root-convention, x:cavity-root-logarithm, x:cavity-tree-sampling, model:hamiltonian, x:tree-path-kernels, x:tree-sampling, tree:multioverlap, tree:original-tilt, tree:Y-recursion, tree:insertion, x:tree-extra-variables, x:tree-extension-history, tree:extension-expansion]
-provides: '§7 decorrelation (pert:selection, pert:tree-identity, \ref 없이 x:pert-colored-extensions), §8 comparison (pert:selection과 그 (i), x:pert-selected-limits, \ref 없이 x:pert-mark-specification·pert:factor). overview.tex 18, 24. 규칙 P5, P7, L1 수 3–4'
+provides: '§7 decorrelation (pert:selection, pert:tree-identity, \ref 없이 x:pert-colored-extensions), §8 comparison (pert:selection과 그 (i), x:pert-selected-limits, \ref 없이 x:pert-mark-specification·pert:factor·x:pert-increment의 $\underline F$ 와 $\Delta_N$). overview.tex 18, 24. 규칙 P5, P7, L1 수 3–4'
 math: |
   받는 것 (§5, §3, §2). 유계·순열 불변 상호작용과 유계 장(x:cavity-bounded), 고정 깊이 $L\ge2$ 와 지수 $m_d$(cavity:grid; 증명은 $0<m_1\le m_d$, $m_L=1$ 만 씀, 작성자 읽기), cavity:increment의 reservoir와 증분의 균등 유계성, cavity:negligible $|P_N^{L,\mathbf u}-NF_N|\le(\log2)s_N$ ($\mathbf u$ 에 균등), 섭동 틀(cavity:factor-bounds, x:cavity-root-convention: 개수·type·site는 root, $\mathbf u$ 는 고정값), $P_N^{L,\mathbf u}$(x:cavity-root-logarithm), $F_N$(model:hamiltonian). §3에서 power-mean recursion과 tilted kernel(tree:original-tilt, x:tree-path-kernels), tree 표본 규칙과 multioverlap(x:tree-sampling, tree:multioverlap), insertion calculus와 그 단조성(tree:Y-recursion, tree:insertion), 추가 변수의 약속(x:tree-extra-variables), canceled-anchor 전개와 그 해석적 경계(tree:extension-expansion, x:tree-extension-history).
 
@@ -62,6 +62,7 @@ status: proposed
 | §7 (`\ref` 없음) | spin anchor, marker anchor, added color, 제약([[x:pert-colored-extensions]]) | decorrelation.tex 81, 265, 298–302, 529–560 |
 | §8 comp:low-increments, comp:encoding | [[pert:selection]]과 그 (i); 선택된 매개변수 벡터 | comparison.tex 8–15, 20 |
 | §8 (`\ref` 없음) | 고정 $L$ 의 선택된 수열([[x:pert-selected-limits]]); 보조 prior가 유한 mark 공간의 유한곱([[x:pert-mark-specification]], [[pert:factor]]) | comparison.tex 130, 243; 53–56 |
+| §8 x:comp-standing, comp:low-increments (`\ref` 없음) | [[x:pert-increment]]: $\underline F$ (선택 전, 모든 크기의 liminf; perturbations.tex 249–250)와 $\Delta_N(\mathbf u)$ (252–253) | comparison.tex 11–14 |
 | overview.tex | [[pert:selection]], [[pert:tree-identity]] | overview.tex 18, 24 |
 
 [[pert:concentration]], [[pert:palm]], [[pert:analytic]]은 §5의 예고(cavity.tex 119–121, [[pert:concentration]])를 빼면 이 절 밖에서 쓰이지 않는다(규칙 P5, P7과 L1 수 3–4의 근거 노드로만 나온다).

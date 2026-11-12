@@ -45,6 +45,8 @@ status: proposed
 |---|---|---|
 | [[main:theorem.s3]] | [[reduction:stability]]의 세 식 (`\ref` 없이 "the uniform trial estimate", "the pressure estimate", "Undoing the constant shift") | reduction.tex 72–84 |
 | 규칙 P12, L1 수 7 | [[reduction:stability]] | layers |
+| overview.tex 마지막 문단 | 이 절 전체: 정규화와 모든 시행 법칙에 균일한 추정이 유계성을 없애 주정리를 줌 | overview.tex 48–51 (51 `\cref`) |
+| §5 서두 (예고) | 유계·순열 불변 가정이 이 절까지만 유지됨 ([[x:cavity-bounded]]) | cavity.tex 11 (`\cref`) |
 
 **인터페이스 대조.** [[main:theorem]]은 [[comp:bounded-lower]], [[reduction:stability]], [[upper:bound]]를 `uses`에 넣는다. 실제 사용과 맞는다. [[main:theorem.s3]]이 쓰는 세 부등식의 상수($\alpha D+d$, $\alpha(2p-1)D+d$, $-\alpha\mathbb Ec$)는 [[reduction:stability]]의 진술과 같다. [[model:section]]의 표는 reduction.tex 11(`model:integrability`)과 86(`main:formula`)을 적는다. 맞는다. 다만 1–44행은 그 밖에 §2의 정의들(위 표)을 `\ref` 없이 쓴다. [[x:cavity-bounded]]의 provides는 "이 가정을 푸는 것은 reduction.tex(main:theorem.s1–s3)"라 적는다. 맞는다.
 

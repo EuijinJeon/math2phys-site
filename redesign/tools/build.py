@@ -73,6 +73,7 @@ pre.tex{white-space:pre;font-size:.78rem}
 ul.links li{margin:.35rem 0}
 blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);color:var(--muted)}
 .hascard{}
+.stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
@@ -111,6 +112,7 @@ class Ctx:
 
     def __init__(self, cards, graph, base="", gloss=None):
         self.gloss = gloss or {}   # slug → GlossEntry
+        self.S = None              # Struct (섹션 구조), main() 이 채운다
         self.cards = {c.id: c for c in cards if c.id and c.fm is not None}
         self.nodes = {n["id"]: n for n in (graph["nodes"] if graph else [])}
         self.base = base
@@ -419,6 +421,14 @@ def page(title, body, base="", cur=None, extra_head="", extra_tail=""):
 
 
 # ============================================================ 카드 페이지
+def sec_tag(ctx, cid):
+    """카드 ID 뒤에 붙이는 소속 섹션 표지(다른 섹션의 카드일 때 눈에 띄게)."""
+    S = ctx.S
+    if not S or cid not in S.cards:
+        return ""
+    return f' <span class="stag">{esc(S.tag(cid))}</span>'
+
+
 def uses_links(c, ctx):
     if not c.uses:
         return '<span class="muted">없음</span>'
@@ -429,7 +439,7 @@ def uses_links(c, ctx):
         t = ""
         if u in ctx.cards and ctx.cards[u].get("title"):
             t = f' <span class="muted">— {esc(str(ctx.cards[u].get("title")))}</span>'
-        li.append("<li>" + ctx.link(u) + num + t + "</li>")
+        li.append("<li>" + ctx.link(u) + sec_tag(ctx, u) + num + t + "</li>")
     return "<ul>" + "".join(li) + "</ul>"
 
 
@@ -437,7 +447,7 @@ def used_by(c, ctx, allc):
     users = sorted(x.id for x in allc if x.id and x.fm is not None and c.id in x.uses and x.id != c.id)
     if not users:
         return '<span class="muted">(이 카드를 쓰는 카드 없음)</span>'
-    return "<ul>" + "".join("<li>" + ctx.link(u) + "</li>" for u in users) + "</ul>"
+    return "<ul>" + "".join("<li>" + ctx.link(u) + sec_tag(ctx, u) + "</li>" for u in users) + "</ul>"
 
 
 def field_block(c, key, ctx):
@@ -508,6 +518,25 @@ def source_html(c):
         + ")</summary>" + "".join(parts) + "</details>"
 
 
+def section_block(c, ctx):
+    """섹션 카드와 주정리 카드의 머리에 카드 수와 지도 링크를 보인다."""
+    S = ctx.S
+    if not S:
+        return ""
+    for sc in S.secs:
+        if sc["card"] != c.id:
+            continue
+        k = sc["key"]
+        extra = ""
+        if k == "main":
+            extra = " 진술은 §2의 원문 줄, 증명은 §9의 원문 줄이라 §2와 §9의 섹션 카드가 모두 이 카드를 자식으로 둔다."
+        elif S.MAIN in c.children:
+            extra = f" 주정리({ctx.link(S.MAIN)})는 이 섹션 카드의 자식이지만 주정리 묶음에 따로 센다."
+        return ('<p class="stat">이 섹션의 카드 ' + str(len(S.members[k])) + "장 (증명 단계 포함)." + extra
+                + f' <a href="{ctx.base}{map_href(k)}">이 섹션의 증명 지도</a> · <a href="{ctx.base}map.html">섹션 지도</a></p>')
+    return ""
+
+
 def card_page(c, ctx, allc):
     n = ctx.nodes.get(c.id)
     num = n.get("number") if n else None
@@ -515,13 +544,20 @@ def card_page(c, ctx, allc):
     head = f'<div class="crumbs"><a href="index.html">카드 목록</a>'
     parents = sorted(x.id for x in allc if x.id and x.fm is not None and c.id in x.children)
     if parents:
-        head += " · 상위: " + ", ".join(ctx.link(p) for p in parents)
+        head += " · 상위: " + ", ".join(ctx.link(p) + sec_tag(ctx, p) for p in parents)
+    S = ctx.S
+    if S and S.home(c.id):
+        h = S.home(c.id)
+        head += f' · 섹션: <a href="{ctx.base}{map_href(h)}">{esc(S.label(h))}</a>'
+        if len(parents) > 1:
+            head += " (상위가 둘이어도 이 섹션에만 센다)"
     head += "</div>"
     h1 = f"<h1>{esc(num + ' ' if num else '')}{esc(title)}</h1>"
     badges = (f'<span class="badge">{esc(str(c.get("kind") or "?"))}</span>'
               f'<span class="badge {esc(str(c.get("status") or ""))}">{esc(str(c.get("status") or "상태 없음"))}</span>'
               f' <code>{esc(c.id)}</code>')
     body = head + h1 + "<p>" + badges + "</p>"
+    body += section_block(c, ctx)
     body += interface(c, ctx, allc)
     ch = children_html(c, ctx, allc, {c.id})
     if ch:
@@ -536,18 +572,18 @@ def card_index(cards, ctx):
     rows = []
     for c in cards:
         if c.fm is None or not c.id:
-            rows.append(f'<tr><td colspan="6"><span style="color:var(--bad)">머리말 오류</span> '
+            rows.append(f'<tr><td colspan="7"><span style="color:var(--bad)">머리말 오류</span> '
                         f'<code>{esc(c.fname)}</code>: {esc("; ".join(c.errors))}</td></tr>')
             continue
         n = ctx.nodes.get(c.id)
-        rows.append("<tr><td>" + esc(n["number"] if n and n.get("number") else "") + "</td><td>"
+        rows.append("<tr><td>" + esc(ctx.S.tag(c.id) if ctx.S else "") + "</td><td>" + esc(n["number"] if n and n.get("number") else "") + "</td><td>"
                     + ctx.link(c.id) + "</td><td>" + esc(str(c.get("kind") or "")) + "</td><td>"
                     + esc(str(c.get("title") or "")) + "</td><td>" + esc(str(c.get("abstraction") or "")) + "</td><td>"
                     + esc(str(c.get("status") or "")) + "</td></tr>")
     if not rows:
         t = "<p class=\"muted\">아직 카드가 없다.</p>"
     else:
-        t = ('<div class="tablewrap"><table><thead><tr><th>번호</th><th>id</th><th>종류</th><th>제목</th><th>축약</th>'
+        t = ('<div class="tablewrap"><table><thead><tr><th>섹션</th><th>번호</th><th>id</th><th>종류</th><th>제목</th><th>축약</th>'
              "<th>상태</th></tr></thead><tbody>" + "".join(rows) + "</tbody></table></div>")
     return page("카드 목록", f"<h1>카드 목록</h1><p class=\"stat\">{len(cards)}개</p>" + t, base="../",
                 cur="cards/index.html")
@@ -617,68 +653,328 @@ def mermaid_text(s, limit=34):
     return s if len(s) <= limit else s[:limit - 1] + "…"
 
 
+class Struct:
+    """카드가 어느 섹션에 속하는가. 한 카드는 정확히 한 곳에만 센다.
+
+    집 = 카드의 첫 `source` 파일을 덮는 섹션 카드. 단, 주정리(`main:theorem`)와 그 자손(증명 단계)은
+    진술은 §2에, 증명은 §9 원문 줄에 있어 두 섹션 카드의 자식이 되므로 따로 '주정리' 묶음으로 센다.
+    """
+    MAIN = "main:theorem"
+
+    def __init__(self, cards, graph):
+        self.cards = {c.id: c for c in cards if c.id and c.fm is not None}
+        self.parents = {}
+        for c in self.cards.values():
+            for ch in c.children:
+                self.parents.setdefault(ch, []).append(c.id)
+        gnodes = graph["nodes"] if graph else []
+        gby = {n["id"]: n for n in gnodes}
+        self.file2key = {}
+        self.secs = []   # dict(key, card, num, title, file)
+        for c in self.cards.values():
+            if c.get("kind") != "section" or not c.source:
+                continue
+            f = c.source[0][0]
+            n = gby.get(c.id)
+            if not n or n["kind"] not in ("section", "subsection"):
+                cand = [x for x in gnodes if x["kind"] in ("section", "subsection") and x["file"] == f]
+                n = min(cand, key=lambda x: x["lines"][0]) if cand else None
+            num = n["number"] if n else ""
+            title = n["title"] if n else str(c.get("title") or c.id)
+            key = f[:-4] if f.endswith(".tex") else f
+            self.file2key[f] = key
+            self.secs.append({"key": key, "card": c.id, "num": num, "title": title, "file": f})
+
+        def numkey(x):
+            return tuple(int(p) if p.isdigit() else 0 for p in re.split(r"[.]", x["num"] or "99"))
+        self.secs.sort(key=numkey)
+        self.main = set()
+        if self.MAIN in self.cards:
+            st = [self.MAIN]
+            while st:
+                x = st.pop()
+                if x in self.main:
+                    continue
+                self.main.add(x)
+                st.extend(self.cards[x].children if x in self.cards else [])
+            # 주정리 묶음은 §2.2(overview) 다음, §3 앞에 둔다
+            pos = 0
+            for i, sc in enumerate(self.secs):
+                if sc["num"].startswith("2"):
+                    pos = i + 1
+            self.secs.insert(pos, {"key": "main", "card": self.MAIN, "num": "", "title": "Main theorem (진술 §2.1, 증명 §9)",
+                                   "file": ""})
+        self.by_key = {sc["key"]: sc for sc in self.secs}
+        self.members = {sc["key"]: [] for sc in self.secs}
+        for c in self.cards.values():
+            h = self.home(c.id)
+            if h in self.members:
+                self.members[h].append(c.id)
+
+    def home(self, cid):
+        if cid in self.main:
+            return "main"
+        c = self.cards.get(cid)
+        if not c or not c.source:
+            return None
+        return self.file2key.get(c.source[0][0])
+
+    def label(self, key):
+        sc = self.by_key[key]
+        return "주정리" if key == "main" else "§" + sc["num"]
+
+    def tag(self, cid):
+        h = self.home(cid)
+        return self.label(h) if h else ""
+
+    def lift(self, cid):
+        """증명 단계는 가장 가까운 단계 아닌 조상으로 올려 센다."""
+        seen = set()
+        while cid in self.cards and self.cards[cid].get("kind") == "step" and self.parents.get(cid) and cid not in seen:
+            seen.add(cid)
+            cid = self.parents[cid][0]
+        return cid
+
+
+def map_href(key):
+    return f"map-{key}.html"
+
+
+def section_map(S):
+    """(i) 섹션 단위 지도. 섹션 카드 + 주정리를 노드로, 카드의 uses 를 섹션 사이 간선으로 모은다.
+    반환: (mermaid 텍스트, 간선 목록[(쓰이는 키, 쓰는 키, 횟수)], 서로 쓰는 쌍)."""
+    keys = [sc["key"] for sc in S.secs]
+    nid = {k: f"S{i}" for i, k in enumerate(keys)}
+    agg = {}
+    for c in S.cards.values():
+        hc = S.home(c.id)
+        if not hc:
+            continue
+        skip = set()
+        if c.get("kind") == "section":
+            # 섹션 카드의 uses 는 자손이 쓰는 것을 모은 목록이기도 하다. 자손이 쓰는 것은 자손 쪽에서 세고
+            # (주정리가 §2 카드의 자식이라 §2가 §4·§8·§9를 쓰는 것처럼 보이는 것을 막는다) 여기서는 뺀다.
+            st = list(c.children)
+            seen = set()
+            while st:
+                x = st.pop()
+                if x in seen or x not in S.cards:
+                    continue
+                seen.add(x)
+                skip.update(S.cards[x].uses)
+                st.extend(S.cards[x].children)
+        for u in set(c.uses) - skip:
+            hu = S.home(u)
+            if hu and hu != hc:
+                agg[(hu, hc)] = agg.get((hu, hc), 0) + 1
+    L = ["flowchart LR"]
+    for k in keys:
+        sc = S.by_key[k]
+        n = len(S.members[k])
+        if k == "main":
+            lab = f"주정리<br/>Theorem 2.1<br/>{n}장 (진술 + 증명 단계)"
+        else:
+            lab = f'§{sc["num"]}<br/>{mermaid_text(sc["title"], 36)}<br/>{n}장'
+        L.append(f'  {nid[k]}["{lab}"]')
+    for (a, b), cnt in sorted(agg.items(), key=lambda kv: (keys.index(kv[0][0]), keys.index(kv[0][1]))):
+        L.append(f"  {nid[a]} -->|{cnt}| {nid[b]}")
+    L.append("  classDef sec fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
+    L.append("  classDef mainc fill:#ffe9b8,stroke:#a86400,color:#111;")
+    L.append("  class " + ",".join(nid[k] for k in keys if k != "main") + " sec;")
+    if "main" in nid:
+        L.append(f"  class {nid['main']} mainc;")
+    for k in keys:
+        L.append(f'  click {nid[k]} "cards/{page_name(S.by_key[k]["card"])}"')
+    mutual = sorted({tuple(sorted((a, b), key=keys.index)) for (a, b) in agg if (b, a) in agg}, key=lambda p: (keys.index(p[0]), keys.index(p[1])))
+    return "\n".join(L), sorted(agg.items()), mutual
+
+
+def sec_cycles(S, agg):
+    """섹션 간선 그래프의 순환(강연결 성분 크기 > 1)을 센다."""
+    g = {}
+    for (a, b), _ in agg:
+        g.setdefault(a, []).append(b)
+    index, low, on, st, res, cnt = {}, {}, set(), [], [], [0]
+
+    def sc(v):
+        index[v] = low[v] = cnt[0]
+        cnt[0] += 1
+        st.append(v)
+        on.add(v)
+        for w in g.get(v, []):
+            if w not in index:
+                sc(w)
+                low[v] = min(low[v], low[w])
+            elif w in on:
+                low[v] = min(low[v], index[w])
+        if low[v] == index[v]:
+            comp = []
+            while True:
+                w = st.pop()
+                on.discard(w)
+                comp.append(w)
+                if w == v:
+                    break
+            if len(comp) > 1:
+                res.append(sorted(comp))
+    for v in sorted(g):
+        if v not in index:
+            sc(v)
+    return res
+
+
+KIND_GROUP = {"theorem": "thm", "proposition": "thm", "lemma": "thm", "corollary": "thm"}
+
+
+def section_detail_map(S, key):
+    """(ii) 한 섹션의 정리류 카드(단계 제외)와 밖으로 나가는/들어오는 간선.
+    증명 단계가 쓰는 것·단계를 쓰는 것은 가장 가까운 단계 아닌 조상 카드로 올려 그린다.
+    섹션 카드 자신의 uses(전체 목록)는 그리지 않는다. 반환: (mermaid, 안 카드 id 목록, 들어오는 {id:set}, 나가는 {id:set})."""
+    cards = S.cards
+    internal = [i for i in sorted(S.members[key]) if cards[i].get("kind") not in ("step", "section")]
+    iset = set(internal)
+    edges = {}
+    for c in cards.values():
+        a = S.lift(c.id)
+        if a not in cards or cards[a].get("kind") == "section":
+            continue
+        for u in c.uses:
+            b = S.lift(u)
+            if b not in cards or b == a or cards[b].get("kind") == "section":
+                continue
+            if a in iset or b in iset:
+                edges.setdefault((b, a), 0)
+                edges[(b, a)] += 1
+    ext = sorted({x for e in edges for x in e if x not in iset}, key=lambda i: (S.home(i) or "", i))
+    ids = {}
+    for k, i in enumerate(internal):
+        ids[i] = f"a{k}"
+    for k, i in enumerate(ext):
+        ids[i] = f"e{k}"
+
+    def node(i):
+        c = cards[i]
+        t = mermaid_text(str(c.get("title") or i), 30)
+        return f'{ids[i]}["{t}<br/>{mermaid_text(i, 40)}"]'
+    L = ["flowchart LR"]
+    sc = S.by_key[key]
+    head = "주정리" if key == "main" else f'§{sc["num"]} {mermaid_text(sc["title"], 40)}'
+    L.append(f'  subgraph IN["{head}"]')
+    for i in internal:
+        L.append("    " + node(i))
+    L.append("  end")
+    by_home = {}
+    for i in ext:
+        by_home.setdefault(S.home(i), []).append(i)
+    for gi, (h, lst) in enumerate(by_home.items()):
+        L.append(f'  subgraph X{gi}["밖: {S.label(h) if h in S.by_key else "?"}"]')
+        for i in lst:
+            L.append("    " + node(i))
+        L.append("  end")
+    for (b, a), n in sorted(edges.items(), key=lambda kv: (ids[kv[0][0]], ids[kv[0][1]])):
+        L.append(f"  {ids[b]} --> {ids[a]}")
+    thm = [ids[i] for i in internal if cards[i].get("kind") in KIND_GROUP]
+    oth = [ids[i] for i in internal if cards[i].get("kind") not in KIND_GROUP]
+    L.append("  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
+    L.append("  classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;")
+    L.append("  classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;")
+    if thm:
+        L.append("  class " + ",".join(thm) + " thm;")
+    if oth:
+        L.append("  class " + ",".join(oth) + " oth;")
+    if ext:
+        L.append("  class " + ",".join(ids[i] for i in ext) + " ext;")
+    for i in internal + ext:
+        L.append(f'  click {ids[i]} "cards/{page_name(i)}"')
+    incoming = {i: set() for i in internal}
+    outgoing = {i: set() for i in internal}
+    for (b, a) in edges:
+        if a in iset and b not in iset:
+            incoming[a].add(b)
+        if b in iset and a not in iset:
+            outgoing[b].add(a)
+    return "\n".join(L), internal, incoming, outgoing, len(ext), len(edges)
+
+
+def all_maps(S):
+    """이름 → 사이트 쪽 이름과 Mermaid 텍스트. render_maps.py 와 build.py 가 함께 쓴다."""
+    out = {"sections": section_map(S)[0]}
+    for sc in S.secs:
+        out["sec-" + sc["key"]] = section_detail_map(S, sc["key"])[0]
+    return out
+
+
+MERMAID_TAIL = (f'<script src="{MERMAID}"></script>\n'
+                "<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',"
+                "flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>")
+
+
 def map_page(graph, ctx):
-    if not graph:
+    S = ctx.S
+    if not graph or not S:
         return page("증명 지도", "<h1>증명 지도</h1><p class=\"muted\">build/graph.json 이 없다. 먼저 extract.py 를 돌린다.</p>",
                     cur="map.html")
+    text, agg, mutual = section_map(S)
+    rows = []
+    for sc in S.secs:
+        k = sc["key"]
+        rows.append("<tr><td>" + esc(S.label(k)) + "</td><td>" + esc(sc["title"]) + "</td><td>" + str(len(S.members[k]))
+                    + "</td><td>" + ctx.link(sc["card"], "카드") + "</td><td><a href=\"" + map_href(k) + "\">지도</a></td></tr>")
     nodes = [n for n in graph["nodes"] if n["kind"] in C.THM_KINDS]
     secs = {n["id"]: n for n in graph["nodes"] if n["kind"] == "section"}
-    mid = {n["id"]: f"n{k}" for k, n in enumerate(nodes)}
-    by_sec = {}
-    for n in nodes:
-        by_sec.setdefault(n["section"], []).append(n)
-    L = ["flowchart LR"]
-    sec_order = [s for s in secs if s in by_sec]
-    for si, sid in enumerate(sec_order):
-        s = secs[sid]
-        L.append(f'  subgraph S{si}["§{s["number"]} {mermaid_text(s["title"], 40)}"]')
-        for n in by_sec[sid]:
-            short = n.get("title") or n["id"].split(":", 1)[-1]
-            lab = f'{n["number"]}<br/>{mermaid_text(short)}'
-            L.append(f'    {mid[n["id"]]}["{lab}"]')
-        L.append("  end")
-    agg = {}
-    for e in graph["edges"]:
-        if e.get("role") not in ("statement", "proof") or not e.get("resolved"):
-            continue
-        s, d = e["src"], e.get("dst_container")
-        if s not in mid or d not in mid or s == d:
-            continue
-        key = (d, s)
-        agg[key] = agg.get(key, False) or e["role"] == "proof"
-    for (d, s), proof in sorted(agg.items()):
-        L.append(f'  {mid[d]} {"-->" if proof else "-.->"} {mid[s]}')
-    cardnodes = [mid[n["id"]] for n in nodes if n["id"] in ctx.cards]
-    nocard = [mid[n["id"]] for n in nodes if n["id"] not in ctx.cards]
-    L.append("  classDef hascard fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
-    L.append("  classDef nocard fill:#f3f3f0,stroke:#999,color:#333;")
-    if cardnodes:
-        L.append("  class " + ",".join(cardnodes) + " hascard;")
-    if nocard:
-        L.append("  class " + ",".join(nocard) + " nocard;")
-    for n in nodes:
-        if n["id"] in ctx.cards:
-            L.append(f'  click {mid[n["id"]]} "cards/{page_name(n["id"])}"')
-    diagram = "\n".join(L)
-
-    rows = []
+    nrows = []
     for n in nodes:
         s = secs.get(n["section"])
         has = ctx.link(n["id"], "카드") if n["id"] in ctx.cards else '<span class="muted">—</span>'
-        rows.append("<tr><td>" + esc(n["number"]) + "</td><td><code>" + esc(n["id"]) + "</code></td><td>"
-                    + esc(f'§{s["number"]} {s["title"]}' if s else "") + "</td><td>" + esc(n.get("title") or "")
-                    + "</td><td>" + has + "</td></tr>")
+        nrows.append("<tr><td>" + esc(n["number"]) + "</td><td><code>" + esc(n["id"]) + "</code></td><td>"
+                     + esc(f'§{s["number"]} {s["title"]}' if s else "") + "</td><td>" + esc(n.get("title") or "")
+                     + "</td><td>" + has + "</td></tr>")
+    if not mutual:
+        note = "섹션 사이에 서로 쓰는 쌍이 없다(순환 없음)."
+    else:
+        note = ("서로 쓰는 섹션 쌍이 있다: " + ", ".join(S.label(a) + "–" + S.label(b) for a, b in mutual)
+                + ". 서로 다른 카드 사이의 쓰임이 양쪽으로 있어서 생긴 것이고, 카드 단위로는 순환이 없다(검사 &ldquo;순환&rdquo;).")
+    total = sum(len(v) for v in S.members.values())
     body = ("<h1>증명 지도</h1>"
-            "<p class=\"stat\">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다 (보조정리 → 그것을 인용하는 정리). "
-            "실선은 증명 안의 인용, 점선은 진술 안의 인용이다. 파란 노드는 카드가 있고, 누르면 카드로 간다.</p>"
-            f'<pre class="mermaid">\n{esc(diagram)}\n</pre>'
-            "<h2>노드 표</h2>"
+            "<p class=\"stat\">두 단계로 본다. 이 쪽은 섹션 단위 지도이고, 섹션마다 그 안의 정리류 카드와 밖과 오가는 간선을 보이는 "
+            "지도가 따로 있다(아래 표의 &ldquo;지도&rdquo;).</p>"
+            "<h2>섹션 지도</h2>"
+            "<p class=\"stat\">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 숫자는 그 방향의 <code>uses</code> 항목 수(카드 쌍 단위)다. "
+            "주정리(<code>main:theorem</code>)는 진술이 §2에, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이므로, "
+            "§2와 §8·§9가 서로 쓰는 것처럼 보이지 않게 따로 노드로 세웠다(주정리와 그 증명 단계 카드는 이 노드에만 센다). "
+            + note + " 노드를 누르면 섹션 카드로 간다.</p>"
+            f'<pre class="mermaid" data-map="sections">\n{esc(text)}\n</pre>'
+            f"<h2>섹션별 지도와 카드 수</h2><p class=\"stat\">카드 {total}장을 한 번씩만 센다.</p>"
+            '<div class="tablewrap"><table><thead><tr><th>섹션</th><th>제목</th><th>카드</th><th>섹션 카드</th><th>지도</th></tr></thead><tbody>'
+            + "".join(rows) + "</tbody></table></div>"
+            "<h2>원문의 정리류 노드</h2>"
             '<div class="tablewrap"><table><thead><tr><th>번호</th><th>id</th><th>섹션</th><th>제목</th><th>카드</th></tr></thead><tbody>'
-            + "".join(rows) + "</tbody></table></div>")
-    tail = (f'<script src="{MERMAID}"></script>\n'
-            "<script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',"
-            "flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>")
-    return page("증명 지도", body, cur="map.html", extra_tail=tail)
+            + "".join(nrows) + "</tbody></table></div>")
+    return page("증명 지도", body, cur="map.html", extra_tail=MERMAID_TAIL)
+
+
+def map_section_page(S, key, ctx):
+    text, internal, incoming, outgoing, next_, nedges = section_detail_map(S, key)
+    sc = S.by_key[key]
+    head = "주정리" if key == "main" else f'§{sc["num"]} {sc["title"]}'
+    rows = []
+    for i in internal:
+        c = S.cards[i]
+        inn = ", ".join(ctx.link(x) for x in sorted(incoming[i])) or '<span class="muted">—</span>'
+        outg = ", ".join(ctx.link(x) for x in sorted(outgoing[i])) or '<span class="muted">—</span>'
+        rows.append("<tr><td>" + ctx.link(i) + "</td><td>" + esc(str(c.get("kind") or "")) + "</td><td>"
+                    + esc(str(c.get("title") or "")) + "</td><td>" + inn + "</td><td>" + outg + "</td></tr>")
+    body = (f'<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>{esc(head)} — 지도</h1>'
+            f'<p class="stat">이 섹션의 카드 {len(S.members[key])}장 가운데 증명 단계를 뺀 {len(internal)}장(파랑: 정리·명제·보조정리·따름정리, '
+            "회색: 정의·약속·가정·주석)과, 밖에서 받거나 밖으로 내놓는 카드 "
+            f"{next_}장(점선)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그린다. "
+            "섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로 간다. "
+            f'섹션 카드: {ctx.link(sc["card"])}</p>'
+            f'<pre class="mermaid" data-map="sec-{esc(key)}">\n{esc(text)}\n</pre>'
+            "<h2>카드와 밖의 연결</h2>"
+            '<div class="tablewrap"><table><thead><tr><th>카드</th><th>종류</th><th>제목</th><th>밖에서 받는 것</th>'
+            "<th>밖에서 쓰는 카드</th></tr></thead><tbody>" + "".join(rows) + "</tbody></table></div>")
+    return page(f"{head} — 지도", body, cur="map.html", extra_tail=MERMAID_TAIL)
 
 
 # ============================================================ 메인
@@ -697,6 +993,7 @@ def main():
     for en in gentries:
         gloss.setdefault(en.slug, en)   # 중복이면 먼저 나온 것
     ctx = Ctx(cards, graph, gloss=gloss)
+    ctx.S = Struct(cards, graph)
     (out / "cards").mkdir(parents=True, exist_ok=True)
     for old in list(out.glob("*.html")) + list((out / "cards").glob("*.html")):
         old.unlink()
@@ -744,6 +1041,11 @@ def main():
         w("map.html", map_page(graph, ctx))
     except Exception as ex:
         w("map.html", page("증명 지도", f"<h1>증명 지도</h1><p>생성 오류: {esc(repr(ex))}</p>", cur="map.html"))
+    for sc in ctx.S.secs:
+        try:
+            w(map_href(sc["key"]), map_section_page(ctx.S, sc["key"], ctx))
+        except Exception as ex:
+            w(map_href(sc["key"]), page("지도", f"<h1>지도</h1><p>생성 오류: {esc(repr(ex))}</p>", cur="map.html"))
 
     # 검사 보고서
     rp = root / "build" / "check-report.md"
@@ -754,18 +1056,32 @@ def main():
                                     "<code>python3 tools/check.py</code> 를 돌린다.</p>", cur="check-report.html"))
 
     # 처음
-    nn = len([n for n in graph["nodes"] if n["kind"] in C.THM_KINDS]) if graph else 0
+    S = ctx.S
+    srows = []
+    for sc in S.secs:
+        k = sc["key"]
+        t = "Theorem 2.1 (주정리)" if k == "main" else sc["title"]
+        srows.append("<tr><td>" + esc(S.label(k)) + "</td><td>" + esc(t) + "</td><td>" + str(len(S.members[k]))
+                     + "</td><td>" + ctx.link(sc["card"], "섹션 카드") + f'</td><td><a href="{map_href(k)}">지도</a></td></tr>')
+    total = sum(len(v) for v in S.members.values())
     idx = f"""<h1>Mézard–Parisi 공식 — 노드 카드로 다시 읽기</h1>
 <p>원문은 diluted spin glass에 대한 Mézard–Parisi 위계 cavity 공식의 증명이다. 이 사이트는 그 논문을
 정리·보조정리·증명 단계 단위의 <strong>노드 카드</strong>로 나누고, 물리 언어의 <strong>단면 문서</strong>(L0, L1)와 연결한 것이다.
 각 카드는 받는 것과 내놓는 것을 밝히고, 펼치면 더 잘게 쪼개진 증명 단계가 나온다.</p>
+<h2>위에서부터 읽기</h2>
 <ul class="links">
 <li><a href="L0.html">L0</a> — 한 문단: 결과와 의미{'' if layers['L0'] else ' (아직 없음)'}</li>
 <li><a href="L1.html">L1</a> — 한 쪽: 번호 붙은 수의 목록{'' if layers['L1'] else ' (아직 없음)'}</li>
 <li><a href="rules.html">규칙 표</a> — 물리판이 증명 없이 쓰는 명제 P1, P2, …{'' if layers['rules'] else ' (아직 없음)'}</li>
 <li><a href="glossary.html">용어집</a> — 이 문서가 쓰는 용어의 뜻·역할·정의 위치{'' if gexists else ' (아직 없음)'}</li>
-<li><a href="map.html">증명 지도</a> — 정리류 노드 {nn}개의 의존 그래프</li>
-<li><a href="cards/index.html">카드 목록</a> — 카드 {n_ok}개</li>
+</ul>
+<h2>섹션별로 들어가기</h2>
+<p class="stat">카드 {total}장을 한 번씩만 센다. 주정리와 그 증명 단계는 진술이 §2, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이지만 &ldquo;주정리&rdquo; 한 묶음으로 센다. 섹션 카드에서 펼치며 내려간다.</p>
+<div class="tablewrap"><table><thead><tr><th>섹션</th><th>제목</th><th>카드</th><th>들어가는 길</th><th>증명 지도</th></tr></thead><tbody>{"".join(srows)}</tbody></table></div>
+<h2>그 밖</h2>
+<ul class="links">
+<li><a href="map.html">증명 지도</a> — 섹션 단위 지도와 섹션별 지도</li>
+<li><a href="cards/index.html">카드 목록</a> — 카드 {n_ok}개 전부</li>
 <li><a href="check-report.html">검사 보고서</a> — 적법성 검사 결과</li>
 </ul>
 <p class="stat">수식은 MathJax, 지도는 Mermaid로 그리며 둘 다 CDN에서 불러온다(인터넷 연결 필요).</p>"""

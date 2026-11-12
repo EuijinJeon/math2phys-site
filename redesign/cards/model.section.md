@@ -11,7 +11,7 @@ math: |
 
   주장 (main:theorem). (2.1)–(2.4) 아래 $\lim_{N\to\infty}F_N$ 이 존재하고 $=\inf_{r\ge0}\Phi_r$.
 
-  받는 것 (밖에서). 이 섹션의 정의들은 다른 섹션에 기대지 않는다. 한 군데 예외: "비퇴화 경우 $b$ 와 $\max_s\lvert f_1(s)\rvert$ 가 본질적으로 유계"라는 주석은 upper:bound 증명에서 보인다고 원문이 미리 말한다 (model.tex 39–41, x:model-moment-finiteness). 이 주석을 받아 쓰는 카드는 없다. 주정리의 증명은 이 섹션에 없고 reduction.tex 45–87에 있으며, 거기서 upper:bound (상한), comp:bounded-lower (bounded·순열 불변 하한), reduction:stability (pressure 안정성, 시행 functional 안정성, 상수 이동)를 받는다 (main:theorem.s1–s4).
+  받는 것 (밖에서). 이 섹션의 정의들은 다른 섹션에 기대지 않는다. 소절 2.2 증명 전략(overview.tex, x:overview-strategy)은 뒤 섹션을 예고할 뿐 기대지 않는다. 한 군데 예외: "비퇴화 경우 $b$ 와 $\max_s\lvert f_1(s)\rvert$ 가 본질적으로 유계"라는 주석은 upper:bound 증명에서 보인다고 원문이 미리 말한다 (model.tex 39–41, x:model-moment-finiteness). 이 주석을 받아 쓰는 카드는 없다. 주정리의 증명은 이 섹션에 없고 reduction.tex 45–87에 있으며, 거기서 upper:bound (상한), comp:bounded-lower (bounded·순열 불변 하한), reduction:stability (pressure 안정성, 시행 functional 안정성, 상수 이동)를 받는다 (main:theorem.s1–s4).
 
   내주는 것 (밖으로). 위 provides 칸.
 physics: |
@@ -19,9 +19,10 @@ physics: |
 gap: |
   (1) 물리의 정류점(saddle point) 선택이 아니라 모든 유한 $r$ 과 모든 시행 법칙에 대한 inf다. inf의 달성, [[g:rsb-steps|RSB 단계 수]] $r\to\infty$ 의 극한 order parameter, 극한 Gibbs 측도는 주장하지 않는다(model.tex 138–140). (2) [[g:hypotheses|가정]]에 [[g:factorization|tanh형 전개]]와 [[g:positivity|부호 조건]]이 들어간다. 부호 조건은 상한에만 쓰인다(upper.tex 125). 전개는 상한(upper.tex 63)과, 하한 쪽에서는 주정리 증명의 상수 이동이 상호작용 법칙을 순열 불변으로 만드는 데 한 번 쓰인다(main:theorem.s1, reduction.tex 54–58). bounded 하한 자체(comp:bounded-lower)는 둘 다 쓰지 않는다(P1). (3) power mean의 cascade 해석은 이 섹션에도 증명에도 쓰이지 않는다([[g:power-mean]]의 물리 대응 칸). (4) 시행 functional의 [[g:message|message]] $x$ 는 실제 계에서 계산한 cavity field가 아니라 임의의 법칙에서 뽑은 변수다. (5) edge 항을 "중복으로 센 factor"로 읽는 것은 작성자의 읽기다(원문은 "corrects for interactions counted in that insertion", model.tex 51–52; 셈은 model:functional 차이 칸).
 abstraction: approximation
-children: [model:integrability, model:hamiltonian, model:factorization, model:positivity, x:model-moment-finiteness, x:model-hypothesis-remarks, x:model-hypotheses, x:model-message, model:edge, model:site-message, x:model-cavity-bounds, model:chain, model:vs, model:ve, model:power-means, model:functional, x:model-depth-zero, model:trial-bounds, main:theorem, x:model-theorem-scope]
+children: [model:integrability, model:hamiltonian, model:factorization, model:positivity, x:model-moment-finiteness, x:model-hypothesis-remarks, x:model-hypotheses, x:model-message, model:edge, model:site-message, x:model-cavity-bounds, model:chain, model:vs, model:ve, model:power-means, model:functional, x:model-depth-zero, model:trial-bounds, main:theorem, x:model-theorem-scope, x:overview-strategy]
 source:
   - {file: model.tex, lines: [1, 140]}
+  - {file: overview.tex, lines: [1, 51]}
 status: proposed
 ---
 
@@ -42,13 +43,15 @@ status: proposed
 | [[model:integrability]] | reduction.tex 11 (`reduction:stability`의 가정) |
 | [[model:chain]] | trees.tex 26 (시행 사슬을 path kernel의 예로), comparison.tex 72 (`comp:encoding`이 그 branching 판임) |
 | [[model:vs]] | comparison.tex 180 ($\widetilde Y_{0,\rm s}=T_0V_{\rm s}$) |
-| [[model:functional]] | consequences.tex 83, 137 ($\mathcal B_{r,\beta}$) ; 비교와 축소는 기호 $\mathcal B_r$, $\Phi_r$ 로 쓴다 |
+| [[model:functional]] | consequences.tex 83 ($\mathcal B_{r,\beta}$), 137 (Remark 10.4: 동반 논문의 functional이 (2.11)과 다르다는 비교) ; 비교와 축소는 기호 $\mathcal B_r$, $\Phi_r$ 로 쓴다 |
 | [[model:trial-bounds]] | comparison.tex 235 (`comp:bounded-lower`에서 $\inf_r\Phi_r$ 의 유한성) |
 | [[model:hamiltonian]] | consequences.tex 8 (Poisson 개수와 복원추출을 유지) |
 | [[model:section]] | introduction.tex 32, comparison.tex 227 (`comp:bounded-lower` 진술 "with the functionals defined in") |
 
-기호로만 쓰는 곳도 많다: cavity.tex 11–12는 유계 가정 $B(\theta)\le B$, $\lvert h\rvert\le H$ 를 두고 34는 같은 power-mean 재귀를 쓰며, upper.tex는 $V_{\rm s}$, $V_{\rm e}$, $T_0$ 를 그대로 쓴다.
+기호로만 쓰는 곳도 많다: cavity.tex 11–12는 유계 가정 $B(\theta)\le B$, $\lvert h\rvert\le H$ 를 두고 34는 같은 power-mean 재귀를 쓰며, upper.tex는 $V_{\rm s}$, $V_{\rm e}$, $T_0$ 를 그대로 쓴다. §10은 consequences.tex 25–33·52–63에서 (2.1)–(2.4)를 `\ref` 없이 확인하고, 32·63에서 $B(\theta)$, 68–77에서 $M_N$·$i_{\ell,k}$, 95·114에서 $r\ge0$ 을 쓴다([[models:section]]의 "밖에서 받는 것" 표).
+
+§8·§9가 `\ref` 없이 쓰는 §2 정의 (검토 2 comp·reduction (d) 대응): [[model:ve]] comparison.tex 189; [[model:power-means]] comparison.tex 184–185, reduction.tex 34–35·39–40 (그 성질은 [[x:reduction-power-mean-scaling]]); [[model:functional]] comparison.tex 166, 192, reduction.tex 16, 24, 40–42; [[x:model-depth-zero]] comparison.tex 229, reduction.tex 19; [[x:model-message]] comparison.tex 40, 60; [[model:site-message]]·[[model:edge]] comparison.tex 179–183, reduction.tex 33–34; [[model:hamiltonian]] comparison.tex 229, reduction.tex 15, 29.
 
 **주의 (순환을 피하는 연결).** `upper:bound` 진술은 `main:theorem`을 가리키지만 실제로 받는 것은 가정뿐이다. 그 카드를 쓸 때는 `main:theorem` 대신 [[x:model-hypotheses]]를 `uses`에 넣으면 `main:theorem` → `upper:bound` 와 순환하지 않는다(x:model-hypotheses의 원문 범위가 `main:theorem`의 줄 130–131을 담아 의존 검사도 통과한다). 같은 이유로 `comp:bounded-lower`는 `model:section` 대신 [[model:functional]]과 [[x:model-depth-zero]]를 가리키는 편이 낫다.
 
-**overview.tex.** 원문 번호로는 overview.tex("Proof strategy")가 §2의 소절이다(graph.json의 `model:section` 범위가 overview.tex 1–51을 포함한다). 이 카드 묶음은 model.tex만 다룬다.
+**overview.tex.** 원문 번호로는 overview.tex("Proof strategy")가 §2의 소절이다(graph.json의 `model:section` 범위가 overview.tex 1–51을 포함한다). 그 소절은 [[x:overview-strategy]]와 그 자식 카드가 다루고, 이 카드는 그것을 마지막 자식으로 둔다.

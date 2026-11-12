@@ -5,7 +5,7 @@ title: '선택된 수열 위의 낮은 증분 (8.1)'
 uses: [x:comp-standing, pert:selection, x:pert-increment, cavity:increment]
 provides: 'comp:bounded-lower.s1 (comparison.tex 236)'
 math: |
-  x:comp-standing의 선택에서, 각 $L\ge2$ 와 그 수열 위의 모든 $N$ 에 대해
+  x:comp-standing의 선택에서, 각 $L\ge2$ 와 그 수열 위의 모든 $N$ 에 대해(작성자: "모든 $N$"; 근거 perturbations.tex 299 "Relabeling the tail proves (i)")
   $$\Delta_N^{L,\mathbf u_{L,N}}\le\underline F+2\varepsilon.\tag{8.1}$$
 physics: |
   고른 [[g:selected-sequence|선택된 수열]] 위에서는 섭동된 계의 [[g:increment|cavity 증분]]이 섭동 없는 pressure의 liminf([[g:lower-pressure]])를 $2\varepsilon$ 보다 더 넘지 않는다.

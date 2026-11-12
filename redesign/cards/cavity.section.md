@@ -3,7 +3,7 @@ id: cavity:section
 kind: section
 title: '§5 섭동된 cavity reservoir'
 uses: [model:hamiltonian, model:integrability, x:tree-path-kernels, x:tree-sampling, tree:original-tilt, tree:Y-recursion, tree:insertion, x:tree-extra-variables]
-provides: '§6 perturbations (cavity:increment의 reservoir와 균일 유계성, cavity:negligible, cavity:factor-bounds·x:cavity-root-convention의 섭동 틀, cavity:grid, x:cavity-bounded, x:cavity-tree-sampling), §7 decorrelation (cavity:grid → x:decor-mesh, x:cavity-tree-sampling → x:decor-tree-sampling), §8 comparison (cavity:increment, cavity:identity, $A_{\rm s}$, $A_{\rm b}$, x:cavity-tree-sampling), §9 reduction (x:cavity-bounded가 거기서 풀린다). overview.tex 18'
+provides: '§6 perturbations (cavity:increment의 reservoir와 균일 유계성, cavity:negligible, cavity:factor-bounds·x:cavity-root-convention의 섭동 틀, cavity:grid, x:cavity-bounded, x:cavity-tree-sampling), §7 decorrelation (cavity:grid → x:decor-mesh, x:cavity-tree-sampling → x:decor-tree-sampling), §8 comparison (cavity:increment, cavity:identity, $A_{\rm s}$, $A_{\rm b}$, x:cavity-tree-sampling; \ref 없이 cavity:grid의 $\mathbf m^{(L)}$ 과 $Q_k$ 의 $m_d=d/L$, x:cavity-bounded의 $B$, $H$ 와 순열 불변, cavity:increment.s4의 $\lvert\log Y_0\rvert$ 상계), §9 reduction (x:cavity-bounded가 거기서 풀린다). overview.tex 18'
 math: |
   받는 것 (§2, §3). 모형 model:hamiltonian과 $B(\theta)$ (model:integrability), 그리고 §3의 틀: path kernel과 지수열 (x:tree-path-kernels), 분배함수에서 만든 tilted kernel과 backward recursion (tree:original-tilt), insertion recursion $Y_d$ (tree:Y-recursion), insertion 항등식과 단조·동차성 (tree:insertion), 새 root 변수의 약속 (x:tree-extra-variables), tree 표본 규칙 (x:tree-sampling). (2.3), (2.4)는 쓰지 않는다.
 
@@ -48,9 +48,11 @@ status: proposed
 | §7 | [[cavity:grid]] (x:decor-mesh), [[x:cavity-tree-sampling]] | decorrelation.tex 4 (`\ref` 없음) |
 | comp:encoding | reservoir root disorder, tilted reservoir kernel ([[x:cavity-tree-sampling]]) | comparison.tex 20–29 (`\ref` 없음) |
 | comp:low-increments | [[cavity:increment]]의 증분 $\Delta_N^{L,\mathbf u_{L,N}}$ | comparison.tex 13–14 (`\ref` 없음) |
+| comp:shape-error | [[cavity:grid]] ($Q_k$ 의 깊이 분포가 $m_d=d/L$ 을 전제, trees.tex 460) | comparison.tex 123 (`\ref` 없음) |
 | comp:insertion-comparison 진술 | [[cavity:grid]] ($\mathbf m^{(L)}=(1/L,\ldots,(L-1)/L)$) | comparison.tex 162 (`\ref` 없음) |
 | comp:insertion-comparison 증명 | [[cavity:increment]] ($A_{\rm s}$, $A_{\rm b}$), (5.5) | comparison.tex 171, 195, 222 |
-| comp:insertion-comparison 증명 | [[x:cavity-bounded]] ($C=H+BM$) | comparison.tex 200 (`\ref` 없음) |
+| comp:insertion-comparison 증명 | [[x:cavity-bounded]] ($C=H+BM$; 꼬리의 $H+BK$) | comparison.tex 200, 215–216 (`\ref` 없음) |
+| comp:bounded-lower 진술 | [[x:cavity-bounded]] (bounded 순열 불변 상호작용, bounded 장) | comparison.tex 226 (`\ref` 없음) |
 | comp:insertion-comparison 증명 | [[cavity:increment.s4]] (원래 insertion logarithm의 상계 $H+BK$) | comparison.tex 215–216 (`\ref` 없음) |
 | reduction / main:theorem | [[x:cavity-bounded]]를 푸는 쪽 | reduction.tex 45–87 |
 

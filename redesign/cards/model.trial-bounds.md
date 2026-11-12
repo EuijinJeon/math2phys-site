@@ -3,7 +3,7 @@ id: model:trial-bounds
 kind: remark
 title: 'moment 조건 없는 유한성 (2.12)'
 uses: [model:functional, x:model-depth-zero, model:power-means, x:model-cavity-bounds, model:integrability]
-provides: 'comp:bounded-lower(comparison.tex 235: $A=\inf_r\Phi_r$ 가 유한), upper:bound.s2("including unbounded messages", upper.tex 7–8: $\varphi(0)$ 의 $\mathbb E\log T_0V_{\rm s}$ 와 $\varphi(t)$ 의 유한성, `\ref` 없음), reduction:stability(power mean이 root-가측 한계를 보존)'
+provides: 'comp:bounded-lower(comparison.tex 235: $A=\inf_r\Phi_r$ 가 유한), upper:bound.s2("including unbounded messages", upper.tex 7–8: $\varphi(0)$ 의 $\mathbb E\log T_0V_{\rm s}$ 와 $\varphi(t)$ 의 유한성, `\ref` 없음), reduction:stability(차를 잡는 두 functional의 유한성. 두 값의 상대 비교가 power mean을 통과하는 것과 상수 인자의 분리는 x:reduction-power-mean-scaling), x:reduction-power-mean-scaling(그 진술의 유한성 가정이 쓰이는 곳의 경계)'
 math: |
   (2.11)의 양들은 시행 message에 대한 moment 가정 없이 유한하다. power-mean 연산자가 점별 곱셈적 한계를 보존하고
   $$\lvert\log T_0V_{\rm s}\rvert\le\lvert h\rvert+\sum_{j=1}^kB(\theta_j),\qquad\lvert\log T_0V_{\rm e}\rvert\le B(\theta)\tag{2.12}$$
@@ -20,3 +20,5 @@ status: proposed
 ---
 
 **확인 (작성자가 보탠 것).** $V_{\rm s}$ 는 $\varepsilon=\pm1$ 에 대한 평균이고 지수 안이 $\lvert h\rvert+\sum_jB(\theta_j)$ 로 눌리므로($\lvert U_{\theta_j}\rvert\le B(\theta_j)$, [[x:model-cavity-bounds]]) $e^{-c}\le V_{\rm s}\le e^{c}$, $c=\lvert h\rvert+\sum_{j\le k}B(\theta_j)$ 이다. $c$ 는 물리적 disorder만의 함수라서 모든 $\mathscr F_d$ 에 대해 가측이고, $e^{-c}\le T_{d+1}V\le e^c$ 이면 $T_dV$ 도 같은 범위에 있다. 깊이 $r$ 부터 귀납하면 $T_0V_{\rm s}\in[e^{-c},e^c]$. $V_{\rm e}=C_\theta$ 도 같다. $r=0$ 에서는 $T_0$ 이 없고 같은 한계가 $V$ 에 바로 성립한다. Wald 등식으로 $\mathbb E\sum_{j\le k}B(\theta_j)=\alpha p\,\mathbb EB(\theta)$.
+
+**123–124의 범위 (검토 2 comp·reduction (e) 대응).** "the power-mean operators preserve pointwise multiplicative bounds"는 이 자리에서 절대 경계 $e^{-c}\le V\le e^c$ ($c$ 가 물리 disorder만의 함수)의 보존에 쓰인다. 낱말로는 상대 경계($e^{-\delta}V\le V'\le e^\delta V$)까지 포함해 읽을 여지가 있으나, reduction.tex 34–35의 상대 비교와 39–40의 상수 분리(동차성)는 §2에 따로 진술되어 있지 않으므로 그 둘은 [[x:reduction-power-mean-scaling]]이 맡는다.

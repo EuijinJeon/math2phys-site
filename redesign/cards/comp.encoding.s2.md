@@ -7,7 +7,7 @@ provides: 'comp:encoding.s3 ($\eta_d$ 와 그 가측성), comp:encoding.s4 ($\ze
 math: |
   무작위 측도를 거꾸로
   $$\eta_{r-1}=\operatorname{Law}(x\mid\mathscr G_{r-1}),\qquad\eta_d=\operatorname{Law}(\eta_{d+1}\mid\mathscr G_d)\quad(0\le d<r-1)$$
-  로 정의한다. 그러면 $\eta_d\in\mathcal M_{r-d}$ 이므로 $\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L$ 이다. 모든 상태 공간이 standard Borel이므로 이 조건부 확률 kernel들은 가측 판을 갖는다. 여기서 쓰는 보조 prior는 실현된 각 root에서 유한 mark 공간의 유한곱으로 잡을 수 있다. 따라서 같은 주장은 root 개수를 조건으로 건 유한합으로도 바로 나온다.
+  로 정의한다. 그러면 $\eta_d\in\mathcal M_{r-d}$ 이므로 $\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L$ 이다. 모든 값 공간(변수들이 값을 갖는 공간; 원문 "state spaces")이 standard Borel이므로 이 조건부 확률 kernel들은 가측 판을 갖는다. 여기서 쓰는 보조 prior는 실현된 각 root에서 유한 mark 공간의 유한곱으로 잡을 수 있다. 따라서 같은 주장은 root 개수를 조건으로 건 유한합으로도 바로 나온다.
 physics: null
 gap: null
 abstraction: blackbox

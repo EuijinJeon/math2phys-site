@@ -9,7 +9,7 @@ math: |
 physics: |
   모든 [[g:multioverlap|multioverlap]]의 [[g:concentration|집중]]은 [[g:eta-regular|떨어진]] 내부 깊이에 대한 [[g:depth-average|깊이 평균]]으로만 얻지만, cavity 삽입의 [[g:tree-law|tree 법칙]] 전개가 예외적 깊이 배치에 작은 확률만 주므로 그것으로 충분하다. 그래서 하한은 [[g:bounded-law|유계]]이고 [[g:permutation-invariance|순열 불변]]인 상호작용(그리고 유계 장)에서 [[g:factorization|전개]]와 [[g:positivity|부호 조건]] 없이 성립한다. [[g:constant-shift|상수 이동]]과 시행 법칙 전체에 균일한 [[g:stability|$L^1$ 안정성]]으로 [[g:truncation|truncation]]을 걷어 내면, 1차 moment만 있는 일반 법칙에서 주정리가 나온다.
 gap: |
-  (1) 예외적 tree의 확률은 $\le C_k(\eta+L^{-1})$ 이고, 깊이 평균에서 $Q_k$ 평균으로 넘어가는 오차는 고정 $\eta$ 에서 $N$, $L$ 순으로 보낸 뒤 $\eta\downarrow0$ 으로 없앤다(tree:regular-shapes, comp:shape-error). (2) "factorization 없이"는 bounded 하한(comp:bounded-lower)에 대한 말이다. 일반 법칙으로 넓힐 때는 상수 이동이 $a$ 를 없애 순열 불변성을 만드는 데 factorization을 한 번 쓴다(main:theorem.s1). 원문 문단은 이것을 말하지 않는다. (3) 주정리의 결론은 이 하한과 상한(x:overview-upper, upper:bound)을 맞붙여서 나온다(main:theorem.s4). 문단은 이 맞붙임을 따로 적지 않는다. (4) "the stated first moment assumption"은 (2.1)이지만, 주정리의 가정은 (2.1)–(2.4) 전부다(상한이 나머지를 쓴다).
+  (1) 예외적 tree의 확률은 $\le C_k(\eta+L^{-1})$ 이고, 깊이 평균에서 $Q_k$ 평균으로 넘어가는 오차는 고정 $\eta$ 에서 $N$, $L$ 순으로 보낸 뒤 $\eta\downarrow0$ 으로 없앤다(tree:regular-shapes, comp:shape-error). (2) "factorization 없이"는 bounded 하한(comp:bounded-lower)에 대한 말이다. 일반 법칙으로 넓힐 때는 상수 이동이 $a$ 를 없애 순열 불변성을 만드는 데 factorization을 한 번 쓴다(main:theorem.s1). 원문 문단은 이것을 말하지 않는다. (3) 주정리의 결론은 이 하한과 상한(x:overview-upper, upper:bound)을 맞붙여서 나온다(main:theorem.s4). 문단은 이 맞붙임을 따로 적지 않는다. (4) "the stated first moment assumption"은 (2.1)이지만, 주정리의 가정은 (2.1)–(2.4) 전부다(상한이 나머지를 쓴다). (5) 45–46행 "No uniform concentration in the depth is needed"의 "the depth"는 원문이 특정하지 않는다. 작성자 읽기 둘: (a) 앞 두 문장에 이어 branching 깊이로 읽으면 "깊이 배정마다 균일한 집중은 필요 없고 깊이 평균이면 된다"이다(decorrelation.tex 11–13, 81–83; trees.tex 516–524). 물리 문장은 이 읽기를 따른다. (b) 계층 깊이 $L$ 로 읽으면 "$L$ 에 균일한 $N$ 수렴 속도는 쓰지 않는다"이다(decorrelation.tex 568–569, 621–622). 두 진술 모두 본문에서 참이다.
 abstraction: approximation
 children: []
 source:
@@ -22,8 +22,8 @@ status: proposed
 | 문장 | 본문 노드 | overview.tex |
 |---|---|---|
 | 3단계 추정은 떨어진 내부 깊이의 평균 | [[decor:average-definition]], [[x:decor-eta-regular]], [[decor:overlap-concentration]] | 43–44 |
-| 예외적 tree의 확률이 사라져 평균으로 충분 | [[tree:regular-shapes]] (`tree:irregular-probability`), [[comp:shape-error]], [[comp:shape-error-bound]] | 44–45 |
-| 깊이에 균일한 집중은 필요 없음 | [[decor:order-of-limits]] | 45–46 |
+| 예외적 tree의 확률이 사라져 평균으로 충분 | [[tree:regular-shapes]] (`tree:irregular-probability`), [[tree:averaging-remark]], [[comp:shape-error]], [[comp:shape-error-bound]] | 44–45 |
+| 깊이에 균일한 집중은 필요 없음 | 읽기 (a) branching 깊이: [[tree:averaging-remark]], [[decor:overlap-concentration]] (decorrelation.tex 81–83 "Averaging over depths is essential when combining the two estimates"), [[decor:section]] (11–13). 읽기 (b) 계층 깊이 $L$: [[decor:order-of-limits]] ("No rate of convergence in $N$ uniform in $L$ is used"), decorrelation.tex 568–569 (`decor:prefix-projection-concentration` 뒤, [[decor:overlap-concentration]] 안). 차이 칸 (5) | 45–46 |
 | bounded·순열 불변 하한, factorization·positivity 없이 | [[comp:bounded-lower]], [[x:cavity-bounded]] | 46–48 |
 | 정규화와 균일 추정으로 유계성 제거, 주정리 | [[reduction:stability]], [[main:theorem.s1]]–[[main:theorem.s3]], [[main:theorem.s4]], [[reduction:section]] | 48–51 (`\cref{main:theorem}`, `\cref{reduction:section}`) |
 

@@ -26,6 +26,6 @@ status: proposed
 - [[models:spin.s2]]: $J$ 의 대칭성으로 (2.4).
 - [[models:spin.s3]]: $B(\theta_\beta)=\beta\lvert J\rvert$, $\lvert h_\beta\rvert=\beta\lvert H\rvert$ 로 (2.1). 그러므로 [[main:theorem]]이 적용된다.
 
-짝수 $p$ 는 진술에서 고정한다(12행). 이것이 (2.1)–(2.4)와 함께 [[model:integrability]]의 전제다.
+짝수 $p$ 는 진술에서 고정한다(12행). 짝수 $p$ 는 (2.1)–(2.4)와 함께 주정리의 전제이고, 그 고정은 [[model:integrability]] 카드(model.tex 3행)가 담는다. 이 따름정리의 증명은 짝수를 쓰지 않는다. 쓰이는 곳은 상한의 볼록성(upper.tex 123–124, [[upper:remainder]])이다.
 
 **$J$ 와 $H$ 의 독립 (작성자 읽기).** 증명은 $J$, $H$ 의 독립을 따로 쓰지 않는다. (2.2)는 $\theta$ 의 사본 $\theta_k$ 와 $h$ 의 사본 $h_i$ 를 서로 독립인 족으로 뽑으므로([[model:hamiltonian]]) 모형에는 $J$ 와 $H$ 의 결합 법칙이 들어가지 않는다. 진술의 "independent"는 원문 그대로 옮겼다.

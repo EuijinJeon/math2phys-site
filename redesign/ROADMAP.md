@@ -45,9 +45,9 @@
 | §2 model, §3 trees 카드 | ✅ 작성·검토·반영 (§2 25장, §3 39장). 수정본 재검토는 안 함 |
 | §4 upper, §5 cavity 카드 | ✅ 작성·검토·반영 (§4 10장, §5 13장). 수정본 재검토는 안 함 |
 | §6 perturbations 카드 | ✅ 작성·검토·반영 (44장). 수정본 재검토는 안 함 |
-| §8 comparison, §9 reduction 카드 | 🔄 작성 중 |
-| §10 consequences 카드, overview.tex 카드 | 🔄 작성 중 |
-| 증명 지도(전체 DAG) 화면 | ⬜ |
+| §8 comparison, §9 reduction 카드 | ✅ 작성·검토·반영 (§8 28장, §9 6장). 수정본 재검토는 안 함 |
+| §10 consequences 카드, overview.tex 카드 | 🔄 초안(§10 18장, overview 7장)·검토 완료, 반영 중 |
+| 증명 지도(전체 DAG) 화면, 도구 보강 | 🔄 진행 중 (sonnet) |
 
 ### 3단계. 물리판 (L2)
 
@@ -251,3 +251,16 @@
 6. SCHEMA에 관행 추가: 묶음 카드의 `source`에는 그것을 이름으로 부르는 줄도 둔다. `\ref` 없는 사용은 `uses`·`provides`·섹션 표에 손으로 적는다.
 7. 규칙 P4의 수학 노드 열에 있는 카드 없는 식 라벨(`cavity:identity` 등)을 카드 ID로 바꿀지.
 8. 도구: 같은 파일 안 의존과 `\ref` 없는 사용을 검사가 잡지 못함. `provides`와 `uses`의 대칭 검사를 넣을 수 있는지.
+- §8 comparison(28장, 잎 20)·§9 reduction(6장, 잎 4) 초안: 하한 조립의 극한 순서(ε·L 고정 → 선택된 수열을 따라 N의 limsup → L→∞ → ε↓0; η·M·q는 안쪽 명제에서 소진). reduction.tex 45–87은 새 카드 없이 `main:theorem`을 `reduction:section`의 자식으로 걸음(두 부모). power mean의 단조·동차성은 §2에 명시 진술이 없어 `x:reduction-power-mean-scaling`(작성자 유도)에 담음.
+- §8·§9 독립 검토: 통과 22장, 지적 8건(높음 0, 중간 1). 틀린 식·구멍 0. 극한 순서 장부는 원문과 한 줄씩 맞음. `build/review-2-comp-reduction.md`.
+- §8·§9 검토 반영 완료: 8건 모두 반영, 다른 섹션 인터페이스 표 보충 (a)–(f). `comp:shape-error.s1` → `.s2`로 개명. `g:order-of-limits` 기호 줄을 바깥 조립과 안쪽 명제 두 줄로 나눔. 전체 244장 검사 오류 0·경고 0(의존 경고 2건은 도구에 "섹션 라벨 참조는 그 섹션의 자손이 `uses`에 있으면 충족" 규칙이 들어가며 해소). `build/review-2-comp-reduction-response.md`.
+- §10 consequences(18장, 잎 14)·overview(7장) 초안. 카드 합계 244장. overview는 본문 결과를 `uses`가 아니라 "가리키는 곳" 표로 이음. L1 대응표는 `x:overview-strategy` 본문.
+- §10·overview 독립 검토: 통과 15장, 지적 10건(높음 0, 중간 1). 틀린 식·구멍 0. L1은 틀린 곳 없음, 빠뜨린 세 가지에 넣을 문구 제안. `build/review-2-cons-overview.md`. 수정자 반영 중.
+- 도구 보강을 sonnet에 맡김: 섹션 라벨 참조 규칙, 두 부모 처리, 전체 규모 사이트·두 단계 증명 지도, 한 파일 내보내기, 지도 미리 그리기 스크립트.
+- 사용 한도 다섯·여섯 번째(18:30, 23:30 UTC 초기화). 재개.
+- `redesign/tools/__pycache__` 추적 해제(.gitignore).
+
+**정리 묶음에 더함**
+9. `x:pert-increment`의 `provides`에 §8 사용(comparison.tex 11–12).
+10. `main:theorem` 마지막 문단(§9와의 조율 메모)은 해결됐으니 고쳐 쓴다.
+11. SCHEMA: `x:cons-*` 접두사 예외, 식 라벨을 첫 단계 ID로 쓰면 `.s1`이 비는 경우.

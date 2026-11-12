@@ -13,7 +13,7 @@ math: |
 physics: |
   cavity [[g:reservoir|reservoir]]에서 무작위 site 하나의 계층 [[g:message|cavity field]] 법칙을 시행 [[g:order-parameter|order parameter]]로 부호화하고([[g:encoded-law]]), [[g:site-bond-insertion|site·bond 삽입]]의 이웃 spin을 그 독립 사본으로 바꾼다([[g:independent-copies]]). 바꾼 삽입이 정확히 시행 [[g:functional|functional]]이고, 바꾸는 비용은 모든 [[g:multioverlap|multioverlap]]의 [[g:concentration|집중]]이 없앤다. 낮은 [[g:increment|증분]]의 [[g:selected-sequence|선택된 수열]]과 합치면 pressure의 하한이 시행값의 inf가 된다.
 gap: |
-  (1) [[g:order-of-limits|극한 순서]]: 고정 $\varepsilon$, 고정 $L$ 의 선택된 수열 위 $\limsup_N$, 그다음 $L\to\infty$, 마지막 $\varepsilon\downarrow0$. 안쪽에서 $\eta\downarrow0$(shape error), 개수 절단 $M$, 전개 차수 $q$ 가 먼저 소진된다. (2) 이웃 cavity field의 독립은 가정이 아니라 균일 site 표본과 tree 평균 집중에서 증명된다. 국소 tree 구조나 거리 감쇠는 쓰지 않는다. (3) "계층"은 섭동 [[g:mark|mark]]로 만든 [[g:hierarchy|보조 계층]]이고 Parisi parameter는 [[g:grid|균등 격자]]로 고정된다. 보조 계층을 [[g:physical-pure-state|물리적 pure state]]의 계층으로, $\zeta_{L,N}$ 을 계의 물리적 order parameter로 읽는 것은 증명되지 않는다. (4) 유계·순열 불변 상호작용에 한한다. (5) 하한만 준다.
+  (1) [[g:order-of-limits|극한 순서]]: 고정 $\varepsilon$, 고정 $L$ 의 선택된 수열 위 $\limsup_N$, 그다음 $L\to\infty$, 마지막 $\varepsilon\downarrow0$. shape error의 $\eta$(안쪽 명제 안에서 $L\to\infty$ 뒤에 $\eta\downarrow0$), 개수 절단 $M$, 전개 차수 $q$ 는 안쪽 명제에서 이미 소진되어 조립에는 $\eta$, $M$, $q$ 없는 진술로 들어온다. (2) 이웃 cavity field의 독립은 가정이 아니라 균일 site 표본과 tree 평균 집중에서 증명된다. 국소 tree 구조나 거리 감쇠는 쓰지 않는다. (3) "계층"은 섭동 [[g:mark|mark]]로 만든 [[g:hierarchy|보조 계층]]이고 Parisi parameter는 [[g:grid|균등 격자]]로 고정된다. 보조 계층을 [[g:physical-pure-state|물리적 pure state]]의 계층으로, $\zeta_{L,N}$ 을 계의 물리적 order parameter로 읽는 것은 증명되지 않는다. (4) 유계·순열 불변 상호작용에 한한다. (5) 하한만 준다.
 abstraction: approximation
 children: [x:comp-standing, comp:low-increments, comp:encoding, comp:patterns, comp:shape-error, comp:insertion-comparison, comp:bounded-lower]
 source:
@@ -24,7 +24,7 @@ status: proposed
 **뼈대.** 원문 4–6행의 세 걸음 그대로: (a) reservoir의 one-site branching law 전체를 부호화한다, (b) multioverlap 집중으로 site들을 떼어 낸다, (c) 삽입 logarithm을 비교한다.
 - 서두: [[x:comp-standing]] → [[comp:low-increments]].
 - §8.1 부호화: [[comp:encoding]] (s1 균일 site와 $x$, s2 거꾸로 쌓은 측도, s3 branching 확인, s4 (comp:single-label-moments)).
-- §8.2 pattern: [[comp:patterns]] (s1 $\pi$ 와 $\bar\pi$, s2 telescoping) → [[comp:shape-error]] ([[comp:shape-error-bound]]의 s1–s3, 그리고 [[comp:shape-error.s1]]의 극한).
+- §8.2 pattern: [[comp:patterns]] (s1 $\pi$ 와 $\bar\pi$, s2 telescoping) → [[comp:shape-error]] ([[comp:shape-error-bound]]의 s1–s3, 그리고 [[comp:shape-error.s2]]의 극한).
 - §8.3 비교: [[comp:insertion-comparison]] (s1 trial 항등식 s1.s1–s1.s3, s2 절단과 정규화, s3 차수별 비교, s4 꼬리와 조립) → [[comp:bounded-lower]] (s1 고정 $L$, s2 $L\to\infty$, $\varepsilon\downarrow0$).
 
 **밖에서 받는 것** (`\ref` 위치와 `\ref` 없는 사용).
@@ -60,14 +60,16 @@ status: proposed
 | [[main:theorem.s2]] | [[comp:bounded-lower]]가 truncation이 factorization을 보존하든 말든 적용됨 | reduction.tex 63–65 (`\cref`) |
 | [[main:theorem.s3]] | [[comp:bounded-lower]] (잘린 모형의 $\liminf_NF^{(K)}_N\ge I_K$) | reduction.tex 76 (`\cref`) |
 | 규칙 P10, P11, L1 수 6 | [[comp:encoding]], [[comp:patterns]], [[comp:shape-error]], [[comp:insertion-comparison]] | layers |
+| overview.tex Step 4 | 이 절 전체: 부호화, 독립 사본으로 바꾸기, 선택된 증분에 가까운 시행값 | overview.tex 36–40 (40 `\cref`) |
+| §7 서두 (예고) | 깊이 평균 multioverlap 집중이 이 절의 비교에 필요한 평균이라는 것 | decorrelation.tex 11–13 (13 `\cref`) |
 
 나머지 카드(encoding, patterns, shape-error, insertion-comparison)는 이 절 밖의 원문에서 쓰이지 않는다.
 
-**인터페이스 대조 (다른 섹션 카드가 적은 export와 실제 사용).** 다른 섹션 카드는 고치지 않았다.
+**인터페이스 대조 (다른 섹션 카드가 적은 export와 실제 사용).** 검토 2(comp·reduction)의 (a)–(e) 대응으로 다른 섹션 카드의 export를 고친 뒤의 대조다.
 - §7 [[decor:section]]: 내주는 것으로 [[decor:overlap-concentration]], [[decor:average-definition]], [[x:decor-eta-regular]], [[x:decor-topology]], [[x:decor-spin-product]], [[x:decor-limit-order]]을 적는다. 실제 사용과 맞는다(153행 하나만 `\cref`, 나머지는 `\ref` 없이 131–156에서). 같은 수열이라는 점([[x:decor-limit-order]]와 [[x:comp-standing]])과 $\eta$ 범위($0<\eta<1/2$ ⊂ $\eta>0$)도 맞는다.
-- §6 [[pert:section]]: comparison.tex 8–15, 20, 130, 243과 53–56을 적는다. 맞는다. 추가로 11–12의 $\underline F$ 는 [[x:pert-increment]]에서 온다(pert:section의 표에는 이 카드 이름이 없다).
-- §5 [[cavity:section]]: §8에 [[cavity:increment]](reservoir, $A_{\rm s}$, $A_{\rm b}$, (5.5))와 [[x:cavity-tree-sampling]]을 적는다. 맞는다. 다만 §8은 [[x:cavity-bounded]](200, 215–216, 226)와 [[cavity:grid]](162의 $\mathbf m^{(L)}$, $Q_k$ 의 $m_d=d/L$), [[cavity:increment.s4]]의 상계(215–216)도 `\ref` 없이 쓴다. cavity:section의 provides는 x:cavity-bounded를 §9 쪽에만 적는다([[x:cavity-bounded]] 카드 자신은 comparison.tex 200·226을 적는다).
-- §3 [[tree:section]]: §8에 [[tree:log-expansion]]과 꼬리, [[tree:Q-rule]], [[tree:regular-shapes]], [[tree:averaging-remark]]의 논법, (tree:Y-recursion)을 적는다. 맞는다. 빠진 것: [[tree:insertion]]의 동차성·단조성(203, 215–216), [[x:tree-sampling]]의 사영 일관성과 자식 독립(62, 142–150), [[tree:multioverlap]], [[x:tree-regular-shape]], [[x:tree-extra-variables]](28).
-- §2 [[model:section]]: comparison.tex 72/180/227/235에 [[model:chain]], [[model:vs]], 섹션, [[model:trial-bounds]]를 적는다. 맞는다. `\ref` 없는 사용이 더 있다: [[model:ve]](189), [[model:power-means]](184–185), [[model:functional]](166, 192), [[x:model-depth-zero]](229의 $r\ge0$), [[x:model-message]], [[model:site-message]], [[model:edge]], [[model:hamiltonian]].
+- §6 [[pert:section]]: comparison.tex 8–15, 20, 130, 243과 53–56, 그리고 11–14의 $\underline F$·$\Delta_N$ 의 출처 [[x:pert-increment]]를 적는다. 맞는다. ([[x:pert-increment]] 카드 자신의 provides에는 §8이 아직 없다. 그 카드는 이번 수정 범위 밖이다.)
+- §5 [[cavity:section]]: provides 줄과 "밖에 내주는 것" 표가 [[cavity:increment]](reservoir, $A_{\rm s}$, $A_{\rm b}$, (5.5)), [[x:cavity-tree-sampling]], [[cavity:grid]](123, 162), [[x:cavity-bounded]](200, 215–216, 226), [[cavity:increment.s4]](215–216)를 적는다. 맞는다.
+- §3 [[tree:section]]: [[tree:log-expansion]]과 꼬리, [[tree:Q-rule]], [[tree:regular-shapes]], [[tree:averaging-remark]], (tree:Y-recursion)에 더해 `\ref` 없는 사용으로 [[tree:insertion]]의 동차성(203; 215–216의 단조성은 [[cavity:increment.s4]]와 [[model:trial-bounds]]를 거침), [[x:tree-sampling]]의 자식 독립과 사영 일관성(62, 142–150), [[tree:multioverlap]], [[x:tree-regular-shape]], [[x:tree-extra-variables]](28)를 적는다. 맞는다.
+- §2 [[model:section]]: comparison.tex 72/180/227/235의 `\ref` 에 더해 `\ref` 없는 사용([[model:ve]], [[model:power-means]], [[model:functional]], [[x:model-depth-zero]], [[x:model-message]], [[model:site-message]], [[model:edge]], [[model:hamiltonian]])을 적는다. 맞는다.
 
 **순환.** [[comp:bounded-lower]]는 [[model:section]]이나 [[main:theorem]]이 아니라 해당 정의 노드를 `uses`에 넣는다. 이 절의 어떤 카드도 model:section, main:theorem, upper:bound, reduction 카드를 `uses`에 넣지 않는다.

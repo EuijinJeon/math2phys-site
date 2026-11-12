@@ -9,9 +9,9 @@ math: |
   $$G_T(\eta_d)=\prod_{\ell=1}^j\int G_{T_\ell}(\nu)\,\eta_d(d\nu)$$
   를 준다. 귀납으로 이 확률은 prefix 전체에 $\eta_d$ 를 통해서만 의존한다. 그러므로 거꾸로 쌓은 측도들은 unary 구간과 임의의 자식 수를 포함한 모든 descendant tree의 결합 출력 법칙을 보존한다. 이 recursion은 정확히 (2.7)의 branching 판이다.
 physics: |
-  [[g:replica|replica]]들이 [[g:hierarchy|보조 계층]]에서 어떻게 갈라지든(어느 깊이에서 몇 갈래로), 그 replica들이 site $i$ 에서 보는 spin의 결합 법칙은 깊이마다 "자식 상태들이 서로 독립으로 같은 법칙 $\eta_d$ 에서 뽑힌다"는 계층 cavity field 사슬로 그대로 재현된다.
+  [[g:replica|replica]]들이 [[g:hierarchy|보조 계층]]에서 어떻게 갈라지든(어느 깊이에서 몇 갈래로), 그 replica들이 site $i$ 에서 보는 spin의 결합 법칙은 깊이마다 "자식 [[g:state|상태]]들에 딸린 다음 단계의 field 법칙 $\eta_{d+1}$(마지막 단계에서는 field $x$)이 서로 독립으로 같은 법칙 $\eta_d$ 에서 뽑힌다"는 계층 cavity field 사슬로 그대로 재현된다.
 gap: |
-  정확한 진술이다. 다만 재현되는 것은 한 site의 replica 결합 법칙이고, 계층은 보조 계층이다. 물리의 계층 cavity field 사슬과 같은 꼴이라는 것이 여기서 정의로 맞춰진 것이지, [[g:physical-pure-state|물리적 pure state]]의 계층이 유도된 것은 아니다.
+  정확한 진술이다. 다만 재현되는 것은 한 site의 replica 결합 법칙이고, 계층은 보조 계층이다. 물리의 계층 cavity field 사슬과 같은 꼴이라는 것이 여기서 정의로 맞춰진 것이지, [[g:physical-pure-state|물리적 pure state]]의 계층이 유도된 것은 아니다. $\eta_d$ 에서 뽑히는 것은 자식 prefix 자체가 아니라 그 prefix의 함수인 $\eta_{d+1}$ 이다(자식 prefix는 tilted reservoir kernel로 뽑힌다; comparison.tex 29–30, 44–48, 61–67).
 abstraction: exact
 children: []
 source:

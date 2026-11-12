@@ -13,7 +13,7 @@ math: |
 physics: |
   [[models:spin]]의 희석 $p$-spin 모형(Viana–Bray 포함)과 [[models:sat]]의 soft $K$-SAT에서, ground-state 에너지 밀도 $-g$([[g:ground-state]])의 열역학 극한이 존재한다. 각 $\beta$ 에서 free energy density $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 $[-g-\frac{\log2}{\beta},-g]$ 안에 있고, 그래서 $-g=\lim_{\beta\to\infty}f(\beta)$ 이다. 단위 가중치 SAT에서 $-g$ 는 변수당 최소 위반 clause 수(그 기대값의 밀도 극한)다.
 gap: |
-  (1) 극한 순서는 각 고정 $\beta$ 에서 $N\to\infty$, 그다음 $\beta\to\infty$ 다. $\beta=\infty$ 에서 직접 세운 변분 공식(영온도 cavity functional)은 주지 않는다. (2) 각 $\beta$ 에서 inf를 따로 취하고, inf의 달성이나 극한 계층, 영온도 [[g:order-parameter|order parameter]]를 요구하지도 주장하지도 않는다(x:cons-ground-scope). (3) 폭 $\log2/\beta$ 의 근거는 "$2^N$ 개 배치"라는 한 줄이다(models:ground.s1). 이 폭을 엔트로피 밀도의 상한으로 읽는 것은 작성자의 읽기이고 원문에 없다. (4) 물리 문장의 $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 주정리로 $\lim_NF_N(\beta)$ 와 같다(models:ground.s2). (5) $\max$ 의 기대값 밀도이고 전형적인 표본의 값이라는 진술은 아니다.
+  (1) (10.1) 우변의 극한 순서는 각 고정 $\beta$ 에서 $N\to\infty$, 그다음 $\beta\to\infty$ 다. 좌변 $g$ 는 $\beta$ 없이 유한 크기에서 최댓값을 먼저 취한 양의 $N$ 극한이고, 끼움에서 각 $N$ 마다 $g_N=\lim_{\beta\to\infty}P_N(\beta)/\beta$ 이다(작성자 확인). 그래서 따름정리는 두 극한 순서가 같은 값을 준다는 것으로 읽힌다(작성자 읽기; 원문은 이렇게 적지 않고 $g$ 의 존재와 (10.1), 폭 $[g,g+\log2/\beta]$ 만 말한다). $\beta=\infty$ 에서 직접 세운 변분 공식(영온도 cavity functional)은 주지 않는다. (2) 각 $\beta$ 에서 inf를 따로 취하고, inf의 달성이나 극한 계층, 영온도 [[g:order-parameter|order parameter]]를 요구하지도 주장하지도 않는다(x:cons-ground-scope). (3) 폭 $\log2/\beta$ 의 근거는 "$2^N$ 개 배치"라는 한 줄이다(models:ground.s1). 이 폭을 엔트로피 밀도의 상한으로 읽는 것은 작성자의 읽기이고 원문에 없다. (4) 물리 문장의 $f(\beta)=-\frac1\beta\inf_r\Phi_r(\beta)$ 는 주정리로 $\lim_NF_N(\beta)$ 와 같다(models:ground.s2). (5) $\max$ 의 기대값 밀도이고 전형적인 표본의 값이라는 진술은 아니다.
 abstraction: exact
 children: [models:ground.s1, models:ground.s2, models:ground.s3, models:ground.s4]
 source:

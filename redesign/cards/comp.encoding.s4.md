@@ -7,7 +7,7 @@ provides: 'comp:patterns.s1 ($\bar\pi=\mathbb E\pi$ 의 근거 식, comparison.t
 math: |
   $\zeta_{L,N}=\operatorname{Law}(\eta_0)$ 로 두면 root 혼합도 보존된다. 특히 leaf의 모든 부분집합 $S$ 에 대해
   $$\mathbb E\prod_{a\in S}\tau^a=\frac1N\sum_{i=1}^N\mathbb E\prod_{a\in S}\sigma_i^a=\mathbb ER_S.\tag{comp:single-label-moments}$$
-  여기서 $\tau^a$ 는 trial label 하나의 leaf $a$ spin이다. 서로 다른 label에는 reservoir root와 균일 site를 포함한 전체 구성의 독립 사본을 쓴다. 그렇게 얻은 message들은 cavity insertion의 새 물리 disorder와 독립이다.
+  여기서 $\tau^a$ 는 trial label 하나의 leaf $a$ spin이다(작성자; 원문은 $\tau$ 를 정의하지 않고 17–24행 lemma의 "single-label spin process"에서 읽음). 서로 다른 label에는 reservoir root와 균일 site를 포함한 전체 구성의 독립 사본을 쓴다. 그렇게 얻은 message들은 cavity insertion의 새 물리 disorder와 독립이다.
 physics: |
   trial label 하나의 replica spin 곱의 평균은 reservoir의 [[g:multioverlap|multioverlap]] 평균 $\mathbb ER_S$ 와 같다. 이웃 site마다 서로 독립인 cavity field 사본을 쓴다.
 gap: |
