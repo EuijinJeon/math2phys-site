@@ -1,0 +1,53 @@
+flowchart LR
+  subgraph IN["§9 Normalization, truncation, and completi…"]
+    a0["Stability (L^1 안정성과 상수 이동)<br/>reduction:stability"]
+  end
+  subgraph X0["밖: 주정리"]
+    e0["주정리: _NF_N=_r0_r<br/>main:theorem"]
+  end
+  subgraph X1["밖: §2"]
+    e1["시행 법칙: M_j, M_r+1, m, label별 …<br/>model:chain"]
+    e2["edge 분배함수 C_ (2.5)<br/>model:edge"]
+    e3["시행 functional B_r 와 변분값 _r (2…<br/>model:functional"]
+    e4["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
+    e5["매개변수 p, , 법칙 , h 와 1차 moment …<br/>model:integrability"]
+    e6["조건부 power mean T_d (2.10)<br/>model:power-means"]
+    e7["cavity log-weight U_ (2.6)<br/>model:site-message"]
+    e8["moment 조건 없는 유한성 (2.12)<br/>model:trial-bounds"]
+    e9["edge 항 V_ e (2.9)<br/>model:ve"]
+    e10["site 분배함수 V_ s (2.8)<br/>model:vs"]
+    e11["r=0 (replica symmetric) 경우: B…<br/>x:model-depth-zero"]
+    e12["power mean의 단조성과 root-가측 인자에 …<br/>x:reduction-power-mean-scaling"]
+  end
+  a0 --> e0
+  e1 --> a0
+  e10 --> a0
+  e11 --> a0
+  e12 --> a0
+  e2 --> a0
+  e3 --> a0
+  e4 --> a0
+  e5 --> a0
+  e6 --> a0
+  e7 --> a0
+  e8 --> a0
+  e9 --> a0
+  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
+  classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
+  class a0 thm;
+  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12 ext;
+  click a0 "cards/reduction.stability.html"
+  click e0 "cards/main.theorem.html"
+  click e1 "cards/model.chain.html"
+  click e2 "cards/model.edge.html"
+  click e3 "cards/model.functional.html"
+  click e4 "cards/model.hamiltonian.html"
+  click e5 "cards/model.integrability.html"
+  click e6 "cards/model.power-means.html"
+  click e7 "cards/model.site-message.html"
+  click e8 "cards/model.trial-bounds.html"
+  click e9 "cards/model.ve.html"
+  click e10 "cards/model.vs.html"
+  click e11 "cards/x.model-depth-zero.html"
+  click e12 "cards/x.reduction-power-mean-scaling.html"

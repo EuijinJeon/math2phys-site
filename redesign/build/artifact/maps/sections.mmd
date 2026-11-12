@@ -1,0 +1,55 @@
+flowchart LR
+  S0["§2<br/>The model and the variational princ…<br/>21장"]
+  S1["§2.2<br/>Proof strategy<br/>7장"]
+  S2["주정리<br/>Theorem 2.1<br/>5장 (진술 + 증명 단계)"]
+  S3["§3<br/>Calculus on finite trees<br/>39장"]
+  S4["§4<br/>The interpolation upper bound<br/>10장"]
+  S5["§5<br/>A perturbed cavity reservoir<br/>13장"]
+  S6["§6<br/>Perturbations and identities on pre…<br/>44장"]
+  S7["§7<br/>Decorrelation on prescribed trees<br/>54장"]
+  S8["§8<br/>Independent hierarchical messages a…<br/>28장"]
+  S9["§9<br/>Normalization, truncation, and comp…<br/>5장"]
+  S10["§10<br/>Named models and the zero-temperatu…<br/>18장"]
+  S0 -->|10| S1
+  S0 -->|12| S2
+  S0 -->|2| S3
+  S0 -->|39| S4
+  S0 -->|7| S5
+  S0 -->|2| S6
+  S0 -->|37| S8
+  S0 -->|35| S9
+  S0 -->|26| S10
+  S2 -->|1| S0
+  S2 -->|1| S1
+  S2 -->|6| S10
+  S3 -->|13| S4
+  S3 -->|19| S5
+  S3 -->|46| S6
+  S3 -->|19| S7
+  S3 -->|47| S8
+  S4 -->|1| S0
+  S4 -->|2| S2
+  S5 -->|21| S6
+  S5 -->|1| S7
+  S5 -->|32| S8
+  S5 -->|1| S9
+  S6 -->|20| S7
+  S6 -->|12| S8
+  S7 -->|18| S8
+  S8 -->|3| S2
+  S9 -->|2| S2
+  classDef sec fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef mainc fill:#ffe9b8,stroke:#a86400,color:#111;
+  class S0,S1,S3,S4,S5,S6,S7,S8,S9,S10 sec;
+  class S2 mainc;
+  click S0 "cards/model.section.html"
+  click S1 "cards/x.overview-strategy.html"
+  click S2 "cards/main.theorem.html"
+  click S3 "cards/tree.section.html"
+  click S4 "cards/upper.section.html"
+  click S5 "cards/cavity.section.html"
+  click S6 "cards/pert.section.html"
+  click S7 "cards/decor.section.html"
+  click S8 "cards/comp.section.html"
+  click S9 "cards/reduction.section.html"
+  click S10 "cards/models.section.html"

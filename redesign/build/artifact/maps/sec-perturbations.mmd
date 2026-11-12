@@ -1,0 +1,234 @@
+flowchart LR
+  subgraph IN["§6 Perturbations and identities on prescri…"]
+    a0["insertion 계수의 소멸 (Lemma 6.4)<br/>pert:analytic"]
+    a1["차 H_N(t,u)=J_N, T- Ef,J_N,a_*…<br/>pert:analytic-difference"]
+    a2["매개변수 평균한 score 집중 (Lemma 6.1)<br/>pert:concentration"]
+    a3["score 오차 e_,N( u) 와 기대값 , E_ …<br/>pert:error"]
+    a4["Poisson 섭동 factor _=1+t_ g_i+…<br/>pert:factor"]
+    a5["Palm 항등식 (Lemma 6.3)<br/>pert:palm"]
+    a6["insertion 기대값 J_N, T(t,u) (6.…<br/>pert:palm-expression"]
+    a7["섭동 type 와 매개변수 t_=1/j, u_j^-j…<br/>pert:parameters"]
+    a8["perturbation score D_ (6.3)<br/>pert:score"]
+    a9["anchor score와 시험함수의 분리 부등식 (6…<br/>pert:score-identity"]
+    a10["결정적 매개변수 선택 (Lemma 6.2)<br/>pert:selection"]
+    a11["prescribed tree 위의 항등식 (Theor…<br/>pert:tree-identity"]
+    a12["spin/marker anchor, 추가 color,…<br/>x:pert-colored-extensions"]
+    a13["F 와 섭동된 증분 _N( u)<br/>x:pert-increment"]
+    a14["mark specification (깊이별 Radem…<br/>x:pert-mark-specification"]
+    a15["선택의 순서 (Remark 6.6)<br/>x:pert-order-of-choices"]
+    a16["매개변수 측도 (결정적 벡터를 고르는 데만 씀)<br/>x:pert-parameter-measure"]
+    a17["이후의 N 는 선택된 수열을 따른다<br/>x:pert-selected-limits"]
+    a18["§6의 약속: 유계 모형, 고정 깊이 L2, 두 계,…<br/>x:pert-standing"]
+    a19["old tree T, anchor a_*, 시험함수 …<br/>x:pert-test-setup"]
+  end
+  subgraph X0["밖: §5"]
+    e0["Poisson 섭동 factor 족과 한계 1/2_3…<br/>cavity:factor-bounds"]
+    e1["깊이 L2, r=L-1, 균등 격자 m_d=d/L (…<br/>cavity:grid"]
+    e2["Cavity increments (cavity 증분)<br/>cavity:increment"]
+    e3["섭동의 비용 P_N^L, u-NF_N(2)s_N (5…<br/>cavity:negligible"]
+    e4["하한의 유계·순열 불변 가정 (B() B, h H)<br/>x:cavity-bounded"]
+    e5["섭동의 개수·type·site는 root, 매개변수 …<br/>x:cavity-root-convention"]
+    e6["섭동된 계의 기대 root logarithm P_N^…<br/>x:cavity-root-logarithm"]
+    e7["하한의 모든 spin tree는 이 reservoir…<br/>x:cavity-tree-sampling"]
+  end
+  subgraph X1["밖: §8"]
+    e8["bounded 법칙의 하한: _NF_N_r0_r<br/>comp:bounded-lower"]
+    e9["Recursive law encoding (재귀적 법…<br/>comp:encoding"]
+    e10["선택된 수열 위의 낮은 증분 (8.1)<br/>comp:low-increments"]
+    e11["tree 법칙 평균한 multioverlap 요동이 …<br/>comp:shape-error"]
+    e12["§8의 고정된 선택: , 깊이마다의 선택된 수열, 선…<br/>x:comp-standing"]
+  end
+  subgraph X2["밖: §7"]
+    e13["조건부 decorrelation: A_L,v_N(S,…<br/>decor:conditional-concentration"]
+    e14["항등식 오차의 최대 _N,L,k<br/>decor:identity-error"]
+    e15["모든 multioverlap의 깊이 평균 집중<br/>decor:overlap-concentration"]
+    e16["선택된 수열과 극한 순서<br/>x:decor-limit-order"]
+    e17["균등 격자 m_d=d/L, =1/L<br/>x:decor-mesh"]
+  end
+  subgraph X3["밖: §2"]
+    e18["Hamiltonian H_N, 분배함수 Z_N, pr…<br/>model:hamiltonian"]
+  end
+  subgraph X4["밖: §3"]
+    e19["insertion recursion Y_d 와 바뀐 …<br/>tree:Y-recursion"]
+    e20["Canceled-anchor expansion (an…<br/>tree:extension-expansion"]
+    e21["Insertion calculus (삽입 미적분)<br/>tree:insertion"]
+    e22["multioverlap R_S 와 기대값 E 의 약속<br/>tree:multioverlap"]
+    e23["분배함수에서 만든 tilted kernel<br/>tree:original-tilt"]
+    e24["해석적 경계 (복소 영역에서의 Y_d)<br/>x:tree-analytic-bounds"]
+    e25["canceled-anchor 확장 규칙과 extens…<br/>x:tree-extension-history"]
+    e26["원래 모형에 없던 변수를 쓰는 insertion<br/>x:tree-extra-variables"]
+    e27["path kernel 열, 지수 m_d, prefix…<br/>x:tree-path-kernels"]
+    e28["유한 tree, 표본 기대값 E_ T, split, …<br/>x:tree-sampling"]
+  end
+  a0 --> a11
+  a0 --> a15
+  a1 --> a0
+  a1 --> a11
+  a1 --> a5
+  a10 --> a0
+  a10 --> a11
+  a10 --> a15
+  a10 --> a17
+  a10 --> a9
+  a10 --> e10
+  a10 --> e12
+  a10 --> e16
+  a10 --> e17
+  a10 --> e9
+  a11 --> a15
+  a11 --> e13
+  a11 --> e14
+  a11 --> e15
+  a11 --> e16
+  a12 --> a11
+  a12 --> e13
+  a12 --> e15
+  a13 --> a10
+  a13 --> e10
+  a13 --> e12
+  a14 --> a0
+  a14 --> a11
+  a14 --> a12
+  a14 --> a4
+  a14 --> a6
+  a14 --> a7
+  a14 --> e9
+  a16 --> a10
+  a16 --> a15
+  a16 --> a2
+  a17 --> a0
+  a17 --> a11
+  a17 --> a19
+  a17 --> a9
+  a17 --> e11
+  a17 --> e12
+  a17 --> e8
+  a18 --> a10
+  a18 --> a14
+  a18 --> a17
+  a18 --> a2
+  a18 --> a3
+  a19 --> a1
+  a19 --> a11
+  a19 --> a12
+  a19 --> a6
+  a19 --> a9
+  a2 --> a10
+  a3 --> a10
+  a3 --> a2
+  a3 --> a9
+  a4 --> a15
+  a4 --> a2
+  a4 --> a5
+  a4 --> a8
+  a4 --> a9
+  a4 --> e9
+  a5 --> a0
+  a6 --> a0
+  a6 --> a1
+  a6 --> a11
+  a6 --> a5
+  a7 --> a0
+  a7 --> a16
+  a7 --> a2
+  a7 --> a4
+  a7 --> a5
+  a8 --> a2
+  a8 --> a3
+  a8 --> a5
+  a8 --> a9
+  a9 --> a5
+  e0 --> a4
+  e1 --> a18
+  e18 --> a13
+  e19 --> a6
+  e2 --> a10
+  e2 --> a13
+  e2 --> a18
+  e20 --> a0
+  e20 --> a11
+  e20 --> a12
+  e21 --> a2
+  e21 --> a4
+  e21 --> a5
+  e21 --> a6
+  e22 --> a0
+  e22 --> a10
+  e22 --> a12
+  e22 --> a19
+  e23 --> a2
+  e23 --> a8
+  e24 --> a0
+  e25 --> a12
+  e26 --> a2
+  e26 --> a5
+  e26 --> a6
+  e27 --> a14
+  e27 --> a2
+  e28 --> a10
+  e28 --> a11
+  e28 --> a14
+  e28 --> a19
+  e3 --> a10
+  e3 --> a4
+  e4 --> a13
+  e4 --> a18
+  e5 --> a16
+  e5 --> a4
+  e6 --> a13
+  e7 --> a18
+  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
+  classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
+  classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
+  class a0,a2,a5,a9,a10,a11 thm;
+  class a1,a3,a4,a6,a7,a8,a12,a13,a14,a15,a16,a17,a18,a19 oth;
+  class e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,e21,e22,e23,e24,e25,e26,e27,e28 ext;
+  click a0 "cards/pert.analytic.html"
+  click a1 "cards/pert.analytic-difference.html"
+  click a2 "cards/pert.concentration.html"
+  click a3 "cards/pert.error.html"
+  click a4 "cards/pert.factor.html"
+  click a5 "cards/pert.palm.html"
+  click a6 "cards/pert.palm-expression.html"
+  click a7 "cards/pert.parameters.html"
+  click a8 "cards/pert.score.html"
+  click a9 "cards/pert.score-identity.html"
+  click a10 "cards/pert.selection.html"
+  click a11 "cards/pert.tree-identity.html"
+  click a12 "cards/x.pert-colored-extensions.html"
+  click a13 "cards/x.pert-increment.html"
+  click a14 "cards/x.pert-mark-specification.html"
+  click a15 "cards/x.pert-order-of-choices.html"
+  click a16 "cards/x.pert-parameter-measure.html"
+  click a17 "cards/x.pert-selected-limits.html"
+  click a18 "cards/x.pert-standing.html"
+  click a19 "cards/x.pert-test-setup.html"
+  click e0 "cards/cavity.factor-bounds.html"
+  click e1 "cards/cavity.grid.html"
+  click e2 "cards/cavity.increment.html"
+  click e3 "cards/cavity.negligible.html"
+  click e4 "cards/x.cavity-bounded.html"
+  click e5 "cards/x.cavity-root-convention.html"
+  click e6 "cards/x.cavity-root-logarithm.html"
+  click e7 "cards/x.cavity-tree-sampling.html"
+  click e8 "cards/comp.bounded-lower.html"
+  click e9 "cards/comp.encoding.html"
+  click e10 "cards/comp.low-increments.html"
+  click e11 "cards/comp.shape-error.html"
+  click e12 "cards/x.comp-standing.html"
+  click e13 "cards/decor.conditional-concentration.html"
+  click e14 "cards/decor.identity-error.html"
+  click e15 "cards/decor.overlap-concentration.html"
+  click e16 "cards/x.decor-limit-order.html"
+  click e17 "cards/x.decor-mesh.html"
+  click e18 "cards/model.hamiltonian.html"
+  click e19 "cards/tree.Y-recursion.html"
+  click e20 "cards/tree.extension-expansion.html"
+  click e21 "cards/tree.insertion.html"
+  click e22 "cards/tree.multioverlap.html"
+  click e23 "cards/tree.original-tilt.html"
+  click e24 "cards/x.tree-analytic-bounds.html"
+  click e25 "cards/x.tree-extension-history.html"
+  click e26 "cards/x.tree-extra-variables.html"
+  click e27 "cards/x.tree-path-kernels.html"
+  click e28 "cards/x.tree-sampling.html"
