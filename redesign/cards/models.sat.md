@@ -3,7 +3,7 @@ id: models:sat
 kind: corollary
 title: 'soft random 짝수 $K$-SAT (Corollary 10.2)'
 uses: [x:cons-standard-examples, model:hamiltonian, model:integrability, model:factorization, model:positivity, x:model-hypotheses, model:functional, main:theorem]
-provides: 'models:ground (consequences.tex 88: 대상 모형, $\mathbb EW<\infty$), x:cons-energy-score (법칙 $W$, $\varepsilon_\ell$), x:cons-3sat-remark (consequences.tex 132: 짝수 체수 가정). introduction.tex 30–31("soft random even-$K$ SAT at every positive temperature"), L0, g:named-models, g:positivity의 물리 대응 칸, model:positivity의 예'
+provides: 'models:ground (consequences.tex 88: 대상 모형, $\mathbb EW<\infty$), x:cons-energy-score (법칙 $W$, $\varepsilon_\ell$), x:cons-3sat-remark (consequences.tex 132: 짝수 체수 가정). introduction.tex 30–31("soft random even-$K$ SAT at every positive temperature"), L0, g:named-models, g:positivity의 물리 대응 칸. §2 부호 조건의 명명 예시이지만 §2 카드가 받아 쓰지는 않는다'
 math: |
   짝수 정수 $K\ge2$ 와 $\alpha>0$ 을 고정한다. $\varepsilon_1,\ldots,\varepsilon_K$ 는 독립인 공정한 부호이고, $W\ge0$ 은 부호들과 독립이며 $\mathbb EW<\infty$ 이다. 모든 $\beta>0$ 에 대해 상호작용
   $$\theta_\beta(s_1,\ldots,s_K)=-\beta W\prod_{\ell=1}^K\frac{1+\varepsilon_\ell s_\ell}{2},\qquad h=0$$

@@ -3,7 +3,7 @@ id: cavity:factor-bounds
 kind: definition
 title: 'Poisson 섭동 factor 족과 한계 $1/2\le\psi_\nu\le3/2$ (5.2)'
 uses: [cavity:grid, model:hamiltonian, tree:original-tilt]
-provides: 'x:cavity-root-convention, x:cavity-root-logarithm, cavity:negligible (항별 비용 $\log2$), cavity:increment과 그 증명 s2 (섭동 개수의 맞춤). perturbations.tex 48–67이 구체적 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ 로 이 틀을 채운다. 규칙 P3'
+provides: 'x:cavity-root-convention, x:cavity-root-logarithm, cavity:negligible (항별 비용 $\log2$), cavity:increment과 그 증명 s2 (섭동 개수의 맞춤). pert:factor(perturbations.tex 48–67)가 구체적 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ 로 이 틀을 채운다. 규칙 P3'
 math: |
   $(c_\nu)_{\nu\ge1}$ 을 $\sum_\nu c_\nu=1$ 인 양수열로, $s_N=N^{3/4}$ 로 둔다. spin weight에 단일 site factor $\psi_\nu$ 의 독립 Poisson 족을 더한다. 개수의 평균은 $c_\nu s_N$ 이고 site는 $[N]$ 의 독립 균일 site다. 각 factor는 자기 보조 변수를 쓰며, 그 변수는 계층을 따라 곱 prior로 뽑힌다. 각 factor는
   $$1/2\le\psi_\nu\le3/2\tag{5.2}$$

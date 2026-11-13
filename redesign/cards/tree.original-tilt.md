@@ -3,7 +3,7 @@ id: tree:original-tilt
 kind: definition
 title: '분배함수에서 만든 tilted kernel'
 uses: [x:tree-path-kernels]
-provides: 'tree:insertion의 가정 (kernel이 power mean의 tilted kernel). §4 upper:bound (보간된 spin 분배함수의 backward power-mean recursion, "the unperturbed tilted tree", upper.tex 41–43, 68), §5 cavity의 tilted reservoir kernel (cavity.tex 55–56, 117–118)과 $P_N^{L,\mathbf u}$ 의 정의 (cavity.tex 34–35), §6 pert:concentration (backward 한 단계 $X_{d-1}$ 의 미분, perturbations.tex 121–132), §8 comp:encoding·comp:encoding.s1 (path를 뽑는 "tilted reservoir auxiliary kernels"와 말단 Gibbs kernel, comparison.tex 29–30, 36, 39–40). \ref 없는 사용은 tree:section 표 참조'
+provides: 'tree:insertion의 가정 (kernel이 power mean의 tilted kernel). §4 upper:bound (보간된 spin 분배함수의 backward power-mean recursion, "the unperturbed tilted tree", upper.tex 41–43, 68), §5 cavity의 tilted reservoir kernel (cavity.tex 55–56, 117–118)과 $P_N^{L,\mathbf u}$ 의 정의 (cavity.tex 34–35), §6 pert:score (perturbations.tex 75–76: tilted path 위의 Gibbs 배치에서 정의되는 $D_\nu$), pert:concentration (backward 한 단계 $X_{d-1}$ 의 미분, perturbations.tex 121–132), §8 comp:encoding·comp:encoding.s1 (path를 뽑는 "tilted reservoir auxiliary kernels"와 말단 Gibbs kernel, comparison.tex 29–30, 36, 39–40). \ref 없는 사용은 tree:section 표 참조'
 math: |
   $P_d$ ($1\le d<L$)를 보조 prior kernel이라 하고 $X_{L-1}=\log Z$로 두고 재귀적으로
   $$X_{d-1}=m_d^{-1}\log P_de^{m_dX_d}\qquad(1\le d<L)$$

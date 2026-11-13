@@ -3,7 +3,7 @@ id: tree:Y-recursion
 kind: definition
 title: 'insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$'
 uses: [x:tree-path-kernels]
-provides: 'tree:insertion, tree:first-variation, x:tree-analytic-bounds, tree:log-expansion (Y_0). §4 upper:regularization의 Y_0, §8 comp:insertion-comparison의 trial recursion (comparison.tex 175). 이 카드는 tree:updated-kernel도 담는다'
+provides: 'tree:insertion, tree:first-variation, x:tree-analytic-bounds, tree:log-expansion (Y_0). §4 upper:regularization의 Y_0, §6 pert:palm-expression의 $Y$ (perturbations.tex 335), §8 comp:insertion-comparison의 trial recursion (comparison.tex 175). 이 카드는 tree:updated-kernel도 담는다'
 math: |
   양의 path 함수 $A$에 대해
   $$Y_L=A,\qquad Y_{d-1}=\bigl(K_dY_d^{m_d}\bigr)^{1/m_d},\qquad d=L,\ldots,1$$

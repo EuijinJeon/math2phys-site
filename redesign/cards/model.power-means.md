@@ -3,7 +3,7 @@ id: model:power-means
 kind: definition
 title: '조건부 power mean $T_d$ (2.10)'
 uses: [model:chain, model:vs, model:ve]
-provides: 'model:functional의 $T_0V_{\rm s}$, $T_0V_{\rm e}$. model:trial-bounds. upper.tex(interpolation의 root logarithm), tree:Y-recursion과 cavity.tex의 같은 꼴 재귀, comparison.tex 181–188(독립 label 묶음이 각 power mean을 통과해 인수분해됨)'
+provides: 'model:functional의 $T_0V_{\rm s}$, $T_0V_{\rm e}$. model:trial-bounds. upper.tex(interpolation의 root logarithm), trees.tex 67–82와 cavity.tex의 같은 꼴 재귀(각자 따로 정의하며 이 식을 받지 않는다), comparison.tex 181–188(독립 label 묶음이 각 power mean을 통과해 인수분해됨)'
 math: |
   $0\le d<r$ 에 대해 $\mathscr F_d$ 는 이 식들($V_{\rm s}$, $V_{\rm e}$)의 모든 물리적 disorder와 모든 $\eta^\omega_j$ ($0\le j\le d$) 가 생성하는 $\sigma$-field다.
   $$T_rV=V,\qquad T_dV=\Bigl(\mathbb E\bigl[(T_{d+1}V)^{m_{d+1}}\bigm|\mathscr F_d\bigr]\Bigr)^{1/m_{d+1}}\quad(d=r-1,\ldots,0).\tag{2.10}$$

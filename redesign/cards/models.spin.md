@@ -3,7 +3,7 @@ id: models:spin
 kind: corollary
 title: 'Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)'
 uses: [x:cons-standard-examples, model:hamiltonian, model:integrability, model:factorization, model:positivity, x:model-hypotheses, model:functional, main:theorem]
-provides: 'models:ground (consequences.tex 88: 대상 모형, 1차 moment $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$), x:cons-energy-score (법칙 $J$, $H$). introduction.tex 29–31("the Viana–Bray model, diluted even-spin models with symmetric couplings"), L0, g:named-models, g:factorization·g:positivity의 물리 대응 칸, model:factorization·model:positivity의 예'
+provides: 'models:ground (consequences.tex 88: 대상 모형, 1차 moment $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$), x:cons-energy-score (법칙 $J$, $H$). introduction.tex 29–31("the Viana–Bray model, diluted even-spin models with symmetric couplings"), L0, g:named-models, g:factorization·g:positivity의 물리 대응 칸, §2 인수분해·부호 조건의 명명 예시(§2 카드가 받아 쓰지는 않는다)'
 math: |
   짝수 정수 $p\ge2$, $\alpha>0$ 과 서로 독립인 실수 확률변수 $J,H$ 를 고정한다. $J$ 의 분포는 대칭이고 $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$ 이다. 모든 $\beta>0$ 에 대해
   $$\theta_\beta(s_1,\ldots,s_p)=\beta J\prod_{\ell=1}^ps_\ell,\qquad h_\beta=\beta H$$

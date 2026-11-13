@@ -3,7 +3,7 @@ id: x:decor-mesh
 kind: convention
 title: '균등 격자 $m_d=d/L$, $\delta=1/L$'
 uses: [pert:selection, cavity:grid]
-provides: '§7의 모든 계수 계산 (c_ℓ, J, κ, C(S,e))과 tree:charging의 가정'
+provides: '§7의 모든 계수 계산 (c_ℓ, J, κ, C(S,e)). §3 charging 보조정리의 가정 $m_d=d/L$ 은 그 보조정리가 스스로 적으며 이 카드를 받지 않는다'
 math: |
   이 절 전체에서 $L\ge2$이고 (pert:selection, cavity:grid의 "Fix $L\ge2$"; decorrelation.tex 4에는 $L\ge2$가 따로 적혀 있지 않다) tree의 exponent는 균등 격자 $m_d=d/L$ ($0\le d\le L$)이며 $\delta=L^{-1}$로 쓴다. 따라서 unary vertex에서의 fresh 계수는 $m_d-m_{d+1}=-\delta$이다.
 physics: |

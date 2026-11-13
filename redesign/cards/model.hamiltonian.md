@@ -3,7 +3,7 @@ id: model:hamiltonian
 kind: definition
 title: 'Hamiltonian $H_N$, 분배함수 $Z_N$, pressure $F_N$'
 uses: [model:integrability]
-provides: '주정리가 극한을 구하는 양 $F_N$. upper:bound, reduction:stability, cavity.tex의 reservoir, consequences.tex 8(Poisson 개수와 복원추출 유지)'
+provides: '주정리가 극한을 구하는 양 $F_N$. upper:bound, reduction:stability, cavity.tex의 reservoir, x:pert-increment ($\underline F=\liminf_N F_N$, perturbations.tex 249–250), consequences.tex 8(Poisson 개수와 복원추출 유지)'
 math: |
   서로 독립인 $M_N\sim\mathrm{Pois}(\alpha N)$, $\theta$ 의 독립 사본 $\theta_k$, $h$ 의 독립 사본 $h_i$, 독립 균일 index $i_{\ell,k}\in[N]=\{1,\ldots,N\}$ 에 대해
   $$-H_N(\sigma)=\sum_{k=1}^{M_N}\theta_k(\sigma_{i_{1,k}},\ldots,\sigma_{i_{p,k}})+\sum_{i=1}^Nh_i\sigma_i,\qquad Z_N=\sum_{\sigma\in\{-1,1\}^N}e^{-H_N(\sigma)},\qquad F_N=\frac1N\mathbb E\log Z_N.\tag{2.2}$$

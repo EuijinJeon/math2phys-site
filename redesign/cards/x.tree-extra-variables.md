@@ -3,7 +3,7 @@ id: x:tree-extra-variables
 kind: convention
 title: '원래 모형에 없던 변수를 쓰는 insertion'
 uses: [tree:insertion, tree:original-tilt]
-provides: '§4 upper.tex 67–68 (독립 message 과정을 unperturbed tilted tree에 덧붙이므로 edge 증분이 log T_0V_e), §5 cavity:increment ("independent new root disorder", cavity.tex 55–57), cavity.tex 96–98 ("An unused auxiliary variable can simply be integrated out with its prior"), §6 pert:palm ("extended by the independent insertion variables with their prior kernels", perturbations.tex 336–338; pert:concentration "its unused independent mark variables can be integrated out", perturbations.tex 195–196), §8 comp:encoding.s1 ("Include an independent uniform site $i\in[N]$ in the root variable", comparison.tex 28). 모두 \ref 없음'
+provides: '§4 upper.tex 67–68 (독립 message 과정을 unperturbed tilted tree에 덧붙이므로 edge 증분이 log T_0V_e), §5 cavity:increment ("independent new root disorder", cavity.tex 55–57), cavity.tex 96–98 ("An unused auxiliary variable can simply be integrated out with its prior"), §6 pert:palm, pert:palm-expression ("extended by the independent insertion variables with their prior kernels", perturbations.tex 336–338; pert:concentration "its unused independent mark variables can be integrated out", perturbations.tex 195–196), §8 comp:encoding.s1 ("Include an independent uniform site $i\in[N]$ in the root variable", comparison.tex 28). 모두 \ref 없음'
 math: |
   insertion은 원래 모형에 없던 추가 변수를 쓸 수 있다. lemma (tree:insertion)을 적용하기 전에 각 path kernel을 그 변수들의 독립 prior kernel로 넓힌다. 원래의 backward logarithm은 이 변수들에 의존하지 않으므로 원래의 tilt는 그 조건부 prior kernel을 바꾸지 않는다. 추가 root 변수는 quenched로 남는다.
 physics: null

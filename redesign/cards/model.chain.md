@@ -3,7 +3,7 @@ id: model:chain
 kind: definition
 title: '시행 법칙: $\mathcal M_j$, $\zeta\in\mathcal M_{r+1}$, $\mathbf m$, label별 사슬 (2.7)'
 uses: [x:model-message, model:hamiltonian]
-provides: 'model:vs, model:ve, model:power-means의 message와 $\eta$. trees.tex 26–27(시행 사슬이 path kernel의 한 예: $\eta_d$ 는 깊이 $d$, $x$ 는 깊이 $r$), comparison.tex 72(comp:encoding의 재귀가 이것의 branching 판)'
+provides: 'model:vs, model:ve, model:power-means의 message와 $\eta$. x:tree-path-kernels (trees.tex 26–27: 시행 사슬이 path kernel의 한 예: $\eta_d$ 는 깊이 $d$, $x$ 는 깊이 $r$), comparison.tex 72(comp:encoding의 재귀가 이것의 branching 판)'
 math: |
   $\mathcal P(E)$ 는 $E$ 위의 Borel 확률측도들이다. $\mathcal M_1=\mathcal P(\mathbb R)$, $\mathcal M_{j+1}=\mathcal P(\mathcal M_j)$ 로 두고 각각 약수렴 위상과 그 Borel $\sigma$-field를 준다. $r\ge1$, $\zeta\in\mathcal M_{r+1}$, $0<m_1<\cdots<m_r<1$ 을 고정한다. 각 message label $\omega$ 마다 독립으로
   $$\eta_0^\omega\sim\zeta,\qquad\eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\ \ (0\le d\le r-2),\qquad x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega\tag{2.7}$$

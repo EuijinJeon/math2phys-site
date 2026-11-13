@@ -3,7 +3,7 @@ id: x:cavity-tree-sampling
 kind: convention
 title: '하한의 모든 spin tree는 이 reservoir에서 뽑는다'
 uses: [cavity:increment, x:tree-sampling, tree:original-tilt, x:cavity-bounded]
-provides: '§6–§8 전체: pert:section(perturbations.tex 3–8의 "the reservoir in cavity:increment", score 집중의 Efron–Stein 논증이 reservoir에도 적용), x:decor-tree-sampling, comp:encoding(comparison.tex 20–29 "reservoir root disorder", "tilted reservoir auxiliary kernels"), comp:insertion-comparison'
+provides: '§6–§8 전체: pert:section(perturbations.tex 3–8의 "the reservoir in cavity:increment", score 집중의 Efron–Stein 논증이 reservoir에도 적용), comp:encoding(comparison.tex 20–29 "reservoir root disorder", "tilted reservoir auxiliary kernels"), comp:insertion-comparison'
 math: |
   하한 증명의 나머지에서 모든 spin tree는 이 reservoir에서, 그 tilted 보조 kernel과 terminal Gibbs kernel을 써서 뽑는다. reservoir는 평균 $O(N)$ 의 독립 Poisson 상호작용 과정과 $N$ 개의 독립 유계 장을 그대로 갖는다. 따라서 집중 논증은 조금 바뀐 상호작용 평균에도 적용된다.
 physics: |

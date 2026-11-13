@@ -3,7 +3,7 @@ id: cavity:grid
 kind: convention
 title: '깊이 $L\ge2$, $r=L-1$, 균등 격자 $m_d=d/L$ (5.1)'
 uses: [x:tree-path-kernels]
-provides: 'cavity:factor-bounds의 "hierarchy", x:cavity-root-logarithm의 $P_N^{L,\mathbf u}$. x:decor-mesh (§7 전체의 $m_d=d/L$, $\delta=1/L$), perturbations.tex 3–5("the depth $L\ge2$ is fixed"), comparison.tex의 $\mathbf m^{(L)}$, $\mathcal B_{L-1}$'
+provides: 'cavity:factor-bounds의 "hierarchy", x:cavity-root-logarithm의 $P_N^{L,\mathbf u}$. x:decor-mesh (§7 전체의 $m_d=d/L$, $\delta=1/L$), x:pert-standing (perturbations.tex 3–5: "the depth $L\ge2$ is fixed"), comparison.tex의 $\mathbf m^{(L)}$, $\mathcal B_{L-1}$'
 math: |
   $L\ge2$ 를 고정하고 $r=L-1$ 개의 보조 단계를
   $$m_d=d/L\quad(0\le d\le L),\qquad\delta=1/L\tag{5.1}$$

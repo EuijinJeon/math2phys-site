@@ -3,7 +3,7 @@ id: cavity:increment
 kind: lemma
 title: 'Cavity increments (cavity 증분)'
 uses: [x:cavity-bounded, cavity:grid, cavity:factor-bounds, x:cavity-root-convention, x:cavity-root-logarithm, model:hamiltonian, tree:original-tilt, tree:Y-recursion, tree:insertion, x:tree-extra-variables]
-provides: 'pert:section (perturbations.tex 6: 같은 논증이 이 reservoir에도 적용), pert:selection (perturbations.tex 277: $\lvert\Delta_N(\mathbf u)\rvert\le C$ 균일), comp:insertion-comparison (comparison.tex 171: $A_{\rm s}$, $A_{\rm b}$ 의 site label을 바꿈; 195, 222: cavity:identity). x:cavity-tree-sampling (reservoir). 규칙 P4, P5, P11, L1 수 2'
+provides: 'pert:section (perturbations.tex 6: 같은 논증이 이 reservoir에도 적용), x:pert-increment (perturbations.tex 252–253: 같은 $\Delta_N$ 의 기호), pert:selection (perturbations.tex 277: $\lvert\Delta_N(\mathbf u)\rvert\le C$ 균일), comp:insertion-comparison (comparison.tex 171: $A_{\rm s}$, $A_{\rm b}$ 의 site label을 바꿈; 195, 222: cavity:identity). x:cavity-tree-sampling (reservoir). 규칙 P4, P5, P11, L1 수 2'
 math: |
   증분 $\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}$ 는 $N,L,\mathbf u$ 에 대해 균일하게 유계다. 물리 상호작용 개수의 평균이
   $$\rho_N=\alpha(N+1)\Bigl(\frac N{N+1}\Bigr)^p\tag{5.4}$$

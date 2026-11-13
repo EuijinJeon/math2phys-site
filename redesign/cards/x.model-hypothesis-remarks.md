@@ -3,7 +3,7 @@ id: x:model-hypothesis-remarks
 kind: remark
 title: '가정에 대한 주석: 퇴화 경우와 승수 $a$'
 uses: [model:factorization]
-provides: 'upper:bound 증명 첫 단락(upper.tex 18–23: 퇴화 경우의 spin 무관 상호작용, (ii)와 같은 관찰)과 upper:regularization(upper.tex 71–72: $\log a$ 의 적분 가능성 없이 $a$ 를 먼저 없앰, (iii)). 두 곳 모두 같은 사실을 스스로 다시 적으므로 받아 써도 되고 안 써도 된다. 이 카드는 upper:bound에 기대지 않으므로 받아 써도 순환이 없다. main:theorem.s1은 (iii)과 같은 사실을 reduction.tex 46–47에 직접 적으므로 uses에 넣지 않고 본문에서 가리킨다'
+provides: '§4 상한 증명의 첫 단락(upper.tex 18–23: 퇴화 경우의 spin 무관 상호작용, (ii)와 같은 관찰)과 정규화 단계(upper.tex 71–72: $\log a$ 의 적분 가능성 없이 $a$ 를 먼저 없앰, (iii)). 두 곳 모두 같은 사실을 스스로 다시 적으므로 이 카드를 받아 쓰지 않는다(받아 써도 §4에 기대지 않는 카드라 순환은 없다). main:theorem.s1은 (iii)과 같은 사실을 reduction.tex 46–47에 직접 적으므로 uses에 넣지 않고 본문에서 가리킨다'
 math: |
   (ii) 곱 항 $b\prod_\ell f_\ell(s_\ell)$ 이 항등적으로 0이면 상호작용은 spin 무관이고 $b=0$ 으로 잡아도 된다.
   (iii) (2.3)의 승수 $a$ 는 표현의 다른 모든 변수에 의존해도 된다. $\log a$ 의 별도 적분 가능성은 가정하지 않는다.

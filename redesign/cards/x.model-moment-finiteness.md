@@ -3,7 +3,7 @@ id: x:model-moment-finiteness
 kind: remark
 title: '(2.4)의 기대값이 자동으로 유한한 경우 (비퇴화 경우)'
 uses: [model:factorization, model:positivity, upper:bound.s1]
-provides: '받아 쓰는 카드 없음(예고 주석). 증명은 upper:bound 증명 첫 단락(upper.tex 17–34)에 있고 그쪽은 이 카드를 쓰지 않고 스스로 증명한다. 이 카드를 uses에 넣는 카드는 upper:bound에 기대게 되므로, §4 카드와 하한 쪽 카드는 이 카드를 uses에 넣지 않는다'
+provides: '받아 쓰는 카드 없음(예고 주석). 증명은 §4 상한 명제의 증명 첫 단락(upper.tex 17–34)에 있고 그쪽은 이 카드를 쓰지 않고 스스로 증명한다. 이 카드를 uses에 넣는 카드는 그 상한 명제에 기대게 되므로, §4 카드와 하한 쪽 카드는 이 카드를 uses에 넣지 않는다'
 math: |
   (2.4)의 기대값은 유한한 실수 기대값으로 해석한다(model:positivity). 비퇴화 경우에는 이것이 자동이다: $b$ 와 $f_\ell$ 들의 독립성과 엄격한 곱 한계 (2.3)이 $b$ 와 $\max_s\lvert f_1(s)\rvert$ 를 본질적으로 유계로 만든다. 원문은 이것을 upper:bound(의 증명)에서 보인다고 미리 말한다.
 physics: |

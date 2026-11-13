@@ -3,7 +3,7 @@ id: cavity:negligible
 kind: remark
 title: '섭동의 비용 $\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N$ (5.3)'
 uses: [x:cavity-root-logarithm, cavity:factor-bounds, x:cavity-root-convention, tree:original-tilt, tree:insertion, x:tree-extra-variables, model:hamiltonian]
-provides: 'pert:selection (perturbations.tex 271: $\liminf_N\frac1N\int P_N^{L,\mathbf u}\pi(d\mathbf u)=\underline F$), perturbations.tex 65–67 (항별 비교의 본보기), cavity:increment.s4 (작은 $N$ 의 상수, 작성자 읽기). 규칙 P3, L1 수 2'
+provides: 'pert:selection (perturbations.tex 271: $\liminf_N\frac1N\int P_N^{L,\mathbf u}\pi(d\mathbf u)=\underline F$), pert:factor (perturbations.tex 65–67: 항별 비교의 본보기), cavity:increment.s4 (작은 $N$ 의 상수, 작성자 읽기). 규칙 P3, L1 수 2'
 math: |
   섭동되지 않은 spin weight와 점별로 비교한 뒤 recursion을 적용하면
   $$\lvert P_N^{L,\mathbf u}-NF_N\rvert\le(\log2)s_N\tag{5.3}$$

@@ -3,7 +3,7 @@ id: pert:factor
 kind: definition
 title: 'Poisson 섭동 factor $\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$ (6.2)'
 uses: [pert:parameters, x:pert-mark-specification, cavity:factor-bounds, x:cavity-root-convention, cavity:negligible, tree:insertion]
-provides: '§5 cavity:factor-bounds의 틀을 채우는 구체적 섭동(cavity.tex 32 "The factors needed later are specified in pert:section"). pert:score, pert:concentration.s3.s2–s3.s3 (개수·type·site가 root의 독립 label), pert:palm.s1 (Poisson add-one), x:pert-order-of-choices (c_ν를 먼저 고정)'
+provides: '§5의 factor 한계 틀(5.2)이 예고한 구체적 섭동(cavity.tex 32 "The factors needed later are specified in pert:section"; §5는 이 카드를 받지 않는다). pert:score, pert:concentration.s3.s2–s3.s3 (개수·type·site가 root의 독립 label), pert:palm.s1 (Poisson add-one), x:pert-order-of-choices (c_ν를 먼저 고정)'
 math: |
   type들을 $\nu\in\mathbb N$ 으로 번호 매기고 $c_\nu>0$, $\sum_\nu c_\nu=1$ 인 상수를 고른다. type마다 독립으로 $n_\nu\sim\operatorname{Poisson}(c_\nu s_N)$, $s_N=N^{3/4}$ 로 둔다. 각 항은 독립 균일 site $i\in[N]$ 와 자기 mark 과정의 독립 사본을 가진다. leaf에서 각 항은 spin weight에
   $$\psi_\nu=1+t_\nu g\sigma_i+u_\nu g_0S_0$$

@@ -3,7 +3,7 @@ id: x:decor-eta-regular
 kind: definition
 title: '$\eta$-regular 깊이 배정'
 uses: [x:decor-topology]
-provides: 'decor:average-definition의 합 범위. tree:charging 적용 조건(shifted depth가 old branching depth와 다름)과 c_d ≥ η의 근거'
+provides: 'decor:average-definition의 합 범위. §7이 §3의 charging 보조정리를 적용할 때의 조건(shifted depth가 old branching depth와 다름, decorrelation.tex 345)과 c_d ≥ η의 근거. §3 쪽 보조정리는 이 정의를 받지 않는다'
 math: |
   $\eta>0$을 고정한다. 깊이 배정 $\mathbf q$가 $\eta$-regular라는 것은 모든 $v$에 대해 $q_v/L\in(\eta,1-\eta)$이고 서로 다른 branching vertex $v\ne w$에 대해 $|q_v-q_w|/L>\eta$라는 뜻이다. 추가 prefix depth $d$가 지정되면 $d$도 같은 조건을 만족해야 한다: $d/L\in(\eta,1-\eta)$, 모든 $v$에 대해 $|d-q_v|/L>\eta$. 한 topology의 두 사본이 aligned depth를 쓰면 대응하는 vertex는 깊이 좌표 하나를 공유하고, regularity는 이 서로 다른 좌표들에 부과한다.
 physics: null

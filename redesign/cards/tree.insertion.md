@@ -3,7 +3,7 @@ id: tree:insertion
 kind: lemma
 title: 'Insertion calculus (삽입 미적분)'
 uses: [tree:original-tilt, tree:Y-recursion, x:tree-sampling]
-provides: '§4 upper (\ref 없음: upper.tex 51–54 삽입 증분 = log Y_0와 단조성의 |증분| ≤ B(θ), 91–92 단조·동차로 (upper:regularization) ≤ 2B(θ)). §5 cavity:increment (cavity.tex 105–106 "the insertion identity for the power means", 108–109의 |log Y_0| 상계는 단조성에서), §5 cavity.tex 37–38 (cavity:negligible)과 95–98 (섭동 하나가 root log를 log 2 이하로 바꿈)도 단조성. §6 pert:palm (perturbations.tex 334–335, 370의 W_T(A)와 anchor 인자 상쇄), perturbations.tex 64–65 (factor 경계의 항별 비교, 단조성). §3 안에서 x:tree-differentiation-rule, x:tree-analytic-bounds, x:tree-extension-history(γ_β)'
+provides: '§4 upper (\ref 없음: upper.tex 51–54 삽입 증분 = log Y_0와 단조성의 |증분| ≤ B(θ), 91–92 단조·동차로 (upper:regularization) ≤ 2B(θ)). §5 cavity:increment (cavity.tex 105–106 "the insertion identity for the power means", 108–109의 |log Y_0| 상계는 단조성에서), §5 cavity.tex 37–38 (cavity:negligible)과 95–98 (섭동 하나가 root log를 log 2 이하로 바꿈)도 단조성. §6 pert:palm, pert:palm-expression (perturbations.tex 334–335, 370의 W_T(A)와 anchor 인자 상쇄), pert:factor (perturbations.tex 64–65: factor 경계의 항별 비교, 단조성). §3 안에서 x:tree-differentiation-rule, x:tree-analytic-bounds, x:tree-extension-history(γ_β)'
 math: |
   leaf 분배함수를 지수 $m_1,\ldots,m_{L-1}$의 power mean으로 반복하고 $K_1,\ldots,K_{L-1}$이 그 tilted kernel (tree:original-tilt), $K_L$이 말단 Gibbs kernel이라 하자. 각 spin weight에 $A$를 곱하면 반복된 root logarithm이 $\log Y_0$만큼 바뀐다. 여기서 (tree:Y-recursion)은 insertion 전의 kernel을 쓴다. 새 kernel은 (tree:updated-kernel)이다.
 

@@ -3,7 +3,7 @@ id: x:tree-sampling
 kind: definition
 title: '유한 tree, 표본 기대값 $E_{\mathcal T}$, split, 사영 일관성'
 uses: [x:tree-path-kernels]
-provides: '§3 전체 (tree 밀도, 미분 규칙, 확장, Q_k). §7은 이것을 x:decor-tree-sampling으로 다시 적어 쓴다. §5 cavity.tex 117–118 ("all spin trees are sampled from this reservoir"), §4 upper:bound (tree:log-expansion을 거친 replica tree, upper.tex 81, 97–112, 120–121), §6 pert:score-identity·pert:palm·제약 ("The anchor marginal is always one tilted path", sampled tree 안의 위치, perturbations.tex 321, 516–517), §8의 induced subtree. §4·§6·§8 사용은 \ref 없음'
+provides: '§3 전체 (tree 밀도, 미분 규칙, 확장, Q_k). §7은 이것을 x:decor-tree-sampling으로 다시 적어 쓴다. §5 cavity.tex 117–118 ("all spin trees are sampled from this reservoir"), §4 upper:bound (tree:log-expansion을 거친 replica tree, upper.tex 81, 97–112, 120–121), §6 x:pert-test-setup, x:pert-mark-specification, pert:score-identity·pert:palm·제약 ("The anchor marginal is always one tilted path", sampled tree 안의 위치, perturbations.tex 321, 516–517), §8의 induced subtree. §4·§6·§8 사용은 \ref 없음'
 math: |
   유한 tree $\mathcal T$는 공통 root와 유한 개의 labeled path로 이루어지며 각 path는 깊이 $L$에서 끝난다. 모든 내부 vertex는 자식이 적어도 하나다. 특히 path의 unary 부분은 모두 남긴다. 각 vertex에서 서로 다른 자식은 해당 kernel로 독립으로 뽑힌다. 이 표본 기대값을 root가 주어진 조건부로 $E_{\mathcal T}$라 쓴다. 깊이 $d$의 split이란 마지막 공통 vertex가 깊이 $d$에 있다는 뜻이다. 깊이 $L$의 replica 위치는 서로 다른 vertex이지만 그곳에서 뽑힌 값이 다를 필요는 없다. 따라서 독립 spin replica가 같은 spin 배치일 수 있다. 일부 leaf와, 남은 leaf가 쓰지 않는 그 path 부분을 지워도 남은 tree의 표본 법칙은 보존된다.
 physics: |

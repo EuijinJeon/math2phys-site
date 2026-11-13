@@ -3,7 +3,7 @@ id: x:tree-cancellation-example
 kind: remark
 title: '두 path 예: 부호 있는 합 $-\delta$ 대 절댓값 합 $2+\delta$'
 uses: [x:tree-extension-history, x:tree-reference-paths]
-provides: 'tree:reference-total과 tree:charging이 일반화하는 두 계산. §7 decor:conditional-concentration.s2.s1이 같은 구성을 쓴다. rules.md의 "−δ 대 2+δ"'
+provides: 'tree:reference-total과 tree:charging이 일반화하는 두 계산. §7 decorrelation.tex 263–286(singleton identity 단계)이 같은 구성을 스스로 다시 계산한다(받아 쓰지 않음). rules.md의 "−δ 대 2+δ"'
 math: |
   깊이 $d$에서 갈라지는 old path 두 개로 시작하고 첫째를 anchor로 둔다. added color 하나가 anchor와 정확히 깊이 $d$에서 갈라지도록 요구한다. 그 color는 둘째 old leaf를 쓰거나, 깊이 $d$ vertex에서 fresh path를 만들거나, 둘째 old path를 따라가다 깊이 $\ell>d$에서 떠날 수 있다. 각각의 계수를 더하면
   $$1+(m_d-2m_{d+1})+\sum_{\ell=d+1}^{L-1}(m_\ell-m_{\ell+1})=m_d-m_{d+1}.$$

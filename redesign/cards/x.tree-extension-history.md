@@ -3,7 +3,7 @@ id: x:tree-extension-history
 kind: definition
 title: 'canceled-anchor 확장 규칙과 extension history $E$'
 uses: [x:tree-sampling, tree:insertion]
-provides: 'tree:extension-expansion의 합 범위와 c_E. x:tree-reference-paths, tree:reference-total, tree:charging. §6 perturbations.tex 427–436 (added color의 배치와 𝔈(T,a_*,C))'
+provides: 'tree:extension-expansion의 합 범위와 c_E. x:tree-reference-paths, tree:reference-total, tree:charging. §6 x:pert-colored-extensions (perturbations.tex 427–436: added color의 배치와 𝔈(T,a_*,C))'
 math: |
   anchor leaf $a_*$를 가진 tree $\mathcal T$를 고정한다. 그 모든 old path에서 시작해 color $1,\ldots,k$를 그 순서로 준다. 다음 color에 대해 다음 둘 중 하나를 할 수 있다.
   (i) $a_*$가 아닌, 아직 쓰지 않은 old leaf를 고른다. 계수 $1$.

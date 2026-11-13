@@ -3,7 +3,7 @@ id: tree:extension-expansion
 kind: lemma
 title: 'Canceled-anchor expansion (anchor 상쇄 전개)'
 uses: [x:tree-extension-history, x:tree-differentiation-rule, x:tree-analytic-bounds, tree:Y-recursion]
-provides: '§6 pert:analytic (perturbations.tex 391–394: 해석적 경계), perturbations.tex 429–436 (c_E와 허용 history), 따라서 pert:tree-identity. §7 decor:conditional-concentration.s2.s1, s2, s5, s5.s1 (계수 규칙 1, γ_β)'
+provides: '§6 pert:analytic (perturbations.tex 391–394: 해석적 경계), x:pert-colored-extensions (perturbations.tex 429–436: c_E와 허용 history), 따라서 pert:tree-identity. §7 decor:conditional-concentration.s2.s1, s2, s5, s5.s1 (계수 규칙 1, γ_β)'
 math: |
   $H$를 old tree 위 변수들의 유계 함수로, 삽입 매개변수가 변해도 고정된 것이라 하자. 유계 실수 path 함수 $D_j$와 $A_{\boldsymbol t}=1+\sum_{j=1}^kt_jD_j$에 대해
   $$\left.\partial_{t_1}\cdots\partial_{t_k}E_{\mathcal T}^{A_{\boldsymbol t}}\frac{H}{A_{\boldsymbol t}^{a_*}}\right|_{\boldsymbol t=0}=\sum_Ec_E\,E_{\mathcal T_E}\left[H\prod_{j=1}^kD_j^{a_j(E)}\right].$$

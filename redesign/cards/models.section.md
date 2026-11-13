@@ -3,7 +3,7 @@ id: models:section
 kind: section
 title: '§10 명명 모형과 영온도 극한'
 uses: [model:hamiltonian, model:integrability, model:factorization, model:positivity, x:model-hypotheses, model:functional, x:model-depth-zero, main:theorem]
-provides: 'introduction.tex 29–34 (명명 모형과 그 ground-state 극한, `\cref{models:section}` 34행). L0의 모형 따름정리와 영온도 따름정리, g:named-models, g:ground-state. §2 카드의 예(model:factorization, model:positivity, x:model-moment-finiteness의 명명 예)'
+provides: 'introduction.tex 29–34 (명명 모형과 그 ground-state 극한, `\cref{models:section}` 34행). L0의 모형 따름정리와 영온도 따름정리, g:named-models, g:ground-state. §2의 인수분해·부호 조건과 비퇴화 주석의 명명 예시(예시일 뿐 §2 카드가 받아 쓰지 않는다)'
 math: |
   받는 것 (§2). 모형 (2.2)와 그 Poisson 개수·복원추출 (model:hamiltonian), 가정 (2.1)–(2.4) (model:integrability, model:factorization, model:positivity; 묶음 x:model-hypotheses), functional (2.11)과 $r=0$ 판 (model:functional, x:model-depth-zero), 주정리 (2.13) (main:theorem). 다른 섹션의 증명 노드는 쓰지 않는다.
 

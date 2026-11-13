@@ -3,7 +3,7 @@ id: x:cavity-bounded
 kind: assumption
 title: '하한의 유계·순열 불변 가정 ($B(\theta)\le B$, $\lvert h\rvert\le H$)'
 uses: [model:integrability, model:hamiltonian]
-provides: '§5–§8 전체("Until reduction:section"): cavity:increment.s2–s4의 상수 $B$, $H$, cavity:increment.s1의 새 입력을 마지막 좌표에 두는 일, x:cavity-tree-sampling의 "bounded fields". perturbations.tex 3–8, comparison.tex 200·226의 bounded 가정. 이 가정을 푸는 것은 reduction.tex(main:theorem.s1–s3)'
+provides: '§5–§8 전체("Until reduction:section"): cavity:increment.s2–s4의 상수 $B$, $H$, cavity:increment.s1의 새 입력을 마지막 좌표에 두는 일, x:cavity-tree-sampling의 "bounded fields". x:pert-standing (perturbations.tex 3–8), x:pert-increment (perturbations.tex 249–250 "for the bounded model"), comparison.tex 200·226의 bounded 가정. 이 가정을 푸는 것은 reduction.tex(main:theorem.s1–s3)'
 math: |
   reduction:section까지 $B(\theta)\le B$ 와 $\lvert h\rvert\le H$ 가 a.s. 성립하고, $\theta$ 의 법칙이 $p$ 개 좌표의 순열에 대해 불변이라고 가정한다. 하한에서는 factorization도 positivity 가정도 쓰지 않는다.
 physics: |

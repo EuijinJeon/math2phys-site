@@ -3,7 +3,7 @@ id: x:cavity-root-logarithm
 kind: definition
 title: '섭동된 계의 기대 root logarithm $P_N^{L,\mathbf u}$'
 uses: [cavity:factor-bounds, x:cavity-root-convention, cavity:grid, tree:original-tilt, model:hamiltonian]
-provides: 'cavity:negligible, cavity:increment ($\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}$). pert:selection(perturbations.tex 270–277)의 $P_N^{L,\mathbf u}$'
+provides: 'cavity:negligible, cavity:increment ($\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}$). x:pert-increment (perturbations.tex 250–253), pert:selection(perturbations.tex 270–277)의 $P_N^{L,\mathbf u}$'
 math: |
   섭동을 더한 leaf 분배함수에 power-mean recursion을 적용한다. 그 root logarithm의 기대값을 $P_N^{L,\mathbf u}$ 로 쓴다.
 physics: |

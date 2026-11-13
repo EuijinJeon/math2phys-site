@@ -3,7 +3,7 @@ id: tree:multioverlap
 kind: definition
 title: 'multioverlap $R_S$ 와 기대값 $\mathbb E$ 의 약속'
 uses: [x:tree-sampling]
-provides: '§6 (시험함수 f와 R_E), §7 (x:decor-spin-product, 모든 집중 진술), §8 (spin pattern의 경험분포)'
+provides: '§6 (x:pert-test-setup의 시험함수 f, x:pert-colored-extensions의 R_E), §7 (x:decor-spin-product, 모든 집중 진술), §8 (spin pattern의 경험분포)'
 math: |
   말단 변수가 spin 배치 $\sigma^a\in\{-1,1\}^N$일 때 replica leaf의 부분집합 $S$ 위 multioverlap은
   $$R_S=\frac1N\sum_{i=1}^N\prod_{a\in S}\sigma_i^a,\qquad R_\varnothing=1.$$
