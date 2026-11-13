@@ -131,11 +131,14 @@ def main():
             need = set()
             spans = []
             for n in graph["nodes"]:
-                if n["kind"] in C.THM_KINDS and n["file"] == fname:
+                if n["kind"] not in C.THM_KINDS:
+                    continue
+                if n["file"] == fname:
                     spans.append(("진술 " + n["number"], n["lines"]))
-                    for r in n.get("proofs", []):
-                        if r["file"] == fname:
-                            spans.append(("증명 " + n["number"], r["lines"]))
+                # 증명은 진술과 다른 파일에 있을 수 있다(주정리: 진술 model.tex, 증명 reduction.tex)
+                for r in n.get("proofs", []):
+                    if r["file"] == fname:
+                        spans.append(("증명 " + n["number"], r["lines"]))
             for p in graph.get("proofs", []):
                 if p["node"] is None and p["file"] == fname:
                     spans.append(("증명(연결 없음)", p["lines"]))
