@@ -70,7 +70,7 @@
 ### 1.1 `exact` 유형 판정 (중단)
 
 - 맡긴 일: cleanup이 낸 의심 8장(`build/cleanup-2026-11-13.md` "`abstraction: exact` 의심 목록")을 원문으로 판정·수정, `exact` 카드 전체 재훑기, SCHEMA의 낡은 R-ID 문장 수정, `tree:section` §8 행 보충, 규칙 P7·P11 차이 칸과 용어집 정의 위치 칸의 카드 없는 식 라벨 정리.
-- 디스크에 남은 것: 카드 21장, `layers/glossary.md`, `layers/rules.md`, `SCHEMA.md`("단면 문서" 절의 R-ID 문장 한 줄) 변경. `exact` → `weakening` 으로 바뀐 카드는 3장이다. 의심 8장 가운데 6장(`model:factorization`, `cavity:increment`, `tree:extension-expansion`, `tree:log-expansion`, `reduction:stability`, `main:theorem.s4`, `model:integrability`)의 파일이 바뀌었고 `x:cavity-tree-sampling` 은 바뀌지 않았다. 의심 목록에 없던 카드 13장도 바뀌었다(전체 재훑기에서 손댄 것으로 보인다).
+- 디스크에 남은 것: 카드 21장, `layers/glossary.md`, `layers/rules.md`, `SCHEMA.md`("단면 문서" 절의 R-ID 문장 한 줄) 변경. `exact` → `weakening` 으로 바뀐 카드는 3장이다. 의심 8장 가운데 7장(`model:factorization`, `cavity:increment`, `tree:extension-expansion`, `tree:log-expansion`, `reduction:stability`, `main:theorem.s4`, `model:integrability`)의 파일이 바뀌었고 `x:cavity-tree-sampling` 은 바뀌지 않았다. 의심 목록에 없던 카드 14장도 바뀌었다(전체 재훑기에서 손댄 것으로 보인다).
 - **[미확인]** 재훑기가 79장 전부를 돌았는지, 각 변경의 근거, 규칙 P7·P11과 용어집 변경의 내용. 규칙 문장이 바뀌었는지는 diff로 확인해야 한다(P6와 L1 수 4는 손대지 말라고 했다).
 - 지금 `exact` 카드는 76장이다. 변경 후 전체 검사는 통과한다.
 
