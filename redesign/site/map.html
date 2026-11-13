@@ -56,6 +56,8 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0!important}
+mjx-container.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+mjx-assistive-mml{max-width:100%!important}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
 a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
 .gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
@@ -87,7 +89,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<h1>증명 지도</h1><p class="stat">두 단계로 본다. 이 쪽은 섹션 단위 지도이고, 섹션마다 그 안의 정리류 카드와 밖과 오가는 간선을 보이는 지도가 따로 있다(아래 표의 &ldquo;지도&rdquo;).</p><h2>섹션 지도</h2><p class="stat">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 숫자는 그 방향의 <code>uses</code> 항목 수(카드 쌍 단위)다. 주정리(<code>main:theorem</code>)는 진술이 §2에, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이므로, §2와 §8·§9가 서로 쓰는 것처럼 보이지 않게 따로 노드로 세웠다(주정리와 그 증명 단계 카드는 이 노드에만 센다). 서로 쓰는 섹션 쌍이 있다: §2–주정리, §2–§4. 서로 다른 카드 사이의 쓰임이 양쪽으로 있어서 생긴 것이고, 카드 단위로는 순환이 없다(검사 &ldquo;순환&rdquo;). 노드를 누르면 섹션 카드로 간다.</p><pre class="mermaid" data-map="sections">
+<h1>증명 지도</h1><p class="stat">두 단계로 본다. 이 쪽은 섹션 단위 지도이고, 섹션마다 그 안의 정리류 카드와 밖과 오가는 간선을 보이는 지도가 따로 있다(아래 표의 &ldquo;지도&rdquo;).</p><h2>섹션 지도</h2><p class="stat">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 숫자는 그 방향의 <code>uses</code> 항목 수(카드 쌍 단위)다. 주정리(<code>main:theorem</code>)는 진술이 §2에, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이므로, §2와 §8·§9가 서로 쓰는 것처럼 보이지 않게 따로 노드로 세웠다(주정리와 그 증명 단계 카드는 이 노드에만 센다). 주석(<code>remark</code>) 카드와 overview 예고 카드의 <code>uses</code> 는 뒤의 결과를 미리 가리킬 뿐 증명의 논리가 아니므로 점선(&ldquo;주석 n&rdquo;)으로 따로 그리고, 서로 쓰는 쌍과 순환 검사에서는 뺀다. 주석(<code>remark</code>) 카드와 overview 예고 카드의 <code>uses</code> 는 뒤의 결과를 미리 가리킬 뿐 증명의 논리가 아니므로 점선(&ldquo;주석 n&rdquo;)으로 따로 그리고, 서로 쓰는 쌍과 순환 검사에서는 뺀다. 섹션 사이에 서로 쓰는 쌍이 없다(순환 없음). 실선 간선에는 섹션 단위 순환이 없다. 노드를 누르면 섹션 카드로 간다.</p><pre class="mermaid" data-map="sections">
 flowchart TB
   S0[&quot;§2&lt;br/&gt;The model and the variational princ…&lt;br/&gt;21장&quot;]
   S1[&quot;§2.2&lt;br/&gt;Proof strategy&lt;br/&gt;7장&quot;]
@@ -100,34 +102,34 @@ flowchart TB
   S8[&quot;§8&lt;br/&gt;Independent hierarchical messages a…&lt;br/&gt;28장&quot;]
   S9[&quot;§9&lt;br/&gt;Normalization, truncation, and comp…&lt;br/&gt;5장&quot;]
   S10[&quot;§10&lt;br/&gt;Named models and the zero-temperatu…&lt;br/&gt;18장&quot;]
-  S0 --&gt;|10| S1
-  S0 --&gt;|12| S2
-  S0 --&gt;|2| S3
-  S0 --&gt;|39| S4
-  S0 --&gt;|7| S5
-  S0 --&gt;|2| S6
-  S0 --&gt;|37| S8
-  S0 --&gt;|35| S9
-  S0 --&gt;|26| S10
-  S2 --&gt;|1| S0
-  S2 --&gt;|1| S1
-  S2 --&gt;|6| S10
-  S3 --&gt;|13| S4
-  S3 --&gt;|19| S5
-  S3 --&gt;|46| S6
-  S3 --&gt;|19| S7
-  S3 --&gt;|47| S8
-  S4 --&gt;|1| S0
-  S4 --&gt;|2| S2
-  S5 --&gt;|21| S6
-  S5 --&gt;|1| S7
-  S5 --&gt;|32| S8
-  S5 --&gt;|1| S9
-  S6 --&gt;|20| S7
-  S6 --&gt;|12| S8
-  S7 --&gt;|18| S8
-  S8 --&gt;|3| S2
-  S9 --&gt;|2| S2
+  S0 --&gt;|&quot;12&quot;| S2
+  S0 --&gt;|&quot;2&quot;| S3
+  S0 --&gt;|&quot;39&quot;| S4
+  S0 --&gt;|&quot;6 + 주석 1&quot;| S5
+  S0 --&gt;|&quot;2&quot;| S6
+  S0 --&gt;|&quot;37&quot;| S8
+  S0 --&gt;|&quot;35&quot;| S9
+  S0 --&gt;|&quot;25 + 주석 1&quot;| S10
+  S2 --&gt;|&quot;6&quot;| S10
+  S3 --&gt;|&quot;13&quot;| S4
+  S3 --&gt;|&quot;16 + 주석 3&quot;| S5
+  S3 --&gt;|&quot;46&quot;| S6
+  S3 --&gt;|&quot;19&quot;| S7
+  S3 --&gt;|&quot;47&quot;| S8
+  S4 --&gt;|&quot;2&quot;| S2
+  S5 --&gt;|&quot;21&quot;| S6
+  S5 --&gt;|&quot;1&quot;| S7
+  S5 --&gt;|&quot;31 + 주석 1&quot;| S8
+  S5 --&gt;|&quot;1&quot;| S9
+  S6 --&gt;|&quot;20&quot;| S7
+  S6 --&gt;|&quot;10 + 주석 2&quot;| S8
+  S7 --&gt;|&quot;18&quot;| S8
+  S8 --&gt;|&quot;3&quot;| S2
+  S9 --&gt;|&quot;2&quot;| S2
+  S0 -.-&gt;|&quot;주석 10&quot;| S1
+  S2 -.-&gt;|&quot;주석 1&quot;| S0
+  S2 -.-&gt;|&quot;주석 1&quot;| S1
+  S4 -.-&gt;|&quot;주석 1&quot;| S0
   classDef sec fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef mainc fill:#ffe9b8,stroke:#a86400,color:#111;
   class S0,S1,S3,S4,S5,S6,S7,S8,S9,S10 sec;
@@ -147,5 +149,25 @@ flowchart TB
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>if(window.mermaid){mermaid.initialize({startOnLoad:true,securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});}</script>
+<script>
+(function(){
+  // 폭이 좁은 화면에서 줄바꿈이 안 되는 긴 인라인 수식이 쪽을 가로로 밀지 않게, 넘치는 것만 블록으로 바꿔 안에서 스크롤한다.
+  function fit(){
+    var w=document.querySelector('.wrap');if(!w)return;
+    var cs=getComputedStyle(w),R=w.getBoundingClientRect().right-(parseFloat(cs.paddingRight)||0)+1;
+    var ms=document.querySelectorAll('mjx-container:not([display])');
+    ms.forEach(function(m){m.classList.remove('wide');});
+    ms.forEach(function(m){if(m.closest('.tablewrap,pre'))return;if(m.getBoundingClientRect().right>R)m.classList.add('wide');});
+  }
+  var t0=Date.now();
+  (function wait(){
+    var M=window.MathJax;
+    if(M&&M.startup&&M.startup.promise){
+      M.startup.promise.then(function(){fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);});
+      window.addEventListener('resize',fit);return;}
+    if(Date.now()-t0<30000)setTimeout(wait,100);
+  })();
+})();
+</script>
 </body>
 </html>

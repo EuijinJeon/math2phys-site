@@ -76,6 +76,8 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0!important}
+mjx-container.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+mjx-assistive-mml{max-width:100%!important}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
 a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
 .gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
@@ -393,6 +395,28 @@ NAV = [("index.html", "처음"), ("L0.html", "L0"), ("L1.html", "L1"), ("rules.h
        ("glossary.html", "용어집"), ("map.html", "증명 지도"), ("cards/index.html", "카드 목록"), ("check-report.html", "검사 보고서")]
 
 
+FIT_JS = r"""<script>
+(function(){
+  // 폭이 좁은 화면에서 줄바꿈이 안 되는 긴 인라인 수식이 쪽을 가로로 밀지 않게, 넘치는 것만 블록으로 바꿔 안에서 스크롤한다.
+  function fit(){
+    var w=document.querySelector('.wrap');if(!w)return;
+    var cs=getComputedStyle(w),R=w.getBoundingClientRect().right-(parseFloat(cs.paddingRight)||0)+1;
+    var ms=document.querySelectorAll('mjx-container:not([display])');
+    ms.forEach(function(m){m.classList.remove('wide');});
+    ms.forEach(function(m){if(m.closest('.tablewrap,pre'))return;if(m.getBoundingClientRect().right>R)m.classList.add('wide');});
+  }
+  var t0=Date.now();
+  (function wait(){
+    var M=window.MathJax;
+    if(M&&M.startup&&M.startup.promise){
+      M.startup.promise.then(function(){fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);});
+      window.addEventListener('resize',fit);return;}
+    if(Date.now()-t0<30000)setTimeout(wait,100);
+  })();
+})();
+</script>"""
+
+
 def page(title, body, base="", cur=None, extra_head="", extra_tail=""):
     nav = []
     for href, name in NAV:
@@ -415,6 +439,7 @@ def page(title, body, base="", cur=None, extra_head="", extra_tail=""):
 {body}
 </div>
 {extra_tail}
+{FIT_JS}
 </body>
 </html>
 """

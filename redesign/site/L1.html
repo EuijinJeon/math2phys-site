@@ -56,6 +56,8 @@ blockquote{margin:.8rem 0;padding:.1rem 1rem;border-left:3px solid var(--line);c
 .stag{font-size:.72rem;padding:0 .35rem;border-radius:99px;background:var(--tag);color:var(--muted);margin-left:.15rem}
 .stat{color:var(--muted);font-size:.9rem}
 mjx-container[display=true]{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0!important}
+mjx-container.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+mjx-assistive-mml{max-width:100%!important}
 a.gterm{color:inherit;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px;cursor:help}
 a.gterm:hover{color:var(--accent);text-decoration-color:var(--accent)}
 .gterm.unknown{color:var(--bad);text-decoration:underline wavy var(--bad);text-underline-offset:.2em;cursor:help}
@@ -103,5 +105,25 @@ $$\inf_r\Phi_r\le\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\le\Delta_N+\lvert
 <p><strong>수학이 물리보다 더 해야 했던 일.</strong> 물리 유도는 수 4–6을 "<a class="gterm" href="glossary.html#g-physical-pure-state" title="물리에서 열역학 극한의 Gibbs 측도를 분해한 극단적 성분이다(물리에서는 한 성분 안에서 spin 사이의 상관, 곧 평균의 곱을 뺀 두 점 함수가 사라진다고 본다). Parisi 그림에서는 성분마다 가중치가 있고 성분 사이 overlap이 계층 구조를 이룬다고 본다.">물리적 pure state</a>들이 계층을 이루고, 한 물리적 pure state 안에서 이웃 cavity field는 독립"이라는 가정 하나로 끝낸다. 논문은 이 계층을 가정하지 않는다. 대신 섭동 mark로 보조 계층을 직접 만들고($m_d=d/L$), 그 위의 prescribed-tree 항등식과 tree 표본 규칙만으로 모든 multioverlap의 집중을 증명한다. 이 집중은 고정 깊이가 아니라 깊이 평균으로만, $N\to\infty$ 다음 $L\to\infty$ 의 순서로만 얻어진다. 부호 있는 tree 계수의 상쇄($-\delta$ 대 $2+\delta$)를 깊이 미루기(수 5)로 제어하는 것이 핵심 기술이다. $\lim F_N=\lim\Delta_N$ 도 가정하지 않고, 수 3의 $\liminf$ 선택과 상한이 맞아서 극한이 나온다.</p>
 </div>
 
+<script>
+(function(){
+  // 폭이 좁은 화면에서 줄바꿈이 안 되는 긴 인라인 수식이 쪽을 가로로 밀지 않게, 넘치는 것만 블록으로 바꿔 안에서 스크롤한다.
+  function fit(){
+    var w=document.querySelector('.wrap');if(!w)return;
+    var cs=getComputedStyle(w),R=w.getBoundingClientRect().right-(parseFloat(cs.paddingRight)||0)+1;
+    var ms=document.querySelectorAll('mjx-container:not([display])');
+    ms.forEach(function(m){m.classList.remove('wide');});
+    ms.forEach(function(m){if(m.closest('.tablewrap,pre'))return;if(m.getBoundingClientRect().right>R)m.classList.add('wide');});
+  }
+  var t0=Date.now();
+  (function wait(){
+    var M=window.MathJax;
+    if(M&&M.startup&&M.startup.promise){
+      M.startup.promise.then(function(){fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);});
+      window.addEventListener('resize',fit);return;}
+    if(Date.now()-t0<30000)setTimeout(wait,100);
+  })();
+})();
+</script>
 </body>
 </html>

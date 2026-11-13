@@ -40,21 +40,27 @@ function walk(dir, base = dir, out = []) {
 }
 
 // 쪽 안에서 도는 검사. 반환: 수치와 예.
-const inPage = (width) => {
+const inPage = ({ scope }) => {
   const out = {};
+  const root = scope ? document.getElementById(scope) : document.body;
   // (a) MathJax 오류
-  out.merror = [...document.querySelectorAll('mjx-merror, [data-mjx-error]')].map(e => (e.getAttribute('data-mjx-error') || e.textContent || '').slice(0, 120));
+  // MathJax 3.2 는 TeX 오류를 mjx-merror 로, 정의 안 된 매크로(noundefined)를 빨간 글씨(color: red)의 mjx-mtext 로 그린다. 둘 다 센다.
+  const dec = (e) => [...e.querySelectorAll('mjx-c')].map(c => { const m = (c.className || '').match(/mjx-c([0-9A-F]+)/); return m ? String.fromCodePoint(parseInt(m[1], 16)) : ''; }).join('');
+  const reds = [...document.querySelectorAll('mjx-container [style*="color: red"], mjx-container [style*="color:red"]')]
+    .filter(e => !e.parentElement.closest('[style*="color: red"]')).map(e => '정의 안 된 매크로: ' + dec(e).slice(0, 80));
+  const merr = [...document.querySelectorAll('mjx-merror, [data-mjx-error]')].map(e => 'merror: ' + (e.getAttribute('data-mjx-error') || e.textContent || '').slice(0, 100));
+  out.merror = merr.concat(reds);
   out.mjx = document.querySelectorAll('mjx-container').length;
   // 풀리지 않은 수식 구분자: 코드·pre·mjx 밖의 글에 $..$ 가 남아 있는가
   const bad = [];
-  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   for (let n = w.nextNode(); n; n = w.nextNode()) {
     if (n.parentElement.closest('pre,code,script,style,mjx-container,textarea')) continue;
     if (/\$[^$\s][^$]*\$|\\\(|\\\[|\$\$/.test(n.nodeValue)) bad.push(n.nodeValue.trim().slice(0, 80));
   }
   out.raw = bad;
   // Mermaid 오류
-  out.mermaidErr = [...document.querySelectorAll('pre.mermaid')].filter(p => !p.querySelector('svg') || /Syntax error/i.test(p.textContent)).length;
+  out.mermaidErr = [...root.querySelectorAll('pre.mermaid')].filter(p => !p.querySelector('svg') || /Syntax error/i.test(p.textContent)).length;
   // (c) 가로 넘침
   const de = document.documentElement;
   out.scrollW = Math.max(de.scrollWidth, document.body.scrollWidth);
@@ -63,7 +69,7 @@ const inPage = (width) => {
   const offenders = [];
   const scrolls = (e) => { for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) {
     const o = getComputedStyle(a).overflowX; if (o === 'auto' || o === 'scroll' || o === 'hidden') return true; } return false; };
-  for (const e of document.body.querySelectorAll('*')) {
+  for (const e of root.querySelectorAll('*')) {
     if (e.closest('svg') && e.tagName !== 'svg') continue;
     const r = e.getBoundingClientRect();
     if (r.width && r.right > de.clientWidth + 1 && !scrolls(e)) {
@@ -94,13 +100,23 @@ async function newContext(browser, base) {
   return ctx;
 }
 
+// 쪽 하나가 숨김 해제된 뒤 수식 개수가 300ms 동안 변하지 않을 때까지 기다린다(한 파일 내보내기는 쪽을 열 때 typeset 한다).
+async function waitStable(page, sel) {
+  let last = -1, same = 0;
+  for (let i = 0; i < 100 && same < 3; i++) {
+    const n = await page.evaluate((s) => document.querySelectorAll(s + ' mjx-container').length, sel);
+    same = (n === last) ? same + 1 : 0; last = n;
+    await page.waitForTimeout(100);
+  }
+}
+
 async function waitRender(page) {
   const st = { mathjax: 'none', timeout: false };
   const has = await page.evaluate(() => !!(window.MathJax));
   if (has) {
     try {
       await page.waitForFunction(() => window.MathJax && MathJax.startup && MathJax.startup.promise, null, { timeout: 15000 });
-      await page.evaluate(async () => { await MathJax.startup.promise; if (MathJax.typesetPromise) await MathJax.typesetPromise(); });
+      await page.evaluate(async () => { await MathJax.startup.promise; });   // 두 번째 typeset 은 하지 않는다(assistive MathML 이 중첩된다)
       st.mathjax = 'ok';
     } catch (e) { st.mathjax = 'timeout'; st.timeout = true; }
   }
@@ -159,16 +175,20 @@ async function runPool(items, n, fn) {
         await page.goto(origin + '/' + job, { waitUntil: 'load' });
       }
       const st = await waitRender(page);
+      if (ARTIFACT) await waitStable(page, 'section[id="' + job + '"]');
       Object.assign(rec, st);
       if (ARTIFACT) {
         // 보이는 쪽(section#id)만 본다
         rec.visible = await page.evaluate((id) => { const e = document.getElementById(id); return !!e && !e.hidden; }, job);
-        const r = await page.evaluate(inPage, WIDTH);
-        // 보이는 쪽 하나에 한정
+        const r = await page.evaluate(inPage, { scope: job });
+        // 수식·링크 수는 보이는 쪽 하나에 한정
         const scoped = await page.evaluate((id) => {
           const el = document.getElementById(id);
           const o = {};
-          o.merror = [...el.querySelectorAll('mjx-merror, [data-mjx-error]')].map(e => (e.getAttribute('data-mjx-error') || e.textContent || '').slice(0, 120));
+          const dec = (e) => [...e.querySelectorAll('mjx-c')].map(c => { const m = (c.className || '').match(/mjx-c([0-9A-F]+)/); return m ? String.fromCodePoint(parseInt(m[1], 16)) : ''; }).join('');
+          o.merror = [...el.querySelectorAll('mjx-merror, [data-mjx-error]')].map(e => 'merror: ' + (e.getAttribute('data-mjx-error') || e.textContent || '').slice(0, 100))
+            .concat([...el.querySelectorAll('mjx-container [style*="color: red"], mjx-container [style*="color:red"]')]
+              .filter(e => !e.parentElement.closest('[style*="color: red"]')).map(e => '정의 안 된 매크로: ' + dec(e).slice(0, 80)));
           o.mjx = el.querySelectorAll('mjx-container').length;
           o.hrefs = [...el.querySelectorAll('a[href]')].map(a => a.getAttribute('href'));
           o.ids = [...el.querySelectorAll('[id]')].map(e => e.id);
@@ -177,7 +197,7 @@ async function runPool(items, n, fn) {
         Object.assign(r, scoped);
         Object.assign(rec, r);
       } else {
-        Object.assign(rec, await page.evaluate(inPage, WIDTH));
+        Object.assign(rec, await page.evaluate(inPage, { scope: null }));
       }
     } catch (e) {
       rec.fatal = String(e).slice(0, 200);
@@ -225,6 +245,7 @@ async function runPool(items, n, fn) {
     mode: ARTIFACT ? 'artifact' : 'site', width: WIDTH, pages: results.length,
     pages_with_merror: results.filter(r => (r.merror || []).length).length,
     merror_total: results.reduce((s, r) => s + (r.merror || []).length, 0),
+    merror_undefined_macro: results.reduce((s, r) => s + (r.merror || []).filter(x => x.startsWith('정의 안 된')).length, 0),
     pages_with_raw_math: results.filter(r => (r.raw || []).length).length,
     pages_with_mathjax: results.filter(r => r.mjx > 0).length,
     mjx_total: results.reduce((s, r) => s + (r.mjx || 0), 0),
