@@ -9,7 +9,7 @@ math: |
   $$\left.\partial_{t_1}\cdots\partial_{t_k}E_{\mathcal T}^{A_{\boldsymbol t}}\frac{H}{A_{\boldsymbol t}^{a_*}}\right|_{\boldsymbol t=0}=\sum_Ec_E\,E_{\mathcal T_E}\left[H\prod_{j=1}^kD_j^{a_j(E)}\right].$$
   이 공식은 color의 어떤 고정된 순서에서도 성립한다. 같은 방향 $D_j=D$이면 $t^k$의 계수는 우변을 $k!$로 나눈 것이다. 위에서 세운 해석적 경계가 좌변에 kernel에 대해 균등하게 적용된다. 빈 확장의 무게는 $1$이다.
 physics: |
-  [[g:insertion|insertion]] $A_{\boldsymbol t}$로 바뀐 tree 법칙(모든 leaf가 인자 $A^a$를 받는다)에서 [[g:anchor|anchor]] leaf의 인자 $A^{a_*}$만 상쇄한, old tree 위의 유계 함수 $H$의 기대값을 $k$개 섭동 방향으로 한 번씩 미분해 $\boldsymbol t=0$에서 보면, $k$개 새 color를 [[g:replica|replica]] tree에 붙이는 모든 방법([[g:extension-history|extension history]])에 대한 부호 있는 합이 된다: 아직 쓰이지 않은 기존 replica를 재사용하면 계수 1, 내부 vertex $\beta$에서 새로 갈라지면 계수 $\gamma_\beta$([[g:tree-coefficient]]).
+  [[g:insertion|insertion]] $A_{\boldsymbol t}$로 바뀐 tree 법칙(모든 leaf가 인자 $A^a$를 받는다)에서 [[g:anchor|anchor]] leaf의 인자 $A^{a_*}$만 상쇄한, old tree 위의 유계 함수 $H$의 기대값을 $k$개 섭동 방향으로 한 번씩 미분해 $\boldsymbol t=0$에서 보면, $k$개 새 color를 [[g:replica|replica]] tree에 붙이는 모든 방법([[g:extension-history|extension history]])에 대한 부호 있는 합이 된다: anchor가 아니고 아직 쓰이지 않은 기존 replica를 재사용하면 계수 1, 내부 vertex $\beta$에서 새로 갈라지면 계수 $\gamma_\beta$([[g:tree-coefficient]]).
 gap: |
   $\boldsymbol t=0$에서의 도함수 항등식이다. 물리 문장은 lemma의 딸린 진술 넷을 말하지 않는다: 공식이 color의 어떤 고정된 순서에서도 성립한다는 것, 같은 방향 $D_j=D$이면 $t^k$의 계수가 우변을 $k!$로 나눈 것이라는 것, [[x:tree-analytic-bounds]]의 해석적 경계가 좌변에 kernel에 대해 균등하게 적용된다는 것(§6 pert:analytic이 쓰는 부분), 빈 확장의 무게가 1이라는 것(trees.tex 292–295). 계수 $\gamma_\beta$는 음이고 재사용 계수는 $+1$이라 합은 상쇄를 품는다(그 크기는 [[tree:reference-total]]과 [[tree:charging]]이 다룬다). 유한 tree와 임의의 kernel 열에서 정확하며 $n\to0$ 연속을 쓰지 않는다. 섭동이 실제로 들어오는 방식(Poisson 섭동, score 집중)은 §6의 일이다.
 abstraction: weakening

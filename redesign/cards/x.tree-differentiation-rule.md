@@ -9,7 +9,7 @@ math: |
   $$\partial_{t_j}\log W_{\mathcal T}(A)=\sum_{a\in\operatorname{Leaves}(\mathcal T)}\frac{D_j^a}{A^a}+\sum_{\beta\in\operatorname{Int}(\mathcal T)}\gamma_\beta\,\partial_{t_j}\log Y_\beta.$$
   $E_{\mathcal T}^A[G\prod_{a\in C}(A^a)^{-1}]$의 도함수에서 $a\in C$의 leaf 항은 분모의 미분과 정확히 상쇄된다. 남은 각 leaf 항은 $D_j^a/A^a$를 넣고 그 leaf를 protected로 만든다. (tree:first-variation)에 의해 내부 vertex 항은 $\beta$ 아래에 독립인 updated path 하나를 붙이고 그 말단 vertex에 인자 $D_j/A$를 더한 같은 기대값이다. 이것이 정확히 $\beta$에서의 fresh path이고 계수는 $\gamma_\beta$이며, 새 leaf는 protected다. 자식들의 조건부 독립과 tree 표본추출의 사영 일관성이, $G$가 $\beta$의 다른 자식들을 쓰는 경우에도 이 표현을 정당화한다.
 physics: |
-  섭동 매개변수로 한 번 미분하면 [[g:replica|replica]] 하나가 더해진다: 아직 쓰이지 않은 기존 replica에 $D_j$를 붙이거나(계수 1), [[g:prescribed-tree|tree]]의 내부 vertex $\beta$에서 갈라지는 새 replica를 만든다(계수 $\gamma_\beta$, [[g:tree-coefficient]]). 이미 $D$를 받은 replica([[g:protected-leaf|protected leaf]])는 다시 미분되지 않는다.
+  insertion $A_{\boldsymbol t}=1+\sum_jt_jD_j$의 매개변수 $t_j$로 한 번 미분하면 [[g:replica|replica]] 하나가 더해진다: 아직 쓰이지 않은 기존 replica에 $D_j$를 붙이거나(계수 1), [[g:prescribed-tree|tree]]의 내부 vertex $\beta$에서 갈라지는 새 replica를 만든다(계수 $\gamma_\beta$, [[g:tree-coefficient]]). 이미 $D$를 받은 replica([[g:protected-leaf|protected leaf]])는 다시 미분되지 않는다.
 gap: |
   계수 $\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$는 $m_{d_\beta}<m_{d_\beta+1}$이므로 항상 음이고, 옛 replica 재사용의 계수 $+1$과 섞여 전개 전체는 부호 있는 합이 된다. 확률 혼합으로 읽을 수 없다. $n\to0$ 해석적 연속 없이 유한 tree 위에서 정확히 성립한다. 매개변수에 무관한 $G$와 protected leaf 회계가 있어야 반복 적용이 닫힌다.
 abstraction: exact

@@ -9,7 +9,7 @@ math: |
   $$\mathbb E\prod_{a\in S}\tau^a=\frac1N\sum_{i=1}^N\mathbb E\prod_{a\in S}\sigma_i^a=\mathbb ER_S.\tag{comp:single-label-moments}$$
   여기서 $\tau^a$ 는 trial label 하나의 leaf $a$ spin이다(작성자; 원문은 $\tau$ 를 정의하지 않고 17–24행 lemma의 "single-label spin process"에서 읽음). 서로 다른 label에는 reservoir root와 균일 site를 포함한 전체 구성의 독립 사본을 쓴다. 그렇게 얻은 message들은 cavity insertion의 새 물리 disorder와 독립이다.
 physics: |
-  trial label 하나의 replica spin 곱의 평균은 reservoir의 [[g:multioverlap|multioverlap]] 평균 $\mathbb ER_S$ 와 같다. 이웃 site마다 서로 독립인 cavity field 사본을 쓴다.
+  trial label 하나의 replica spin 곱의 평균은 reservoir의 [[g:multioverlap|multioverlap]] 평균 $\mathbb ER_S$ 와 같다. 이웃 site마다 서로 독립인 cavity field 사본을 쓰고, 이 사본들은 cavity 삽입의 새 물리 [[g:disorder|disorder]]와도 독립이다.
 gap: |
   첫 등식은 균일 site $i$ 의 평균이다. 독립 사본은 구성상의 선택이고, reservoir의 서로 다른 site들이 독립이라는 주장이 아니다(그 차이가 comp:patterns의 오차다).
 abstraction: exact
