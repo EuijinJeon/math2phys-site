@@ -116,11 +116,11 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **쓰지 않는 뜻**: 시행 functional의 $x$ 는 실제 계에서 계산한 것이 아니라 임의의 시행 법칙에서 뽑은 것이고 moment 조건도 없다(`model:trial-bounds`).
 
 ### g:site-term — site 항 $V_{\rm s}$ 와 $U_\theta$
-- **기호**: $U_\theta(x_1,\ldots,x_{p-1};\varepsilon)$, $V_{\rm s}=\frac12\sum_{\varepsilon=\pm1}\exp\bigl(h\varepsilon+\sum_{j\le k}U_{\theta_j}(x^j_1,\ldots,x^j_{p-1};\varepsilon)\bigr)$, $k\sim\mathrm{Poisson}(\alpha p)$
-- **뜻**: $U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, `model.tex` 59–63). 원래 $\theta$ 의 법칙은 순열 불변이 아닐 수 있으므로(`reduction.tex` 46–47) 상한에 쓰는 $\mathcal B_r$ 의 정의는 이 좌표 선택에 달려 있다(`upper.tex` 37–39, 62–66). $V_{\rm s}$ 는 새 spin 하나를 장과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 분배함수다.
+- **기호**: $U_\theta(x_1,\ldots,x_{p-1};\varepsilon)=\log\sum_{s\in\{\pm1\}^{p-1}}e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}\prod_{\ell=1}^{p-1}q_{x_\ell}(s_\ell)$, $V_{\rm s}=\frac12\sum_{\varepsilon=\pm1}\exp\bigl(h\varepsilon+\sum_{j\le k}U_{\theta_j}(x^j_1,\ldots,x^j_{p-1};\varepsilon)\bigr)$, $k\sim\mathrm{Poisson}(\alpha p)$
+- **뜻**: $U_\theta$ 는 나머지 $p-1$ 개 spin이 $q_{x_\ell}$ 를 따를 때 factor 하나가 새 spin $\varepsilon$ 에 주는 log-weight다. 새 spin은 $\theta$ 의 $p$ 번째(마지막) 좌표에 놓인다($e^{\theta(s_1,\ldots,s_{p-1},\varepsilon)}$, `model.tex` 59–63). 원래 $\theta$ 의 법칙은 순열 불변이 아닐 수 있으므로(`reduction.tex` 46–47) 상한에 쓰는 $\mathcal B_r$ 의 정의는 이 좌표 선택에 달려 있다(`upper.tex` 37–39, 62–66). $V_{\rm s}$ 는 새 spin 하나를 장과 Poisson$(\alpha p)$ 개 factor와 함께 넣는 site 분배함수를 $2$ 로 나눈 양이다(앞의 $\frac12$, `model.tex` 85). 그 $\log2$ 는 $\mathcal B_r$ 에 따로 있다.
 - **역할**: $\mathcal B_r$ 의 $\mathbb E\log T_0V_{\rm s}$ 항이다. 상한 interpolation의 끝점 $\varphi(0)$(`upper.tex` 47–48)이고, 비교에서 독립 사본으로 계산한 site 삽입이 정확히 $T_0V_{\rm s}$ 다(P11, `comparison.tex` 178–180).
 - **정의 위치**: `model:site-message`, `model:vs`
-- **물리 대응**: exact — $U_\theta$ 는 factor→spin cavity bias($u$-message), $V_{\rm s}$ 는 Bethe free entropy의 site 항.
+- **물리 대응**: exact — $U_\theta$ 는 factor→spin cavity bias($u$-message), $\log2+\log V_{\rm s}=\log\sum_\varepsilon(\cdots)$ 가 Bethe free entropy의 site 항.
 
 ### g:edge-term — edge 항 $V_{\rm e}$ 와 $C_\theta$
 - **기호**: $C_\theta(x_1,\ldots,x_p)=\sum_se^{\theta(s)}\prod_\ell q_{x_\ell}(s_\ell)$, $V_{\rm e}=C_\theta(x_1,\ldots,x_p)$
@@ -131,7 +131,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:order-parameter — order parameter $\zeta$ 와 $\mathcal M_{r+1}$
 - **기호**: $\mathcal M_1=\mathcal P(\mathbb R)$, $\mathcal M_{j+1}=\mathcal P(\mathcal M_j)$, $\zeta\in\mathcal M_{r+1}$; 사슬 $\eta_0^\omega\sim\zeta$, $\eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega$, $x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega$
-- **뜻**: message label $\omega$ 마다 독립으로 무작위 측도의 사슬을 뽑아 마지막에 [[g:message]] $x$ 를 얻는 $r$단 시행 법칙이다. $r=0$ 이면 $\zeta$ 는 $x$ 의 분포 하나다. 사슬은 물리적 disorder와 독립이다.
+- **뜻**: message label $\omega$ 마다 독립으로 무작위 측도의 사슬을 뽑아 마지막에 [[g:message]] $x$ 를 얻는 $r$단 시행 법칙이다. $r=0$ 이면 $\zeta\in\mathcal P(\mathbb R)$ 는 $x$ 의 분포 하나이고 모든 label의 message가 이 공통 법칙으로 독립이다(`model.tex` 118–120). 사슬은 물리적 disorder와 독립이다.
 - **역할**: $\mathcal B_r(\zeta,\mathbf m)$ 의 인자이고 inf의 범위다(P2). 하한에서는 reservoir에서 만든 [[g:encoded-law]] $\zeta_{L,N}\in\mathcal M_L$ 이 이 자리에 들어간다(P10).
 - **정의 위치**: `model:chain`, `model.tex` 68–81
 - **물리 대응**: exact — $r$단 RSB order parameter. $r=0$ 은 RS의 cavity field 분포, $r=1$ 은 1RSB의 "분포의 분포"(population of populations).
@@ -147,12 +147,12 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:power-mean — power mean $T_d$
 - **기호**: $T_rV=V$, $T_dV=\bigl(\mathbb E[(T_{d+1}V)^{m_{d+1}}\mid\mathscr F_d]\bigr)^{1/m_{d+1}}$ $(d=r-1,\ldots,0)$
 - **뜻**: 시행 사슬의 깊이 $d+1$ 변수만 적분하는 조건부 거듭제곱 평균을 깊이 $r-1$ 부터 0까지 반복한 것이다. 물리적 disorder는 내내 고정된다. tree 계산의 recursion $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$ 도 같은 꼴이다.
-- **역할**: $\mathcal B_r$ 의 $T_0V_{\rm s}$, $T_0V_{\rm e}$ 를 만든다. 곱셈적 상·하한을 보존해서 $\mathcal B_r$ 이 시행 message에 대한 moment 조건 없이 유한하다(`model:trial-bounds`, `model.tex` 122–128; 상계 $\lvert h\rvert+\sum_jB(\theta_j)$ 의 유한성에는 물리 disorder의 1차 moment `model:integrability`가 여전히 쓰인다). reservoir에서는 같은 recursion이 [[g:root-logarithm]]을 정의한다(P3, P4).
+- **역할**: $\mathcal B_r$ 의 $T_0V_{\rm s}$, $T_0V_{\rm e}$ 를 만든다. 곱셈적 상·하한을 보존해서 $\mathcal B_r$ 이 시행 message에 대한 moment 조건 없이 유한하다(`model:trial-bounds`, `model.tex` 122–128; 상계 $\lvert h\rvert+\sum_jB(\theta_j)$ 의 유한성에는 물리 disorder의 1차 moment `model:integrability`가 여전히 쓰인다). reservoir에서는 같은 recursion이 [[g:root-logarithm]]을 정의한다(P3, P4). 이 recursion은 단조이고 root-가측($\mathscr F_0$-가측) 양의 상수에 대해 동차다: $a\le A\le b$($a,b$ root-가측)이면 $a\le Y_d\le b$, $A$ 를 상수배하면 모든 $Y_d$ 가 같은 배가 된다(`tree:insertion`, `trees.tex` 112–115). 시행 functional의 $T_d$ 에 대해서는 원문이 같은 성질을 진술 없이 쓴다(`reduction.tex` 34–35, 39–40; 작성자 정식화 `x:reduction-power-mean-scaling`). 그래서 $\log$ 쪽에서 root-가측 상수 이동과 등변이고 root-가측 곱셈 비교를 보존한다. P3의 $(\log2)N^{3/4}$ 와 P12의 상수·상수 이동이 이것을 쓴다.
 - **정의 위치**: `model:power-means`, `model.tex` 90–110, `tree:Y-recursion`
 - **물리 대응**: intuition — 물리에서는 물리적 pure state 계층 위의 Ruelle cascade 평균을 적분해 낸 꼴로 읽는다. 논문은 Panchenko–Talagrand가 cascade 가중치를 쓴다고만 적고, 필요한 항등식을 임의의 유한 kernel 열에 대해 직접 세운다(`trees.tex` 7–12). 이 동일시는 증명에 쓰이지 않는다. intuition — 깊이 하나($r=1$)에서 $T_0V=(\mathbb E_x[V^{m_1}\mid\boldsymbol\eta_0])^{1/m_1}$ 은 1RSB cavity 계산의 $Z^m$ 재가중(Monasson)과 같은 꼴이고, $T_d$ 를 반복하는 것은 그것을 계층마다 쓴 꼴로 읽을 수 있다. 논문은 이 읽기를 쓰지 않고 (2.10)을 정의로 둔다(`model.tex` 90–110). [[g:hierarchy]]의 물리 대응 칸(tilt 쪽)과 같은 그림이다.
 
 ### g:functional — 시행 functional $\mathcal B_r$
-- **기호**: $\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$
+- **기호**: $\mathcal B_r(\zeta,\mathbf m)=\log2+\mathbb E\log T_0V_{\rm s}-\alpha(p-1)\mathbb E\log T_0V_{\rm e}$; $r=0$ 에서는 $\mathcal B_0(\zeta)=\log2+\mathbb E\log V_{\rm s}-\alpha(p-1)\mathbb E\log V_{\rm e}$(message가 공통 법칙 $\zeta\in\mathcal P(\mathbb R)$ 로 독립, $T_d$ 없음, `model.tex` 118–120)
 - **뜻**: $r$단 시행 법칙 $(\zeta,\mathbf m)$ 에서 계산한 계층 cavity functional(Panchenko–Talagrand functional의 power-mean 꼴)이다.
 - **역할**: 상한 $F_N\le\mathcal B_r$(P2), 하한의 $\Delta_N\approx\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$(P11), $L^1$ 안정성(P12)의 대상이다.
 - **정의 위치**: `model:functional`
@@ -289,7 +289,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: approximation — Aizenman–Sims–Starr 증분. 물리는 $\lim F_N=\lim\Delta_N$ 을 쓰지만 논문은 극한의 존재를 가정하지 않고 [[g:selected-sequence]] 위의 상한만 쓴다.
 
 ### g:site-bond-insertion — site 삽입과 bond 삽입 ($Y_{0,\rm s}$, $Y_{0,\rm b}$)
-- **기호**: $A_{\rm s}$, $A_{\rm b}$, $K_{\rm s}\sim\mathrm{Poisson}(\alpha p)$, $K_{\rm b}\sim\mathrm{Poisson}(\alpha(p-1))$, $\log Y_{0,\rm s}$, $\log Y_{0,\rm b}$
+- **기호**: $A_{\rm s}(\sigma)=\frac12\sum_{\varepsilon=\pm1}\exp\bigl(h\varepsilon+\sum_{j\le K_{\rm s}}\theta_j(\sigma_{i_{1,j}},\ldots,\sigma_{i_{p-1,j}},\varepsilon)\bigr)$, $A_{\rm b}(\sigma)=\exp\sum_{j\le K_{\rm b}}\theta_j(\sigma_{i_{1,j}},\ldots,\sigma_{i_{p,j}})$(첨자는 $[N]$ 의 독립 균일 index, `cavity.tex` 59–68), $K_{\rm s}\sim\mathrm{Poisson}(\alpha p)$, $K_{\rm b}\sim\mathrm{Poisson}(\alpha(p-1))$, $\log Y_{0,\rm s}$, $\log Y_{0,\rm b}$
 - **뜻**: reservoir에 새 spin 하나를 장과 $K_{\rm s}$ 개 factor와 함께 넣는 terminal [[g:insertion]] $A_{\rm s}$, factor $K_{\rm b}$ 개를 넣는 $A_{\rm b}$, 그리고 tilted reservoir kernel로 계산한 그 $\log Y_0$ 값이다.
 - **역할**: P4의 증분 식을 이룬다. P11에서 site label을 독립 사본으로 바꾸면 $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$, $\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 가 된다.
 - **정의 위치**: `cavity:increment`의 (5.6), (5.7)(두 삽입 $A_{\rm s}$, $A_{\rm b}$)과 (5.5)(`cavity.tex` 51–66)
@@ -322,7 +322,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:tree-coefficient — tree 계수 $\gamma_\beta$, $\kappa(S)$
 - **기호**: $\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$, $\kappa(S)=\prod_{v\in\operatorname{Br}(S)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$
 - **뜻**: $\gamma_\beta$ 는 내부 vertex $\beta$(깊이 $d_\beta$, 자식 $n_\beta$ 개)에서 새 path를 붙일 때의 계수다. $\kappa(S)$ 는 anchor와 color가 모양 $S$ 를 갖는 모든 확장의 계수 합이다.
-- **역할**: P6의 전개 계수이고 [[g:extension-history]]의 $c_E$ 를 이룬다. marker anchor 단계의 $C(S,e)=-\delta\kappa(S)$, 귀납의 정규화 $J=\kappa(S^+)^2$ 에 쓰인다(P8, P9).
+- **역할**: P6의 전개 계수이고 [[g:extension-history]]의 $c_E$ 를 이룬다(P6′; $\kappa(S)$ 도 P6′). marker anchor 단계의 $C(S,e)=-\delta\kappa(S)$, 귀납의 정규화 $J=\kappa(S^+)^2$ 에 쓰인다(P8, P9).
 - **정의 위치**: `tree:insertion`(`trees.tex` 92–96), `tree:reference-total`($\kappa(S)$ 는 그 식 (tree:K))
 - **물리 대응**: intuition — replica trick의 Parisi block counting($n\to0$). 논문은 유한 tree에서 직접 세우고 $n\to0$ 을 쓰지 않는다.
 - **쓰지 않는 뜻**: 부호가 섞인 계수가 아니다. $n_\beta\ge1$ 이고 $m_{d_\beta}<m_{d_\beta+1}$ 이므로 $\gamma_\beta<0$ 이 항상 성립한다(`trees.tex` 204–209 "All summands are positive", 245–246 "all $k-1$ fresh coefficients are negative"). $\kappa(S)$ 의 인자 $m_{d_v}-jm_{d_v+1}$ $(j\ge1)$ 도 모두 음수라서 $\kappa(S)$ 의 부호는 $(-1)^{\sum_v(a_v-1)}$ 로 topology만으로 정해진다(`tree:K`의 식에서 읽은 것). 부호가 섞이는 것은 [[g:extension-history]]의 $c_E$ 다: old leaf 선택은 계수 $+1$, fresh path는 음수 계수 $\gamma_\beta$ 다(`trees.tex` 264–268). 그 합의 상쇄(부호 있는 합 $-\delta$, 절댓값 합 $2+\delta$, `trees.tex` 317–329)가 [[g:depth-delay]]의 대상이다.
@@ -344,7 +344,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:extension-history — extension history 와 계수 $c_E$
 - **기호**: $E$, $a_j(E)$, $\mathcal T_E$, $c_E$, color $1,\ldots,k$
 - **뜻**: anchor leaf $a_*$ 가 있는 old tree에서 color $1,\ldots,k$ 를 차례로 (i) 아직 안 쓴 anchor 아닌 old leaf(계수 1) 또는 (ii) 현재 tree의 내부 vertex $\beta$ 에서 새 path(계수 $\gamma_\beta$)에 주는 선택의 기록이다. $c_E$ 는 그 계수들의 곱이다. 어휘: old tree는 섭동을 넣기 전에 주어진 tree이고 그 path와 leaf가 old path, old leaf다(`trees.tex` 259–261). fresh path는 (ii)로 새로 만든 path로, 갈라지는 vertex에서 새 자식을 쓰고 그보다 깊은 모든 깊이에서 새 vertex를 쓴다(`trees.tex` 270–271). 제약이 쓰는 기준 path는 [[g:reference-path]]다. $c_E$ 는 부호가 섞인다: old leaf는 $+1$, fresh path는 음수 $\gamma_\beta$ 다([[g:tree-coefficient]]).
-- **역할**: canceled-anchor 전개(`tree:extension-expansion`)의 합 범위이고, P7 항등식은 이 합에 대한 것이다.
+- **역할**: canceled-anchor 전개(`tree:extension-expansion`)의 합 범위이고(P6′), P7 항등식은 이 합에 대한 것이다.
 - **정의 위치**: `trees.tex` 259–276, `tree:extension-expansion`
 - **물리 대응**: 없음.
 
@@ -385,9 +385,9 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **쓰지 않는 뜻**: 계층(tree) 구조는 이 항등식에서 유도되는 것이 아니라 보조 계층의 구성에 들어 있다(`introduction.tex` 75–77). 이것에서 물리적 Gibbs 측도의 계층 구조는 나오지 않고, overlap 극한값이나 분포도 식별되지 않는다. $\lvert S\rvert\ge2$ 의 multioverlap에 대해 논문은 고정 깊이 배정마다의 집중을 얻지 않는다(깊이 평균만, `decorrelation.tex` 63–75; "No uniform concentration in the depth is needed", `overview.tex` 46). 이것은 얻지 않는다는 말이지 거짓이라는 말이 아니다. 반면 항등식에서 고정 깊이로 바로 나오는 것도 있다: singleton의 $\operatorname{Var}(R_S)\to0$(각 고정 $L$, `decorrelation.tex` 72–74, 533–535)과 prefix 사영의 $\operatorname{Var}(M)\to0$(각 고정 $L,S,e$, `decorrelation.tex` 563–566).
 
 ### g:depth-delay — 깊이 미루기 (부호 있는 계수의 상쇄 제어)
-- **기호**: $S\to S^+$, $J=\kappa(S^+)^2$, 상대 비용 $\frac1{\lvert J\rvert}\sum_E\lvert c_E\rvert\le C_{k,\eta}$
+- **기호**: $S\to S^+$, $J=\kappa(S^+)^2$, $\lvert J\rvert\ge c_{k,\eta}\delta^{2b}$($b=b(S)$; $\lvert J\rvert$ 는 $\delta^{2b}$ 크기로 작아지고 $L$ 에 균일한 양의 하한이 없다, `decorrelation.tex` 337–343), 상대 비용 $\frac1{\lvert J\rvert}\sum_E\lvert c_E\rvert\le C_{k,\eta}$(이것은 $L$ 에 균일하다)
 - **뜻**: target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다.
-- **역할**: 항등식을 $J$ 로 나눈 뒤에도 오차가 유계로 남게 해서 P8의 귀납을 닫는다.
+- **역할**: 항등식을 $J$ 로 나눈 뒤에도 오차가 유계로 남게 해서 P8의 귀납을 닫는다. 쓰는 계수 한계(`tree:charging`)는 P6′ 이고, 미루기의 선택과 적용은 P8의 증명에 숨는다.
 - **정의 위치**: `tree:charging`, `decor:conditional-concentration.s3.s2`(식 (decor:J-definition), (decor:J-lower-bound)), `decor:conditional-concentration.s3.s3`(식 (decor:relative-absolute-cost)), `decorrelation.tex` 77–83
 - **물리 대응**: 없음.
 

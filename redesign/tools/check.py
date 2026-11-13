@@ -392,7 +392,7 @@ def main():
         if not moves:
             w.append("L1.md 에서 번호 붙은 수를 찾지 못함")
         for num, line, body in moves:
-            ps = set(re.findall(r"\bP\d+\b", body))
+            ps = set(re.findall(r"\bP\d+′?(?![\w′])", body))
             ws = set(C.wiki_ids(body))
             if not ps and not ws:
                 e.append(f"L1.md 줄 {line}: 수 {num} 가 규칙(P번호)이나 노드([[id]])를 가리키지 않는다")
