@@ -35,7 +35,7 @@ def find_mermaid(arg, root):
     if r.returncode or not tgz:
         sys.exit("Mermaid 를 찾지 못했고 npm 에서도 받지 못했다. --mermaid 로 mermaid.min.js 를 알려 준다.\n" + r.stderr[-300:])
     with tarfile.open(tgz[0]) as t:
-        t.extractall(tmp)
+        t.extractall(tmp, filter="data") if hasattr(tarfile, "data_filter") else t.extractall(tmp)
     return os.path.join(tmp, "package", "dist", "mermaid.min.js")
 
 
