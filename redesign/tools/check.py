@@ -281,6 +281,13 @@ def main():
                     w.append(f"{ed['file']}:{ed['line']} `{c.id}`: `\\{ed['cmd']}{{{dst}}}` → {tgt} 이(가) uses에 없다")
     rep.add("의존", [], w, na=na)
 
+    # --- 대칭 (경고만)
+    if graph is None or not valid:
+        rep.add("대칭", [], [], na="graph.json 없음" if graph is None else "아직 카드 없음")
+    else:
+        sw, snotes = symmetry_warnings(valid, by_id)
+        rep.add("대칭", [], sw, snotes)
+
     # --- 연결
     e = []
     known = set(by_id) | set(nodes)
@@ -402,6 +409,130 @@ def main():
         print(f"{name}: {status} (오류 {len(errs)}, 경고 {len(warns)})")
     print(f"보고서: {out}")
     sys.exit(1 if nerr else 0)
+
+
+_ID_TOK = re.compile(r"(?<![A-Za-z0-9_.:/-])([a-z]+:[A-Za-z0-9][A-Za-z0-9_.-]*)")
+
+
+def symmetry_warnings(valid, by_id):
+    """provides 와 uses 의 맞물림 (경고만). 반환: (경고 목록, 참고 목록).
+
+    정의. 카드의 `provides` 는 자유 문장이다. 그 안에 적힌 카드 ID(`[[id]]` 든 맨 ID든)는 "이 카드를 받아 쓰는 쪽"으로 읽는다.
+    섹션(소속)은 `kind: section` 카드의 자손 관계로 정한다(`main:theorem` 처럼 둘일 수 있다). 섹션 카드의 자손이 아닌 카드는
+    첫 `source` 파일을 덮는 섹션 카드에 속한 것으로 본다. 두 카드의 소속 집합이 겹치면 같은 섹션이고 검사하지 않는다.
+    가족 fam(X) = X, X의 조상, X의 자손.
+      (S1) A.provides 가 다른 섹션의 카드 R 을 가리키는데, fam(R) 의 어느 카드의 uses 에도 fam(A) 의 카드가 없다.
+      (S2) 카드 B 가 다른 섹션의 카드 A 를 uses 에 넣었는데, 아래 셋 중 어느 것에도 선언이 없다:
+           (a) A.provides 가 fam(B) 의 카드를 가리킨다,
+           (b) A 의 섹션 카드(조상 포함)의 머리말·본문이 fam(B) 의 카드를 가리킨다 ("밖에 내주는 것" 표),
+           (c) B 의 섹션 카드(조상 포함)의 머리말·본문이 fam(A) 의 카드를 가리킨다 ("밖에서 받는 것" 표).
+    예외: `x:overview-*` 카드는 예고를 uses 가 아닌 표로 잇는 약속이므로 양쪽 모두에서 뺀다.
+    """
+    parent = {}
+    for c in valid:
+        for ch in c.children:
+            parent.setdefault(ch, set()).add(c.id)
+
+    def closure(start, step):
+        seen, st = set(), [start]
+        while st:
+            x = st.pop()
+            for y in step(x):
+                if y not in seen:
+                    seen.add(y)
+                    st.append(y)
+        return seen
+
+    anc_c, desc_c, fam_c = {}, {}, {}
+
+    def anc(x):
+        if x not in anc_c:
+            anc_c[x] = closure(x, lambda y: parent.get(y, ()))
+        return anc_c[x]
+
+    def desc(x):
+        if x not in desc_c:
+            desc_c[x] = closure(x, lambda y: by_id[y].children if y in by_id else ())
+        return desc_c[x]
+
+    def fam(x):
+        if x not in fam_c:
+            fam_c[x] = {x} | anc(x) | desc(x)
+        return fam_c[x]
+
+    sections = {c.id for c in valid if c.get("kind") == "section"}
+
+    def secs(c):
+        s = (anc(c.id) | {c.id}) & sections
+        if s:
+            return s
+        f = c.source[0][0] if c.source else None
+        t = {sid for sid in sections if any(x[0] == f for x in by_id[sid].source)}
+        return t or {"file:" + str(f)}
+
+    sec_of = {c.id: secs(c) for c in valid}
+
+    def ids_in(text):
+        out = set()
+        for m in _ID_TOK.finditer(text or ""):
+            t = m.group(1).rstrip(".-")
+            if t in by_id:
+                out.add(t)
+        return out
+
+    def prov(c):
+        v = c.get("provides")
+        return v if isinstance(v, str) else ""
+
+    sec_ids = {}
+
+    def sec_text_ids(sid):
+        if sid not in sec_ids:
+            sc = by_id[sid]
+            try:
+                t = sc.path.read_text(encoding="utf-8")
+            except Exception:
+                t = ""
+            sec_ids[sid] = ids_in(t)
+        return sec_ids[sid]
+
+    def own_sec_ids(x):
+        out = set()
+        for a in (anc(x) | {x}) & sections:
+            out |= sec_text_ids(a)
+        return out
+
+    skip = lambda i: i.startswith("x:overview-")  # noqa: E731
+    w1, w2 = [], []
+    for a in valid:
+        if skip(a.id):
+            continue
+        for r in sorted(ids_in(prov(a)) - {a.id}):
+            if skip(r) or sec_of[a.id] & sec_of[r]:
+                continue
+            eff = set()
+            for f in fam(r):
+                if f in by_id:
+                    eff.update(by_id[f].uses)
+            if not (eff & fam(a.id)):
+                w1.append(f"`{a.id}`.provides 가 `{r}` 를 가리키지만 `{r}` 쪽 uses(조상·자손 포함)에 `{a.id}` 가 없다")
+    for b in valid:
+        if skip(b.id):
+            continue
+        for u in b.uses:
+            a = by_id.get(u)
+            if a is None or sec_of[a.id] & sec_of[b.id]:
+                continue
+            fb, fa = fam(b.id), fam(a.id)
+            if ids_in(prov(a)) & fb:
+                continue
+            if own_sec_ids(a.id) & fb:
+                continue
+            if own_sec_ids(b.id) & fa:
+                continue
+            w2.append(f"`{b.id}`.uses 의 `{a.id}` 를 `{a.id}`.provides 도, 양쪽 섹션 표도 가리키지 않는다")
+    notes = [f"(S1) provides → uses 어긋남 {len(w1)}건, (S2) uses → provides·섹션 표 어긋남 {len(w2)}건. 정의는 check.py `symmetry_warnings` 의 docstring"]
+    return w1 + w2, notes
 
 
 def rep_glossary(rep, root, cards, known, nodes, by_id):

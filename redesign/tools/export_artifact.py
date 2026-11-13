@@ -6,19 +6,24 @@
 용어 링크(glossary.html#g-slug)는 href="#glossary" + data-term="g-slug" 로 바꾸고, 라우터가 용어집 쪽을 연 뒤
 그 항목으로 스크롤하고 잠깐 강조한다.
 
-사용: python3 tools/export_artifact.py [--root DIR]
+사용: python3 tools/export_artifact.py [--root DIR] [--site DIR] [--out DIR] [--maps DIR]
   --root  site/ 를 읽고 build/artifact/ 에 쓸 디렉터리 (기본: redesign/, 환경변수 M2P_ROOT 도 된다).
           maps/ 가 거기 없으면 실제 build/artifact/maps/ 를 쓴다.
+  --site  site/ 대신 읽을 디렉터리, --out  build/artifact/ 대신 쓸 디렉터리, --maps  지도 SVG 디렉터리 (기본: <out>/maps)
 """
 import os, re, sys, posixpath, argparse, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
 REAL_ROOT = os.path.dirname(HERE)
 _ap = argparse.ArgumentParser()
 _ap.add_argument("--root", default=None)
+_ap.add_argument("--site", default=None)
+_ap.add_argument("--out", default=None)
+_ap.add_argument("--maps", default=None)
 _args = _ap.parse_args()
 ROOT = os.path.abspath(_args.root or os.environ.get("M2P_ROOT") or REAL_ROOT)
-SITE = os.path.join(ROOT, "site")
-OUT = os.path.join(ROOT, "build", "artifact")
+SITE = os.path.abspath(_args.site) if _args.site else os.path.join(ROOT, "site")
+OUT = os.path.abspath(_args.out) if _args.out else os.path.join(ROOT, "build", "artifact")
+MAPS = os.path.abspath(_args.maps) if _args.maps else os.path.join(OUT, "maps")
 spec = importlib.util.spec_from_file_location("build", os.path.join(HERE, "build.py"))
 B = importlib.util.module_from_spec(spec); spec.loader.exec_module(B)
 
@@ -70,7 +75,7 @@ for rel in pages:
     if rel == "map.html" or rel.startswith("map-"):
         def draw(m):
             name = m.group(1)
-            svgp = os.path.join(OUT, "maps", name + ".svg")
+            svgp = os.path.join(MAPS, name + ".svg")
             if not os.path.exists(svgp):
                 svgp = os.path.join(REAL_ROOT, "build", "artifact", "maps", name + ".svg")
             if not os.path.exists(svgp):

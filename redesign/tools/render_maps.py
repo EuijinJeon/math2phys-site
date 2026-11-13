@@ -4,7 +4,8 @@
 build.py 의 all_maps() 가 만든 Mermaid 텍스트를 build/artifact/maps/<이름>.mmd 로 쓰고,
 헤드리스 Chromium(Playwright, 노드)으로 <이름>.svg 를 그린다.
 
-사용: python3 tools/render_maps.py [--root DIR] [--mermaid mermaid.min.js]
+사용: python3 tools/render_maps.py [--root DIR] [--out DIR] [--mermaid mermaid.min.js]
+  --out  지도 파일(.mmd, .svg)을 쓸 디렉터리 (기본: <root>/build/artifact/maps)
   Mermaid 는 이 순서로 찾는다: --mermaid, 환경변수 M2P_MERMAID, <root>/build/artifact/vendor/mermaid.min.js,
   없으면 npm 레지스트리에서 mermaid@10.9.3 을 받아 임시 디렉터리에 푼다(CDN 이 막힌 환경에서도 npm 은 열려 있을 수 있다).
   Chromium: 환경변수 CHROME, 없으면 /opt/pw-browsers 아래의 headless_shell 이나 chrome.
@@ -59,6 +60,7 @@ def node_path():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=None)
+    ap.add_argument("--out", default=None)
     ap.add_argument("--mermaid", default=None)
     args = ap.parse_args()
     root = os.path.abspath(args.root or os.environ.get("M2P_ROOT") or REAL_ROOT)
@@ -67,7 +69,7 @@ def main():
     cards = C.load_cards(root)
     S = B.Struct(cards, C.load_graph())
     maps = B.all_maps(S)
-    out = os.path.join(root, "build", "artifact", "maps")
+    out = os.path.abspath(args.out) if args.out else os.path.join(root, "build", "artifact", "maps")
     os.makedirs(out, exist_ok=True)
     for f in glob.glob(os.path.join(out, "*.mmd")) + glob.glob(os.path.join(out, "*.svg")):
         os.remove(f)
@@ -84,7 +86,7 @@ def main():
     if r.returncode:
         sys.exit(f"일부 지도를 그리지 못했다 (종료 코드 {r.returncode})")
     old = os.path.join(root, "build", "artifact", "map.svg")
-    if os.path.isfile(old):
+    if not args.out and os.path.isfile(old):
         os.remove(old)   # 옛 단일 지도(§7 시범 때의 것)
         print("옛 build/artifact/map.svg 삭제")
 

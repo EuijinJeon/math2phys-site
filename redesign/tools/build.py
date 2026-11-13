@@ -740,12 +740,16 @@ def map_href(key):
     return f"map-{key}.html"
 
 
-def section_map(S):
-    """(i) 섹션 단위 지도. 섹션 카드 + 주정리를 노드로, 카드의 uses 를 섹션 사이 간선으로 모은다.
-    반환: (mermaid 텍스트, 간선 목록[(쓰이는 키, 쓰는 키, 횟수)], 서로 쓰는 쌍)."""
-    keys = [sc["key"] for sc in S.secs]
-    nid = {k: f"S{i}" for i, k in enumerate(keys)}
-    agg = {}
+def is_note_card(c):
+    """섹션 지도에서 논리적 의존으로 세지 않는 카드: 주석(`remark`)과 overview 예고 카드(`x:overview-*`).
+    이런 카드는 뒤에 나올 결과를 미리 가리키거나(예: 모형 절의 "주정리가 말하지 않는 것"), 본문 결과를 표로만 잇는다.
+    카드 단위로는 순환이 없어도 섹션으로 묶으면 §2 ↔ §4, §2 ↔ 주정리 같은 가짜 순환이 생기므로 점선으로 따로 그린다."""
+    return c.get("kind") == "remark" or c.id.startswith("x:overview-")
+
+
+def section_edges(S):
+    """섹션 사이 간선을 모은다. 반환: (실선 {(쓰이는 키, 쓰는 키): 횟수}, 점선(주석·예고) {…})."""
+    solid, note = {}, {}
     for c in S.cards.values():
         hc = S.home(c.id)
         if not hc:
@@ -763,10 +767,21 @@ def section_map(S):
                 seen.add(x)
                 skip.update(S.cards[x].uses)
                 st.extend(S.cards[x].children)
+        tgt = note if is_note_card(c) else solid
         for u in set(c.uses) - skip:
             hu = S.home(u)
             if hu and hu != hc:
-                agg[(hu, hc)] = agg.get((hu, hc), 0) + 1
+                tgt[(hu, hc)] = tgt.get((hu, hc), 0) + 1
+    return solid, note
+
+
+def section_map(S):
+    """(i) 섹션 단위 지도. 섹션 카드 + 주정리를 노드로, 카드의 uses 를 섹션 사이 간선으로 모은다.
+    주석·예고 카드(is_note_card)의 uses 는 점선이고 순환 검사에서 뺀다.
+    반환: (mermaid 텍스트, 실선 간선 목록[((쓰이는 키, 쓰는 키), 횟수)], 서로 쓰는 쌍(실선만))."""
+    keys = [sc["key"] for sc in S.secs]
+    nid = {k: f"S{i}" for i, k in enumerate(keys)}
+    agg, note = section_edges(S)
     L = ["flowchart TB"]
     for k in keys:
         sc = S.by_key[k]
@@ -776,8 +791,13 @@ def section_map(S):
         else:
             lab = f'§{sc["num"]}<br/>{mermaid_text(sc["title"], 36)}<br/>{n}장'
         L.append(f'  {nid[k]}["{lab}"]')
-    for (a, b), cnt in sorted(agg.items(), key=lambda kv: (keys.index(kv[0][0]), keys.index(kv[0][1]))):
-        L.append(f"  {nid[a]} -->|{cnt}| {nid[b]}")
+    order = lambda kv: (keys.index(kv[0][0]), keys.index(kv[0][1]))  # noqa: E731
+    for (a, b), cnt in sorted(agg.items(), key=order):
+        extra = f" + 주석 {note[(a, b)]}" if (a, b) in note else ""
+        L.append(f'  {nid[a]} -->|"{cnt}{extra}"| {nid[b]}')
+    for (a, b), cnt in sorted(note.items(), key=order):
+        if (a, b) not in agg:
+            L.append(f'  {nid[a]} -.->|"주석 {cnt}"| {nid[b]}')
     L.append("  classDef sec fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
     L.append("  classDef mainc fill:#ffe9b8,stroke:#a86400,color:#111;")
     L.append("  class " + ",".join(nid[k] for k in keys if k != "main") + " sec;")
@@ -963,6 +983,11 @@ def map_page(graph, ctx):
     else:
         note = ("서로 쓰는 섹션 쌍이 있다: " + ", ".join(S.label(a) + "–" + S.label(b) for a, b in mutual)
                 + ". 서로 다른 카드 사이의 쓰임이 양쪽으로 있어서 생긴 것이고, 카드 단위로는 순환이 없다(검사 &ldquo;순환&rdquo;).")
+    cyc = sec_cycles(S, agg)
+    if cyc:
+        note += " 섹션 단위의 순환 성분: " + "; ".join(", ".join(S.label(k) for k in comp) for comp in cyc) + "."
+    else:
+        note += " 실선 간선에는 섹션 단위 순환이 없다."
     total = sum(len(v) for v in S.members.values())
     body = ("<h1>증명 지도</h1>"
             "<p class=\"stat\">두 단계로 본다. 이 쪽은 섹션 단위 지도이고, 섹션마다 그 안의 정리류 카드와 밖과 오가는 간선을 보이는 "
@@ -971,6 +996,10 @@ def map_page(graph, ctx):
             "<p class=\"stat\">화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 숫자는 그 방향의 <code>uses</code> 항목 수(카드 쌍 단위)다. "
             "주정리(<code>main:theorem</code>)는 진술이 §2에, 증명이 §9의 원문 줄에 있어 두 섹션 카드의 자식이므로, "
             "§2와 §8·§9가 서로 쓰는 것처럼 보이지 않게 따로 노드로 세웠다(주정리와 그 증명 단계 카드는 이 노드에만 센다). "
+            "주석(<code>remark</code>) 카드와 overview 예고 카드의 <code>uses</code> 는 뒤의 결과를 미리 가리킬 뿐 증명의 논리가 아니므로 "
+            "점선(&ldquo;주석 n&rdquo;)으로 따로 그리고, 서로 쓰는 쌍과 순환 검사에서는 뺀다. "
+            "주석(<code>remark</code>) 카드와 overview 예고 카드의 <code>uses</code> 는 뒤의 결과를 미리 가리킬 뿐 증명의 논리가 아니므로 "
+            "점선(&ldquo;주석 n&rdquo;)으로 따로 그리고, 서로 쓰는 쌍과 순환 검사에서는 뺀다. "
             + note + " 노드를 누르면 섹션 카드로 간다.</p>"
             f'<pre class="mermaid" data-map="sections">\n{esc(text)}\n</pre>'
             f"<h2>섹션별 지도와 카드 수</h2><p class=\"stat\">카드 {total}장을 한 번씩만 센다.</p>"
