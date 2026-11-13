@@ -40,7 +40,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:hypotheses — 가정
 - **기호**: `model:integrability`–`model:positivity`
-- **뜻**: 짝수 $p\ge2$, $\mathbb EB(\theta)+\mathbb E\lvert h\rvert<\infty$, [[g:factorization]], [[g:positivity]]. 정확한 목록과 각 가정이 쓰이는 곳은 규칙 P1 행에 있다.
+- **뜻**: 짝수 $p\ge2$, $\mathbb EB(\theta)+\mathbb E\lvert h\rvert<\infty$, [[g:factorization]], [[g:positivity]]. 원문 번호는 (2.1) 1차 moment(`model:integrability`), (2.2) 모형 정의 자체(`model:hamiltonian`; Poisson 개수, 복원추출, 모든 족의 독립. 짝수 $p$ 와 $\alpha$ 는 그 앞 `model.tex` 3에서 고정), (2.3) 전개(`model:factorization`), (2.4) 부호 조건(`model:positivity`)이다(`model.tex` 3–44의 식 순서, 식 번호는 절마다 매긴다). 정확한 목록과 각 가정이 쓰이는 곳은 규칙 P1 행에 있다.
 - **역할**: 주정리 전체의 가정이다. 상한은 모두 쓰고, 하한은 bounded·순열 불변 경우(`comp:bounded-lower`)로 줄인 뒤 factorization을 상수 이동의 대칭화에 한 번만 쓴다(`reduction.tex` 45–63).
 - **정의 위치**: `model:integrability`, `model:factorization`, `model:positivity`, `main:theorem`
 - **물리 대응**: 없음. 물리 유도는 이 조건들을 의식하지 않는다.
@@ -48,7 +48,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:factorization — factor weight 전개 ($a$, $b$, $f_\ell$)
 - **기호**: $e^{\theta(s)}=a\bigl(1+b\prod_{\ell=1}^pf_\ell(s_\ell)\bigr)$, 모든 spin 조에서 a.s. $\lvert b\prod_\ell f_\ell(s_\ell)\rvert<1$
 - **뜻**: $a>0$ 과 $b$ 는 실수 확률변수, $f_\ell:\{-1,1\}\to\mathbb R$ 은 한 무작위 함수의 독립 사본이고, $b$ 는 $f_\ell$ 들과 독립이다. $a$ 는 다른 모든 변수에 의존해도 되고 $\log a$ 의 적분 가능성은 가정하지 않는다.
-- **역할**: 상한(P2)에서 나머지항을 $P^p-pPB^{p-1}+(p-1)B^p$ 꼴로 나누고 $b$, $f$ 를 본질적으로 유계로 만든다(`upper.tex` 17–34). 여기서 $n$ 개 replica leaf의 tree $\mathcal T$ 위에서 $P=P_{\mathcal T}=\frac1N\sum_i\mathbb E_f\prod_{a=1}^nf(\sigma_i^a)$ 는 실제 spin 위 $f$ 곱의 site 평균(새 $f$ 하나를 모든 leaf가 공유), $B=B_{\mathcal T}=\mathbb E_{f,x}\prod_{a=1}^n\bar f(x^a)$, $\bar f(x)=\sum_sf(s)q_x(s)$ 는 새 시행 message tree 위의 같은 양이다(`upper.tex` 62–66, 98–112). 하한 쪽에서는 `main:theorem` 증명에서 $c=\theta(1,\ldots,1)$ 을 빼 $a$ 를 없애고 $\widehat\theta$ 의 법칙을 순열 불변으로 만드는 데 한 번만 쓰인다(P1, P12).
+- **역할**: 상한(P2)에서 나머지항을 $P^p-pPB^{p-1}+(p-1)B^p$ 꼴로 나누고, 비퇴화 경우에 $b$, $f$ 를 본질적으로 유계로 만든다(`upper.tex` 17–34; 퇴화 경우 $b=0$ 또는 $\max\lvert f\rvert=0$ a.s. 이면 상호작용이 spin 무관 상수라 $F_N=\mathcal B_r$). 여기서 $n$ 개 replica leaf의 tree $\mathcal T$ 위에서 $P=P_{\mathcal T}=\frac1N\sum_i\mathbb E_f\prod_{a=1}^nf(\sigma_i^a)$ 는 실제 spin 위 $f$ 곱의 site 평균(새 $f$ 하나를 모든 leaf가 공유), $B=B_{\mathcal T}=\mathbb E_{f,x}\prod_{a=1}^n\bar f(x^a)$, $\bar f(x)=\sum_sf(s)q_x(s)$ 는 새 시행 message tree 위의 같은 양이다(`upper.tex` 62–66, 98–112). 하한 쪽에서는 `main:theorem` 증명에서 $c=\theta(1,\ldots,1)$ 을 빼 $a$ 를 없애고 $\widehat\theta$ 의 법칙을 순열 불변으로 만드는 데 한 번만 쓰인다(P1, P12).
 - **정의 위치**: `model:factorization`, `model.tex` 25–44
 - **물리 대응**: exact(예에서) — `models:spin` 의 모형(대칭 coupling의 희석 짝수 $p$-spin, Viana–Bray는 $p=2$)에서 $a=\cosh\beta J$, $b=\tanh\beta J$, $f(s)=s$ 인 tanh 전개다(`models:spin` 증명, `consequences.tex` 26–29). 일반 꼴을 high-temperature(loop) 전개로 읽는 것은 intuition이다.
 - **쓰지 않는 뜻**: §5–§8의 bounded 하한은 이 전개를 쓰지 않는다(`cavity.tex` 13–14, `decorrelation.tex` 8–9).
@@ -73,14 +73,15 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: 삽입과 상호작용의 항별 비용 $B$ 와 $\lvert\log Y_{0,\rm s}\rvert\le H+BK_{\rm s}$, $\lvert\log Y_{0,\rm b}\rvert\le BK_{\rm b}$ 를 결정적으로 만들어 증분의 균일 유계성을 준다(`cavity:increment`, `cavity.tex` 95–96, 108–110, P4). 섭동 factor 하나의 비용 $\log2$ 는 이 가정이 아니라 factor 한계 (5.2)에서 온다(`cavity:factor-bounds`). §6의 score 집중은 유계 상호작용·장에 기대고(`perturbations.tex` 4, 7–8), §8 비교의 $C=H+BM$, $z=\cosh C$ 정규화(`comparison.tex` 200)도 이것에 기댄다. 일반 법칙은 [[g:truncation]]과 [[g:stability]]로 이 경우에서 넘어온다(P12).
 - **정의 위치**: `x:cavity-bounded`, `cavity.tex` 11–14
 - **물리 대응**: 없음. 물리 유도는 보통 유계 coupling을 놓고 이 조건을 의식하지 않는다.
-- **쓰지 않는 뜻**: 상한(`upper:bound`)의 가정이 아니다. 상한은 1차 moment (2.1)만 요구하고, $b$ 와 $f$ 의 본질적 유계성은 가정이 아니라 (2.3)과 독립성에서 나온 결과다(`upper:bound.s1`). 섭동 factor의 유계 $1/2\le\psi_\nu\le3/2$ (`cavity.tex` 6의 "bounded perturbations", P3의 "bounded")도 가리키지 않는다.
+- **쓰지 않는 뜻**: 상한(`upper:bound`)의 가정이 아니다. 상한은 1차 moment (2.1)만 요구하고, $b$ 와 $f$ 의 본질적 유계성은 가정이 아니라 비퇴화 경우에 (2.3)과 독립성에서 나온 결과다(`upper:bound.s1`). 섭동 factor의 유계 $1/2\le\psi_\nu\le3/2$ (`cavity.tex` 6의 "bounded perturbations", P3의 "bounded")도 가리키지 않는다.
 
 ### g:named-models — 명명 모형
 - **기호**: Viana–Bray, diluted 짝수 $p$-spin, soft random 짝수 $K$-SAT
-- **뜻**: 두 따름정리 모두 모든 $\beta>0$ 에 대한 것이다. `models:spin`은 서로 독립인 실수 확률변수 $J$, $H$ 로 $J$ 의 분포가 대칭이고 $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$, $\theta_\beta=\beta J\prod_\ell s_\ell$, $h_\beta=\beta H$ 이고 $p=2$ 가 Viana–Bray다. `models:sat`은 독립 공정 부호 $\varepsilon_\ell$, 그것과 독립인 $W\ge0$($\mathbb EW<\infty$), $\theta_\beta=-\beta W\prod_\ell(1+\varepsilon_\ell s_\ell)/2$, $h=0$ 이고 $W=1$ 이 soft random 짝수 $K$-SAT다.
-- **역할**: 주정리의 가정을 확인하는 예다(각 증명이 $a,b,f_\ell$ 를 준다). [[g:ground-state]] 따름정리의 대상이다.
-- **정의 위치**: `models:spin`, `models:sat`(`consequences.tex` 10–49)
+- **뜻**: 두 따름정리 모두 모든 $\beta>0$ 에 대한 것이다. `models:spin`은 서로 독립인 실수 확률변수 $J$, $H$ 로 $J$ 의 분포가 대칭이고 $\mathbb E\lvert J\rvert+\mathbb E\lvert H\rvert<\infty$, $\theta_\beta=\beta J\prod_\ell s_\ell$, $h_\beta=\beta H$ 이고 $p=2$ 가 Viana–Bray다. `models:sat`은 독립 공정 부호 $\varepsilon_\ell$, 그것과 독립인 $W\ge0$($\mathbb EW<\infty$), $\theta_\beta=-\beta W\prod_\ell(1+\varepsilon_\ell s_\ell)/2$, $h=0$ 이고 $W=1$ 이 soft random 짝수 $K$-SAT다. 각 증명이 주는 확인(`consequences.tex` 24–34, 51–64): spin 모형은 $a=\cosh\beta J$, $b=\tanh\beta J$, $f_\ell(s)=s$(결정적이라 독립 사본 조건이 자명), $\lvert b\rvert<1$, $J$ 의 대칭으로 $b$ 의 홀수 moment가 0이고 짝수 moment가 0 이상, $B(\theta_\beta)=\beta\lvert J\rvert$, $\lvert h_\beta\rvert=\beta\lvert H\rvert$. SAT 모형은 위반 지시함수 $I_\varepsilon(s)=\prod_\ell(1+\varepsilon_\ell s_\ell)/2\in\{0,1\}$ 로 $e^{\theta_\beta}=1+(e^{-\beta W}-1)I_\varepsilon$ 이라 $a=1$, $b=e^{-\beta W}-1$, $f_\ell(s)=(1+\varepsilon_\ell s)/2$(독립 사본이고 $b$ 와 독립), $0\le-b<1$ 이라 엄격한 곱 한계와 부호 조건이 서고, $B(\theta_\beta)=\beta W$. 두 경우 모두 Poisson 개수와 복원추출은 그대로 둔다(`consequences.tex` 6–8).
+- **역할**: 주정리의 가정을 확인하는 예다. 두 증명은 가정을 확인할 뿐 새 논증이 없다. [[g:ground-state]] 따름정리의 대상이다.
+- **정의 위치**: `models:spin`, `models:sat`(`consequences.tex` 10–64)
 - **물리 대응**: exact.
+- **쓰지 않는 뜻**: $J$ 가 대칭이 아닌 경우, 고정 연결도 그래프, $\beta=\infty$ 의 hard constraint, 어느 온도에서 몇 단 RSB가 필요한지는 이 따름정리들이 말하지 않는다(범위는 모든 $\beta>0$). 짝수 $K$ 가정은 random 3-SAT 같은 홀수 $K$ 를 제외한다(`consequences.tex` 131–138).
 
 ### g:ground-state — 최댓값 밀도 $g$ (영온도)
 - **기호**: $\mathcal E_N$, $g=\lim_N\frac1N\mathbb E\max_\sigma\mathcal E_N(\sigma)$
@@ -171,6 +172,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: 하한은 깊이 $L$ 의 reservoir에서 $\mathcal B_{L-1}$ 을 얻는다. $L\to\infty$ 가 하한의 마지막 극한이다(P9, P11, [[g:order-of-limits]]).
 - **정의 위치**: $r$ 은 `model:chain`(`model.tex` 70–81, "Fix $r\ge1$"), $r=0$ 은 `model.tex` 118–120; $L=r+1$ 은 `trees.tex` 24–27, `cavity.tex` 16–19
 - **물리 대응**: exact(시행 법칙에서) — $r$단 사슬이 $r$단 RSB 시행 order parameter이고 tree 계산에서 $L=r+1$ 이다(`model.tex` 70–81, `trees.tex` 24–27). intuition(reservoir에서) — 하한의 깊이 $L$ 계층은 섭동 mark로 만든 보조 계층이므로(`cavity.tex` 20–24), 그것을 계의 물리적 $(L-1)$단 RSB 구조로 읽는 것은 증명되지 않는다([[g:depth]], `introduction.tex` 75–77). 물리의 이름으로 $r=0$ 은 RS(replica symmetric), $r=1$ 은 1RSB다(`model.tex` 77–78, 118–120). 물리의 full RSB는 $r\to\infty$ 극한의 order parameter를 말하지만, 주정리는 유한 $r$ 에 대한 inf만 말하고 그 극한 대상을 다루지 않는다(`model.tex` 138–140, `x:model-theorem-scope`).
+- **쓰지 않는 뜻**: 논문에는 유한 단수(유한 $L$ 또는 유한 $r$)에서 닫히는 하한 명제가 진술되어 있지 않다. 고정 $L$ 에서 있는 것은 잔차항 $\limsup_N\lvert\Delta_N-\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})\rvert$ 이 붙은 부등식이고(`comparison.tex` 236–245), 이 잔차는 $L\to\infty$ 에서 0이 된다는 것만 증명된다(P11). 고정 $L$ 에서 $N\to\infty$ 뒤에도 남는 오차 한계($1/(\eta L)$, $C/L$, $C_k(\eta+L^{-1})$ 등)는 $L\to\infty$ 에서 0이 되는 양이다(`decorrelation.tex` 613–622). 장치의 단수 $L-1$ 을 계의 물리적 RSB 단수로 읽는 것은 증명되지 않는다.
 
 ### g:interpolation — interpolation (상한)
 - **기호**: $\varphi(t)$, $t\in[0,1]$
@@ -273,6 +275,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: 밀도에 $o(1)$ 만 기여한다(P3). $u$ 미분이 [[g:score]]가 되어 집중하고(P5), 같은 factor의 $t$ 전개가 Taylor 계수 항등식을 낸다(P7, [[g:palm-identity]]).
 - **정의 위치**: `cavity.tex` 20–32, `pert:parameters`, `pert:factor`, `perturbations.tex` 26–71
 - **물리 대응**: intuition — 물리의 무한소 섭동장(generic한 Gibbs 측도를 고르는 것). 여기서는 "무한소"가 아니다: 인자 하나의 크기는 $O(1)$($\lvert t_\nu\rvert\le1/4$, $\psi_\nu\in(1/2,3/2)$)이고 작은 것은 개수의 site당 밀도 $N^{-1/4}$(평균 개수 $s_N=N^{3/4}$)다(`pert:factor`, `perturbations.tex` 51–60).
+- **쓰지 않는 뜻**: 이 문서들의 $t$ 는 세 가지다. interpolation 시간 $t\in[0,1]$([[g:interpolation]]), 섭동 factor의 계수 $t_\nu=1/j$(여기), tree 전개의 삽입 크기 $t$, $t_j$(P6, P6′; [[g:insertion]]). §6의 Taylor 논법은 셋째의 변수 $t$ 를 둘째의 값 $t=j^{-1}$ 에서 본다(`perturbations.tex` 411–424). $u_\nu$ 는 어느 것과도 달리 고정한 결정적 값이다.
 
 ### g:root-logarithm — root logarithm $X_0$ 와 그 기대값 $P_N^{L,\mathbf u}$
 - **기호**: $X_0$, $P_N^{L,\mathbf u}=\mathbb EX_0$
@@ -308,7 +311,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: §6–§8의 모든 $N$ 극한이 이 수열을 따른다(`perturbations.tex` 308–312, `decorrelation.tex` 4–8, `comparison.tex` 8–15). (i)은 하한의 마지막 부등식(`comp:bounded-lower`), (ii)는 [[g:palm-identity|Palm 항등식]](`pert:palm`)의 부등식 $\lvert H_N(t_\nu,u_\nu)\rvert\le\lVert f\rVert_\infty e_{\nu,N}$ 의 우변을 0으로 보내는 데 쓰이고(부등식 자체는 모든 $N$, $\mathbf u$ 에서 성립한다; 쓰이는 줄은 `perturbations.tex` 327의 "$\longrightarrow0$"(`pert:score-identity`)과 418 "Here the score error tends to zero with $j$ fixed"(`pert:analytic.s3`)), 그렇게 Taylor 계수 소거(`pert:analytic`)를 거쳐 [[g:tree-identity]]에, (iii)은 Taylor 계수의 수렴(`perturbations.tex` 399–409)에 쓰인다. P5가 이것을 진술하고 P7–P11이 받아 쓴다.
 - **정의 위치**: `pert:selection`, `perturbations.tex` 308–312, 538–547
 - **물리 대응**: intuition — 물리의 "무한소 섭동으로 generic한 계를 고른다". 실제 대상은 크기마다 다른 섭동계의 수열이며 극한 측도가 아니다.
-- **쓰지 않는 뜻**: [[g:state]]가 아니다. "모든 $N$ 에서 generic"하다는 말이 아니고, $L$ 과 $\varepsilon$ 마다 다른 수열이며, 집중은 type별이라 $L$ 이나 type에 균일하지 않다. 예전 판의 "generic 상태"가 이것이다.
+- **쓰지 않는 뜻**: [[g:state]]가 아니다. "모든 $N$ 에서 generic"하다는 말이 아니고, $L$ 과 $\varepsilon$ 마다 다른 수열이며, 집중은 type별로 증명되고 $L$ 이나 type에 대한 균일성은 주장되지 않는다(`perturbations.tex` 103, 311–312). 예전 판의 "generic 상태"가 이것이다.
 
 ## Tree 계산과 항등식
 
@@ -325,7 +328,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **역할**: P6의 전개 계수이고 [[g:extension-history]]의 $c_E$ 를 이룬다(P6′; $\kappa(S)$ 도 P6′). marker anchor 단계의 $C(S,e)=-\delta\kappa(S)$, 귀납의 정규화 $J=\kappa(S^+)^2$ 에 쓰인다(P8, P9).
 - **정의 위치**: `tree:insertion`(`trees.tex` 92–96), `tree:reference-total`($\kappa(S)$ 는 그 식 (tree:K))
 - **물리 대응**: intuition — replica trick의 Parisi block counting($n\to0$). 논문은 유한 tree에서 직접 세우고 $n\to0$ 을 쓰지 않는다.
-- **쓰지 않는 뜻**: 부호가 섞인 계수가 아니다. $n_\beta\ge1$ 이고 $m_{d_\beta}<m_{d_\beta+1}$ 이므로 $\gamma_\beta<0$ 이 항상 성립한다(`trees.tex` 204–209 "All summands are positive", 245–246 "all $k-1$ fresh coefficients are negative"). $\kappa(S)$ 의 인자 $m_{d_v}-jm_{d_v+1}$ $(j\ge1)$ 도 모두 음수라서 $\kappa(S)$ 의 부호는 $(-1)^{\sum_v(a_v-1)}$ 로 topology만으로 정해진다(`tree:K`의 식에서 읽은 것). 부호가 섞이는 것은 [[g:extension-history]]의 $c_E$ 다: old leaf 선택은 계수 $+1$, fresh path는 음수 계수 $\gamma_\beta$ 다(`trees.tex` 264–268). 그 합의 상쇄(부호 있는 합 $-\delta$, 절댓값 합 $2+\delta$, `trees.tex` 317–329)가 [[g:depth-delay]]의 대상이다.
+- **쓰지 않는 뜻**: 부호가 섞인 계수가 아니다. $n_\beta\ge1$ 이고 $m_{d_\beta}<m_{d_\beta+1}$ 이므로 $\gamma_\beta<0$ 이 항상 성립한다(`trees.tex` 204–209 "All summands are positive", 245–246 "all $k-1$ fresh coefficients are negative"). $\kappa(S)$ 의 인자 $m_{d_v}-jm_{d_v+1}$ $(j\ge1)$ 도 모두 음수라서 $\kappa(S)$ 의 부호는 $(-1)^{\sum_v(a_v-1)}$ 로 topology만으로 정해진다(`tree:K`의 식에서 읽은 것). 부호가 섞이는 것은 [[g:extension-history]]의 $c_E$ 다: old leaf 선택은 계수 $+1$, fresh path는 음수 계수 $\gamma_\beta$ 다(`trees.tex` 264–268). 그 합의 상쇄(처방 split 깊이가 old branching 깊이와 같을 때, 곧 미루기 전의 예에서 부호 있는 합 $-\delta$, 절댓값 합 $2+\delta$, `trees.tex` 317–329)가 [[g:depth-delay]]의 대상이다.
 
 ### g:tree-law — tree 법칙 $Q_k$ 와 log 전개
 - **기호**: $Q_k$; $\log Y_0=\sum_{k\ge1}\frac{(-1)^{k-1}t^k}{k}\mathbb E_{Q_k}E_{\mathcal T}\prod_{a=1}^kD^a$
@@ -386,7 +389,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 
 ### g:depth-delay — 깊이 미루기 (부호 있는 계수의 상쇄 제어)
 - **기호**: $S\to S^+$, $J=\kappa(S^+)^2$, $\lvert J\rvert\ge c_{k,\eta}\delta^{2b}$($b=b(S)$; $\lvert J\rvert$ 는 $\delta^{2b}$ 크기로 작아지고 $L$ 에 균일한 양의 하한이 없다, `decorrelation.tex` 337–343), 상대 비용 $\frac1{\lvert J\rvert}\sum_E\lvert c_E\rvert\le C_{k,\eta}$(이것은 $L$ 에 균일하다)
-- **뜻**: target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다.
+- **뜻**: target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다. 가장 단순한 예(`trees.tex` 317–332): 두 old path가 깊이 $d$ 에서 갈라지고 anchor가 그 하나일 때, 새 color가 anchor와 정확히 $d$ 에서 갈라지라는 처방(미루기 전)은 부호 있는 합 $-\delta$, 절댓값 합 $2+\delta$ 다. 처방 split을 $d+1<L$ 로 미루면 split 깊이가 $d+1$ 인 다른 목표가 되고, 허용되는 선택은 anchor path 위 깊이 $d+1$ unary vertex의 fresh split 하나뿐이라 계수 $-\delta$, 절댓값 합 $\delta$ 다. 일반형이 P6′ 의 계수 한계다.
 - **역할**: 항등식을 $J$ 로 나눈 뒤에도 오차가 유계로 남게 해서 P8의 귀납을 닫는다. 쓰는 계수 한계(`tree:charging`)는 P6′ 이고, 미루기의 선택과 적용은 P8의 증명에 숨는다.
 - **정의 위치**: `tree:charging`, `decor:conditional-concentration.s3.s2`(식 (decor:J-definition), (decor:J-lower-bound)), `decor:conditional-concentration.s3.s3`(식 (decor:relative-absolute-cost)), `decorrelation.tex` 77–83
 - **물리 대응**: 없음.
@@ -443,7 +446,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **뜻**: 모든 고정 labeled topology $S$ 에서 위 식이 성립한다. 평균은 $S$ 의 $b(S)$ 개 branching 깊이에 대해서이고, singleton은 각 고정 $L$ 에서 $\operatorname{Var}(R_S)\to0$ 이다. 분산은 [[g:root]]와 tree 표본추출 전부에 대한 것이고(섭동 매개변수는 선택된 값으로 고정) $N$ 극한은 [[g:selected-sequence]]를 따른다.
 - **역할**: P9. §8로 가는 출력이다: `comp:shape-error`를 거쳐 P11의 독립 사본 대체 오차를 0으로 보낸다(`comparison.tex` 122–156).
 - **정의 위치**: `decor:overlap-concentration`
-- **물리 대응**: approximation — "branching pattern을 정하면 overlap은 요동하지 않는다"는 Parisi 그림을 모든 multioverlap으로 넓힌 것.
+- **물리 대응**: intuition — Parisi 그림의 "branching pattern을 정하면 두 replica의 overlap은 요동하지 않는다"를 모든 multioverlap으로 넓힌 것으로 견주어 읽을 수 있다. 그러나 그 그림의 진술은 물리적 pure state tree 위의 고정 깊이 진술이고, 여기의 tree는 보조 계층의 것이며 결론은 깊이 평균이다. 논문은 이 대응을 말하지 않는다(`decorrelation.tex` 63–75, `introduction.tex` 75–80).
 - **쓰지 않는 뜻**: 극한값을 식별하지 않는다(overlap이 깊이만의 함수 $q_d$ 로 수렴한다는 말이 아니다). 물리적 Gibbs 측도의 계층 구조에 대한 진술이 아니다. $\lvert S\rvert\ge2$ 에서 고정 깊이 배정마다의 진술이 아니다.
 
 ### g:projection — 첫 갈라짐에서의 사영 $a_{S,e}$, $p_N(S,e)$
