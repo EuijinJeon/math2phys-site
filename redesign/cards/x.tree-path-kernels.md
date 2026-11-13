@@ -9,7 +9,7 @@ math: |
   $$0=m_0<m_1<\cdots<m_{L-1}<m_L=1$$
   을 고정한다. path는 깊이 $0,\ldots,L$을 갖고 깊이 0의 변수가 root다. $1\le d\le L$에 대해 확률 kernel $K_d$는 깊이 $d-1$까지의 prefix 전체가 주어지면 다음 변수를 뽑는다. $\mathscr F_d$는 prefix $\sigma$-field다(깊이 $d$까지의 prefix가 생성하는 것으로 읽는다. 그래서 $K_d=K_d(dz\mid\mathscr F_{d-1})$). root의 분포는 모든 insertion 동안 고정된다. $r$단 적용에서는 $L=r+1$이다: 깊이 $1,\ldots,r$에 보조 변수, 깊이 $L$에 Gibbs spin 배치가 놓인다. $r\ge1$인 시행 법칙 (model:chain)에서는 $0\le d<r$에 대해 $\eta_d$가 깊이 $d$ 변수이고 $x$가 깊이 $r$ 변수다.
 physics: |
-  [[g:hierarchy|보조 계층]]의 뼈대: 깊이 $L=r+1$의 계층이 $r$단 RSB의 자리다([[g:rsb-steps]]). 깊이 $d$까지의 prefix가 [[g:state|상태]]이고, 깊이마다 [[g:parisi-parameters|Parisi parameter]] $m_d$가 하나씩 붙는다($m_0=0$, $m_L=1$).
+  [[g:hierarchy|보조 계층]]의 뼈대: 깊이 $L=r+1$의 계층이 $r$단 RSB의 자리다([[g:rsb-steps]]). 깊이 $d$까지의 prefix가 [[g:state|상태]]이고, 깊이마다 [[g:parisi-parameters|Parisi parameter]] $m_d$가 하나씩 붙는다($0=m_0<m_1<\cdots<m_L=1$). 깊이 $d$의 변수는 그때까지의 prefix 전체에 의존하는 임의의 확률 kernel $K_d$로 뽑히고, root의 분포는 모든 insertion 동안 고정된다.
 gap: |
   kernel 열 $K_1,\ldots,K_L$은 임의의 확률 kernel이다. 이 절의 모든 항등식은 이 일반성에서 증명되며 무한 계층의 가중치 구조나 [[g:physical-pure-state|물리적 pure state]] 분해를 가정하지 않는다(trees.tex 10–12 "for finite sequences of arbitrary probability kernels, without assuming an infinite hierarchy"). $m_d$는 power mean의 지수열일 뿐이고, 여기서는 최적화되지 않는다.
 abstraction: exact

@@ -7,7 +7,7 @@ provides: '§3 전체 (tree 밀도, 미분 규칙, 확장, Q_k). §7은 이것�
 math: |
   유한 tree $\mathcal T$는 공통 root와 유한 개의 labeled path로 이루어지며 각 path는 깊이 $L$에서 끝난다. 모든 내부 vertex는 자식이 적어도 하나다. 특히 path의 unary 부분은 모두 남긴다. 각 vertex에서 서로 다른 자식은 해당 kernel로 독립으로 뽑힌다. 이 표본 기대값을 root가 주어진 조건부로 $E_{\mathcal T}$라 쓴다. 깊이 $d$의 split이란 마지막 공통 vertex가 깊이 $d$에 있다는 뜻이다. 깊이 $L$의 replica 위치는 서로 다른 vertex이지만 그곳에서 뽑힌 값이 다를 필요는 없다. 따라서 독립 spin replica가 같은 spin 배치일 수 있다. 일부 leaf와, 남은 leaf가 쓰지 않는 그 path 부분을 지워도 남은 tree의 표본 법칙은 보존된다.
 physics: |
-  [[g:prescribed-tree|prescribed tree]]는 [[g:replica|replica]]들의 계층 그림이다: leaf마다 replica 하나가 있고, 두 replica는 split 깊이까지 같은 [[g:state|상태]](같은 prefix vertex)를 지나며 그 아래로는 그 상태가 주어지면 조건부 독립으로 뽑힌다. 일부 replica를 잊어도 나머지의 결합 법칙은 바뀌지 않는다.
+  [[g:prescribed-tree|prescribed tree]]는 [[g:replica|replica]]들의 계층 그림이다: leaf마다 replica 하나가 있고, 두 replica는 split 깊이까지 같은 [[g:state|상태]](같은 prefix vertex)를 지나며 그 아래로는 그 상태가 주어지면 조건부 독립으로 뽑힌다. path의 갈라지지 않는(unary) 구간도 tree에 남는다. leaf는 깊이 $L$의 서로 다른 vertex이지만 뽑힌 spin 배치는 같을 수 있다. $E_{\mathcal T}$는 root가 주어진 조건부 표본 기대값이다. 일부 replica를 잊어도 나머지의 결합 법칙은 바뀌지 않는다.
 gap: |
   조건부 독립은 보조 계층 kernel의 구성에서 오는 것이고([[g:hierarchy]]), Gibbs 측도의 [[g:physical-pure-state|물리적 pure state]] 분해에서 유도된 것이 아니다. 서로 다른 leaf의 spin 배치가 같을 수 있다(특히 $L=1$이면 replica들은 같은 Gibbs 측도의 독립 표본이고, $L\ge2$에서도 값의 일치는 배제되지 않는다).
 abstraction: exact

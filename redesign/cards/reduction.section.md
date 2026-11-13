@@ -13,8 +13,8 @@ math: |
 physics: |
   하한은 [[g:bounded-law|유계]]이고 입력에 대칭([[g:permutation-invariance|순열 불변]])인 [[g:interaction|상호작용]]에서만 증명되어 있고, 상한은 [[g:factorization|전개]]와 [[g:positivity|부호 조건]]을 쓴다. 에너지 원점의 무작위 [[g:constant-shift|상수 이동]]과 [[g:truncation|truncation]], 그리고 pressure와 시행 [[g:functional|functional]]의 [[g:stability|$L^1$ 안정성]]이 두 진술을 같은 [[g:hypotheses|가정]] 아래로 잇는다.
 gap: |
-  정확하다. 상한은 원래 법칙에 바로 쓰고, 상수 이동과 truncation은 하한 쪽에만 쓴다. 시행 쪽 안정성 상수가 모든 $r$ 과 시행 법칙에 균일하다는 것이 inf와 $K\to\infty$ 를 바꾸는 근거다. 물리 유도는 보통 이 단계를 생략한다.
-abstraction: exact
+  물리 문장은 개요다. reduction:stability의 정량 한계 $\lvert F_N-F_N'\rvert\le\alpha D+d$, $\lvert\mathcal B_r-\mathcal B_r'\rvert\le\alpha(2p-1)D+d$ 와 이동 식 $\widehat F_N=F_N-\alpha\mathbb Ec$, 주정리 증명의 liminf/limsup 조립(main:theorem.s3, s4)은 `math` 와 자식 카드에만 있다. 상한은 원래 법칙에 바로 쓰고, 상수 이동과 truncation은 하한 쪽에만 쓴다. 시행 쪽 안정성 상수가 모든 $r$ 과 시행 법칙에 균일하다는 것이 inf와 $K\to\infty$ 를 바꾸는 근거다. 물리 유도는 보통 이 단계를 생략한다.
+abstraction: weakening
 children: [x:reduction-power-mean-scaling, reduction:stability, main:theorem]
 source:
   - {file: reduction.tex, lines: [1, 87]}

@@ -9,7 +9,7 @@ math: |
   $$1/2\le\psi_\nu\le3/2\tag{5.2}$$
   를 만족한다.
 physics: |
-  섭동: type $\nu$ 마다 평균 $c_\nu N^{3/4}$ 개(전체 평균 $N^{3/4}$, 곧 sublinear)의 단일 spin factor를 무작위 site에 붙인다([[g:perturbation]]). 각 factor는 자기 [[g:hierarchy|보조 계층]] 변수를 갖고, 값은 $[1/2,3/2]$ 안이다.
+  섭동: type $\nu$ 마다 평균 $c_\nu N^{3/4}$ 개(전체 평균 $N^{3/4}$, 곧 sublinear)의 단일 spin factor를 독립 균일 site에 붙인다([[g:perturbation]]). type마다 개수는 서로 독립인 Poisson이다. 각 factor는 자기 [[g:hierarchy|보조 계층]] 변수를 계층을 따라 곱 prior로 뽑고, 값은 $[1/2,3/2]$ 안이다.
 gap: |
   같은 내용이다. factor의 구체적 꼴과 보조 변수(mark)는 perturbations.tex에서 정한다(cavity.tex 31–32의 예고). 물리의 "무한소 섭동장"과의 대응은 [[g:perturbation]]의 물리 대응 칸에 intuition으로만 있다.
 abstraction: exact

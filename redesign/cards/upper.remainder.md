@@ -11,7 +11,7 @@ math: |
   $$-\frac{\lambda^n}{n}\mathbb E[(-b)^n]\,\mathbb E_{Q_n}\mathbb E\bigl[P_{\mathcal T}^p-pP_{\mathcal T}B_{\mathcal T}^{p-1}+(p-1)B_{\mathcal T}^p\bigr]\tag{4.3}$$
   이다. 정규화된 기준항들은 상쇄된다. tree 법칙 $Q_n$ 은 tree:log-expansion의 것이고 세 삽입에 공통이다. $\lambda<1$ 이면 급수는 절대수렴하고 각 삽입은 $\sum_{n\ge1}\lambda^n/n$ 으로 눌린다. $p$ 가 짝수이므로 $x\mapsto x^p$ 의 볼록성이 괄호를 0 이상으로 만들고, (2.4)가 (4.3)을 0 이하로 만든다. $\lambda\uparrow1$ 이 (4.1)을 증명한다.
 physics: |
-  $\lambda<1$ 로 정규화한 나머지항([[upper:regularization]])을 [[g:tree-law|tree 법칙]] $Q_n$ 으로 뽑은 $n$ 개 [[g:replica|replica]]의 tree 위에서 전개하면, $n$차 계수는 실제 spin 쪽 평균 $P$ 와 시행 [[g:message|message]] 쪽 평균 $B$ 에 대한 볼록성 잔차 $P^p-pPB^{p-1}+(p-1)B^p$ (짝수 $p$ 에서 $\ge0$)의 평균에 $-\frac{\lambda^n}{n}\mathbb E[(-b)^n]$ 을 곱한 것이다. [[g:positivity|부호 조건]]이 모든 차수에서 이것을 0 이하로 만들고, 급수가 $\lambda<1$ 에서 절대수렴하므로 $\lambda\uparrow1$ 로 보내 (4.1)을 얻는다.
+  $\lambda<1$ 로 정규화한 나머지항([[upper:regularization]])을 [[g:tree-law|tree 법칙]] $Q_n$ 으로 뽑은 $n$ 개 [[g:replica|replica]]의 tree 위에서 전개하면, $n$차 계수는 실제 spin 쪽 평균 $P$ 와 시행 [[g:message|message]] 쪽 평균 $B$ 에 대한 볼록성 잔차 $P^p-pPB^{p-1}+(p-1)B^p$ (짝수 $p$ 에서 $\ge0$)의 평균에 $-\frac{\lambda^n}{n}\mathbb E[(-b)^n]$ 을 곱한 것이다. [[g:positivity|부호 조건]]이 모든 차수에서 이것을 0 이하로 만들고, 급수는 $\lambda<1$ 에서 절대수렴한다. $\lambda\uparrow1$ 은 [[upper:regularization]]의 적분 가능한 지배 한계 $2B(\theta)$ 와 dominated convergence로 보내 (4.1)을 얻는다.
 gap: |
   같은 내용이다. $P_{\mathcal T}$ 는 보간된 계에서 tilted kernel로 뽑은 replica tree 위의 무작위 양이고 $B_{\mathcal T}$ 는 고정 tree에서 결정적이다. 짝수 $p$ 와 (2.4)가 둘 다 여기서 쓰인다(홀수 $p$ 에서 괄호의 부호는 보장되지 않는다). $Q_n$ 을 물리 그림의 overlap tree 법칙으로 읽는 것은 [[g:tree-law]]의 물리 대응 칸에 intuition으로만 있다.
 abstraction: exact

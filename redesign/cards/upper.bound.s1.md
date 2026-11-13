@@ -11,7 +11,7 @@ math: |
   $$\lVert b\rVert_\infty\le u^{-p},\qquad\lVert M\rVert_\infty\le(vu^{p-1})^{-1}.$$
   실제로 어느 한계든 양의 확률 집합에서 어기고 나머지 독립 인자를 이 하계로 제한하면 엄격한 곱 조건을 어기게 된다. 따라서 이후에 쓰는 모든 moment는 유한하다.
 physics: |
-  [[g:factorization|factor 전개]]의 곱 항이 없으면 factor는 spin과 무관한 상수 $e^c$ 이고, [[g:pressure|pressure]]와 모든 시행값([[g:functional]])이 같은 값 $\log2+\mathbb E\log\cosh h+\alpha\mathbb Ec$ 가 된다. 곱 항이 있으면 $b$ 와 $f$ 가 서로 독립이고 곱이 a.s. 1 미만이라는 데서 둘 다 본질적으로 유계다.
+  [[g:factorization|factor 전개]]의 곱 항이 없으면 factor는 spin과 무관한 상수 $e^c$ 이고, [[g:pressure|pressure]]와 모든 시행값([[g:functional]])이 같은 값 $\log2+\mathbb E\log\cosh h+\alpha\mathbb Ec$ 가 된다. 곱 항이 있으면 $b$ 와 $f$ 가 서로 독립이고 곱이 a.s. 1 미만이라는 데서 둘 다 본질적으로 유계다($M=\max_s\lvert f(s)\rvert$, $\mathbb P(M\ge u)>0$, $\mathbb P(\lvert b\rvert\ge v)>0$ 이면 $\lVert b\rVert_\infty\le u^{-p}$, $\lVert M\rVert_\infty\le(vu^{p-1})^{-1}$). 그래서 이후에 쓰는 moment는 모두 유한하다.
 gap: |
   같은 내용이다. 유계 상수 $u^{-p}$, $(vu^{p-1})^{-1}$ 은 1보다 클 수 있다($f\mapsto\lambda f$, $b\mapsto\lambda^{-p}b$ 의 척도 자유, x:model-moment-finiteness 카드의 관찰). "$b$ 가 tanh처럼 1 미만"을 말하는 것은 아니다.
 abstraction: exact

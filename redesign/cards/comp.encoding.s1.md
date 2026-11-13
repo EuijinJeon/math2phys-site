@@ -9,7 +9,7 @@ math: |
   $$x=\operatorname{arctanh}\langle\sigma_i\rangle$$
   로 둔다. 괄호는 leaf Gibbs 기대값이다. 유한 $N$ 에서 모든 배치의 무게가 엄격히 양이므로 $-1<\langle\sigma_i\rangle<1$ 이고 $x$ 는 유한하다. 따라서 $x$ 는 깊이 $L$ 의 terminal spin 전이 전에, 깊이 $r$ 에서 정해진다. 각 terminal replica leaf에서 법칙 $q_x$ 로 spin을 뽑는다. 보조 prefix가 주어지면 이 spin들은 독립이고, 독립인 terminal Gibbs replica들의 one-site 법칙과 정확히 같다.
 physics: |
-  site $i$ 를 무작위로 고른 뒤, 깊이 $r$ [[g:state|상태]](보조 prefix)가 주어졌을 때의 국소 자화 $\langle\sigma_i\rangle$ 을 [[g:message|cavity field]] $x$ 로 쓴다. 그 상태 안의 [[g:replica|replica]]들이 site $i$ 에서 보는 spin은 평균 $\tanh x$ 의 독립 Ising spin이다.
+  균일 site $i$ 를 reservoir의 root disorder와 함께 root에 넣고(이 넓힌 root와 보조 prefix가 [[g:state|상태]]를 정한다), 깊이 $r$ 상태가 주어졌을 때의 국소 자화 $\langle\sigma_i\rangle$ 을 [[g:message|cavity field]] $x=\operatorname{arctanh}\langle\sigma_i\rangle$ 로 쓴다. 유한 $N$ 에서는 $\lvert\langle\sigma_i\rangle\rvert<1$ 이라 $x$ 는 유한하다. 그 상태 안의 [[g:replica|replica]]들이 site $i$ 에서 보는 spin은 평균 $\tanh x$ 의 독립 Ising spin이다.
 gap: |
   "one-site 법칙이 같다"는 site $i$ 하나의 spin에 대한 것이다. 같은 prefix 아래 독립 Gibbs replica들의 site $i$ spin이 독립인 것은 tree 표본 규칙(깊이 $L$ 의 서로 다른 자식은 독립)에서 온다. 여러 site의 결합 법칙은 여기서 다루지 않는다. 상태는 섭동 reservoir의 보조 계층 prefix다.
 abstraction: exact

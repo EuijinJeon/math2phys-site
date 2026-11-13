@@ -9,7 +9,7 @@ math: |
   $$\sum_t\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2=\mathbb E\|\mu_{t_1,T}\|_N^2-\mathbb E\|\mu_{t_0,T}\|_N^2\le1$$
   (합은 initial stem 위의 $t,t+1$에 대해, $t_0$, $t_1$은 그 범위의 처음과 끝). 특히 $t\mapsto\mathbb E\|\mu_{t,T}\|_N^2$는 증가한다(각 증분이 $\mathbb E\|\mu_{t+1,T}-\mu_{t,T}\|_N^2\ge0$). 이것을 범위를 갖는 $d$에 대해 합하고 정규화 $L^{-1}$을 곱하면, 나머지 좌표의 합은 $L$의 거듭제곱으로 상쇄되어 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le1/L$.
 physics: |
-  깊이 $t$ [[g:state|상태]] 평균의 자기 [[g:multioverlap|overlap]] $q_t=\mathbb E\|\mu_{t,T}\|_N^2$ ($T$가 [[g:replica|replica]] 하나면 $\mathbb E\,N^{-1}\sum_i\langle\sigma_i\rangle_t^2$)은 계층 깊이를 따라 증가하고, 그 증가분의 합은 1 이하다. 한 깊이에서 다음 깊이로 상태 평균이 바뀌는 양의 제곱 평균이 정확히 그 증가분이다. 그래서 initial stem 위를 움직이는 평가 깊이 $d$도 평균 좌표에 넣어 깊이 평균하면([[g:depth-average]]) 한 칸 변화는 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le1/L$이다.
+  나중 branching 깊이들을 고정하고 initial stem을 따라 한 path를 뽑을 때, 깊이 $t$ [[g:state|상태]] 평균의 자기 [[g:multioverlap|overlap]] $q_t=\mathbb E\|\mu_{t,T}\|_N^2$ ($T$가 [[g:replica|replica]] 하나면 $\mathbb E\,N^{-1}\sum_i\langle\sigma_i\rangle_t^2$)은 그 stem 위에서 깊이를 따라 증가하고, 그 증가분의 합은 1 이하다. 한 깊이에서 다음 깊이로 상태 평균이 바뀌는 양의 제곱 평균이 정확히 그 증가분이다. 그래서 initial stem 위를 움직이는 평가 깊이 $d$도 평균 좌표에 넣어 깊이 평균하면([[g:depth-average]]) 한 칸 변화는 $\mathcal A_{L,\eta}\mathbb E\|\mu_{d+1,S}-\mu_{d,S}\|_N^2\le1/L$이다.
 gap: |
   "상태"는 [[g:hierarchy|보조 계층]]의 prefix $\mathscr F_t$([[g:root]] 포함)이고 [[g:physical-pure-state|물리적 pure state]]가 아니다. $q_t$는 보조 계층 깊이 $t$의 양이며 Parisi 함수 $q(x)$의 값으로 식별되지 않는다. $T$가 여러 leaf를 가지면 $\mu_{t,T}$는 여러 replica spin 곱의 조건부 평균이다.
 abstraction: exact

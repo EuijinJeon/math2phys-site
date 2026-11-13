@@ -9,7 +9,7 @@ math: |
   $$\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e},\qquad\log2+\mathbb E\log\widetilde Y_{0,\rm s}-\mathbb E\log\widetilde Y_{0,\rm b}=\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)}).$$
   (5.5)에 의해 남은 일은 reservoir와 trial의 삽입 logarithm을 주어진 극한에서 비교하는 것이다.
 physics: |
-  서로 다른 factor의 이웃 cavity field들이 독립 사본이므로 bond 삽입의 계층 free entropy는 factor마다 [[g:edge-term|edge 항]] $\log T_0V_{\rm e}$ 의 합이 되고, 평균 factor 수가 $\alpha(p-1)$ 이다. [[g:power-mean|power mean]]이 독립 인자의 곱을 곱으로 보내기 때문이다.
+  서로 다른 factor의 이웃 cavity field들이 독립 사본이므로 bond 삽입의 계층 free entropy는 factor마다 [[g:edge-term|edge 항]] $\log T_0V_{\rm e}$ 의 합이 되고, 평균 factor 수가 $\alpha(p-1)$ 이다. [[g:power-mean|power mean]]이 독립 인자의 곱을 곱으로 보내기 때문이다. site 쪽의 $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$ 와 합치면 $\log2+\mathbb E\log\widetilde Y_{0,\rm s}-\mathbb E\log\widetilde Y_{0,\rm b}$ 가 시행 [[g:functional|functional]] $\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$ 그 자체다.
 gap: |
   정확하다. 인수분해에는 "같은 prefix 아래 label 묶음들이 조건부 독립"이라는 구성상의 독립이 필요하다. reservoir 쪽에서는 이것이 성립하지 않으며(같은 배치를 공유), 그 차이는 s2–s4가 다룬다.
 abstraction: exact

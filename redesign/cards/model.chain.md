@@ -9,7 +9,7 @@ math: |
   $$\eta_0^\omega\sim\zeta,\qquad\eta_{d+1}^\omega\mid\eta_d^\omega\sim\eta_d^\omega\ \ (0\le d\le r-2),\qquad x^\omega\mid\eta_{r-1}^\omega\sim\eta_{r-1}^\omega\tag{2.7}$$
   를 뽑는다. $r=1$ 이면 각 label이 먼저 법칙 $\zeta$ 의 무작위 확률측도 $\eta_0$ 를 뽑고, 다음에 법칙 $\eta_0$ 의 $x$ 를 뽑는다. 더 높은 단계는 측도 뽑기를 반복한다. 이 변수들은 모두 물리적 disorder와 독립이다. $x_1,\ldots,x_p$ 와 $x_\ell^j$ ($j\ge1$, $1\le\ell<p$) 에는 서로 다른 label을 쓴다.
 physics: |
-  $r$단 RSB의 시행 [[g:order-parameter|order parameter]]: $r=1$ 이면 cavity field의 "분포의 분포"(population of populations)이고, $\mathbf m$ 은 [[g:parisi-parameters|Parisi parameter]]이다. label이 다른 [[g:message|message]]는 서로 독립이고 [[g:disorder|disorder]]와도 독립이다.
+  $r$단 RSB의 시행 [[g:order-parameter|order parameter]] $\zeta\in\mathcal M_{r+1}$: 각 label이 $\zeta$ 에서 무작위 측도를 뽑고, 깊이마다 직전에 뽑은 측도에서 다음 측도를 뽑아 내려가 마지막에 field $x$ 를 뽑는다. $r=1$ 이면 cavity field의 "분포의 분포"(population of populations)이고, $\mathbf m$ 은 [[g:parisi-parameters|Parisi parameter]] $0<m_1<\cdots<m_r<1$ 이다. label이 다른 [[g:message|message]]는 서로 독립이고 [[g:disorder|disorder]]와도 독립이다.
 gap: |
   (1) 시행 법칙은 임의다. 실제 계에서 만든 것이 아니고 moment 조건도 없다. (2) 사슬의 깊이 $d$ 를 [[g:physical-pure-state|물리적 pure state]] 계층의 단계와 동일시하지 않는다. $\mathbf m$ 은 여기서 임의이고(inf의 범위), 하한에서는 최적화하지 않고 $m_d=d/L$ 로 고정한다([[g:grid]]). (3) $r=0$ 은 이 카드가 아니라 x:model-depth-zero에서 따로 정한다.
 abstraction: exact

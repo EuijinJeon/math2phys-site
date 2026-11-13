@@ -9,7 +9,7 @@ math: |
   $$-H_N(\sigma)=\sum_{k=1}^{M_N}\theta_k(\sigma_{i_{1,k}},\ldots,\sigma_{i_{p,k}})+\sum_{i=1}^Nh_i\sigma_i,\qquad Z_N=\sum_{\sigma\in\{-1,1\}^N}e^{-H_N(\sigma)},\qquad F_N=\frac1N\mathbb E\log Z_N.\tag{2.2}$$
   이 정의의 모든 족은 서로 독립이다. 특히 index는 복원추출이다(한 factor 안에서 같은 site가 반복될 수 있다). 모형 매개변수와 disorder 법칙은 $N$ 이 변해도 고정이다.
 physics: |
-  spin당 평균 $\alpha$ 개의 $p$체 factor가 놓인 Poisson random [[g:hypergraph|hypergraph]](Erdős–Rényi형 factor graph) 위의 Ising spin glass이고, $F_N$ 은 quenched [[g:pressure|pressure]]($=-\beta f$)이다. [[g:disorder|disorder]]는 factor 개수, factor의 site, factor별 [[g:interaction|상호작용]], site별 [[g:field|장]]이다.
+  spin당 평균 $\alpha$ 개의 $p$체 factor가 놓인 Poisson random [[g:hypergraph|hypergraph]](Erdős–Rényi형 factor graph) 위의 Ising spin glass이고, $F_N$ 은 quenched [[g:pressure|pressure]]($=-\beta f$)이다. [[g:disorder|disorder]]는 factor 개수, factor의 site(복원추출), factor별 [[g:interaction|상호작용]], site별 [[g:field|장]]이고, 이 족들은 모두 서로 독립이며 각 상호작용·장은 같은 법칙의 독립 사본이다. 모형 매개변수와 disorder 법칙은 $N$ 에 무관하다.
 gap: |
   factor 개수는 고정 $\alpha N$ 이 아니라 Poisson이고 site는 복원추출이다. 이 선택은 cavity 비교의 정확한 Poisson 분해(cavity.tex)와 명명 모형(consequences.tex 6–8)에서 그대로 유지된다. 고정 개수나 비복원추출 모형과의 동치는 이 섹션이 다루지 않는다.
 abstraction: exact
