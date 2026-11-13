@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a> <span class="stag">§10</span> · 섹션: <a href="../map-consequences.html">§10</a></div><h1>Corollary 10.3 영온도 변분 극한 (Corollary 10.3, 식 (10.1))</h1><p><span class="badge">corollary</span><span class="badge proposed">proposed</span> <code>models:ground</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span> <span class="muted">Corollary 10.1</span> <span class="muted">— Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)</span></li><li><a class="node" href="../cards/models.sat.html" title="Corollary 10.2 soft random 짝수 $K$-SAT (Corollary 10.2)">models:sat</a> <span class="stag">§10</span> <span class="muted">Corollary 10.2</span> <span class="muted">— soft random 짝수 $K$-SAT (Corollary 10.2)</span></li><li><a class="node" href="../cards/x.cons-energy-score.html" title="$\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$">x:cons-energy-score</a> <span class="stag">§10</span> <span class="muted">— $\beta$ 를 뗀 에너지 점수 $\mathcal E_N$ 과 $\mathcal B_{r,\beta}$</span></li><li><a class="node" href="../cards/main.theorem.html" title="Theorem 2.1 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$">main:theorem</a> <span class="stag">주정리</span> <span class="muted">Theorem 2.1</span> <span class="muted">— 주정리: $\lim_NF_N=\inf_{r\ge0}\Phi_r$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/x.cons-ground-scope.html" title="영온도 공식이 요구하지 않는 것">x:cons-ground-scope</a> (consequences.tex 127: (10.1)의 inf). introduction.tex 33–34("their expected ground-state limits"), L0, g:ground-state<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/x.cons-ground-scope.html" title="영온도 공식이 요구하지 않는 것">x:cons-ground-scope</a> <span class="stag">§10</span></li></ul></dd><dt>수학 진술</dt><dd><p><a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a>, models:sat의 각 모형에서 극한
 $$g=\lim_{N\to\infty}\frac1N\mathbb E\max_\sigma\mathcal E_N(\sigma)$$
 이 존재하고

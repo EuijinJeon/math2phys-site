@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> <span class="stag">§6</span> · 섹션: <a href="../map-perturbations.html">§6</a></div><h1>score 오차가 작은 매개변수를 Markov 부등식으로 고르기</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>pert:selection.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/pert.selection.s1.html" title="매개변수 평균한 증분이 낮은 크기가 무한히 많다">pert:selection.s1</a> <span class="stag">§6</span> <span class="muted">— 매개변수 평균한 증분이 낮은 크기가 무한히 많다</span></li><li><a class="node" href="../cards/pert.concentration.html" title="Lemma 6.1 매개변수 평균한 score 집중 (Lemma 6.1)">pert:concentration</a> <span class="stag">§6</span> <span class="muted">Lemma 6.1</span> <span class="muted">— 매개변수 평균한 score 집중 (Lemma 6.1)</span></li><li><a class="node" href="../cards/pert.error.html" title="(6.4) score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)">pert:error</a> <span class="stag">§6</span> <span class="muted">(6.4)</span> <span class="muted">— score 오차 $e_{\nu,N}(\mathbf u)$ 와 기대값 $\langle\cdot\rangle$, $\mathbb E_{\mathbf u}$ (6.4)</span></li><li><a class="node" href="../cards/x.pert-parameter-measure.html" title="매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)">x:pert-parameter-measure</a> <span class="stag">§6</span> <span class="muted">— 매개변수 측도 $\pi$ (결정적 벡터를 고르는 데만 씀)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/pert.selection.html" title="Lemma 6.2 결정적 매개변수 선택 (Lemma 6.2)">pert:selection</a> (i), (ii)<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/pert.selection.s3.html" title="대각 부분수열로 모든 유한 tree moment를 수렴시키기">pert:selection.s3</a> <span class="stag">§6</span></li></ul></dd><dt>수학 진술</dt><dd><p>유한 개 type 모임에 대해 pert:concentration과 Markov 부등식은 그 오차가 모두 작은 집합의 매개변수 측도가 1로 감을 보인다. 구체적으로, 앞의 무한 집합에서 $N_j$ 를 차례로 충분히 크게 골라
 $$\sum_{\nu\le j}\int e_{\nu,N_j}(\mathbf u)\,\pi(d\mathbf u)\le j^{-3}$$
 이 되게 한다. 그러면 모든 $\nu\le j$ 에서 $e_{\nu,N_j}\le j^{-1}$ 인 집합 $G_j$ 의 여집합 측도는 $q_j\le j^{-2}$ 이다. $G_j$ 위 조건부 평균 증분은 충분히 큰 모든 $j$ 에서

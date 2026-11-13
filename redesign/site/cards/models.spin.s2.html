@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/models.spin.html" title="Corollary 10.1 Viana–Bray와 희석 짝수 $p$-spin 모형 (Corollary 10.1)">models:spin</a> <span class="stag">§10</span> · 섹션: <a href="../map-consequences.html">§10</a></div><h1>대칭 coupling으로 (2.4) 확인</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>models:spin.s2</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/models.spin.s1.html" title="tanh 전개로 (2.3) 확인">models:spin.s1</a> <span class="stag">§10</span> <span class="muted">— tanh 전개로 (2.3) 확인</span></li><li><a class="node" href="../cards/model.positivity.html" title="(2.4) 부호 조건 (2.4)">model:positivity</a> <span class="stag">§2</span> <span class="muted">(2.4)</span> <span class="muted">— 부호 조건 (2.4)</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd><a class="node" href="../cards/models.spin.s3.html" title="(2.1) 확인과 주정리 적용">models:spin.s3</a> (가정 (2.4))<br><span class="muted">이 카드를 쓰는 카드:</span><ul><li><a class="node" href="../cards/models.spin.s3.html" title="(2.1) 확인과 주정리 적용">models:spin.s3</a> <span class="stag">§10</span></li></ul></dd><dt>수학 진술</dt><dd><p>대칭성 때문에 $b$ 의 모든 홀수 moment는 0이다. 짝수 moment는 음이 아니다.</p></dd><dt>물리 진술</dt><dd><p>$J$ 의 분포가 대칭이면 $b=\tanh(\beta J)$ 도 대칭이라 $\mathbb E[(-b)^n]$ 은 홀수 $n$ 에서 0, 짝수 $n$ 에서 $\mathbb E[b^n]\ge0$ 이다. 그래서 <a class="gterm" href="../glossary.html#g-positivity" title="factorization의 $b$ 의 모든 차수 moment에 대한 부호 조건이다(유한 실수 기대값으로 해석).">부호 조건</a>이 모든 온도에서 성립한다.</p></dd><dt>차이</dt><dd><p>정확하다. 원문은 두 사실만 적는다. "$\tanh$ 가 홀함수라 $b$ 의 분포가 대칭"과 "$\lvert b\rvert&lt;1$ 이라 모든 moment가 유한한 실수"(model:positivity의 해석)는 작성자가 채운 연결이다. 대칭이 아닌 $J$ 에서 (2.4)가 성립하는지는 이 단계가 말하지 않는다.</p></dd><dt>축약 유형</dt><dd><code>exact</code> <span class="muted">— 같은 내용의 다른 표기</span></dd></dl><details class="src"><summary>원문 (consequences.tex:30-31)</summary><h4>consequences.tex:30-31</h4><pre class="tex"><code><span class="ln">30</span>$|b|&lt;1$ almost surely. Symmetry makes every odd moment of $b$ zero;
 <span class="ln">31</span>the even moments are nonnegative. Finally,</code></pre></details>
 </div>

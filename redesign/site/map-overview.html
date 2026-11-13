@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="L2.html">L2</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2.2 Proof strategy — 지도</h1><p class="stat">이 섹션의 카드 7장 가운데 증명 단계를 뺀 6장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 8장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/x.overview-strategy.html" title="§2.2 증명 전략 (Proof strategy)">x:overview-strategy</a></p><pre class="mermaid" data-map="sec-overview">
 flowchart LR
   subgraph IN[&quot;§2.2 Proof strategy&quot;]

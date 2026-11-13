@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.charging.html" title="Lemma 3.5 Charging fresh splits (fresh split에 작은 인자 매기기)">tree:charging</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>$|J|$ 하계와 상대 경계</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>tree:charging.s4</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.charging.s3.html" title="반복 합: $C_{q,k}\delta^b$">tree:charging.s3</a> <span class="stag">§3</span> <span class="muted">— 반복 합: $C_{q,k}\delta^b$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:charging의 (<span class="nolink" title="(3.15) (카드 없음)">tree:relative-charging</span>)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>지정된 각 vertex에서 $j=1$ 인자의 절댓값은 $\delta$이고, $j\geq2$이면
 $$|m_d-jm_{d+1}|=(j-1)m_d+j\delta\geq\eta.$$
 뒤쪽 인자의 수는 크기에만 의존한다. 따라서 $|J|\geq\delta^b\eta^{\sum_v(a_v-2)}$이고 결과가 따라 나온다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>$m_d-jm_{d+1}=m_d-j(m_d+\delta)=-(j-1)m_d-j\delta$이고 $j\ge2$, $m_d\ge\eta$이므로 크기 $\ge m_d\ge\eta$. vertex $v$의 인자는 $j=1$ 하나와 $j=2,\ldots,a_v-1$의 $a_v-2$개다. 그래서 $\frac1{|J|}\sum|c_E|\le C_{q,k}\delta^b/(\delta^b\eta^{\sum(a_v-2)})$이고 $\sum_v(a_v-2)$는 $q,k$로 유계이다(작성자 풀이; $\eta\le1$에서 $\eta^{\sum(a_v-2)}$는 그 지수의 최댓값으로 아래에서 누른다).</p><details class="src"><summary>원문 (trees.tex:449-456)</summary><h4>trees.tex:449-456</h4><pre class="tex"><code><span class="ln">449</span>For the final assertion, the $j=1$ factor at each designated vertex

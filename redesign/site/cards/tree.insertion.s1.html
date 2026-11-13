@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>backward induction: root log의 변화와 바뀐 kernel</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>tree:insertion.s1</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.original-tilt.html" title="(3.2) 분배함수에서 만든 tilted kernel">tree:original-tilt</a> <span class="stag">§3</span> <span class="muted">(3.2)</span> <span class="muted">— 분배함수에서 만든 tilted kernel</span></li><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:insertion의 첫 문단 (log Y_0, <span class="nolink" title="(3.4) (카드 없음)">tree:updated-kernel</span>)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>말단 spin 적분에서 분배함수 비는 $m_L=1$이므로 $K_LA=Y_{L-1}$이다. $X_d$, $X_d^A$를 옛·새 backward logarithm이라 하면, 앞 power mean에 대입해
 $$\exp\bigl(m_d(X_{d-1}^A-X_{d-1})\bigr)=K_d\exp\bigl(m_d(X_d^A-X_d)\bigr).$$
 backward induction이 $X_d^A-X_d=\log Y_d$를 보이고, 이어서 (<span class="nolink" title="(3.4) (카드 없음)">tree:updated-kernel</span>)을 준다. $d=L$에서 같은 공식은 보통의 Gibbs 밀도비다.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>풀어 쓰면(작성자): $X_{d-1}^A=m_d^{-1}\log P_de^{m_dX_d^A}$이고 $P_d=e^{-m_d(X_d-X_{d-1})}K_d$이므로 $e^{m_d(X_{d-1}^A-X_{d-1})}=K_de^{m_d(X_d^A-X_d)}$. 귀납 가정 $X_d^A-X_d=\log Y_d$를 넣으면 우변은 $K_dY_d^{m_d}=Y_{d-1}^{m_d}$. 시작점은 $X_{L-1}^A-X_{L-1}=\log(Z_A/Z)=\log K_LA=\log Y_{L-1}$. 새 kernel $e^{m_d(X_d^A-X_{d-1}^A)}P_d=e^{m_d(\log Y_d-\log Y_{d-1})}K_d$가 (<span class="nolink" title="(3.4) (카드 없음)">tree:updated-kernel</span>)이다.</p><details class="src"><summary>원문 (trees.tex:113-124)</summary><h4>trees.tex:113-124</h4><pre class="tex"><code><span class="ln">113</span>\begin{proof}

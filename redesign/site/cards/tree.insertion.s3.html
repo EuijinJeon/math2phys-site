@@ -29,6 +29,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -88,7 +91,7 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
+<nav class="top"><a href="../index.html">처음</a><a href="../L0.html">L0</a><a href="../L1.html">L1</a><a href="../L2.html">L2</a><a href="../rules.html">규칙 표</a><a href="../glossary.html">용어집</a><a href="../map.html">증명 지도</a><a href="../cards/index.html">카드 목록</a><a href="../check-report.html">검사 보고서</a></nav>
 <div class="crumbs"><a href="index.html">카드 목록</a> · 상위: <a class="node" href="../cards/tree.insertion.html" title="Lemma 3.1 Insertion calculus (삽입 미적분)">tree:insertion</a> <span class="stag">§3</span> · 섹션: <a href="../map-trees.html">§3</a></div><h1>단조성과 동차성</h1><p><span class="badge">step</span><span class="badge proposed">proposed</span> <code>tree:insertion.s3</code></p><dl class="iface"><dt>받는 것 (uses)</dt><dd><ul><li><a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a> <span class="stag">§3</span> <span class="muted">(3.3)</span> <span class="muted">— insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$</span></li></ul></dd><dt>내놓는 것 (provides)</dt><dd>tree:insertion의 마지막 문단. §4 upper.tex 53–54, 91–92; §5 cavity.tex 37–38, 95–96, 108–109의 log Y_0 상계; §6 perturbations.tex 64–65 (모두 \ref 없는 사용)<br><span class="muted">이 카드를 쓰는 카드:</span><span class="muted">(이 카드를 쓰는 카드 없음)</span></dd><dt>수학 진술</dt><dd><p>단조성과 동차성은 (<a class="node" href="../cards/tree.Y-recursion.html" title="(3.3) insertion recursion $Y_d$ 와 바뀐 kernel $K_d^A$">tree:Y-recursion</a>)에서 backward induction으로 바로 나온다: $a\le Y_d\le b$이면 $a^{m_d}\le K_dY_d^{m_d}\le b^{m_d}$이므로 $a\le Y_{d-1}\le b$ ($a,b$는 root-가측이므로 kernel 적분에서 상수). $A\mapsto cA$이면 $Y_d\mapsto cY_d$.</p></dd><dt>물리 진술</dt><dd><span class="muted">대응 없음</span></dd><dt>축약 유형</dt><dd><code>blackbox</code> <span class="muted">— 진술은 정확하고 증명만 숨김</span></dd></dl><h2>본문</h2><p>원문은 "follow at once by backward induction"(131–132)이라고만 쓴다. math 칸의 한 줄 유도는 작성자가 풀어 쓴 것이다.</p><details class="src"><summary>원문 (trees.tex:131-133)</summary><h4>trees.tex:131-133</h4><pre class="tex"><code><span class="ln">131</span>This proves \eqref{tree:density}.  Monotonicity and homogeneity follow
 <span class="ln">132</span>at once by backward induction in \eqref{tree:Y-recursion}.
 <span class="ln">133</span>\end{proof}</code></pre></details>
