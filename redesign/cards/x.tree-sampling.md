@@ -9,8 +9,9 @@ math: |
 physics: |
   [[g:prescribed-tree|prescribed tree]]는 [[g:replica|replica]]들의 계층 그림이다: leaf마다 replica 하나가 있고, 두 replica는 split 깊이까지 같은 [[g:state|상태]](같은 prefix vertex)를 지나며 그 아래로는 그 상태가 주어지면 조건부 독립으로 뽑힌다. 일부 replica를 잊어도 나머지의 결합 법칙은 바뀌지 않는다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: unary 구간 보존, 말단의 서로 다른 vertex와 같은 표본값의 구별, root 조건부 기대값의 약속을 생략한다.
   조건부 독립은 보조 계층 kernel의 구성에서 오는 것이고([[g:hierarchy]]), Gibbs 측도의 [[g:physical-pure-state|물리적 pure state]] 분해에서 유도된 것이 아니다. 서로 다른 leaf의 spin 배치가 같을 수 있다(특히 $L=1$이면 replica들은 같은 Gibbs 측도의 독립 표본이고, $L\ge2$에서도 값의 일치는 배제되지 않는다).
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: trees.tex, lines: [29, 39]}

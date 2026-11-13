@@ -11,7 +11,7 @@ math: |
   $$\sum_{k>K}\frac{c^k}{k}$$
   이하다. (작성자 보탬, 원문 문맥에서 읽은 것: $Y_0$은 insertion 전 kernel로 계산한 (tree:Y-recursion), $\mathcal T$는 $Q_k$로 뽑은 tree, $E_{\mathcal T}$는 그 위의 원래 kernel 표본 기대값이다.)
 physics: |
-  유계 실수 path 함수 $D$에 대해, [[g:insertion|insertion]] $A=1+tD$의 효과 $\log Y_0$는 [[g:tree-law|tree 법칙]] $Q_k$로 뽑은 $k$개 [[g:replica|replica]] tree 위에서 $D$의 곱의 평균을 계수 $(-1)^{k-1}t^k/k$로 더한 급수다($|t|\|D\|_\infty<1$에서, [[g:root]]가 주어진 조건부로; $|t|\|D\|_\infty\le c<1$이면 차수 $K$ 뒤 나머지의 절댓값은 $\sum_{k>K}c^k/k$ 이하). $L=1$이면 모든 replica가 독립 Gibbs 표본이라 $\mathbb E_{Q_k}E_{\mathcal T}\prod_aD^a=\langle D\rangle^k$이고, 식은 $\log(1+t\langle D\rangle)$의 Taylor 급수다. $L\ge2$에서는 $\langle D\rangle^k$ 자리에 계층 [[g:state|상태]]를 공유하는 replica들의 결합 평균이 들어간다.
+  유계 실수 path 함수 $D$에 대해, [[g:insertion|insertion]] $A=1+tD$의 효과 $\log Y_0$는 [[g:tree-law|tree 법칙]] $Q_k$로 뽑은 $k$개 [[g:replica|replica]] tree 위에서 $D$의 곱의 평균을 계수 $(-1)^{k-1}t^k/k$로 더한 급수다($|t|\|D\|_\infty<1$에서, [[g:root]]가 주어진 조건부로; $|t|\|D\|_\infty\le c<1$이면 차수 $K$ 뒤 나머지의 절댓값은 $\sum_{k>K}c^k/k$ 이하). $K_L$이 Gibbs kernel인 적용에서 $L=1$이면 모든 replica가 독립 Gibbs 표본이라 $\mathbb E_{Q_k}E_{\mathcal T}\prod_aD^a=\langle D\rangle^k$이고, 식은 $\log(1+t\langle D\rangle)$의 Taylor 급수다. $L\ge2$에서는 $\langle D\rangle^k$ 자리에 계층 [[g:state|상태]]를 공유하는 replica들의 결합 평균이 들어간다.
 gap: |
   root가 주어진 조건부 항등식이고, 수렴 영역은 $|t|\|D\|_\infty<1$이다. 유한 깊이 $L$의 임의의 kernel 열에 대해 정확히 성립하며 $n\to0$ 연속을 쓰지 않는다. $Q_k$를 물리 그림의 replica overlap tree 법칙으로 읽는 것은 [[g:tree-law]]의 물리 대응 칸에 intuition으로만 있다.
 abstraction: exact

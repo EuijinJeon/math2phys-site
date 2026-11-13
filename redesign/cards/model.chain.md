@@ -11,8 +11,9 @@ math: |
 physics: |
   $r$단 RSB의 시행 [[g:order-parameter|order parameter]]: $r=1$ 이면 cavity field의 "분포의 분포"(population of populations)이고, $\mathbf m$ 은 [[g:parisi-parameters|Parisi parameter]]이다. label이 다른 [[g:message|message]]는 서로 독립이고 [[g:disorder|disorder]]와도 독립이다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: 일반 $r$ 의 조건부 측도 사슬 (2.7), 시행 공간 $\mathcal M_{r+1}$, 엄격한 지수 순서를 전부 재진술하지 않는다.
   (1) 시행 법칙은 임의다. 실제 계에서 만든 것이 아니고 moment 조건도 없다. (2) 사슬의 깊이 $d$ 를 [[g:physical-pure-state|물리적 pure state]] 계층의 단계와 동일시하지 않는다. $\mathbf m$ 은 여기서 임의이고(inf의 범위), 하한에서는 최적화하지 않고 $m_d=d/L$ 로 고정한다([[g:grid]]). (3) $r=0$ 은 이 카드가 아니라 x:model-depth-zero에서 따로 정한다.
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: model.tex, lines: [68, 81]}

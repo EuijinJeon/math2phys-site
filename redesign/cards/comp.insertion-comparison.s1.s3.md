@@ -11,8 +11,9 @@ math: |
 physics: |
   서로 다른 factor의 이웃 cavity field들이 독립 사본이므로 bond 삽입의 계층 free entropy는 factor마다 [[g:edge-term|edge 항]] $\log T_0V_{\rm e}$ 의 합이 되고, 평균 factor 수가 $\alpha(p-1)$ 이다. [[g:power-mean|power mean]]이 독립 인자의 곱을 곱으로 보내기 때문이다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: bond 항의 인수분해는 말하지만 site 항과 합친 시행 functional 전체의 등식은 재진술하지 않는다.
   정확하다. 인수분해에는 "같은 prefix 아래 label 묶음들이 조건부 독립"이라는 구성상의 독립이 필요하다. reservoir 쪽에서는 이것이 성립하지 않으며(같은 배치를 공유), 그 차이는 s2–s4가 다룬다.
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: comparison.tex, lines: [181, 196]}

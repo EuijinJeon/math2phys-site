@@ -10,8 +10,9 @@ math: |
 physics: |
   [[g:interpolation|interpolation]]: $t=1$ 은 실제 계, $t=0$ 은 각 spin이 평균 $\alpha p$ 개(Poisson)의 cavity factor를 갖고, factor마다 다른 $p-1$ 개 자리를 독립 [[g:message|cavity field]]가 채우는 계다. $t=0$ 에서 spin들은 서로 분리되므로 [[g:root-logarithm|계층 free entropy]]는 site 하나의 [[g:site-term|site 항]] $N$ 개의 합이다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: 중간 $0<t<1$ 의 Poisson 평균, quenched 변수의 목록, $r=0$ 약속을 생략하고 두 끝점만 설명한다.
   $0<t<1$ 에서 $\varphi(t)$ 는 보통 뜻의 pressure가 아니라 message label의 보조 변수를 [[g:power-mean|power mean]]으로 적분한 [[g:root-logarithm|root logarithm]]의 기대값이다($t=1$ 에서만 spin 분배함수가 message에 의존하지 않아 $F_N$ 이 된다). "quenched"는 바깥 $\mathbb E$ 가 평균하고 power mean이 적분하지 않는다는 뜻이다.
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: upper.tex, lines: [36, 49]}

@@ -8,7 +8,7 @@
 
 사용: python3 tools/export_artifact.py [--root DIR]
   --root  site/ 를 읽고 build/artifact/ 에 쓸 디렉터리 (기본: redesign/, 환경변수 M2P_ROOT 도 된다).
-          maps/ 가 거기 없으면 실제 build/artifact/maps/ 를 쓴다.
+          maps/ 도 같은 root 에서 읽는다. SVG가 없거나 .mmd가 현재 카드와 다르면 중단한다.
 """
 import os, re, sys, posixpath, argparse, importlib.util
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -42,6 +42,18 @@ for p in pages:
     slugs[p] = s1
 assert len(set(slugs.values())) == len(slugs)
 
+# 지도 SVG가 다른 카드 버전의 그림이면 조용히 게시하지 않는다. render_maps.py가
+# 함께 쓴 원문(.mmd)을 현재 카드에서 재계산한 지도와 대조한다.
+maps = B.all_maps(B.Struct(B.C.load_cards(ROOT), B.C.load_graph()))
+for name, text in maps.items():
+    mmd = os.path.join(OUT, "maps", name + ".mmd")
+    svg = os.path.join(OUT, "maps", name + ".svg")
+    if not os.path.isfile(svg) or not os.path.isfile(mmd):
+        sys.exit(f"지도 {name}의 SVG 또는 .mmd가 없다. 같은 root로 render_maps.py를 실행한다.")
+    with open(mmd, encoding="utf-8") as fh:
+        if fh.read() != text + "\n":
+            sys.exit(f"지도 {name}이 현재 카드와 다르다. 같은 root로 render_maps.py를 다시 실행한다.")
+
 def rewrite(html, rel):
     base = posixpath.dirname(rel)
     def sub(m):
@@ -71,8 +83,6 @@ for rel in pages:
         def draw(m):
             name = m.group(1)
             svgp = os.path.join(OUT, "maps", name + ".svg")
-            if not os.path.exists(svgp):
-                svgp = os.path.join(REAL_ROOT, "build", "artifact", "maps", name + ".svg")
             if not os.path.exists(svgp):
                 missing.append(name)
                 return '<p class="muted">(지도 그림 없음: render_maps.py 를 먼저 돌린다)</p>'

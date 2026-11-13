@@ -9,7 +9,7 @@ math: |
   $$\bar f(x)=\sum_sf(s)q_x(s)$$
   로 바꾸고, edge 삽입이면 $p$ 개 모두 바꾼다. 마지막 경우 독립 message 과정은 섭동되지 않은 tilted tree에 덧붙여지므로 그 증분은 $\log T_0V_{\rm e}$ 이다.
 physics: |
-  실제 factor는 $p$ 개 실제 spin에, [[g:site-term|cavity factor]]는 실제 spin 하나와 $p-1$ 개 독립 [[g:message|cavity field]]에, [[g:edge-term|edge 항]]은 $p$ 개 cavity field에만 붙는다. [[g:factorization|factor 전개]] 덕에 셋 모두 $a(1+b\prod(\text{spin 인자}))$ 꼴이고, cavity field 쪽 인자는 그 field 아래의 평균 $\bar f(x)$ 다.
+  실제 factor는 $p$ 개 실제 spin에, [[g:site-term|cavity factor]]는 실제 spin 하나와 $p-1$ 개 독립 [[g:message|cavity field]]에, [[g:edge-term|edge 항]]은 $p$ 개 cavity field에만 붙는다. [[g:factorization|factor 전개]] 덕에 셋 모두 $a(1+b\prod(\text{spin 인자}))$ 꼴이고, cavity field 쪽 인자는 그 field 아래의 평균 $\bar f(x)$ 다. 독립 message 과정만을 추가한 edge 삽입의 증분은 $\log T_0V_{\rm e}$ 이다.
 gap: |
   같은 내용이다. edge 삽입은 spin에 의존하지 않으므로 그 증분은 보조 message 변수만의 [[g:power-mean|power mean]] $\log T_0V_{\rm e}$ 다.
 abstraction: exact

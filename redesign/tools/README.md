@@ -17,10 +17,15 @@ python3 tools/extract.py                        # 원문이 바뀔 때만
 python3 tools/check.py                          # 카드가 있는 모든 파일에 포함 검사
 python3 tools/check.py --sections decorrelation # 포함 검사 대상을 파일 stem으로 지정 (쉼표 구분)
 python3 tools/build.py                          # site/index.html 에서 시작
+python3 tools/render_maps.py                     # 한 파일 내보내기에 쓸 SVG 12개
+python3 tools/export_artifact.py                 # build/artifact/mezard-parisi.html
 ```
 
 - `--root DIR`(또는 환경변수 `M2P_ROOT`): `cards/`, `layers/`, `build/check-report.md`, `site/`를 이 디렉터리에서 읽고 쓴다. `source/`와 `build/graph.json`은 항상 실제 것을 쓴다. 시험용 fixture에 쓴다.
 - `check.py --out FILE`, `build.py --out DIR`: 출력 위치 지정.
+- `render_maps.py --root DIR --mermaid FILE`: 같은 root의 카드에서 지도를 만든다. Node의 Playwright와 Chromium 및 Mermaid 10.9.3이 필요하다. `--mermaid`를 생략하면 `M2P_MERMAID`, root의 vendor, npm 순서로 찾는다. `CHROME`, `NODE_PATH`를 지정할 수 있다. 도중에 실패해도 기존 그림은 유지한다.
+- `export_artifact.py --root DIR`: `DIR/site` 및 `DIR/build/artifact/maps`를 읽는다. 현재 카드로 만든 Mermaid 원문과 저장된 `.mmd`를 비교하고 SVG가 없거나 원문이 다르면 중단한다. 같은 원문에 맞춰 생성된 SVG라는 전제이며 SVG 자체의 출처를 검증하지는 않는다. 다른 root의 그림을 대신 쓰지 않는다.
+- 격리 시험은 `--root`와 `--out`을 함께 쓴다. export는 항상 `<root>/site`를 읽으므로 build 출력도 거기에 둔다. `python3 tools/tests/test_dependencies.py`는 별도 임시 카드로 섹션 참조의 직접·조상 의존과 누락 경고를 확인한다.
 - `cards/`나 `layers/`가 비어 있어도 죽지 않고 "아직 카드 없음"으로 보고한다. 머리말이 깨진 카드는 오류로 기록하고 계속 간다.
 
 ## 용어집 (`layers/glossary.md`)
@@ -42,3 +47,4 @@ python3 tools/build.py                          # site/index.html 에서 시작
 - 문장 분할은 휴리스틱이다(수식·약어는 보호하지만 완벽하지 않다). 결정적이다.
 - 수식 번호는 `\notag`/`\nonumber`/`\tag`까지 반영하지만 `subequations`, `alignat` 열 수 등은 다루지 않는다.
 - Mermaid·MathJax는 CDN에서 불러오므로 사이트를 보려면 인터넷이 필요하다.
+- `provides`는 자유 서술이며 일부 축약 ID·설명·규칙 번호를 함께 담는다. 따라서 `uses`와의 대칭을 정확하게 기계 검증하지 않는다. 양쪽 연결과 `\ref` 없는 의존은 사람이 대조해야 한다.

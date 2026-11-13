@@ -11,8 +11,9 @@ math: |
 physics: |
   site $i$ 를 무작위로 고른 뒤, 깊이 $r$ [[g:state|상태]](보조 prefix)가 주어졌을 때의 국소 자화 $\langle\sigma_i\rangle$ 을 [[g:message|cavity field]] $x$ 로 쓴다. 그 상태 안의 [[g:replica|replica]]들이 site $i$ 에서 보는 spin은 평균 $\tanh x$ 의 독립 Ising spin이다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: 유한 $x$ 의 보장, 확대된 root와 filtration의 정의를 생략하고 한 site의 말단 조건부 법칙만 말한다.
   "one-site 법칙이 같다"는 site $i$ 하나의 spin에 대한 것이다. 같은 prefix 아래 독립 Gibbs replica들의 site $i$ spin이 독립인 것은 tree 표본 규칙(깊이 $L$ 의 서로 다른 자식은 독립)에서 온다. 여러 site의 결합 법칙은 여기서 다루지 않는다. 상태는 섭동 reservoir의 보조 계층 prefix다.
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: comparison.tex, lines: [27, 43]}

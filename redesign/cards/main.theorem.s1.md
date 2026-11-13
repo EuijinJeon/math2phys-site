@@ -9,7 +9,7 @@ math: |
   $$\widehat\theta(s)=\log\frac{1+b\prod_{\ell=1}^pf_\ell(s_\ell)}{1+b\prod_{\ell=1}^pf_\ell(1)}.$$
   $a$ 가 사라졌다. $f_\ell$ 들이 i.i.d.이고 $b$ 와 독립이므로 $\widehat\theta$ 의 법칙은 입력의 순열에 대해 불변이다. 또 $\mathbb EB(\widehat\theta)\le2\mathbb EB(\theta)<\infty$.
 physics: |
-  spin 무관인 무작위 상수(에너지 원점)를 빼는 [[g:constant-shift|상수 이동]]이다. 그러면 factor weight는 [[g:factorization|전개]]의 $b$, $f_\ell$ 만으로 정해지고, 그 대칭 때문에 [[g:interaction|상호작용]]의 법칙이 $p$ 개 입력에 대해 대칭([[g:permutation-invariance|순열 불변]])이 된다.
+  특정한 spin 무관 무작위 상수 $c=\theta(1,\ldots,1)$ 를 빼서 $\widehat\theta=\theta-c$ 로 만드는 [[g:constant-shift|상수 이동]]이다. 그러면 factor weight는 [[g:factorization|전개]]의 $b$, $f_\ell$ 만으로 정해지고, 그 대칭 때문에 [[g:interaction|상호작용]]의 법칙이 $p$ 개 입력에 대해 대칭([[g:permutation-invariance|순열 불변]])이 된다. $|c|\le B(\theta)$ 이므로 $c$ 는 적분 가능하고, $\mathbb EB(\widehat\theta)\le2\mathbb EB(\theta)<\infty$ 다.
 gap: |
   정확하다. 상수 이동이 pressure와 functional을 같은 양 $-\alpha\mathbb Ec$ 만큼 옮긴다는 것은 이 단계가 아니라 main:theorem.s3에서 reduction:shift로 쓴다.
 abstraction: exact

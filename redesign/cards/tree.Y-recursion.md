@@ -11,7 +11,7 @@ math: |
   $$K_d^A(dz\mid\mathscr F_{d-1})=\left(\frac{Y_d(z)}{Y_{d-1}}\right)^{m_d}K_d(dz\mid\mathscr F_{d-1})$$
   로 쓴다. recursion이 이것들이 확률 kernel임을 보인다. tree 기대값의 위첨자 $A$는 이 kernel을 쓴다는 뜻이다.
 physics: |
-  양의 path 함수인 [[g:insertion|insertion]] $A$([[g:root]]가 주어진 조건부로 위로 유계이고 0에서 떨어져 있다고 둔다)의 효과를 아래에서 위로 적분한다: 말단 kernel로 $A$를 평균한 $Y_{L-1}=K_LA$($m_L=1$)를 구하고, 그 위로 깊이마다 지수 $m_d$의 [[g:power-mean|power mean]]을 취한다. 바뀐 kernel은 $(Y_d/Y_{d-1})^{m_d}$로 재가중한다: 깊이 $d<L$에서는 깊이 $d$ [[g:state|상태]]의 무게를, $d=L$에서는 spin 배치의 무게를.
+  양의 path 함수인 [[g:insertion|insertion]] $A$([[g:root]]가 주어진 조건부로 위로 유계이고 0에서 떨어져 있다고 둔다)의 효과를 아래에서 위로 적분한다: 말단 kernel로 $A$를 평균한 $Y_{L-1}=K_LA$($m_L=1$)를 구하고, 그 위로 깊이마다 지수 $m_d$의 [[g:power-mean|power mean]]을 취한다. 바뀐 kernel은 $(Y_d/Y_{d-1})^{m_d}$로 재가중한다: 깊이 $d<L$에서는 깊이 $d$ [[g:state|상태]]의 무게를, $d=L$에서는 말단 변수의 무게를 바꾼다(Gibbs 적용에서는 spin 배치). recursion 덕에 재가중한 kernel도 확률 kernel이다.
 gap: |
   $A$가 root가 주어진 조건부로 위아래로 유계라는 가정 아래의 정의다. 정의는 임의의 kernel 열에 대한 것이다. $K_LA$를 Gibbs 평균으로 읽는 것은 kernel을 분배함수에서 만든 경우, 곧 $K_L$이 prefix가 주어진 Gibbs kernel인 경우([[tree:original-tilt]], trees.tex 63–64)의 것이다. 복소 매개변수의 $A=1+\sum_jt_jD_j$로 넓히는 것은 [[x:tree-analytic-bounds]]가 한다.
 abstraction: exact

@@ -13,8 +13,9 @@ math: |
 physics: |
   [[g:factorization|factor 전개]]의 곱 항이 없으면 factor는 spin과 무관한 상수 $e^c$ 이고, [[g:pressure|pressure]]와 모든 시행값([[g:functional]])이 같은 값 $\log2+\mathbb E\log\cosh h+\alpha\mathbb Ec$ 가 된다. 곱 항이 있으면 $b$ 와 $f$ 가 서로 독립이고 곱이 a.s. 1 미만이라는 데서 둘 다 본질적으로 유계다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: 비퇴화 경우의 명시적 본질적 상계 $u^{-p}$, $(vu^{p-1})^{-1}$ 를 생략한다.
   같은 내용이다. 유계 상수 $u^{-p}$, $(vu^{p-1})^{-1}$ 은 1보다 클 수 있다($f\mapsto\lambda f$, $b\mapsto\lambda^{-p}b$ 의 척도 자유, x:model-moment-finiteness 카드의 관찰). "$b$ 가 tanh처럼 1 미만"을 말하는 것은 아니다.
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: upper.tex, lines: [17, 34]}

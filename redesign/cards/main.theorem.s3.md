@@ -13,8 +13,9 @@ math: |
 physics: |
   잘린 모형의 하한을 [[g:stability|$L^1$ 안정성]]으로 원래 모형에 옮긴다. 핵심은 시행 쪽 안정성 상수가 모든 $r$ 과 시행 법칙에 균일해서 inf와 극한 $K\to\infty$ 를 바꿀 수 있다는 것이다. [[g:constant-shift|상수 이동]]은 pressure와 [[g:functional|시행 functional]]을 같은 양만큼 옮기므로 되돌려도 부등식이 남는다.
 gap: |
+  물리 문장은 다음 내용을 생략한 약화다: 유한 절단 수준에서의 정량 오차 $2\alpha pD_K+2d_K$ 와 그 앞의 두 안정성 한계는 math에만 있다.
   정확하다. 첫 부등식 $\liminf_N\widehat F_N\ge I_K-\alpha D_K-d_K$ 는 $\widehat F_N\ge F_N^{(K)}-\alpha D_K-d_K$ 와 comp:bounded-lower의 $\liminf_NF^{(K)}_N\ge I_K$ 를 합친 것이다(원문은 둘을 한 줄로 쓴다). 되돌리기는 $\widehat F_N=F_N-\alpha\mathbb Ec$ 와 $\widehat{\mathcal B}_r=\mathcal B_r-\alpha\mathbb Ec$ 에서 $\widehat\Phi_r=\Phi_r-\alpha\mathbb Ec$ 이므로 양변의 $-\alpha\mathbb Ec$ 가 지워진다. 마지막 단계는 상수가 $\zeta,\mathbf m,r$ 에 의존하지 않는다는 데 기댄다(작성자가 풀어 씀).
-abstraction: exact
+abstraction: weakening
 children: []
 source:
   - {file: reduction.tex, lines: [70, 84]}

@@ -46,12 +46,14 @@ def find_chrome():
         m = sorted(glob.glob(pat))
         if m:
             return m[-1]
-    return None
+    return shutil.which("chromium") or shutil.which("chromium-browser") or shutil.which("google-chrome")
 
 
 def node_path():
     if os.environ.get("NODE_PATH"):
         return os.environ["NODE_PATH"]
+    if os.environ.get("CODEX_PRIMARY_RUNTIME_NODE_MODULES"):
+        return os.environ["CODEX_PRIMARY_RUNTIME_NODE_MODULES"]
     r = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True)
     return r.stdout.strip()
 
@@ -68,21 +70,24 @@ def main():
     S = B.Struct(cards, C.load_graph())
     maps = B.all_maps(S)
     out = os.path.join(root, "build", "artifact", "maps")
-    os.makedirs(out, exist_ok=True)
-    for f in glob.glob(os.path.join(out, "*.mmd")) + glob.glob(os.path.join(out, "*.svg")):
-        os.remove(f)
-    for name, text in maps.items():
-        with open(os.path.join(out, name + ".mmd"), "w", encoding="utf-8") as fh:
-            fh.write(text + "\n")
     mer = find_mermaid(args.mermaid, root)
     env = dict(os.environ, NODE_PATH=node_path())
     chrome = find_chrome()
     if chrome:
         env["CHROME"] = chrome
     print(f"지도 {len(maps)}개, mermaid={mer}, chrome={chrome}")
-    r = subprocess.run(["node", os.path.join(HERE, "render_maps.js"), mer, out, *maps], env=env)
-    if r.returncode:
-        sys.exit(f"일부 지도를 그리지 못했다 (종료 코드 {r.returncode})")
+    with tempfile.TemporaryDirectory(prefix="m2p-maps-") as stage:
+        for name, text in maps.items():
+            with open(os.path.join(stage, name + ".mmd"), "w", encoding="utf-8") as fh:
+                fh.write(text + "\n")
+        r = subprocess.run(["node", os.path.join(HERE, "render_maps.js"), mer, stage, *maps], env=env)
+        if r.returncode:
+            sys.exit(f"일부 지도를 그리지 못했다 (종료 코드 {r.returncode}); 기존 그림 유지")
+        os.makedirs(out, exist_ok=True)
+        for f in glob.glob(os.path.join(out, "*.mmd")) + glob.glob(os.path.join(out, "*.svg")):
+            os.remove(f)
+        for f in glob.glob(os.path.join(stage, "*")):
+            shutil.move(f, out)
     old = os.path.join(root, "build", "artifact", "map.svg")
     if os.path.isfile(old):
         os.remove(old)   # 옛 단일 지도(§7 시범 때의 것)
