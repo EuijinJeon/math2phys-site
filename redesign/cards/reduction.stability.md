@@ -11,9 +11,9 @@ math: |
   가 $N$, $r$, 모든 시행 법칙에 균일하게 성립한다($r=0$ 포함). $c$ 가 상호작용에 딸린 적분 가능한 무작위 상수이고 $\widehat\theta=\theta-c$ 이면
   $$\widehat F_N=F_N-\alpha\mathbb Ec,\qquad\widehat{\mathcal B}_r=\mathcal B_r-\alpha\mathbb Ec.\tag{reduction:shift}$$
 physics: |
-  quenched [[g:pressure|pressure]]와 시행 [[g:functional|functional]]은 [[g:interaction|상호작용]]과 [[g:field|장]]의 분포에 대해 $L^1$ 거리로 Lipschitz이고([[g:stability]]), 시행 쪽 상수는 모든 [[g:rsb-steps|RSB 단계 수]]와 시행 order parameter에 균일하다. spin 무관 상수를 상호작용에서 빼면([[g:constant-shift|상수 이동]]) pressure와 functional이 같은 양 $-\alpha\mathbb Ec$ 만큼 움직인다.
+  1차 moment 가정 (2.1)([[model:integrability]])을 각각 만족하는 두 [[g:interaction|상호작용]] 법칙과 두 [[g:field|장]] 법칙을 결합해 $D=\mathbb E\max_s\lvert\theta(s)-\theta'(s)\rvert$, $d=\mathbb E\lvert h-h'\rvert$ 로 두면, quenched [[g:pressure|pressure]]의 차는 $\alpha D+d$ 이하이고 같은 시행 법칙에서 잰 시행 [[g:functional|functional]]의 차는 $\alpha(2p-1)D+d$ 이하다([[g:stability]]). 두 한계는 $N$, 모든 [[g:rsb-steps|RSB 단계 수]]($r=0$ 포함), 모든 시행 order parameter에 균일하다. 적분 가능한 spin 무관 무작위 상수 $c$ 를 상호작용에서 빼면([[g:constant-shift|상수 이동]]) pressure와 functional이 같은 양 $-\alpha\mathbb Ec$ 만큼 움직인다.
 gap: |
-  정확하다. "분포의 $L^1$ 거리"는 두 법칙의 한 결합(coupling) 아래의 $D$, $d$ 이고, 어떤 결합을 써도 부등식이 성립한다. 상수 $c$ 는 각 상호작용 사본에 딸린 무작위 상수이고 적분 가능해야 한다. $\mathcal B_r$ 과 $\mathcal B_r'$ 은 같은 시행 법칙 $(\zeta,\mathbf m)$ 에서 비교한다.
+  정확하다. $D$, $d$ 는 두 법칙의 한 결합(coupling) 아래의 $L^1$ 차이이고, 어떤 결합을 써도 부등식이 성립한다. (2.1)은 $F_N$, $\mathcal B_r$ 과 $D$, $d$ 가 유한하도록 하는 가정이다. 상수 $c$ 는 각 상호작용 사본에 딸린 무작위 상수이고 적분 가능해야 한다. $\mathcal B_r$ 과 $\mathcal B_r'$ 은 같은 시행 법칙 $(\zeta,\mathbf m)$ 에서 비교한다.
 abstraction: exact
 children: [reduction:stability.s1, reduction:stability.s2, reduction:stability.s3]
 source:

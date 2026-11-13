@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§7 Decorrelation on prescribed trees"]
     a0["깊이 평균 A_L,<br/>decor:average-definition"]
     a1["깊이 평균의 분수 거듭제곱 부등식<br/>decor:average-holder"]
@@ -49,22 +49,22 @@ flowchart TB
   a17 --> a12
   a17 --> a16
   a18 --> a17
-  a0 -.->|1| X3
-  a12 -.->|1| X3
-  X2 -.->|2| a13
-  a13 -.->|1| X3
-  X1 -.->|1| a14
-  X2 -.->|1| a14
-  X0 -.->|1| a16
-  a16 -.->|1| X3
-  a17 -.->|1| X3
-  X0 -.->|1| a18
-  X0 -.->|3| a2
-  X2 -.->|2| a2
-  X2 -.->|1| a6
-  X0 -.->|1| a8
-  X2 -.->|2| a8
-  a8 -.->|1| X3
+  a0 -.-> X3
+  a12 -.-> X3
+  X2 -.-> a13
+  a13 -.-> X3
+  X1 -.-> a14
+  X2 -.-> a14
+  X0 -.-> a16
+  a16 -.-> X3
+  a17 -.-> X3
+  X0 -.-> a18
+  X0 -.-> a2
+  X2 -.-> a2
+  X2 -.-> a6
+  X0 -.-> a8
+  X2 -.-> a8
+  a8 -.-> X3
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

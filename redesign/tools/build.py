@@ -881,7 +881,7 @@ def section_detail_map(S, key):
             xs.setdefault((a, S.home(b), "in"), set()).add(b)
     xhomes = sorted({h for (_, h, _) in xs}, key=lambda h: [sc["key"] for sc in S.secs].index(h) if h in S.by_key else 99)
     xid = {h: f"X{k}" for k, h in enumerate(xhomes)}
-    L = ["flowchart TB"]
+    L = ["flowchart LR"]
     sc = S.by_key[key]
     head = "주정리" if key == "main" else f'§{sc["num"]} {mermaid_text(sc["title"], 40)}'
     L.append(f'  subgraph IN["{head}"]')
@@ -896,9 +896,9 @@ def section_detail_map(S, key):
         L.append(f"  {ids[b]} --> {ids[a]}")
     for (i, h, d), v in sorted(xs.items(), key=lambda kv: (ids[kv[0][0]], xid[kv[0][1]], kv[0][2])):
         if d == "in":
-            L.append(f"  {xid[h]} -.->|{len(v)}| {ids[i]}")
+            L.append(f"  {xid[h]} -.-> {ids[i]}")
         else:
-            L.append(f"  {ids[i]} -.->|{len(v)}| {xid[h]}")
+            L.append(f"  {ids[i]} -.-> {xid[h]}")
     thm = [ids[i] for i in internal if cards[i].get("kind") in KIND_GROUP]
     oth = [ids[i] for i in internal if cards[i].get("kind") not in KIND_GROUP]
     L.append("  classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;")
@@ -996,7 +996,7 @@ def map_section_page(S, key, ctx):
     body = (f'<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>{esc(head)} — 지도</h1>'
             f'<p class="stat">이 섹션의 카드 {len(S.members[key])}장 가운데 증명 단계를 뺀 {len(internal)}장(파랑: 정리·명제·보조정리·따름정리, '
             "회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), "
-            f"점선은 밖의 {next_}장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. "
+            f"점선은 밖의 {next_}장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. "
             "카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, "
             "섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. "
             f'섹션 카드: {ctx.link(sc["card"])}</p>'

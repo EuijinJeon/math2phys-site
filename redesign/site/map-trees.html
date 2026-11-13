@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§3 Calculus on finite trees — 지도</h1><p class="stat">이 섹션의 카드 39장 가운데 증명 단계를 뺀 22장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 27장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a></p><pre class="mermaid" data-map="sec-trees">
-flowchart TB
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§3 Calculus on finite trees — 지도</h1><p class="stat">이 섹션의 카드 39장 가운데 증명 단계를 뺀 22장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 27장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/tree.section.html" title="3 §3 유한 tree 위의 미적분">tree:section</a></p><pre class="mermaid" data-map="sec-trees">
+flowchart LR
   subgraph IN[&quot;§3 Calculus on finite trees&quot;]
     a0[&quot;tree 법칙 Q_k&lt;br/&gt;tree:Q-rule&quot;]
     a1[&quot;insertion recursion Y_d 와 바뀐 …&lt;br/&gt;tree:Y-recursion&quot;]
@@ -152,47 +152,47 @@ flowchart TB
   a21 --&gt; a8
   a21 --&gt; a12
   a21 --&gt; a20
-  a0 -.-&gt;|1| X1
-  a0 -.-&gt;|2| X5
-  a1 -.-&gt;|1| X1
-  a1 -.-&gt;|1| X2
-  a1 -.-&gt;|1| X3
-  a1 -.-&gt;|1| X5
-  a10 -.-&gt;|2| X4
-  a11 -.-&gt;|1| X5
-  a13 -.-&gt;|1| X3
-  a16 -.-&gt;|1| X3
-  a17 -.-&gt;|1| X1
-  a17 -.-&gt;|2| X2
-  a17 -.-&gt;|3| X3
-  a17 -.-&gt;|1| X5
-  X0 -.-&gt;|1| a18
-  a18 -.-&gt;|1| X2
-  a18 -.-&gt;|2| X3
-  a18 -.-&gt;|2| X5
-  a2 -.-&gt;|1| X5
-  a20 -.-&gt;|1| X5
-  a21 -.-&gt;|1| X1
-  a21 -.-&gt;|1| X2
-  a21 -.-&gt;|4| X3
-  a21 -.-&gt;|1| X4
-  a21 -.-&gt;|3| X5
-  a3 -.-&gt;|1| X4
-  a4 -.-&gt;|3| X3
-  a4 -.-&gt;|1| X4
-  a6 -.-&gt;|1| X1
-  a6 -.-&gt;|2| X2
-  a6 -.-&gt;|4| X3
-  a6 -.-&gt;|1| X5
-  a7 -.-&gt;|1| X1
-  a7 -.-&gt;|2| X5
-  a8 -.-&gt;|4| X3
-  a8 -.-&gt;|1| X4
-  a8 -.-&gt;|3| X5
-  a9 -.-&gt;|1| X1
-  a9 -.-&gt;|5| X2
-  a9 -.-&gt;|2| X3
-  a9 -.-&gt;|1| X5
+  a0 -.-&gt; X1
+  a0 -.-&gt; X5
+  a1 -.-&gt; X1
+  a1 -.-&gt; X2
+  a1 -.-&gt; X3
+  a1 -.-&gt; X5
+  a10 -.-&gt; X4
+  a11 -.-&gt; X5
+  a13 -.-&gt; X3
+  a16 -.-&gt; X3
+  a17 -.-&gt; X1
+  a17 -.-&gt; X2
+  a17 -.-&gt; X3
+  a17 -.-&gt; X5
+  X0 -.-&gt; a18
+  a18 -.-&gt; X2
+  a18 -.-&gt; X3
+  a18 -.-&gt; X5
+  a2 -.-&gt; X5
+  a20 -.-&gt; X5
+  a21 -.-&gt; X1
+  a21 -.-&gt; X2
+  a21 -.-&gt; X3
+  a21 -.-&gt; X4
+  a21 -.-&gt; X5
+  a3 -.-&gt; X4
+  a4 -.-&gt; X3
+  a4 -.-&gt; X4
+  a6 -.-&gt; X1
+  a6 -.-&gt; X2
+  a6 -.-&gt; X3
+  a6 -.-&gt; X5
+  a7 -.-&gt; X1
+  a7 -.-&gt; X5
+  a8 -.-&gt; X3
+  a8 -.-&gt; X4
+  a8 -.-&gt; X5
+  a9 -.-&gt; X1
+  a9 -.-&gt; X2
+  a9 -.-&gt; X3
+  a9 -.-&gt; X5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["주정리"]
     a0["주정리: _NF_N=_r0_r<br/>main:theorem"]
   end
@@ -8,13 +8,13 @@ flowchart TB
   X3["밖: §8 Independent hierarchical me…<br/>카드 1장"]
   X4["밖: §9 Normalization, truncation, …<br/>카드 1장"]
   X5["밖: §10 Named models and the zero-t…<br/>카드 3장"]
-  X0 -.->|7| a0
-  a0 -.->|1| X0
-  a0 -.->|1| X1
-  X2 -.->|1| a0
-  X3 -.->|1| a0
-  X4 -.->|1| a0
-  a0 -.->|3| X5
+  X0 -.-> a0
+  a0 -.-> X0
+  a0 -.-> X1
+  X2 -.-> a0
+  X3 -.-> a0
+  X4 -.-> a0
+  a0 -.-> X5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

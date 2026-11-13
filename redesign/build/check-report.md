@@ -1,6 +1,6 @@
 # 적법성 검사 보고서
 
-카드 54개 (머리말 정상 54개, 잎 43개).
+카드 244개 (머리말 정상 244개, 잎 195개).
 
 | 검사 | 결과 | 문제 수 |
 |---|---|---|
@@ -24,9 +24,18 @@
 
 ## 포함 — 통과
 
-- 참고: 대상 섹션(파일): decorrelation
-- 참고: 카드 54개 중 잎 43개
+- 참고: 대상 섹션(파일): cavity, comparison, consequences, decorrelation, model, overview, perturbations, reduction, trees, upper
+- 참고: 카드 244개 중 잎 195개
+- 참고: cavity.tex: 필요한 70줄 모두 덮임
+- 참고: comparison.tex: 필요한 176줄 모두 덮임
+- 참고: consequences.tex: 필요한 99줄 모두 덮임
 - 참고: decorrelation.tex: 필요한 476줄 모두 덮임
+- 참고: model.tex: 필요한 7줄 모두 덮임
+- 참고: overview.tex: 필요한 0줄 모두 덮임
+- 참고: perturbations.tex: 필요한 357줄 모두 덮임
+- 참고: reduction.tex: 필요한 33줄 모두 덮임
+- 참고: trees.tex: 필요한 266줄 모두 덮임
+- 참고: upper.tex: 필요한 112줄 모두 덮임
 
 ## 의존 — 통과
 
@@ -50,4 +59,4 @@
 
 ## 용어 — 통과
 
-- 참고: 항목 62개, 링크 394개
+- 참고: 항목 68개, 링크 1039개

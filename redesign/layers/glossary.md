@@ -26,7 +26,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:hypergraph — 밀도 $\alpha$ 와 Poisson hypergraph
 - **기호**: $\alpha>0$, $M_N\sim\mathrm{Poisson}(\alpha N)$, 독립 균일 site $i_{\ell,k}\in[N]$
 - **뜻**: factor 수 $M_N$ 은 평균 $\alpha N$ 의 Poisson이고 각 factor의 $p$ 개 site는 $[N]$ 에서 독립 균일로 복원추출한다. spin당 평균 factor 수는 $\alpha$, spin 하나의 평균 차수는 $\alpha p$ 다.
-- **역할**: site 항의 $k\sim\mathrm{Poisson}(\alpha p)$ 와 edge 항 계수 $\alpha(p-1)$(`model:functional`), reservoir의 평균 개수 $\rho_N$(`cavity:reservoir-mean`), 삽입 개수 $K_{\rm s}$, $K_{\rm b}$(P4)를 정한다.
+- **역할**: site 항의 $k\sim\mathrm{Poisson}(\alpha p)$ 와 edge 항 계수 $\alpha(p-1)$(`model:functional`), reservoir의 평균 개수 $\rho_N$(`cavity:increment`의 (5.4)), 삽입 개수 $K_{\rm s}$, $K_{\rm b}$(P4)를 정한다.
 - **정의 위치**: `model:hamiltonian`, `model.tex` 9–23
 - **물리 대응**: exact — Erdős–Rényi형 random factor graph. $K$-SAT에서는 clause density.
 - **쓰지 않는 뜻**: 증명은 이 그래프의 국소 tree 구조를 쓰지 않는다(P11 차이). 논문의 문장이 아니라, §5–§8의 어느 단계도 국소 구조를 쓰지 않는다는 데서 읽은 것이다.
@@ -162,7 +162,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\Phi_r=\inf_{\zeta,\mathbf m}\mathcal B_r(\zeta,\mathbf m)$, $\inf_{r\ge0}\Phi_r$
 - **뜻**: 고정한 단계 수 $r$ 에서의 inf와, 모든 유한 $r$ 에 대한 inf다.
 - **역할**: 주정리의 우변 $\lim F_N=\inf_{r\ge0}\Phi_r$ 이다. 상한(P2)과 하한(`comp:bounded-lower`)이 이 값에서 만난다.
-- **정의 위치**: `model:functional`, `main:formula`
+- **정의 위치**: `model:functional`, `main:theorem`의 (2.13)
 - **물리 대응**: approximation — 물리의 정류점(saddle point) 선택, 곧 시행 order parameter에 대한 극값 조건에 해당한다. 수학은 모든 유한 $r$ 과 모든 시행 법칙에 대한 inf이고(`model.tex` 116, 134), inf의 달성이나 무한 깊이 극한은 주장하지 않는다(`model.tex` 138–140). inf를 쓸 수 있는 것은 모든 시행값이 상한이기 때문이다(`upper:bound`).
 
 ### g:rsb-steps — RSB 단계 수 $r$ 와 계층 깊이 $L=r+1$
@@ -263,7 +263,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: 물리 상호작용 개수의 평균 $\rho_N=\alpha(N+1)(N/(N+1))^p$
 - **뜻**: 크기 $N$ 과 $N+1$ 의 계를 비교하는 공통 $N$-spin 계다. 평균 $\rho_N$ 개의 상호작용, 보통의 장, 그리고 type $\nu$ 마다 평균 $c_\nu s_N$ 개(합계 Poisson$(s_N)$)의 [[g:perturbation|섭동]] factor를 가진다(`cavity.tex` 20–28, 45–50).
 - **역할**: $\Delta_N$ 을 reservoir에 site·bond를 넣는 차로 쓰는 자리다(P4). score 집중(P5), 항등식(P7), 집중(P8, P9), encoding(P10)이 모두 이 계에 대해 진술된다.
-- **정의 위치**: `cavity:increment`, `cavity:reservoir-mean`, `cavity.tex` 3–9
+- **정의 위치**: `cavity:increment`(평균 개수 $\rho_N$ 은 (5.4), `cavity.tex` 47–49), `cavity.tex` 3–9
 - **물리 대응**: exact — Aizenman–Sims–Starr cavity 비교의 공통계(`cavity.tex` 4–6).
 - **쓰지 않는 뜻**: 원래의 $N$-spin 계가 아니다(평균 상호작용 수가 $\alpha N$ 이 아니다).
 
@@ -285,14 +285,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\Delta_N^{L,\mathbf u}=P_{N+1}^{L,\mathbf u}-P_N^{L,\mathbf u}$
 - **뜻**: 섭동된 계의 $N\to N+1$ root logarithm 증분이다. $N,L,\mathbf u$ 에 대해 균일하게 유계다.
 - **역할**: P4의 $\Delta_N=\log2+\mathbb E\log Y_{0,\rm s}-\mathbb E\log Y_{0,\rm b}+o(1)$, P5(i)의 $\Delta_{N_j}\le\underline F+2\varepsilon$, P11의 $\Delta_N\approx\mathcal B_{L-1}$ 에 쓰인다.
-- **정의 위치**: `cavity:increment`, `cavity:identity`
+- **정의 위치**: `cavity:increment`(증분 항등식은 (5.5), `cavity.tex` 51–54)
 - **물리 대응**: approximation — Aizenman–Sims–Starr 증분. 물리는 $\lim F_N=\lim\Delta_N$ 을 쓰지만 논문은 극한의 존재를 가정하지 않고 [[g:selected-sequence]] 위의 상한만 쓴다.
 
 ### g:site-bond-insertion — site 삽입과 bond 삽입 ($Y_{0,\rm s}$, $Y_{0,\rm b}$)
 - **기호**: $A_{\rm s}$, $A_{\rm b}$, $K_{\rm s}\sim\mathrm{Poisson}(\alpha p)$, $K_{\rm b}\sim\mathrm{Poisson}(\alpha(p-1))$, $\log Y_{0,\rm s}$, $\log Y_{0,\rm b}$
 - **뜻**: reservoir에 새 spin 하나를 장과 $K_{\rm s}$ 개 factor와 함께 넣는 terminal [[g:insertion]] $A_{\rm s}$, factor $K_{\rm b}$ 개를 넣는 $A_{\rm b}$, 그리고 tilted reservoir kernel로 계산한 그 $\log Y_0$ 값이다.
 - **역할**: P4의 증분 식을 이룬다. P11에서 site label을 독립 사본으로 바꾸면 $\widetilde Y_{0,\rm s}=T_0V_{\rm s}$, $\mathbb E\log\widetilde Y_{0,\rm b}=\alpha(p-1)\mathbb E\log T_0V_{\rm e}$ 가 된다.
-- **정의 위치**: `cavity:site-insertion`, `cavity:bond-insertion`, `cavity:identity`
+- **정의 위치**: `cavity:increment`의 (5.6), (5.7)(두 삽입 $A_{\rm s}$, $A_{\rm b}$)과 (5.5)(`cavity.tex` 51–66)
 - **물리 대응**: exact — cavity method의 site 추가와 bond 추가에 따른 (계층) free entropy 변화.
 
 ### g:score — perturbation score 와 score 오차
@@ -316,14 +316,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $Y_L=A$, $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$, $K_d^A=(Y_d/Y_{d-1})^{m_d}K_d$, $W_{\mathcal T}(A)$
 - **뜻**: 반복할 분배함수의 tilted kernel $K_1,\ldots,K_{L-1}$ 과 terminal Gibbs kernel $K_L$ 을 쓰고(`trees.tex` 85–87), $A$ 가 root가 주어진 조건부로 위로 유계이고 0에서 떨어져 있다고 하자(원문이 처음에 두는 가정, `trees.tex` 73–74). 그러면 spin weight에 양의 path 함수 $A$ 를 곱하면 반복된 root logarithm이 정확히 $\log Y_0$ 만큼 바뀌고 kernel은 $K_d^A$ 로 바뀐다. tree 법칙의 밀도는 $W_{\mathcal T}(A)=\prod_aA^a\prod_\beta Y_\beta^{\gamma_\beta}$ 이다.
 - **역할**: 증분(P4), 섭동 효과(P6, P7), 비교(P11)가 모두 이 꼴로 계산된다.
-- **정의 위치**: `tree:insertion`, `tree:Y-recursion`, `tree:updated-kernel`, `tree:density`
+- **정의 위치**: `tree:insertion`(tree 밀도 식 (tree:density), `trees.tex` 98–104), `tree:Y-recursion`(바뀐 kernel 식 (tree:updated-kernel), `trees.tex` 76–80)
 - **물리 대응**: exact — Boltzmann weight 섭동 $-\delta H=\log A$ 에 따른 계층 free entropy 변화. $L=1$ 이면 $\log Y_0=\log(Z_A/Z)$.
 
 ### g:tree-coefficient — tree 계수 $\gamma_\beta$, $\kappa(S)$
 - **기호**: $\gamma_\beta=m_{d_\beta}-n_\beta m_{d_\beta+1}$, $\kappa(S)=\prod_{v\in\operatorname{Br}(S)}\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$
 - **뜻**: $\gamma_\beta$ 는 내부 vertex $\beta$(깊이 $d_\beta$, 자식 $n_\beta$ 개)에서 새 path를 붙일 때의 계수다. $\kappa(S)$ 는 anchor와 color가 모양 $S$ 를 갖는 모든 확장의 계수 합이다.
 - **역할**: P6의 전개 계수이고 [[g:extension-history]]의 $c_E$ 를 이룬다. marker anchor 단계의 $C(S,e)=-\delta\kappa(S)$, 귀납의 정규화 $J=\kappa(S^+)^2$ 에 쓰인다(P8, P9).
-- **정의 위치**: `tree:insertion`(`trees.tex` 92–96), `tree:reference-total`, `tree:K`
+- **정의 위치**: `tree:insertion`(`trees.tex` 92–96), `tree:reference-total`($\kappa(S)$ 는 그 식 (tree:K))
 - **물리 대응**: intuition — replica trick의 Parisi block counting($n\to0$). 논문은 유한 tree에서 직접 세우고 $n\to0$ 을 쓰지 않는다.
 - **쓰지 않는 뜻**: 부호가 섞인 계수가 아니다. $n_\beta\ge1$ 이고 $m_{d_\beta}<m_{d_\beta+1}$ 이므로 $\gamma_\beta<0$ 이 항상 성립한다(`trees.tex` 204–209 "All summands are positive", 245–246 "all $k-1$ fresh coefficients are negative"). $\kappa(S)$ 의 인자 $m_{d_v}-jm_{d_v+1}$ $(j\ge1)$ 도 모두 음수라서 $\kappa(S)$ 의 부호는 $(-1)^{\sum_v(a_v-1)}$ 로 topology만으로 정해진다(`tree:K`의 식에서 읽은 것). 부호가 섞이는 것은 [[g:extension-history]]의 $c_E$ 다: old leaf 선택은 계수 $+1$, fresh path는 음수 계수 $\gamma_\beta$ 다(`trees.tex` 264–268). 그 합의 상쇄(부호 있는 합 $-\delta$, 절댓값 합 $2+\delta$, `trees.tex` 317–329)가 [[g:depth-delay]]의 대상이다.
 
@@ -379,7 +379,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 ### g:tree-identity — prescribed-tree 항등식
 - **기호**: $\sum_{E\in\mathfrak E(\mathcal T,a_*,\mathcal C)}c_E\,\mathbb E[fR_E]-\mathbb Ef\sum_{E\in\mathfrak E(\{a_*\},a_*,\mathcal C)}c_E\,\mathbb E[R_E]\to0$
 - **뜻**: [[g:selected-sequence]] 위에서, 고정한 old tree $\mathcal T$, anchor 종류, old multioverlap의 유계 다항식 $f$, 추가 color 수, split 깊이 제약 $\mathcal C$ 마다 위 식이 성립한다. 곧 제약을 지키는 [[g:extension-history]]에 대한 부호 있는 계수 합이 시험함수 $f$ 와 분리된다. 오차는 고정 $L$, tree, 제약에서 $N\to\infty$ 로만 사라진다.
-- **역할**: §7이 모형에서 받는 유일한 입력이다: §7은 "these identities and the tree sampling rules"만 쓰고 상호작용 factorization을 쓰지 않으며(`decorrelation.tex` 4–9), 여기에 §3의 유한 tree 조합(`tree:reference-total`, `tree:charging`)과 모형 무관한 확률 부등식(`decor:contractions`, `decor:depth-continuity`)만 더해 모든 multioverlap의 깊이 평균 집중 `decor:overlap-concentration`을 얻는다. §8은 이 항등식에서만 나오지 않는다: §7의 집중에 증분 항등식 `cavity:identity`(P4, `comparison.tex` 195–196, 221–222), 선택된 수열의 낮은 증분 `comp:low-increments`(P5(i), `comparison.tex` 13–15, 235–236), encoding(P10), 균일 site 표본(`comp:patterns`), log 전개(P6), 유계성 $C=H+BM$ 과 Poisson 개수 절단(`comparison.tex` 198–217)을 더해 $\Delta_N\approx\mathcal B_{L-1}$ 과 하한을 얻는다(`comp:shape-error`, `comp:insertion-comparison`, `comp:bounded-lower`). 이 입력들 가운데 어느 것도 factorization이나 positivity를 쓰지 않으므로(`cavity.tex` 13–14, `overview.tex` 46–48), L1 수 5–6은 bounded·순열 불변 상호작용에 대해 상호작용의 구체적 꼴과 무관하다. 받아 쓰는 곳은 P7, P8, P9와 `decor:conditional-concentration`, `decor:overlap-concentration`이다.
+- **역할**: §7이 모형에서 받는 유일한 입력이다: §7은 "these identities and the tree sampling rules"만 쓰고 상호작용 factorization을 쓰지 않으며(`decorrelation.tex` 4–9), 여기에 §3의 유한 tree 조합(`tree:reference-total`, `tree:charging`)과 모형 무관한 확률 부등식(`decor:contractions`, `decor:depth-continuity`)만 더해 모든 multioverlap의 깊이 평균 집중 `decor:overlap-concentration`을 얻는다. §8은 이 항등식에서만 나오지 않는다: §7의 집중에 증분 항등식(`cavity:increment`의 (5.5); P4, `comparison.tex` 195–196, 221–222), 선택된 수열의 낮은 증분 `comp:low-increments`(P5(i), `comparison.tex` 13–15, 235–236), encoding(P10), 균일 site 표본(`comp:patterns`), log 전개(P6), 유계성 $C=H+BM$ 과 Poisson 개수 절단(`comparison.tex` 198–217)을 더해 $\Delta_N\approx\mathcal B_{L-1}$ 과 하한을 얻는다(`comp:shape-error`, `comp:insertion-comparison`, `comp:bounded-lower`). 이 입력들 가운데 어느 것도 factorization이나 positivity를 쓰지 않으므로(`cavity.tex` 13–14, `overview.tex` 46–48), L1 수 5–6은 bounded·순열 불변 상호작용에 대해 상호작용의 구체적 꼴과 무관하다. 받아 쓰는 곳은 P7, P8, P9와 `decor:conditional-concentration`, `decor:overlap-concentration`이다.
 - **정의 위치**: `pert:tree-identity`(`perturbations.tex` 451–470), 제약과 $R_E$ 는 `perturbations.tex` 427–449
 - **물리 대응**: intuition — 논문은 집중으로 overlap 항등식을 얻는 방법의 antecedent로 Ghirlanda–Guerra의 논법, Aizenman–Contucci의 stochastic stability 관계, 그 diluted multioverlap 확장(Barra–De Sanctis)을 이름과 인용으로만 들 뿐이고(`perturbations.tex` 17–21), 이 항등식이 그것들과 같다거나 그것들에서 나온다고 하지 않는다. 이 항등식은 extension history 위의 부호 있는 합이라 고전적 Ghirlanda–Guerra 항등식과 같은 꼴이 아니며, 두 꼴의 상호 유도는 여기서 확인하지 않았다. 이 이름이 물리학자에게 주던 "이것만으로 아래가 다 나온다"는 정보는 위 역할 칸이 근거와 함께 대신한다.
 - **쓰지 않는 뜻**: 계층(tree) 구조는 이 항등식에서 유도되는 것이 아니라 보조 계층의 구성에 들어 있다(`introduction.tex` 75–77). 이것에서 물리적 Gibbs 측도의 계층 구조는 나오지 않고, overlap 극한값이나 분포도 식별되지 않는다. $\lvert S\rvert\ge2$ 의 multioverlap에 대해 논문은 고정 깊이 배정마다의 집중을 얻지 않는다(깊이 평균만, `decorrelation.tex` 63–75; "No uniform concentration in the depth is needed", `overview.tex` 46). 이것은 얻지 않는다는 말이지 거짓이라는 말이 아니다. 반면 항등식에서 고정 깊이로 바로 나오는 것도 있다: singleton의 $\operatorname{Var}(R_S)\to0$(각 고정 $L$, `decorrelation.tex` 72–74, 533–535)과 prefix 사영의 $\operatorname{Var}(M)\to0$(각 고정 $L,S,e$, `decorrelation.tex` 563–566).
@@ -388,7 +388,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $S\to S^+$, $J=\kappa(S^+)^2$, 상대 비용 $\frac1{\lvert J\rvert}\sum_E\lvert c_E\rvert\le C_{k,\eta}$
 - **뜻**: target(항등식의 제약 $\mathcal C$ 가 anchor와 새 color에 요구하는 모양) tree의 내부 branching 깊이를 한 칸 늦춰 각 새 split이 계수 $\delta$ 하나를 내게 하는 장치다. 부호 있는 합과 절댓값 합의 크기 차이를 상대 비용 상계로 제어한다.
 - **역할**: 항등식을 $J$ 로 나눈 뒤에도 오차가 유계로 남게 해서 P8의 귀납을 닫는다.
-- **정의 위치**: `tree:charging`, `decor:J-definition`, `decor:J-lower-bound`, `decor:relative-absolute-cost`, `decorrelation.tex` 77–83
+- **정의 위치**: `tree:charging`, `decor:conditional-concentration.s3.s2`(식 (decor:J-definition), (decor:J-lower-bound)), `decor:conditional-concentration.s3.s3`(식 (decor:relative-absolute-cost)), `decorrelation.tex` 77–83
 - **물리 대응**: 없음.
 
 ## 집중
@@ -457,14 +457,14 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\lVert(A_S-\mu_{d,S})\cdot B\rVert_{L^2}\le v_N(S,d)^{1/4}$; $\mathbb E(X\cdot Y-X\cdot Z)^2\ge\frac2{N^2}\mathbb E\sum_{i,j}C_{ij}^2$
 - **뜻**: 첫째는 상태 안에서 조건부 독립인 벡터와의 축약 오차를 $v_N$ 로 누르는 부등식, 둘째는 $\sigma$-field $\mathscr G$ 가 주어지면 조건부 독립인 세 사본의 overlap 차이가 조건부 공분산 제곱을 위에서 누르는 부등식이다.
 - **역할**: 둘째가 P8의 기저와 귀납 단계에서 항등식을 $v_N$ 상계로 바꾸고, 첫째가 [[g:projection]]을 준다.
-- **정의 위치**: `decor:contractions`, `decor:contraction-bound`, `decor:three-copy-bound`
+- **정의 위치**: `decor:contractions`(식 (decor:contraction-bound), (decor:three-copy-bound))
 - **물리 대응**: weakening — 물리의 "조건이 주어졌을 때 overlap이 요동하지 않으면 조건부 상관이 작다"의 정량적 한 방향 판. 둘째 부등식의 조건은 일반 $\sigma$-field $\mathscr G$ 이고, 상태 $\mathscr F_d$ 는 그 특수한 경우다.
 
 ### g:depth-continuity — 깊이 연속성 (martingale energy)
 - **기호**: $\sum_t\mathbb E\lVert\mu_{t+1,T}-\mu_{t,T}\rVert_N^2\le1$; $\mathcal A_{L,\eta}\mathbb E\lVert\mu_{d,S^U}-\mu_{d,S}\rVert_N^2\le C/L$
 - **뜻**: 한 path를 따라 상태 평균 $\mu_{t,T}$ 는 유계 vector martingale이라 증분 에너지의 합이 1 이하다. 그래서 충분히 큰 $L$ 에서 갈라짐 깊이를 한 칸 옮기는 비용은 깊이 평균으로 $C/L$ 이다. 평가 깊이 $d$ 를 한 칸 옮기는 비용의 같은 $C/L$ 상계는 $d$ 가 $S$ 의 initial unary 구간 위를 움직일 때의 진술이다. $C$ 는 vertex 수와 이동 수에만 의존하고 $N$, 평가 깊이, kernel에 균일하다(`decorrelation.tex` 148, 155–165).
 - **역할**: 깊이를 미룬 사본과 원래 사본을 비교하는 비용 $h_N$(P8)과 인접 prefix 오차(P9)를 준다. 모형과 kernel에 무관한 사실이다.
-- **정의 위치**: `decor:depth-continuity`, `decor:martingale-energy`
+- **정의 위치**: `decor:depth-continuity`, `decor:depth-continuity.s1`(식 (decor:martingale-energy))
 - **물리 대응**: intuition — Parisi 함수 $q(x)$ 가 단조 유계라 큰 점프가 드물다는 그림과 닮았다. 실제로 쓰는 단조량은 깊이별 자기 overlap $\mathbb E\lVert\mu_{t,T}\rVert_N^2$ 이다.
 
 ### g:order-of-limits — 극한 순서
@@ -481,8 +481,8 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\zeta_{L,N}=\operatorname{Law}(\eta_0)\in\mathcal M_L$
 - **뜻**: 고정한 $N$, $L$, 선택된 매개변수에서, reservoir root와 독립 균일 site $i$ 를 root에 넣고 tilted kernel로 뽑은 path 위에 $x=\operatorname{arctanh}\langle\sigma_i\rangle$(깊이 $r=L-1$), $\eta_{r-1}=\operatorname{Law}(x\mid\mathscr G_{r-1})$, $\eta_d=\operatorname{Law}(\eta_{d+1}\mid\mathscr G_d)$ 를 거꾸로 쌓아 얻은 시행 법칙이다. 한 label의 spin 과정은 모든 prescribed tree에서 균일 site와 같은 기대 spin 곱 $\mathbb ER_S$ 를 갖는다.
 - **역할**: P10. P11에서 독립 사본의 원천이다.
-- **정의 위치**: `comp:encoding`, `comp:single-label-moments`
-- **물리 대응**: exact(부호화) — 한 label이 모든 prescribed tree에서 $\mathbb ER_S$ 를 보존한다(`comp:single-label-moments`). intuition(해석) — 이것을 계의 RSB order parameter(물리적 pure state 계층에 따른 cavity field 분포)로 읽는 것. 여기서 깊이는 섭동 mark로 만든 보조 계층의 것이고(`cavity.tex` 23–24), 물리적 Gibbs 측도의 계층은 가정하지 않는다(`introduction.tex` 75–77, [[g:depth]]).
+- **정의 위치**: `comp:encoding`, `comp:encoding.s4`(식 (comp:single-label-moments), `comparison.tex` 75–79)
+- **물리 대응**: exact(부호화) — 한 label이 모든 prescribed tree에서 $\mathbb ER_S$ 를 보존한다(`comp:encoding.s4`의 식 (comp:single-label-moments)). intuition(해석) — 이것을 계의 RSB order parameter(물리적 pure state 계층에 따른 cavity field 분포)로 읽는 것. 여기서 깊이는 섭동 mark로 만든 보조 계층의 것이고(`cavity.tex` 23–24), 물리적 Gibbs 측도의 계층은 가정하지 않는다(`introduction.tex` 75–77, [[g:depth]]).
 - **쓰지 않는 뜻**: 극한 order parameter나 최적 $\zeta$ 가 아니다. $N$, $L$, $\mathbf u$ 에 따라 달라진다.
 
 ### g:spin-pattern — spin pattern
@@ -493,7 +493,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **물리 대응**: 없음.
 
 ### g:independent-copies — 독립 사본 대체 ("이웃 cavity field의 독립")
-- **기호**: `comp:pattern-error` $a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E\lvert R_S-\mathbb ER_S\rvert$
+- **기호**: `comp:patterns`의 식 (comp:pattern-error) $a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E\lvert R_S-\mathbb ER_S\rvert$
 - **뜻**: 이 사이트에서 "이웃 cavity field의 독립"은 다음 진술 하나만 가리킨다: cavity 삽입($A_{\rm s}$, $A_{\rm b}$)이 쓰는 reservoir site label들의 replica-spin pattern을 [[g:encoded-law]]의 서로 독립인 label 사본으로 바꿔도 기대 삽입 log가 $\lim_L\limsup_N$ 의 뜻으로 변하지 않는다(`comp:insertion-comparison`). 독립 균일 site label $a$ 개를 바꾸는 오차는 위 식 이하다(`comp:patterns`).
 - **역할**: P11. 독립 사본으로 계산한 삽입이 정확히 $\mathcal B_{L-1}(\zeta_{L,N},\mathbf m^{(L)})$ 이므로 하한이 닫힌다(`comp:bounded-lower`).
 - **정의 위치**: `comp:patterns`, `comp:shape-error`, `comp:insertion-comparison`; 서로 다른 label의 독립 구성은 `comparison.tex` 80–82
@@ -506,7 +506,7 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $c=\theta(1,\ldots,1)$, $\widehat\theta=\theta-c$; $\widehat F_N=F_N-\alpha\mathbb Ec$, $\widehat{\mathcal B}_r=\mathcal B_r-\alpha\mathbb Ec$
 - **뜻**: spin 무관인 적분 가능한 상수를 상호작용에서 빼는 것이다. pressure와 시행 functional이 같은 양 $-\alpha\mathbb Ec$ 만큼 움직인다.
 - **역할**: `main:theorem` 증명에서 [[g:factorization]]의 $a$ 를 없애고 $\widehat\theta$ 의 법칙을 순열 불변으로 만든다(P1, P12). 하한을 얻은 뒤 되돌린다.
-- **정의 위치**: `reduction:shift`, `reduction.tex` 45–59
+- **정의 위치**: `reduction:stability`(식 (reduction:shift), `reduction.tex` 20–25), `reduction.tex` 45–59
 - **물리 대응**: exact — 에너지 원점 이동.
 
 ### g:truncation — truncation
@@ -520,5 +520,5 @@ L0, L1, 규칙 표, 카드에 나오는 용어와 기호가 원문에서 정확�
 - **기호**: $\lvert F_N-F_N'\rvert\le\alpha D+d$, $\lvert\mathcal B_r-\mathcal B_r'\rvert\le\alpha(2p-1)D+d$
 - **뜻**: 두 상호작용·장 법칙을 결합했을 때 pressure와 시행 functional이 $D=\mathbb E\max_s\lvert\theta-\theta'\rvert$, $d=\mathbb E\lvert h-h'\rvert$ 에 Lipschitz라는 것이다. 시행 쪽 상수는 모든 $N$, $r$, 시행 법칙에 균일하다.
 - **역할**: 균일성 덕에 inf와 truncation 극한이 교환된다(P12, [[g:truncation]]).
-- **정의 위치**: `reduction:stability`, `reduction:free-stability`, `reduction:trial-stability`
+- **정의 위치**: `reduction:stability`(식 (reduction:free-stability), (reduction:trial-stability), `reduction.tex` 14–18)
 - **물리 대응**: 없음.

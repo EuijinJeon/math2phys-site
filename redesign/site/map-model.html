@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2 The model and the variational principle — 지도</h1><p class="stat">이 섹션의 카드 21장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 22장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a></p><pre class="mermaid" data-map="sec-model">
-flowchart TB
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§2 The model and the variational principle — 지도</h1><p class="stat">이 섹션의 카드 21장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 22장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/model.section.html" title="2 §2 모형과 변분 원리">model:section</a></p><pre class="mermaid" data-map="sec-model">
+flowchart LR
   subgraph IN[&quot;§2 The model and the variational principle&quot;]
     a0[&quot;시행 법칙: M_j, M_r+1, m, label별 …&lt;br/&gt;model:chain&quot;]
     a1[&quot;edge 분배함수 C_ (2.5)&lt;br/&gt;model:edge&quot;]
@@ -146,72 +146,72 @@ flowchart TB
   a16 --&gt; a0
   a16 --&gt; a1
   a16 --&gt; a8
-  a0 -.-&gt;|1| X0
-  a0 -.-&gt;|1| X2
-  a0 -.-&gt;|1| X3
-  a0 -.-&gt;|3| X6
-  a0 -.-&gt;|1| X7
-  a1 -.-&gt;|1| X3
-  a1 -.-&gt;|1| X6
-  a1 -.-&gt;|1| X7
-  a10 -.-&gt;|1| X3
-  a10 -.-&gt;|1| X6
-  a10 -.-&gt;|1| X7
-  a11 -.-&gt;|1| X3
-  a11 -.-&gt;|1| X6
-  a11 -.-&gt;|1| X7
-  a12 -.-&gt;|1| X3
-  a13 -.-&gt;|1| X1
-  a13 -.-&gt;|1| X3
-  a13 -.-&gt;|1| X6
-  a13 -.-&gt;|1| X7
-  a13 -.-&gt;|1| X8
-  a14 -.-&gt;|1| X1
-  a14 -.-&gt;|1| X3
-  a14 -.-&gt;|2| X8
-  a16 -.-&gt;|1| X3
-  a16 -.-&gt;|1| X6
-  X3 -.-&gt;|1| a17
-  X1 -.-&gt;|1| a18
-  a19 -.-&gt;|1| X7
-  a2 -.-&gt;|2| X0
-  a2 -.-&gt;|1| X1
-  a2 -.-&gt;|1| X3
-  a2 -.-&gt;|3| X8
-  a3 -.-&gt;|2| X0
-  a3 -.-&gt;|1| X1
-  a3 -.-&gt;|1| X3
-  a3 -.-&gt;|2| X6
-  a3 -.-&gt;|1| X7
-  a3 -.-&gt;|4| X8
-  a4 -.-&gt;|2| X0
-  a4 -.-&gt;|1| X1
-  a4 -.-&gt;|1| X3
-  a4 -.-&gt;|5| X4
-  a4 -.-&gt;|1| X5
-  a4 -.-&gt;|1| X6
-  a4 -.-&gt;|1| X7
-  a4 -.-&gt;|4| X8
-  a5 -.-&gt;|1| X0
-  a5 -.-&gt;|1| X1
-  a5 -.-&gt;|1| X3
-  a5 -.-&gt;|1| X4
-  a5 -.-&gt;|1| X7
-  a5 -.-&gt;|2| X8
-  a6 -.-&gt;|1| X0
-  a6 -.-&gt;|1| X1
-  a6 -.-&gt;|1| X3
-  a6 -.-&gt;|2| X8
-  a7 -.-&gt;|1| X0
-  a7 -.-&gt;|1| X3
-  a7 -.-&gt;|1| X6
-  a7 -.-&gt;|1| X7
-  a8 -.-&gt;|1| X3
-  a8 -.-&gt;|1| X6
-  a8 -.-&gt;|1| X7
-  a9 -.-&gt;|1| X3
-  a9 -.-&gt;|2| X6
-  a9 -.-&gt;|1| X7
+  a0 -.-&gt; X0
+  a0 -.-&gt; X2
+  a0 -.-&gt; X3
+  a0 -.-&gt; X6
+  a0 -.-&gt; X7
+  a1 -.-&gt; X3
+  a1 -.-&gt; X6
+  a1 -.-&gt; X7
+  a10 -.-&gt; X3
+  a10 -.-&gt; X6
+  a10 -.-&gt; X7
+  a11 -.-&gt; X3
+  a11 -.-&gt; X6
+  a11 -.-&gt; X7
+  a12 -.-&gt; X3
+  a13 -.-&gt; X1
+  a13 -.-&gt; X3
+  a13 -.-&gt; X6
+  a13 -.-&gt; X7
+  a13 -.-&gt; X8
+  a14 -.-&gt; X1
+  a14 -.-&gt; X3
+  a14 -.-&gt; X8
+  a16 -.-&gt; X3
+  a16 -.-&gt; X6
+  X3 -.-&gt; a17
+  X1 -.-&gt; a18
+  a19 -.-&gt; X7
+  a2 -.-&gt; X0
+  a2 -.-&gt; X1
+  a2 -.-&gt; X3
+  a2 -.-&gt; X8
+  a3 -.-&gt; X0
+  a3 -.-&gt; X1
+  a3 -.-&gt; X3
+  a3 -.-&gt; X6
+  a3 -.-&gt; X7
+  a3 -.-&gt; X8
+  a4 -.-&gt; X0
+  a4 -.-&gt; X1
+  a4 -.-&gt; X3
+  a4 -.-&gt; X4
+  a4 -.-&gt; X5
+  a4 -.-&gt; X6
+  a4 -.-&gt; X7
+  a4 -.-&gt; X8
+  a5 -.-&gt; X0
+  a5 -.-&gt; X1
+  a5 -.-&gt; X3
+  a5 -.-&gt; X4
+  a5 -.-&gt; X7
+  a5 -.-&gt; X8
+  a6 -.-&gt; X0
+  a6 -.-&gt; X1
+  a6 -.-&gt; X3
+  a6 -.-&gt; X8
+  a7 -.-&gt; X0
+  a7 -.-&gt; X3
+  a7 -.-&gt; X6
+  a7 -.-&gt; X7
+  a8 -.-&gt; X3
+  a8 -.-&gt; X6
+  a8 -.-&gt; X7
+  a9 -.-&gt; X3
+  a9 -.-&gt; X6
+  a9 -.-&gt; X7
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

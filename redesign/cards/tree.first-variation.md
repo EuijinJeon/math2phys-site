@@ -9,7 +9,7 @@ math: |
   $$\partial_{t_j}\log Y_d=E^{A_{\boldsymbol t}}\left[\left.\frac{D_j}{A_{\boldsymbol t}}\right|\mathscr F_d\right].$$
   우변의 조건부 기대값은 지정된 prefix 아래로 새 path 하나를 따른다. 실제로 power mean 하나를 미분하면 $\partial_{t_j}\log Y_{d-1}=K_d^{A_{\boldsymbol t}}\partial_{t_j}\log Y_d$이고, 말단 도함수는 $D_j/A$이다.
 physics: |
-  [[g:insertion|insertion]] $A$의 효과 $\log Y_d$를 섭동 방향 $D_j$로 미분한 것은, 깊이 $d$ [[g:state|상태]]가 주어졌을 때 바뀐 법칙으로 새로 뽑은 [[g:replica|replica]] 하나에서 $D_j/A$의 기대값이다. $L=1$, $d=0$이면 $\partial_t\log\langle A\rangle=\langle D\rangle/\langle A\rangle$, 곧 재가중된 Gibbs 측도에서의 1점 평균이다.
+  [[g:insertion|insertion]] $A$의 효과 $\log Y_d$를 섭동 방향 $D_j$로 미분한 것은, 깊이 $d$ [[g:state|상태]]가 주어졌을 때 바뀐 법칙으로 새로 뽑은 [[g:replica|replica]] 하나에서 $D_j/A$의 기대값이다($D_j$는 유계 실수 path 함수, $A_{\boldsymbol t}$가 균등하게 양인 실수 $\boldsymbol t$ 근방에서). $L=1$, $d=0$이면 $\partial_t\log\langle A\rangle=\langle D\rangle/\langle A\rangle$, 곧 재가중된 Gibbs 측도에서의 1점 평균이다.
 gap: |
   $A_{\boldsymbol t}$가 균등하게 양인 실수 근방에서의 진술이다. 복소 근방과 고차 도함수의 정당화는 [[x:tree-analytic-bounds]]가 한다.
 abstraction: exact

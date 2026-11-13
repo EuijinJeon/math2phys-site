@@ -11,9 +11,9 @@ math: |
   $$Q_k\{\text{that topology and depth assignment}\}\leq C_kL^{-a}.$$
   regular tree에서 leaf를 지우면, unary가 된 branching vertex를 버린 뒤 regular tree가 나온다.
 physics: |
-  [[g:tree-law|$Q_k$]]로 뽑은 $k$개 [[g:replica|replica]]의 tree에서 갈라짐 [[g:depth|깊이]]가 경계 근처에 있거나 두 갈라짐 깊이가 서로 가까울 확률은 $C_k(\eta+1/L)$ 이하다. 정해진 갈라짐 구조에서 어느 한 깊이 배정에도 확률이 몰리지 않는다(배정 하나의 확률이 $C_kL^{-a}$ 이하). replica 일부를 잊어도 [[g:eta-regular|regular]]함은 남는다.
+  [[g:grid|균등 격자]] $m_d=d/L$과 $0<\eta<1/2$에서, [[g:tree-law|$Q_k$]]로 뽑은 $k$개 [[g:replica|replica]]의 tree에서 갈라짐 [[g:depth|깊이]]가 경계 근처에 있거나 두 갈라짐 깊이가 서로 가까울 확률은 $C_k(\eta+1/L)$ 이하다($C_k$는 $k$에만 의존하고 $L$, $\eta$에 무관). 정해진 갈라짐 구조에서 어느 한 깊이 배정에도 확률이 몰리지 않는다(배정 하나의 확률이 $C_kL^{-a}$ 이하). replica 일부를 잊어도 [[g:eta-regular|regular]]함은 남는다.
 gap: |
-  [[g:grid|균등 격자]] $m_d=d/L$에서만 진술된다. 상수 $C_k$는 명시되지 않고 $k$에만 의존한다. 상계일 뿐이며 깊이 분포의 극한 꼴을 말하지 않는다.
+  균등 격자 $m_d=d/L$에서만 진술된다. 상수 $C_k$는 명시되지 않고 $k$에만 의존한다. 상계일 뿐이며 깊이 분포의 극한 꼴을 말하지 않는다.
 abstraction: exact
 children: [tree:regular-shapes.s1, tree:regular-shapes.s2, tree:regular-shapes.s3]
 source:

@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§6 Perturbations and identities on prescri…"]
     a0["insertion 계수의 소멸 (Lemma 6.4)<br/>pert:analytic"]
     a1["차 H_N(t,u)=J_N, T- Ef,J_N,a_*…<br/>pert:analytic-difference"]
@@ -48,31 +48,31 @@ flowchart TB
   a19 --> a6
   a19 --> a9
   a19 --> a12
-  X1 -.->|3| a0
-  X1 -.->|2| a10
-  X2 -.->|2| a10
-  a10 -.->|2| X3
-  a10 -.->|3| X4
-  X1 -.->|2| a11
-  a11 -.->|4| X3
-  X1 -.->|3| a12
-  a12 -.->|2| X3
-  X0 -.->|1| a13
-  X2 -.->|3| a13
-  a13 -.->|2| X4
-  X1 -.->|2| a14
-  a14 -.->|1| X4
-  X2 -.->|1| a16
-  a17 -.->|3| X4
-  X2 -.->|4| a18
-  X1 -.->|2| a19
-  X1 -.->|4| a2
-  X1 -.->|1| a4
-  X2 -.->|3| a4
-  a4 -.->|1| X4
-  X1 -.->|2| a5
-  X1 -.->|3| a6
-  X1 -.->|1| a8
+  X1 -.-> a0
+  X1 -.-> a10
+  X2 -.-> a10
+  a10 -.-> X3
+  a10 -.-> X4
+  X1 -.-> a11
+  a11 -.-> X3
+  X1 -.-> a12
+  a12 -.-> X3
+  X0 -.-> a13
+  X2 -.-> a13
+  a13 -.-> X4
+  X1 -.-> a14
+  a14 -.-> X4
+  X2 -.-> a16
+  a17 -.-> X4
+  X2 -.-> a18
+  X1 -.-> a19
+  X1 -.-> a2
+  X1 -.-> a4
+  X2 -.-> a4
+  a4 -.-> X4
+  X1 -.-> a5
+  X1 -.-> a6
+  X1 -.-> a8
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

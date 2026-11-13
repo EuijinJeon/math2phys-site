@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§10 Named models and the zero-temperature l…"]
     a0["영온도 변분 극한 (Corollary 10.3, 식 …<br/>models:ground"]
     a1["soft random 짝수 K-SAT (Corolla…<br/>models:sat"]
@@ -17,14 +17,14 @@ flowchart TB
   a4 --> a0
   a6 --> a1
   a6 --> a2
-  X1 -.->|1| a0
-  X0 -.->|6| a1
-  X1 -.->|1| a1
-  X0 -.->|6| a2
-  X1 -.->|1| a2
-  X0 -.->|1| a3
-  X0 -.->|3| a4
-  X0 -.->|2| a6
+  X1 -.-> a0
+  X0 -.-> a1
+  X1 -.-> a1
+  X0 -.-> a2
+  X1 -.-> a2
+  X0 -.-> a3
+  X0 -.-> a4
+  X0 -.-> a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

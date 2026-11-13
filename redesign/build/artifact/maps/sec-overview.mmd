@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§2.2 Proof strategy"]
     a0["전략 마무리: 깊이 평균으로 충분함, 그리고 일반 법…<br/>x:overview-closing"]
     a1["전략 1단계: cavity reservoir 고르기<br/>x:overview-step1"]
@@ -9,11 +9,11 @@ flowchart TB
   end
   X0["밖: §2 The model and the variation…<br/>카드 7장"]
   X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
-  X0 -.->|3| a0
-  X1 -.->|1| a0
-  X0 -.->|2| a1
-  X0 -.->|2| a4
-  X0 -.->|3| a5
+  X0 -.-> a0
+  X1 -.-> a0
+  X0 -.-> a1
+  X0 -.-> a4
+  X0 -.-> a5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

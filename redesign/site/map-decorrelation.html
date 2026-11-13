@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§7 Decorrelation on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 54장 가운데 증명 단계를 뺀 19장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 10장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a></p><pre class="mermaid" data-map="sec-decorrelation">
-flowchart TB
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§7 Decorrelation on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 54장 가운데 증명 단계를 뺀 19장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 10장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/decor.section.html" title="7 §7 prescribed tree 위의 decorrelation">decor:section</a></p><pre class="mermaid" data-map="sec-decorrelation">
+flowchart LR
   subgraph IN[&quot;§7 Decorrelation on prescribed trees&quot;]
     a0[&quot;깊이 평균 A_L,&lt;br/&gt;decor:average-definition&quot;]
     a1[&quot;깊이 평균의 분수 거듭제곱 부등식&lt;br/&gt;decor:average-holder&quot;]
@@ -139,22 +139,22 @@ flowchart TB
   a17 --&gt; a12
   a17 --&gt; a16
   a18 --&gt; a17
-  a0 -.-&gt;|1| X3
-  a12 -.-&gt;|1| X3
-  X2 -.-&gt;|2| a13
-  a13 -.-&gt;|1| X3
-  X1 -.-&gt;|1| a14
-  X2 -.-&gt;|1| a14
-  X0 -.-&gt;|1| a16
-  a16 -.-&gt;|1| X3
-  a17 -.-&gt;|1| X3
-  X0 -.-&gt;|1| a18
-  X0 -.-&gt;|3| a2
-  X2 -.-&gt;|2| a2
-  X2 -.-&gt;|1| a6
-  X0 -.-&gt;|1| a8
-  X2 -.-&gt;|2| a8
-  a8 -.-&gt;|1| X3
+  a0 -.-&gt; X3
+  a12 -.-&gt; X3
+  X2 -.-&gt; a13
+  a13 -.-&gt; X3
+  X1 -.-&gt; a14
+  X2 -.-&gt; a14
+  X0 -.-&gt; a16
+  a16 -.-&gt; X3
+  a17 -.-&gt; X3
+  X0 -.-&gt; a18
+  X0 -.-&gt; a2
+  X2 -.-&gt; a2
+  X2 -.-&gt; a6
+  X0 -.-&gt; a8
+  X2 -.-&gt; a8
+  a8 -.-&gt; X3
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

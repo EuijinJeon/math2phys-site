@@ -1,11 +1,11 @@
-flowchart TB
+flowchart LR
   subgraph IN["§9 Normalization, truncation, and completi…"]
     a0["Stability (L^1 안정성과 상수 이동)<br/>reduction:stability"]
   end
   X0["밖: §2 The model and the variation…<br/>카드 12장"]
   X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
-  X0 -.->|12| a0
-  a0 -.->|1| X1
+  X0 -.-> a0
+  a0 -.-> X1
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

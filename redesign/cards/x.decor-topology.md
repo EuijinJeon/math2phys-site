@@ -9,8 +9,8 @@ math: |
 physics: |
   [[g:replica|replica]] tree: replica들이 [[g:hierarchy|보조 계층]]의 어느 깊이까지 같은 [[g:state|상태]](같은 prefix)를 공유하는지를 나타낸 그림이다([[g:topology]]).
 gap: |
-  깊이는 보조 계층의 정수 단계이지 [[g:multioverlap|overlap]] 값이 아니다. "같은 상태를 공유한다"는 보조 chain의 prefix를 공유한다는 뜻이며 Gibbs 측도의 [[g:physical-pure-state|물리적 pure state]] 분해를 가정하지 않는다. 깊이 $d$ 를 물리적 pure state 계층의 단계로 읽지 않는다.
-abstraction: exact
+  물리 문장은 대상의 그림만 준다. 이 카드가 정하는 낱말들(깊이 배정 $\mathbf q$ 와 그 엄격 증가 조건, $b(S)$, sampled copy, initial stem, proper child shape, 부분 모양의 약속)의 정의는 `math` 칸에만 있다. 깊이는 보조 계층의 정수 단계이지 [[g:multioverlap|overlap]] 값이 아니다. "같은 상태를 공유한다"는 보조 chain의 prefix를 공유한다는 뜻이며 Gibbs 측도의 [[g:physical-pure-state|물리적 pure state]] 분해를 가정하지 않는다. 깊이 $d$ 를 물리적 pure state 계층의 단계로 읽지 않는다.
+abstraction: weakening
 children: []
 source:
   - {file: decorrelation.tex, lines: [18, 21]}

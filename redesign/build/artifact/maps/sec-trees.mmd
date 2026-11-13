@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§3 Calculus on finite trees"]
     a0["tree 법칙 Q_k<br/>tree:Q-rule"]
     a1["insertion recursion Y_d 와 바뀐 …<br/>tree:Y-recursion"]
@@ -62,47 +62,47 @@ flowchart TB
   a21 --> a8
   a21 --> a12
   a21 --> a20
-  a0 -.->|1| X1
-  a0 -.->|2| X5
-  a1 -.->|1| X1
-  a1 -.->|1| X2
-  a1 -.->|1| X3
-  a1 -.->|1| X5
-  a10 -.->|2| X4
-  a11 -.->|1| X5
-  a13 -.->|1| X3
-  a16 -.->|1| X3
-  a17 -.->|1| X1
-  a17 -.->|2| X2
-  a17 -.->|3| X3
-  a17 -.->|1| X5
-  X0 -.->|1| a18
-  a18 -.->|1| X2
-  a18 -.->|2| X3
-  a18 -.->|2| X5
-  a2 -.->|1| X5
-  a20 -.->|1| X5
-  a21 -.->|1| X1
-  a21 -.->|1| X2
-  a21 -.->|4| X3
-  a21 -.->|1| X4
-  a21 -.->|3| X5
-  a3 -.->|1| X4
-  a4 -.->|3| X3
-  a4 -.->|1| X4
-  a6 -.->|1| X1
-  a6 -.->|2| X2
-  a6 -.->|4| X3
-  a6 -.->|1| X5
-  a7 -.->|1| X1
-  a7 -.->|2| X5
-  a8 -.->|4| X3
-  a8 -.->|1| X4
-  a8 -.->|3| X5
-  a9 -.->|1| X1
-  a9 -.->|5| X2
-  a9 -.->|2| X3
-  a9 -.->|1| X5
+  a0 -.-> X1
+  a0 -.-> X5
+  a1 -.-> X1
+  a1 -.-> X2
+  a1 -.-> X3
+  a1 -.-> X5
+  a10 -.-> X4
+  a11 -.-> X5
+  a13 -.-> X3
+  a16 -.-> X3
+  a17 -.-> X1
+  a17 -.-> X2
+  a17 -.-> X3
+  a17 -.-> X5
+  X0 -.-> a18
+  a18 -.-> X2
+  a18 -.-> X3
+  a18 -.-> X5
+  a2 -.-> X5
+  a20 -.-> X5
+  a21 -.-> X1
+  a21 -.-> X2
+  a21 -.-> X3
+  a21 -.-> X4
+  a21 -.-> X5
+  a3 -.-> X4
+  a4 -.-> X3
+  a4 -.-> X4
+  a6 -.-> X1
+  a6 -.-> X2
+  a6 -.-> X3
+  a6 -.-> X5
+  a7 -.-> X1
+  a7 -.-> X5
+  a8 -.-> X3
+  a8 -.-> X4
+  a8 -.-> X5
+  a9 -.-> X1
+  a9 -.-> X2
+  a9 -.-> X3
+  a9 -.-> X5
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§6 Perturbations and identities on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 44장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 29장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a></p><pre class="mermaid" data-map="sec-perturbations">
-flowchart TB
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§6 Perturbations and identities on prescribed trees — 지도</h1><p class="stat">이 섹션의 카드 44장 가운데 증명 단계를 뺀 20장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 29장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/pert.section.html" title="6 §6 섭동과 prescribed tree 위의 항등식">pert:section</a></p><pre class="mermaid" data-map="sec-perturbations">
+flowchart LR
   subgraph IN[&quot;§6 Perturbations and identities on prescri…&quot;]
     a0[&quot;insertion 계수의 소멸 (Lemma 6.4)&lt;br/&gt;pert:analytic&quot;]
     a1[&quot;차 H_N(t,u)=J_N, T- Ef,J_N,a_*…&lt;br/&gt;pert:analytic-difference&quot;]
@@ -138,31 +138,31 @@ flowchart TB
   a19 --&gt; a6
   a19 --&gt; a9
   a19 --&gt; a12
-  X1 -.-&gt;|3| a0
-  X1 -.-&gt;|2| a10
-  X2 -.-&gt;|2| a10
-  a10 -.-&gt;|2| X3
-  a10 -.-&gt;|3| X4
-  X1 -.-&gt;|2| a11
-  a11 -.-&gt;|4| X3
-  X1 -.-&gt;|3| a12
-  a12 -.-&gt;|2| X3
-  X0 -.-&gt;|1| a13
-  X2 -.-&gt;|3| a13
-  a13 -.-&gt;|2| X4
-  X1 -.-&gt;|2| a14
-  a14 -.-&gt;|1| X4
-  X2 -.-&gt;|1| a16
-  a17 -.-&gt;|3| X4
-  X2 -.-&gt;|4| a18
-  X1 -.-&gt;|2| a19
-  X1 -.-&gt;|4| a2
-  X1 -.-&gt;|1| a4
-  X2 -.-&gt;|3| a4
-  a4 -.-&gt;|1| X4
-  X1 -.-&gt;|2| a5
-  X1 -.-&gt;|3| a6
-  X1 -.-&gt;|1| a8
+  X1 -.-&gt; a0
+  X1 -.-&gt; a10
+  X2 -.-&gt; a10
+  a10 -.-&gt; X3
+  a10 -.-&gt; X4
+  X1 -.-&gt; a11
+  a11 -.-&gt; X3
+  X1 -.-&gt; a12
+  a12 -.-&gt; X3
+  X0 -.-&gt; a13
+  X2 -.-&gt; a13
+  a13 -.-&gt; X4
+  X1 -.-&gt; a14
+  a14 -.-&gt; X4
+  X2 -.-&gt; a16
+  a17 -.-&gt; X4
+  X2 -.-&gt; a18
+  X1 -.-&gt; a19
+  X1 -.-&gt; a2
+  X1 -.-&gt; a4
+  X2 -.-&gt; a4
+  a4 -.-&gt; X4
+  X1 -.-&gt; a5
+  X1 -.-&gt; a6
+  X1 -.-&gt; a8
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

@@ -9,7 +9,7 @@ math: |
   $$a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E\lvert R_S-\mathbb ER_S\rvert\tag{comp:pattern-error}$$
   만큼 바뀐다. 관측량은 reservoir와 독립인 새 insertion disorder에도 의존해도 된다.
 physics: |
-  [[g:reservoir|reservoir]]에서 균일하게 고른 site $a$ 개의 [[g:replica|replica]] [[g:spin-pattern|spin pattern]]을 [[g:encoded-law|encoded law]]의 서로 독립인 label 사본으로 바꿔도([[g:independent-copies]]) 유계 관측량의 기대값은 모든 [[g:multioverlap|multioverlap]]의 평균 절대 요동의 합에 $a$ 를 곱한 것 이하만 바뀐다.
+  leaf $k$ 개의 [[g:prescribed-tree|prescribed tree]]를 고정한다. [[g:reservoir|reservoir]]에서 독립 균일하게 고른 site label $a$ 개의 [[g:replica|replica]] [[g:spin-pattern|spin pattern]]을 [[g:encoded-law|encoded law]]의 서로 독립인 label 사본으로 바꿔도([[g:independent-copies]]), 절댓값이 1 이하인 관측량의 기대값은 그 tree의 [[g:multioverlap|multioverlap]] 평균 절대 요동의 합에 $a$ 를 곱한 것, 곧 $a\sum_{\varnothing\ne S\subseteq[k]}\mathbb E\lvert R_S-\mathbb ER_S\rvert$ 이하만 바뀐다. 관측량은 reservoir와 독립인 새 삽입 disorder에 의존해도 된다.
 gap: |
   (1) 정확한 부등식이다. tree 하나를 고정한 진술이고 tree 법칙 평균은 comp:shape-error가 한다. (2) site는 고정된 이웃이 아니라 복원추출한 독립 균일 label이다. 고정한 두 site의 결합 법칙이 곱이라는 말이 아니고, 그래프의 국소 구조나 거리를 쓰지 않는다. (3) 우변이 작다는 것은 이 lemma가 아니라 [[g:overlap-concentration]](comp:shape-error)에서 온다.
 abstraction: exact

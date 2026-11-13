@@ -17,7 +17,7 @@ math: |
 
   (가정: tree:Y-recursion의 대로 $A$는 양이고, root가 주어진 조건부로 위로 유계이며 0에서 떨어져 있다.)
 physics: |
-  spin의 Boltzmann 무게에 양의 함수 $A$를 곱하는 [[g:insertion|insertion]]은 [[g:power-mean|power mean]]으로 반복한 root log를 정확히 $\log Y_0$만큼 바꾸고, 각 깊이의 kernel을 $(Y_d/Y_{d-1})^{m_d}$로 재가중한다. $L=1$이면 $\log Y_0=\log\langle A\rangle$이고 새 kernel은 $A$로 재가중한 Gibbs 측도다. [[g:replica|replica]] tree의 법칙은 leaf마다 $A$, 내부 vertex마다 $Y_\beta^{\gamma_\beta}$를 곱한 만큼 바뀐다([[g:tree-coefficient|계수]] $\gamma_\beta$).
+  kernel이 그 leaf 분배함수의 tilted kernel([[tree:original-tilt]])과 말단 Gibbs kernel일 때, spin의 Boltzmann 무게에 양의 함수 $A$(root가 주어진 조건부로 위아래 유계, [[tree:Y-recursion]])를 곱하는 [[g:insertion|insertion]]은 [[g:power-mean|power mean]]으로 반복한 root log를 정확히 $\log Y_0$만큼 바꾸고, 각 깊이의 kernel을 $(Y_d/Y_{d-1})^{m_d}$로 재가중한다. $L=1$이면 $\log Y_0=\log\langle A\rangle$이고 새 kernel은 $A$로 재가중한 Gibbs 측도다. [[g:replica|replica]] tree의 법칙은 leaf마다 $A$, 내부 vertex마다 $Y_\beta^{\gamma_\beta}$를 곱한 만큼 바뀐다([[g:tree-coefficient|계수]] $\gamma_\beta$). recursion은 단조이고 동차다: root에만 의존하는 양의 $a\le A\le b$이면 모든 깊이에서 $a\le Y_d\le b$이고, $A$에 그런 상수를 곱하면 모든 $Y_d$가 같은 배가 된다.
 gap: |
   kernel이 그 leaf 분배함수의 power mean에서 나온 tilted kernel이어야 한다(임의의 kernel 열에 대한 $Y$ recursion은 정의되지만 "root log의 변화 $=\log Y_0$"는 tilted kernel에서만 뜻이 있다). $A$는 root가 주어진 조건부로 위아래로 유계여야 한다. $L\ge2$의 root log는 보통 뜻의 free entropy가 아니다([[g:root-logarithm]]).
 abstraction: exact

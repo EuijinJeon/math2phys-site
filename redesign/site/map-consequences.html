@@ -87,8 +87,8 @@ supp:'\\operatorname{supp}'}},options:{skipHtmlTags:['script','noscript','style'
 <body>
 <div class="wrap">
 <nav class="top"><a href="index.html">처음</a><a href="L0.html">L0</a><a href="L1.html">L1</a><a href="rules.html">규칙 표</a><a href="glossary.html">용어집</a><a class="cur" href="map.html">증명 지도</a><a href="cards/index.html">카드 목록</a><a href="check-report.html">검사 보고서</a></nav>
-<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§10 Named models and the zero-temperature limit — 지도</h1><p class="stat">이 섹션의 카드 18장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 8장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자)로 묶고 간선의 숫자가 그 섹션에서 오가는 카드 수다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a></p><pre class="mermaid" data-map="sec-consequences">
-flowchart TB
+<div class="crumbs"><a href="map.html">증명 지도</a></div><h1>§10 Named models and the zero-temperature limit — 지도</h1><p class="stat">이 섹션의 카드 18장 가운데 증명 단계를 뺀 7장(파랑: 정리·명제·보조정리·따름정리, 회색: 정의·약속·가정·주석)을 보인다. 화살표는 쓰이는 쪽에서 쓰는 쪽으로 간다. 실선은 섹션 안의 쓰임(다른 경로로 이어지는 간선은 줄였다), 점선은 밖의 8장과의 연결이다. 밖의 카드는 섹션별로 한 노드(점선 상자, 카드 수 표시)로 묶는다. 카드 하나하나는 아래 표에 있다. 증명 단계의 <code>uses</code> 는 그 단계가 속한 카드로 올려 그리고, 섹션 카드 자신의 <code>uses</code> 목록은 그리지 않는다. 노드를 누르면 카드로(밖의 노드는 그 섹션의 지도로) 간다. 섹션 카드: <a class="node" href="cards/models.section.html" title="10 §10 명명 모형과 영온도 극한">models:section</a></p><pre class="mermaid" data-map="sec-consequences">
+flowchart LR
   subgraph IN[&quot;§10 Named models and the zero-temperature l…&quot;]
     a0[&quot;영온도 변분 극한 (Corollary 10.3, 식 …&lt;br/&gt;models:ground&quot;]
     a1[&quot;soft random 짝수 K-SAT (Corolla…&lt;br/&gt;models:sat&quot;]
@@ -107,14 +107,14 @@ flowchart TB
   a4 --&gt; a0
   a6 --&gt; a1
   a6 --&gt; a2
-  X1 -.-&gt;|1| a0
-  X0 -.-&gt;|6| a1
-  X1 -.-&gt;|1| a1
-  X0 -.-&gt;|6| a2
-  X1 -.-&gt;|1| a2
-  X0 -.-&gt;|1| a3
-  X0 -.-&gt;|3| a4
-  X0 -.-&gt;|2| a6
+  X1 -.-&gt; a0
+  X0 -.-&gt; a1
+  X1 -.-&gt; a1
+  X0 -.-&gt; a2
+  X1 -.-&gt; a2
+  X0 -.-&gt; a3
+  X0 -.-&gt; a4
+  X0 -.-&gt; a6
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

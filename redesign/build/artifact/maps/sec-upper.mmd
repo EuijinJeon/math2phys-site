@@ -1,14 +1,14 @@
-flowchart TB
+flowchart LR
   subgraph IN["§4 The interpolation upper bound"]
     a0["interpolation 상한 F_N B_r(, m)<br/>upper:bound"]
   end
   X0["밖: §2 The model and the variation…<br/>카드 17장"]
   X1["밖: 주정리 Main theorem (진술 §2.1, 증명 §…<br/>카드 1장"]
   X2["밖: §3 Calculus on finite trees<br/>카드 7장"]
-  X0 -.->|16| a0
-  a0 -.->|1| X0
-  a0 -.->|1| X1
-  X2 -.->|7| a0
+  X0 -.-> a0
+  a0 -.-> X0
+  a0 -.-> X1
+  X2 -.-> a0
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;

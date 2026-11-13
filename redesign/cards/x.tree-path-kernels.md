@@ -3,7 +3,7 @@ id: x:tree-path-kernels
 kind: definition
 title: 'path kernel 열, 지수 $m_d$, prefix $\sigma$-field'
 uses: [model:chain]
-provides: '§3의 모든 카드가 서 있는 틀. §4 upper (message-label tree), §5 cavity (tilted reservoir kernel), §6–§8 (reservoir의 보조 계층)이 이 틀의 사례다. §6 pert:concentration은 tilted kernel $K_d$, prefix $\mathscr F_d$, 마지막 단계 $m_L=1$ 을 직접 쓴다 (perturbations.tex 121–132, \ref 없음)'
+provides: '§3의 모든 카드가 서 있는 틀. §4 upper (message-label tree), §5 cavity (tilted reservoir kernel), §6–§8 (reservoir의 보조 계층)이 이 틀의 사례다. §6 pert:concentration은 tilted kernel $K_d$, prefix $\mathscr F_d$, 마지막 단계 $m_L=1$ 을 직접 쓴다 (perturbations.tex 121–132, \ref 없음). §8 comp:encoding·comp:encoding.s1은 깊이 $d$ 까지의 보조 prefix의 $\sigma$-field $\mathscr G_d$ 와, $x$ 가 깊이 $r=L-1$, $\eta_d$ 가 깊이 $d<r$ 의 변수라는 자리 배정을 쓴다 (comparison.tex 30–32, 39–40, 44–51, \ref 없음)'
 math: |
   정수 $L\ge1$과 수
   $$0=m_0<m_1<\cdots<m_{L-1}<m_L=1$$

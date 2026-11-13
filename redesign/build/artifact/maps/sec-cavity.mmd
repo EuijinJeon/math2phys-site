@@ -1,4 +1,4 @@
-flowchart TB
+flowchart LR
   subgraph IN["§5 A perturbed cavity reservoir"]
     a0["Poisson 섭동 factor 족과 한계 1/2_3…<br/>cavity:factor-bounds"]
     a1["깊이 L2, r=L-1, 균등 격자 m_d=d/L (…<br/>cavity:grid"]
@@ -21,30 +21,30 @@ flowchart TB
   a4 --> a2
   a5 --> a6
   a6 --> a3
-  X0 -.->|1| a0
-  X1 -.->|1| a0
-  a0 -.->|1| X2
-  X1 -.->|1| a1
-  a1 -.->|1| X2
-  a1 -.->|1| X3
-  a1 -.->|4| X4
-  X0 -.->|1| a2
-  X1 -.->|4| a2
-  a2 -.->|3| X2
-  a2 -.->|4| X4
-  X0 -.->|1| a3
-  X1 -.->|3| a3
-  a3 -.->|2| X2
-  X0 -.->|2| a4
-  a4 -.->|2| X2
-  a4 -.->|3| X4
-  a5 -.->|2| X2
-  X0 -.->|1| a6
-  X1 -.->|1| a6
-  a6 -.->|1| X2
-  X1 -.->|2| a7
-  a7 -.->|1| X2
-  a7 -.->|2| X4
+  X0 -.-> a0
+  X1 -.-> a0
+  a0 -.-> X2
+  X1 -.-> a1
+  a1 -.-> X2
+  a1 -.-> X3
+  a1 -.-> X4
+  X0 -.-> a2
+  X1 -.-> a2
+  a2 -.-> X2
+  a2 -.-> X4
+  X0 -.-> a3
+  X1 -.-> a3
+  a3 -.-> X2
+  X0 -.-> a4
+  a4 -.-> X2
+  a4 -.-> X4
+  a5 -.-> X2
+  X0 -.-> a6
+  X1 -.-> a6
+  a6 -.-> X2
+  X1 -.-> a7
+  a7 -.-> X2
+  a7 -.-> X4
   classDef thm fill:#d6e6ff,stroke:#1f5fbf,color:#111;
   classDef oth fill:#eef0f3,stroke:#8a8f98,color:#222;
   classDef ext fill:#fff,stroke:#999,stroke-dasharray:4 3,color:#444;
