@@ -49,6 +49,9 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}
 th,td{border:1px solid var(--line);padding:.35rem .55rem;vertical-align:top;text-align:left}
 th{background:var(--code)}
 .tablewrap{overflow-x:auto;margin:.8rem 0}
+p.path{font-size:1.02rem}
+tr:target{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a.rule{font-weight:600;text-decoration:underline dotted var(--muted);text-underline-offset:.2em;text-decoration-thickness:1px}
 .badge{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--tag);
 margin-right:.3rem;color:var(--fg)}
 .badge.confirmed{background:color-mix(in srgb,var(--ok) 25%,transparent)}
@@ -114,6 +117,8 @@ class Ctx:
 
     def __init__(self, cards, graph, base="", gloss=None):
         self.gloss = gloss or {}   # slug → GlossEntry
+        self.rules = {}            # 규칙 번호 → 규칙 표 행 (main() 이 채운다)
+        self.rule_links = False    # True 면 본문의 P번호를 규칙 표 행으로 잇는다 (L0·L1·L2 쪽)
         self.S = None              # Struct (섹션 구조), main() 이 채운다
         self.cards = {c.id: c for c in cards if c.id and c.fm is not None}
         self.nodes = {n["id"]: n for n in (graph["nodes"] if graph else [])}
@@ -141,6 +146,14 @@ class Ctx:
         return (f'<a class="gterm" href="{esc(self.base)}glossary.html#g-{esc(slug)}" title="{esc(title)}">'
                 f'{esc(label or en.headword)}</a>')
 
+    def rule_link(self, rid):
+        """규칙 번호 → rules.html 의 그 행. 규칙 표에 없으면 붉은 물결 표시."""
+        row = self.rules.get(rid)
+        if row is None:
+            return (f'<span class="gterm unknown" title="규칙 표에 없는 규칙: {esc(rid)}">{esc(rid)}</span>')
+        title = C.plain_text(row.get("물리 규칙"), 200)
+        return (f'<a class="rule" href="{esc(self.base)}rules.html#{rule_anchor(rid)}" title="{esc(title)}">{esc(rid)}</a>')
+
     def card_href(self, cid):
         return f"{self.base}cards/{page_name(cid)}"
 
@@ -160,6 +173,10 @@ class Ctx:
 
 def page_name(cid):
     return cid.replace(":", ".") + ".html"
+
+
+def rule_anchor(rid):
+    return "rule-" + rid.replace("′", "p")
 
 
 def slug(s):
@@ -229,10 +246,14 @@ class MD:
 
         def link(m):
             text, url = m.group(1), m.group(2).strip()
+            if url == "rules.md" and self.ctx.rule_links and C.RULE_REF.fullmatch(html.unescape(text)):
+                return self.stash(self.ctx.rule_link(html.unescape(text)))
             if not re.match(r"^[a-z]+:", url) and not url.startswith("#"):
                 url = re.sub(r"\.md(#|$)", r".html\1", url)
             return self.stash(f'<a href="{esc(url)}">' + text + "</a>")
         s = re.sub(r"\[([^\]\n]+?)\]\(([^)\s]+)\)", link, s)
+        if self.ctx.rule_links:
+            s = C.RULE_REF.sub(lambda m: self.stash(self.ctx.rule_link(m.group(0))), s)
         if self.ctx.idre:
             s = self.ctx.idre.sub(lambda m: self.stash(self.ctx.link(m.group(1))), s)
         s = re.sub(r"\*\*(?=\S)(.+?)(?<=\S)\*\*", r"<strong>\1</strong>", s)
@@ -374,7 +395,11 @@ class MD:
             h.append("<th>" + self.inline(c.strip()) + "</th>")
         h.append("</tr></thead><tbody>")
         for r in body:
-            h.append("<tr>")
+            first = (r[0].strip() if r else "")
+            if re.fullmatch(r"P\d+′?", first):
+                h.append(f'<tr id="{rule_anchor(first)}">')
+            else:
+                h.append("<tr>")
             for k in range(len(head)):
                 h.append("<td>" + self.inline((r[k] if k < len(r) else "").strip()) + "</td>")
             h.append("</tr>")
@@ -1090,12 +1115,25 @@ def main():
         p.write_text(text, encoding="utf-8")
         written.append(rel)
 
-    # 층 문서
+    # 층 문서. L2(물리판 유도)는 layers/L2.md 가 있을 때만 낸다(없으면 쪽도 메뉴도 안 만든다).
+    for r in (C.parse_rules(root / "layers" / "rules.md") or []):
+        ctx.rules.setdefault(r.get("rule", "").strip(), r)
+    has_l2 = (root / "layers" / "L2.md").is_file()
+    if has_l2:
+        NAV.insert(NAV.index(("L1.html", "L1")) + 1, ("L2.html", "L2"))
     layers = {}
-    for name, label in (("L0", "L0"), ("L1", "L1"), ("rules", "규칙 표")):
+    for name, label in (("L0", "L0"), ("L1", "L1"), ("L2", "L2"), ("rules", "규칙 표")):
         p = root / "layers" / f"{name}.md"
+        if name == "L2" and not has_l2:
+            continue
         if p.is_file():
+            ctx.rule_links = name != "rules"      # 규칙 번호를 규칙 표의 그 행으로 잇는다
             body = md_html(p.read_text(encoding="utf-8"), ctx)
+            ctx.rule_links = False
+            if name == "L2":
+                body += ('<hr><p class="stat">여기서 더 내려가기: 규칙의 수학 대응은 <a href="rules.html">규칙 표</a>, 용어는 '
+                         '<a href="glossary.html">용어집</a>, 증명은 <a href="index.html">처음 쪽의 섹션 표(섹션 카드)</a>와 '
+                         '<a href="cards/index.html">카드 목록</a>.</p>')
             layers[name] = True
         else:
             body = f"<h1>{label}</h1><p class=\"muted\">layers/{name}.md 가 아직 없다.</p>"
@@ -1148,15 +1186,23 @@ def main():
         srows.append("<tr><td>" + esc(S.label(k)) + "</td><td>" + esc(t) + "</td><td>" + str(len(S.members[k]))
                      + "</td><td>" + ctx.link(sc["card"], "섹션 카드") + f'</td><td><a href="{map_href(k)}">지도</a></td></tr>')
     total = sum(len(v) for v in S.members.values())
+    steps = ['<a href="L0.html">L0</a>', '<a href="L1.html">L1</a>']
+    if has_l2:
+        steps.append('<a href="L2.html">L2</a>')
+    steps += ['섹션 카드(아래 표)', '<a href="cards/index.html">노드 카드</a>']
+    path_html = " → ".join(steps)
+    l2_item = ('<li><a href="L2.html">L2</a> — 물리판 유도: 규칙 P번호를 쓰며 증명을 처음부터 끝까지 따라간다</li>\n'
+               if has_l2 else "")
     idx = f"""<h1>Mézard–Parisi 공식 — 노드 카드로 다시 읽기</h1>
 <p>원문은 diluted spin glass에 대한 Mézard–Parisi 위계 cavity 공식의 증명이다. 이 사이트는 그 논문을
-정리·보조정리·증명 단계 단위의 <strong>노드 카드</strong>로 나누고, 물리 언어의 <strong>단면 문서</strong>(L0, L1)와 연결한 것이다.
+정리·보조정리·증명 단계 단위의 <strong>노드 카드</strong>로 나누고, 물리 언어의 <strong>단면 문서</strong>(L0, L1{', L2' if has_l2 else ''})와 연결한 것이다.
 각 카드는 받는 것과 내놓는 것을 밝히고, 펼치면 더 잘게 쪼개진 증명 단계가 나온다.</p>
 <h2>위에서부터 읽기</h2>
+<p class="path">{path_html}</p>
 <ul class="links">
 <li><a href="L0.html">L0</a> — 한 문단: 결과와 의미{'' if layers['L0'] else ' (아직 없음)'}</li>
 <li><a href="L1.html">L1</a> — 한 쪽: 번호 붙은 수의 목록{'' if layers['L1'] else ' (아직 없음)'}</li>
-<li><a href="rules.html">규칙 표</a> — 물리판이 증명 없이 쓰는 명제 P1, P2, …{'' if layers['rules'] else ' (아직 없음)'}</li>
+{l2_item}<li><a href="rules.html">규칙 표</a> — 물리판이 증명 없이 쓰는 명제 P1, P2, …{'' if layers['rules'] else ' (아직 없음)'}</li>
 <li><a href="glossary.html">용어집</a> — 이 문서가 쓰는 용어의 뜻·역할·정의 위치{'' if gexists else ' (아직 없음)'}</li>
 </ul>
 <h2>섹션별로 들어가기</h2>

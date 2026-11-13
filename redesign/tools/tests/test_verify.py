@@ -48,6 +48,26 @@ class TestVerify(unittest.TestCase):
         self.assertEqual(s["pages_overflow"], 1)
         self.assertGreaterEqual(s["pages_with_console_errors"], 1)
 
+    def test_l2_page_is_built_and_verified(self):
+        """--build 가 layers/L2.md 를 사이트에 내고, 그 쪽(규칙 행 앵커 포함)이 깨진 링크 없이 열린다."""
+        if not shutil.which("node") or not shutil.which("npm"):
+            self.skipTest("node/npm 없음")
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import fixture as F
+        root = F.make_root(F.base_cards(), rules=F.RULES3, glossary=F.GLOSSARY, l2=F.L2_BASE)
+        self.addCleanup(shutil.rmtree, root, True)
+        site = Path(tempfile.mkdtemp(prefix="m2p-vsite-"))
+        self.addCleanup(shutil.rmtree, site, True)
+        out = site / "out.json"
+        r = subprocess.run([sys.executable, str(TOOLS / "verify_site.py"), "--build", "--site", str(site / "s"),
+                            "--root", str(root), "--json", str(out)], capture_output=True, text=True, timeout=600)
+        if not out.is_file():
+            self.skipTest("Chromium 을 띄우지 못했다: " + (r.stdout + r.stderr)[-300:])
+        d = json.loads(out.read_text())
+        self.assertIn("L2.html", [p["page"] for p in d["pages"]])
+        self.assertEqual(d["summary"]["broken_links"], 0, d["broken"])
+        self.assertEqual(d["summary"]["pages_overflow"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

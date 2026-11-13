@@ -303,6 +303,15 @@ def wiki_ids(text):
 
 
 # ------------------------------------------------------------ 규칙 표
+# 규칙 번호: P12, P6′ 처럼 P + 숫자 + 선택적 프라임. 뒤에 한글 조사가 붙어도(P4를) 잡는다.
+RULE_REF = re.compile(r"(?<![A-Za-z0-9_\\])P\d+′?(?![A-Za-z0-9_′])")
+
+
+def rule_ids(text):
+    """텍스트에서 규칙 번호 집합 (코드·수식 밖)."""
+    return set(RULE_REF.findall(mask_code_math(text or "")))
+
+
 def parse_rules(path):
     """layers/rules.md 의 첫 규칙 표를 읽는다. 반환: 행 목록 (없으면 None)."""
     p = Path(path)

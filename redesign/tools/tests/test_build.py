@@ -97,5 +97,70 @@ class TestTwoParents(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
 
 
+class TestL2Site(unittest.TestCase):
+    """layers/L2.md 를 사이트에 낸다. 없으면 아무것도 하지 않는다."""
+
+    L1 = "# L1\n\n1. **수**\n   - 쓰는 규칙: P1, [P4](rules.md)\n"
+
+    def build(self, **kw):
+        root = F.make_root(F.base_cards(), rules=F.RULES3, glossary=F.GLOSSARY, **kw)
+        self.addCleanup(shutil.rmtree, root, True)
+        out = Path(tempfile.mkdtemp(prefix="m2p-site-"))
+        self.addCleanup(shutil.rmtree, out, True)
+        r = subprocess.run([sys.executable, str(F.TOOLS / "build.py"), "--root", str(root), "--out", str(out)],
+                           capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return out
+
+    def test_no_l2_does_nothing(self):
+        out = self.build(l1=self.L1)
+        self.assertFalse((out / "L2.html").exists())
+        for name in ("index.html", "L1.html", "rules.html"):
+            self.assertNotIn("L2.html", (out / name).read_text(encoding="utf-8"), name)
+
+    def test_l2_page_and_path(self):
+        out = self.build(l1=self.L1, l2=F.L2_BASE)
+        self.assertTrue((out / "L2.html").is_file())
+        idx = (out / "index.html").read_text(encoding="utf-8")
+        i0, i1, i2 = (idx.index(f'href="{n}.html">{n}</a> →') for n in ("L0", "L1", "L2"))
+        self.assertTrue(i0 < i1 < i2)
+        self.assertIn('class="cur" href="L2.html"', (out / "L2.html").read_text(encoding="utf-8"))
+        self.assertIn('href="L2.html">L2</a>', (out / "rules.html").read_text(encoding="utf-8"))   # 메뉴
+
+    def test_rule_numbers_link_to_rule_rows_including_prime(self):
+        out = self.build(l1=self.L1, l2=F.L2_BASE)
+        t = (out / "L2.html").read_text(encoding="utf-8")
+        for rid, anchor in (("P4", "rule-P4"), ("P6", "rule-P6"), ("P6′", "rule-P6p")):
+            self.assertIn(f'href="rules.html#{anchor}" title="', t)
+            self.assertIn(f">{rid}</a>", t)
+        rules = (out / "rules.html").read_text(encoding="utf-8")
+        for anchor in ("rule-P1", "rule-P4", "rule-P6", "rule-P6p"):
+            self.assertIn(f'<tr id="{anchor}">', rules)
+        # P6 링크가 P6′ 를 쪼개지 않는다
+        self.assertNotIn('rule-P6">P6</a>′', t)
+        # L1 의 `[P4](rules.md)` 와 맨 P1 도 행으로 이어진다
+        l1 = (out / "L1.html").read_text(encoding="utf-8")
+        self.assertIn('href="rules.html#rule-P1"', l1)
+        self.assertIn('href="rules.html#rule-P4"', l1)
+
+    def test_terms_and_cards_link(self):
+        out = self.build(l2=F.L2_BASE)
+        t = (out / "L2.html").read_text(encoding="utf-8")
+        self.assertIn('class="gterm" href="glossary.html#g-pressure"', t)
+        self.assertIn('class="node" href="cards/main.theorem.html"', t)
+
+    def test_unknown_rule_is_marked_not_linked(self):
+        out = self.build(l2=F.L2_BASE.replace("(P4)", "(P77)"))
+        t = (out / "L2.html").read_text(encoding="utf-8")
+        self.assertIn('class="gterm unknown" title="규칙 표에 없는 규칙: P77"', t)
+        self.assertNotIn("rule-P77", t)
+
+    def test_rule_number_in_math_or_code_is_left_alone(self):
+        out = self.build(l2=F.L2_BASE.replace("그 증분의 근거는", "$P4$ 와 `P6` 는 글자이고 근거는"))
+        t = (out / "L2.html").read_text(encoding="utf-8")
+        self.assertIn("$P4$", t)
+        self.assertIn("<code>P6</code>", t)
+
+
 if __name__ == "__main__":
     unittest.main()

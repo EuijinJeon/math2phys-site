@@ -260,5 +260,116 @@ class TestSymmetry(CheckBase):
         self.assertFalse(any("x:overview-fx" in w for w in warns), warns)
 
 
+class TestL2(CheckBase):
+    """물리판 검사 (layers/L2.md)."""
+
+    def l2(self, text, rules=F.RULES3, glossary=F.GLOSSARY, cards=None):
+        res, errs, warns, code, out = self.run_case(cards or self.base(), rules=rules, l2=text, glossary=glossary)
+        rep = Path(self.last_root, "build", "check-report.md").read_text(encoding="utf-8")
+        sec = rep.split("## 물리판")[1].split("\n## ")[0] if "## 물리판" in rep else ""
+        return res, code, [x[len("- 오류: "):] for x in sec.splitlines() if x.startswith("- 오류: ")], \
+            [x[len("- 경고: "):] for x in sec.splitlines() if x.startswith("- 경고: ")], \
+            [x[len("- 참고: "):] for x in sec.splitlines() if x.startswith("- 참고: ")], rep
+
+    def run_case(self, cards, sections="reduction", **kw):
+        root = F.make_root(cards, **kw)
+        self.addCleanup(shutil.rmtree, root, True)
+        self.last_root = root
+        return F.run_check(root, sections)
+
+    def test_no_l2_is_not_applicable(self):
+        res, errs, warns, code, out = self.run_case(self.base())
+        self.assertEqual(res["물리판"][0], "해당 없음")
+        self.assertEqual(code, 0)
+
+    def test_base_l2_passes(self):
+        res, code, e, w, n, rep = self.l2(F.L2_BASE)
+        self.assertEqual((e, w), ([], []), (e, w))
+        self.assertEqual(res["물리판"][0], "통과")
+        self.assertEqual(code, 0)
+        self.assertTrue(any("쓰지 않은 것 1개: P1" in x for x in n), n)       # 참고: P1 은 안 쓰였다
+        self.assertTrue(any("단락 4개 중 규칙·링크 없음 0개" in x for x in n), n)
+
+    def test_unknown_rule_id_is_error(self):
+        res, code, e, w, n, _ = self.l2(F.L2_BASE.replace("(P6′)", "(P6′, P77)"))
+        self.assertEqual(res["물리판"][0], "실패")
+        self.assertEqual(code, 1)
+        self.assertTrue(any("P77" in x and "rules.md 에 없다" in x for x in e), e)
+        self.assertFalse(any("P6′" in x for x in e), e)       # 프라임 규칙은 존재한다
+
+    def test_prime_is_distinct_from_plain(self):
+        rules = F.RULES3.replace("| P6′ |", "| P6x |")        # P6′ 를 표에서 뺀다
+        res, code, e, w, n, _ = self.l2(F.L2_BASE, rules=rules)
+        self.assertTrue(any("P6′ 가 rules.md 에 없다" in x for x in e), e)
+        self.assertFalse(any("P6 가 rules.md" in x for x in e), e)
+
+    def test_rule_followed_by_korean_particle(self):
+        res, code, e, w, n, _ = self.l2(F.L2_BASE.replace("(P4). 그", "P99를 쓴다. 그"))
+        self.assertTrue(any("P99" in x for x in e), e)
+
+    def test_unresolved_links_are_errors(self):
+        t = F.L2_BASE.replace("[[main:theorem]]", "[[main:nothing]]").replace("[[g:pressure]]", "[[g:nope]]")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertTrue(any("[[main:nothing]]" in x for x in e), e)
+        self.assertTrue(any("[[g:nope]]" in x for x in e), e)
+        self.assertEqual(code, 1)
+
+    def test_graph_node_without_card_resolves(self):
+        # 카드가 없어도 graph.json 의 노드면 풀린다 (model:positivity 는 fixture 에 카드가 없다)
+        res, code, e, w, n, _ = self.l2(F.L2_BASE.replace("[[reduction:stability]]", "[[model:positivity]]"))
+        self.assertEqual(e, [], e)
+
+    def test_missing_section_rule_line_warns(self):
+        t = F.L2_BASE.replace("\n이 절이 쓰는 규칙: 없음\n", "\n")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertEqual(res["물리판"][0], "경고")
+        self.assertEqual(code, 0)
+        self.assertTrue(any("둘째 절" in x and "줄이 없다" in x for x in w), w)
+
+    def test_section_rule_set_mismatch_warns(self):
+        t = F.L2_BASE.replace("이 절이 쓰는 규칙: P4, P6, P6′", "이 절이 쓰는 규칙: P4, P1")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertEqual(code, 0)
+        msg = [x for x in w if "첫 절" in x]
+        self.assertEqual(len(msg), 1, w)
+        self.assertIn("줄에만: P1", msg[0])
+        self.assertIn("본문에만: P6, P6′", msg[0])
+
+    def test_bare_paragraph_warns_but_math_list_head_blank_do_not(self):
+        t = F.L2_BASE.replace("## 둘째 절\n", "## 둘째 절\n\n이 문장은 규칙도 링크도 없이 그냥 쓴 단락이다.\n")
+        res, code, e, w, n, _ = self.l2(t)
+        bare = [x for x in w if "규칙 번호도 [[링크]]도 없는" in x]
+        self.assertEqual(len(bare), 1, w)
+        self.assertIn("둘째 절", bare[0])
+        self.assertIn("이 문장은 규칙도 링크도", bare[0])
+        # 줄 번호가 실제 줄을 가리킨다
+        ln = int(bare[0].split("줄 ")[1].split(" ")[0])
+        self.assertIn("이 문장은", t.split("\n")[ln - 1])
+
+    def test_rule_inside_math_or_code_does_not_count(self):
+        t = F.L2_BASE.replace("그 증분의 근거는", "그 증분은 $P9$ 와 `P8` 로 쓰지 않고, 근거는")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertEqual(e, [], e)
+        self.assertEqual(w, [], w)
+
+    def test_paragraph_with_only_g_link_counts_as_linked(self):
+        t = F.L2_BASE.replace("## 둘째 절\n", "## 둘째 절\n\n이 문장은 용어 [[g:pressure]] 만 가리키는 단락이다.\n")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertEqual(w, [], w)
+
+    def test_preamble_before_first_section_is_exempt(self):
+        t = F.L2_BASE.replace("**바닥**: 시험용 바닥.", "**바닥**: 시험용 바닥이고 아무 링크도 규칙도 없는 긴 문장이다.")
+        res, code, e, w, n, _ = self.l2(t)
+        self.assertEqual(w, [], w)
+
+    def test_bad_title_warns(self):
+        res, code, e, w, n, _ = self.l2(F.L2_BASE.replace("# L2 — 물리판", "# 물리판"))
+        self.assertTrue(any("첫 줄" in x for x in w), w)
+
+    def test_without_rules_table_rule_ids_not_judged(self):
+        res, code, e, w, n, _ = self.l2(F.L2_BASE, rules=None)
+        self.assertEqual(e, [], e)
+
+
 if __name__ == "__main__":
     unittest.main()

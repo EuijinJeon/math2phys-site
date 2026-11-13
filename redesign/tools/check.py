@@ -402,6 +402,9 @@ def main():
         notes.append(f"수 {len(moves)}개")
         rep.add("단면", e, w, notes)
 
+    # --- 물리판 (L2)
+    rep_l2(rep, root, rules, known)
+
     # --- 용어
     rep_glossary(rep, root, cards, known, nodes, by_id)
 
@@ -609,6 +612,135 @@ def rep_glossary(rep, root, cards, known, nodes, by_id):
     if unused:
         notes.append(f"어디서도 링크되지 않은 항목 {len(unused)}개: " + ", ".join(f"`g:{s}`" for s in unused))
     rep.add("용어", e, w, notes)
+
+
+SEC_RULE_LINE = re.compile(r"^[\s>*_-]*이 절이 쓰는 규칙[\s*_]*[:：]\s*(.*)$")
+L2_MIN_CHARS = 12   # 수식·표지를 뺀 글자가 이보다 짧은 단락(소제목 따위)은 단락 검사에서 뺀다
+
+
+def l2_units(lines):
+    """masked 줄 목록에서 단락 단위를 뽑는다. 반환: [(시작 줄(1부터), 줄들)].
+    빈 줄로 나뉜 덩어리 안에서, 목록 항목(중첩 포함)은 최상위 항목마다, 그 밖은 연속한 줄마다 한 단위."""
+    units = []
+    i, n = 0, len(lines)
+    bullet = re.compile(r"^(\s*)([-*+]|\d+[.)])\s+")
+    while i < n:
+        if not lines[i].strip():
+            i += 1
+            continue
+        j = i
+        while j < n and lines[j].strip():
+            j += 1
+        block = lines[i:j]
+        ind = [len(b) - len(b.lstrip()) for b in block if bullet.match(b)]
+        top = min(ind) if ind else None
+        cur = None
+        for k, b in enumerate(block):
+            m = bullet.match(b)
+            if (m is not None and len(m.group(1)) == top) or cur is None:
+                cur = [i + k + 1, [b]]
+                units.append(cur)
+            else:
+                cur[1].append(b)
+        i = j
+    return [(u[0], u[1]) for u in units]
+
+
+def rep_l2(rep, root, rules, known):
+    """물리판 검사: layers/L2.md. 오류: 규칙 번호가 규칙 표에 없다 / [[…]] 가 안 풀린다.
+    경고: 절마다 "이 절이 쓰는 규칙:" 줄이 있고 본문의 규칙 집합과 같다 / 규칙 번호도 링크도 없는 단락.
+    참고: L2가 쓰지 않은 규칙."""
+    path = root / "layers" / "L2.md"
+    if not path.is_file():
+        rep.add("물리판", [], [], na="layers/L2.md 없음")
+        return
+    raw = path.read_text(encoding="utf-8")
+    text = C.mask_code(raw)
+    lines = text.split("\n")
+    e, w, notes = [], [], []
+    rule_ids = {r.get("rule") for r in rules} if rules else set()
+    gslugs = {en.slug for en in C.parse_glossary(root / "layers" / "glossary.md")[0]}
+
+    first = next((l for l in lines if l.strip()), "")
+    if not re.match(r"^#\s+L2\s*[—–-]\s*물리판", first):
+        w.append(f"L2.md 첫 줄이 `# L2 — 물리판` 이 아니다: `{first.strip()[:40]}`")
+
+    # 전체: 규칙 번호가 규칙 표에 있다
+    if rules is None:
+        notes.append("layers/rules.md 가 없어 규칙 번호 존재는 보지 않는다")
+    else:
+        seen = set()
+        for k, l in enumerate(C.mask_math(text).split("\n"), 1):
+            for p in C.RULE_REF.findall(l):
+                if p not in rule_ids and (p, k) not in seen:
+                    seen.add((p, k))
+                    e.append(f"L2.md 줄 {k}: {p} 가 rules.md 에 없다")
+    # 전체: [[…]] 가 풀린다
+    for k, l in enumerate(lines, 1):
+        for m in C.WIKI.finditer(l):
+            body = m.group(1).split("|")[0].strip()
+            if body.startswith("g:"):
+                if body[2:].strip() not in gslugs:
+                    e.append(f"L2.md 줄 {k}: `[[{body}]]` 가 용어집에 없다")
+            elif body not in known:
+                e.append(f"L2.md 줄 {k}: `[[{body}]]` 가 카드에도 graph.json 에도 없다")
+
+    # 절 나누기: `## ` 제목마다. 첫 `## ` 앞(머리·바닥·기호)은 단락 검사에서 뺀다.
+    heads = [i for i, l in enumerate(lines) if re.match(r"^##\s+\S", l) and not l.startswith("###")]
+    if not heads:
+        w.append("L2.md 에 `##` 절이 없다")
+    used_all = set()
+    n_units = n_bare = 0
+    for si, h in enumerate(heads):
+        end = heads[si + 1] if si + 1 < len(heads) else len(lines)
+        # 다음 `# ` 제목이 먼저 오면 거기서 끝낸다
+        for j in range(h + 1, end):
+            if re.match(r"^#\s", lines[j]):
+                end = j
+                break
+        title = lines[h].lstrip("#").strip()
+        body_lines = []
+        declared, has_decl = set(), False
+        for j in range(h + 1, end):
+            m = SEC_RULE_LINE.match(lines[j])
+            if m:
+                has_decl = True
+                declared |= set(C.RULE_REF.findall(C.mask_math(m.group(1))))
+                body_lines.append("")           # 줄 번호는 보존하되 단락 검사에서 뺀다
+            else:
+                body_lines.append(lines[j])
+        used = C.rule_ids("\n".join(body_lines))
+        used_all |= used
+        if not has_decl:
+            w.append(f"L2.md 줄 {h + 1} 절 「{title}」: \"이 절이 쓰는 규칙:\" 줄이 없다")
+        elif declared != used:
+            only_decl = sorted(declared - used, key=lambda x: (len(x), x))
+            only_used = sorted(used - declared, key=lambda x: (len(x), x))
+            msg = f"L2.md 줄 {h + 1} 절 「{title}」: \"이 절이 쓰는 규칙\" 줄과 본문의 규칙이 다르다"
+            if only_decl:
+                msg += f" (줄에만: {', '.join(only_decl)})"
+            if only_used:
+                msg += f" (본문에만: {', '.join(only_used)})"
+            w.append(msg)
+        # 규칙·링크 없는 단락
+        masked = C.mask_math("\n".join(body_lines)).split("\n")
+        for ln0, ulines in l2_units(masked):
+            joined = " ".join(x.strip() for x in ulines)
+            plain = re.sub(r"\[\[[^\]]*\]\]|[#>*_`|\-+]|\s+", "", re.sub(r"^\s*(?:[-*+]|\d+[.)])\s+", "", joined))
+            if len(plain) < L2_MIN_CHARS or joined.rstrip().endswith((":", "：")) or joined.lstrip().startswith("|"):
+                continue
+            n_units += 1
+            if not C.RULE_REF.search(joined) and not C.WIKI.search(joined):
+                n_bare += 1
+                src = body_lines  # 원문 줄(수식 포함)로 보여 준다
+                shown = re.sub(r"\s+", " ", src[ln0 - 1]).strip()[:50]
+                w.append(f"L2.md 줄 {h + 1 + ln0} 절 「{title}」: 규칙 번호도 [[링크]]도 없는 단락 「{shown}…」")
+    notes.append(f"절 {len(heads)}개, 단락 {n_units}개 중 규칙·링크 없음 {n_bare}개 "
+                 f"(기준: 빈 줄로 나뉜 단락·목록 항목 중 수식·표지를 뺀 글자 {L2_MIN_CHARS}자 이상, 끝이 `:` 인 목록 머리·표·첫 `##` 앞 머리글 제외)")
+    if rules:
+        unused = [r for r in sorted(rule_ids, key=lambda x: (len(x), x)) if r not in used_all]
+        notes.append(f"규칙 {len(rule_ids)}개 중 L2 본문이 쓰지 않은 것 {len(unused)}개: " + (", ".join(unused) or "없음"))
+    rep.add("물리판", e, w, notes)
 
 
 def parse_moves(text):

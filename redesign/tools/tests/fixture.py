@@ -81,7 +81,51 @@ RULES = """| rule | 물리 규칙 | 수학 노드 | 차이 | 유형 | 승인 |
 """
 
 
-def make_root(cards, tmp=None, rules=RULES, l1=None):
+RULES3 = """| rule | 물리 규칙 | 수학 노드 | 차이 | 유형 | 승인 |
+|---|---|---|---|---|---|
+| P1 | 시험용 규칙 하나 | reduction:stability | 없음(시험) | blackbox | proposed |
+| P4 | 시험용 규칙 넷 | main:theorem | 없음(시험) | exact | proposed |
+| P6 | 시험용 규칙 여섯 | main:theorem | 없음(시험) | exact | proposed |
+| P6′ | 시험용 규칙 여섯 프라임 | main:theorem | 없음(시험) | weakening | proposed |
+"""
+
+GLOSSARY = """# 용어집
+
+## 시험
+
+### g:pressure — pressure
+- **뜻**: 시험용 뜻.
+- **역할**: 시험용 역할.
+- **정의 위치**: main:theorem
+"""
+
+# 기준 L2: 모든 검사를 오류 0·경고 0 으로 통과해야 한다 (P1 은 일부러 쓰지 않아 "쓰지 않은 규칙" 참고만 나온다)
+L2_BASE = """# L2 — 물리판
+
+**바닥**: 시험용 바닥.
+
+## 첫 절
+
+[[g:pressure]] 의 증분은 공통 계의 차로 쓴다 (P4). 그 증분의 근거는 [[main:theorem]] 이다.
+
+$$x = y$$
+
+이 식을 쓰는 절차는 다음과 같다:
+
+- 먼저 섭동을 더한다 (P6, P4).
+- 다음에 계수를 한정한다 (P6′).
+
+이 절이 쓰는 규칙: P4, P6, P6′
+
+## 둘째 절
+
+여기서는 규칙을 쓰지 않고 [[reduction:stability]] 만 가리킨다.
+
+이 절이 쓰는 규칙: 없음
+"""
+
+
+def make_root(cards, tmp=None, rules=RULES, l1=None, l2=None, glossary=None):
     """cards: id → 사전. 임시 root 디렉터리를 만들어 돌려준다(호출자가 정리)."""
     root = Path(tmp or tempfile.mkdtemp(prefix="m2p-fixture-"))
     cdir = root / "cards"
@@ -94,6 +138,10 @@ def make_root(cards, tmp=None, rules=RULES, l1=None):
         (root / "layers" / "rules.md").write_text(rules, encoding="utf-8")
     if l1 is not None:
         (root / "layers" / "L1.md").write_text(l1, encoding="utf-8")
+    if l2 is not None:
+        (root / "layers" / "L2.md").write_text(l2, encoding="utf-8")
+    if glossary is not None:
+        (root / "layers" / "glossary.md").write_text(glossary, encoding="utf-8")
     return root
 
 

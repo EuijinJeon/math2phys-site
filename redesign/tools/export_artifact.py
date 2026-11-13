@@ -37,7 +37,7 @@ for d, _, fs in os.walk(SITE):
     for f in sorted(fs):
         if f.endswith(".html"):
             pages.append(posixpath.relpath(os.path.join(d, f), SITE))
-order = ["index.html", "L0.html", "L1.html", "rules.html", "glossary.html", "map.html", "cards/index.html", "check-report.html"]
+order = ["index.html", "L0.html", "L1.html", "L2.html", "rules.html", "glossary.html", "map.html", "cards/index.html", "check-report.html"]
 pages = [p for p in order if p in pages] + sorted(p for p in pages if p not in order)
 slugs = {}
 for p in pages:
@@ -109,7 +109,8 @@ h1,h2,h3{text-wrap:balance}
 mjx-container.wide{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
 """
 nav = ('<nav class="top">' + "".join(f'<a href="#{s}" data-nav="{s}">{n}</a>' for s, n in
-       [("home", "처음"), ("l0", "L0"), ("l1", "L1"), ("rules", "규칙 표"), ("glossary", "용어집"),
+       [("home", "처음"), ("l0", "L0"), ("l1", "L1")] + ([("l2", "L2")] if "L2.html" in slugs else []) +
+       [("rules", "규칙 표"), ("glossary", "용어집"),
         ("map", "증명 지도"), ("cards", "카드 목록"), ("check-report", "검사 보고서")]) + "</nav>")
 js = r"""
 (function(){
