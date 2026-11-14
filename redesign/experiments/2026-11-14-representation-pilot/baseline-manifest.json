@@ -1,0 +1,42 @@
+{
+  "baseline_git_HEAD": "5c37e0ee0128465b2fa054dff273b751c553a42c",
+  "A_exact_L2_lines": [
+    222,
+    314
+  ],
+  "hash_algorithm": "sha256",
+  "inputs": {
+    "redesign/source/sections/trees.tex": "c811f0b23b1765cf12ac26a3a724ce18cc0373d9c18eff48ea28bbc28e62865f",
+    "redesign/layers/L2.md": "f1396534b9693f41452b842ea8f5245cbc3ff32365aa8663f447d00b992a7630",
+    "redesign/layers/rules.md": "dd52c1d46d3886a8c003f467d8d3343d78ce444f16581842f5f2eb1d1932b55b",
+    "redesign/layers/glossary.md": "49370ea9a82477101e4b17db9918d2c47b19112514dd31f67bacb356914d23f5",
+    "notes/method-prompt.md": "9b893c8408d535d95fe0a3c7c95826c07661e82417baf8420d4ca5a12941ff4e",
+    "redesign/ROADMAP.md": "c58ea41fb411f9bb5a47d62c657c1e652a21ada01988db2dc1b958d320ba8c34",
+    "redesign/build/pilot-move4/questions.md": "09b6f664b8acdc07390c605736432f12c0ed80deb30028162aebfd3da200811f",
+    "redesign/build/pilot-move4/answer-key.md": "c5955d9ee71230ee02bb45fc0e1886b4f496b881764258648b5c892ddae03535",
+    "redesign/build/pilot-move4/grade-v1.md": "ee49740f16f7634b2a13da69fa6ede6c11c43b519051c6b44a96d670161334fa",
+    "redesign/build/pilot-move4/v1.1-notes.md": "e2d413f339f41aa81abd983dd4603537c5ca91fab49c170bcd9014d1ee3939af",
+    "redesign/cards/tree.first-variation.md": "34669e23f200077e688c544707cf3648120bb8da8e674880d5e387fbcd5c43da",
+    "redesign/cards/x.tree-differentiation-rule.md": "027882af42b0dc8c025899576a5c3e36ed5f6504f58f011c55c0684315854086",
+    "redesign/cards/tree.Y-recursion.md": "14b22bd5606b4fc1631c82311a3b96fab1abb478b73d22032322ada81cf1c8b4",
+    "redesign/cards/tree.log-expansion.s1.md": "c82bf18ca532b2f1bda48b5935c8511ee1d6d9ef2efaf1f941089757d2d494fa",
+    "redesign/cards/tree.reference-total.s1.md": "e5157f27d2ba201ff78b3161423dac592f74f771f365d54120e65461b1fc7eae"
+  },
+  "candidates": {
+    "A": {
+      "characters": 12123,
+      "utf8_bytes": 18279,
+      "sha256": "8d7b18f85dedbcf1fe7726724856333f4471505a4c8055bce1349df0aeef1539"
+    },
+    "B": {
+      "characters": 6631,
+      "utf8_bytes": 11046,
+      "sha256": "4e1643631b1aad41325253ad66e945f749a362871634740ddd2fde53add83ded"
+    },
+    "C": {
+      "characters": 7198,
+      "utf8_bytes": 11564,
+      "sha256": "753db0b34eae53cb177c8ebe0226d73ab40dd1099e685f0f61cdc4e0a3231b2d"
+    }
+  }
+}
