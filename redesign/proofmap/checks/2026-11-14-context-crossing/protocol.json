@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-14",
+  "target": "top.top-e9: R4(P7) → XM5(move 5)",
+  "question": "Can a statement-carrying edge convey fixed-L convergence, finite-family scope, and the permitted order of limits without asserting L-uniform N convergence?",
+  "pass_criteria": [
+    "edge states P7 discrepancy, permitted tests/constraints and chosen subsequence dependence",
+    "finite-family maximum vanishes at fixed L; no supremum over all tests, no uniform-in-L rate",
+    "consumer distinguishes C(L,k,eta)*epsilon identity errors from L-uniform relative coefficient bounds",
+    "counterexamples invalidate general reversed/joint-limit inferences; finite-family/averaging examples are explicitly synthetic",
+    "graph checker errors and warnings zero; previous checker tests pass; viewer regenerated"
+  ],
+  "scope": "Single interface only. No complete P8/P9 proof, no new general-purpose semantic limit checker, no claim of model-diagonal failure for this paper. Counterexamples test logical implications only. Independent mathematical review is not part of this run.",
+  "sources": [
+    {
+      "path": "redesign/source/sections/perturbations.tex",
+      "lines": "257–265, 308–312, 432–469, 538–546"
+    },
+    {
+      "path": "redesign/source/sections/decorrelation.tex",
+      "lines": "4–9, 18–58, 332–359, 446–457, 512–523, 558–569, 613–622"
+    }
+  ]
+}

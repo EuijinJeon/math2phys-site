@@ -120,6 +120,29 @@ button.zoom{margin-top:12px;font:inherit;padding:6px 10px;border-radius:6px;bord
 .arrowdown{text-align:center;color:var(--muted);font-size:18px;line-height:1;margin:2px 0}
 .note{font-size:12px;color:var(--muted);margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
 code{font-size:12px}
+
+/* 상태와 edge 식별자 */
+.node.state-incomplete{border-color:var(--sel);border-style:dashed}
+.node.state-unassessed{border-style:dotted;border-color:var(--fact-b)}
+.node.state-complete{border-width:3px}
+.node .state-tag{font-weight:600;color:var(--muted)}
+.node.state-incomplete .state-tag,.issue{color:var(--sel)}
+.node .issue{font-size:11px;margin-top:5px;font-weight:600}
+.node .child-state{font-size:11px;color:var(--muted);margin-top:4px}
+#map-status{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:12px}
+.status-pill{border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.status-pill.incomplete{border-color:var(--sel);color:var(--sel)}
+.status-pill.unassessed{border-color:var(--fact-b)}
+.elabel{font:11px/1.3 -apple-system,"Apple SD Gothic Neo",sans-serif;color:var(--ink);padding:3px 6px;max-width:150px;overflow:hidden;text-overflow:ellipsis;box-shadow:0 0 0 2px var(--bg)}
+.elabel.pending{border-style:dashed;border-color:var(--fact-b)}
+.elabel.open-edge{border-color:var(--sel);color:var(--sel)}
+.elabel.sel{outline:2px solid var(--sel);outline-offset:1px}
+.elabel .edge-id{font-weight:700;font-variant-numeric:tabular-nums}
+.elabel .edge-pending{margin-left:4px;font-weight:700;color:var(--fact-b)}
+.elabel:focus-visible,.node:focus-visible{outline:3px solid var(--sel)}
+.focus-node{font:inherit;text-align:left;background:transparent;color:var(--rule-b);border:0;padding:4px 0;cursor:pointer}
+.audit-list{padding-left:17px;font-size:12px}
+.node-warning{border-left:3px solid var(--sel);padding:5px 8px;margin:9px 0;font-size:12px}
 </style>
 </head>
 <body>
@@ -135,10 +158,11 @@ code{font-size:12px}
     <span><span class="lk"></span>흐름</span>
     <span><span class="lk call"></span>호출</span>
     <span><span class="lk def"></span>정의</span>
-    <span><span class="chip" style="border-color:var(--frame);border-style:dashed;background:transparent"></span>틀</span>
-    <label><input type="checkbox" id="tp" checked> 화살표에 넘기는 것 표시</label>
-    <span>상자나 화살표 이름표를 누르면 내용이 뜹니다.</span>
+    <span id="frame-legend"><span class="chip" style="border-color:var(--frame);border-style:dashed;background:transparent"></span>틀</span>
+    <label><input type="checkbox" id="tp" checked> edge 핵심어 표시</label>
+    <span>edge는 ID + 핵심어로 표시합니다. ?는 내용 미작성, !는 열린 연결입니다.</span>
   </div>
+  <div id="map-status" aria-live="polite"></div>
 </header>
 <main>
   <div id="stage"><div id="canvas"><svg id="edges"></svg></div><div id="vertex"></div></div>
@@ -153,6 +177,7 @@ const KIND = {obj:'대상', rule:'rule', fact:'사실', step:'단계', ext:'밖'
 const PROPOSED = 'proposed (사용자 확인 전)';
 
 /*__DATA__*/
+/*__ROUTING__*/
 /* ------------------------------------------------------------------ 그리기 */
 const COLW = 400, ROWH = 214, NW = 210, PADX = 24, PADY = 64;
 let cur = 'top', selNode = null, selEdge = null, showPass = true;
@@ -169,9 +194,10 @@ function boundaryCheck(mapId){
   const have = new Set();
   m.nodes.filter(n => n.kind === 'ext' && n.ref).forEach(n => have.add(n.ref));
   m.frames.forEach(f => (f.provides||[]).forEach(x => have.add(x)));
+  const mappingIssues = m.premiseMode === 'edges_only' ? m.nodes.filter(n => n.kind === 'ext').flatMap(n => n.audit.contractIssues) : [];
   const missing = [...want].filter(x => !have.has(x));
   const extra = [...have].filter(x => !want.has(x));
-  return {ok: !missing.length && !extra.length, missing, extra, parent: pn};
+  return {ok: !missing.length && !extra.length && !mappingIssues.length, missing, extra, mappingIssues, parent: pn};
 }
 function full(n){ // 상위 지도의 상자를 가리키면 그 진술과 조건을 끌어온다
   if (!n.pull) return {out: n.out, cond: n.cond || []};
@@ -185,10 +211,64 @@ function groundCount(mapId){
 }
 function callCount(mapId, id){ return MAPS[mapId].edges.filter(e => e.from === id && e.type === 'call').length; }
 
+function auditPanel(n){
+  const a = n.audit;
+  if (!a) return '';
+  let h = `<div class="check ${a.state === 'complete' ? 'ok' : (a.state === 'incomplete' ? 'bad' : '')}"><b>${esc(a.label)}</b>`;
+  if (a.child) h += `<br>내부 vertex ${a.child.done}/${a.child.total} 국소 완결${a.child.complete && a.state !== 'complete' ? ' · 바깥 vertex는 아직 완결 아님' : ''}`;
+  if (a.issues.length) h += `<ul class="audit-list">${a.issues.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  if (a.contractIssues.length) h += '<br><b>출력과 수신 요구의 대응을 다시 검토해야 합니다.</b>';
+  if (a.state === 'unassessed') h += '<br>완결 여부가 아직 선언되지 않았습니다.';
+  if (a.state === 'complete') h += '<br>명시한 입력·문맥에 대한 국소 완결. 수학적 자동 인증이나 사용자 확인은 아닙니다.';
+  return h + '</div>';
+}
+function mapStatus(m){
+  $('#frame-legend').style.display = m.frames.length ? '' : 'none';
+  const inner = m.nodes.filter(n => !['ext','out'].includes(n.kind));
+  const count = state => inner.filter(n => n.audit.state === state).length;
+  const missing = inner.filter(n => n.audit.missing.length).length;
+  const pending = m.edges.filter(e => !e.contentComplete).length;
+  $('#map-status').innerHTML = `${m.premiseMode === 'edges_only' ? '<span class="status-pill">전제 전달: edge 전용</span>' : ''}<span class="status-pill">국소 완결 ${count('complete')}</span><span class="status-pill incomplete">미완결 ${count('incomplete')}</span><span class="status-pill unassessed">미평가 ${count('unassessed')}</span><span class="status-pill${missing ? ' incomplete' : ''}">입력 누락 ${missing}</span><span class="status-pill">edge 내용 미작성 ${pending}/${m.edges.length}</span>`;
+  const scope = document.createElement('button');
+  scope.textContent = '입력 동기화 · 적용 범위'; scope.className = 'status-pill';
+  scope.onclick = () => { cur = Object.keys(MAPS).find(id => MAPS[id] === m); selNode = null; selEdge = null; render(); };
+  $('#map-status').appendChild(scope);
+}
+
+function coveragePanel(m){
+  const c = m.coverage;
+  let h = `<h2>입력 동기화 · 적용 범위</h2><p>${esc(c.mode)}<br>부모 입력 참조 ${c.matched}/${c.totalImports} 연결 · 출력 참조 edge ${c.referenceEdges}/${c.totalEdges}</p>`;
+  h += '<p class="note">참조 연결은 같은 출력의 항목을 선택하는지 검사합니다. 별도로 저장한 본문과의 의미 대응은 검증하지 않습니다. 평문 edge는 자동 동기화되지 않습니다.</p>';
+  if (c.legacyBodies.length) h += `<div class="check">기존 전체 본문 대응 미검토: ${c.legacyBodies.map(esc).join(', ')}</div>`;
+  if (c.pendingUpstream.length) h += `<div class="check">상위에서 남은 일: ${c.pendingUpstream.map(esc).join('<br>')}</div>`;
+  if (c.overlaps.length) h += `<div class="check bad">선택 항목 중복: ${c.overlaps.map(o => esc(o.left+' / '+o.right+': '+o.items.join(', '))).join('<br>')}<br>중복 공급이며 수학적 모순 판정은 아닙니다.</div>`;
+  const broken = c.imports.filter(i => i.tracked && !i.matched);
+  if (broken.length) h += `<div class="check bad">부모 입력 참조 충돌: ${broken.map(i => esc(i.node)).join(', ')}</div>`;
+  if (c.reviewEdges.length) h += `<div class="check bad">출력 대응 재검토: ${c.reviewEdges.map(esc).join(', ')}<br>증명 변경 후 검토 기록이 현재 자료와 맞지 않습니다.</div>`;
+  if (c.plainEdges.length) h += `<details><summary>평문 edge · 참조 미적용 ${c.plainEdges.length}개</summary>${c.plainEdges.map(esc).join(', ')}</details>`;
+  h += '<details open><summary>수 4 전체 적용 현황</summary><ul>';
+  Object.entries(MAPS).forEach(([id,map]) => {
+    const s=map.coverage;
+    h += `<li><button class="zoom" data-go="${esc(id)}">${esc(map.title)}</button><br>${esc(s.mode)} · 부모 참조 ${s.matched}/${s.totalImports}${!s.totalImports ? ' (부모 입력 없음)' : ''}<br>출력 참조 ${s.referenceEdges}/${s.totalEdges} · 재검토 edge ${s.reviewEdges.length} · 선택 중복 ${s.overlaps.length}${s.legacyBodies.length || s.pendingUpstream.length ? '<br>기존 전체 본문 대응 미검토' : ''}</li>`;
+  });
+  return h + '</ul></details><hr>';
+}
+
+function inputCoverage(n){
+  const c=n.coverage, i=c.imports;
+  let h='';
+  if (i) h += `<div class="check ${i.tracked && !i.matched ? 'bad' : ''}"><b>${i.tracked ? (i.matched ? '부모 입력 참조 연결' : '부모 입력 참조 충돌') : '부모 입력 참조 미적용'}</b>${i.tracked ? `<br><button class="follow-import" data-map="${esc(i.parentGraph)}" data-edge="${esc(i.parentEdge)}">부모 입력 ${esc(i.parentGraph+'/'+i.parentEdge)} 보기</button><br>선택: ${i.items.map(esc).join(', ')}` : '<br>외부입력 이름 대응만 있고 항목 참조로 동기화되지 않았습니다.'}${i.upstreamPending.length ? '<br>'+i.upstreamPending.map(esc).join('<br>') : ''}</div>`;
+  if (c.pending.length) h += `<div class="check">${c.pending.map(esc).join('<br>')}</div>`;
+  if (c.overlaps.length) h += '<div class="check bad">다른 외부 입력과 선택 항목 중복 · 적용 범위에서 확인</div>';
+  if (c.forwarded.length) h += `<details><summary>실제로 전달하는 출력 참조</summary>${c.forwarded.map(f => `<p>${esc(f.edge)} → <code>${esc(f.ref.graph+'/'+f.ref.node+'.'+f.ref.output)}</code><br>${f.items.map(esc).join(', ')}</p>`).join('')}</details>`;
+  return h;
+}
+
 function render(){
   if (cur.startsWith('v:')) return renderVertex();
   canvas.style.display = ''; $('#vertex').style.display = 'none';
   const m = MAPS[cur];
+  mapStatus(m);
   canvas.querySelectorAll('.node,.frame,.elabel').forEach(e => e.remove());
   // crumbs
   const chain = []; let c = cur; while (c){ chain.unshift(c); c = MAPS[c].parent ? MAPS[c].parent.map : null; }
@@ -198,12 +278,20 @@ function render(){
   const maxc = Math.max(...m.nodes.map(n => n.col)), maxr = Math.max(...m.nodes.map(n => n.row));
   m.nodes.forEach(n => {
     const d = document.createElement('div');
-    d.className = 'node ' + n.kind + (selNode === n.id ? ' sel' : '') + (n.status === '완결' ? ' done' : '') + (n.status === '미완결' ? ' todo' : '');
+    d.className = 'node ' + n.kind + ' state-' + n.audit.state + (selNode === n.id ? ' sel' : '');
+    d.tabIndex = 0; d.setAttribute('role', 'button'); d.setAttribute('aria-label', n.title + ' · ' + n.audit.label);
     d.dataset.id = n.id;
     d.style.left = (PADX + n.col*COLW) + 'px';
     d.style.top = (PADY + n.row*ROWH) + 'px';
-    d.innerHTML = `<div class="k"><span>${KIND[n.kind]}</span><span>${n.status ? esc(n.status) : (n.type && n.type !== '-' ? esc(n.type) : '')}</span></div><div class="t">${esc(n.title)}</div><div class="s">${esc(n.short)}</div>` + (n.zoom ? `<div class="z">▸ 확대할 수 있음</div>` : '') + (VERTEX[n.id] && VERTEX[n.id].map === cur ? `<div class="z">◆ ${esc(VERTEX[n.id].label)}</div>` : '');
+    d.innerHTML = `<div class="k"><span>${KIND[n.kind]}</span><span class="state-tag">${esc(n.audit.label)}</span></div><div class="t">${esc(n.title)}</div><div class="s">${esc(n.short)}</div>`
+      + (n.coverage.pending.length ? '<div class="issue">입력 대응 · 미적용/미검토</div>' : '')
+      + (n.audit.contractIssues.length ? '<div class="issue">! 출력 대응 재검토 필요</div>' : '')
+      + (n.audit.missing.length ? `<div class="issue">! 입력 edge ${n.audit.missing.length}개 누락</div>` : '')
+      + (n.audit.child ? `<div class="child-state">내부 ${n.audit.child.done}/${n.audit.child.total} 완결${n.audit.child.complete && n.audit.state !== 'complete' ? ' · 외곽 미완결' : ''}</div>` : '')
+      + (n.zoom ? `<div class="z">▸ 확대할 수 있음</div>` : '')
+      + (VERTEX[n.id] && VERTEX[n.id].map === cur ? `<div class="z">◆ ${esc(VERTEX[n.id].label)}</div>` : '');
     d.onclick = () => { selNode = n.id; selEdge = null; render(); };
+    d.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); d.click(); } };
     d.ondblclick = () => { if (n.zoom) go(n.zoom); else if (VERTEX[n.id] && VERTEX[n.id].map === cur) go('v:' + n.id); };
     canvas.appendChild(d);
   });
@@ -244,24 +332,45 @@ function layoutRest(m, maxc, maxr){
     const k = Math.min(dx ? (r.w/2 + 3)/Math.abs(dx) : 1e9, dy ? (r.h/2 + 3)/Math.abs(dy) : 1e9);
     return [cx + dx*k, cy + dy*k];
   };
+  const occupied = m.nodes.map(n => rect(n.id));
+  const labels = [];
+  const overlaps = (a,b,pad=5) => a.x < b.x+b.w+pad && a.x+a.w+pad > b.x && a.y < b.y+b.h+pad && a.y+a.h+pad > b.y;
   m.edges.forEach((e, i) => {
     const a = rect(e.from), b = rect(e.to);
     const loop = e.from === e.to;
     let [x1,y1] = clip(a, b.x + b.w/2, b.y + b.h/2), [x2,y2] = clip(b, a.x + a.w/2, a.y + a.h/2);
     if (loop){ x1 = a.x + a.w*0.68; x2 = a.x + a.w*0.32; y1 = y2 = a.y + a.h + 3; }
+    const route = loop ? null : edgeRoute(a,b,m.nodes.filter(n => n.id !== e.from && n.id !== e.to).map(n => rect(n.id)));
     const isSel = selEdge === i;
     const col = isSel ? sel : (e.type === 'def' ? muted : ink);
     const dash = e.type === 'call' ? ' stroke-dasharray="6 4"' : '';
     const wdt = (e.type === 'def' ? 1 : 1.6) + (e.member ? 1.4 : 0);
     const mk = isSel ? 'ahs' : (e.type === 'def' ? 'ahm' : 'ah');
-    s += loop ? `<path d="M${x1},${y1} C${x1+30},${y1+70} ${x2-30},${y1+70} ${x2},${y2}" fill="none" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>` : `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>`;
-    const l = document.createElement('div'); l.className = 'elabel' + (isSel ? ' sel' : '');
-    l.style.left = ((x1+x2)/2) + 'px'; l.style.top = (loop ? y1 + 78 : (y1+y2)/2) + 'px';
-    if (e.stmt){ l.innerHTML = `<span class="et"><b>${esc(e.id)}</b> · ${{flow:'흐름',call:'사실',def:'정의'}[e.type]}</span>${esc(e.short)}`; l.classList.add('wide'); if (e.member) l.classList.add('member'); }
-    else { l.innerHTML = showPass ? `<span class="et">${{flow:'흐름',call:'호출',def:'정의'}[e.type]}</span>${esc(e.type === 'call' && e.inst ? e.inst : e.pass)}` : esc(e.label);
-    if (showPass) l.classList.add('wide'); }
+    s += loop ? `<path d="M${x1},${y1} C${x1+30},${y1+70} ${x2-30},${y1+70} ${x2},${y2}" fill="none" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>` : `<polyline data-edge="${esc(e.id)}" points="${route.map(p => p.join(',')).join(' ')}" fill="none" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>`;
+    const l = document.createElement('button'); l.type = 'button';
+    l.className = 'elabel' + (isSel ? ' sel' : '') + (!e.contentComplete ? ' pending' : '') + (e.open || e.contractIssues.length ? ' open-edge' : '');
+    const status = e.contractIssues.length ? '출력 대응 재검토 필요' : e.open ? '열린 연결' : (e.contentComplete ? '내용 완결' : '내용 미작성');
+    l.title = `${e.id} · ${e.caption} · ${status}`;
+    l.setAttribute('aria-label', `${e.displayId} ${e.caption} — ${status}`);
+    l.innerHTML = `<span class="edge-id">${esc(e.displayId)}</span>${showPass ? ' · ' + esc(e.caption) : ''}${e.open || e.contractIssues.length ? '<span class="edge-pending">!</span>' : (!e.contentComplete ? '<span class="edge-pending">?</span>' : '')}`;
     l.onclick = ev => { ev.stopPropagation(); selEdge = i; selNode = null; render(); };
-    canvas.appendChild(l); tex(l);
+    canvas.appendChild(l);
+    const lw = l.offsetWidth, lh = l.offsetHeight;
+    const dx = x2-x1, dy = y2-y1, len = Math.hypot(dx,dy) || 1;
+    let best = null;
+    const slots = loop ? [0.5] : [0.5,0.35,0.65,0.2,0.8];
+    for (const t of slots) for (const offset of [0,18,-18,36,-36,54,-54]){
+      const anchor = loop ? {x:(x1+x2)/2,y:y1+65,dx:1,dy:0} : routePoint(route,t);
+      const cx = anchor.x-anchor.dy*offset;
+      const cy = anchor.y+anchor.dx*offset;
+      const box = {x:cx-lw/2,y:cy-lh/2,w:lw,h:lh};
+      const score = 10000*occupied.filter(r => overlaps(box,r)).length + 1000*labels.filter(r => overlaps(box,r)).length + Math.abs(offset) + 100*Math.abs(t-0.5);
+      if (!best || score < best.score) best = {cx,cy,box,score,anchor,offset};
+    }
+    if (Math.abs(best.offset)>10) s += `<line x1="${best.anchor.x}" y1="${best.anchor.y}" x2="${best.cx}" y2="${best.cy}" stroke="${muted}" stroke-width="0.7" stroke-dasharray="2 3"/>`;
+    l.dataset.edgeId = e.id;
+    l.style.left = best.cx + 'px'; l.style.top = best.cy + 'px'; labels.push(best.box);
+
   });
   svg.innerHTML = s;
 }
@@ -270,14 +379,18 @@ function layoutRest(m, maxc, maxr){
 
 function renderAtomic(v){
   const el = $('#vertex');
-  const ecard = (e, dir) => `<div class="vc edge ${e.kind === '정의' ? 'def' : (e.kind === '사실' ? 'fact' : '')}"><div class="hd"><span class="tag eid">${e.id}</span><span class="tag">edge · ${e.kind}</span></div><div class="row"><span class="lab">${dir === 'in' ? '보낸 node' : '받는 node'}</span>${esc(dir === 'in' ? e.from : e.to)}</div><div class="row"><span class="lab">싣는 내용</span></div><div class="formula">${esc(e.stmt)}</div>${e.by ? `<div class="row"><span class="lab">나오는 곳</span>${esc(e.by)}</div>` : ''}<div class="row"><span class="lab">근거</span>${esc(e.src)}</div></div>`;
+  const ecard = (e, dir) => `<div class="vc edge ${e.kind === '정의' ? 'def' : (e.kind === '사실' ? 'fact' : '')}"><div class="hd"><span class="tag eid">${esc(e.id)}</span>${e.rawId && e.rawId !== e.id ? `<code>${esc(e.rawId)}</code>` : ''}<span class="tag">edge · ${esc(e.kind)}</span></div><div class="row"><span class="lab">${dir === 'in' ? '보낸 node' : '받는 node'}</span>${esc(dir === 'in' ? e.from : e.to)}</div><div class="row"><span class="lab">싣는 내용</span></div><div class="formula">${esc(e.stmt)}</div>${e.by ? `<div class="row"><span class="lab">나오는 곳</span>${esc(e.by)}</div>` : ''}<div class="row"><span class="lab">근거</span>${esc(e.src)}</div></div>`;
   let h = `<h2>vertex: ${esc(v.title)}</h2><div class="claim">${esc(v.where)} vertex는 받는 edge, node, 보내는 edge를 모두 포함한다. 내용은 edge가 갖고, node는 edge의 번호만 가리킨다.</div>`;
-  h += `<h3>문맥 (context)</h3><div class="vc ctx"><ul>${v.context.map(x => `<li>${esc(x)}</li>`).join('')}</ul><div class="row"><span class="lab">바닥 (독자가 이미 가진 것)</span>${v.floor.map(esc).join(' · ')}</div></div>`;
+  if (v.premiseMode === 'edges_only') {
+    h += `<h3>로컬 도입 · 정의</h3><div class="vc"><ul>${v.introductions.map((i,j) => `<li>intro:${j+1} · ${i.kind === 'notation' ? esc('$'+i.expr+'$') : esc(i.symbol + ' ∈ {'+i.domain.lower+', …, '+i.domain.upper_symbol+'}를 임의로 택함')}<br><code>${esc(i.scope)}</code></li>`).join('')}</ul><div class="row">가정·대상 정의는 아래 입력 edge에서 받습니다.</div><div class="row"><span class="lab">바닥</span>${v.floor.map(esc).join(' · ')}</div></div>`;
+  } else {
+    h += `<h3>문맥 (context)</h3><div class="vc ctx"><ul>${v.context.map(x => `<li>${esc(x)}</li>`).join('')}</ul><div class="row"><span class="lab">바닥 (독자가 이미 가진 것)</span>${v.floor.map(esc).join(' · ')}</div></div>`;
+  }
   h += `<div class="vgrid"><div><h3>받는 edge ${v.edgesIn.length}개</h3>${v.edgesIn.map(e => ecard(e,'in')).join('')}</div>`;
   h += `<div><h3>node</h3><div class="vc step"><div class="hd"><b>${esc(v.title)}</b><span class="tag">${esc(v.node.kind)}</span></div>${v.node.chain.map((c,i) => `<div class="chain"><div class="cn">식 ${i+1}</div><div class="formula">${esc(c.expr)}</div><div class="row"><span class="lab">근거</span>${esc(c.by)}</div>${c.flag ? `<div class="flag">${esc(c.flag)}</div>` : ''}</div>`).join('')}</div></div>`;
   h += `<div><h3>보내는 edge ${v.edgesOut.length}개</h3>${v.edgesOut.map(e => ecard(e,'out')).join('')}</div></div>`;
   el.innerHTML = h; tex(el);
-  let q = `<h2>검사</h2><div class="kind">vertex · 문맥, 받는 edge ⊢ 보내는 edge</div><dl>`;
+  let q = `<h2>검사</h2><div class="kind">vertex · 입력과 명시적 도입 ⊢ 출력</div><dl>`;
   v.checks.forEach(c => { q += `<dt>${esc(c[0])}</dt><dd>${esc(c[1])}</dd>`; });
   q += `<dt>판정이 필요한 것</dt><dd><ul>${v.open.map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>`;
   q += `<dt>근거</dt><dd>${esc(v.source)}<br>상태: ${PROPOSED}</dd></dl><p class="note">검사표는 작성자가 손으로 채운 것이고 기계가 확인한 것이 아니다.</p>`;
@@ -286,6 +399,7 @@ function renderAtomic(v){
 
 function renderVertex(){
   const id = cur.slice(2), v = VERTEX[id];
+  mapStatus(MAPS[v.map]);
   canvas.style.display = 'none'; const el = $('#vertex'); el.style.display = 'block';
   const chain = []; let c = v.map; while (c){ chain.unshift(c); c = MAPS[c].parent ? MAPS[c].parent.map : null; }
   $('#crumbs').innerHTML = chain.map(m => `<a data-go="${m}">${esc(MAPS[m].title)}</a>`).join(' › ') + ` › <b>${esc(v.title)}</b>`;
@@ -322,26 +436,30 @@ function showPanel(){
     const n = m.nodes.find(x => x.id === selNode);
     const name = id => { const x = m.nodes.find(y => y.id === id) || MAPS.top.nodes.find(y => y.id === id); return x ? x.title : id; };
     h += `<h2>${esc(n.title)}</h2><div class="kind">${KIND[n.kind]}${n.type && n.type !== '-' ? ' · 유형 ' + esc(n.type) : ''}</div><dl>`;
+    h += auditPanel(n);
+    h += inputCoverage(n);
     const fr = m.frames.filter(f => f.nodes.includes(n.id));
     if (fr.length) h += `<dt>틀의 전제</dt><dd>${fr.map(f => esc(f.cap.replace(/^틀:\s*/, ''))).join('<br>')}</dd>`;
     h += `<dt>받는 것</dt><dd>`;
-    if (!n.in.length) h += n.kind === 'ext' ? '이 장의 밖에서 온다.' : '틀의 전제 외에 없음.';
+    if (!n.in.length) h += n.kind === 'ext' ? '이 장의 밖에서 온다.' : (m.premiseMode === 'edges_only' ? '별도 입력 없음.' : '틀의 전제 외에 없음.');
     n.in.forEach(id => {
       const src = m.nodes.find(y => y.id === id) || MAPS.top.nodes.find(y => y.id === id);
       const e = m.edges.find(x => x.from === id && x.to === n.id);
       const tn = e ? {flow:'흐름', call:'호출', def:'정의'}[e.type] : '정의';
-      h += `<div class="recv"><div class="rh"><b>${esc(src.title)}</b> <span class="tag">${tn}</span></div>`;
+      h += `<div class="recv"><div class="rh"><b>${esc(src ? src.title : id)}</b> <span class="tag">${tn}</span></div>`;
       if (e && e.stmt) h += `<div class="rl"><span class="lab">edge ${esc(e.id)}</span>${esc(e.stmt)}</div>`;
       else if (e && e.type === 'flow' && e.pass) h += `<div class="rl"><span class="lab">넘어오는 것</span>${esc(e.pass)}</div>`;
-      const so = full(src).out, sc = full(src).cond;
+      if (!e) h += '<div class="node-warning">입력 edge가 없습니다. 아래 원본 진술은 참고이며 이 vertex에 전달된 내용이 아닙니다.</div>';
+      const so = src ? full(src).out : '', sc = src ? full(src).cond : [];
       if (so && !(e && e.stmt)) h += `<details${e && e.type === 'flow' ? '' : ' open'}><summary>${e && e.type === 'flow' ? '보낸 상자의 진술 전체' : '진술'}</summary><div class="formula">${esc(so)}</div>${sc.length ? '<div class="rl"><span class="lab">그 조건</span>' + sc.map(esc).join(' ') + '</div>' : ''}</details>`;
       if (e && e.inst) h += `<div class="rl"><span class="lab">대입</span>${esc(e.inst)}</div>`;
       if (e && e.fit) h += `<div class="rl"><span class="lab">맞음</span>${esc(e.fit)}</div>`;
       h += `</div>`;
     });
     h += `</dd>`;
-    h += `<dt>조건</dt><dd>${full(n).cond.length ? '<ul>' + full(n).cond.map(c => `<li>${esc(c)}</li>`).join('') + '</ul>' : '틀의 전제 외에 없음'}</dd>`;
-    h += `<dt>주는 것</dt><dd class="formula">${esc(full(n).out || '—')}</dd>`;
+    h += `<dt>조건</dt><dd>${full(n).cond.length ? '<ul>' + full(n).cond.map(c => `<li>${esc(c)}</li>`).join('') + '</ul>' : (m.premiseMode === 'edges_only' ? '가정·대상 정의는 입력 edge에 포함됩니다.' : '틀의 전제 외에 없음')}</dd>`;
+    h += `<dt>${n.coverage.pending.length && n.coverage.bodyMode !== 'reference' ? '기존 전체 본문 · 선택 출력과 별도' : '주는 것'}</dt><dd class="formula">${esc(full(n).out || '—')}</dd>`;
+    if (Object.keys(n.outputs).length) h += `<dt>이름 붙은 출력</dt><dd>${Object.entries(n.outputs).map(([key,o]) => `<code>${esc(key)}</code> · ${esc(o.title || key)}<br>유도: ${o.proof ? esc(o.proof.graph) + ' / ' + esc(o.proof.node) : '선언된 외부 가정·정의·인용 사실'}`).join('<br>')}</dd>`;
     const outs = m.edges.filter(x => x.from === n.id);
     if (outs.length) h += `<dt>쓰이는 곳</dt><dd><ul>${outs.map(x => `<li>${esc(m.nodes.find(y => y.id === x.to).title)}${x.inst ? ' — ' + esc(x.inst) : ''}${x.stmt ? ' — edge ' + esc(x.id) : ''}</li>`).join('')}</ul></dd>`;
     h += `<dt>근거</dt><dd>${n.cards.length ? n.cards.map(c => `<code>${esc(c)}</code>`).join(', ') : '—'}${n.source ? '<br>' + esc(n.source) : ''}${n.cards.length ? '<br>상태: ' + PROPOSED : ''}</dd>`;
@@ -360,10 +478,12 @@ function showPanel(){
     const e = m.edges[selEdge];
     const a = m.nodes.find(x => x.id === e.from), b = m.nodes.find(x => x.id === e.to);
     const tn = {flow:'흐름', call:'호출', def:'정의'}[e.type];
-    if (e.stmt){ h += `<h2>edge ${esc(e.id)}</h2><div class="kind">edge · ${{flow:'흐름',call:'사실',def:'정의'}[e.type]}${e.member ? ' · 완결된 vertex의 일부' : ' · 양 끝 node 가운데 미완결이 있음'}</div><dl><dt>보낸 node</dt><dd>${esc(a.title)}</dd><dt>받는 node</dt><dd>${esc(b.title)}</dd><dt>싣는 내용</dt><dd class="formula">${esc(e.stmt)}</dd><dt>보낸 node의 출력 중 싣지 않는 것</dt><dd>${esc(e.nottaken)}</dd><dt>근거</dt><dd>${esc(e.src)}</dd></dl>`; }
-    else h += `<h2>${esc(a.title)} → ${esc(b.title)}</h2><div class="kind">화살표 · ${tn}</div><dl><dt>넘기는 것</dt><dd>${esc(e.pass)}</dd>${e.inst ? '<dt>대입</dt><dd>' + esc(e.inst) + '</dd>' : ''}<dt>맞음</dt><dd>${esc(e.fit)}</dd></dl>`;
+    h += `<h2>edge ${esc(e.displayId)} · ${esc(e.caption)}</h2><div class="kind"><code>${esc(e.id)}</code> · ${tn} · ${e.open ? '열린 연결' : (e.contentComplete ? '내용 완결' : '내용 미작성')}</div><dl>${e.outputRef ? '<dt>연결 검토</dt><dd>' + (e.contractIssues.length ? '재검토 필요' : (MAPS[e.outputRef.graph].nodes.find(n => n.id === e.outputRef.node).outputs[e.outputRef.output].role === 'given' ? '선언 입력 항목 참조 연결 · 기존 전체 본문 대응은 별도 검토' : '출력 참조 연결됨 · 검토 기록 일치')) + '</dd><dt>참조 출력</dt><dd><code>' + esc(e.outputRef.graph + '/' + e.outputRef.node + '.' + e.outputRef.output) + '</code></dd>' : ''}${e.contractIssues.length ? '<dt>출력 대응 문제</dt><dd class="node-warning">' + e.contractIssues.map(esc).join('<br>') + '</dd>' : ''}${e.useNote ? '<dt>받는 쪽의 사용 설명</dt><dd>' + esc(e.useNote) + '</dd>' : ''}<dt>보낸 node</dt><dd>${esc(a.title)} · ${esc(a.audit.label)}</dd><dt>받는 node</dt><dd>${esc(b.title)} · ${esc(b.audit.label)}</dd><dt>${e.contentComplete ? '싣는 내용 전체' : '현재 초안 · 전달 내용 미완결'}</dt><dd class="formula">${esc(e.stmt || e.pass || '아직 작성되지 않음')}</dd>${e.inst ? '<dt>예전 대입 표기</dt><dd>' + esc(e.inst) + '</dd>' : ''}${e.fit ? '<dt>연결 설명</dt><dd>' + esc(e.fit) + '</dd>' : ''}${e.nottaken ? '<dt>싣지 않는 것</dt><dd>' + esc(e.nottaken) + '</dd>' : ''}<dt>근거</dt><dd>${esc(e.src || '미기재')}</dd></dl><p class="note">edge 내용의 완결과 양 끝 vertex의 완결은 별도로 표시합니다.</p>`;
   } else {
+    h += coveragePanel(m);
     const g = groundCount(cur);
+    const pendingNodes = m.nodes.filter(n => ['incomplete','unassessed'].includes(n.audit.state));
+    if (pendingNodes.length) h += `<h3>미완결·미평가 위치</h3><ul class="audit-list">${pendingNodes.map(n => `<li><button class="focus-node" data-node="${esc(n.id)}">${esc(n.title)} · ${esc(n.audit.label)}</button>${n.audit.missing.length ? ' — 입력 edge 누락' : ''}</li>`).join('')}</ul>`;
     const ne = m.edges.length, nc = m.edges.filter(e => e.type === 'call').length;
     h += `<h2>${esc(m.title)}</h2><div class="kind">지도</div><p>${esc(m.intro)}</p><dl><dt>센 것</dt><dd>상자 ${m.nodes.length}개 (밖 ${m.nodes.filter(n => n.kind==='ext').length}개 포함), 화살표 ${ne}개 (호출 ${nc}개), 틀 ${m.frames.length}개.<br>카드에 닿는 상자 ${g.grounded}/${g.all}.</dd></dl>`;
     if (m.parent){ const b = boundaryCheck(cur); h += `<div class="check ${b.ok ? 'ok' : 'bad'}">닿는 면: ${b.ok ? '상위 상자 「' + esc(b.parent.title) + '」의 받는 것과 일치' : '불일치'}</div>`; }
@@ -371,7 +491,9 @@ function showPanel(){
   }
   h += `<p class="note">내용은 현행 L2 §6, rules.md, 카드에서 옮겼다. 모든 근거의 상태는 proposed이고 사용자 확인 전이다. 닿는 면 검사는 이 파일의 자료에서 계산한 것이다.</p>`;
   panel.innerHTML = h;
+  panel.querySelectorAll('button.focus-node').forEach(b => b.onclick = () => { selNode = b.dataset.node; selEdge = null; render(); });
   panel.querySelectorAll('button.zoom').forEach(b => b.onclick = () => go(b.dataset.go));
+  panel.querySelectorAll('button.follow-import').forEach(b => b.onclick = () => { cur=b.dataset.map; selNode=null; selEdge=MAPS[cur].edges.findIndex(e => e.id === b.dataset.edge); if (selEdge < 0) selEdge=null; render(); });
   tex(panel);
 }
 function go(id){ cur = id; selNode = null; selEdge = null; render(); $('#stage').scrollTo(0,0); }

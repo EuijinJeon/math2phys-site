@@ -1,0 +1,1151 @@
+{
+  "source_sha256": "a725df43ce047df44c61703d26458e5092a27c55272a800a42d5289740b3e535",
+  "graphs": [
+    {
+      "id": "fv",
+      "nodes": [
+        {
+          "id": "X1",
+          "kind": "external",
+          "title": "삽입의 재귀 (정의)",
+          "summary": "$Y_L=A$, $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$",
+          "statement": "$$Y_L=A,\\qquad Y_{d-1}=\\bigl(K_d\\,Y_d^{m_d}\\bigr)^{1/m_d}\\quad(d=L,\\ldots,1).$$",
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:Y-recursion"
+            ],
+            "source": "trees.tex (tree:Y-recursion)",
+            "state": "proposed"
+          },
+          "external_ref": "XO",
+          "layout": {
+            "col": 0,
+            "row": 0
+          },
+          "inputs": []
+        },
+        {
+          "id": "X2",
+          "kind": "external",
+          "title": "바뀐 kernel (정의)",
+          "summary": "$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]$",
+          "statement": "$$K_d^{A}[h]=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}h\\Bigr].$$",
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:insertion"
+            ],
+            "source": "trees.tex (tree:updated-kernel)",
+            "state": "proposed"
+          },
+          "external_ref": "XO",
+          "layout": {
+            "col": 0,
+            "row": 1
+          },
+          "inputs": []
+        },
+        {
+          "id": "X3",
+          "kind": "external",
+          "title": "재귀의 단조성",
+          "summary": "$a\\le A\\le b\\Rightarrow a\\le Y_d\\le b$",
+          "statement": "$a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$.",
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:insertion"
+            ],
+            "source": "trees.tex 107–110",
+            "state": "proposed"
+          },
+          "external_ref": "XO",
+          "layout": {
+            "col": 0,
+            "row": 2
+          },
+          "inputs": []
+        },
+        {
+          "id": "X4",
+          "kind": "external",
+          "title": "조건부 기대값 (정의)",
+          "summary": "$E^A[h\\mid\\mathscr F_d]=K^A_{d+1}\\cdots K^A_L\\,h$",
+          "statement": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:insertion"
+            ],
+            "source": "trees.tex 147–151",
+            "state": "proposed"
+          },
+          "external_ref": "XO",
+          "layout": {
+            "col": 2,
+            "row": 0
+          },
+          "inputs": []
+        },
+        {
+          "id": "TM",
+          "kind": "step",
+          "title": "말단",
+          "summary": "$Y_L=A$ 를 미분한다",
+          "statement": "$\\partial\\log Y_L=D_j/A$, 그리고 $\\lvert\\partial\\log Y_L\\rvert\\le c$.",
+          "inputs": [
+            "X1"
+          ],
+          "abstraction": "exact",
+          "status": "complete",
+          "grounding": {
+            "cards": [
+              "tree:first-variation"
+            ],
+            "source": "trees.tex 153–154",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 1,
+            "row": 0
+          },
+          "local_context": [
+            "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다."
+          ],
+          "floor_used": [
+            "유한합의 미분",
+            "양의 함수의 로그 미분",
+            "절댓값의 기본 부등식"
+          ],
+          "derivation": [
+            {
+              "expr": "$$\\partial Y_L=\\partial A_{\\boldsymbol t}=D_j.$$",
+              "by": "f1과 문맥 FF. 각 D는 매개변수에 무관하므로 유한합을 미분한다.",
+              "uses": [
+                "edge:f1",
+                "context:FF",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "A",
+                "D"
+              ]
+            },
+            {
+              "expr": "$$\\partial\\log Y_L=\\frac{\\partial Y_L}{Y_L}=\\frac{D_j}{A_{\\boldsymbol t}}.$$",
+              "by": "식 1, f1, FF의 A≥a>0 및 로그 미분(바닥).",
+              "uses": [
+                "line:1",
+                "edge:f1",
+                "context:FF",
+                "floor:2"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "D",
+                "A"
+              ]
+            },
+            {
+              "expr": "$$\\left|\\partial\\log Y_L\\right|\\le\\frac{\\lVert D_j\\rVert_\\infty}{a}=c.$$",
+              "by": "식 2, FF의 하한 a와 c의 정의. 도함수는 U 전체에서 존재한다.",
+              "uses": [
+                "line:2",
+                "context:FF",
+                "floor:3"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "D",
+                "a",
+                "c"
+              ]
+            }
+          ],
+          "produces": [
+            {
+              "edge": "e4L",
+              "by": "식 1–3: 미분 가능성과 균일 경계.",
+              "lines": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "edge": "f2",
+              "by": "식 2: 말단 항등식.",
+              "lines": [
+                2
+              ]
+            }
+          ],
+          "review": {
+            "checks": [
+              {
+                "question": "받는 것과 보내는 것이 닫히는가",
+                "answer": "f1과 FF만으로 식 1–3이 나오며, e4L과 f2가 각각 그 일부를 싣는다."
+              }
+            ],
+            "open": []
+          },
+          "reference_check": true
+        },
+        {
+          "id": "PM",
+          "kind": "step",
+          "title": "power mean 하나를 미분",
+          "summary": "깊이를 한 칸 내린다: $d\\to d-1$",
+          "statement": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, 그리고 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$.",
+          "inputs": [
+            "X1",
+            "X2",
+            "X3",
+            "TM",
+            "PM"
+          ],
+          "abstraction": "exact",
+          "status": "complete",
+          "grounding": {
+            "cards": [
+              "tree:first-variation"
+            ],
+            "source": "trees.tex 107–110(단조성), 142–154(첫 변분)",
+            "state": "proposed"
+          },
+          "note": "첫 변분 상자 안의 한 vertex. 깊이를 한 칸 내리는 걸음이다.",
+          "local_context": [
+            "유한 확률 kernel 열 $K_1,\\ldots,K_L$ 과 수 $0=m_0<m_1<\\cdots<m_L=1$.",
+            "깊이 $d\\in\\{1,\\ldots,L\\}$ 와 깊이 $d-1$ 까지의 prefix를 고정. $K_d$ 는 그 prefix가 주어졌을 때 깊이 $d$ 의 변수를 적분한다.",
+            "$A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 는 유계 실수 path 함수. $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 가 성립하는 실수 근방 $U$ 안에 있다($a$, $b$ 는 상수).",
+            "$j$ 를 고정하고 $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$ 로 쓴다."
+          ],
+          "floor_used": [
+            "연쇄 법칙",
+            "적분 기호 아래의 미분: 피적분함수의 도함수가 $U$ 에서 균일하게 유계이면 미분과 확률 적분을 바꿀 수 있다"
+          ],
+          "derivation": [
+            {
+              "expr": "$$\\log Y_{d-1}=\\frac1{m_d}\\log K_d\\bigl[Y_d^{m_d}\\bigr]$$",
+              "by": "e1. $d\\ge1$ 이라 $m_d>0$, e3으로 $Y_d\\ge a>0$.",
+              "uses": [
+                "edge:e1",
+                "edge:e3",
+                "context:FF",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "Y",
+                "m",
+                "K",
+                "d",
+                "a"
+              ]
+            },
+            {
+              "expr": "$$\\partial\\log Y_{d-1}=\\frac1{m_d}\\,\\frac{K_d\\bigl[\\partial\\,(Y_d^{m_d})\\bigr]}{K_d\\bigl[Y_d^{m_d}\\bigr]}$$",
+              "by": "연쇄 법칙과 적분 기호 아래의 미분. 균일 유계: $\\lvert\\partial(Y_d^{m_d})\\rvert=m_dY_d^{m_d}\\lvert\\partial\\log Y_d\\rvert\\le m_d\\,b^{m_d}c$ (e3, e4; $d=L$ 이면 e4 대신 e4′).",
+              "author_filled": "균일 유계를 확인하는 부분은 지도 작성자가 채운 것이다. 원문은 \"$A_{\\boldsymbol t}$ 가 균등하게 양인 실수 근방에서 미분하면\"이라고만 적는다.",
+              "uses": [
+                "line:1",
+                "edge:e3",
+                "edge:e4",
+                "edge:e4L",
+                "context:FF",
+                "floor:1",
+                "floor:2"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "m",
+                "K",
+                "U",
+                "b",
+                "c"
+              ]
+            },
+            {
+              "expr": "$$=\\frac{K_d\\bigl[Y_d^{m_d}\\,\\partial\\log Y_d\\bigr]}{Y_{d-1}^{m_d}}$$",
+              "by": "$\\partial(Y^{m})=mY^{m}\\,\\partial\\log Y$. 분모는 e1.",
+              "uses": [
+                "line:2",
+                "edge:e1",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "K",
+                "Y",
+                "m",
+                "partial"
+              ]
+            },
+            {
+              "expr": "$$=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}\\partial\\log Y_d\\Bigr]$$",
+              "by": "$Y_{d-1}$ 은 깊이 $d$ 의 변수에 의존하지 않는다(e1).",
+              "uses": [
+                "line:3",
+                "edge:e1"
+              ],
+              "uses_symbols": [
+                "K",
+                "Y",
+                "m",
+                "partial"
+              ]
+            },
+            {
+              "expr": "$$=K_d^{A}\\bigl[\\partial\\log Y_d\\bigr]$$",
+              "by": "e2. h는 d=L이면 e4L(e4′), d<L이면 e4의 귀납 가정으로 유계.",
+              "uses": [
+                "line:4",
+                "edge:e2",
+                "edge:e4",
+                "edge:e4L"
+              ],
+              "uses_symbols": [
+                "K_A",
+                "partial",
+                "Y"
+              ]
+            },
+            {
+              "expr": "$$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c$$",
+              "by": "$K_d^A[1]=K_d[Y_d^{m_d}]/Y_{d-1}^{m_d}=1$ (e1, e2)이고 가중치가 양수(e3)이므로 확률 kernel이다. d=L에서는 e4L(e4′), 그 뒤에는 e4로 받은 한계 c가 평균에서 유지된다.",
+              "uses": [
+                "line:5",
+                "edge:e1",
+                "edge:e2",
+                "edge:e3",
+                "edge:e4",
+                "edge:e4L",
+                "context:FF"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "c",
+                "K_A",
+                "K",
+                "m"
+              ]
+            }
+          ],
+          "produces": [
+            {
+              "edge": "o1",
+              "by": "식 1–5",
+              "lines": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "edge": "e4",
+              "by": "식 2, 6",
+              "lines": [
+                2,
+                6
+              ]
+            }
+          ],
+          "review": {
+            "checks": [
+              {
+                "question": "보내는 edge가 모두 나오는가",
+                "answer": "o1 ← 식 1–5. e4 ← 식 2(미분 가능), 식 6(한계)."
+              },
+              {
+                "question": "node가 받는 edge와 문맥과 바닥만 쓰는가",
+                "answer": "식마다 근거가 e1–e4 및 e4L, 문맥, 바닥 가운데 있다. 다른 정리를 부르지 않는다."
+              },
+              {
+                "question": "받는 edge 가운데 안 쓰는 것이 있는가",
+                "answer": "없다. e1은 식 1, 3, 4, 6. e2는 식 5, 6. e3은 식 1, 2. e4는 식 2, 5, 6."
+              },
+              {
+                "question": "기호가 어디서 정의되는가",
+                "answer": "$K_d$, $m_d$, $A_{\\boldsymbol t}$, $D_j$, $U$, $a$, $b$, $c$, $\\partial$ — 문맥. $Y_d$, $Y_{d-1}$ — e1. $K_d^A$ — e2."
+              },
+              {
+                "question": "edge가 보낸 쪽 출력의 일부인가",
+                "answer": "o1은 항등식만, e4는 미분 가능성과 한계만 싣는다. e4가 받는 것은 한 칸 아래 vertex의 e4다. 한 칸 아래의 항등식(o1)은 이 vertex로 오지 않는다."
+              }
+            ],
+            "open": [
+              "식 여섯 줄을 \"계산 하나\"로 본 것이 맞는지. 더 쪼개야 한다면 식 2(미분을 적분 안으로)와 식 6(한계)이 따로 node가 된다.",
+              "바닥(독자가 이미 가진 것)에 둔 두 가지를 edge로 올려야 하는지."
+            ]
+          },
+          "layout": {
+            "col": 1,
+            "row": 1
+          },
+          "reference_check": true
+        },
+        {
+          "id": "CP",
+          "kind": "step",
+          "title": "걸음을 이어 붙이기",
+          "summary": "깊이 $L$ 에서 $d$ 까지 $K^A$ 를 차례로 건다",
+          "inputs": [
+            "PM",
+            "TM",
+            "X4"
+          ],
+          "abstraction": "exact",
+          "status": "complete",
+          "grounding": {
+            "cards": [
+              "tree:first-variation"
+            ],
+            "source": "trees.tex 145–154",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 2,
+            "row": 1
+          },
+          "subgraph": "cp",
+          "note": "유한한 여러 깊이의 대입은 원자 계산으로 숨기지 않고 하위 graph cp의 귀납으로 펼친다.",
+          "produces": [
+            {
+              "edge": "f4",
+              "by": "하위 graph cp의 END 출력."
+            }
+          ],
+          "statement_ref": {
+            "graph": "diff",
+            "node": "D2",
+            "output": "kernel_form"
+          }
+        },
+        {
+          "id": "OUT",
+          "kind": "output",
+          "title": "첫 변분",
+          "summary": "$\\partial_{t_j}\\log Y_d=E^{A}[D_j/A\\mid\\mathscr F_d]$",
+          "inputs": [
+            "CP"
+          ],
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:first-variation"
+            ],
+            "source": "trees.tex 142–154",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 2,
+            "row": 2
+          },
+          "statement_ref": {
+            "graph": "diff",
+            "node": "D2",
+            "output": "kernel_form"
+          },
+          "input_ports": {
+            "kernel_form": {
+              "edge": "f4",
+              "requires": {
+                "graph": "diff",
+                "node": "D2",
+                "output": "kernel_form"
+              },
+              "reviewed_fingerprint": "11541b4d09d3e4e31062fa3312b91e787fb0621c0afa2f521aa32c8c323fa4fa"
+            }
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "e1",
+          "from": "X1",
+          "to": "PM",
+          "kind": "definition",
+          "summary": "$Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$",
+          "statement": "$$Y_{d-1}=\\bigl(K_d\\,Y_d^{m_d}\\bigr)^{1/m_d}.$$ $Y_d$ 는 깊이 $d$ 까지의 prefix의 양의 함수, $Y_{d-1}$ 은 깊이 $d-1$ 까지의 prefix의 함수다.",
+          "not_carried": "말단 조건 $Y_L=A$ 는 이 edge로 오지 않는다. 말단 node로 간다(f1).",
+          "grounding": {
+            "source": "trees.tex (tree:Y-recursion)"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "e2",
+          "from": "X2",
+          "to": "PM",
+          "kind": "definition",
+          "summary": "$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]$",
+          "statement": "깊이 $d$ 까지의 prefix의 유계 함수 $h$ 에 대해 $$K_d^{A}[h]=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}h\\Bigr].$$",
+          "not_carried": "없음.",
+          "grounding": {
+            "source": "trees.tex (tree:updated-kernel)"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "defines": [
+            "K_A"
+          ]
+        },
+        {
+          "id": "e3",
+          "from": "X3",
+          "to": "PM",
+          "kind": "call",
+          "summary": "$a\\le Y_d\\le b$",
+          "statement": "$a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$.",
+          "not_carried": "재귀의 동차성(같은 문장의 뒷부분)은 오지 않는다.",
+          "grounding": {
+            "source": "trees.tex 107–110"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true
+        },
+        {
+          "id": "e4L",
+          "from": "TM",
+          "to": "PM",
+          "kind": "flow",
+          "label": "e4′",
+          "summary": "$d=L$ 일 때: $Y_L$ 미분 가능, $\\lvert\\partial\\log Y_L\\rvert\\le c$",
+          "statement": "$Y_L$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_L\\bigr\\rvert\\le c .$$ power mean을 처음 미분할 때($d=L$)의 귀납 가정이다.",
+          "not_carried": "말단의 항등식 $\\partial\\log Y_L=D_j/A$ 는 이 edge로 오지 않는다. 이어 붙이기로 간다(f2).",
+          "grounding": {
+            "source": "$Y_L=A$, $\\partial\\log A=D_j/A$, $A\\ge a$."
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true
+        },
+        {
+          "id": "e4",
+          "from": "PM",
+          "to": "PM",
+          "kind": "flow",
+          "label": "e4 = o2",
+          "summary": "$Y_{d-1}$ 미분 가능, $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ → 다음 걸음의 귀납 가정",
+          "statement": "$Y_{d-1}$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c .$$ 깊이 $d$ 의 걸음이 내보내고(o2), 깊이 $d-1$ 의 걸음이 귀납 가정으로 받는다(e4). 같은 edge다.",
+          "not_carried": "항등식 $\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$ 는 이 edge로 가지 않는다. o1로 간다.",
+          "grounding": {
+            "source": "귀납. 작성자가 세운 가정이고 원문은 따로 적지 않는다."
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "loop": {
+            "index": "d",
+            "step": "d → d−1",
+            "note": "깊이에 대한 귀납. 깊이가 한 칸씩 줄어 1에서 끝난다."
+          }
+        },
+        {
+          "id": "o1",
+          "from": "PM",
+          "to": "CP",
+          "kind": "flow",
+          "summary": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, $d=1,\\ldots,L$",
+          "statement": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+          "not_carried": "한계 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ 는 이 edge로 가지 않는다.",
+          "grounding": {
+            "source": "trees.tex 151–154"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true
+        },
+        {
+          "id": "f1",
+          "from": "X1",
+          "to": "TM",
+          "kind": "definition",
+          "summary": "$Y_L=A$",
+          "statement": "$$Y_L=A_{\\boldsymbol t}=1+\\sum_jt_jD_j .$$",
+          "not_carried": "재귀식은 오지 않는다.",
+          "grounding": {
+            "source": "trees.tex (tree:Y-recursion)"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "f2",
+          "from": "TM",
+          "to": "CP",
+          "kind": "flow",
+          "summary": "$\\partial\\log Y_L=D_j/A$",
+          "statement": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+          "not_carried": "한계는 오지 않는다.",
+          "grounding": {
+            "source": "trees.tex 153–154"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true
+        },
+        {
+          "id": "f3",
+          "from": "X4",
+          "to": "CP",
+          "kind": "definition",
+          "summary": "$E^A[h\\mid\\mathscr F_d]=K^A_{d+1}\\cdots K^A_L\\,h$",
+          "statement": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+          "not_carried": "없음.",
+          "grounding": {
+            "source": "trees.tex 147–151"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "defines": [
+            "E_A"
+          ]
+        },
+        {
+          "id": "f4",
+          "from": "CP",
+          "to": "OUT",
+          "kind": "flow",
+          "summary": "$\\partial\\log Y_d=E^A[D_j/A\\mid\\mathscr F_d]$",
+          "not_carried": "없음.",
+          "grounding": {
+            "source": "trees.tex (tree:first-variation)"
+          },
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "output_ref": {
+            "graph": "diff",
+            "node": "D2",
+            "output": "kernel_form"
+          }
+        }
+      ],
+      "contexts": [
+        {
+          "id": "FF",
+          "text": "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다.",
+          "nodes": [
+            "X1",
+            "X2",
+            "X3",
+            "X4",
+            "TM",
+            "PM",
+            "CP",
+            "OUT"
+          ],
+          "defines": [
+            "K",
+            "m",
+            "L",
+            "A",
+            "D",
+            "t",
+            "U",
+            "a",
+            "b",
+            "j",
+            "c",
+            "partial",
+            "F",
+            "d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cp",
+      "nodes": [
+        {
+          "id": "XR",
+          "title": "각 깊이의 한 칸 항등식",
+          "kind": "external",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 0,
+            "row": 0
+          },
+          "external_ref": "PM",
+          "statement": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+          "inputs": []
+        },
+        {
+          "id": "XT",
+          "title": "말단 항등식",
+          "kind": "external",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 0,
+            "row": 1
+          },
+          "external_ref": "TM",
+          "statement": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+          "inputs": []
+        },
+        {
+          "id": "XE",
+          "title": "조건부 기대값의 정의",
+          "kind": "external",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 0,
+            "row": 2
+          },
+          "external_ref": "X4",
+          "statement": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+          "inputs": []
+        },
+        {
+          "id": "BASE",
+          "title": "깊이 L에서 시작",
+          "kind": "step",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 1,
+            "row": 0
+          },
+          "status": "complete",
+          "inputs": [
+            "XT"
+          ],
+          "statement": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+          "local_context": [
+            "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다. $K_r^A\\cdots K_L^A[h]$ 는 오른쪽 kernel부터 h에 적용하는 합성이고, 빈 곱은 항등 연산이다. $r$ 은 귀납 지표다."
+          ],
+          "floor_used": [
+            "빈 합성은 항등 연산"
+          ],
+          "derivation": [
+            {
+              "expr": "$$\\partial\\log Y_L=D_j/A=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+              "by": "b0와 문맥의 빈 곱 규약.",
+              "uses": [
+                "edge:b0",
+                "context:CF",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "D",
+                "A",
+                "K_A",
+                "L"
+              ]
+            }
+          ],
+          "produces": [
+            {
+              "edge": "b1",
+              "by": "식 1.",
+              "lines": [
+                1
+              ]
+            }
+          ],
+          "reference_check": true
+        },
+        {
+          "id": "JOIN",
+          "title": "한 칸 대입",
+          "kind": "step",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 1,
+            "row": 1
+          },
+          "status": "complete",
+          "inputs": [
+            "XR",
+            "BASE",
+            "JOIN"
+          ],
+          "statement": "모든 $r=L,\\ldots,0$ 에서 $\\partial\\log Y_r=K_{r+1}^A\\cdots K_L^A[D_j/A]$.",
+          "local_context": [
+            "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다. $K_r^A\\cdots K_L^A[h]$ 는 오른쪽 kernel부터 h에 적용하는 합성이고, 빈 곱은 항등 연산이다. $r$ 은 귀납 지표다.",
+            "$r\\in\\{1,\\ldots,L\\}$ 고정. r=L의 입력은 b1, r<L의 입력은 b2의 이전 출력이다."
+          ],
+          "floor_used": [
+            "등식의 대입",
+            "연산자 합성의 결합 법칙",
+            "유한한 하향 귀납"
+          ],
+          "derivation": [
+            {
+              "expr": "$$\\partial\\log Y_{r-1}=K_r^A[\\partial\\log Y_r].$$",
+              "by": "s0에서 d=r로 쓴다.",
+              "uses": [
+                "edge:s0",
+                "context:CF",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "K_A",
+                "r"
+              ]
+            },
+            {
+              "expr": "$$=K_r^A\\bigl[K_{r+1}^A\\cdots K_L^A[D_j/A]\\bigr]=K_r^A\\cdots K_L^A[D_j/A].$$",
+              "by": "b1 (r=L) 또는 b2 (r<L)로 받은 등식을 식 1에 대입하고 합성의 결합 법칙을 쓴다. 매개변수 미분을 추가로 하지 않는다.",
+              "uses": [
+                "line:1",
+                "edge:b1",
+                "edge:b2",
+                "context:CF",
+                "floor:1",
+                "floor:2"
+              ],
+              "uses_symbols": [
+                "K_A",
+                "D",
+                "A",
+                "L",
+                "r"
+              ]
+            },
+            {
+              "expr": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad 0\\le d\\le L.$$",
+              "by": "b1의 말단 d=L과 식 1–2를 r=L,…,1에 적용한 유한 하향 귀납. s0, b1, b2만 사용한다.",
+              "uses": [
+                "line:1",
+                "line:2",
+                "edge:b1",
+                "edge:b2",
+                "edge:s0",
+                "context:CF",
+                "floor:3"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "d",
+                "K_A",
+                "L",
+                "D",
+                "A"
+              ]
+            }
+          ],
+          "produces": [
+            {
+              "edge": "b2",
+              "by": "식 2: 다음 깊이에 넘길 항등식.",
+              "lines": [
+                2
+              ]
+            },
+            {
+              "edge": "s1",
+              "by": "식 3: 말단을 포함한 모든 깊이.",
+              "lines": [
+                3
+              ]
+            }
+          ],
+          "reference_check": true
+        },
+        {
+          "id": "IDENT",
+          "title": "path 평균으로 읽기",
+          "kind": "step",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 2,
+            "row": 1
+          },
+          "status": "complete",
+          "inputs": [
+            "JOIN",
+            "XE"
+          ],
+          "local_context": [
+            "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다. $K_r^A\\cdots K_L^A[h]$ 는 오른쪽 kernel부터 h에 적용하는 합성이고, 빈 곱은 항등 연산이다. $r$ 은 귀납 지표다."
+          ],
+          "floor_used": [
+            "등식의 대입"
+          ],
+          "derivation": [
+            {
+              "expr": "$$h:=D_j/A,\\qquad |h|\\le\\lVert D_j\\rVert_\\infty/a=c.$$",
+              "by": "문맥의 A≥a>0. h는 유계 path 함수다.",
+              "uses": [
+                "context:CF"
+              ],
+              "uses_symbols": [
+                "h",
+                "D",
+                "A",
+                "a",
+                "c"
+              ],
+              "defines": [
+                "h"
+              ]
+            },
+            {
+              "expr": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[h]=E^A[h\\mid\\mathscr F_d],\\qquad 0\\le d\\le L.$$",
+              "by": "s1과 q0에 식 1의 h를 대입한다. d=L에서도 q0의 빈 곱 규약으로성립한다.",
+              "uses": [
+                "line:1",
+                "edge:s1",
+                "edge:q0",
+                "context:CF",
+                "floor:1"
+              ],
+              "uses_symbols": [
+                "partial",
+                "Y",
+                "d",
+                "K_A",
+                "L",
+                "h",
+                "E_A",
+                "F"
+              ]
+            }
+          ],
+          "produces": [
+            {
+              "edge": "q1",
+              "by": "식 1–2.",
+              "lines": [
+                1,
+                2
+              ]
+            }
+          ],
+          "reference_check": true,
+          "statement_ref": {
+            "graph": "diff",
+            "node": "D2",
+            "output": "kernel_form"
+          }
+        },
+        {
+          "id": "END",
+          "title": "첫 변분 출력",
+          "kind": "output",
+          "abstraction": "exact",
+          "grounding": {
+            "source": "trees.tex 142–154; prefix 정의 20–23",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 3,
+            "row": 1
+          },
+          "inputs": [
+            "IDENT"
+          ],
+          "statement_ref": {
+            "graph": "diff",
+            "node": "D2",
+            "output": "kernel_form"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "b0",
+          "from": "XT",
+          "to": "BASE",
+          "kind": "flow",
+          "statement": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+          "summary": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "b1",
+          "from": "BASE",
+          "to": "JOIN",
+          "kind": "flow",
+          "statement": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+          "summary": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "s0",
+          "from": "XR",
+          "to": "JOIN",
+          "kind": "flow",
+          "statement": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+          "summary": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "b2",
+          "from": "JOIN",
+          "to": "JOIN",
+          "kind": "flow",
+          "statement": "깊이 r의 걸음에서 $\\partial\\log Y_{r-1}=K_r^A\\cdots K_L^A[D_j/A]$ 를 내보낸다. r>1이면 다음 걸음 r′=r−1의 가정으로 받는다. r=1이면 반복을 끝낸다.",
+          "summary": "깊이 r의 걸음에서 $\\partial\\log Y_{r-1}=K_r^A\\cdots K_L^A[D_j/A]$ 를 내보낸다. r>1이면 다음 걸음 r′=r−1의 가정으로 받는다. r=1이면 반복을 끝낸다.",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "loop": {
+            "index": "r",
+            "step": "r → r−1 (r>1); r=1에서 종료"
+          },
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "s1",
+          "from": "JOIN",
+          "to": "IDENT",
+          "kind": "flow",
+          "statement": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad d=0,\\ldots,L.$$",
+          "summary": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad d=0,\\ldots,L.$$",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "defines": [
+            "Y"
+          ]
+        },
+        {
+          "id": "q0",
+          "from": "XE",
+          "to": "IDENT",
+          "kind": "definition",
+          "statement": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+          "summary": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          },
+          "defines": [
+            "E_A"
+          ]
+        },
+        {
+          "id": "q1",
+          "from": "IDENT",
+          "to": "END",
+          "kind": "flow",
+          "statement": "$$\\partial_{t_j}\\log Y_d=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$",
+          "summary": "$$\\partial_{t_j}\\log Y_d=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$",
+          "status": "connected",
+          "complete": true,
+          "in_complete_vertex": true,
+          "grounding": {
+            "source": "trees.tex 142–154에서 유한 대입으로 유도"
+          }
+        }
+      ],
+      "contexts": [
+        {
+          "id": "CF",
+          "text": "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다. $K_r^A\\cdots K_L^A[h]$ 는 오른쪽 kernel부터 h에 적용하는 합성이고, 빈 곱은 항등 연산이다. $r$ 은 귀납 지표다.",
+          "nodes": [
+            "XR",
+            "XT",
+            "XE",
+            "BASE",
+            "JOIN",
+            "IDENT",
+            "END"
+          ],
+          "defines": [
+            "K",
+            "m",
+            "L",
+            "A",
+            "D",
+            "t",
+            "U",
+            "a",
+            "b",
+            "j",
+            "c",
+            "partial",
+            "F",
+            "d",
+            "r",
+            "K_A"
+          ]
+        }
+      ]
+    }
+  ]
+}

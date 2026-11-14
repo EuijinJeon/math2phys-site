@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-14",
+  "target": "diff.D4",
+  "question": "Can fresh-path completion stay local, and how many edges/levels does it touch?",
+  "pass_criteria": [
+    "D4 has complete incident edges and a boundary-matched subgraph with all inner vertices complete",
+    "old-tree coefficient and protected fresh leaf explicit; no factorization assumption on G",
+    "finite kernel example matches internal contribution against fresh-path expectation, including dependent old-branch observable",
+    "record added/modified edges and ancestor/descendant levels, including any nonlocal spill",
+    "checker errors/warnings zero and prior test suites pass"
+  ],
+  "scope": "Local completeness relative to imported first-variation/sampling statements, not the whole derivative rule. No independent model audit. Any extra analytic assumptions must be explicit."
+}

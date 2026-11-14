@@ -1,0 +1,50 @@
+{
+  "edge": {
+    "id": "top-e9",
+    "from": "R4",
+    "to": "XM5",
+    "kind": "flow",
+    "label": "고정 L → N 먼저",
+    "statement": "각 고정 깊이 $L\\ge2$에서 P5로 선택한 수열 $\\mathfrak s_L=(N_n^{(L)},\\mathbf u_n^{(L)})$을 쓴다. 수열은 $L$마다 달라도 되며, P5의 외부 선택 오차도 고정한다. 아래 $N\\to\\infty$는 이 수열을 따른다는 뜻이고, 섭동 매개변수는 선택된 결정적 값이다.\n\nP7의 한 적용 $\\alpha=(\\mathcal T,a_*,f,k_\\alpha,\\mathcal C)$에서 $\\mathcal T$는 고정한 유한 old tree, $a_*$는 spin 또는 marker anchor, $f$는 old multioverlap들의 유계 다항식이다. 다항식과 계수는 $N$에 무관하게 고정한다. 유한 개의 ordered color를 더하고, $\\mathcal C$는 anchor와 추가 color 사이의 일관된 쌍별 split 깊이만 지정한다. 다른 old replica와의 추가 split 제약은 허용하지 않는다. 빈 추가도 허용한다.\n\n$c_E$는 anchor를 보호한 extension history의 계수다: 안 쓴 old leaf를 택하는 걸음은 $+1$, 내부 vertex $\\beta$에서 fresh path를 붙이는 걸음은 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$이고 $c_E$는 걸음별 계수의 곱이다. $R_E=N^{-1}\\sum_{i=1}^N\\prod_j\\sigma_i^{a_j(E)}$에 spin anchor이면 $\\sigma_i^{a_*}$를 곱하고 marker anchor이면 곱하지 않는다. 기대값은 root와 tree sampling을 포함한다. 그러면\n$$I_{N,L}(\\alpha):=\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\,\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\,\\mathbb E[R_E]\\ \\longrightarrow\\ 0.$$\n\n수 5의 한 유한 크기 귀납 단계에 실제로 쓰는 적용들의 유한 목록을 $\\mathcal F_{L,k}$라 쓰자. $k$는 이 목록의 tree 크기·color 수를 제한하는 고정 지표다. 고정 $L$에서 깊이 배정도 유한 개이므로, 고정한 유한 종류의 시험 다항식까지 모은 이 목록에 대해\n$$\\epsilon_{N,L,k}:=\\max_{\\alpha\\in\\mathcal F_{L,k}}|I_{N,L}(\\alpha)|\\longrightarrow0\\qquad(L,k\\text{ 고정}).$$\n이는 모든 유계 다항식이나 무제한 크기 tree에 대한 supremum이 아니다. $\\mathcal F_{L,k}$와 수렴 속도는 $L$에 의존해도 된다. 원문 $\\varepsilon_{N,L,k}$의 유한 최대를 여기서는 $\\epsilon$으로 적어 P5의 선택 오차와 구별한다.\n\n받는 쪽에서 고정한 $L,k,\\eta$의 유한 상수 $B_{L,k,\\eta}$가 이 오차에 곱해져도\n$$\\limsup_{N\\to\\infty}B_{L,k,\\eta}\\epsilon_{N,L,k}=0.$$\n따라서 이 항을 먼저 없앤 다음 $L\\to\\infty$로 간다. $B_{L,k,\\eta}$에는 정규화 계수로 나누는 비용이 포함될 수 있다. $L$-균일한 $N$ 수렴 속도, $N=N(L)$에 따른 공동 극한, 순서를 바꾼 극한은 이 edge가 주지 않는다.",
+    "status": "connected",
+    "complete": true,
+    "summary": "$\\epsilon_{N,L,k}\\to0$ (고정 $L,k$); $N\\to\\infty$ 뒤 $L\\to\\infty$",
+    "not_carried": "$J=\\kappa(S^+)^2$의 하한과 $(\\sum_E|c_E|)/|J|\\le C_{k,\\eta}$는 P7의 출력이 아니다. 이들은 모양별 계수와 절댓값 한계(top-e10, top-e11), 균등 격자 및 지연한 regular target 선택에서 받는 쪽이 얻는다. 수 5의 사영 오차·martingale 오차와 P8/P9 결론도 이 edge가 운반하지 않는다. P7 오차의 계수 $B_{L,k,\\eta}$를 $L$-균일 상수로 바꾸지 않는다.",
+    "grounding": {
+      "source": "perturbations.tex 257–265, 308–312, 432–469, 538–546; decorrelation.tex 4–9, 49–58, 446–457, 613–622"
+    }
+  },
+  "receiver": {
+    "id": "XM5",
+    "kind": "external",
+    "title": "수 5",
+    "summary": "집중 (P8, P9): $N\\to\\infty$ 먼저, 깊이 평균 뒤 $L\\to\\infty$",
+    "layout": {
+      "col": 4,
+      "row": 2
+    },
+    "inputs": [
+      "R4",
+      "F1",
+      "F2"
+    ],
+    "statement": "수 5의 목표는 각 고정 labeled topology $S$와 $\\eta>0$에서 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$ (P9), 그리고 해당 조건부 공분산의 제곱 평균에 대한 P8이다. 이는 이 node의 목표이며 이번 PoC에서 증명 완료한 것이 아니다. $\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$는 깊이 좌표 $a$개의 비정규화 평균이다. 총 질량은 1 이하이며, 고정 깊이별 집중으로 바꾸지 않는다.\n\n수용 조건: 먼저 고정 $L,k,\\eta$의 유한 항등식 목록에서 P7 오차를 $N\\to\\infty$로 없앤다. 양의 $J$로 나누는 것도 이 단계에서 한다. $L$이 충분히 클 때 $\\eta$-regular 배정의 지연 target에서 $J=\\kappa(S^+)^2\\ge c_{k,\\eta}L^{-2b(S)}>0$이고, 사영 오차의 상대 절댓값 계수는 $C_{k,\\eta}$로 $L$에 균일하게 제어된다. 이 계수 한계와 P7 오차의 $L$-의존 증폭을 구분한다. 남는 낮은 차수 공분산 평균 및 martingale 비용을 따로 제어한 뒤 $L\\to\\infty$로 간다. P7만으로 집중이 따라온다고 주장하지 않는다.",
+    "conditions": [
+      "균등 격자 $m_d=d/L$, $\\delta=1/L$. 고정 topology와 $\\eta>0$. 각 $L$마다 P5 선택 수열.",
+      "$\\eta$-regular: 서로 다른 branching 깊이 좌표를 $L$로 나눈 값이 $(\\eta,1-\\eta)$ 안이고 상호 간격은 $\\eta$보다 큼. 추가 prefix 좌표에도 같은 조건. 일치시킨 두 사본의 대응 깊이는 좌표 하나로 센다."
+    ],
+    "grounding": {
+      "source": "decorrelation.tex 4–58, 63–74, 332–359, 446–457, 512–523, 613–622",
+      "state": "proposed"
+    },
+    "note": "문맥 건넘 PoC의 수용 경계만 명시했다. 이 external node 내부의 P8/P9 증명 graph는 아직 만들지 않았다."
+  },
+  "receiver_context": {
+    "id": "FCROSS",
+    "text": "수 5: 균등 격자, 고정 topology와 $\\eta>0$. 각 $L$의 선택 수열에서 $N\\to\\infty$를 먼저 취하고, 깊이 평균을 제어하여 $L\\to\\infty$. 수열과 항등식 오차의 증폭 상수는 $L$에 의존해도 된다.",
+    "nodes": [
+      "XM5"
+    ]
+  },
+  "scope": "P7 only; other two incoming edges remain legacy summaries, receiver proof not complete"
+}

@@ -4,138 +4,886 @@
   "title": "Proof map document",
   "description": "A hierarchical proof graph. Nodes are statements or inference steps, edges carry the statements passed between nodes, contexts hold assumptions shared by a region. A node may open into a subgraph. See SPEC.md.",
   "type": "object",
-  "required": ["format", "id", "title", "graphs"],
+  "required": [
+    "format",
+    "id",
+    "title",
+    "graphs"
+  ],
   "properties": {
-    "format": {"const": "proofmap/0.1"},
-    "id": {"type": "string"},
-    "title": {"type": "string"},
-    "language": {"type": "string"},
-    "math_syntax": {"type": "string"},
-    "source": {"type": "object"},
+    "format": {
+      "const": "proofmap/0.1"
+    },
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "math_syntax": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
     "floor": {
       "type": "object",
       "description": "Where refinement stops. reader: what the reader already has. source: the level of detail the source text gives.",
       "properties": {
-        "reader": {"type": "array", "items": {"type": "string"}},
-        "source": {"type": "string"}
+        "reader": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "type": "string"
+        }
       }
     },
-    "content_note": {"type": "string"},
-    "graphs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/graph"}}
+    "content_note": {
+      "type": "string"
+    },
+    "graphs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/graph"
+      }
+    }
   },
   "$defs": {
     "graph": {
       "type": "object",
-      "required": ["id", "title", "nodes", "edges"],
+      "required": [
+        "id",
+        "title",
+        "nodes",
+        "edges"
+      ],
       "properties": {
-        "id": {"type": "string"},
-        "title": {"type": "string"},
-        "summary": {"type": "string"},
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
         "parent": {
           "description": "The node this graph is the subproof of. null for the top graph.",
           "oneOf": [
-            {"type": "null"},
-            {"type": "object", "required": ["graph", "node"], "properties": {"graph": {"type": "string"}, "node": {"type": "string"}}}
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "graph",
+                "node"
+              ],
+              "properties": {
+                "graph": {
+                  "type": "string"
+                },
+                "node": {
+                  "type": "string"
+                }
+              }
+            }
           ]
         },
-        "contexts": {"type": "array", "items": {"$ref": "#/$defs/context"}},
-        "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}},
-        "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
-        "drafts": {"type": "array", "description": "Free-form work in progress attached to a node. Not normative.", "items": {"type": "object"}}
-      }
+        "contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/context"
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/edge"
+          }
+        },
+        "drafts": {
+          "type": "array",
+          "description": "Free-form work in progress attached to a node. Not normative.",
+          "items": {
+            "type": "object"
+          }
+        },
+        "premise_mode": {
+          "const": "edges_only"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "premise_mode": {
+                "const": "edges_only"
+              }
+            },
+            "required": [
+              "premise_mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "contexts": {
+                "maxItems": 0
+              },
+              "nodes": {
+                "items": {
+                  "properties": {
+                    "local_context": {
+                      "maxItems": 0
+                    },
+                    "conditions": {
+                      "maxItems": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "context": {
       "type": "object",
-      "required": ["id", "text", "nodes"],
+      "required": [
+        "id",
+        "text",
+        "nodes"
+      ],
       "properties": {
-        "id": {"type": "string"},
-        "text": {"type": "string", "description": "What is fixed, in what order limits are taken, standing assumptions."},
-        "nodes": {"type": "array", "items": {"type": "string"}, "description": "Ids of the nodes inside this context."},
-        "provides": {"type": "array", "items": {"type": "string"}, "description": "Ids of parent-level inputs that this context supplies to every node inside it."}
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string",
+          "description": "What is fixed, in what order limits are taken, standing assumptions."
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids of the nodes inside this context."
+        },
+        "provides": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids of parent-level inputs that this context supplies to every node inside it."
+        },
+        "defines": {
+          "$ref": "#/$defs/symbolNames"
+        }
       }
     },
     "node": {
       "type": "object",
-      "required": ["id", "kind", "title"],
+      "required": [
+        "id",
+        "kind",
+        "title"
+      ],
       "properties": {
-        "id": {"type": "string"},
-        "kind": {"enum": ["object", "rule", "fact", "step", "external", "output"]},
-        "title": {"type": "string"},
-        "summary": {"type": "string", "description": "One line shown on the map."},
-        "statement": {"type": "string", "description": "What the node gives, in full."},
-        "conditions": {"type": "array", "items": {"type": "string"}},
-        "inputs": {"type": "array", "items": {"type": "string"}, "description": "Ids of the nodes this node receives from."},
-        "abstraction": {"enum": ["exact", "weakening", "blackbox", "approximation", null]},
-        "status": {"enum": ["complete", "sketch", null], "description": "complete: atomic with a derivation, or its subgraph is complete and the boundary matches. sketch: not yet. Absent: not assessed."},
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "object",
+            "rule",
+            "fact",
+            "step",
+            "external",
+            "output"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string",
+          "description": "One line shown on the map."
+        },
+        "statement": {
+          "type": "string",
+          "description": "What the node gives, in full."
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids of the nodes this node receives from."
+        },
+        "abstraction": {
+          "enum": [
+            "exact",
+            "weakening",
+            "blackbox",
+            "approximation",
+            null
+          ]
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "sketch",
+            null
+          ],
+          "description": "complete: atomic with a derivation, or its subgraph is complete and the boundary matches. sketch: not yet. Absent: not assessed."
+        },
         "grounding": {
           "type": "object",
           "properties": {
-            "cards": {"type": "array", "items": {"type": "string"}},
-            "source": {"type": "string"},
-            "state": {"enum": ["proposed", "confirmed"], "description": "confirmed is set only by the user."}
+            "cards": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "source": {
+              "type": "string"
+            },
+            "state": {
+              "enum": [
+                "proposed",
+                "confirmed"
+              ],
+              "description": "confirmed is set only by the user."
+            }
           }
         },
-        "library": {"type": ["string", "null"], "description": "Counterpart in an outside library, with differences. '없음' if none."},
-        "note": {"type": "string"},
-        "example": {"type": "string"},
-        "external_ref": {"type": "string", "description": "For kind=external: the id, in the parent graph, of the node this stands for."},
-        "inherit_statement": {"type": "boolean", "description": "Take statement and conditions from the referenced parent-level node."},
-        "subgraph": {"type": "string", "description": "Id of the graph that proves this node."},
-        "local_context": {"type": "array", "items": {"type": "string"}, "description": "For an atomic node: the context restated for this vertex."},
-        "floor_used": {"type": "array", "items": {"type": "string"}},
+        "library": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Counterpart in an outside library, with differences. '없음' if none."
+        },
+        "note": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        },
+        "external_ref": {
+          "type": "string",
+          "description": "For kind=external: the id, in the parent graph, of the node this stands for."
+        },
+        "inherit_statement": {
+          "type": "boolean",
+          "description": "Take statement and conditions from the referenced parent-level node."
+        },
+        "subgraph": {
+          "type": "string",
+          "description": "Id of the graph that proves this node."
+        },
+        "local_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "For an atomic node: the context restated for this vertex."
+        },
+        "floor_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "derivation": {
           "type": "array",
           "description": "For an atomic node: the lines of the single calculation. Each line cites incoming edge ids, the context or the floor.",
           "items": {
             "type": "object",
-            "required": ["expr", "by"],
+            "required": [
+              "expr",
+              "by"
+            ],
             "properties": {
-              "expr": {"type": "string"},
-              "by": {"type": "string"},
-              "author_filled": {"type": "string", "description": "Present when this line goes below the level of the source text. Says what was filled in."}
+              "expr": {
+                "type": "string"
+              },
+              "by": {
+                "type": "string"
+              },
+              "author_filled": {
+                "type": "string",
+                "description": "Present when this line goes below the level of the source text. Says what was filled in."
+              },
+              "uses": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^(?:(?:edge|context):.+|(?:line|floor|intro):[1-9][0-9]*)$"
+                },
+                "description": "Exact incoming edge id, applicable context id, earlier 1-based line, or 1-based floor_used entry."
+              },
+              "uses_symbols": {
+                "$ref": "#/$defs/symbolNames"
+              },
+              "defines": {
+                "$ref": "#/$defs/symbolNames"
+              }
             }
           }
         },
         "produces": {
           "type": "array",
           "description": "Which derivation lines yield each outgoing edge.",
-          "items": {"type": "object", "required": ["edge", "by"], "properties": {"edge": {"type": "string"}, "by": {"type": "string"}}}
+          "items": {
+            "type": "object",
+            "required": [
+              "edge",
+              "by"
+            ],
+            "properties": {
+              "edge": {
+                "type": "string"
+              },
+              "by": {
+                "type": "string"
+              },
+              "lines": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "1-based derivation lines yielding this output."
+              },
+              "generalizes": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         },
         "review": {
           "type": "object",
           "properties": {
-            "checks": {"type": "array", "items": {"type": "object", "required": ["question", "answer"]}},
-            "open": {"type": "array", "items": {"type": "string"}}
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "question",
+                  "answer"
+                ]
+              }
+            },
+            "open": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
         },
-        "layout": {"type": "object", "properties": {"col": {"type": "number"}, "row": {"type": "number"}}, "description": "Grid position for the viewer. Optional; has no meaning for the proof."}
-      }
+        "layout": {
+          "type": "object",
+          "properties": {
+            "col": {
+              "type": "number"
+            },
+            "row": {
+              "type": "number"
+            }
+          },
+          "description": "Grid position for the viewer. Optional; has no meaning for the proof."
+        },
+        "reference_check": {
+          "type": "boolean",
+          "description": "Opt in to explicit local reference and symbol checking of an atomic derivation."
+        },
+        "statement_ref": {
+          "$ref": "#/$defs/outputRef"
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/outputPort"
+          }
+        },
+        "input_ports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "edge",
+              "requires",
+              "reviewed_fingerprint"
+            ],
+            "properties": {
+              "edge": {
+                "type": "string"
+              },
+              "requires": {
+                "$ref": "#/$defs/outputRef"
+              },
+              "reviewed_fingerprint": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        "import_edge": {
+          "type": "string"
+        },
+        "requires_bindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "introductions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "symbol",
+                  "scope",
+                  "expr",
+                  "uses_symbols"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "uses_symbols": {
+                    "$ref": "#/$defs/symbolNames"
+                  },
+                  "kind": {
+                    "const": "notation"
+                  },
+                  "expr": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "symbol",
+                  "scope",
+                  "domain",
+                  "uses_symbols"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "uses_symbols": {
+                    "$ref": "#/$defs/symbolNames"
+                  },
+                  "kind": {
+                    "const": "arbitrary_index"
+                  },
+                  "domain": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "lower",
+                      "upper_symbol"
+                    ],
+                    "properties": {
+                      "lower": {
+                        "type": "integer"
+                      },
+                      "upper_symbol": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reference_check": {
+                "const": true
+              }
+            },
+            "required": [
+              "reference_check"
+            ]
+          },
+          "then": {
+            "required": [
+              "derivation"
+            ],
+            "properties": {
+              "derivation": {
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "uses",
+                    "uses_symbols"
+                  ]
+                }
+              },
+              "produces": {
+                "items": {
+                  "required": [
+                    "lines"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "not": {
+            "required": [
+              "statement",
+              "statement_ref"
+            ]
+          }
+        }
+      ]
     },
     "edge": {
       "type": "object",
-      "required": ["id", "from", "to", "kind"],
+      "required": [
+        "id",
+        "from",
+        "to",
+        "kind"
+      ],
       "properties": {
-        "id": {"type": "string"},
-        "from": {"type": "string"},
-        "to": {"type": "string"},
-        "kind": {"enum": ["flow", "call", "definition"], "description": "flow: a result becomes an input. call: a rule or fact is used. definition: an object fixes notation."},
-        "label": {"type": "string", "description": "Display name if different from id."},
-        "summary": {"type": "string", "description": "Short content shown on the map."},
-        "statement": {"type": "string", "description": "Everything this edge carries. An edge carries a part of the sender's output, not all of it."},
-        "not_carried": {"type": "string", "description": "What the sender outputs that this edge does not carry, and where that goes."},
-        "substitution": {"type": "string", "description": "Legacy (complete=false). In the complete form a substitution is its own node."},
-        "fit": {"type": "string", "description": "Legacy (complete=false). Why the carried statement meets the receiver's conditions."},
-        "grounding": {"type": "object", "properties": {"source": {"type": "string"}}},
-        "status": {"enum": ["connected", "open"], "description": "open: no node provides this yet."},
-        "complete": {"type": "boolean", "description": "true: statement is the full content. false: statement is only a name or summary."},
-        "in_complete_vertex": {"type": "boolean"},
+        "id": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "flow",
+            "call",
+            "definition"
+          ],
+          "description": "flow: a result becomes an input. call: a rule or fact is used. definition: an object fixes notation."
+        },
+        "label": {
+          "type": "string",
+          "description": "Display name if different from id."
+        },
+        "summary": {
+          "type": "string",
+          "description": "Short content shown on the map."
+        },
+        "statement": {
+          "type": "string",
+          "description": "Everything this edge carries. An edge carries a part of the sender's output, not all of it."
+        },
+        "not_carried": {
+          "type": "string",
+          "description": "What the sender outputs that this edge does not carry, and where that goes."
+        },
+        "substitution": {
+          "type": "string",
+          "description": "Legacy (complete=false). In the complete form a substitution is its own node."
+        },
+        "fit": {
+          "type": "string",
+          "description": "Legacy (complete=false). Why the carried statement meets the receiver's conditions."
+        },
+        "grounding": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "enum": [
+            "connected",
+            "open"
+          ],
+          "description": "open: no node provides this yet."
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "true: statement is the full content. false: statement is only a name or summary."
+        },
+        "in_complete_vertex": {
+          "type": "boolean"
+        },
         "loop": {
           "type": "object",
           "description": "Required when from == to. An induction: the index must decrease.",
-          "required": ["index", "step"],
-          "properties": {"index": {"type": "string"}, "step": {"type": "string"}, "note": {"type": "string"}}
+          "required": [
+            "index",
+            "step"
+          ],
+          "properties": {
+            "index": {
+              "type": "string"
+            },
+            "step": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            },
+            "index_scope": {
+              "type": "string"
+            }
+          }
+        },
+        "defines": {
+          "$ref": "#/$defs/symbolNames"
+        },
+        "output_ref": {
+          "$ref": "#/$defs/outputRef"
+        },
+        "use_note": {
+          "type": "string"
         }
-      }
+      },
+      "allOf": [
+        {
+          "not": {
+            "required": [
+              "statement",
+              "output_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "symbolNames": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Explicit, case-sensitive symbol ids. These declarations annotate definitions in the statement; they are not parsed from LaTeX."
+    },
+    "outputRef": {
+      "type": "object",
+      "required": [
+        "graph",
+        "node",
+        "output"
+      ],
+      "properties": {
+        "graph": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clauses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "outputPort": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "grounding": {
+          "type": "object"
+        },
+        "proof": {
+          "type": "object",
+          "required": [
+            "graph",
+            "node"
+          ],
+          "properties": {
+            "graph": {
+              "type": "string"
+            },
+            "node": {
+              "type": "string"
+            }
+          }
+        },
+        "proof_review": {
+          "type": "object",
+          "required": [
+            "output_fingerprint",
+            "proof_fingerprint"
+          ],
+          "properties": {
+            "output_fingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "proof_fingerprint": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "state": {
+              "const": "proposed"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "role": {
+          "enum": [
+            "given",
+            "derived"
+          ]
+        },
+        "defines": {
+          "$ref": "#/$defs/symbolNames"
+        },
+        "bindings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "clauses": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "statement",
+              "defines"
+            ],
+            "properties": {
+              "statement": {
+                "type": "string"
+              },
+              "defines": {
+                "$ref": "#/$defs/symbolNames"
+              },
+              "bindings": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "role": {
+              "const": "given"
+            }
+          },
+          "required": [
+            "role",
+            "clauses",
+            "grounding",
+            "conditions"
+          ]
+        },
+        {
+          "properties": {
+            "role": {
+              "enum": [
+                "derived"
+              ]
+            }
+          },
+          "required": [
+            "statement",
+            "conditions",
+            "proof",
+            "proof_review"
+          ]
+        }
+      ]
     }
   }
 }

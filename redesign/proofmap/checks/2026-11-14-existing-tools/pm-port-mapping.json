@@ -1,0 +1,150 @@
+{
+  "scope": "Interface translation only. PM is a trusted rule, not a verified calculus derivation. Proposition strings are opaque atoms, with LaTeX preserved in this sidecar.",
+  "ports": {
+    "frame": {
+      "from": "fv.FF",
+      "content": "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다."
+    },
+    "rec": {
+      "from": "fv.e1",
+      "content": "$$Y_{d-1}=\\bigl(K_d\\,Y_d^{m_d}\\bigr)^{1/m_d}.$$ $Y_d$ 는 깊이 $d$ 까지의 prefix의 양의 함수, $Y_{d-1}$ 은 깊이 $d-1$ 까지의 prefix의 함수다."
+    },
+    "tilt": {
+      "from": "fv.e2",
+      "content": "깊이 $d$ 까지의 prefix의 유계 함수 $h$ 에 대해 $$K_d^{A}[h]=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}h\\Bigr].$$"
+    },
+    "bounds": {
+      "from": "fv.e3",
+      "content": "$a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$."
+    },
+    "ih": {
+      "from": "fv.e4L at d=L, otherwise preceding instance of fv.e4",
+      "content": "Y_d is differentiable on U and |partial log Y_d| <= c. These are alternatives, not two simultaneous premises."
+    },
+    "identity": {
+      "from": "fv.o1 at one fixed depth d",
+      "content": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, "
+    },
+    "next": {
+      "from": "fv.e4 output before relabeling for the next depth",
+      "content": "$Y_{d-1}$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c .$$ 깊이 $d$ 의 걸음이 내보내고(o2), 깊이 $d-1$ 의 걸음이 귀납 가정으로 받는다(e4). 같은 edge다."
+    }
+  },
+  "derivation": [
+    {
+      "expr": "$$\\log Y_{d-1}=\\frac1{m_d}\\log K_d\\bigl[Y_d^{m_d}\\bigr]$$",
+      "by": "e1. $d\\ge1$ 이라 $m_d>0$, e3으로 $Y_d\\ge a>0$.",
+      "uses": [
+        "edge:e1",
+        "edge:e3",
+        "context:FF",
+        "floor:1"
+      ],
+      "uses_symbols": [
+        "Y",
+        "m",
+        "K",
+        "d",
+        "a"
+      ]
+    },
+    {
+      "expr": "$$\\partial\\log Y_{d-1}=\\frac1{m_d}\\,\\frac{K_d\\bigl[\\partial\\,(Y_d^{m_d})\\bigr]}{K_d\\bigl[Y_d^{m_d}\\bigr]}$$",
+      "by": "연쇄 법칙과 적분 기호 아래의 미분. 균일 유계: $\\lvert\\partial(Y_d^{m_d})\\rvert=m_dY_d^{m_d}\\lvert\\partial\\log Y_d\\rvert\\le m_d\\,b^{m_d}c$ (e3, e4; $d=L$ 이면 e4 대신 e4′).",
+      "author_filled": "균일 유계를 확인하는 부분은 지도 작성자가 채운 것이다. 원문은 \"$A_{\\boldsymbol t}$ 가 균등하게 양인 실수 근방에서 미분하면\"이라고만 적는다.",
+      "uses": [
+        "line:1",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "context:FF",
+        "floor:1",
+        "floor:2"
+      ],
+      "uses_symbols": [
+        "partial",
+        "Y",
+        "m",
+        "K",
+        "U",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "expr": "$$=\\frac{K_d\\bigl[Y_d^{m_d}\\,\\partial\\log Y_d\\bigr]}{Y_{d-1}^{m_d}}$$",
+      "by": "$\\partial(Y^{m})=mY^{m}\\,\\partial\\log Y$. 분모는 e1.",
+      "uses": [
+        "line:2",
+        "edge:e1",
+        "floor:1"
+      ],
+      "uses_symbols": [
+        "K",
+        "Y",
+        "m",
+        "partial"
+      ]
+    },
+    {
+      "expr": "$$=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}\\partial\\log Y_d\\Bigr]$$",
+      "by": "$Y_{d-1}$ 은 깊이 $d$ 의 변수에 의존하지 않는다(e1).",
+      "uses": [
+        "line:3",
+        "edge:e1"
+      ],
+      "uses_symbols": [
+        "K",
+        "Y",
+        "m",
+        "partial"
+      ]
+    },
+    {
+      "expr": "$$=K_d^{A}\\bigl[\\partial\\log Y_d\\bigr]$$",
+      "by": "e2. h는 d=L이면 e4L(e4′), d<L이면 e4의 귀납 가정으로 유계.",
+      "uses": [
+        "line:4",
+        "edge:e2",
+        "edge:e4",
+        "edge:e4L"
+      ],
+      "uses_symbols": [
+        "K_A",
+        "partial",
+        "Y"
+      ]
+    },
+    {
+      "expr": "$$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c$$",
+      "by": "$K_d^A[1]=K_d[Y_d^{m_d}]/Y_{d-1}^{m_d}=1$ (e1, e2)이고 가중치가 양수(e3)이므로 확률 kernel이다. d=L에서는 e4L(e4′), 그 뒤에는 e4로 받은 한계 c가 평균에서 유지된다.",
+      "uses": [
+        "line:5",
+        "edge:e1",
+        "edge:e2",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "context:FF"
+      ],
+      "uses_symbols": [
+        "partial",
+        "Y",
+        "c",
+        "K_A",
+        "K",
+        "m"
+      ]
+    }
+  ],
+  "local_context": [
+    "유한 확률 kernel 열 $K_1,\\ldots,K_L$ 과 수 $0=m_0<m_1<\\cdots<m_L=1$.",
+    "깊이 $d\\in\\{1,\\ldots,L\\}$ 와 깊이 $d-1$ 까지의 prefix를 고정. $K_d$ 는 그 prefix가 주어졌을 때 깊이 $d$ 의 변수를 적분한다.",
+    "$A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 는 유계 실수 path 함수. $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 가 성립하는 실수 근방 $U$ 안에 있다($a$, $b$ 는 상수).",
+    "$j$ 를 고정하고 $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$ 로 쓴다."
+  ],
+  "floor_used": [
+    "연쇄 법칙",
+    "적분 기호 아래의 미분: 피적분함수의 도함수가 $U$ 에서 균일하게 유계이면 미분과 확률 적분을 바꿀 수 있다"
+  ]
+}

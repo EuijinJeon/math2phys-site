@@ -1,0 +1,585 @@
+{
+  "top": {
+    "O1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: top-e1"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "R1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: top-e1",
+        "edge 내용 미작성: top-e2",
+        "edge 내용 미작성: top-e3",
+        "하위 vertex 미완결: 4/5"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": {
+        "done": 1,
+        "total": 5,
+        "complete": false
+      }
+    },
+    "R2": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "입력 edge 없음: O1 → R2",
+        "edge 내용 미작성: top-e2",
+        "edge 내용 미작성: top-e12"
+      ],
+      "missing": [
+        "O1"
+      ],
+      "declared": null,
+      "child": null
+    },
+    "R3": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "입력 edge 없음: O1 → R3",
+        "edge 내용 미작성: top-e3",
+        "edge 내용 미작성: top-e4",
+        "edge 내용 미작성: top-e5",
+        "edge 내용 미작성: top-e6"
+      ],
+      "missing": [
+        "O1"
+      ],
+      "declared": null,
+      "child": null
+    },
+    "F1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: top-e4",
+        "edge 내용 미작성: top-e10"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "F2": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: top-e5",
+        "edge 내용 미작성: top-e11"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XP5": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: top-e7"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XFAM": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: top-e8"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "R4": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "입력 edge 없음: O1 → R4",
+        "edge 내용 미작성: top-e6",
+        "edge 내용 미작성: top-e7",
+        "edge 내용 미작성: top-e8",
+        "하위 vertex 미완결: 9/9"
+      ],
+      "missing": [
+        "O1"
+      ],
+      "declared": null,
+      "child": {
+        "done": 0,
+        "total": 9,
+        "complete": false
+      }
+    },
+    "XM6": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: top-e12"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XM5": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: top-e10",
+        "edge 내용 미작성: top-e11"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  },
+  "p7": {
+    "XA": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: p7-e1"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XB": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: p7-e4"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XC": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: p7-e6",
+        "edge 내용 미작성: p7-e12"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XD": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: p7-e8"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XE": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: p7-e9"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "P1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e3"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "P2": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e11"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "P3": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e14"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T0": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e1",
+        "edge 내용 미작성: p7-e2"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e2",
+        "edge 내용 미작성: p7-e3",
+        "edge 내용 미작성: p7-e4",
+        "edge 내용 미작성: p7-e5"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T2": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e5",
+        "edge 내용 미작성: p7-e6",
+        "edge 내용 미작성: p7-e7"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T3": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e7",
+        "edge 내용 미작성: p7-e8",
+        "edge 내용 미작성: p7-e9",
+        "edge 내용 미작성: p7-e10"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T4": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e10",
+        "edge 내용 미작성: p7-e11",
+        "edge 내용 미작성: p7-e12",
+        "edge 내용 미작성: p7-e13"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "T5": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: p7-e13",
+        "edge 내용 미작성: p7-e14",
+        "edge 내용 미작성: p7-e15"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "OUT": {
+      "state": "output",
+      "label": "출력",
+      "issues": [
+        "edge 내용 미작성: p7-e15"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  },
+  "diff": {
+    "XO": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [
+        "edge 내용 미작성: diff-e1"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "D1": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: diff-e1",
+        "edge 내용 미작성: diff-e2"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "D2": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "입력 edge 없음: XO → D2"
+      ],
+      "missing": [
+        "XO"
+      ],
+      "declared": null,
+      "child": {
+        "done": 3,
+        "total": 3,
+        "complete": true
+      }
+    },
+    "S1": {
+      "state": "unassessed",
+      "label": "미평가",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "D3": {
+      "state": "incomplete",
+      "label": "미완결",
+      "issues": [
+        "edge 내용 미작성: diff-e2",
+        "edge 내용 미작성: diff-e6"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "D4": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": {
+        "done": 3,
+        "total": 3,
+        "complete": true
+      }
+    },
+    "OUT": {
+      "state": "output",
+      "label": "출력",
+      "issues": [
+        "edge 내용 미작성: diff-e6"
+      ],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  },
+  "fv": {
+    "X1": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "X2": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "X3": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "X4": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "TM": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "PM": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "CP": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": {
+        "done": 3,
+        "total": 3,
+        "complete": true
+      }
+    },
+    "OUT": {
+      "state": "output",
+      "label": "출력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  },
+  "cp": {
+    "XR": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XT": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "XE": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "BASE": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "JOIN": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "IDENT": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "END": {
+      "state": "output",
+      "label": "출력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  },
+  "fresh": {
+    "FP_OBJ": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "FP_LOG": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "FP_VAR": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "FP_SAMPLE": {
+      "state": "external",
+      "label": "외부 입력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    },
+    "FP_BIND": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "FP_EXT": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "FP_PACK": {
+      "state": "complete",
+      "label": "국소 완결",
+      "issues": [],
+      "missing": [],
+      "declared": "complete",
+      "child": null
+    },
+    "FP_OUT": {
+      "state": "output",
+      "label": "출력",
+      "issues": [],
+      "missing": [],
+      "declared": null,
+      "child": null
+    }
+  }
+}

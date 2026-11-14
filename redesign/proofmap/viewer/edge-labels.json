@@ -1,0 +1,400 @@
+{
+  "move4": {
+    "top": {
+      "top-e1": {
+        "id": "e1",
+        "caption": "기호"
+      },
+      "top-e2": {
+        "id": "e2",
+        "caption": "반복 log"
+      },
+      "top-e3": {
+        "id": "e3",
+        "caption": "반복 history"
+      },
+      "top-e4": {
+        "id": "e4",
+        "caption": "history 계수"
+      },
+      "top-e5": {
+        "id": "e5",
+        "caption": "절댓값 합"
+      },
+      "top-e6": {
+        "id": "e6",
+        "caption": "전개·경계"
+      },
+      "top-e7": {
+        "id": "e7",
+        "caption": "선택 수열"
+      },
+      "top-e8": {
+        "id": "e8",
+        "caption": "섭동족"
+      },
+      "top-e9": {
+        "id": "e9",
+        "caption": "극한 순서"
+      },
+      "top-e10": {
+        "id": "e10",
+        "caption": "모양별 합"
+      },
+      "top-e11": {
+        "id": "e11",
+        "caption": "상대 한계"
+      },
+      "top-e12": {
+        "id": "e12",
+        "caption": "log 급수"
+      },
+      "top-e13": {
+        "id": "e13",
+        "caption": "log 전개의 대상"
+      },
+      "top-e14": {
+        "id": "e14",
+        "caption": "history의 대상"
+      },
+      "top-e15": {
+        "id": "e15",
+        "caption": "삽입·밀도"
+      },
+      "top-e16": {
+        "id": "e16",
+        "caption": "격자·tree"
+      },
+      "top-e17": {
+        "id": "e17",
+        "caption": "격자·tree"
+      }
+    },
+    "p7": {
+      "p7-e1": {
+        "id": "e1",
+        "caption": "score 집중"
+      },
+      "p7-e2": {
+        "id": "e2",
+        "caption": "분리 한계"
+      },
+      "p7-e3": {
+        "id": "e3",
+        "caption": "Palm"
+      },
+      "p7-e4": {
+        "id": "e4",
+        "caption": "삽입 밀도"
+      },
+      "p7-e5": {
+        "id": "e5",
+        "caption": "상쇄량"
+      },
+      "p7-e6": {
+        "id": "e6",
+        "caption": "history 전개"
+      },
+      "p7-e7": {
+        "id": "e7",
+        "caption": "모멘트 결합"
+      },
+      "p7-e8": {
+        "id": "e8",
+        "caption": "수렴 수열"
+      },
+      "p7-e9": {
+        "id": "e9",
+        "caption": "해석적 경계"
+      },
+      "p7-e10": {
+        "id": "e10",
+        "caption": "계수 소거"
+      },
+      "p7-e11": {
+        "id": "e11",
+        "caption": "계수 추출"
+      },
+      "p7-e12": {
+        "id": "e12",
+        "caption": "혼합 전개"
+      },
+      "p7-e13": {
+        "id": "e13",
+        "caption": "미분 소거"
+      },
+      "p7-e14": {
+        "id": "e14",
+        "caption": "mark 선택"
+      },
+      "p7-e15": {
+        "id": "e15",
+        "caption": "항등식"
+      },
+      "p7-e16": {
+        "id": "e16",
+        "caption": "표본 규칙"
+      },
+      "p7-e17": {
+        "id": "e17",
+        "caption": "Poisson 족"
+      },
+      "p7-e18": {
+        "id": "e18",
+        "caption": "새 변수"
+      },
+      "p7-e19": {
+        "id": "e19",
+        "caption": "교환 근거"
+      },
+      "p7-e20": {
+        "id": "e20",
+        "caption": "mark 규칙"
+      },
+      "p7-e21": {
+        "id": "e21",
+        "caption": "Palm 한계"
+      },
+      "p7-e22": {
+        "id": "e22",
+        "caption": "type 매개변수"
+      },
+      "p7-e23": {
+        "id": "e23",
+        "caption": "해석성"
+      },
+      "p7-e24": {
+        "id": "e24",
+        "caption": "mark 족의 닫힘"
+      },
+      "p7-e25": {
+        "id": "e25",
+        "caption": "교환 근거"
+      },
+      "p7-e26": {
+        "id": "e26",
+        "caption": "새 변수·표본"
+      },
+      "p7-e27": {
+        "id": "e27",
+        "caption": "mark 규칙"
+      }
+    },
+    "diff": {
+      "diff-e1": {
+        "id": "e1",
+        "caption": "밀도 정의"
+      },
+      "diff-e2": {
+        "id": "e2",
+        "caption": "leaf 항"
+      },
+      "diff-e3": {
+        "id": "e3",
+        "caption": "내부 항"
+      },
+      "diff-e4": {
+        "id": "e4",
+        "caption": "첫 변분"
+      },
+      "diff-e5": {
+        "id": "e5",
+        "caption": "표본 규칙"
+      },
+      "diff-e6": {
+        "id": "e6",
+        "caption": "old leaf"
+      },
+      "diff-e7": {
+        "id": "e7",
+        "caption": "fresh 항"
+      },
+      "diff-e8": {
+        "id": "e8",
+        "caption": "대상·protected"
+      },
+      "diff-e9": {
+        "id": "e9",
+        "caption": "첫 변분 정의"
+      },
+      "diff-e10": {
+        "id": "e10",
+        "caption": "protected F"
+      },
+      "diff-e11": {
+        "id": "e11",
+        "caption": "1회"
+      },
+      "diff-e12": {
+        "id": "e12",
+        "caption": "표본 추출"
+      },
+      "diff-e13": {
+        "id": "e13",
+        "caption": "vertex 자료"
+      },
+      "diff-e14": {
+        "id": "e14",
+        "caption": "정의"
+      },
+      "diff-e15": {
+        "id": "e15",
+        "caption": "표본 법칙"
+      }
+    },
+    "fv": {
+      "e1": {
+        "id": "e1",
+        "caption": "Y 재귀"
+      },
+      "e2": {
+        "id": "e2",
+        "caption": "tilted kernel"
+      },
+      "e3": {
+        "id": "e3",
+        "caption": "균일 경계"
+      },
+      "e4L": {
+        "id": "e4L",
+        "caption": "귀납 시작"
+      },
+      "e4": {
+        "id": "e4",
+        "caption": "귀납 반복"
+      },
+      "o1": {
+        "id": "o1",
+        "caption": "한 칸 항등식"
+      },
+      "f1": {
+        "id": "f1",
+        "caption": "말단 정의"
+      },
+      "f2": {
+        "id": "f2",
+        "caption": "말단 미분"
+      },
+      "f3": {
+        "id": "f3",
+        "caption": "path 평균"
+      },
+      "f4": {
+        "id": "f4",
+        "caption": "첫 변분"
+      },
+      "g1": {
+        "id": "g1",
+        "caption": "공유 입력"
+      },
+      "g2": {
+        "id": "g2",
+        "caption": "공유 입력"
+      },
+      "g3": {
+        "id": "g3",
+        "caption": "공유 입력"
+      },
+      "k3": {
+        "id": "k3",
+        "caption": "kernel 정의"
+      }
+    },
+    "cp": {
+      "b0": {
+        "id": "b0",
+        "caption": "말단 식"
+      },
+      "b1": {
+        "id": "b1",
+        "caption": "귀납 시작"
+      },
+      "s0": {
+        "id": "s0",
+        "caption": "한 칸 식"
+      },
+      "b2": {
+        "id": "b2",
+        "caption": "귀납 반복"
+      },
+      "s1": {
+        "id": "s1",
+        "caption": "합성 결과"
+      },
+      "q0": {
+        "id": "q0",
+        "caption": "평균 정의"
+      },
+      "q1": {
+        "id": "q1",
+        "caption": "첫 변분"
+      },
+      "p0": {
+        "id": "p0",
+        "caption": "공유 입력"
+      },
+      "p1": {
+        "id": "p1",
+        "caption": "공유 입력"
+      },
+      "p2": {
+        "id": "p2",
+        "caption": "공유 입력"
+      },
+      "k0": {
+        "id": "k0",
+        "caption": "kernel 정의"
+      },
+      "k1": {
+        "id": "k1",
+        "caption": "kernel 정의"
+      },
+      "k2": {
+        "id": "k2",
+        "caption": "kernel 정의"
+      }
+    },
+    "fresh": {
+      "fp-def-bind": {
+        "id": "d1",
+        "caption": "대상 정의"
+      },
+      "fp-first": {
+        "id": "v1",
+        "caption": "첫 변분"
+      },
+      "fp-def-ext": {
+        "id": "d2",
+        "caption": "대상 정의"
+      },
+      "fp-sampling": {
+        "id": "s1",
+        "caption": "표본 규칙"
+      },
+      "fp-def-pack": {
+        "id": "d3",
+        "caption": "F 정의"
+      },
+      "fp-old": {
+        "id": "c1",
+        "caption": "old 계수"
+      },
+      "fp-kernel": {
+        "id": "q1",
+        "caption": "path 정의"
+      },
+      "fp-identity": {
+        "id": "v2",
+        "caption": "변분 대입"
+      },
+      "fp-extension": {
+        "id": "x1",
+        "caption": "독립 적분"
+      },
+      "fp-result": {
+        "id": "o1",
+        "caption": "fresh 항"
+      }
+    }
+  }
+}

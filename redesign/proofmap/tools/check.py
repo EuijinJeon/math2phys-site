@@ -4,10 +4,17 @@
     python3 redesign/proofmap/tools/check.py redesign/proofmap/graphs/move4.json
 
 오류가 있으면 종료 코드 1. 경고와 상태 보고는 종료 코드에 영향이 없다.
-검사하는 것은 구조다. 진술이 수학적으로 맞는지는 보지 않는다.
+검사하는 것은 구조와 명시 참조·기호 색인의 일관성이다.
+진술이 수학적으로 맞는지나 색인에서 누락된 기호는 판정하지 않는다.
 """
 import json
 import sys
+import importlib.util
+from pathlib import Path
+
+_spec = importlib.util.spec_from_file_location('proofmap_contracts', Path(__file__).with_name('output_contracts.py'))
+contracts = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(contracts)
 
 NODE_KINDS = {"object", "rule", "fact", "step", "external", "output"}
 EDGE_KINDS = {"flow", "call", "definition"}
@@ -15,8 +22,117 @@ ABSTRACTIONS = {"exact", "weakening", "blackbox", "approximation", None}
 MAX_INNER_NODES = 9
 
 
+def check_references(g, n):
+    """명시한 참조만 검사한다. LaTeX/산문에서 의미나 기호를 추출하지 않는다."""
+    errors, warnings, report = [], [], []
+    where = f"[{g['id']}] node {n['id']}"
+    inc = {e['id']: e for e in g['edges'] if e['to'] == n['id']}
+    contexts = {c['id']: c for c in g.get('contexts', []) if n['id'] in c['nodes']}
+    sources = {**{f'edge:{k}': e for k, e in inc.items()},
+               **{f'context:{k}': c for k, c in contexts.items()}}
+    definitions = {}
+
+    def names(value, label):
+        if not isinstance(value, list) or any(not isinstance(s, str) or not s for s in value):
+            errors.append(f"{where} [REF_FORMAT] {label}: 비어 있지 않은 문자열의 배열이어야 한다")
+            return []
+        if len(value) != len(set(value)):
+            errors.append(f"{where} [REF_FORMAT] {label}: 중복 항목")
+        return value
+
+    def declare(symbols, source):
+        for symbol in names(symbols, f'{source}.defines'):
+            definitions.setdefault(symbol, []).append(source)
+
+    for source, obj in sources.items():
+        declare(obj.get('defines', []), source)
+
+    for i, intro in enumerate(n.get('introductions',[]),1):
+        valid=intro.get('kind') in ['notation','arbitrary_index']
+        valid=valid and isinstance(intro.get('symbol'),str) and intro.get('scope')==f"{g['id']}.{n['id']}.{intro.get('symbol')}"
+        valid=valid and all(s in definitions for s in intro.get('uses_symbols',[]))
+        if intro.get('kind')=='notation':
+            valid=valid and isinstance(intro.get('expr'),str) and bool(intro['expr'])
+        else:
+            domain=intro.get('domain',{})
+            valid=valid and type(domain.get('lower')) is int and domain.get('upper_symbol') in definitions
+        if not valid:
+            errors.append(f"{where} [INTRO_SCOPE] 로컬 도입 {i}: 공급된 기호·범위·scope가 맞지 않는다")
+        if intro.get('symbol') in definitions:
+            errors.append(f"{where} [INTRO_SHADOW] 로컬 도입이 이미 받은 기호를 덮어쓴다")
+        declare([intro.get('symbol')],f'intro:{i}')
+
+    lines = n.get('derivation', [])
+    used_edges, used_symbols = set(), set()
+    for i, line in enumerate(lines, 1):
+        used_refs = names(line.get('uses'), f'식 {i}.uses')
+        if not used_refs:
+            errors.append(f"{where} [REF_EMPTY] 식 {i}: 명시한 근거가 없다")
+        for ref in used_refs:
+            kind, sep, target = ref.partition(':')
+            valid = bool(sep)
+            if kind == 'edge':
+                valid = valid and target in inc
+                if valid:
+                    used_edges.add(target)
+            elif kind == 'context':
+                valid = valid and target in contexts
+            elif kind in ('line', 'floor', 'intro'):
+                limit = i - 1 if kind == 'line' else len(n.get('introductions',[])) if kind=='intro' else len(n.get('floor_used', []))
+                valid = valid and target.isascii() and target.isdigit() and 1 <= int(target) <= limit
+            else:
+                valid = False
+            if not valid:
+                errors.append(f"{where} [REF_SCOPE] 식 {i}: 사용할 수 없는 근거 {ref!r}")
+
+        # 같은 줄에서 정의하는 기호와 앞선 줄의 정의만 사용할 수 있다.
+        declare(line.get('defines', []), f'line:{i}')
+        for symbol in names(line.get('uses_symbols'), f'식 {i}.uses_symbols'):
+            used_symbols.add(symbol)
+            if symbol not in definitions:
+                errors.append(f"{where} [SYMBOL_UNDEFINED] 식 {i}: 기호 {symbol!r}의 국소 정의가 없다")
+
+    for eid in sorted(set(inc) - used_edges):
+        warnings.append(f"{where} [EDGE_UNUSED] 받는 edge {eid!r}가 uses에 한 번도 쓰이지 않았다")
+
+    out = {e['id'] for e in g['edges'] if e['from'] == n['id']}
+    for p in n.get('produces', []):
+        if p.get('edge') not in out:
+            errors.append(f"{where} [OUTPUT_SCOPE] produces가 보내지 않는 edge {p.get('edge')!r}를 가리킨다")
+        refs = p.get('lines')
+        if (not isinstance(refs, list) or not refs or
+                any(type(r) is not int or not 1 <= r <= len(lines) for r in refs)):
+            errors.append(f"{where} [OUTPUT_LINES] 출력 {p.get('edge')!r}: 유효한 유도 줄 번호가 필요하다")
+        local_scopes={i['scope'] for i in n.get('introductions',[]) if i.get('kind')=='arbitrary_index'}
+        if set(p.get('generalizes',[]))-local_scopes:
+            errors.append(f"{where} [GENERALIZE_SCOPE] 도입하지 않은 범위를 닫으려 한다")
+        edge=next((e for e in g['edges'] if e['id']==p.get('edge')),None)
+        if g.get('premise_mode')=='edges_only' and edge and edge['from']!=edge['to'] and local_scopes-set(p.get('generalizes',[])):
+            errors.append(f"{where} [GENERALIZE_SCOPE] 로컬 지표의 범위를 닫지 않은 출력")
+
+    locations = '; '.join(f"{s}←{','.join(definitions.get(s, ['미정의']))}" for s in sorted(used_symbols))
+    report.append(f"{where} 명시 참조: 입력 {len(used_edges)}/{len(inc)} 사용; 기호 정의 위치: {locations}")
+    return errors, warnings, report
+
+
 def check(doc):
     errors, warnings, report = [], [], []
+    bindings = contracts.contract_audit(doc)
+    for (gid, nid), issues in bindings['nodes'].items():
+        for issue in issues:
+            if issue.startswith(('edge ', '상류 ', '출력 ')):
+                continue  # 아래 edge/출력별 진단과 중복하지 않는다.
+            target = warnings if '검토' in issue else errors
+            target.append(f"[{gid}] node {nid} [OUTPUT_CONTRACT]: {issue}")
+    for (gid, eid), issues in bindings['edges'].items():
+        for issue in issues:
+            target = warnings if '검토' in issue else errors
+            target.append(f"[{gid}] edge {eid} [OUTPUT_CONTRACT]: {issue}")
+    for (gid, nid, output), record in bindings['outputs'].items():
+        for issue in record['issues']:
+            target = warnings if '검토' in issue else errors
+            target.append(f"[{gid}] node {nid} 출력 {output} [OUTPUT_CONTRACT]: {issue}")
+    doc = contracts.resolve_document(doc)
     if doc.get("format") != "proofmap/0.1":
         errors.append(f"format 이 proofmap/0.1 이 아니다: {doc.get('format')!r}")
     graphs = {g["id"]: g for g in doc.get("graphs", [])}
@@ -32,6 +148,9 @@ def check(doc):
         eids = [e["id"] for e in edges]
         if len(set(eids)) != len(eids):
             errors.append(f"{where} edge id가 겹친다")
+        cids = [c['id'] for c in g.get('contexts', [])]
+        if len(set(cids)) != len(cids):
+            errors.append(f"{where} context id가 겹친다")
 
         # 낱개 필드
         for n in nodes.values():
@@ -139,11 +258,19 @@ def check(doc):
                 if e.get("status") == "open":
                     errors.append(f"{where} node {n['id']}: 완결이라는데 edge {e['id']} 가 열려 있다")
             if n.get("derivation"):
-                text = " ".join(d.get("by", "") for d in n["derivation"])
-                for e in inc:
-                    names = {e["id"], e.get("label", e["id"])}
-                    if not any(nm.split(" ")[0] in text for nm in names):
-                        warnings.append(f"{where} node {n['id']}: 받는 edge {e['id']} 를 유도의 근거에서 찾지 못했다")
+                if n.get('reference_check') is True:
+                    es, ws, rs = check_references(g, n)
+                    errors.extend(es)
+                    warnings.extend(ws)
+                    report.extend(rs)
+                else:
+                    # 예전 자료는 통과 여부를 바꾸지 않고 미검사임을 보고한다.
+                    report.append(f"{where} node {n['id']}: 명시 기호·참조 미검사 (reference_check 없음)")
+                    text = " ".join(d.get("by", "") for d in n["derivation"])
+                    for e in inc:
+                        names = {e["id"], e.get("label", e["id"])}
+                        if not any(nm.split(" ")[0] in text for nm in names):
+                            warnings.append(f"{where} node {n['id']}: 받는 edge {e['id']} 를 유도의 근거에서 찾지 못했다")
                 produced = {p["edge"] for p in n.get("produces", [])}
                 for e in out:
                     if e["id"] not in produced:

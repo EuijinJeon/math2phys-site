@@ -1,0 +1,87 @@
+{
+  "target": "TLAPS proof obligations",
+  "execution_status": "not run; tlapm unavailable on PATH",
+  "scope": "Correspondence only. LaTeX formulas are not TLA+ expressions.",
+  "frame": "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다.",
+  "definitions": {
+    "e1": "Y recursion -> explicitly expanded DEF",
+    "e2": "tilted kernel -> explicitly expanded DEF"
+  },
+  "assumptions": {
+    "e3": "$a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$.",
+    "IH": "Use e4L at d=L, preceding depth e4 otherwise; do not wire a cyclic proof"
+  },
+  "goal": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, 그리고 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$.",
+  "proof_steps": [
+    {
+      "label": "<1>1.",
+      "original_expr": "$$\\log Y_{d-1}=\\frac1{m_d}\\log K_d\\bigl[Y_d^{m_d}\\bigr]$$",
+      "uses": [
+        "edge:e1",
+        "edge:e3",
+        "context:FF",
+        "floor:1"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    },
+    {
+      "label": "<1>2.",
+      "original_expr": "$$\\partial\\log Y_{d-1}=\\frac1{m_d}\\,\\frac{K_d\\bigl[\\partial\\,(Y_d^{m_d})\\bigr]}{K_d\\bigl[Y_d^{m_d}\\bigr]}$$",
+      "uses": [
+        "line:1",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "context:FF",
+        "floor:1",
+        "floor:2"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    },
+    {
+      "label": "<1>3.",
+      "original_expr": "$$=\\frac{K_d\\bigl[Y_d^{m_d}\\,\\partial\\log Y_d\\bigr]}{Y_{d-1}^{m_d}}$$",
+      "uses": [
+        "line:2",
+        "edge:e1",
+        "floor:1"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    },
+    {
+      "label": "<1>4.",
+      "original_expr": "$$=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}\\partial\\log Y_d\\Bigr]$$",
+      "uses": [
+        "line:3",
+        "edge:e1"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    },
+    {
+      "label": "<1>5.",
+      "original_expr": "$$=K_d^{A}\\bigl[\\partial\\log Y_d\\bigr]$$",
+      "uses": [
+        "line:4",
+        "edge:e2",
+        "edge:e4",
+        "edge:e4L"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    },
+    {
+      "label": "<1>6.",
+      "original_expr": "$$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c$$",
+      "uses": [
+        "line:5",
+        "edge:e1",
+        "edge:e2",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "context:FF"
+      ],
+      "principle": "BY facts; DEF needed definitions. Analytic lemmas must be formalized or explicitly assumed, never silently regarded as discharged."
+    }
+  ],
+  "boundary": "Context plus explicit usable inputs entails the goal. Complete local step and complete depth induction must be tracked separately."
+}

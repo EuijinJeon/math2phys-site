@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {edgeRoute,routeHits,routePoint}=require('../viewer/edge-routing.js');
+const a={x:24,y:278,w:210,h:95},b={x:824,y:278,w:210,h:160};
+const obstacle={x:424,y:278,w:210,h:160};
+const route=edgeRoute(a,b,[obstacle]);
+assert.equal(route.length,4,'c1 should detour around FP_BIND');
+for(let i=1;i<route.length;i++)assert.equal(routeHits(route[i-1],route[i],obstacle),false);
+const mid=routePoint(route,0.5);
+assert.ok(mid.y<obstacle.y || mid.y>obstacle.y+obstacle.h,'label anchor lies on the detour');
+assert.equal(edgeRoute(a,b,[]).length,2,'clear edge remains straight');
+const shared={x:24,y:706,w:210,h:75},terminal={x:424,y:64,w:210,h:95};
+const blockers=[{x:24,y:64,w:210,h:75},{x:24,y:278,w:210,h:75},{x:24,y:492,w:210,h:75},{x:424,y:278,w:210,h:100}];
+const sharedRoute=edgeRoute(shared,terminal,blockers);
+for(let i=1;i<sharedRoute.length;i++)for(const r of blockers)assert.equal(routeHits(sharedRoute[i-1],sharedRoute[i],r),false,'shared input should use a clear gutter');
+console.log('edge routing: c1 obstacle avoidance, label anchor, clear-edge regression passed');

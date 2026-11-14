@@ -1,0 +1,878 @@
+{
+  "graphs": [
+    {
+      "id": "top",
+      "title": "수 4",
+      "summary": "수 4의 맨 위 지도. 내용은 현행 L2 §6과 rules.md 그대로이고, 형식만 새 설계를 따른다.",
+      "parent": null,
+      "contexts": [
+        {
+          "id": "FA",
+          "text": "깊이 $L$, 수 $0=m_0<\\cdots<m_L=1$, 유한 kernel 열을 고정. root가 주어진 조건부. 모형은 들어오지 않는다.",
+          "nodes": [
+            "O1",
+            "R1",
+            "R2",
+            "R3",
+            "F1",
+            "F2"
+          ]
+        },
+        {
+          "id": "FB",
+          "text": "선택된 수열, $N\\to\\infty$",
+          "nodes": [
+            "R4"
+          ]
+        },
+        {
+          "id": "FCROSS",
+          "text": "수 5: 균등 격자, 고정 topology와 $\\eta>0$. 각 $L$의 선택 수열에서 $N\\to\\infty$를 먼저 취하고, 깊이 평균을 제어하여 $L\\to\\infty$. 수열과 항등식 오차의 증폭 상수는 $L$에 의존해도 된다.",
+          "nodes": [
+            "XM5"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": "O1",
+          "kind": "object",
+          "title": "tree와 삽입",
+          "summary": "$K_d$, $\\mathcal T$, $A$, $Y_d$, $E^A_{\\mathcal T}$, $W_{\\mathcal T}$",
+          "statement": "path는 깊이 $0,\\ldots,L$ 마다 변수 하나, 깊이 $d$ 의 변수는 prefix가 주어지면 kernel $K_d$ 로 뽑는다. tree $\\mathcal T$ 는 root를 공유하는 유한 개의 path. 삽입 $A$ 에 대해 $$Y_L=A,\\quad Y_{d-1}=(K_dY_d^{m_d})^{1/m_d},\\quad K_d^A=(Y_d/Y_{d-1})^{m_d}K_d,$$ $$E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)],\\quad W_{\\mathcal T}(A)=\\prod_{a}A^a\\prod_{\\beta}Y_\\beta^{\\gamma_\\beta},\\quad \\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}<0 .$$ 재귀의 단조성으로, 양의 root-가측 경계 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ (trees.tex 107–110). $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다. 한 path에서 $\\mathscr F_d$는 깊이 $d$까지의 prefix sigma-field다. 삽입 후 kernel들은 확률 kernel이며, 유계 path 함수 $h$에 대해 $$E^A[h\\mid\\mathscr F_d]:=K_{d+1}^A\\cdots K_L^A[h].$$ 이는 해당 prefix 아래로 path 하나를 끝까지 뽑는 평균이며 $d=L$의 빈 합성은 항등 연산이다. 미분 계산에서는 원래 kernel 열과 지수 $m_d$를 고정하고 $D_j$도 매개변수에 무관하게 둔다.",
+          "conditions": [
+            "$A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다."
+          ],
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:Y-recursion",
+              "tree:density",
+              "x:tree-sampling"
+            ],
+            "source": "trees.tex 20–23, 67–82, 107–110, 142–154, 180–183",
+            "state": "proposed"
+          },
+          "library": "미대조",
+          "layout": {
+            "col": 0,
+            "row": 0
+          },
+          "inputs": [],
+          "outputs": {
+            "fv_inputs": {
+              "role": "given",
+              "title": "첫 변분의 가정·정의·인용 사실",
+              "conditions": [],
+              "grounding": {
+                "source": "trees.tex 20–23, 67–82, 107–110, 142–154",
+                "state": "proposed"
+              },
+              "clauses": {
+                "setting": {
+                  "statement": "유한 깊이 $L$과 매개변수에 무관한 확률 kernel 열 $K_1,\\ldots,K_L$, 지수 $0=m_0<\\cdots<m_L=1$을 고정한다. root를 고정한다. $\\mathscr F_d$는 깊이 $d$까지의 prefix sigma-field다.",
+                  "defines": [
+                    "L",
+                    "K",
+                    "m",
+                    "F"
+                  ],
+                  "bindings": {
+                    "L": "fv.input.L",
+                    "K": "fv.input.K",
+                    "m": "fv.input.m",
+                    "F": "fv.input.F"
+                  },
+                  "title": "유한 kernel·지수·prefix"
+                },
+                "insertion": {
+                  "statement": "유한한 삽입 방향 수 $k$를 두고 $A_{\\boldsymbol t}=1+\\sum_{j=1}^k t_jD_j$이며 $D_j$는 유계 실수 path 함수로 매개변수에 무관하다. $U$는 $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방이다. 방향 지표 $j\\in\\{1,\\ldots,k\\}$를 입력 매개변수로 갖는 계산을 다룬다.",
+                  "defines": [
+                    "A",
+                    "D",
+                    "t",
+                    "U",
+                    "a",
+                    "b",
+                    "j",
+                    "k"
+                  ],
+                  "bindings": {
+                    "A": "fv.input.A",
+                    "D": "fv.input.D",
+                    "t": "fv.input.t",
+                    "U": "fv.input.U",
+                    "a": "fv.input.a",
+                    "b": "fv.input.b",
+                    "j": "fv.input.j",
+                    "k": "fv.input.k"
+                  },
+                  "title": "삽입과 매개변수 조건"
+                },
+                "terminal": {
+                  "statement": "$$Y_L=A_{\\boldsymbol t}.$$",
+                  "defines": [
+                    "Y"
+                  ],
+                  "bindings": {
+                    "Y": "fv.input.Y"
+                  },
+                  "title": "말단 정의"
+                },
+                "recursion": {
+                  "statement": "$$Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}\\qquad(1\\le d\\le L).$$ $Y_d$는 깊이 $d$의 prefix 함수다.",
+                  "defines": [
+                    "Y"
+                  ],
+                  "bindings": {
+                    "Y": "fv.input.Y"
+                  },
+                  "title": "Y 재귀"
+                },
+                "kernel": {
+                  "statement": "깊이 $d$까지의 prefix의 유계 함수 $h$에 대해 $$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]\\quad(1\\le d\\le L).$$ 재귀로 정규화된 확률 kernel이다.",
+                  "defines": [
+                    "K_A"
+                  ],
+                  "bindings": {
+                    "K_A": "fv.input.K_A"
+                  },
+                  "title": "바뀐 kernel 정의"
+                },
+                "bounds": {
+                  "statement": "$a\\le A\\le b$이면 재귀의 단조성으로 모든 $0\\le d\\le L$에서 $a\\le Y_d\\le b$다. 원문 insertion lemma의 사실을 입력으로 받는다.",
+                  "defines": [
+                    "Y"
+                  ],
+                  "bindings": {
+                    "Y": "fv.input.Y"
+                  },
+                  "title": "재귀의 단조성"
+                },
+                "path_mean": {
+                  "statement": "삽입 후 확률 kernel 가족 $K_d^A$로 한 path를 뽑는 평균을 쓴다. 유계 path 함수 $h$에 대해 $$E^A[h\\mid\\mathscr F_d]:=K_{d+1}^A\\cdots K_L^A[h]\\quad(0\\le d\\le L).$$ $d=L$의 빈 합성은 항등 연산이다.",
+                  "defines": [
+                    "E_A",
+                    "K_A"
+                  ],
+                  "bindings": {
+                    "E_A": "fv.input.E_A",
+                    "K_A": "fv.input.K_A"
+                  },
+                  "title": "조건부 path 평균 정의"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "R1",
+          "kind": "rule",
+          "title": "미분 규칙",
+          "summary": "$\\partial_{t_j}$ 한 번 = 안 쓴 leaf 하나($+1$) 또는 fresh path($\\gamma_\\beta$)",
+          "statement": "상태를 $F[\\mathcal T,C,G]=E^{A}_{\\mathcal T}\\bigl[G\\prod_{a\\in C}(A^a)^{-1}\\bigr]$ 로 쓰면($C$ 는 protected leaf 집합) $$\\partial_{t_j}F[\\mathcal T,C,G]=\\sum_{a\\notin C}F[\\mathcal T,\\,C\\cup\\{a\\},\\,GD_j^a]+\\sum_{\\beta}\\gamma_\\beta\\,F[\\mathcal T\\oplus\\beta,\\,C\\cup\\{x_\\beta\\},\\,GD_j^{x_\\beta}] .$$ $\\mathcal T\\oplus\\beta$ 는 내부 vertex $\\beta$ 에 새 path를 붙인 tree, $x_\\beta$ 는 그 새 leaf. 출력이 다시 같은 꼴이라 반복 적용된다.",
+          "conditions": [
+            "$G$ 는 유계이고 $\\boldsymbol t$ 에 무관.",
+            "$D_j$ 는 유계 실수 path 함수, $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$."
+          ],
+          "inputs": [
+            "O1"
+          ],
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "x:tree-differentiation-rule",
+              "tree:first-variation"
+            ],
+            "source": "trees.tex 178–202",
+            "state": "proposed"
+          },
+          "library": "$L=1$ 에서 \"Gibbs 평균을 미분하면 기존 replica마다 $+1$, 새 replica에 $-n$\"과 일치(직접 계산). 일반 $L$ 은 미대조.",
+          "note": "현행 규칙 표의 행이 아니다. $F[\\mathcal T,C,G]$ 라는 상태 표기는 카드의 식을 줄여 쓴 것으로, 지도 작성자가 붙였다.",
+          "example": "$L=1$, anchor 하나, $G=1$, $D_1=D_2=1$. 첫 미분: root(자식 1개)에서 fresh, 계수 $-1$. 둘째 미분: root의 자식이 2개가 되어 계수 $-2$. 곱 $2$ 는 $\\partial_{t_1}\\partial_{t_2}(1+t_1+t_2)^{-1}\\rvert_0=2$ 와 맞는다.",
+          "subgraph": "diff",
+          "layout": {
+            "col": 1,
+            "row": 0
+          }
+        },
+        {
+          "id": "R2",
+          "kind": "rule",
+          "title": "P6 — log 전개",
+          "summary": "$\\log Y_0=\\sum_k\\frac{(-1)^{k-1}t^k}{k}\\mathbb E_{Q_k}E_{\\mathcal T}\\prod D^a$",
+          "statement": "$$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}t^k}{k}\\;\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_{a=1}^kD^a .$$ $Q_k$ 는 path 하나에서 시작해 내부 vertex $\\beta$ 를 확률 $-\\gamma_\\beta/\\lvert\\mathcal T\\rvert$ 로 골라 새 path를 붙여 가는 법칙. $K$ 차 뒤의 나머지는 $\\sum_{k>K}c^k/k$ 이하($\\lvert t\\rvert\\lVert D\\rVert_\\infty\\le c<1$).",
+          "conditions": [
+            "$A=1+tD$, $D$ 유계 실수 path 함수.",
+            "$\\lvert t\\rvert\\,\\lVert D\\rVert_\\infty<1$."
+          ],
+          "inputs": [
+            "O1",
+            "R1"
+          ],
+          "abstraction": "exact",
+          "grounding": {
+            "cards": [
+              "tree:insertion",
+              "tree:log-expansion"
+            ],
+            "source": "L2 6.1, rules.md P6",
+            "state": "proposed"
+          },
+          "library": "현행: 물리 이름은 직관 칸에만.",
+          "note": "수 4의 유도(P7)에서는 쓰이지 않는다. 수 6이 직접 쓴다.",
+          "layout": {
+            "col": 2,
+            "row": 0
+          },
+          "status": "sketch"
+        },
+        {
+          "id": "R3",
+          "kind": "rule",
+          "title": "P6′ ① — history 전개",
+          "summary": "$\\partial_{t_1}\\cdots\\partial_{t_k}E^{A}_{\\mathcal T}[G/A^{a_*}]\\rvert_0=\\sum_Ec_E\\,E_{\\mathcal T_E}[G\\prod D_j^{a_j(E)}]$",
+          "statement": "old tree $\\mathcal T$, anchor $a_*$ 에 대해 $$\\partial_{t_1}\\cdots\\partial_{t_k}\\,E^{A_{\\boldsymbol t}}_{\\mathcal T}\\!\\left[\\frac{G}{A_{\\boldsymbol t}^{a_*}}\\right]\\Bigg\\rvert_{\\boldsymbol t=0}=\\sum_{E}c_E\\;E_{\\mathcal T_E}\\!\\Bigl[G\\prod_{j=1}^kD_j^{a_j(E)}\\Bigr].$$ history $E$ 는 color $1,\\ldots,k$ 를 차례로 (i) 안 쓴 old leaf에 주거나($+1$) (ii) 현재 tree의 내부 vertex에서 fresh path를 만들어 준다($\\gamma_\\beta$). $c_E$ 는 그 계수들의 곱. 혼합 미분에 factorial 없음.",
+          "conditions": [
+            "$G$ 는 old tree 변수의 유계 함수이고 $\\boldsymbol t$ 에 무관.",
+            "$D_j$ 유계 실수 path 함수. 일반 격자에서 성립.",
+            "좌변은 $\\sum_j\\lvert t_j\\rvert\\lVert D_j\\rVert_\\infty<1$ 에서 해석적이고, 그 경계는 kernel에 균일하다."
+          ],
+          "inputs": [
+            "O1",
+            "R1"
+          ],
+          "abstraction": "blackbox",
+          "grounding": {
+            "cards": [
+              "tree:extension-expansion",
+              "x:tree-extension-history",
+              "x:tree-analytic-bounds"
+            ],
+            "source": "L2 6.2 ①, rules.md P6′",
+            "state": "proposed"
+          },
+          "library": "현행: \"물리 대응 없음\".",
+          "note": "미분 규칙을 $C=\\{a_*\\}$ 에서 시작해 $k$ 번 적용한 것. 해석적 경계는 이 상자가 함께 넘긴다.",
+          "example": "$L=1$, old tree가 anchor와 $a'$(root에서 갈라짐), $k=2$, $G=D_1=D_2=1$. 첫 걸음은 $a'$ 재사용($+1$) 또는 root fresh($-2$). 재사용 뒤에는 root fresh($-2$)뿐. fresh 뒤에는 $a'$ 재사용($+1$) 또는 root fresh($-3$). 합 $-2-2+6=2$.",
+          "layout": {
+            "col": 2,
+            "row": 1
+          },
+          "status": "sketch"
+        },
+        {
+          "id": "F1",
+          "kind": "fact",
+          "title": "P6′ ② — 모양별 총합",
+          "summary": "$\\sum_{E\\text{의 모양}=S}c_E=\\kappa(S)$, old tree와 무관",
+          "statement": "$$\\sum_{E\\text{ 의 모양이 }S}c_E=\\kappa(S)=\\prod_{v\\in\\operatorname{Br}(S)}\\;\\prod_{j=1}^{a_v-1}\\bigl(m_{d_v}-j\\,m_{d_v+1}\\bigr).$$ color 순서와 무관.",
+          "conditions": [
+            "일반 격자. 처방한 split 깊이들이 서로 일관될 것."
+          ],
+          "inputs": [
+            "R3",
+            "O1"
+          ],
+          "abstraction": "blackbox",
+          "grounding": {
+            "cards": [
+              "tree:reference-total",
+              "tree:telescoping"
+            ],
+            "source": "L2 6.2 ②",
+            "state": "proposed"
+          },
+          "library": "미대조",
+          "note": "수 4의 유도에서는 쓰이지 않는다. 수 5가 쓴다.",
+          "layout": {
+            "col": 3,
+            "row": 1
+          },
+          "status": "sketch"
+        },
+        {
+          "id": "F2",
+          "kind": "fact",
+          "title": "P6′ ③ — 계수 한계",
+          "summary": "$\\sum\\lvert c_E\\rvert\\le C_{q,k}\\,\\delta^{b_{\\rm sep}}$ (균등 격자)",
+          "statement": "처방한 모양의 branching vertex 가운데 old tree의 어느 branching 깊이와도 다른 것을 $b_{\\rm sep}$ 개 고르면 $$\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k}\\,\\delta^{\\,b_{\\rm sep}},\\qquad\\frac{1}{\\lvert J_{\\rm sep}\\rvert}\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k,\\eta}.$$ 상수는 $L$ 과 무관.",
+          "conditions": [
+            "균등 격자 $m_d=d/L$, $\\delta=1/L$ 에서만.",
+            "비의 한계는 고른 vertex 모두에서 $m_{d_v}\\ge\\eta>0$ 일 때."
+          ],
+          "inputs": [
+            "R3",
+            "O1"
+          ],
+          "abstraction": "blackbox",
+          "grounding": {
+            "cards": [
+              "tree:charging"
+            ],
+            "source": "L2 6.2 ③, trees.tex 393–455",
+            "state": "proposed"
+          },
+          "library": "없음 (현행 \"규칙으로 못 옮긴 것\")",
+          "note": "수 4의 유도에서는 쓰이지 않는다. 수 5가 쓴다.",
+          "layout": {
+            "col": 3,
+            "row": 2
+          },
+          "status": "sketch"
+        },
+        {
+          "id": "XP5",
+          "kind": "external",
+          "title": "P5 — 선택된 수열 (수 3)",
+          "summary": "(ii) score 집중 $e_{\\nu,N}\\to0$, (iii) tree 모멘트 수렴",
+          "statement": "(ii) 모든 고정 type $\\nu$ 에서 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$. (iii) 유한 prescribed tree 위 multioverlap 유한곱의 기대값이 수열을 따라 수렴.",
+          "abstraction": "blackbox",
+          "grounding": {
+            "cards": [
+              "pert:selection",
+              "pert:concentration"
+            ],
+            "source": "rules.md P5",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 2,
+            "row": 3
+          },
+          "inputs": []
+        },
+        {
+          "id": "XFAM",
+          "kind": "external",
+          "title": "섭동족 (4.2절)",
+          "summary": "Poisson 개수, $t_\\nu=1/j$, $u_\\nu\\in[j^{-j},2j^{-j}]$, mark 족",
+          "statement": "type $\\nu$ 의 factor $\\psi_\\nu=1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$, 개수는 평균 $c_\\nu s_N$ 의 Poisson. mark 족은 곱과 유리수 평균에 닫혀 있다.",
+          "grounding": {
+            "cards": [
+              "pert:parameters"
+            ],
+            "source": "L2 4.2",
+            "state": "proposed"
+          },
+          "layout": {
+            "col": 2,
+            "row": 4
+          },
+          "inputs": []
+        },
+        {
+          "id": "R4",
+          "kind": "rule",
+          "title": "P7 — prescribed-tree 항등식",
+          "summary": "$\\sum_Ec_E\\mathbb E[fR_E]-\\mathbb Ef\\sum_Ec_E\\mathbb E[R_E]\\to0$",
+          "statement": "$$\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\;\\mathbb E\\bigl[f\\,R_E\\bigr]\\;-\\;\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\;\\mathbb E\\bigl[R_E\\bigr]\\;\\longrightarrow\\;0 .$$ anchor에 새 섭동 하나를 더한 효과가, 계수 $c_E$ 를 붙인 부호 있는 합으로서, old tree의 시험함수 $f$ 와 분리된다.",
+          "conditions": [
+            "선택된 수열을 따라 $N\\to\\infty$ 에서만. 고정한 $L$, old tree, anchor 종류, $f$, $k$, $\\mathcal C$ 마다.",
+            "수렴 속도와 $L$·type에 대한 균일성은 주장되지 않는다.",
+            "처방할 수 있는 것은 anchor와 color들 사이의 쌍별 split 깊이뿐. mark 깊이는 $1,\\ldots,L-1$."
+          ],
+          "inputs": [
+            "XP5",
+            "XFAM",
+            "R3",
+            "O1"
+          ],
+          "abstraction": "blackbox",
+          "grounding": {
+            "cards": [
+              "pert:tree-identity",
+              "pert:palm",
+              "pert:analytic"
+            ],
+            "source": "L2 6.3, rules.md P7",
+            "state": "proposed"
+          },
+          "library": "현행: 선행 연구와의 관계는 직관 칸에만. 서로 유도되는지 미확인.",
+          "subgraph": "p7",
+          "layout": {
+            "col": 3,
+            "row": 3
+          }
+        },
+        {
+          "id": "XM6",
+          "kind": "external",
+          "title": "수 6",
+          "summary": "삽입의 계산 (P11)",
+          "layout": {
+            "col": 4,
+            "row": 0
+          },
+          "inputs": [
+            "R2"
+          ]
+        },
+        {
+          "id": "XM5",
+          "kind": "external",
+          "title": "수 5",
+          "summary": "집중 (P8, P9): $N\\to\\infty$ 먼저, 깊이 평균 뒤 $L\\to\\infty$",
+          "layout": {
+            "col": 4,
+            "row": 2
+          },
+          "inputs": [
+            "R4",
+            "F1",
+            "F2"
+          ],
+          "statement": "수 5의 목표는 각 고정 labeled topology $S$와 $\\eta>0$에서 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$ (P9), 그리고 해당 조건부 공분산의 제곱 평균에 대한 P8이다. 이는 이 node의 목표이며 이번 PoC에서 증명 완료한 것이 아니다. $\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$는 깊이 좌표 $a$개의 비정규화 평균이다. 총 질량은 1 이하이며, 고정 깊이별 집중으로 바꾸지 않는다.\n\n수용 조건: 먼저 고정 $L,k,\\eta$의 유한 항등식 목록에서 P7 오차를 $N\\to\\infty$로 없앤다. 양의 $J$로 나누는 것도 이 단계에서 한다. $L$이 충분히 클 때 $\\eta$-regular 배정의 지연 target에서 $J=\\kappa(S^+)^2\\ge c_{k,\\eta}L^{-2b(S)}>0$이고, 사영 오차의 상대 절댓값 계수는 $C_{k,\\eta}$로 $L$에 균일하게 제어된다. 이 계수 한계와 P7 오차의 $L$-의존 증폭을 구분한다. 남는 낮은 차수 공분산 평균 및 martingale 비용을 따로 제어한 뒤 $L\\to\\infty$로 간다. P7만으로 집중이 따라온다고 주장하지 않는다.",
+          "conditions": [
+            "균등 격자 $m_d=d/L$, $\\delta=1/L$. 고정 topology와 $\\eta>0$. 각 $L$마다 P5 선택 수열.",
+            "$\\eta$-regular: 서로 다른 branching 깊이 좌표를 $L$로 나눈 값이 $(\\eta,1-\\eta)$ 안이고 상호 간격은 $\\eta$보다 큼. 추가 prefix 좌표에도 같은 조건. 일치시킨 두 사본의 대응 깊이는 좌표 하나로 센다."
+          ],
+          "grounding": {
+            "source": "decorrelation.tex 4–58, 63–74, 332–359, 446–457, 512–523, 613–622",
+            "state": "proposed"
+          },
+          "note": "문맥 건넘 PoC의 수용 경계만 명시했다. 이 external node 내부의 P8/P9 증명 graph는 아직 만들지 않았다."
+        }
+      ],
+      "edges": [
+        {
+          "id": "top-e1",
+          "from": "O1",
+          "to": "R1",
+          "kind": "definition",
+          "label": "기호",
+          "summary": "tree, 재귀 $Y_d$, 밀도 $W_{\\mathcal T}$, $E^A_{\\mathcal T}$, $\\gamma_\\beta$, $F[\\mathcal T,C,G]$",
+          "statement": "깊이 $0,\\ldots,L$ 마다 path는 변수 하나를 갖고, 깊이 $d$ 의 변수는 그 앞 prefix가 주어지면 확률 kernel $K_d$ 로 뽑는다($1\\le d\\le L$). $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field다. 수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 과 root 분포는 모든 삽입에서 고정한다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path다. 내부 vertex는 자식이 하나 이상이며 자식이 하나뿐인 것도 포함한다. 한 vertex의 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑는다. $E_{\\mathcal T}$ 는 이렇게 tree를 뽑는, root가 주어진 기대값이다. path 함수의 위첨자 $a$ 는 leaf $a$ 의 path에서 본 값이다($A^a$, $D_j^a$ 등). 양의 path 함수 $A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다. $$Y_L=A,\\qquad Y_{d-1}=\\bigl(K_dY_d^{m_d}\\bigr)^{1/m_d}\\quad(d=L,\\ldots,1).$$ 삽입 후의 kernel은 $$K_d^A(dz\\mid\\mathscr F_{d-1})=\\Bigl(\\frac{Y_d(z)}{Y_{d-1}}\\Bigr)^{m_d}K_d(dz\\mid\\mathscr F_{d-1})$$ 이고 재귀로 확률 kernel이다. $E^A_{\\mathcal T}$ 는 이 kernel로 tree를 뽑은 기대값이다. 양의 root-가측 $a,b$ 에 대해 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ 다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 자식 수를 $n_\\beta$ 라 하고 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$ 로 둔다. 삽입 후 tree 법칙의 밀도는 $$W_{\\mathcal T}(A)=\\frac{dP^A_{\\mathcal T}}{dP_{\\mathcal T}}=\\prod_{a\\in\\operatorname{Leaves}(\\mathcal T)}A^a\\prod_{\\beta\\in\\operatorname{Int}(\\mathcal T)}Y_\\beta^{\\gamma_\\beta}$$ 이고 $E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$ 다. $Y_\\beta$ 는 $\\beta$ 의 prefix에서 평가한 $Y_{d_\\beta}$ 다. 삽입은 $A_{\\boldsymbol t}=1+\\sum_{j=1}^kt_jD_j$ 꼴이고, $D_j$ 는 유계 실수 path 함수이며, $A_{\\boldsymbol t}$ 가 균등하게 양인 실수 $\\boldsymbol t$ 근방에서 다룬다. 삽입 후 kernel로, 유계 path 함수 $h$ 에 대해 $$E^A[h\\mid\\mathscr F_d]:=K_{d+1}^A\\cdots K_L^A[h]\\qquad(0\\le d\\le L)$$ 이다. 주어진 prefix 아래로 path 하나를 끝까지 뽑는 평균이며 $d=L$ 의 빈 합성은 항등 연산이다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$ 이고 $G$ 가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\Bigl[G\\prod_{a\\in C}(A^a)^{-1}\\Bigr].$$ $C$ 는 삽입 밀도의 leaf 인자가 상쇄된 protected leaf의 집합이다. $G$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다.",
+          "not_carried": "O1의 진술은 이 edge가 전부 싣는다. 원문에서 O1이 다루지 않는 것은 싣지 않는다. 복소 $A$ 로 확장한 재귀와 해석적 경계(trees.tex 156–176)는 R3의 출력으로 R4에 간다(top-e6). 분배함수에서 tilted kernel이 나오는 방식(51–65)은 R1이 쓰지 않는다. R1은 kernel을 주어진 확률 kernel 열로 받는다.",
+          "use_note": "O1의 현재 진술에 없고 원문(trees.tex 29–39)에서 옮긴 것: $E_{\\mathcal T}$ 의 정의, 내부 vertex가 자식 하나인 것을 포함한다는 것, 서로 다른 자식의 독립 표집, 위첨자 $a$ 의 뜻. 기호 $F[\\mathcal T,C,G]$ 는 원문에 이름이 없는 지도 작성자의 표기다. R1 하위 graph에서는 diff.S1이 표집 규칙을 따로 갖는다.",
+          "defines": [
+            "L",
+            "K",
+            "m",
+            "Fsig",
+            "T",
+            "E_T",
+            "A",
+            "Y",
+            "K_A",
+            "E_A",
+            "W",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "D",
+            "t",
+            "C",
+            "G",
+            "F"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–23, 29–39, 67–82, 92–110, 142–154, 180–183"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e2",
+          "from": "R1",
+          "to": "R2",
+          "kind": "call",
+          "label": "$k-1$ 회",
+          "summary": "미분 규칙 일반 진술. R2는 $C$ = 모든 leaf에서 $k-1$ 번 되풀이한다",
+          "statement": "$G$ 는 old tree 변수의 유계 함수이고 $\\boldsymbol t$ 에 무관하다. $D_j$ 는 유계 실수 path 함수이고 $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$ 가 균등하게 양인 실수 근방에서 다룬다. protected leaf 집합 $C$ 에 대해 $$\\partial_{t_j}F[\\mathcal T,C,G]=\\sum_{a\\notin C}F[\\mathcal T,\\,C\\cup\\{a\\},\\,GD_j^a]+\\sum_{\\beta}\\gamma_\\beta\\,F[\\mathcal T\\oplus\\beta,\\,C\\cup\\{x_\\beta\\},\\,GD_j^{x_\\beta}].$$ 둘째 합은 $\\mathcal T$ 의 내부 vertex $\\beta$ 에 대한 것이고 계수 $\\gamma_\\beta$ 는 붙이기 전 tree의 값이다. $\\mathcal T\\oplus\\beta$ 는 $\\beta$ 에 새 path를 붙인 tree, $x_\\beta$ 는 그 새 leaf다. 출력이 다시 같은 꼴이라 반복 적용된다.",
+          "not_carried": "R1의 증명 중간 결과(밀도 로그의 미분, 첫 변분 $\\partial_{t_j}\\log Y_d=E^A[D_j/A\\mid\\mathscr F_d]$)는 R1의 출력이 아니므로 싣지 않는다. R2의 첫 걸음($k=1$ 의 미분, trees.tex 242–244)은 첫 변분을 쓰는데, 이것을 R2에 대 주는 edge는 아직 없다(notes).",
+          "use_note": "대입 — $C$ = 모든 leaf, $D_j=D$, $G=\\prod D^a$ 로 자라남 — 은 받는 node R2의 몫이다. R2의 statement와 note에는 이 대입이 아직 없다. R2의 하위 graph(아직 없음)에 대입 node를 둘 것을 notes에 제안했다.",
+          "defines": [
+            "F",
+            "gamma",
+            "T_plus"
+          ],
+          "grounding": {
+            "source": "trees.tex 178–202, 242–253"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e3",
+          "from": "R1",
+          "to": "R3",
+          "kind": "call",
+          "label": "$k$ 회",
+          "summary": "미분 규칙 일반 진술. R3는 $C=\\{a_*\\}$ 에서 $k$ 번 적용한다",
+          "statement": "$G$ 는 old tree 변수의 유계 함수이고 $\\boldsymbol t$ 에 무관하다. $D_j$ 는 유계 실수 path 함수이고 $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$ 가 균등하게 양인 실수 근방에서 다룬다. protected leaf 집합 $C$ 에 대해 $$\\partial_{t_j}F[\\mathcal T,C,G]=\\sum_{a\\notin C}F[\\mathcal T,\\,C\\cup\\{a\\},\\,GD_j^a]+\\sum_{\\beta}\\gamma_\\beta\\,F[\\mathcal T\\oplus\\beta,\\,C\\cup\\{x_\\beta\\},\\,GD_j^{x_\\beta}].$$ 둘째 합은 $\\mathcal T$ 의 내부 vertex $\\beta$ 에 대한 것이고 계수 $\\gamma_\\beta$ 는 붙이기 전 tree의 값이다. $\\mathcal T\\oplus\\beta$ 는 $\\beta$ 에 새 path를 붙인 tree, $x_\\beta$ 는 그 새 leaf다. 출력이 다시 같은 꼴이라 반복 적용된다.",
+          "not_carried": "R1의 증명 중간 결과(밀도 로그의 미분, 첫 변분)는 R1의 출력이 아니므로 싣지 않는다. R3는 첫 변분을 쓰지 않고 처음부터 $C=\\{a_*\\}$ 로 시작한다(trees.tex 298–304).",
+          "use_note": "대입 — $C=\\{a_*\\}$ 에서 시작, $G=H$ 로 놓고 매 걸음 $D_j^a$ 를 $G$ 에 흡수, $j=1,\\ldots,k$ 차례로, $\\boldsymbol t=0$ 에서 평가 — 은 받는 node R3의 몫이다. R3의 note는 '$C=\\{a_*\\}$ 에서 시작해 $k$ 번 적용'만 한 줄로 말하고, $D_j^a$ 를 $G$ 에 흡수하는 단계와 $\\boldsymbol t=0$ 에서의 평가는 R3에 없다.",
+          "defines": [
+            "F",
+            "gamma",
+            "T_plus"
+          ],
+          "grounding": {
+            "source": "trees.tex 178–202, 298–304"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e4",
+          "from": "R3",
+          "to": "F1",
+          "kind": "flow",
+          "label": "$c_E$",
+          "summary": "history의 정의와 계수 $c_E$ (안 쓴 old leaf $+1$, fresh path $\\gamma_\\beta$)",
+          "statement": "old tree $\\mathcal T$ 와 그 leaf 하나인 anchor $a_*$ 가 있다. old path 전부에서 시작해 color $1,\\ldots,k$ 를 차례로 준다. 다음 color마다 둘 중 하나를 고른다. (i) anchor가 아니고 아직 쓰지 않은 old leaf를 고른다(계수 $1$). (ii) 현재 tree의 내부 vertex $\\beta$ 에서 fresh path를 만든다(계수 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$, $n_\\beta$ 는 현재 tree에서 $\\beta$ 의 자식 수). fresh path는 분기 vertex에서 새 자식을 쓰고 더 깊은 모든 깊이에서 새 vertex를 쓴다. 색을 받은 leaf는 다시 고를 수 없다. 현재 tree는 쓰지 않은 old path를 포함한 old path 전부와 이미 붙인 path를 모두 포함한다. extension history $E$ 는 이 선택의 기록이다. $a_j(E)$ 는 color $j$ 를 받은 leaf, $\\mathcal T_E$ 는 마지막 tree, $c_E$ 는 걸음별 계수의 곱이다.",
+          "not_carried": "①의 전개 식($\\partial_{t_1}\\cdots\\partial_{t_k}E^{A_{\\boldsymbol t}}_{\\mathcal T}[\\cdot]=\\sum_Ec_E\\cdots$)과 그 해석적 경계는 F1이 쓰지 않으므로 싣지 않는다(R4로 간다, top-e6). 계수의 절댓값 합은 F2가 받는다(top-e5). R3의 '색의 순서를 어떻게 정해도 ①이 성립한다'는 F1이 쓰지 않는다. F1의 '합이 색의 순서와 무관하다'(trees.tex 385)는 F1 자신의 증명 몫이다.",
+          "defines": [
+            "E",
+            "c_E",
+            "a_star",
+            "T_E",
+            "a_j"
+          ],
+          "grounding": {
+            "source": "trees.tex 259–276"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e5",
+          "from": "R3",
+          "to": "F2",
+          "kind": "flow",
+          "label": "$\\lvert c_E\\rvert$",
+          "summary": "history의 정의와 계수 $c_E$ (절댓값 합을 셀 대상)",
+          "statement": "old tree $\\mathcal T$ 와 그 leaf 하나인 anchor $a_*$ 가 있다. old path 전부에서 시작해 color $1,\\ldots,k$ 를 차례로 준다. 다음 color마다 둘 중 하나를 고른다. (i) anchor가 아니고 아직 쓰지 않은 old leaf를 고른다(계수 $1$). (ii) 현재 tree의 내부 vertex $\\beta$ 에서 fresh path를 만든다(계수 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$, $n_\\beta$ 는 현재 tree에서 $\\beta$ 의 자식 수). fresh path는 분기 vertex에서 새 자식을 쓰고 더 깊은 모든 깊이에서 새 vertex를 쓴다. 색을 받은 leaf는 다시 고를 수 없다. 현재 tree는 쓰지 않은 old path를 포함한 old path 전부와 이미 붙인 path를 모두 포함한다. extension history $E$ 는 이 선택의 기록이다. $a_j(E)$ 는 color $j$ 를 받은 leaf, $\\mathcal T_E$ 는 마지막 tree, $c_E$ 는 걸음별 계수의 곱이다.",
+          "not_carried": "①의 전개 식과 해석적 경계는 F2가 쓰지 않으므로 싣지 않는다(R4로 간다, top-e6). 계수의 모양별 부호 있는 합은 F1이 받는다(top-e4). reference shape의 처방과 허용 history를 더 제한하는 조건은 F2의 조건이고 R3의 출력이 아니다.",
+          "defines": [
+            "E",
+            "c_E",
+            "a_star",
+            "T_E",
+            "a_j"
+          ],
+          "grounding": {
+            "source": "trees.tex 259–276"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e6",
+          "from": "R3",
+          "to": "R4",
+          "kind": "call",
+          "label": "단계 2, 4",
+          "summary": "$\\partial_{t_1}\\cdots\\partial_{t_k}E^{A_{\\boldsymbol t}}_{\\mathcal T}[G/A_{\\boldsymbol t}^{a_*}]\\rvert_0=\\sum_Ec_E\\cdots$ 와 kernel에 균일한 해석적 경계",
+          "statement": "old tree $\\mathcal T$ 와 그 leaf 하나인 anchor $a_*$ 가 있다. old path 전부에서 시작해 color $1,\\ldots,k$ 를 차례로 준다. 다음 color마다 둘 중 하나를 고른다. (i) anchor가 아니고 아직 쓰지 않은 old leaf를 고른다(계수 $1$). (ii) 현재 tree의 내부 vertex $\\beta$ 에서 fresh path를 만든다(계수 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$, $n_\\beta$ 는 현재 tree에서 $\\beta$ 의 자식 수). fresh path는 분기 vertex에서 새 자식을 쓰고 더 깊은 모든 깊이에서 새 vertex를 쓴다. 색을 받은 leaf는 다시 고를 수 없다. 현재 tree는 쓰지 않은 old path를 포함한 old path 전부와 이미 붙인 path를 모두 포함한다. extension history $E$ 는 이 선택의 기록이다. $a_j(E)$ 는 color $j$ 를 받은 leaf, $\\mathcal T_E$ 는 마지막 tree, $c_E$ 는 걸음별 계수의 곱이다. $G$ 가 old tree 변수의 유계 함수이고 삽입 매개변수가 바뀌어도 고정이며(원문 lemma의 $H$), $A_{\\boldsymbol t}=1+\\sum_{j=1}^kt_jD_j$ 에서 $D_j$ 가 유계 실수 path 함수일 때 $$\\partial_{t_1}\\cdots\\partial_{t_k}\\,E^{A_{\\boldsymbol t}}_{\\mathcal T}\\!\\left[\\frac{G}{A_{\\boldsymbol t}^{a_*}}\\right]\\Bigg\\rvert_{\\boldsymbol t=0}=\\sum_{E}c_E\\;E_{\\mathcal T_E}\\!\\Bigl[G\\prod_{j=1}^kD_j^{a_j(E)}\\Bigr].$$ 우변은 유한 합이다. 색의 순서를 어떻게 정해도 성립하고, 혼합 미분에는 factorial이 붙지 않는다. $D_j=D$ 이면 $t^k$ 의 계수는 우변을 $k!$ 로 나눈 것이다. 빈 확장의 무게는 1이다. 좌변은 복소 영역 $\\sum_j\\lvert t_j\\rvert\\lVert D_j\\rVert_\\infty<1$ 에서 해석적이고, 이 영역 안의 더 작은 닫힌 영역에서 그 절댓값의 경계는 kernel 열에 대해 균일하다. 경계가 의존하는 것은 고정한 깊이, 지수 $m_d$, tree 크기, 삽입 함수들의 경계뿐이다. 그래서 reservoir의 크기 $N$ 과 고른 섭동 매개변수 벡터에 대해서도 균일하다. 이 edge는 정확한 항등식과 경계이고 $N$ 에 대한 극한을 포함하지 않는다.",
+          "not_carried": "계수의 모양별 합 $\\kappa(S)$ 와 절댓값 합의 한계는 R4가 쓰지 않으므로 싣지 않는다(F1, F2로 간다, top-e4, top-e5). R1 규칙을 되풀이해 이 전개를 얻는 증명 단계도 싣지 않는다.",
+          "use_note": "대입은 R4 하위 graph p7에서 한다. T2: $u=0$, 방향이 모두 같음($D=g\\sigma_i$), $G=f\\,g_0^{a_*}S_0^{a_*}$. T4: $D_j=g_j\\sigma_i$. p7의 edge p7-e6, p7-e12 에는 아직 예전 형식의 substitution 키가 남아 있다(p7은 이번 범위 밖).",
+          "defines": [
+            "E",
+            "c_E",
+            "a_star",
+            "T_E",
+            "a_j",
+            "G"
+          ],
+          "grounding": {
+            "source": "trees.tex 156–176, 259–304; perturbations.tex 391–398, 478–492"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e7",
+          "from": "XP5",
+          "to": "R4",
+          "kind": "flow",
+          "label": "(ii), (iii)",
+          "summary": "고정 $L\\ge2$ 의 선택 수열: (ii) $e_{\\nu,N_j}(\\mathbf u_j)\\to0$ (각 type), (iii) tree 모멘트 수렴",
+          "statement": "고정한 $L\\ge2$ 와 $\\varepsilon>0$ 에 대해 크기 $N_j\\uparrow\\infty$ 와 결정적 벡터 $\\mathbf u_j$ 가 있어서 다음이 성립한다. (ii) 모든 고정한 type $\\nu$ 에서 reservoir의 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$. (iii) reservoir에서 깊이 $L$ 의 모든 고정된 유한 prescribed tree 위의 multioverlap 유한 곱의 기대값이 이 수열을 따라 수렴한다. 여기서 tilted path 위에서 $$D_\\nu=\\sum_{q=1}^{n_\\nu}\\frac{g_{0,q}S_{0,q}}{1+t_\\nu g_q\\sigma_{i_q}+u_\\nu g_{0,q}S_{0,q}}$$ 이고(terminal Gibbs 배치 포함), $\\langle\\cdot\\rangle$ 는 root가 주어진 한 tilted path 위의 기대값, $\\mathbb E_{\\mathbf u}$ 는 고정한 $\\mathbf u$ 에서 root를 평균한 기대값이며 $$e_{\\nu,N}(\\mathbf u)=\\frac{1}{c_\\nu s_N}\\,\\mathbb E_{\\mathbf u}\\Big\\langle\\big\\lvert D_\\nu-\\mathbb E_{\\mathbf u}\\langle D_\\nu\\rangle\\big\\rvert\\Big\\rangle.$$ $n_\\nu$, $t_\\nu$, $c_\\nu$, $s_N$, $g$, $g_0$, $S_0$ 는 섭동족(top-e8)의 기호다. $\\mathbf u_j$ 는 선택된 결정적 값이고 평균하지 않는다. 수열은 $L$ 마다 다를 수 있다. 이 수열을 따르는 $N\\to\\infty$ 는 고정한 $L$ 에서만 뜻이 있다. $L$, 경로의 수, type에 대한 균일성은 주장되지 않는다. (ii)는 type마다 따로 성립하고 type들에 걸친 균일한 수렴이 아니다.",
+          "not_carried": "(i) $\\Delta_{N_j}(\\mathbf u_j)\\le\\underline F+2\\varepsilon$ 는 R4가 쓰지 않는다. 수 6의 조립이 쓴다(comparison.tex 13–15, 235–245). 평균 $\\int e_{\\nu,N}\\,d\\pi\\to0$ (집중 보조정리)과 수열을 고르는 증명은 수 3의 내용이므로 싣지 않는다.",
+          "defines": [
+            "N_j",
+            "u_j",
+            "D_nu",
+            "e_nu"
+          ],
+          "grounding": {
+            "source": "perturbations.tex 75–93, 255–267, 301–312, 538–546; decorrelation.tex 4–7"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e8",
+          "from": "XFAM",
+          "to": "R4",
+          "kind": "flow",
+          "label": "섭동족",
+          "summary": "mark specification, type $(t_\\nu,u_\\nu)$, Poisson 개수 $c_\\nu s_N$, $\\psi_\\nu=1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$",
+          "statement": "mark specification은 유한 개 $n\\ge0$ 의 labeled Rademacher 좌표, 각 좌표에 배정된 깊이($\\{1,\\ldots,L-1\\}$ 의 원소), 함수 $g,g_0:\\{-1,1\\}^n\\to\\mathbb Q\\cap[-1,1]$, 그리고 $S_0=1$ 또는 $S_0=\\sigma_i$ 의 선택으로 이루어진다. 각 좌표는 배정된 깊이에서 보조 path를 따라 뽑힌다. 서로 다른 좌표는 독립이고, 한 vertex를 공유하면 값을 공유하고 다른 vertex에서는 독립이다. $n=0$ 은 상수 함수를 포함한다. 이런 specification 전부를 쓴다. 부호의 곱과 그 유리수 평균은 이 모임에 속한다. 각 specification과 각 정수 $j\\ge4$ 에 type $\\nu$ 가 하나 있고 $$t_\\nu=j^{-1},\\qquad I_\\nu=[j^{-j},2j^{-j}],\\qquad u_\\nu\\in I_\\nu.$$ $u_\\nu$ 는 $t_\\nu$ 의 어떤 고정 거듭제곱보다도 작게 잡는다($j\\to\\infty$). type을 $\\nu\\in\\mathbb N$ 으로 세고 $\\sum_\\nu c_\\nu=1$ 인 $c_\\nu>0$ 을 고른다. type마다 독립으로 $n_\\nu\\sim\\operatorname{Poisson}(c_\\nu s_N)$, $s_N=N^{3/4}$ 이다. 각 항은 독립인 균일 site $i\\in[N]$ 와 mark 과정의 독립 사본을 갖고, leaf에서 spin weight에 $$\\psi_\\nu=1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$$ 를 곱한다. $1/2<\\psi_\\nu<3/2$ 이다. 개수, type, site는 root에 속하고 mark 변수는 배정된 보조 깊이에서 곱 prior로 뽑는다. 총 개수는 $\\operatorname{Poisson}(s_N)$ 이어서 거의 확실히 유한 개의 항만 쓴다. mark specification과 양의 가중치 $c_\\nu$ 는 고정한 $L$ 에 대해 먼저 정한다. $t_\\nu$, $I_\\nu$, $c_\\nu$ 는 $N$ 에 무관하고, $N$ 은 $s_N$ 과 $u_\\nu\\in I_\\nu$ 의 선택(top-e7)으로만 들어온다.",
+          "not_carried": "type 하나의 score $D_\\nu$, 오차 $e_{\\nu,N}$ 와 그 집중은 이 edge가 아니라 P5(top-e7)가 싣는다. 구간 $I_\\nu$ 위의 균등측도 $\\pi$ 는 결정적 매개변수를 고르는 데만 쓰이므로 싣지 않는다. Poisson add-one 항등식의 증명은 R4 하위 graph(p7의 P1)에 있다.",
+          "defines": [
+            "nu",
+            "j",
+            "t_nu",
+            "u_nu",
+            "I_nu",
+            "c_nu",
+            "s_N",
+            "n_nu",
+            "g",
+            "g_0",
+            "S_0",
+            "psi"
+          ],
+          "grounding": {
+            "source": "perturbations.tex 26–70, 538–546"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e9",
+          "from": "R4",
+          "to": "XM5",
+          "kind": "flow",
+          "label": "고정 L → N 먼저",
+          "statement": "각 고정 깊이 $L\\ge2$에서 P5로 선택한 수열 $\\mathfrak s_L=(N_n^{(L)},\\mathbf u_n^{(L)})$을 쓴다. 수열은 $L$마다 달라도 되며, P5의 외부 선택 오차도 고정한다. 아래 $N\\to\\infty$는 이 수열을 따른다는 뜻이고, 섭동 매개변수는 선택된 결정적 값이다.\n\nP7의 한 적용 $\\alpha=(\\mathcal T,a_*,f,k_\\alpha,\\mathcal C)$에서 $\\mathcal T$는 고정한 유한 old tree, $a_*$는 spin 또는 marker anchor, $f$는 old multioverlap들의 유계 다항식이다. 다항식과 계수는 $N$에 무관하게 고정한다. 유한 개의 ordered color를 더하고, $\\mathcal C$는 anchor와 추가 color 사이의 일관된 쌍별 split 깊이만 지정한다. 다른 old replica와의 추가 split 제약은 허용하지 않는다. 빈 추가도 허용한다.\n\n$c_E$는 anchor를 보호한 extension history의 계수다: 안 쓴 old leaf를 택하는 걸음은 $+1$, 내부 vertex $\\beta$에서 fresh path를 붙이는 걸음은 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$이고 $c_E$는 걸음별 계수의 곱이다. $R_E=N^{-1}\\sum_{i=1}^N\\prod_j\\sigma_i^{a_j(E)}$에 spin anchor이면 $\\sigma_i^{a_*}$를 곱하고 marker anchor이면 곱하지 않는다. 기대값은 root와 tree sampling을 포함한다. 그러면\n$$I_{N,L}(\\alpha):=\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\,\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\,\\mathbb E[R_E]\\ \\longrightarrow\\ 0.$$\n\n수 5의 한 유한 크기 귀납 단계에 실제로 쓰는 적용들의 유한 목록을 $\\mathcal F_{L,k}$라 쓰자. $k$는 이 목록의 tree 크기·color 수를 제한하는 고정 지표다. 고정 $L$에서 깊이 배정도 유한 개이므로, 고정한 유한 종류의 시험 다항식까지 모은 이 목록에 대해\n$$\\epsilon_{N,L,k}:=\\max_{\\alpha\\in\\mathcal F_{L,k}}|I_{N,L}(\\alpha)|\\longrightarrow0\\qquad(L,k\\text{ 고정}).$$\n이는 모든 유계 다항식이나 무제한 크기 tree에 대한 supremum이 아니다. $\\mathcal F_{L,k}$와 수렴 속도는 $L$에 의존해도 된다. 원문 $\\varepsilon_{N,L,k}$의 유한 최대를 여기서는 $\\epsilon$으로 적어 P5의 선택 오차와 구별한다.\n\n받는 쪽에서 고정한 $L,k,\\eta$의 유한 상수 $B_{L,k,\\eta}$가 이 오차에 곱해져도\n$$\\limsup_{N\\to\\infty}B_{L,k,\\eta}\\epsilon_{N,L,k}=0.$$\n따라서 이 항을 먼저 없앤 다음 $L\\to\\infty$로 간다. $B_{L,k,\\eta}$에는 정규화 계수로 나누는 비용이 포함될 수 있다. $L$-균일한 $N$ 수렴 속도, $N=N(L)$에 따른 공동 극한, 순서를 바꾼 극한은 이 edge가 주지 않는다.",
+          "status": "connected",
+          "complete": true,
+          "summary": "$\\epsilon_{N,L,k}\\to0$ (고정 $L,k$); $N\\to\\infty$ 뒤 $L\\to\\infty$",
+          "not_carried": "$J=\\kappa(S^+)^2$의 하한과 $(\\sum_E|c_E|)/|J|\\le C_{k,\\eta}$는 P7의 출력이 아니다. 이들은 모양별 계수와 절댓값 한계(top-e10, top-e11), 균등 격자 및 지연한 regular target 선택에서 받는 쪽이 얻는다. 수 5의 사영 오차·martingale 오차와 P8/P9 결론도 이 edge가 운반하지 않는다. P7 오차의 계수 $B_{L,k,\\eta}$를 $L$-균일 상수로 바꾸지 않는다.",
+          "grounding": {
+            "source": "perturbations.tex 257–265, 308–312, 432–469, 538–546; decorrelation.tex 4–9, 49–58, 446–457, 613–622"
+          }
+        },
+        {
+          "id": "top-e10",
+          "from": "F1",
+          "to": "XM5",
+          "kind": "flow",
+          "label": "$\\kappa(S)$",
+          "summary": "한 걸음 총합 $m_d-j\\,m_{d+1}$ 과 모양별 총합 $\\kappa(S)=\\prod_{v}\\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$",
+          "statement": "일반 격자 $0=m_0<\\cdots<m_L=1$ 에서, 다음 color가 깊이 $d$ 까지 지정된 reference prefix를 따라간 뒤 그 vertex에서 reference를 담은 $j\\ge1$ 개의 자식과 다른 자식으로 들어가야 하고 그 밖의 연속은 제한이 없을 때, 허용되는 모든 선택의 계수 합은 $$m_d-j\\,m_{d+1}.$$ 처방한 split 깊이들이 서로 일관되고 anchor와 color들이 이룰 prescribed tree가 $S$ 이면, 어떤 old tree에서 시작하든 호환되는 모든 extension의 계수 총합은 $$\\kappa(S)=\\prod_{v\\in\\operatorname{Br}(S)}\\ \\prod_{j=1}^{a_v-1}\\bigl(m_{d_v}-j\\,m_{d_v+1}\\bigr).$$ $a_v$ 와 $d_v$ 는 처방한 reference tree $S$ 의 각 branching vertex $v$ 의 자식 수와 깊이다. 이 합은 color의 순서와 old tree의 모양에 의존하지 않는다. 이미 만든 reference 집합에서 시작해 같은 한 걸음 규칙을 되풀이해도 된다. 이 edge는 $N$ 에 대한 극한이 없는 정확한 항등식이다. 모든 $L$ 과 모든 일반 격자에서 성립하고, 균일한 것은 old tree, color의 순서, 일관된 처방 깊이다. $L$ 에 대한 균일성은 아니다: $\\kappa(S)$ 의 크기는 $m$ 과 $L$ 에 따라 달라진다. 균등 격자 $m_d=d/L$ 로의 대입과 $L$ 이 큰 쪽의 하한은 받는 쪽이 한다.",
+          "not_carried": "$J=\\kappa(S^+)^2$ 은 받는 쪽의 정의(decorrelation.tex 332–334)이고 여기서 정하지 않는다. $\\lvert J\\rvert$ 의 하한과 marker 계수 $C(S,e)=-\\delta\\kappa(S)$ (546–549)는 받는 쪽이 이 식으로 계산한다. 절댓값 합의 한계는 F2가 싣는다(top-e11). 증명 안의 old 부분 tree의 telescoping($q+\\sum(m_{d_\\beta}-n_\\beta m_{d_\\beta+1})=m_{d+1}$, trees.tex 366–371)은 F1 내부이고 싣지 않는다.",
+          "use_note": "R3의 history 정의(top-e4)와 O1의 $m_d$, $\\gamma_\\beta$, split 깊이(top-e16)를 쓴다.",
+          "defines": [
+            "kappa",
+            "S",
+            "Br",
+            "a_v",
+            "d_v"
+          ],
+          "grounding": {
+            "source": "trees.tex 337–386; decorrelation.tex 332–334, 414–423, 546–549"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e11",
+          "from": "F2",
+          "to": "XM5",
+          "kind": "flow",
+          "label": "한계",
+          "summary": "$\\sum_E\\lvert c_E\\rvert\\le C_{q,k}\\delta^{b_{\\rm sep}}$ 와 $\\lvert J_{\\rm sep}\\rvert^{-1}\\sum_E\\lvert c_E\\rvert\\le C_{q,k,\\eta}$ ($m_d=d/L$)",
+          "statement": "$m_d=d/L$, $\\delta=L^{-1}$ 로 둔다. old tree의 leaf 수를 $q$ 라 하고 canceled-anchor extension 규칙으로 $k$ 개의 color를 배정한다. anchor와 color들의 reference shape를 처방하되 허용되는 extension을 더 제한하는 조건이 붙어도 된다. 처방한 shape의 branching vertex 가운데 깊이가 old tree의 어느 branching 깊이와도 다른 것 $b_{\\rm sep}$ 개를 고르면 $$\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k}\\,\\delta^{\\,b_{\\rm sep}}.$$ 상수 $C_{q,k}$ 는 $L$, 지정한 깊이, 서로 다른 vertex에서 깊이가 겹치는 경우에 무관하다. 고른 vertex들에 대해 $J_{\\rm sep}=\\prod_v\\prod_{j=1}^{a_v-1}(m_{d_v}-j\\,m_{d_v+1})$ 로 두자. 고른 vertex 모두에서 $m_{d_v}\\ge\\eta>0$ 이면 $J_{\\rm sep}\\ne0$ 이고 $$\\frac1{\\lvert J_{\\rm sep}\\rvert}\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k,\\eta}.$$ 이 edge는 $N$ 에 대한 극한이 없는, 각 $L$ 에서 성립하는 부등식이다. 균일한 것은 $L$, 처방 깊이, 깊이의 겹침이고, 상수는 $q$, $k$ 와 (비의 경우) $\\eta$ 에 의존한다. $\\lvert J_{\\rm sep}\\rvert$ 자체에 대해 원문이 주는 하한은 $\\lvert J_{\\rm sep}\\rvert\\ge\\delta^{b_{\\rm sep}}\\eta^{\\sum_v(a_v-2)}$ 이고, $L$ 에 균일한 양의 하한은 아니다.",
+          "not_carried": "부호 있는 모양별 총합은 F1이 싣는다(top-e10). $J=\\kappa(S^+)^2$ 의 $2b$ 개 target vertex가 모두 fresh unary split으로만 생긴다는 확인(regular 깊이와 깊이를 한 칸 미루는 선택, decorrelation.tex 345–353)과 두 사본의 정렬된 깊이는 받는 쪽의 일이고 싣지 않는다. 이 한계로 오차를 누르는 조립(P7 오차 $\\times$ 상수)은 top-e9와 수 5에 있다.",
+          "use_note": "원문 lemma의 $J$ 는 지정한 $b$ 개 vertex만의 곱이다. 수 5의 $J=\\kappa(S^+)^2$ 에 적용하려면 두 사본의 $2b$ 개 target vertex 전부를 지정한 경우여야 한다(decorrelation.tex 345–353, rules.md P6′ ③). R3의 history 정의(top-e5)와 O1의 $m_d$, $\\gamma_\\beta$, 깊이(top-e17)를 쓴다.",
+          "defines": [
+            "delta",
+            "q",
+            "k",
+            "b_sep",
+            "J_sep",
+            "C_qk",
+            "eta"
+          ],
+          "grounding": {
+            "source": "trees.tex 388–456; decorrelation.tex 332–359, 456–457"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e12",
+          "from": "R2",
+          "to": "XM6",
+          "kind": "flow",
+          "label": "급수",
+          "summary": "$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}t^k}{k}\\mathbb E_{Q_k}E_{\\mathcal T}\\prod D^a$ 와 나머지 $\\le\\sum_{k>K}c^k/k$",
+          "statement": "유계 실수 path 함수 $D$ 와 실수 $t$ 에 대해 $A=1+tD$ 의 삽입 재귀(top-e13)가 주는 $Y_0$ 는, root가 주어진 조건부로 $$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}t^k}{k}\\;\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_{a=1}^kD^a\\qquad(\\lvert t\\rvert\\,\\lVert D\\rVert_\\infty<1).$$ $Q_k$ 는 leaf에 $1,\\ldots,k$ 를 붙인 tree의 법칙이다. path 하나에서 시작해, 현재 tree의 leaf가 $n$ 개일 때 내부 vertex $\\beta$ 를 확률 $$\\frac{n_\\beta m_{d_\\beta+1}-m_{d_\\beta}}{n}=\\frac{-\\gamma_\\beta}{n}$$ 로 골라 거기에 새 자식을 만들고 깊이 $L$ 까지 완전히 새 path를 잇는다. 그 끝의 leaf에 label $n+1$ 을 준다. 뽑힌 tree는 그 위에서 이후 뽑는 모든 변수와 독립이다. 확률의 합이 1인 것은 $\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}(n_\\beta m_{d_\\beta+1}-m_{d_\\beta})=n$ 이기 때문이다. $\\lvert t\\rvert\\lVert D\\rVert_\\infty\\le c<1$ 이면 $K$ 차 뒤 나머지의 절댓값은 $$\\sum_{k>K}\\frac{c^k}{k}$$ 이하다. 이 edge는 정확한 항등식이다. 임의의 $L$, 임의의 유한 확률 kernel 열, 각 root 값에서 성립하고 극한을 포함하지 않는다. 나머지 한계는 $c$ 와 $K$ 만의 함수라서, $\\lvert t\\rvert\\lVert D\\rVert_\\infty\\le c$ 가 모든 root 값에서 같은 $c$ 로 성립하면 kernel, $N$, $L$ 에 대해 균일하다. 받는 쪽(수 6)은 Poisson 개수의 절단 $M$ 을 먼저, 전개 차수의 절단 $q$ 를 그다음 고정하고, 남는 유한 개의 항에 대해서만 $N$ (선택된 수열) 먼저, 그다음 $L\\to\\infty$ 의 극한을 취한다.",
+          "not_carried": "$Q_k$ 아래에서 예외적(비정규) tree의 확률 $\\le C_k(\\eta+L^{-1})$ (trees.tex 469–484)은 R2의 출력이 아니다. 별도 lemma이고 top에 node가 없다. 수 6이 comparison.tex 141 에서 직접 쓴다. 각 차수에서 $\\prod D^a$ 의 평가 오차를 $\\sum_{S\\ne\\varnothing}\\mathbb E\\lvert R_S-\\mathbb ER_S\\rvert$ 로 누르는 것은 수 5의 집중과 수 6의 일이고 싣지 않는다.",
+          "use_note": "같은 전개를 수 1의 상한(upper.tex 70–127)도 쓴다. top에는 그 받는 node가 없다(notes). R2의 정의 입력은 top-e13이다.",
+          "defines": [
+            "Q_k",
+            "Y_0"
+          ],
+          "grounding": {
+            "source": "trees.tex 204–256; comparison.tex 123–129, 195–222"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e13",
+          "from": "O1",
+          "to": "R2",
+          "kind": "definition",
+          "label": "기호",
+          "summary": "$Y_0$ 재귀, $E_{\\mathcal T}$, $\\gamma_\\beta$, $F[\\mathcal T,C,G]$",
+          "statement": "깊이 $0,\\ldots,L$ 마다 path는 변수 하나를 갖고, 깊이 $d$ 의 변수는 그 앞 prefix가 주어지면 확률 kernel $K_d$ 로 뽑는다($1\\le d\\le L$). $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field다. 수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 과 root 분포는 모든 삽입에서 고정한다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path다. 내부 vertex는 자식이 하나 이상이며 자식이 하나뿐인 것도 포함한다. 한 vertex의 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑는다. $E_{\\mathcal T}$ 는 이렇게 tree를 뽑는, root가 주어진 기대값이다. path 함수의 위첨자 $a$ 는 leaf $a$ 의 path에서 본 값이다($A^a$, $D_j^a$ 등). 양의 path 함수 $A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다. $$Y_L=A,\\qquad Y_{d-1}=\\bigl(K_dY_d^{m_d}\\bigr)^{1/m_d}\\quad(d=L,\\ldots,1).$$ 삽입 후의 kernel은 $$K_d^A(dz\\mid\\mathscr F_{d-1})=\\Bigl(\\frac{Y_d(z)}{Y_{d-1}}\\Bigr)^{m_d}K_d(dz\\mid\\mathscr F_{d-1})$$ 이고 재귀로 확률 kernel이다. $E^A_{\\mathcal T}$ 는 이 kernel로 tree를 뽑은 기대값이다. 양의 root-가측 $a,b$ 에 대해 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ 다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 자식 수를 $n_\\beta$ 라 하고 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$ 로 둔다. 삽입 후 tree 법칙의 밀도는 $$W_{\\mathcal T}(A)=\\frac{dP^A_{\\mathcal T}}{dP_{\\mathcal T}}=\\prod_{a\\in\\operatorname{Leaves}(\\mathcal T)}A^a\\prod_{\\beta\\in\\operatorname{Int}(\\mathcal T)}Y_\\beta^{\\gamma_\\beta}$$ 이고 $E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$ 다. $Y_\\beta$ 는 $\\beta$ 의 prefix에서 평가한 $Y_{d_\\beta}$ 다. 삽입은 $A_{\\boldsymbol t}=1+\\sum_{j=1}^kt_jD_j$ 꼴이고, $D_j$ 는 유계 실수 path 함수이며, $A_{\\boldsymbol t}$ 가 균등하게 양인 실수 $\\boldsymbol t$ 근방에서 다룬다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$ 이고 $G$ 가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\Bigl[G\\prod_{a\\in C}(A^a)^{-1}\\Bigr].$$ $C$ 는 삽입 밀도의 leaf 인자가 상쇄된 protected leaf의 집합이다. $G$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다.",
+          "not_carried": "O1의 $E^A[h\\mid\\mathscr F_d]$ 정의와 단조성 이후의 부분은 R2의 진술이 직접 쓰지 않는다. R2의 첫 걸음이 쓰는 첫 변분 $\\partial_{t}\\log Y_0=E^A[D/A]$ 는 O1의 출력이 아니다(top-e2의 not_carried). 복소 영역에서의 재귀(주 가지 거듭제곱)와 해석적 경계(trees.tex 156–176)는 O1의 진술에 없고 R2의 증명 몫이다.",
+          "use_note": "R2가 O1에서 받는 정의가 지금까지 edge로 연결되어 있지 않았다(입력 O1 → R2 누락). O1의 현재 진술에 없고 원문에서 옮긴 것은 top-e1의 use_note와 같다.",
+          "defines": [
+            "L",
+            "K",
+            "m",
+            "Fsig",
+            "T",
+            "E_T",
+            "A",
+            "Y",
+            "K_A",
+            "E_A",
+            "W",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "D",
+            "t",
+            "C",
+            "G",
+            "F"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–23, 29–39, 67–82, 92–105, 142–145, 180–183, 204–219"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e14",
+          "from": "O1",
+          "to": "R3",
+          "kind": "definition",
+          "label": "기호",
+          "summary": "$E_{\\mathcal T}$, 재귀 $Y_d$, $E^A_{\\mathcal T}$, $W_{\\mathcal T}$, $\\gamma_\\beta$, $F[\\mathcal T,C,G]$",
+          "statement": "깊이 $0,\\ldots,L$ 마다 path는 변수 하나를 갖고, 깊이 $d$ 의 변수는 그 앞 prefix가 주어지면 확률 kernel $K_d$ 로 뽑는다($1\\le d\\le L$). $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field다. 수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 과 root 분포는 모든 삽입에서 고정한다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path다. 내부 vertex는 자식이 하나 이상이며 자식이 하나뿐인 것도 포함한다. 한 vertex의 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑는다. $E_{\\mathcal T}$ 는 이렇게 tree를 뽑는, root가 주어진 기대값이다. path 함수의 위첨자 $a$ 는 leaf $a$ 의 path에서 본 값이다($A^a$, $D_j^a$ 등). 양의 path 함수 $A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다. $$Y_L=A,\\qquad Y_{d-1}=\\bigl(K_dY_d^{m_d}\\bigr)^{1/m_d}\\quad(d=L,\\ldots,1).$$ 삽입 후의 kernel은 $$K_d^A(dz\\mid\\mathscr F_{d-1})=\\Bigl(\\frac{Y_d(z)}{Y_{d-1}}\\Bigr)^{m_d}K_d(dz\\mid\\mathscr F_{d-1})$$ 이고 재귀로 확률 kernel이다. $E^A_{\\mathcal T}$ 는 이 kernel로 tree를 뽑은 기대값이다. 양의 root-가측 $a,b$ 에 대해 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ 다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 자식 수를 $n_\\beta$ 라 하고 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$ 로 둔다. 삽입 후 tree 법칙의 밀도는 $$W_{\\mathcal T}(A)=\\frac{dP^A_{\\mathcal T}}{dP_{\\mathcal T}}=\\prod_{a\\in\\operatorname{Leaves}(\\mathcal T)}A^a\\prod_{\\beta\\in\\operatorname{Int}(\\mathcal T)}Y_\\beta^{\\gamma_\\beta}$$ 이고 $E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$ 다. $Y_\\beta$ 는 $\\beta$ 의 prefix에서 평가한 $Y_{d_\\beta}$ 다. 삽입은 $A_{\\boldsymbol t}=1+\\sum_{j=1}^kt_jD_j$ 꼴이고, $D_j$ 는 유계 실수 path 함수이며, $A_{\\boldsymbol t}$ 가 균등하게 양인 실수 $\\boldsymbol t$ 근방에서 다룬다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$ 이고 $G$ 가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\Bigl[G\\prod_{a\\in C}(A^a)^{-1}\\Bigr].$$ $C$ 는 삽입 밀도의 leaf 인자가 상쇄된 protected leaf의 집합이다. $G$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다.",
+          "not_carried": "$E^A[h\\mid\\mathscr F_d]$ 의 정의는 R3의 진술이 쓰지 않는다. 복소 $A$ 로 확장한 재귀와 해석적 경계(trees.tex 156–176)는 O1의 진술에 없고, R3가 출력의 일부로 R4에 넘긴다(top-e6). 그 경계의 증명은 R3의 몫이다.",
+          "use_note": "R3가 O1에서 받는 정의가 지금까지 edge로 연결되어 있지 않았다(입력 O1 → R3 누락). O1의 현재 진술에 없고 원문에서 옮긴 것은 top-e1의 use_note와 같다.",
+          "defines": [
+            "L",
+            "K",
+            "m",
+            "Fsig",
+            "T",
+            "E_T",
+            "A",
+            "Y",
+            "K_A",
+            "E_A",
+            "W",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "D",
+            "t",
+            "C",
+            "G",
+            "F"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–23, 29–39, 67–82, 92–110, 180–183, 278–296"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e15",
+          "from": "O1",
+          "to": "R4",
+          "kind": "definition",
+          "label": "기호",
+          "summary": "$E_{\\mathcal T}$, 재귀 $Y_d$, 밀도 $W_{\\mathcal T}(A)$, 새 변수를 쓰는 삽입",
+          "statement": "깊이 $0,\\ldots,L$ 마다 path는 변수 하나를 갖고, 깊이 $d$ 의 변수는 그 앞 prefix가 주어지면 확률 kernel $K_d$ 로 뽑는다($1\\le d\\le L$). $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field다. 수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 과 root 분포는 모든 삽입에서 고정한다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path다. 내부 vertex는 자식이 하나 이상이며 자식이 하나뿐인 것도 포함한다. 한 vertex의 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑는다. $E_{\\mathcal T}$ 는 이렇게 tree를 뽑는, root가 주어진 기대값이다. path 함수의 위첨자 $a$ 는 leaf $a$ 의 path에서 본 값이다($A^a$, $D_j^a$ 등). 양의 path 함수 $A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다. $$Y_L=A,\\qquad Y_{d-1}=\\bigl(K_dY_d^{m_d}\\bigr)^{1/m_d}\\quad(d=L,\\ldots,1).$$ 삽입 후의 kernel은 $$K_d^A(dz\\mid\\mathscr F_{d-1})=\\Bigl(\\frac{Y_d(z)}{Y_{d-1}}\\Bigr)^{m_d}K_d(dz\\mid\\mathscr F_{d-1})$$ 이고 재귀로 확률 kernel이다. $E^A_{\\mathcal T}$ 는 이 kernel로 tree를 뽑은 기대값이다. 양의 root-가측 $a,b$ 에 대해 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ 다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 자식 수를 $n_\\beta$ 라 하고 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$ 로 둔다. 삽입 후 tree 법칙의 밀도는 $$W_{\\mathcal T}(A)=\\frac{dP^A_{\\mathcal T}}{dP_{\\mathcal T}}=\\prod_{a\\in\\operatorname{Leaves}(\\mathcal T)}A^a\\prod_{\\beta\\in\\operatorname{Int}(\\mathcal T)}Y_\\beta^{\\gamma_\\beta}$$ 이고 $E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$ 다. $Y_\\beta$ 는 $\\beta$ 의 prefix에서 평가한 $Y_{d_\\beta}$ 다. 삽입은 원래 모형에 없던 변수를 써도 된다. 그 변수들의 독립 prior kernel로 각 path kernel을 넓힌 뒤 위의 계산을 적용한다. 원래의 backward logarithm은 이 변수들에 의존하지 않으므로 원래의 tilt는 이 변수들의 조건부 prior kernel을 바꾸지 않는다. 추가된 root 변수는 quenched로 남는다. 깊이 $L$ 의 변수가 spin 배치 $\\sigma^a\\in\\{-1,1\\}^N$ 이면, 깊이 $L$ 의 replica 위치는 서로 다른 vertex이지만 거기서 뽑힌 값은 달라야 할 필요가 없다. 따로 적지 않은 기대값 $\\mathbb E$ 는 root와 지정한 tree의 표집을 포함한다.",
+          "not_carried": "$F[\\mathcal T,C,G]$ 와 protected leaf, $E^A[h\\mid\\mathscr F_d]$ 는 R4의 진술과 p7이 쓰지 않으므로 싣지 않는다. 가지 수가 정해진 prescribed tree와 multioverlap $R_S$ 의 정의(trees.tex 41–47)는 R4가 $R_E$ 를 직접 정의하므로 싣지 않는다.",
+          "use_note": "R4가 O1에서 받는 정의가 R4의 inputs에는 있었으나 edge가 없었다(입력 O1 → R4 누락). O1의 현재 진술에 없고 원문에서 옮긴 것: $E_{\\mathcal T}$ 의 정의, 내부 vertex가 자식 하나인 것을 포함, 독립 표집, 새 변수를 쓰는 삽입(135–140), 깊이 $L$ 이 spin 배치일 때의 replica 위치, $\\mathbb E$ 의 뜻.",
+          "defines": [
+            "L",
+            "K",
+            "m",
+            "Fsig",
+            "T",
+            "E_T",
+            "A",
+            "Y",
+            "K_A",
+            "E_A",
+            "W",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "E"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–23, 29–49, 67–82, 92–110, 135–140; perturbations.tex 331–337"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e16",
+          "from": "O1",
+          "to": "F1",
+          "kind": "definition",
+          "label": "$\\gamma$, 격자",
+          "summary": "$m_d$, tree의 깊이와 자식 수, $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$",
+          "statement": "수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 이 있다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path이고, 깊이 $L$ 의 vertex가 leaf다. 내부 vertex는 깊이 $0,\\ldots,L-1$ 의 vertex이며 자식이 하나뿐인 것도 포함한다. 두 path의 split 깊이는 마지막 공통 vertex의 깊이다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 그 시점의 자식 수를 $n_\\beta$ 라 하고 $$\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$$ 로 둔다.",
+          "not_carried": "삽입 $A$, 재귀 $Y_d$, kernel, 밀도는 F1이 쓰지 않으므로 싣지 않는다.",
+          "use_note": "F1이 O1에서 받는 격자와 tree 기호가 edge로 연결되어 있지 않았다. F1의 inputs 에 O1을 더했다. O1의 현재 진술에 없고 원문에서 옮긴 것: 내부 vertex가 자식 하나인 것을 포함, split 깊이의 뜻(trees.tex 34–36).",
+          "defines": [
+            "m",
+            "L",
+            "T",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "split"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–19, 29–37, 92–96"
+          },
+          "status": "connected",
+          "complete": true
+        },
+        {
+          "id": "top-e17",
+          "from": "O1",
+          "to": "F2",
+          "kind": "definition",
+          "label": "$\\gamma$, 격자",
+          "summary": "$m_d$, tree의 깊이와 자식 수, $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$",
+          "statement": "수 $0=m_0<m_1<\\cdots<m_{L-1}<m_L=1$ 이 있다. tree $\\mathcal T$ 는 root를 공유하고 깊이 $L$ 에서 끝나는 유한 개의 path이고, 깊이 $L$ 의 vertex가 leaf다. 내부 vertex는 깊이 $0,\\ldots,L-1$ 의 vertex이며 자식이 하나뿐인 것도 포함한다. 두 path의 split 깊이는 마지막 공통 vertex의 깊이다. 내부 vertex $\\beta$ 의 깊이를 $d_\\beta$, 그 시점의 자식 수를 $n_\\beta$ 라 하고 $$\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$$ 로 둔다.",
+          "not_carried": "삽입 $A$, 재귀 $Y_d$, kernel, 밀도는 F2가 쓰지 않으므로 싣지 않는다. 균등 격자 $m_d=d/L$ 은 F2 자신의 조건이다.",
+          "use_note": "F2가 O1에서 받는 격자와 tree 기호가 edge로 연결되어 있지 않았다. F2의 inputs 에 O1을 더했다. O1의 현재 진술에 없고 원문에서 옮긴 것은 top-e16과 같다.",
+          "defines": [
+            "m",
+            "L",
+            "T",
+            "gamma",
+            "d_beta",
+            "n_beta",
+            "split"
+          ],
+          "grounding": {
+            "source": "trees.tex 16–19, 29–37, 92–96"
+          },
+          "status": "connected",
+          "complete": true
+        }
+      ]
+    }
+  ]
+}

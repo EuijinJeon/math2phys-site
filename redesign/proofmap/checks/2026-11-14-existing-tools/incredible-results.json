@@ -1,0 +1,281 @@
+{
+  "engineUrl": "https://incredible.pm/logic.js",
+  "engineSha256": "137984eed0d7417aa9ea662924cb729130d9845e26e7509cbcf6698fb3eb8ad7",
+  "scope": "Opaque proposition atoms and a trusted PM rule. No analysis/calculus verification.",
+  "cases": {
+    "full": {
+      "connectionStatus": {
+        "bounds": "solved",
+        "frame": "solved",
+        "identity": "solved",
+        "ih": "solved",
+        "next": "solved",
+        "rec": "solved",
+        "tilt": "solved"
+      },
+      "cycles": [],
+      "escapedHypotheses": [],
+      "portLabels": {
+        "a_bounds": {
+          "out": "PositiveBounds"
+        },
+        "a_frame": {
+          "out": "FixedContext"
+        },
+        "a_ih": {
+          "out": "CurrentDerivativeBound"
+        },
+        "a_rec": {
+          "out": "Recursion"
+        },
+        "a_tilt": {
+          "out": "TiltDefinition"
+        },
+        "c_identity": {
+          "in": "DerivativeIdentity"
+        },
+        "c_next": {
+          "in": "NextDerivativeBound"
+        },
+        "pm": {
+          "bounds": "PositiveBounds",
+          "frame": "FixedContext",
+          "identity": "DerivativeIdentity",
+          "ih": "CurrentDerivativeBound",
+          "next": "NextDerivativeBound",
+          "rec": "Recursion",
+          "tilt": "TiltDefinition"
+        }
+      },
+      "qed": true,
+      "unconnectedGoals": []
+    },
+    "missing_e2": {
+      "connectionStatus": {
+        "bounds": "solved",
+        "frame": "solved",
+        "identity": "solved",
+        "ih": "solved",
+        "next": "solved",
+        "rec": "solved"
+      },
+      "cycles": [],
+      "escapedHypotheses": [],
+      "portLabels": {
+        "a_bounds": {
+          "out": "PositiveBounds"
+        },
+        "a_frame": {
+          "out": "FixedContext"
+        },
+        "a_ih": {
+          "out": "CurrentDerivativeBound"
+        },
+        "a_rec": {
+          "out": "Recursion"
+        },
+        "a_tilt": {
+          "out": "TiltDefinition"
+        },
+        "c_identity": {
+          "in": "DerivativeIdentity"
+        },
+        "c_next": {
+          "in": "NextDerivativeBound"
+        },
+        "pm": {
+          "bounds": "PositiveBounds",
+          "frame": "FixedContext",
+          "identity": "DerivativeIdentity",
+          "ih": "CurrentDerivativeBound",
+          "next": "NextDerivativeBound",
+          "rec": "Recursion",
+          "tilt": "TiltDefinition"
+        }
+      },
+      "qed": false,
+      "unconnectedGoals": [
+        {
+          "block": "pm",
+          "port": "tilt"
+        }
+      ]
+    },
+    "wrong_e2": {
+      "connectionStatus": {
+        "bounds": "solved",
+        "frame": "solved",
+        "identity": "solved",
+        "ih": "solved",
+        "next": "solved",
+        "rec": "solved",
+        "tilt": "failed"
+      },
+      "cycles": [],
+      "escapedHypotheses": [],
+      "portLabels": {
+        "a_bounds": {
+          "out": "PositiveBounds"
+        },
+        "a_frame": {
+          "out": "FixedContext"
+        },
+        "a_ih": {
+          "out": "CurrentDerivativeBound"
+        },
+        "a_rec": {
+          "out": "Recursion"
+        },
+        "a_tilt": {
+          "out": "TiltDefinition"
+        },
+        "c_identity": {
+          "in": "DerivativeIdentity"
+        },
+        "c_next": {
+          "in": "NextDerivativeBound"
+        },
+        "pm": {
+          "bounds": "PositiveBounds",
+          "frame": "FixedContext",
+          "identity": "DerivativeIdentity",
+          "ih": "CurrentDerivativeBound",
+          "next": "NextDerivativeBound",
+          "rec": "Recursion",
+          "tilt": "TiltDefinition"
+        }
+      },
+      "qed": false,
+      "unconnectedGoals": []
+    },
+    "naive_induction_loop": {
+      "connectionStatus": {
+        "bounds": "solved",
+        "frame": "solved",
+        "identity": "solved",
+        "ih": "solved",
+        "next": "solved",
+        "rec": "solved",
+        "tilt": "solved"
+      },
+      "cycles": [
+        [
+          "ih"
+        ]
+      ],
+      "escapedHypotheses": [],
+      "portLabels": {
+        "a_bounds": {
+          "out": "PositiveBounds"
+        },
+        "a_frame": {
+          "out": "FixedContext"
+        },
+        "a_ih": {
+          "out": "CurrentDerivativeBound"
+        },
+        "a_rec": {
+          "out": "Recursion"
+        },
+        "a_tilt": {
+          "out": "TiltDefinition"
+        },
+        "c_identity": {
+          "in": "DerivativeIdentity"
+        },
+        "c_next": {
+          "in": "CurrentDerivativeBound"
+        },
+        "pm": {
+          "bounds": "PositiveBounds",
+          "frame": "FixedContext",
+          "identity": "DerivativeIdentity",
+          "ih": "CurrentDerivativeBound",
+          "next": "CurrentDerivativeBound",
+          "rec": "Recursion",
+          "tilt": "TiltDefinition"
+        }
+      },
+      "qed": false,
+      "unconnectedGoals": []
+    },
+    "unproved_rule_control": {
+      "connectionStatus": {
+        "identity": "solved",
+        "next": "solved"
+      },
+      "cycles": [],
+      "escapedHypotheses": [],
+      "portLabels": {
+        "a_bounds": {
+          "out": "PositiveBounds"
+        },
+        "a_frame": {
+          "out": "FixedContext"
+        },
+        "a_ih": {
+          "out": "CurrentDerivativeBound"
+        },
+        "a_rec": {
+          "out": "Recursion"
+        },
+        "a_tilt": {
+          "out": "TiltDefinition"
+        },
+        "c_identity": {
+          "in": "DerivativeIdentity"
+        },
+        "c_next": {
+          "in": "NextDerivativeBound"
+        },
+        "pm": {
+          "identity": "DerivativeIdentity",
+          "next": "NextDerivativeBound"
+        }
+      },
+      "qed": true,
+      "unconnectedGoals": []
+    }
+  },
+  "abstractedRule": {
+    "free": [],
+    "local": [],
+    "ports": {
+      "port1": {
+        "proposition": "PositiveBounds",
+        "scoped": [],
+        "type": "assumption"
+      },
+      "port2": {
+        "proposition": "FixedContext",
+        "scoped": [],
+        "type": "assumption"
+      },
+      "port3": {
+        "proposition": "DerivativeIdentity",
+        "scoped": [],
+        "type": "conclusion"
+      },
+      "port4": {
+        "proposition": "CurrentDerivativeBound",
+        "scoped": [],
+        "type": "assumption"
+      },
+      "port5": {
+        "proposition": "NextDerivativeBound",
+        "scoped": [],
+        "type": "conclusion"
+      },
+      "port6": {
+        "proposition": "Recursion",
+        "scoped": [],
+        "type": "assumption"
+      },
+      "port7": {
+        "proposition": "TiltDefinition",
+        "scoped": [],
+        "type": "assumption"
+      }
+    }
+  }
+}

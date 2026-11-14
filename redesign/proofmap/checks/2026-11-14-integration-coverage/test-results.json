@@ -1,0 +1,37 @@
+[
+  {
+    "file": "redesign/proofmap/tools/test_output_contracts.py",
+    "returncode": 1,
+    "output": "....F.F.....\n======================================================================\nFAIL: test_current_binding_and_expansion (__main__.OutputContractsTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_output_contracts.py\", line 21, in test_current_binding_and_expansion\n    self.assertFalse(report['edges']);self.assertFalse(report['nodes'])\nAssertionError: {('diff', 'diff-e4'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('diff', 'diff-e11'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'o1'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'f2'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'f4'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('cp', 'b0'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('cp', 's0'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fresh', 'fp-first'): ['내부 증명 변경 후 출력 대응 재검토 필요']} is not false\n\n======================================================================\nFAIL: test_layout_change_does_not_invalidate_math_review (__main__.OutputContractsTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_output_contracts.py\", line 46, in test_layout_change_does_not_invalidate_math_review\n    self.assertFalse(c.contract_audit(self.doc)['edges'])\nAssertionError: {('diff', 'diff-e4'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('diff', 'diff-e11'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'o1'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'f2'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fv', 'f4'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('cp', 'b0'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('cp', 's0'): ['내부 증명 변경 후 출력 대응 재검토 필요'], ('fresh', 'fp-first'): ['내부 증명 변경 후 출력 대응 재검토 필요']} is not false\n\n----------------------------------------------------------------------\nRan 12 tests in 0.272s\n\nFAILED (failures=2)\n"
+  },
+  {
+    "file": "redesign/proofmap/tools/test_viewer.py",
+    "returncode": 1,
+    "output": ".FF...F....\n======================================================================\nFAIL: test_boundary_repair_does_not_automatically_promote_declaration (__main__.ViewerTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_viewer.py\", line 41, in test_boundary_repair_does_not_automatically_promote_declaration\n    self.assertEqual(viewer.completion_audit(self.doc)[('diff','D2')]['state'], 'unassessed')\nAssertionError: 'incomplete' != 'unassessed'\n- incomplete\n+ unassessed\n\n\n======================================================================\nFAIL: test_complete_vertex_still_displays_as_complete (__main__.ViewerTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_viewer.py\", line 59, in test_complete_vertex_still_displays_as_complete\n    self.assertEqual(viewer.completion_audit(self.doc)[('diff','D4')]['state'], 'complete')\nAssertionError: 'incomplete' != 'complete'\n- incomplete\n? --\n+ complete\n\n\n======================================================================\nFAIL: test_first_variation_boundary_is_now_closed (__main__.ViewerTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_viewer.py\", line 21, in test_first_variation_boundary_is_now_closed\n    self.assertEqual(a['state'], 'complete')\nAssertionError: 'incomplete' != 'complete'\n- incomplete\n? --\n+ complete\n\n\n----------------------------------------------------------------------\nRan 11 tests in 0.338s\n\nFAILED (failures=3)\n"
+  },
+  {
+    "file": "redesign/proofmap/tools/test_check.py",
+    "returncode": 1,
+    "output": "F....................\n======================================================================\nFAIL: test_baseline_and_coverage (__main__.LocalReferenceTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/tools/test_check.py\", line 35, in test_baseline_and_coverage\n    self.assertEqual((errors, warnings), ([], []))\nAssertionError: Tuples differ: ([], ['[diff] edge diff-e4 [OUTPUT_CONTRACT]: 내[679 chars]필요']) != ([], [])\n\nFirst differing element 1:\n['[diff] edge diff-e4 [OUTPUT_CONTRACT]: 내[678 chars] 필요']\n[]\n\nDiff is 795 characters long. Set self.maxDiff to None to see it.\n\n----------------------------------------------------------------------\nRan 21 tests in 0.574s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "file": "redesign/proofmap/checks/2026-11-14-edge-only/test_edge_only.py",
+    "returncode": 0,
+    "output": "...............\n----------------------------------------------------------------------\nRan 15 tests in 0.362s\n\nOK\n"
+  },
+  {
+    "file": "redesign/proofmap/checks/2026-11-14-first-variation-closure/test_review_cycle.py",
+    "returncode": 1,
+    "output": "F...\n======================================================================\nFAIL: test_condition_change_requires_both_reviews (__main__.ReviewCycleTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/euijinjeon/math2phys-site/redesign/proofmap/checks/2026-11-14-first-variation-closure/test_review_cycle.py\", line 63, in test_condition_change_requires_both_reviews\n    self.assertEqual(result['baseline'][name]['state'],'complete')\nAssertionError: 'incomplete' != 'complete'\n- incomplete\n? --\n+ complete\n\n\n----------------------------------------------------------------------\nRan 4 tests in 0.227s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "file": "redesign/proofmap/checks/2026-11-14-context-crossing/test_context_crossing.py",
+    "returncode": 0,
+    "output": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.002s\n\nOK\n"
+  },
+  {
+    "file": "redesign/proofmap/checks/2026-11-14-local-growth/test_local_growth.py",
+    "returncode": 0,
+    "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.002s\n\nOK\n"
+  }
+]

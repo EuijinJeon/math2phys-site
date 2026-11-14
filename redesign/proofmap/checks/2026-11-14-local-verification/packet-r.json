@@ -1,0 +1,195 @@
+{
+  "task": "아래 vertex만으로 국소 완결을 검사하고 한국어로 답하라.",
+  "protocol": "각 유도 줄을 valid / gap / invalid로 판정하고 근거를 적어라. 문맥과 바닥 및 incoming_edges만 전제로 사용하고 source 원문·다른 파일·웹은 열지 마라. 빠진 정의/전제가 있으면 정확한 수학 내용을 적어라. 단순히 참조 ID가 없다는 지적만으로 충분하지 않다. 누락 내용이 다른 입력으로 재구성 가능하면 구별하라. 적분/미분 교환, 귀납 시작과 반복, 모든 outgoing edge의 생산 여부를 확인하라. author_filled도 주장으로서 검토하고 권위로 받아들이지 마라. 최종 verdict는 closed / repairable_gap / not_closed 중 하나. 이 JSON 외 파일은 읽거나 쓰지 말고 최종 응답으로만 보고하라.",
+  "context": [
+    {
+      "id": "FF",
+      "text": "유한 확률 kernel 열 $K_1,\\ldots,K_L$, 수 $0=m_0<\\cdots<m_L=1$. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 유계 실수 path 함수, $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 인 실수 근방 $U$ 안. $j$ 고정, $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$. $K_d$ 와 $D_j$ 는 $\\boldsymbol t$ 에 무관하다. $\\mathscr F_d$ 는 깊이 $d$ 까지의 prefix sigma-field이며 $Y_d$ 는 그 prefix의 함수다. root를 고정한다.",
+      "nodes": [
+        "X1",
+        "X2",
+        "X3",
+        "X4",
+        "TM",
+        "PM",
+        "CP",
+        "OUT"
+      ]
+    }
+  ],
+  "vertex": {
+    "id": "PM",
+    "title": "power mean 하나를 미분",
+    "statement": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, 그리고 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$.",
+    "local_context": [
+      "유한 확률 kernel 열 $K_1,\\ldots,K_L$ 과 수 $0=m_0<m_1<\\cdots<m_L=1$.",
+      "깊이 $d\\in\\{1,\\ldots,L\\}$ 와 깊이 $d-1$ 까지의 prefix를 고정. $K_d$ 는 그 prefix가 주어졌을 때 깊이 $d$ 의 변수를 적분한다.",
+      "$A_{\\boldsymbol t}=1+\\sum_jt_jD_j$, $D_j$ 는 유계 실수 path 함수. $\\boldsymbol t$ 는 $0<a\\le A_{\\boldsymbol t}\\le b$ 가 성립하는 실수 근방 $U$ 안에 있다($a$, $b$ 는 상수).",
+      "$j$ 를 고정하고 $\\partial=\\partial_{t_j}$, $c=\\lVert D_j\\rVert_\\infty/a$ 로 쓴다."
+    ],
+    "floor_used": [
+      "연쇄 법칙",
+      "적분 기호 아래의 미분: 피적분함수의 도함수가 $U$ 에서 균일하게 유계이면 미분과 확률 적분을 바꿀 수 있다"
+    ],
+    "derivation": [
+      {
+        "expr": "$$\\log Y_{d-1}=\\frac1{m_d}\\log K_d\\bigl[Y_d^{m_d}\\bigr]$$",
+        "by": "e1. $d\\ge1$ 이라 $m_d>0$, e3으로 $Y_d\\ge a>0$."
+      },
+      {
+        "expr": "$$\\partial\\log Y_{d-1}=\\frac1{m_d}\\,\\frac{K_d\\bigl[\\partial\\,(Y_d^{m_d})\\bigr]}{K_d\\bigl[Y_d^{m_d}\\bigr]}$$",
+        "by": "연쇄 법칙과 적분 기호 아래의 미분. 균일 유계: $\\lvert\\partial(Y_d^{m_d})\\rvert=m_dY_d^{m_d}\\lvert\\partial\\log Y_d\\rvert\\le m_d\\,b^{m_d}c$ (e3, e4; $d=L$ 이면 e4 대신 e4′).",
+        "author_filled": "균일 유계를 확인하는 부분은 지도 작성자가 채운 것이다. 원문은 \"$A_{\\boldsymbol t}$ 가 균등하게 양인 실수 근방에서 미분하면\"이라고만 적는다."
+      },
+      {
+        "expr": "$$=\\frac{K_d\\bigl[Y_d^{m_d}\\,\\partial\\log Y_d\\bigr]}{Y_{d-1}^{m_d}}$$",
+        "by": "$\\partial(Y^{m})=mY^{m}\\,\\partial\\log Y$. 분모는 e1."
+      },
+      {
+        "expr": "$$=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}\\partial\\log Y_d\\Bigr]$$",
+        "by": "$Y_{d-1}$ 은 깊이 $d$ 의 변수에 의존하지 않는다(e1)."
+      },
+      {
+        "expr": "$$=K_d^{A}\\bigl[\\partial\\log Y_d\\bigr]$$",
+        "by": "e2. h는 d=L이면 e4L(e4′), d<L이면 e4의 귀납 가정으로 유계."
+      },
+      {
+        "expr": "$$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c$$",
+        "by": "$K_d^A[1]=K_d[Y_d^{m_d}]/Y_{d-1}^{m_d}=1$ (e1, e2)이고 가중치가 양수(e3)이므로 확률 kernel이다. d=L에서는 e4L(e4′), 그 뒤에는 e4로 받은 한계 c가 평균에서 유지된다."
+      }
+    ],
+    "produces": [
+      {
+        "edge": "o1",
+        "by": "식 1–5"
+      },
+      {
+        "edge": "e4",
+        "by": "식 2, 6"
+      }
+    ]
+  },
+  "incoming_edges": [
+    {
+      "id": "e1",
+      "from": "X1",
+      "to": "PM",
+      "kind": "definition",
+      "summary": "$Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$",
+      "statement": "$$Y_{d-1}=\\bigl(K_d\\,Y_d^{m_d}\\bigr)^{1/m_d}.$$ $Y_d$ 는 깊이 $d$ 까지의 prefix의 양의 함수, $Y_{d-1}$ 은 깊이 $d-1$ 까지의 prefix의 함수다.",
+      "not_carried": "말단 조건 $Y_L=A$ 는 이 edge로 오지 않는다. 말단 node로 간다(f1).",
+      "grounding": {
+        "source": "trees.tex (tree:Y-recursion)"
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true
+    },
+    {
+      "id": "e2",
+      "from": "X2",
+      "to": "PM",
+      "kind": "definition",
+      "summary": "$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]$",
+      "statement": "깊이 $d$ 까지의 prefix의 유계 함수 $h$ 에 대해 $$K_d^{A}[h]=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}h\\Bigr].$$",
+      "not_carried": "없음.",
+      "grounding": {
+        "source": "trees.tex (tree:updated-kernel)"
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true
+    },
+    {
+      "id": "e3",
+      "from": "X3",
+      "to": "PM",
+      "kind": "call",
+      "summary": "$a\\le Y_d\\le b$",
+      "statement": "$a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$.",
+      "not_carried": "재귀의 동차성(같은 문장의 뒷부분)은 오지 않는다.",
+      "grounding": {
+        "source": "trees.tex 107–110"
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true
+    },
+    {
+      "id": "e4L",
+      "from": "TM",
+      "to": "PM",
+      "kind": "flow",
+      "label": "e4′",
+      "summary": "$d=L$ 일 때: $Y_L$ 미분 가능, $\\lvert\\partial\\log Y_L\\rvert\\le c$",
+      "statement": "$Y_L$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_L\\bigr\\rvert\\le c .$$ power mean을 처음 미분할 때($d=L$)의 귀납 가정이다.",
+      "not_carried": "말단의 항등식 $\\partial\\log Y_L=D_j/A$ 는 이 edge로 오지 않는다. 이어 붙이기로 간다(f2).",
+      "grounding": {
+        "source": "$Y_L=A$, $\\partial\\log A=D_j/A$, $A\\ge a$."
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true
+    },
+    {
+      "id": "e4",
+      "from": "PM",
+      "to": "PM",
+      "kind": "flow",
+      "label": "e4 = o2",
+      "summary": "$Y_{d-1}$ 미분 가능, $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ → 다음 걸음의 귀납 가정",
+      "statement": "$Y_{d-1}$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c .$$ 깊이 $d$ 의 걸음이 내보내고(o2), 깊이 $d-1$ 의 걸음이 귀납 가정으로 받는다(e4). 같은 edge다.",
+      "not_carried": "항등식 $\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$ 는 이 edge로 가지 않는다. o1로 간다.",
+      "grounding": {
+        "source": "귀납. 작성자가 세운 가정이고 원문은 따로 적지 않는다."
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true,
+      "loop": {
+        "index": "d",
+        "step": "d → d−1",
+        "note": "깊이에 대한 귀납. 깊이가 한 칸씩 줄어 1에서 끝난다."
+      }
+    }
+  ],
+  "outgoing_edges": [
+    {
+      "id": "e4",
+      "from": "PM",
+      "to": "PM",
+      "kind": "flow",
+      "label": "e4 = o2",
+      "summary": "$Y_{d-1}$ 미분 가능, $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ → 다음 걸음의 귀납 가정",
+      "statement": "$Y_{d-1}$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le c .$$ 깊이 $d$ 의 걸음이 내보내고(o2), 깊이 $d-1$ 의 걸음이 귀납 가정으로 받는다(e4). 같은 edge다.",
+      "not_carried": "항등식 $\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$ 는 이 edge로 가지 않는다. o1로 간다.",
+      "grounding": {
+        "source": "귀납. 작성자가 세운 가정이고 원문은 따로 적지 않는다."
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true,
+      "loop": {
+        "index": "d",
+        "step": "d → d−1",
+        "note": "깊이에 대한 귀납. 깊이가 한 칸씩 줄어 1에서 끝난다."
+      }
+    },
+    {
+      "id": "o1",
+      "from": "PM",
+      "to": "CP",
+      "kind": "flow",
+      "summary": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, $d=1,\\ldots,L$",
+      "statement": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+      "not_carried": "한계 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ 는 이 edge로 가지 않는다.",
+      "grounding": {
+        "source": "trees.tex 151–154"
+      },
+      "status": "connected",
+      "complete": true,
+      "in_complete_vertex": true
+    }
+  ],
+  "packet_id": "packet-r"
+}

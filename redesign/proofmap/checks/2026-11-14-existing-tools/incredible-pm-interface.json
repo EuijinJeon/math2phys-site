@@ -1,0 +1,156 @@
+{
+  "context": {
+    "rules": [
+      {
+        "id": "PM",
+        "ports": {
+          "frame": {
+            "type": "assumption",
+            "proposition": "FixedContext"
+          },
+          "rec": {
+            "type": "assumption",
+            "proposition": "Recursion"
+          },
+          "tilt": {
+            "type": "assumption",
+            "proposition": "TiltDefinition"
+          },
+          "bounds": {
+            "type": "assumption",
+            "proposition": "PositiveBounds"
+          },
+          "ih": {
+            "type": "assumption",
+            "proposition": "CurrentDerivativeBound"
+          },
+          "identity": {
+            "type": "conclusion",
+            "proposition": "DerivativeIdentity"
+          },
+          "next": {
+            "type": "conclusion",
+            "proposition": "NextDerivativeBound"
+          }
+        },
+        "local": [],
+        "free": []
+      }
+    ]
+  },
+  "proof": {
+    "blocks": {
+      "pm": {
+        "number": 1,
+        "rule": "PM"
+      },
+      "a_frame": {
+        "number": 2,
+        "assumption": "FixedContext"
+      },
+      "a_rec": {
+        "number": 3,
+        "assumption": "Recursion"
+      },
+      "a_tilt": {
+        "number": 4,
+        "assumption": "TiltDefinition"
+      },
+      "a_bounds": {
+        "number": 5,
+        "assumption": "PositiveBounds"
+      },
+      "a_ih": {
+        "number": 6,
+        "assumption": "CurrentDerivativeBound"
+      },
+      "c_identity": {
+        "number": 7,
+        "conclusion": "DerivativeIdentity"
+      },
+      "c_next": {
+        "number": 8,
+        "conclusion": "NextDerivativeBound"
+      }
+    },
+    "connections": {
+      "frame": {
+        "sortKey": 2,
+        "from": {
+          "block": "a_frame",
+          "port": "out"
+        },
+        "to": {
+          "block": "pm",
+          "port": "frame"
+        }
+      },
+      "rec": {
+        "sortKey": 3,
+        "from": {
+          "block": "a_rec",
+          "port": "out"
+        },
+        "to": {
+          "block": "pm",
+          "port": "rec"
+        }
+      },
+      "tilt": {
+        "sortKey": 4,
+        "from": {
+          "block": "a_tilt",
+          "port": "out"
+        },
+        "to": {
+          "block": "pm",
+          "port": "tilt"
+        }
+      },
+      "bounds": {
+        "sortKey": 5,
+        "from": {
+          "block": "a_bounds",
+          "port": "out"
+        },
+        "to": {
+          "block": "pm",
+          "port": "bounds"
+        }
+      },
+      "ih": {
+        "sortKey": 6,
+        "from": {
+          "block": "a_ih",
+          "port": "out"
+        },
+        "to": {
+          "block": "pm",
+          "port": "ih"
+        }
+      },
+      "identity": {
+        "sortKey": 7,
+        "from": {
+          "block": "pm",
+          "port": "identity"
+        },
+        "to": {
+          "block": "c_identity",
+          "port": "in"
+        }
+      },
+      "next": {
+        "sortKey": 8,
+        "from": {
+          "block": "pm",
+          "port": "next"
+        },
+        "to": {
+          "block": "c_next",
+          "port": "in"
+        }
+      }
+    }
+  }
+}

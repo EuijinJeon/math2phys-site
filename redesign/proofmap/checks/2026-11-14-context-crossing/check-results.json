@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "warnings": [],
+  "report": [
+    "[top] 수 4: node 11(안쪽 7: 완결 0, 대강 0, 미평가 7), edge 12(내용 다 실음 1, 열림 0)",
+    "[p7] P7의 유도: node 15(안쪽 9: 완결 0, 대강 0, 미평가 9), edge 15(내용 다 실음 0, 열림 0)",
+    "[diff] 미분 규칙의 유도: node 7(안쪽 5: 완결 0, 대강 0, 미평가 5), edge 7(내용 다 실음 0, 열림 0)",
+    "[fv] node TM 명시 참조: 입력 1/1 사용; 기호 정의 위치: A←context:FF; D←context:FF; Y←edge:f1; a←context:FF; c←context:FF; partial←context:FF",
+    "[fv] node PM 명시 참조: 입력 5/5 사용; 기호 정의 위치: K←context:FF; K_A←edge:e2; U←context:FF; Y←edge:e1; a←context:FF; b←context:FF; c←context:FF; d←context:FF; m←context:FF; partial←context:FF",
+    "[fv] 첫 변분의 유도: node 8(안쪽 3: 완결 3, 대강 0, 미평가 0), edge 10(내용 다 실음 10, 열림 0), 작성자가 채운 줄: PM 식 2",
+    "[cp] node BASE 명시 참조: 입력 1/1 사용; 기호 정의 위치: A←context:CF; D←context:CF; K_A←context:CF; L←context:CF; Y←edge:b0; partial←context:CF",
+    "[cp] node JOIN 명시 참조: 입력 3/3 사용; 기호 정의 위치: A←context:CF; D←context:CF; K_A←context:CF; L←context:CF; Y←edge:b1,edge:s0,edge:b2; d←context:CF; partial←context:CF; r←context:CF",
+    "[cp] node IDENT 명시 참조: 입력 2/2 사용; 기호 정의 위치: A←context:CF; D←context:CF; E_A←edge:q0; F←context:CF; K_A←context:CF; L←context:CF; Y←edge:s1; a←context:CF; c←context:CF; d←context:CF; h←line:1; partial←context:CF",
+    "[cp] 유한 깊이의 이어 붙이기: node 7(안쪽 3: 완결 3, 대강 0, 미평가 0), edge 7(내용 다 실음 7, 열림 0)"
+  ]
+}

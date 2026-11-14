@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-14",
+  "vertex": "fv.PM",
+  "assignment": {
+    "packet-r": "full",
+    "packet-s": "incoming e2 omitted; node derivation and all other inputs unchanged"
+  },
+  "pass_criteria": [
+    "full packet receives line-by-line assessment and output coverage; no unresolved mathematical gap for strict pass",
+    "omitted packet identifies missing definition of the tilted kernel and affected lines/outputs, distinguishing missing evidence from a false identity",
+    "reviewers inspect only their packet; no author conversation, source files or other packet"
+  ],
+  "limitations": "instructional isolation only; each condition n=1; dangling references remain so identification of an ID alone is not a substantive pass; no original-article verification; no claim that e3 is indispensable",
+  "sha256": {
+    "packet-s.json": "ee5b64afe6b00637f05fa64af374d20970ac5fb8cb4f0a9f1b7470744fe68e40",
+    "packet-r.json": "67747224e4382ff9d8c14ff3bd6423c39c1ec5babd69523522a0c8931afcd371"
+  }
+}

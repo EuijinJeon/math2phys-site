@@ -1,0 +1,122 @@
+{
+  "fv": [
+    {
+      "id": "X1",
+      "external_ref": "XO",
+      "import_edge": "diff-e9",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "terminal",
+          "recursion"
+        ]
+      }
+    },
+    {
+      "id": "X2",
+      "external_ref": "XO",
+      "import_edge": "diff-e9",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "kernel"
+        ]
+      }
+    },
+    {
+      "id": "X3",
+      "external_ref": "XO",
+      "import_edge": "diff-e9",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "bounds"
+        ]
+      }
+    },
+    {
+      "id": "X4",
+      "external_ref": "XO",
+      "import_edge": "diff-e9",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "path_mean"
+        ]
+      }
+    },
+    {
+      "id": "XSET",
+      "external_ref": "XO",
+      "import_edge": "diff-e9",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "setting",
+          "insertion",
+          "kernel"
+        ]
+      }
+    }
+  ],
+  "cp": [
+    {
+      "id": "XR",
+      "external_ref": "PM",
+      "import_edge": "o1",
+      "statement_ref": {
+        "graph": "fv",
+        "node": "PM",
+        "output": "one_step"
+      }
+    },
+    {
+      "id": "XT",
+      "external_ref": "TM",
+      "import_edge": "f2",
+      "statement_ref": {
+        "graph": "fv",
+        "node": "TM",
+        "output": "terminal_derivative"
+      }
+    },
+    {
+      "id": "XE",
+      "external_ref": "X4",
+      "import_edge": "f3",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "path_mean"
+        ]
+      }
+    },
+    {
+      "id": "XS",
+      "external_ref": "XSET",
+      "import_edge": "g3",
+      "statement_ref": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+          "setting",
+          "insertion",
+          "kernel"
+        ]
+      }
+    }
+  ]
+}

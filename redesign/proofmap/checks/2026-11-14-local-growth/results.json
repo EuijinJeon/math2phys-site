@@ -1,0 +1,37 @@
+{
+  "lhs": -0.2671824315898079,
+  "rhs": -0.26718243158980765,
+  "wrong_new_coefficient_rhs": -0.4373623243221696,
+  "density_error": 2.7755575615628914e-17,
+  "changed_existing": {
+    "top": {
+      "modified_nodes": [
+        "O1"
+      ],
+      "modified_edges": [],
+      "added_edges": []
+    },
+    "diff": {
+      "modified_nodes": [
+        "S1",
+        "D4"
+      ],
+      "modified_edges": [
+        "diff-e3",
+        "diff-e4",
+        "diff-e5",
+        "diff-e7"
+      ],
+      "added_edges": [
+        "diff-e8"
+      ]
+    }
+  },
+  "new_graph": "fresh",
+  "new_child_edges": 10,
+  "new_parent_edges": 1,
+  "total_added_edges": 11,
+  "existing_edges_rewritten": 4,
+  "ancestor_levels_touched": 1,
+  "descendant_levels_added": 1
+}

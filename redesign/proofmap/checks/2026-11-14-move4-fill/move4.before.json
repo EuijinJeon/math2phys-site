@@ -1,0 +1,4300 @@
+{
+ "format": "proofmap/0.1",
+ "id": "move4",
+ "title": "수 4 — prescribed-tree 항등식",
+ "language": "ko",
+ "math_syntax": "LaTeX in text: $...$ inline, $$...$$ display (KaTeX-compatible)",
+ "source": {
+  "paper": "Mézard–Parisi diluted mean-field 모형의 free energy에 대한 RSB 하한/상한 (저장소 안의 원문)",
+  "root": "redesign/source/sections",
+  "note": "grounding.source 의 \"trees.tex 151–154\" 같은 표기는 이 폴더의 파일과 줄 범위다. cards 는 redesign/cards/ 의 카드 id다."
+ },
+ "floor": {
+  "reader": [
+   "대학원 통계역학",
+   "미적분: 연쇄 법칙, 적분 기호 아래의 미분",
+   "확률: 조건부 기대값, 확률 kernel"
+  ],
+  "source": "원문이 적은 수준. 그 아래로 내려가 쓴 걸음은 derivation 항목의 author_filled 에 표시한다."
+ },
+ "content_note": "모든 근거는 proposed이며 사용자 확인 전이다. top, p7, diff의 edge는 예전 형식이고, fv 및 cp의 edge는 내용을 모두 싣는다. fv는 외부 입력과 선언된 바닥에 대한 국소 완결이다. PM의 적분과 미분 교환을 위한 균일 경계는 author_filled로 표시한다.",
+ "graphs": [
+  {
+   "id": "top",
+   "title": "수 4",
+   "summary": "수 4의 맨 위 지도. 내용은 현행 L2 §6과 rules.md 그대로이고, 형식만 새 설계를 따른다.",
+   "parent": null,
+   "contexts": [
+    {
+     "id": "FA",
+     "text": "깊이 $L$, 수 $0=m_0<\\cdots<m_L=1$, 유한 kernel 열을 고정. root가 주어진 조건부. 모형은 들어오지 않는다.",
+     "nodes": [
+      "O1",
+      "R1",
+      "R2",
+      "R3",
+      "F1",
+      "F2"
+     ]
+    },
+    {
+     "id": "FB",
+     "text": "선택된 수열, $N\\to\\infty$",
+     "nodes": [
+      "R4"
+     ]
+    },
+    {
+     "id": "FCROSS",
+     "text": "수 5: 균등 격자, 고정 topology와 $\\eta>0$. 각 $L$의 선택 수열에서 $N\\to\\infty$를 먼저 취하고, 깊이 평균을 제어하여 $L\\to\\infty$. 수열과 항등식 오차의 증폭 상수는 $L$에 의존해도 된다.",
+     "nodes": [
+      "XM5"
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "O1",
+     "kind": "object",
+     "title": "tree와 삽입",
+     "summary": "$K_d$, $\\mathcal T$, $A$, $Y_d$, $E^A_{\\mathcal T}$, $W_{\\mathcal T}$",
+     "statement": "path는 깊이 $0,\\ldots,L$ 마다 변수 하나, 깊이 $d$ 의 변수는 prefix가 주어지면 kernel $K_d$ 로 뽑는다. tree $\\mathcal T$ 는 root를 공유하는 유한 개의 path. 삽입 $A$ 에 대해 $$Y_L=A,\\quad Y_{d-1}=(K_dY_d^{m_d})^{1/m_d},\\quad K_d^A=(Y_d/Y_{d-1})^{m_d}K_d,$$ $$E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)],\\quad W_{\\mathcal T}(A)=\\prod_{a}A^a\\prod_{\\beta}Y_\\beta^{\\gamma_\\beta},\\quad \\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}<0 .$$ 재귀의 단조성으로, 양의 root-가측 경계 $a\\le A\\le b$ 이면 모든 깊이에서 $a\\le Y_d\\le b$ (trees.tex 107–110). $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다. 한 path에서 $\\mathscr F_d$는 깊이 $d$까지의 prefix sigma-field다. 삽입 후 kernel들은 확률 kernel이며, 유계 path 함수 $h$에 대해 $$E^A[h\\mid\\mathscr F_d]:=K_{d+1}^A\\cdots K_L^A[h].$$ 이는 해당 prefix 아래로 path 하나를 끝까지 뽑는 평균이며 $d=L$의 빈 합성은 항등 연산이다. 미분 계산에서는 원래 kernel 열과 지수 $m_d$를 고정하고 $D_j$도 매개변수에 무관하게 둔다.",
+     "conditions": [
+      "$A$ 는 root가 주어졌을 때 위로 유계이고 0에서 떨어져 있다."
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:Y-recursion",
+       "tree:density",
+       "x:tree-sampling"
+      ],
+      "source": "trees.tex 20–23, 67–82, 107–110, 142–154, 180–183",
+      "state": "proposed"
+     },
+     "library": "미대조",
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "inputs": [],
+     "outputs": {
+      "fv_inputs": {
+       "role": "given",
+       "title": "첫 변분의 가정·정의·인용 사실",
+       "conditions": [],
+       "grounding": {
+        "source": "trees.tex 20–23, 67–82, 107–110, 142–154",
+        "state": "proposed"
+       },
+       "clauses": {
+        "setting": {
+         "statement": "유한 깊이 $L$과 매개변수에 무관한 확률 kernel 열 $K_1,\\ldots,K_L$, 지수 $0=m_0<\\cdots<m_L=1$을 고정한다. root를 고정한다. $\\mathscr F_d$는 깊이 $d$까지의 prefix sigma-field다.",
+         "defines": [
+          "L",
+          "K",
+          "m",
+          "F"
+         ],
+         "bindings": {
+          "L": "fv.input.L",
+          "K": "fv.input.K",
+          "m": "fv.input.m",
+          "F": "fv.input.F"
+         },
+         "title": "유한 kernel·지수·prefix"
+        },
+        "insertion": {
+         "statement": "유한한 삽입 방향 수 $k$를 두고 $A_{\\boldsymbol t}=1+\\sum_{j=1}^k t_jD_j$이며 $D_j$는 유계 실수 path 함수로 매개변수에 무관하다. $U$는 $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방이다. 방향 지표 $j\\in\\{1,\\ldots,k\\}$를 입력 매개변수로 갖는 계산을 다룬다.",
+         "defines": [
+          "A",
+          "D",
+          "t",
+          "U",
+          "a",
+          "b",
+          "j",
+          "k"
+         ],
+         "bindings": {
+          "A": "fv.input.A",
+          "D": "fv.input.D",
+          "t": "fv.input.t",
+          "U": "fv.input.U",
+          "a": "fv.input.a",
+          "b": "fv.input.b",
+          "j": "fv.input.j",
+          "k": "fv.input.k"
+         },
+         "title": "삽입과 매개변수 조건"
+        },
+        "terminal": {
+         "statement": "$$Y_L=A_{\\boldsymbol t}.$$",
+         "defines": [
+          "Y"
+         ],
+         "bindings": {
+          "Y": "fv.input.Y"
+         },
+         "title": "말단 정의"
+        },
+        "recursion": {
+         "statement": "$$Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}\\qquad(1\\le d\\le L).$$ $Y_d$는 깊이 $d$의 prefix 함수다.",
+         "defines": [
+          "Y"
+         ],
+         "bindings": {
+          "Y": "fv.input.Y"
+         },
+         "title": "Y 재귀"
+        },
+        "kernel": {
+         "statement": "깊이 $d$까지의 prefix의 유계 함수 $h$에 대해 $$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]\\quad(1\\le d\\le L).$$ 재귀로 정규화된 확률 kernel이다.",
+         "defines": [
+          "K_A"
+         ],
+         "bindings": {
+          "K_A": "fv.input.K_A"
+         },
+         "title": "바뀐 kernel 정의"
+        },
+        "bounds": {
+         "statement": "$a\\le A\\le b$이면 재귀의 단조성으로 모든 $0\\le d\\le L$에서 $a\\le Y_d\\le b$다. 원문 insertion lemma의 사실을 입력으로 받는다.",
+         "defines": [
+          "Y"
+         ],
+         "bindings": {
+          "Y": "fv.input.Y"
+         },
+         "title": "재귀의 단조성"
+        },
+        "path_mean": {
+         "statement": "삽입 후 확률 kernel 가족 $K_d^A$로 한 path를 뽑는 평균을 쓴다. 유계 path 함수 $h$에 대해 $$E^A[h\\mid\\mathscr F_d]:=K_{d+1}^A\\cdots K_L^A[h]\\quad(0\\le d\\le L).$$ $d=L$의 빈 합성은 항등 연산이다.",
+         "defines": [
+          "E_A",
+          "K_A"
+         ],
+         "bindings": {
+          "E_A": "fv.input.E_A",
+          "K_A": "fv.input.K_A"
+         },
+         "title": "조건부 path 평균 정의"
+        }
+       }
+      }
+     }
+    },
+    {
+     "id": "R1",
+     "kind": "rule",
+     "title": "미분 규칙",
+     "summary": "$\\partial_{t_j}$ 한 번 = 안 쓴 leaf 하나($+1$) 또는 fresh path($\\gamma_\\beta$)",
+     "statement": "상태를 $F[\\mathcal T,C,G]=E^{A}_{\\mathcal T}\\bigl[G\\prod_{a\\in C}(A^a)^{-1}\\bigr]$ 로 쓰면($C$ 는 protected leaf 집합) $$\\partial_{t_j}F[\\mathcal T,C,G]=\\sum_{a\\notin C}F[\\mathcal T,\\,C\\cup\\{a\\},\\,GD_j^a]+\\sum_{\\beta}\\gamma_\\beta\\,F[\\mathcal T\\oplus\\beta,\\,C\\cup\\{x_\\beta\\},\\,GD_j^{x_\\beta}] .$$ $\\mathcal T\\oplus\\beta$ 는 내부 vertex $\\beta$ 에 새 path를 붙인 tree, $x_\\beta$ 는 그 새 leaf. 출력이 다시 같은 꼴이라 반복 적용된다.",
+     "conditions": [
+      "$G$ 는 유계이고 $\\boldsymbol t$ 에 무관.",
+      "$D_j$ 는 유계 실수 path 함수, $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$."
+     ],
+     "inputs": [
+      "O1"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-differentiation-rule",
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 178–202",
+      "state": "proposed"
+     },
+     "library": "$L=1$ 에서 \"Gibbs 평균을 미분하면 기존 replica마다 $+1$, 새 replica에 $-n$\"과 일치(직접 계산). 일반 $L$ 은 미대조.",
+     "note": "현행 규칙 표의 행이 아니다. $F[\\mathcal T,C,G]$ 라는 상태 표기는 카드의 식을 줄여 쓴 것으로, 지도 작성자가 붙였다.",
+     "example": "$L=1$, anchor 하나, $G=1$, $D_1=D_2=1$. 첫 미분: root(자식 1개)에서 fresh, 계수 $-1$. 둘째 미분: root의 자식이 2개가 되어 계수 $-2$. 곱 $2$ 는 $\\partial_{t_1}\\partial_{t_2}(1+t_1+t_2)^{-1}\\rvert_0=2$ 와 맞는다.",
+     "subgraph": "diff",
+     "layout": {
+      "col": 1,
+      "row": 0
+     }
+    },
+    {
+     "id": "R2",
+     "kind": "rule",
+     "title": "P6 — log 전개",
+     "summary": "$\\log Y_0=\\sum_k\\frac{(-1)^{k-1}t^k}{k}\\mathbb E_{Q_k}E_{\\mathcal T}\\prod D^a$",
+     "statement": "$$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}t^k}{k}\\;\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_{a=1}^kD^a .$$ $Q_k$ 는 path 하나에서 시작해 내부 vertex $\\beta$ 를 확률 $-\\gamma_\\beta/\\lvert\\mathcal T\\rvert$ 로 골라 새 path를 붙여 가는 법칙. $K$ 차 뒤의 나머지는 $\\sum_{k>K}c^k/k$ 이하($\\lvert t\\rvert\\lVert D\\rVert_\\infty\\le c<1$).",
+     "conditions": [
+      "$A=1+tD$, $D$ 유계 실수 path 함수.",
+      "$\\lvert t\\rvert\\,\\lVert D\\rVert_\\infty<1$."
+     ],
+     "inputs": [
+      "O1",
+      "R1"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:insertion",
+       "tree:log-expansion"
+      ],
+      "source": "L2 6.1, rules.md P6",
+      "state": "proposed"
+     },
+     "library": "현행: 물리 이름은 직관 칸에만.",
+     "note": "수 4의 유도(P7)에서는 쓰이지 않는다. 수 6이 직접 쓴다.",
+     "layout": {
+      "col": 2,
+      "row": 0
+     }
+    },
+    {
+     "id": "R3",
+     "kind": "rule",
+     "title": "P6′ ① — history 전개",
+     "summary": "$\\partial_{t_1}\\cdots\\partial_{t_k}E^{A}_{\\mathcal T}[G/A^{a_*}]\\rvert_0=\\sum_Ec_E\\,E_{\\mathcal T_E}[G\\prod D_j^{a_j(E)}]$",
+     "statement": "old tree $\\mathcal T$, anchor $a_*$ 에 대해 $$\\partial_{t_1}\\cdots\\partial_{t_k}\\,E^{A_{\\boldsymbol t}}_{\\mathcal T}\\!\\left[\\frac{G}{A_{\\boldsymbol t}^{a_*}}\\right]\\Bigg\\rvert_{\\boldsymbol t=0}=\\sum_{E}c_E\\;E_{\\mathcal T_E}\\!\\Bigl[G\\prod_{j=1}^kD_j^{a_j(E)}\\Bigr].$$ history $E$ 는 color $1,\\ldots,k$ 를 차례로 (i) 안 쓴 old leaf에 주거나($+1$) (ii) 현재 tree의 내부 vertex에서 fresh path를 만들어 준다($\\gamma_\\beta$). $c_E$ 는 그 계수들의 곱. 혼합 미분에 factorial 없음.",
+     "conditions": [
+      "$G$ 는 old tree 변수의 유계 함수이고 $\\boldsymbol t$ 에 무관.",
+      "$D_j$ 유계 실수 path 함수. 일반 격자에서 성립.",
+      "좌변은 $\\sum_j\\lvert t_j\\rvert\\lVert D_j\\rVert_\\infty<1$ 에서 해석적이고, 그 경계는 kernel에 균일하다."
+     ],
+     "inputs": [
+      "O1",
+      "R1"
+     ],
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "tree:extension-expansion",
+       "x:tree-extension-history",
+       "x:tree-analytic-bounds"
+      ],
+      "source": "L2 6.2 ①, rules.md P6′",
+      "state": "proposed"
+     },
+     "library": "현행: \"물리 대응 없음\".",
+     "note": "미분 규칙을 $C=\\{a_*\\}$ 에서 시작해 $k$ 번 적용한 것. 해석적 경계는 이 상자가 함께 넘긴다.",
+     "example": "$L=1$, old tree가 anchor와 $a'$(root에서 갈라짐), $k=2$, $G=D_1=D_2=1$. 첫 걸음은 $a'$ 재사용($+1$) 또는 root fresh($-2$). 재사용 뒤에는 root fresh($-2$)뿐. fresh 뒤에는 $a'$ 재사용($+1$) 또는 root fresh($-3$). 합 $-2-2+6=2$.",
+     "layout": {
+      "col": 2,
+      "row": 1
+     }
+    },
+    {
+     "id": "F1",
+     "kind": "fact",
+     "title": "P6′ ② — 모양별 총합",
+     "summary": "$\\sum_{E\\text{의 모양}=S}c_E=\\kappa(S)$, old tree와 무관",
+     "statement": "$$\\sum_{E\\text{ 의 모양이 }S}c_E=\\kappa(S)=\\prod_{v\\in\\operatorname{Br}(S)}\\;\\prod_{j=1}^{a_v-1}\\bigl(m_{d_v}-j\\,m_{d_v+1}\\bigr).$$ color 순서와 무관.",
+     "conditions": [
+      "일반 격자. 처방한 split 깊이들이 서로 일관될 것."
+     ],
+     "inputs": [
+      "R3"
+     ],
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "tree:reference-total",
+       "tree:telescoping"
+      ],
+      "source": "L2 6.2 ②",
+      "state": "proposed"
+     },
+     "library": "미대조",
+     "note": "수 4의 유도에서는 쓰이지 않는다. 수 5가 쓴다.",
+     "layout": {
+      "col": 3,
+      "row": 1
+     }
+    },
+    {
+     "id": "F2",
+     "kind": "fact",
+     "title": "P6′ ③ — 계수 한계",
+     "summary": "$\\sum\\lvert c_E\\rvert\\le C_{q,k}\\,\\delta^{b_{\\rm sep}}$ (균등 격자)",
+     "statement": "처방한 모양의 branching vertex 가운데 old tree의 어느 branching 깊이와도 다른 것을 $b_{\\rm sep}$ 개 고르면 $$\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k}\\,\\delta^{\\,b_{\\rm sep}},\\qquad\\frac{1}{\\lvert J_{\\rm sep}\\rvert}\\sum_{E\\text{ 허용}}\\lvert c_E\\rvert\\le C_{q,k,\\eta}.$$ 상수는 $L$ 과 무관.",
+     "conditions": [
+      "균등 격자 $m_d=d/L$, $\\delta=1/L$ 에서만.",
+      "비의 한계는 고른 vertex 모두에서 $m_{d_v}\\ge\\eta>0$ 일 때."
+     ],
+     "inputs": [
+      "R3"
+     ],
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "tree:charging"
+      ],
+      "source": "L2 6.2 ③, trees.tex 393–455",
+      "state": "proposed"
+     },
+     "library": "없음 (현행 \"규칙으로 못 옮긴 것\")",
+     "note": "수 4의 유도에서는 쓰이지 않는다. 수 5가 쓴다.",
+     "layout": {
+      "col": 3,
+      "row": 2
+     }
+    },
+    {
+     "id": "XP5",
+     "kind": "external",
+     "title": "P5 — 선택된 수열 (수 3)",
+     "summary": "(ii) score 집중 $e_{\\nu,N}\\to0$, (iii) tree 모멘트 수렴",
+     "statement": "(ii) 모든 고정 type $\\nu$ 에서 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$. (iii) 유한 prescribed tree 위 multioverlap 유한곱의 기대값이 수열을 따라 수렴.",
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "pert:selection",
+       "pert:concentration"
+      ],
+      "source": "rules.md P5",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 3
+     },
+     "inputs": []
+    },
+    {
+     "id": "XFAM",
+     "kind": "external",
+     "title": "섭동족 (4.2절)",
+     "summary": "Poisson 개수, $t_\\nu=1/j$, $u_\\nu\\in[j^{-j},2j^{-j}]$, mark 족",
+     "statement": "type $\\nu$ 의 factor $\\psi_\\nu=1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$, 개수는 평균 $c_\\nu s_N$ 의 Poisson. mark 족은 곱과 유리수 평균에 닫혀 있다.",
+     "grounding": {
+      "cards": [
+       "pert:parameters"
+      ],
+      "source": "L2 4.2",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 4
+     },
+     "inputs": []
+    },
+    {
+     "id": "R4",
+     "kind": "rule",
+     "title": "P7 — prescribed-tree 항등식",
+     "summary": "$\\sum_Ec_E\\mathbb E[fR_E]-\\mathbb Ef\\sum_Ec_E\\mathbb E[R_E]\\to0$",
+     "statement": "$$\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\;\\mathbb E\\bigl[f\\,R_E\\bigr]\\;-\\;\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\;\\mathbb E\\bigl[R_E\\bigr]\\;\\longrightarrow\\;0 .$$ anchor에 새 섭동 하나를 더한 효과가, 계수 $c_E$ 를 붙인 부호 있는 합으로서, old tree의 시험함수 $f$ 와 분리된다.",
+     "conditions": [
+      "선택된 수열을 따라 $N\\to\\infty$ 에서만. 고정한 $L$, old tree, anchor 종류, $f$, $k$, $\\mathcal C$ 마다.",
+      "수렴 속도와 $L$·type에 대한 균일성은 주장되지 않는다.",
+      "처방할 수 있는 것은 anchor와 color들 사이의 쌍별 split 깊이뿐. mark 깊이는 $1,\\ldots,L-1$."
+     ],
+     "inputs": [
+      "XP5",
+      "XFAM",
+      "R3",
+      "O1"
+     ],
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity",
+       "pert:palm",
+       "pert:analytic"
+      ],
+      "source": "L2 6.3, rules.md P7",
+      "state": "proposed"
+     },
+     "library": "현행: 선행 연구와의 관계는 직관 칸에만. 서로 유도되는지 미확인.",
+     "subgraph": "p7",
+     "layout": {
+      "col": 3,
+      "row": 3
+     }
+    },
+    {
+     "id": "XM6",
+     "kind": "external",
+     "title": "수 6",
+     "summary": "삽입의 계산 (P11)",
+     "layout": {
+      "col": 4,
+      "row": 0
+     },
+     "inputs": []
+    },
+    {
+     "id": "XM5",
+     "kind": "external",
+     "title": "수 5",
+     "summary": "집중 (P8, P9): $N\\to\\infty$ 먼저, 깊이 평균 뒤 $L\\to\\infty$",
+     "layout": {
+      "col": 4,
+      "row": 2
+     },
+     "inputs": [
+      "R4",
+      "F1",
+      "F2"
+     ],
+     "statement": "수 5의 목표는 각 고정 labeled topology $S$와 $\\eta>0$에서 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$ (P9), 그리고 해당 조건부 공분산의 제곱 평균에 대한 P8이다. 이는 이 node의 목표이며 이번 PoC에서 증명 완료한 것이 아니다. $\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$는 깊이 좌표 $a$개의 비정규화 평균이다. 총 질량은 1 이하이며, 고정 깊이별 집중으로 바꾸지 않는다.\n\n수용 조건: 먼저 고정 $L,k,\\eta$의 유한 항등식 목록에서 P7 오차를 $N\\to\\infty$로 없앤다. 양의 $J$로 나누는 것도 이 단계에서 한다. $L$이 충분히 클 때 $\\eta$-regular 배정의 지연 target에서 $J=\\kappa(S^+)^2\\ge c_{k,\\eta}L^{-2b(S)}>0$이고, 사영 오차의 상대 절댓값 계수는 $C_{k,\\eta}$로 $L$에 균일하게 제어된다. 이 계수 한계와 P7 오차의 $L$-의존 증폭을 구분한다. 남는 낮은 차수 공분산 평균 및 martingale 비용을 따로 제어한 뒤 $L\\to\\infty$로 간다. P7만으로 집중이 따라온다고 주장하지 않는다.",
+     "conditions": [
+      "균등 격자 $m_d=d/L$, $\\delta=1/L$. 고정 topology와 $\\eta>0$. 각 $L$마다 P5 선택 수열.",
+      "$\\eta$-regular: 서로 다른 branching 깊이 좌표를 $L$로 나눈 값이 $(\\eta,1-\\eta)$ 안이고 상호 간격은 $\\eta$보다 큼. 추가 prefix 좌표에도 같은 조건. 일치시킨 두 사본의 대응 깊이는 좌표 하나로 센다."
+     ],
+     "grounding": {
+      "source": "decorrelation.tex 4–58, 63–74, 332–359, 446–457, 512–523, 613–622",
+      "state": "proposed"
+     },
+     "note": "문맥 건넘 PoC의 수용 경계만 명시했다. 이 external node 내부의 P8/P9 증명 graph는 아직 만들지 않았다."
+    }
+   ],
+   "edges": [
+    {
+     "id": "top-e1",
+     "from": "O1",
+     "to": "R1",
+     "kind": "definition",
+     "label": "기호",
+     "statement": "$E^A_{\\mathcal T}$, $W_{\\mathcal T}$, $\\gamma_\\beta$",
+     "fit": "미분 규칙은 밀도의 로그를 미분한 것이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e2",
+     "from": "R1",
+     "to": "R2",
+     "kind": "call",
+     "label": "$k-1$ 회",
+     "statement": "미분 규칙",
+     "substitution": "$C$ = 모든 leaf(첫 path의 leaf부터 protected), $D_j=D$, $G=\\prod D^a$ 로 자라남.",
+     "fit": "$\\partial_t\\log Y_0=E^A[D/A]$ 는 path 하나이고 그 leaf가 이미 protected다. 이후에는 fresh path 선택만 남고, 그 계수의 절댓값을 정규화한 것이 $Q_k$ 의 확률이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e3",
+     "from": "R1",
+     "to": "R3",
+     "kind": "call",
+     "label": "$k$ 회",
+     "statement": "미분 규칙",
+     "substitution": "$C=\\{a_*\\}$ 에서 시작, $G$ = old tree의 함수, $j=1,\\ldots,k$ 차례로.",
+     "fit": "$C=\\{a_*\\}$ 에서 시작한다. $G$ 가 $\\boldsymbol t$ 에 무관하고 넣은 $D_j^a$ 가 $G$ 에 흡수되어 조건이 매번 유지된다. $\\boldsymbol t=0$ 에서 $A=Y=1$ 이라 우변은 원래 법칙의 기대값이 된다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e4",
+     "from": "R3",
+     "to": "F1",
+     "kind": "flow",
+     "label": "$c_E$",
+     "statement": "history와 계수 $c_E$",
+     "fit": "모양이 같은 history끼리 $c_E$ 를 더한다. reference가 없는 부분 tree의 합이 telescoping으로 $m_{d+1}$ 이 되어 old tree의 모양이 지워진다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e5",
+     "from": "R3",
+     "to": "F2",
+     "kind": "flow",
+     "label": "$\\lvert c_E\\rvert$",
+     "statement": "history와 계수 $c_E$",
+     "fit": "같은 history에 대해 절댓값을 더한다. 떨어진 vertex는 누군가 fresh로 갈라져야 생기고 그 계수가 $-\\delta$ 다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e6",
+     "from": "R3",
+     "to": "R4",
+     "kind": "call",
+     "label": "단계 2, 4",
+     "statement": "전개 식과 균일 해석적 경계",
+     "substitution": "$G=f\\,g_0^{a_*}S_0^{a_*}$, $D_j=g_j\\sigma_i$. old tree가 $\\mathcal T$ 인 경우와 anchor 하나뿐인 경우, 두 번.",
+     "fit": "Palm 단계가 내는 양이 정확히 ①의 좌변이다($G=f\\,g_0^{a_*}S_0^{a_*}$). $G$ 는 old tree의 함수이고 삽입 매개변수에 무관하다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e7",
+     "from": "XP5",
+     "to": "R4",
+     "kind": "flow",
+     "label": "(ii), (iii)",
+     "statement": "score 집중과 tree 모멘트 수렴",
+     "fit": "(iii)이 수렴을 주는 것은 유한 tree 위 multioverlap 모멘트이고, ①의 우변을 새 site로 평균한 것이 그 꼴이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e8",
+     "from": "XFAM",
+     "to": "R4",
+     "kind": "flow",
+     "label": "섭동족",
+     "statement": "Poisson 개수, 매개변수 크기, mark 족",
+     "fit": "Poisson이라 Palm 항등식을 쓸 수 있고, $u_\\nu$ 가 $t_\\nu$ 의 모든 거듭제곱보다 작아 Taylor 계수를 소거할 수 있고, mark 족이 닫혀 있어 polarization의 $g$ 가 족 안에 있다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e9",
+     "from": "R4",
+     "to": "XM5",
+     "kind": "flow",
+     "label": "고정 L → N 먼저",
+     "statement": "각 고정 깊이 $L\\ge2$에서 P5로 선택한 수열 $\\mathfrak s_L=(N_n^{(L)},\\mathbf u_n^{(L)})$을 쓴다. 수열은 $L$마다 달라도 되며, P5의 외부 선택 오차도 고정한다. 아래 $N\\to\\infty$는 이 수열을 따른다는 뜻이고, 섭동 매개변수는 선택된 결정적 값이다.\n\nP7의 한 적용 $\\alpha=(\\mathcal T,a_*,f,k_\\alpha,\\mathcal C)$에서 $\\mathcal T$는 고정한 유한 old tree, $a_*$는 spin 또는 marker anchor, $f$는 old multioverlap들의 유계 다항식이다. 다항식과 계수는 $N$에 무관하게 고정한다. 유한 개의 ordered color를 더하고, $\\mathcal C$는 anchor와 추가 color 사이의 일관된 쌍별 split 깊이만 지정한다. 다른 old replica와의 추가 split 제약은 허용하지 않는다. 빈 추가도 허용한다.\n\n$c_E$는 anchor를 보호한 extension history의 계수다: 안 쓴 old leaf를 택하는 걸음은 $+1$, 내부 vertex $\\beta$에서 fresh path를 붙이는 걸음은 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$이고 $c_E$는 걸음별 계수의 곱이다. $R_E=N^{-1}\\sum_{i=1}^N\\prod_j\\sigma_i^{a_j(E)}$에 spin anchor이면 $\\sigma_i^{a_*}$를 곱하고 marker anchor이면 곱하지 않는다. 기대값은 root와 tree sampling을 포함한다. 그러면\n$$I_{N,L}(\\alpha):=\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\,\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\,\\mathbb E[R_E]\\ \\longrightarrow\\ 0.$$\n\n수 5의 한 유한 크기 귀납 단계에 실제로 쓰는 적용들의 유한 목록을 $\\mathcal F_{L,k}$라 쓰자. $k$는 이 목록의 tree 크기·color 수를 제한하는 고정 지표다. 고정 $L$에서 깊이 배정도 유한 개이므로, 고정한 유한 종류의 시험 다항식까지 모은 이 목록에 대해\n$$\\epsilon_{N,L,k}:=\\max_{\\alpha\\in\\mathcal F_{L,k}}|I_{N,L}(\\alpha)|\\longrightarrow0\\qquad(L,k\\text{ 고정}).$$\n이는 모든 유계 다항식이나 무제한 크기 tree에 대한 supremum이 아니다. $\\mathcal F_{L,k}$와 수렴 속도는 $L$에 의존해도 된다. 원문 $\\varepsilon_{N,L,k}$의 유한 최대를 여기서는 $\\epsilon$으로 적어 P5의 선택 오차와 구별한다.\n\n받는 쪽에서 고정한 $L,k,\\eta$의 유한 상수 $B_{L,k,\\eta}$가 이 오차에 곱해져도\n$$\\limsup_{N\\to\\infty}B_{L,k,\\eta}\\epsilon_{N,L,k}=0.$$\n따라서 이 항을 먼저 없앤 다음 $L\\to\\infty$로 간다. $B_{L,k,\\eta}$에는 정규화 계수로 나누는 비용이 포함될 수 있다. $L$-균일한 $N$ 수렴 속도, $N=N(L)$에 따른 공동 극한, 순서를 바꾼 극한은 이 edge가 주지 않는다.",
+     "status": "connected",
+     "complete": true,
+     "summary": "$\\epsilon_{N,L,k}\\to0$ (고정 $L,k$); $N\\to\\infty$ 뒤 $L\\to\\infty$",
+     "not_carried": "$J=\\kappa(S^+)^2$의 하한과 $(\\sum_E|c_E|)/|J|\\le C_{k,\\eta}$는 P7의 출력이 아니다. 이들은 모양별 계수와 절댓값 한계(top-e10, top-e11), 균등 격자 및 지연한 regular target 선택에서 받는 쪽이 얻는다. 수 5의 사영 오차·martingale 오차와 P8/P9 결론도 이 edge가 운반하지 않는다. P7 오차의 계수 $B_{L,k,\\eta}$를 $L$-균일 상수로 바꾸지 않는다.",
+     "grounding": {
+      "source": "perturbations.tex 257–265, 308–312, 432–469, 538–546; decorrelation.tex 4–9, 49–58, 446–457, 613–622"
+     }
+    },
+    {
+     "id": "top-e10",
+     "from": "F1",
+     "to": "XM5",
+     "kind": "flow",
+     "label": "$\\kappa(S)$",
+     "statement": "정규화 상수",
+     "fit": "7.2절의 $J=\\kappa(S^+)^2$.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e11",
+     "from": "F2",
+     "to": "XM5",
+     "kind": "flow",
+     "label": "한계",
+     "statement": "절댓값 합의 한계",
+     "fit": "$J$ 로 나눈 뒤의 오차를 재는 것이 절댓값 합이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "top-e12",
+     "from": "R2",
+     "to": "XM6",
+     "kind": "flow",
+     "label": "급수",
+     "statement": "log 전개",
+     "fit": "삽입의 $\\log$ 를 $Q_k$ 평균으로 쓴다.",
+     "status": "connected",
+     "complete": false
+    }
+   ]
+  },
+  {
+   "id": "p7",
+   "title": "P7의 유도",
+   "summary": "P7 상자를 증명으로 확대한 지도. 현행 L2 6.3의 여섯 단계.",
+   "parent": {
+    "graph": "top",
+    "node": "R4"
+   },
+   "contexts": [
+    {
+     "id": "FP",
+     "text": "섭동족(4.2절) 아래. mark specification, old tree, $f$, $L$ 고정. 극한은 $j$ 를 고정하고 $N\\to\\infty$(선택된 수열) 먼저, 그다음 $j\\to\\infty$.",
+     "nodes": [
+      "T0",
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "OUT",
+      "XA",
+      "XB",
+      "XC",
+      "XD",
+      "XE",
+      "P1",
+      "P2",
+      "P3"
+     ],
+     "provides": [
+      "XFAM"
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "XA",
+     "kind": "external",
+     "title": "P5 (ii)",
+     "summary": "score 집중 $e_{\\nu,N}\\to0$",
+     "statement": "모든 고정 type $\\nu$ 에서 reservoir의 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$.",
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "pert:concentration",
+       "pert:selection"
+      ],
+      "source": "rules.md P5",
+      "state": "proposed"
+     },
+     "external_ref": "XP5",
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "inputs": []
+    },
+    {
+     "id": "XB",
+     "kind": "external",
+     "title": "대상: tree와 삽입",
+     "summary": "밀도 $W_{\\mathcal T}(A)$",
+     "statement": "$E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$.",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:density"
+      ],
+      "source": "L2 6.1",
+      "state": "proposed"
+     },
+     "external_ref": "O1",
+     "layout": {
+      "col": 0,
+      "row": 1
+     },
+     "inputs": []
+    },
+    {
+     "id": "XC",
+     "kind": "external",
+     "title": "P6′ ① history 전개",
+     "summary": "혼합 미분 $=\\sum_Ec_E\\,E_{\\mathcal T_E}[\\cdots]$",
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "tree:extension-expansion"
+      ],
+      "source": "L2 6.2 ①",
+      "state": "proposed"
+     },
+     "external_ref": "R3",
+     "inherit_statement": true,
+     "layout": {
+      "col": 0,
+      "row": 3
+     },
+     "inputs": []
+    },
+    {
+     "id": "XD",
+     "kind": "external",
+     "title": "P5 (iii)",
+     "summary": "tree multioverlap 모멘트의 수렴",
+     "statement": "유한 prescribed tree 위 multioverlap 유한곱의 기대값이 선택된 수열을 따라 수렴한다.",
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "pert:selection"
+      ],
+      "source": "rules.md P5",
+      "state": "proposed"
+     },
+     "external_ref": "XP5",
+     "layout": {
+      "col": 2,
+      "row": 2
+     },
+     "inputs": []
+    },
+    {
+     "id": "XE",
+     "kind": "external",
+     "title": "P6′ ① 해석적 경계",
+     "summary": "kernel에 균일한 경계",
+     "statement": "①의 좌변은 $\\sum_j\\lvert t_j\\rvert\\lVert D_j\\rVert_\\infty<1$ 에서 해석적이고 경계가 kernel에 균일하다.",
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "x:tree-analytic-bounds"
+      ],
+      "source": "L2 6.2 단서",
+      "state": "proposed"
+     },
+     "external_ref": "R3",
+     "layout": {
+      "col": 2,
+      "row": 3
+     },
+     "inputs": []
+    },
+    {
+     "id": "P1",
+     "kind": "fact",
+     "title": "Palm 항등식",
+     "summary": "$\\mathbb E\\sum_\\xi F(\\xi;\\text{나머지})=\\lambda\\,\\mathbb EF(\\xi';\\text{원래 계})$",
+     "statement": "$$\\mathbb E\\sum_{\\text{항 }\\xi}F(\\xi;\\text{나머지})=\\lambda\\,\\mathbb EF(\\xi';\\text{원래 계}),$$ $\\xi'$ 는 독립인 새 항.",
+     "conditions": [
+      "개수가 평균 $\\lambda$ 의 Poisson인 i.i.d. 항."
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:palm"
+      ],
+      "source": "L2 6.3 단계 1",
+      "state": "proposed"
+     },
+     "library": "없음 (현행 \"규칙으로 못 옮긴 것\")",
+     "layout": {
+      "col": 2,
+      "row": 1
+     },
+     "inputs": []
+    },
+    {
+     "id": "P2",
+     "kind": "fact",
+     "title": "polarization",
+     "summary": "$k$ 차 동차식의 값에서 대칭 다중선형식을 되찾는다",
+     "statement": "혼합 미분 $\\partial_{z_1}\\cdots\\partial_{z_k}\\rvert_0$ 은 $g=k^{-1}\\sum_j\\epsilon_jg_j$($\\epsilon_j=\\pm1$)에서의 $k!\\,[t^k]$ 값들의 유한 일차결합이다. $k=2$: $Q\\bigl(\\tfrac{g_1+g_2}2\\bigr)-Q\\bigl(\\tfrac{g_1-g_2}2\\bigr)$.",
+     "conditions": [
+      "$g=k^{-1}\\sum_j\\epsilon_jg_j$ 가 mark 족 안에 있을 것."
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3 단계 4",
+      "state": "proposed"
+     },
+     "library": "없음 (현행 \"규칙으로 못 옮긴 것\")",
+     "layout": {
+      "col": 2,
+      "row": 4
+     },
+     "inputs": []
+    },
+    {
+     "id": "P3",
+     "kind": "fact",
+     "title": "mark selector",
+     "summary": "mark 평균 = \"요구된 vertex 공유\"의 지시함수",
+     "statement": "$g_0,\\ldots,g_k$ 를 mark의 곱으로 잡으면 $\\mathbb E_{\\rm marks}\\bigl[g_0^{a_*}\\prod_jg_j^{a_j(E)}\\bigr]$ 가 \"$E$ 가 요구된 vertex 공유를 지킨다\"의 지시함수가 된다.",
+     "conditions": [
+      "mark 깊이는 $1,\\ldots,L-1$."
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3 단계 5",
+      "state": "proposed"
+     },
+     "library": "없음",
+     "layout": {
+      "col": 2,
+      "row": 5
+     },
+     "inputs": []
+    },
+    {
+     "id": "T0",
+     "kind": "step",
+     "title": "단계 0 — score와 f의 분리",
+     "summary": "$\\lvert\\mathbb E[fD_\\nu^{a_*}]-\\mathbb Ef\\,\\mathbb E\\langle D_\\nu\\rangle\\rvert/(c_\\nu s_N)\\le\\lVert f\\rVert_\\infty e_{\\nu,N}$",
+     "statement": "$$\\frac{\\bigl\\lvert\\mathbb E[fD_\\nu^{a_*}]-\\mathbb Ef\\,\\mathbb E\\langle D_\\nu\\rangle\\bigr\\rvert}{c_\\nu s_N}\\le\\lVert f\\rVert_\\infty\\,e_{\\nu,N}\\to0 .$$",
+     "inputs": [
+      "XA"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3 단계 0",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 0
+     }
+    },
+    {
+     "id": "T1",
+     "kind": "step",
+     "title": "단계 1 — score를 삽입으로",
+     "summary": "$\\Xi_N=\\Pi_{N,\\mathcal T}-\\mathbb Ef\\,\\Pi_{N,\\{a_*\\}}$, $\\lvert\\Xi_N(t_\\nu,u_\\nu)\\rvert\\le\\lVert f\\rVert_\\infty e_{\\nu,N}$",
+     "statement": "$$\\Pi_{N,\\mathcal T}(t,u)=\\mathbb E\\,E^{A}_{\\mathcal T}\\!\\left[\\frac{f\\,g_0^{a_*}S_0^{a_*}}{A^{a_*}}\\right],\\qquad\\Xi_N=\\Pi_{N,\\mathcal T}-\\mathbb Ef\\;\\Pi_{N,\\{a_*\\}},$$ $$\\lvert\\Xi_N(t_\\nu,u_\\nu)\\rvert\\le\\lVert f\\rVert_\\infty e_{\\nu,N}.$$ 골라낸 항은 새 site $i$ 와 새 mark를 쓰는 삽입 $A=1+tg\\sigma_i+ug_0S_0$.",
+     "inputs": [
+      "T0",
+      "P1",
+      "XB"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:palm"
+      ],
+      "source": "L2 6.3 단계 1",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 1
+     }
+    },
+    {
+     "id": "T2",
+     "kind": "step",
+     "title": "단계 2 — Taylor 계수의 꼴",
+     "summary": "$[t^k]\\Xi_N(t,0)$ = tree multioverlap 모멘트의 유한 결합",
+     "statement": "$\\Pi_{N,\\mathcal T}(t,0)$ 의 $t^k$ 계수는 $$\\frac1{k!}\\sum_Ec_E\\,\\mathbb E\\Bigl[f\\,g_0^{a_*}S_0^{a_*}\\prod_j(g\\sigma_i)^{a_j(E)}\\Bigr].$$ 유한 합이고 계수는 $N$ 과 무관. 새 site를 평균하면 원래 법칙의 tree multioverlap 모멘트(와 그런 모멘트 둘의 곱)의 유한 일차결합이 된다.",
+     "conditions": [
+      "$u=0$ 에서 $A=1+tD$, $D=g\\sigma_i$."
+     ],
+     "inputs": [
+      "T1",
+      "XC"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity",
+       "tree:extension-expansion"
+      ],
+      "source": "L2 6.3 단계 2",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 2
+     }
+    },
+    {
+     "id": "T3",
+     "kind": "step",
+     "title": "단계 3 — Taylor 계수 소거",
+     "summary": "모든 $k$ 에서 $[t^k]\\Xi_N(t,0)\\to0$",
+     "statement": "$\\Xi_N(t,0)\\to\\Xi(t)$ (작은 원판에서 균일). $\\lvert\\Xi(1/j)\\rvert\\le2Cj^{-j}$ 인데, 첫 0 아닌 Taylor 계수가 $h$ 차라면 큰 $j$ 에서 $\\lvert\\Xi(1/j)\\rvert\\ge c\\,j^{-h}$ 여야 하므로 $\\Xi\\equiv0$. 곧 $\\Xi_N(t,0)$ 의 모든 Taylor 계수가 0으로 간다.",
+     "conditions": [
+      "type $j$ 의 매개변수 $t_\\nu=1/j$, $u_\\nu\\in[j^{-j},2j^{-j}]$."
+     ],
+     "inputs": [
+      "T2",
+      "XD",
+      "XE"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:analytic"
+      ],
+      "source": "L2 6.3 단계 3",
+      "state": "proposed"
+     },
+     "library": "없음 (현행 \"규칙으로 못 옮긴 것\")",
+     "note": "$u$ 를 0으로 옮기는 비용 $\\lvert u\\rvert\\sup\\lvert\\partial_u\\Xi_N\\rvert\\le Cj^{-j}$ 가 이 단계 안에 있다.",
+     "layout": {
+      "col": 1,
+      "row": 3
+     }
+    },
+    {
+     "id": "T4",
+     "kind": "step",
+     "title": "단계 4 — 한 방향에서 여러 방향으로",
+     "summary": "혼합 미분 $\\partial_{z_1}\\cdots\\partial_{z_k}\\rvert_0\\to0$",
+     "statement": "$$\\sum_Ec_E\\,\\mathbb E\\Bigl[f\\,g_0^{a_*}S_0^{a_*}\\prod_jg_j^{a_j(E)}\\sigma_i^{a_j(E)}\\Bigr]-\\mathbb Ef\\cdot(\\text{anchor 하나 tree의 같은 식})\\;\\to\\;0 .$$ factorial 없음.",
+     "inputs": [
+      "T3",
+      "P2",
+      "XC"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3 단계 4",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 4
+     }
+    },
+    {
+     "id": "T5",
+     "kind": "step",
+     "title": "단계 5 — 제약 고르기와 site 평균",
+     "summary": "mark 평균으로 $\\mathcal C$ 를 고르고 $\\frac1N\\sum_i$ 로 $R_E$ 를 만든다",
+     "statement": "mark 평균이 \"$E$ 가 $\\mathcal C$ 를 지킨다\"를 고르고, 새 site의 평균 $\\frac1N\\sum_iS_0^{a_*}\\prod_j\\sigma_i^{a_j(E)}$ 가 $R_E$ 다. 유한 일차결합으로 정확한 split 깊이와 일반 다항식 $f$ 로 넓힌다.",
+     "inputs": [
+      "T4",
+      "P3"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3 단계 5",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 5
+     }
+    },
+    {
+     "id": "OUT",
+     "kind": "output",
+     "title": "P7의 주 식",
+     "summary": "$\\sum_Ec_E\\mathbb E[fR_E]-\\mathbb Ef\\sum_Ec_E\\mathbb E[R_E]\\to0$",
+     "inputs": [
+      "T5"
+     ],
+     "abstraction": "blackbox",
+     "grounding": {
+      "cards": [
+       "pert:tree-identity"
+      ],
+      "source": "L2 6.3",
+      "state": "proposed"
+     },
+     "inherit_statement": true,
+     "layout": {
+      "col": 1,
+      "row": 6
+     }
+    }
+   ],
+   "edges": [
+    {
+     "id": "p7-e1",
+     "from": "XA",
+     "to": "T0",
+     "kind": "flow",
+     "label": "(ii)",
+     "statement": "score 집중",
+     "fit": "anchor의 path 하나만 보면 tilted path 하나이므로 (ii)가 그대로 적용된다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e2",
+     "from": "T0",
+     "to": "T1",
+     "kind": "flow",
+     "label": "분리 한계",
+     "statement": "$\\lvert\\mathbb E[fD_\\nu^{a_*}]-\\mathbb Ef\\,\\mathbb E\\langle D_\\nu\\rangle\\rvert/(c_\\nu s_N)\\le\\lVert f\\rVert_\\infty e_{\\nu,N}$",
+     "fit": "score $D_\\nu$ 는 Poisson 개수의 항들의 합이라 Palm 항등식의 좌변 꼴이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e3",
+     "from": "P1",
+     "to": "T1",
+     "kind": "call",
+     "label": "1회",
+     "statement": "Palm 항등식",
+     "substitution": "항 = type $\\nu$ 의 섭동 factor, $\\lambda=c_\\nu s_N$, $F$ = 그 항이 anchor에서 내는 score $\\times f$.",
+     "fit": "$F$ 를 \"그 항이 anchor에서 내는 score 곱하기 $f$\"로 잡는다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e4",
+     "from": "XB",
+     "to": "T1",
+     "kind": "definition",
+     "label": "$W$",
+     "statement": "밀도",
+     "fit": "삽입이 tree 법칙에 주는 밀도가 이것이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e5",
+     "from": "T1",
+     "to": "T2",
+     "kind": "flow",
+     "label": "$\\Pi$ 는 ①의 좌변",
+     "statement": "$\\Xi_N(t,u)$ 와 그 한계",
+     "fit": "score가 $\\partial_u\\log$ 꼴이라 골라낸 항이 anchor에서 $g_0S_0/A^{a_*}$ 를 낸다. 이 분모가 밀도의 anchor 인자를 지운다. 그래서 $\\Pi$ 가 정확히 \"anchor가 protected인 기대값\", 곧 ①의 좌변이다. anchor를 상쇄하는 이유가 여기 있다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e6",
+     "from": "XC",
+     "to": "T2",
+     "kind": "call",
+     "label": "1회",
+     "statement": "history 전개",
+     "substitution": "$u=0$, 모든 방향이 같음($D_j=g\\sigma_i$), $G=f\\,g_0^{a_*}S_0^{a_*}$. Taylor 계수라서 $1/k!$.",
+     "fit": "$G=f\\,g_0^{a_*}S_0^{a_*}$ 는 old tree의 함수이고 $t$ 에 무관하다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e7",
+     "from": "T2",
+     "to": "T3",
+     "kind": "flow",
+     "label": "모멘트의 유한 결합",
+     "statement": "Taylor 계수의 꼴",
+     "fit": "P5 (iii)이 수렴을 주는 것이 바로 이런 tree multioverlap 모멘트다. 이 꼴이 아니면 (iii)을 쓸 수 없다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e8",
+     "from": "XD",
+     "to": "T3",
+     "kind": "flow",
+     "label": "(iii)",
+     "statement": "모멘트 수렴",
+     "fit": "계수마다 극한이 존재한다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e9",
+     "from": "XE",
+     "to": "T3",
+     "kind": "call",
+     "label": "1회",
+     "statement": "균일 해석적 경계",
+     "substitution": "$A=1+tg\\sigma_i+ug_0S_0$, 변수 $(t,u)$.",
+     "fit": "경계가 kernel에 균일하므로 $N$ 에 균일하고, 계수별 수렴이 원판 위의 균일 수렴이 된다. $\\sup\\lvert\\partial_u\\Xi_N\\rvert\\le C$ 도 여기서 나온다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e10",
+     "from": "T3",
+     "to": "T4",
+     "kind": "flow",
+     "label": "$[t^k]\\Xi_N\\to0$",
+     "statement": "한 방향의 Taylor 계수 소거",
+     "fit": "섭동족의 삽입은 방향이 $g\\sigma_i$ 하나다. 제약을 고르려면 color마다 다른 $g_j$ 가 필요하다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e11",
+     "from": "P2",
+     "to": "T4",
+     "kind": "call",
+     "label": "1회",
+     "statement": "polarization",
+     "substitution": "동차식 = $g\\mapsto k!\\,[t^k]\\Xi_N$.",
+     "fit": "$g=k^{-1}\\sum_j\\epsilon_jg_j$ 가 유리수값이고 절댓값이 1 이하라 mark 족 안에 있다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e12",
+     "from": "XC",
+     "to": "T4",
+     "kind": "call",
+     "label": "1회",
+     "statement": "history 전개",
+     "substitution": "$D_j=g_j\\sigma_i$ (color마다 다른 방향), 혼합 미분.",
+     "fit": "혼합 미분은 ①의 순서 있는 규칙 그대로라 factorial이 붙지 않는다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e13",
+     "from": "T4",
+     "to": "T5",
+     "kind": "flow",
+     "label": "혼합 미분 → 0",
+     "statement": "color마다 $g_j$ 가 다른 식",
+     "fit": "$g_j$ 를 mark의 곱으로 잡을 수 있다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e14",
+     "from": "P3",
+     "to": "T5",
+     "kind": "call",
+     "label": "1회",
+     "statement": "mark selector",
+     "substitution": "$g_0,\\ldots,g_k$ = 제약 $\\mathcal C$ 에 맞춘 mark의 곱.",
+     "fit": "\"split 깊이가 $d$ 이상\"을 고르고 그 차로 \"정확히 $d$\"를 고른다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "p7-e15",
+     "from": "T5",
+     "to": "OUT",
+     "kind": "flow",
+     "label": "주 식",
+     "statement": "P7",
+     "fit": "history의 합이 제약 $\\mathcal C$ 를 지키는 것만 남는다.",
+     "status": "connected",
+     "complete": false
+    }
+   ],
+   "drafts": [
+    {
+     "node": "T2",
+     "note": "완결이 아닌 펼친 상자. 유도가 일곱 걸음이라 안이 다시 graph로 풀려야 한다. 형식은 자유이고 규격의 일부가 아니다. 여기서 드러난 것(found)이 이 graph를 고칠 때의 할 일이다.",
+     "payload": {
+      "map": "p7",
+      "label": "펼친 상자 보기 (완결 아님)",
+      "title": "단계 2 — Taylor 계수의 꼴",
+      "kind": "단계",
+      "source": "perturbations.tex 331–348(정의), 399–405(이 단계), 439–449($R_E$), 512(mark의 독립)",
+      "claim": "완결이 아니다. 유도가 일곱 걸음이라 그 안이 다시 node와 edge의 지도로 풀려야 하고, edge의 내용이 edge가 아니라 이 상자 안에 적혀 있다. 단순한 vertex의 예는 미분 규칙의 유도 › 첫 변분의 유도에 있다.",
+      "context": [
+       "깊이 $L$ 과 수 $0=m_0<\\cdots<m_L=1$ 고정. $N$ 은 선택된 수열의 한 크기. 이 상자의 진술은 그런 $N$ 마다 성립하고 극한은 쓰지 않는다.",
+       "old tree $\\mathcal T$, anchor $a_*$, 시험함수 $f$ 고정. $f$ 는 old replica들의 multioverlap의 유계 다항식이고 그 계수는 $N$ 과 삽입 매개변수에 무관하다.",
+       "mark specification 고정: mark의 함수 $g$, $g_0$ ($\\lvert g\\rvert,\\lvert g_0\\rvert\\le1$)와 anchor 종류 $S_0\\in\\{\\sigma_i,\\,1\\}$.",
+       "$\\mathbb E$ 는 삽입이 없는 reservoir의 기대값(root 평균과 tree 표본 포함)이고, 독립인 삽입 변수(새 균일 site $i$, mark 과정의 독립 사본)를 그 prior로 붙여 넓힌 것이다. 섭동 매개변수는 선택된 값에 고정.",
+       "대상: $E_{\\mathcal T}$ 는 root가 주어졌을 때 원래 kernel로 뽑는 tree 기대값, $E^A_{\\mathcal T}[\\,\\cdot\\,]=E_{\\mathcal T}[\\,\\cdot\\;W_{\\mathcal T}(A)]$ 는 삽입 $A$ 로 바뀐 kernel의 것. $R_U=\\frac1N\\sum_i\\prod_{a\\in U}\\sigma_i^a$."
+      ],
+      "inputs": [
+       {
+        "id": "I1",
+        "from": "단계 1 앞의 정의",
+        "type": "정의",
+        "stmt": "$A=1+tg\\sigma_i+ug_0S_0$ 에 대해 $$\\Pi_{N,\\mathcal T}(t,u)=\\mathbb E\\!\\left[f\\,\\frac{g_0^{a_*}S_0^{a_*}}{A^{a_*}}\\,W_{\\mathcal T}(A)\\right],\\qquad\\Xi_N(t,u)=\\Pi_{N,\\mathcal T}(t,u)-\\mathbb Ef\\;\\Pi_{N,\\{a_*\\}}(t,u).$$ $\\Pi_{N,\\{a_*\\}}$ 는 anchor 하나뿐인 tree에서 시험함수를 1로 둔 같은 식이다.",
+        "fit": "정의라서 조건이 없다. (원문 기호로 $\\Pi=J$, $\\Xi=H$.)",
+        "nottaken": "단계 1의 결과인 한계 $\\lvert\\Xi_N(t_\\nu,u_\\nu)\\rvert\\le\\lVert f\\rVert_\\infty e_{\\nu,N}$ 는 이 상자로 오지 않는다. 단계 3으로 간다.",
+        "src": "perturbations.tex 331–348"
+       },
+       {
+        "id": "I2",
+        "from": "P6′ ① history 전개",
+        "type": "호출",
+        "stmt": "임의의 유한 확률 kernel 열에서, root가 주어진 조건부로: $G$ 가 old tree 변수의 유계 함수이고 $\\boldsymbol t$ 에 무관하며 $D_1,\\ldots,D_k$ 가 유계 실수 path 함수이면, $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$ 에 대해 $$\\partial_{t_1}\\cdots\\partial_{t_k}\\,E^{A_{\\boldsymbol t}}_{\\mathcal T}\\!\\left[\\frac{G}{A_{\\boldsymbol t}^{a_*}}\\right]\\Bigg\\rvert_{\\boldsymbol t=0}=\\sum_{E}c_E\\;E_{\\mathcal T_E}\\!\\Bigl[G\\prod_{j=1}^kD_j^{a_j(E)}\\Bigr].$$ 우변은 유한 합이다. history $E$, 마지막 tree $\\mathcal T_E$, color $j$ 를 받은 leaf $a_j(E)$, 계수 $c_E$ 는 $(\\mathcal T,a_*,k)$ 와 수 $m$ 만으로 정해지고 kernel, $G$, $D_j$ 와 무관하다.",
+        "inst": "$G=f\\,g_0^{a_*}S_0^{a_*}$. 한 방향일 때 $D_j=g\\sigma_i$ (모든 $j$), 여러 방향일 때 $D_j=g_j\\sigma_i$.",
+        "fit": "$f$ 는 old replica의 함수이고 $g_0^{a_*}S_0^{a_*}$ 는 anchor path의 함수이며 둘 다 유계이고 $t$ 에 무관하다. $\\lvert g\\sigma_i\\rvert\\le1$.",
+        "nottaken": "history의 정의를 푸는 내용, 곧 $c_E$ 를 걸음마다의 $+1$ 과 $\\gamma_\\beta$ 의 곱으로 계산하는 방법은 오지 않는다. 이 상자는 $c_E$ 가 $N$ 과 무관한 수라는 것만 쓴다.",
+        "src": "trees.tex, lemma tree:extension-expansion"
+       },
+       {
+        "id": "I3",
+        "from": "P6′ ① 해석적 경계",
+        "type": "호출",
+        "stmt": "같은 조건에서 $\\boldsymbol t\\mapsto E^{A_{\\boldsymbol t}}_{\\mathcal T}[G/A_{\\boldsymbol t}^{a_*}]$ 는 복소 영역 $\\sum_j\\lvert t_j\\rvert\\lVert D_j\\rVert_\\infty<1$ 에서 해석적이고, 더 작은 닫힌 영역마다 그 절댓값의 한계가 kernel에 무관하다(고정한 $L$, 수 $m$, tree 크기, $\\lVert G\\rVert_\\infty$, $\\lVert D_j\\rVert_\\infty$ 에만 의존).",
+        "inst": "위와 같은 $G$, $D_j$.",
+        "fit": "root와 $i$ 가 달라지면 kernel이 달라질 뿐이므로, 한계가 root와 $i$ 에 균일하다.",
+        "nottaken": "$u$ 방향의 해석성과 $\\partial_u$ 의 한계는 오지 않는다. 단계 3이 쓴다.",
+        "src": "x:tree-analytic-bounds; perturbations.tex 391–394"
+       },
+       {
+        "id": "I4",
+        "from": "삽입이 새 변수를 써도 된다는 사실",
+        "type": "호출",
+        "stmt": "삽입 $A$ 가 원래 모형에 없던 변수의 함수여도 된다. 그 변수를 독립인 prior kernel로 path에 붙여 넓힌 kernel 열에 I2와 I3을 적용한다.",
+        "inst": "새 변수 = 새 site $i$ 에서의 spin과 mark 과정의 독립 사본.",
+        "fit": "문맥의 $\\mathbb E$ 가 바로 그렇게 넓힌 reservoir의 기대값이다.",
+        "nottaken": "없음.",
+        "src": "x:tree-extra-variables; perturbations.tex 335–337"
+       },
+       {
+        "id": "I5",
+        "from": "mark의 독립",
+        "type": "사실",
+        "stmt": "새 mark는 삽입 전 reservoir와 독립이고 site $i$ 와도 독립이다.",
+        "fit": "문맥의 넷째 줄이 정한 것이다.",
+        "nottaken": "없음.",
+        "src": "perturbations.tex 332, 512"
+       }
+      ],
+      "steps": [
+       {
+        "n": 1,
+        "text": "$u=0$ 으로 둔다. $A=1+tD$, $D=g\\sigma_i$. $G=f\\,g_0^{a_*}S_0^{a_*}$ 로 두면 $G$ 는 유계이고 $t$ 에 무관하다.",
+        "uses": "문맥, I4"
+       },
+       {
+        "n": 2,
+        "text": "밀도의 정의로 $\\Pi_{N,\\mathcal T}(t,0)=\\mathbb E\\,\\varphi(t)$, 여기서 $\\varphi(t)=E^{A}_{\\mathcal T}[G/A^{a_*}]$ 는 root와 $i$ 가 주어진 조건부 양이다.",
+        "uses": "I1, 문맥(대상)"
+       },
+       {
+        "n": 3,
+        "text": "방향이 모두 같으면 $A_{\\boldsymbol t}=1+(t_1+\\cdots+t_k)D$ 라서 I2의 좌변은 $\\varphi^{(k)}(0)$ 이다. 그러므로 $$\\varphi^{(k)}(0)=\\sum_Ec_E\\,E_{\\mathcal T_E}\\Bigl[G\\prod_{j=1}^kD^{a_j(E)}\\Bigr].$$",
+        "uses": "I2"
+       },
+       {
+        "n": 4,
+        "text": "$\\varphi$ 는 원판 $\\lvert t\\rvert<1$ 에서 해석적이고 한계가 root와 $i$ 에 균일하다. 그래서 $\\mathbb E\\varphi$ 도 해석적이고 Taylor 계수는 계수의 평균이다: $$[t^k]\\,\\Pi_{N,\\mathcal T}(t,0)=\\frac1{k!}\\,\\mathbb E\\,\\varphi^{(k)}(0)=\\frac1{k!}\\sum_Ec_E\\,\\mathbb E\\Bigl[f\\,g_0^{a_*}S_0^{a_*}\\prod_{j}(g\\sigma_i)^{a_j(E)}\\Bigr].$$",
+        "uses": "I3",
+        "flag": "평균과 미분의 교환을 I3으로 정당화한 것은 지도 작성자가 채운 것이다. 원문 399–405는 이 교환을 따로 말하지 않는다."
+       },
+       {
+        "n": 5,
+        "text": "인자를 셋으로 가른다: $f$, mark 인자 $g_0^{a_*}\\prod_jg^{a_j(E)}$, spin 인자 $S_0^{a_*}\\prod_j\\sigma_i^{a_j(E)}$. mark가 독립이므로 mark 평균이 따로 나온다. $\\mu_E=\\mathbb E_{\\rm marks}\\bigl[g_0^{a_*}\\prod_jg^{a_j(E)}\\bigr]$ 는 mark 법칙과 $\\mathcal T_E$ 의 모양만으로 정해지는 수다. $i$ 를 평균하면 spin 인자가 $$R_E=\\frac1N\\sum_iS_0^{a_*}\\prod_j\\sigma_i^{a_j(E)}$$ 가 된다(spin anchor이면 anchor 포함, marker anchor이면 제외).",
+        "uses": "I5, 문맥"
+       },
+       {
+        "n": 6,
+        "text": "그러므로 $$[t^k]\\,\\Pi_{N,\\mathcal T}(t,0)=\\frac1{k!}\\sum_{E}c_E\\,\\mu_E\\,\\mathbb E[f\\,R_E].$$ anchor 하나뿐인 tree와 시험함수 1에 같은 계산을 하면 $[t^k]\\,\\Pi_{N,\\{a_*\\}}(t,0)=\\frac1{k!}\\sum_{E'}c_{E'}\\,\\mu_{E'}\\,\\mathbb E[R_{E'}]$ 이다($E'$ 는 anchor 하나에서 시작하는 history).",
+        "uses": "1–5"
+       },
+       {
+        "n": 7,
+        "text": "방향을 $D_j=g_j\\sigma_i$ 로 달리해 3–6을 되풀이하면, 혼합 미분에 대해 같은 식이 $\\prod_jg^{a_j(E)}$ 자리에 $\\prod_jg_j^{a_j(E)}$ 를 넣은 꼴로 나온다. 좌변이 혼합 편미분이라 $(g_1,\\ldots,g_k)$ 에 대해 대칭이고, 우변이 각 $g_j$ 에 선형이다.",
+        "uses": "I2, I3, 3–6"
+       }
+      ],
+      "outputs": [
+       {
+        "id": "O1",
+        "to": "단계 3 — Taylor 계수 소거",
+        "stmt": "모든 $k\\ge0$ 에 대해 $$[t^k]\\,\\Xi_N(t,0)=\\frac1{k!}\\Bigl[\\sum_{E}c_E\\,\\mu_E\\,\\mathbb E[f\\,R_E]\\;-\\;\\mathbb Ef\\sum_{E'}c_{E'}\\,\\mu_{E'}\\,\\mathbb E[R_{E'}]\\Bigr].$$ 두 합은 유한하고, $c_E$ 와 $\\mu_E$ 는 $N$ 과 무관하다. $f$ 가 old replica의 multioverlap의 다항식이므로 $\\mathbb E[fR_E]$ 는 유한 prescribed tree $\\mathcal T_E$ 위 multioverlap 유한곱의 기대값들의 일차결합이다. 곧 각 Taylor 계수는 그런 모멘트와 그런 모멘트 둘의 곱의, $N$ 에 무관한 계수를 가진 유한 일차결합이다.",
+        "by": "1–6",
+        "src": "perturbations.tex 399–405"
+       },
+       {
+        "id": "O2",
+        "to": "단계 4 — 한 방향에서 여러 방향으로",
+        "stmt": "$Q_N(g)=k!\\,[t^k]\\,\\Xi_N(t,0)$ 를 $g$ 의 함수로 보면, 대칭 $k$-선형 형식 $$M_N(g_1,\\ldots,g_k)=\\sum_Ec_E\\,\\mathbb E\\Bigl[f\\,g_0^{a_*}S_0^{a_*}\\prod_jg_j^{a_j(E)}\\sigma_i^{a_j(E)}\\Bigr]-\\mathbb Ef\\cdot(\\text{anchor 하나 tree의 같은 식})$$ 의 대각이다: $Q_N(g)=M_N(g,\\ldots,g)$. $M_N$ 은 $A=1+\\sum_jz_jg_j\\sigma_i$ 를 삽입한 $\\Xi$ 의 혼합 미분 $\\partial_{z_1}\\cdots\\partial_{z_k}\\rvert_0$ 이고 factorial이 붙지 않는다.",
+        "by": "3, 4, 7",
+        "src": "perturbations.tex 477–481, 491–492"
+       }
+      ],
+      "symbols": [
+       [
+        "$\\Pi$, $\\Xi$",
+        "I1"
+       ],
+       [
+        "$c_E$, $\\mathcal T_E$, $a_j(E)$, history $E$",
+        "I2"
+       ],
+       [
+        "$E^A_{\\mathcal T}$, $E_{\\mathcal T}$, $W_{\\mathcal T}$, $R_U$",
+        "문맥(대상)"
+       ],
+       [
+        "$f$, $g$, $g_0$, $S_0$, $i$, $\\mathbb E$",
+        "문맥"
+       ],
+       [
+        "$\\varphi$, $G$, $D$, $\\mu_E$, $R_E$, $Q_N$, $M_N$",
+        "이 상자 안에서 정의"
+       ]
+      ],
+      "found": [
+       "지도에는 단계 1 → 단계 2 → 단계 3이 한 줄로 그려져 있지만, 단계 1의 한계는 단계 2를 거치지 않고 단계 3으로 간다. 단계 2가 단계 1에서 받는 것은 정의뿐이다. 정의는 따로 상자로 두는 것이 맞다.",
+       "단계 2 → 단계 4의 화살표(O2)가 지도에 없다. 지도는 단계 4가 history 전개를 다시 호출하는 것으로 그렸다.",
+       "단계 2는 해석적 경계(I3)와 \"새 변수를 써도 된다\"(I4)도 받는다. 지도에는 이 두 화살표가 없다.",
+       "유도 4의 평균과 미분의 교환은 원문과 현행 L2가 말로 적지 않은 걸음이다."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "diff",
+   "title": "미분 규칙의 유도",
+   "summary": "미분 규칙의 유도. D2 첫 변분과 D4 fresh path는 국소 완결했다. D1, D3 및 diff 전체는 아직 미완결이다.",
+   "parent": {
+    "graph": "top",
+    "node": "R1"
+   },
+   "contexts": [
+    {
+     "id": "FD",
+     "text": "$A_{\\boldsymbol t}=1+\\sum_jt_jD_j$ 가 균등하게 양인 실수 $\\boldsymbol t$ 근방. $G$ 는 유계이고 $\\boldsymbol t$ 에 무관.",
+     "nodes": [
+      "XO",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "S1",
+      "OUT"
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "XO",
+     "kind": "external",
+     "title": "대상: tree와 삽입",
+     "summary": "$W_{\\mathcal T}(A)$, $Y_d$ 재귀",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:density",
+       "tree:Y-recursion"
+      ],
+      "source": "L2 6.1",
+      "state": "proposed"
+     },
+     "external_ref": "O1",
+     "inherit_statement": true,
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "inputs": []
+    },
+    {
+     "id": "D1",
+     "kind": "step",
+     "title": "밀도의 로그를 미분",
+     "summary": "$\\partial_{t_j}\\log W=\\sum_aD_j^a/A^a+\\sum_\\beta\\gamma_\\beta\\,\\partial_{t_j}\\log Y_\\beta$",
+     "statement": "$$\\partial_{t_j}\\log W_{\\mathcal T}(A)=\\sum_{a\\in\\operatorname{Leaves}(\\mathcal T)}\\frac{D_j^a}{A^a}+\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}\\gamma_\\beta\\,\\partial_{t_j}\\log Y_\\beta .$$",
+     "inputs": [
+      "XO"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-differentiation-rule",
+       "tree:density"
+      ],
+      "source": "trees.tex 178–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 0
+     }
+    },
+    {
+     "id": "D2",
+     "kind": "fact",
+     "title": "첫 변분",
+     "summary": "$\\partial_{t_j}\\log Y_d=E^{A}[D_j/A\\mid\\mathscr F_d]$",
+     "inputs": [
+      "XO"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 142–154",
+      "state": "proposed"
+     },
+     "library": "$L=1$ 에서 $\\partial_t\\log\\langle A\\rangle=\\langle D\\rangle/\\langle A\\rangle$.",
+     "subgraph": "fv",
+     "layout": {
+      "col": 2,
+      "row": 0
+     },
+     "outputs": {
+      "kernel_form": {
+       "title": "첫 변분 — kernel 형태",
+       "statement": "각 깊이 $0\\le d\\le L$에 대해 $$\\partial_{t_j}\\log Y_d=K_{d+1}^{A_{\\boldsymbol t}}\\cdots K_L^{A_{\\boldsymbol t}}\\!\\left[\\frac{D_j}{A_{\\boldsymbol t}}\\right]=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$ $\\mathscr F_d$는 주어진 깊이 $d$의 prefix이고 오른쪽은 그 아래로 삽입 후 확률 kernel $K_{d+1}^{A_{\\boldsymbol t}},\\ldots,K_L^{A_{\\boldsymbol t}}$를 따라 새 path 하나를 뽑는 평균이다. $d=L$에서는 kernel의 빈 합성을 항등 연산으로 읽는다.",
+       "conditions": [
+        "유한 깊이 $L$과 확률 kernel 열, $0=m_0<\\cdots<m_L=1$을 고정한다. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$이고 $D_j$는 유계 실수 path 함수이며 kernel과 함께 매개변수에 무관하다.",
+        "$0<a\\le A_{\\boldsymbol t}\\le b$가 성립하는 실수 근방 안이다. root는 고정하며 $j$ 방향으로 미분한다."
+       ],
+       "grounding": {
+        "source": "trees.tex 142–154; 20–23, 67–82",
+        "state": "proposed"
+       },
+       "proof": {
+        "graph": "fv",
+        "node": "CP"
+       },
+       "proof_review": {
+        "output_fingerprint": "2698d3e771138f588913e0c1932f0af54fd26ce82b960b028a5d7f0420a97118",
+        "proof_fingerprint": "56fb13e49eb020e7b1bb00d08cfef29c5914e54c8492456880e59fc7d6a2f2c3",
+        "state": "proposed",
+        "note": "2026-11-14 edge 전용 변환 검토: 부모 입력 항목 선택, 각 수신 edge, 로컬 기호·지표 도입, TM 말단·PM 귀납·CP 합성 대응을 원문 trees.tex 20–23,67–82,107–110,142–154와 대조. 독립 감사/confirmed 아님."
+       }
+      }
+     },
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     },
+     "status": "complete",
+     "produces": [
+      {
+       "edge": "diff-e4",
+       "output": "kernel_form",
+       "by": "fv.CP 및 하위 cp.IDENT의 유한 하향 귀납·path 평균 식. kernel_form의 전체 진술과 조건을 그대로 전달한다."
+      }
+     ],
+     "note": "국소 완결: 정의 입력 diff-e9 → fv(TM, PM, CP 및 cp) → kernel_form → e4 → D4/FP_BIND. 출력·조건·입력·내부 증명 변경 후에는 검토 기록을 자동 갱신하지 않는다.",
+     "input_ports": {
+      "definitions": {
+       "edge": "diff-e9",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs"
+       },
+       "reviewed_fingerprint": "f308ca233cbcf382c8f5c42ead2f8989412f9184e47893d355b26ce837906fc1"
+      }
+     }
+    },
+    {
+     "id": "S1",
+     "kind": "fact",
+     "title": "tree 표본 규칙",
+     "summary": "자식들의 조건부 독립, leaf를 지워도 법칙이 일관",
+     "statement": "각 vertex에서 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑힌다. leaf 일부를 지워도 남은 tree의 법칙은 바뀌지 않는다. 삽입 후에도 각 $K_d^A$가 확률 kernel이므로 같은 규칙이 성립한다. 내부 vertex $\beta$의 prefix에서 새 path를 추가하면, old tree를 먼저 뽑고 그 prefix 아래로 새 path를 독립적으로 뽑는 적분 순서로 쓸 수 있다. old 가지의 공동 법칙은 유지한다.",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-sampling"
+      ],
+      "source": "trees.tex 20–39, 76–82, 196–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 3,
+      "row": 1
+     },
+     "inputs": []
+    },
+    {
+     "id": "D3",
+     "kind": "step",
+     "title": "leaf 항: 상쇄와 protected",
+     "summary": "$a\\in C$ 의 항은 분모의 미분과 상쇄. 남은 leaf는 $D_j^a/A^a$ 를 받고 protected가 된다",
+     "statement": "$\\partial(A^a)^{-1}=-(D_j^a/A^a)(A^a)^{-1}$ 이 $W$ 의 미분에서 나온 $+D_j^a/A^a$ 를 지운다. $a\\notin C$ 의 항은 $$F[\\mathcal T,\\,C\\cup\\{a\\},\\,GD_j^a]$$ 가 되고 계수는 $+1$.",
+     "inputs": [
+      "D1"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-differentiation-rule"
+      ],
+      "source": "trees.tex 178–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 1
+     }
+    },
+    {
+     "id": "D4",
+     "kind": "step",
+     "title": "내부 vertex 항: fresh path",
+     "summary": "$\\gamma_\\beta\\,\\partial\\log Y_\\beta$ = $\\beta$ 아래 새 path 하나, 계수 $\\gamma_\\beta$",
+     "statement": "$\\partial_{t_j}\\log Y_\\beta$ 를 tree 기대값 안에 넣으면 $\\beta$ 의 prefix에서 새 자식을 하나 더 뽑은 tree의 기대값이 된다: $$\\gamma_\\beta\\,F[\\mathcal T\\oplus\\beta,\\,C\\cup\\{x_\\beta\\},\\,GD_j^{x_\\beta}].$$ 새 tree에서 $n_\\beta$ 는 하나 늘지만 계수는 원래 tree의 $\\gamma_\\beta$ 다.",
+     "inputs": [
+      "D1",
+      "D2",
+      "S1",
+      "XO"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-differentiation-rule"
+      ],
+      "source": "trees.tex 178–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 1
+     },
+     "status": "complete",
+     "subgraph": "fresh",
+     "conditions": [
+      "유한 깊이 $L$과 tree $\\mathcal T$를 고정한다. $\\beta\\in\\operatorname{Int}(\\mathcal T)$, $d_\\beta<L$, old 자식 수 $n_\\beta$와 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$를 고정한다. $j$ 고정, $\\partial=\\partial_{t_j}$. $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방 안이며 root를 고정한다. $G,D_j$는 유계이고 매개변수에 무관하다. $x$는 $\\beta$ 아래에 추가하는 새 leaf 위치이며 old leaf와 구별한다(뽑힌 값은 같아도 됨). $\\mathcal T^+=\\mathcal T\\oplus\\beta$로 쓴다."
+     ],
+     "note": "국소 완결. 기대값 아래 미분 교환이나 leaf 항까지 포함하는 전체 미분 규칙은 이 vertex에서 증명하지 않는다. 기존 계수는 old tree에서 평가한다.",
+     "produces": [
+      {
+       "edge": "diff-e7",
+       "by": "하위 fresh graph의 FP_OUT 출력."
+      }
+     ],
+     "input_ports": {
+      "first_variation": {
+       "edge": "diff-e4",
+       "requires": {
+        "graph": "diff",
+        "node": "D2",
+        "output": "kernel_form"
+       },
+       "reviewed_fingerprint": "16c4ad3bfebf99a4321f41c8e581ac965dff6714276a24449ee84b68a608bce9"
+      }
+     }
+    },
+    {
+     "id": "OUT",
+     "kind": "output",
+     "title": "미분 규칙",
+     "summary": "$\\partial_{t_j}F[\\mathcal T,C,G]=\\sum_{a\\notin C}F[\\ldots]+\\sum_\\beta\\gamma_\\beta F[\\ldots]$",
+     "inputs": [
+      "D3",
+      "D4"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "x:tree-differentiation-rule"
+      ],
+      "source": "trees.tex 178–202",
+      "state": "proposed"
+     },
+     "inherit_statement": true,
+     "layout": {
+      "col": 1,
+      "row": 2
+     }
+    }
+   ],
+   "edges": [
+    {
+     "id": "diff-e1",
+     "from": "XO",
+     "to": "D1",
+     "kind": "definition",
+     "label": "$W$",
+     "statement": "밀도",
+     "fit": "$E^A_{\\mathcal T}[\\cdot]=E_{\\mathcal T}[\\cdot\\,W]$ 이므로 기대값의 미분은 $\\partial\\log W$ 를 곱한 것과 분모의 미분이다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "diff-e2",
+     "from": "D1",
+     "to": "D3",
+     "kind": "flow",
+     "label": "leaf 항",
+     "statement": "$\\sum_aD_j^a/A^a$",
+     "fit": "protected leaf의 분모 $(A^a)^{-1}$ 를 함께 미분하면 같은 항이 반대 부호로 나온다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "diff-e3",
+     "from": "D1",
+     "to": "D4",
+     "kind": "flow",
+     "label": "내부 vertex 항",
+     "statement": "로그 밀도의 내부 항은 $\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}\\gamma_\\beta\\partial\\log Y_\\beta$이다. $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$에서 $n_\\beta$는 미분 전 old tree의 자식 수이며 매개변수와 무관하다. $Y_\\beta$는 깊이 $d_\\beta$의 prefix에서 평가한다. 여기서는 이 항에 기존 적분 인자를 곱한 기여를 재표현한다.",
+     "status": "connected",
+     "complete": true,
+     "grounding": {
+      "source": "trees.tex 180–202"
+     },
+     "not_carried": "전체 기대값의 미분 교환과 leaf 항은 이 edge의 내용이 아니다."
+    },
+    {
+     "id": "diff-e4",
+     "from": "D2",
+     "to": "D4",
+     "kind": "call",
+     "label": "1회",
+     "status": "connected",
+     "complete": true,
+     "grounding": {
+      "source": "diff.D2.outputs.kernel_form; trees.tex 142–154"
+     },
+     "not_carried": "전체 기대값의 미분 교환과 leaf 항은 이 edge의 내용이 아니다.",
+     "output_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     },
+     "use_note": "받는 쪽 D4의 하위 graph FP_BIND가 $d=d_\\beta$와 해당 prefix를 대입한다."
+    },
+    {
+     "id": "diff-e5",
+     "from": "S1",
+     "to": "D4",
+     "kind": "call",
+     "label": "1회",
+     "statement": "각 vertex에서 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑힌다. leaf 일부를 지워도 남은 tree의 법칙은 바뀌지 않는다. 삽입 후에도 각 $K_d^A$가 확률 kernel이므로 같은 규칙이 성립한다. 내부 vertex $\beta$의 prefix에서 새 path를 추가하면, old tree를 먼저 뽑고 그 prefix 아래로 새 path를 독립적으로 뽑는 적분 순서로 쓸 수 있다. old 가지의 공동 법칙은 유지한다.",
+     "status": "connected",
+     "complete": true,
+     "grounding": {
+      "source": "trees.tex 180–202"
+     },
+     "not_carried": "전체 기대값의 미분 교환과 leaf 항은 이 edge의 내용이 아니다."
+    },
+    {
+     "id": "diff-e6",
+     "from": "D3",
+     "to": "OUT",
+     "kind": "flow",
+     "label": "$+1$ 항",
+     "statement": "안 쓴 leaf마다 한 항",
+     "fit": "넣은 $D_j^a$ 는 $G$ 에 흡수되고 $G$ 는 계속 $\\boldsymbol t$ 에 무관하다.",
+     "status": "connected",
+     "complete": false
+    },
+    {
+     "id": "diff-e7",
+     "from": "D4",
+     "to": "OUT",
+     "kind": "flow",
+     "label": "$\\gamma_\\beta$ 항",
+     "statement": "각 old 내부 vertex $\\beta$에서 $$\\gamma_\\beta E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\,\\partial\\log Y_\\beta\\right]=\\gamma_\\beta F[\\mathcal T\\oplus\\beta,C\\cup\\{x\\},GD_j^x].$$ 새 leaf $x$는 protected다. $G$는 old 변수 전부에 의존해도 되며, 계수 $\\gamma_\\beta$는 추가 전 tree의 값이다. 이 등식을 유한한 내부 vertex들에 대해 더할 수 있다.",
+     "status": "connected",
+     "complete": true,
+     "grounding": {
+      "source": "trees.tex 180–202"
+     },
+     "not_carried": "전체 기대값의 미분 교환과 leaf 항은 이 edge의 내용이 아니다."
+    },
+    {
+     "id": "diff-e8",
+     "from": "XO",
+     "to": "D4",
+     "kind": "definition",
+     "label": "대상과 protected F",
+     "summary": "$F[\\mathcal T,C,G]=E^A_{\\mathcal T}[G\\prod_{a\\in C}(A^a)^{-1}]$",
+     "statement": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 67–82, 180–183"
+     }
+    },
+    {
+     "id": "diff-e9",
+     "from": "XO",
+     "to": "D2",
+     "kind": "definition",
+     "label": "첫 변분의 정의 입력",
+     "summary": "Y 재귀·tilted kernel·path 평균·양의 경계",
+     "status": "connected",
+     "complete": true,
+     "grounding": {
+      "source": "trees.tex 20–23, 67–82, 107–110, 142–154"
+     },
+     "not_carried": "tree 밀도의 미분, protected 집합 및 F의 정의, 첫 변분의 결론은 싣지 않는다.",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fv",
+   "title": "첫 변분의 유도",
+   "summary": "context 없이 부모 입력 항목과 실제 edge만으로 첫 변분을 유도한다. 기호와 귀납 지표의 로컬 도입은 각 계산에 명시한다.",
+   "parent": {
+    "graph": "diff",
+    "node": "D2"
+   },
+   "nodes": [
+    {
+     "id": "X1",
+     "kind": "external",
+     "title": "삽입의 재귀 (정의)",
+     "summary": "$Y_L=A$, $Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:Y-recursion"
+      ],
+      "source": "trees.tex (tree:Y-recursion)",
+      "state": "proposed"
+     },
+     "external_ref": "XO",
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "inputs": [],
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "terminal",
+       "recursion"
+      ]
+     },
+     "import_edge": "diff-e9"
+    },
+    {
+     "id": "X2",
+     "kind": "external",
+     "title": "바뀐 kernel (정의)",
+     "summary": "$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]$",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:insertion"
+      ],
+      "source": "trees.tex (tree:updated-kernel)",
+      "state": "proposed"
+     },
+     "external_ref": "XO",
+     "layout": {
+      "col": 0,
+      "row": 1
+     },
+     "inputs": [],
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "import_edge": "diff-e9"
+    },
+    {
+     "id": "X3",
+     "kind": "external",
+     "title": "재귀의 단조성",
+     "summary": "$a\\le A\\le b\\Rightarrow a\\le Y_d\\le b$",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:insertion"
+      ],
+      "source": "trees.tex 107–110",
+      "state": "proposed"
+     },
+     "external_ref": "XO",
+     "layout": {
+      "col": 0,
+      "row": 2
+     },
+     "inputs": [],
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "bounds"
+      ]
+     },
+     "import_edge": "diff-e9"
+    },
+    {
+     "id": "X4",
+     "kind": "external",
+     "title": "조건부 기대값 (정의)",
+     "summary": "$E^A[h\\mid\\mathscr F_d]=K^A_{d+1}\\cdots K^A_L\\,h$",
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:insertion"
+      ],
+      "source": "trees.tex 147–151",
+      "state": "proposed"
+     },
+     "external_ref": "XO",
+     "layout": {
+      "col": 2,
+      "row": 0
+     },
+     "inputs": [],
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "path_mean"
+      ]
+     },
+     "import_edge": "diff-e9"
+    },
+    {
+     "id": "XSET",
+     "kind": "external",
+     "title": "공유 입력: 매개변수·삽입",
+     "summary": "부모 입력 e9의 항목 선택",
+     "external_ref": "XO",
+     "import_edge": "diff-e9",
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "inputs": [],
+     "layout": {
+      "col": 0,
+      "row": 3
+     },
+     "abstraction": "exact"
+    },
+    {
+     "id": "TM",
+     "kind": "step",
+     "title": "말단",
+     "summary": "$Y_L=A$ 를 미분한다",
+     "statement": "$\\partial\\log Y_L=D_j/A$, 그리고 $\\lvert\\partial\\log Y_L\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a}$.",
+     "inputs": [
+      "X1",
+      "XSET"
+     ],
+     "abstraction": "exact",
+     "status": "complete",
+     "grounding": {
+      "cards": [
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 153–154",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 0
+     },
+     "floor_used": [
+      "유한합의 미분",
+      "양의 함수의 로그 미분",
+      "절댓값의 기본 부등식"
+     ],
+     "derivation": [
+      {
+       "expr": "$$\\partial Y_L=\\partial A_{\\boldsymbol t}=D_j.$$",
+       "by": "f1과 g1 입력. 각 D는 매개변수에 무관하므로 유한합을 미분한다.",
+       "uses": [
+        "edge:f1",
+        "edge:g1",
+        "floor:1",
+        "intro:1"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "A",
+        "D"
+       ]
+      },
+      {
+       "expr": "$$\\partial\\log Y_L=\\frac{\\partial Y_L}{Y_L}=\\frac{D_j}{A_{\\boldsymbol t}}.$$",
+       "by": "식 1, f1, g1 입력의 A≥a>0 및 로그 미분(바닥).",
+       "uses": [
+        "line:1",
+        "edge:f1",
+        "edge:g1",
+        "floor:2",
+        "intro:1"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "D",
+        "A"
+       ]
+      },
+      {
+       "expr": "$$|\\partial\\log Y_L|\\le\\frac{\\lVert D_j\\rVert_\\infty}{a}.$$",
+       "by": "식 2와 g1 입력의 A≥a>0 및 D_j의 유계성. 도함수는 U에서 존재한다.",
+       "uses": [
+        "line:2",
+        "edge:g1",
+        "floor:3",
+        "intro:1"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "D",
+        "a"
+       ]
+      }
+     ],
+     "produces": [
+      {
+       "edge": "e4L",
+       "by": "식 1–3: 미분 가능성과 균일 경계.",
+       "lines": [
+        1,
+        2,
+        3
+       ],
+       "generalizes": []
+      },
+      {
+       "edge": "f2",
+       "by": "식 2: 말단 항등식.",
+       "lines": [
+        2
+       ],
+       "generalizes": []
+      }
+     ],
+     "review": {
+      "checks": [],
+      "open": []
+     },
+     "reference_check": true,
+     "outputs": {
+      "terminal_derivative": {
+       "title": "terminal_derivative",
+       "statement": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+       "conditions": [],
+       "defines": [
+        "Y"
+       ],
+       "bindings": {
+        "Y": "fv.input.Y"
+       },
+       "grounding": {
+        "source": "trees.tex 142–154의 말단·한 칸 미분",
+        "state": "proposed"
+       },
+       "proof": {
+        "graph": "fv",
+        "node": "TM"
+       },
+       "proof_review": {
+        "output_fingerprint": "33170e0ffdf0d66f856cd99c93f3b590ab41745fc6dad71a63770e3b18556920",
+        "proof_fingerprint": "889615908f58c1d5eb95c40b683092a835f24d3f18f6b681c89058391217050c",
+        "state": "proposed",
+        "note": "2026-11-14 edge 전용 변환 검토: 부모 입력 항목 선택, 각 수신 edge, 로컬 기호·지표 도입, TM 말단·PM 귀납·CP 합성 대응을 원문 trees.tex 20–23,67–82,107–110,142–154와 대조. 독립 감사/confirmed 아님."
+       }
+      }
+     },
+     "introductions": [
+      {
+       "id": "partial",
+       "kind": "notation",
+       "symbol": "partial",
+       "expr": "\\partial:=\\partial_{t_j}",
+       "uses_symbols": [
+        "j"
+       ],
+       "scope": "fv.TM.partial"
+      }
+     ],
+     "input_ports": {
+      "f1": {
+       "edge": "f1",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "terminal"
+        ]
+       },
+       "reviewed_fingerprint": "dc5e8ac88d82dd42a0ae204151573f5056f86ca5a734d38866545b30eab3c8a7"
+      },
+      "g1": {
+       "edge": "g1",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      }
+     },
+     "requires_bindings": {
+      "Y": "fv.input.Y",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k"
+     }
+    },
+    {
+     "id": "PM",
+     "kind": "step",
+     "title": "power mean 하나를 미분",
+     "summary": "깊이를 한 칸 내린다: $d\\to d-1$",
+     "statement": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, 그리고 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a}$.",
+     "inputs": [
+      "X1",
+      "X2",
+      "X3",
+      "TM",
+      "PM",
+      "XSET"
+     ],
+     "abstraction": "exact",
+     "status": "complete",
+     "grounding": {
+      "cards": [
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 107–110(단조성), 142–154(첫 변분)",
+      "state": "proposed"
+     },
+     "note": "첫 변분 상자 안의 한 vertex. 깊이를 한 칸 내리는 걸음이다.",
+     "floor_used": [
+      "연쇄 법칙",
+      "적분 기호 아래의 미분: 피적분함수의 도함수가 $U$ 에서 균일하게 유계이면 미분과 확률 적분을 바꿀 수 있다"
+     ],
+     "derivation": [
+      {
+       "expr": "$$\\log Y_{d-1}=\\frac1{m_d}\\log K_d\\bigl[Y_d^{m_d}\\bigr]$$",
+       "by": "e1. $d\\ge1$ 이라 $m_d>0$, e3으로 $Y_d\\ge a>0$.",
+       "uses": [
+        "edge:e1",
+        "edge:e3",
+        "edge:g2",
+        "floor:1",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "Y",
+        "m",
+        "K",
+        "d",
+        "a"
+       ]
+      },
+      {
+       "expr": "$$\\partial\\log Y_{d-1}=\\frac1{m_d}\\,\\frac{K_d\\bigl[\\partial\\,(Y_d^{m_d})\\bigr]}{K_d\\bigl[Y_d^{m_d}\\bigr]}$$",
+       "by": "연쇄 법칙과 적분 기호 아래의 미분. 균일 유계: $\\lvert\\partial(Y_d^{m_d})\\rvert=m_dY_d^{m_d}\\lvert\\partial\\log Y_d\\rvert\\le m_d\\,b^{m_d}\\frac{\\lVert D_j\\rVert_\\infty}{a}$ (e3, e4; $d=L$ 이면 e4 대신 e4′).",
+       "author_filled": "균일 유계를 확인하는 부분은 지도 작성자가 채운 것이다. 원문은 \"$A_{\\boldsymbol t}$ 가 균등하게 양인 실수 근방에서 미분하면\"이라고만 적는다.",
+       "uses": [
+        "line:1",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "edge:g2",
+        "floor:1",
+        "floor:2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "m",
+        "K",
+        "U",
+        "b",
+        "D",
+        "a"
+       ]
+      },
+      {
+       "expr": "$$=\\frac{K_d\\bigl[Y_d^{m_d}\\,\\partial\\log Y_d\\bigr]}{Y_{d-1}^{m_d}}$$",
+       "by": "$\\partial(Y^{m})=mY^{m}\\,\\partial\\log Y$. 분모는 e1.",
+       "uses": [
+        "line:2",
+        "edge:e1",
+        "floor:1",
+        "edge:g2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "K",
+        "Y",
+        "m",
+        "partial"
+       ]
+      },
+      {
+       "expr": "$$=K_d\\Bigl[\\Bigl(\\frac{Y_d}{Y_{d-1}}\\Bigr)^{m_d}\\partial\\log Y_d\\Bigr]$$",
+       "by": "$Y_{d-1}$ 은 깊이 $d$ 의 변수에 의존하지 않는다(e1).",
+       "uses": [
+        "line:3",
+        "edge:e1",
+        "edge:g2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "K",
+        "Y",
+        "m",
+        "partial"
+       ]
+      },
+      {
+       "expr": "$$=K_d^{A}\\bigl[\\partial\\log Y_d\\bigr]$$",
+       "by": "e2. h는 d=L이면 e4L(e4′), d<L이면 e4의 귀납 가정으로 유계.",
+       "uses": [
+        "line:4",
+        "edge:e2",
+        "edge:e4",
+        "edge:e4L",
+        "edge:g2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "K_A",
+        "partial",
+        "Y"
+       ]
+      },
+      {
+       "expr": "$$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a}$$",
+       "by": "$K_d^A[1]=K_d[Y_d^{m_d}]/Y_{d-1}^{m_d}=1$ (e1, e2)이고 가중치가 양수(e3)이므로 확률 kernel이다. d=L에서는 e4L(e4′), 그 뒤에는 e4로 받은 한계 \\frac{\\lVert D_j\\rVert_\\infty}{a}가 평균에서 유지된다.",
+       "uses": [
+        "line:5",
+        "edge:e1",
+        "edge:e2",
+        "edge:e3",
+        "edge:e4",
+        "edge:e4L",
+        "edge:g2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "K_A",
+        "K",
+        "m",
+        "D",
+        "a"
+       ]
+      }
+     ],
+     "produces": [
+      {
+       "edge": "o1",
+       "by": "식 1–5",
+       "lines": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "generalizes": [
+        "fv.PM.d"
+       ]
+      },
+      {
+       "edge": "e4",
+       "by": "식 2, 6",
+       "lines": [
+        2,
+        6
+       ],
+       "generalizes": []
+      }
+     ],
+     "review": {
+      "checks": [],
+      "open": []
+     },
+     "layout": {
+      "col": 1,
+      "row": 1
+     },
+     "reference_check": true,
+     "outputs": {
+      "one_step": {
+       "title": "one_step",
+       "statement": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+       "conditions": [],
+       "defines": [
+        "Y",
+        "K_A"
+       ],
+       "bindings": {
+        "Y": "fv.input.Y",
+        "K_A": "fv.input.K_A"
+       },
+       "grounding": {
+        "source": "trees.tex 142–154의 말단·한 칸 미분",
+        "state": "proposed"
+       },
+       "proof": {
+        "graph": "fv",
+        "node": "PM"
+       },
+       "proof_review": {
+        "output_fingerprint": "b9436290ee99ca94f399b971d006dcc2065d1acee7dfe752c29fbb531594cf62",
+        "proof_fingerprint": "889615908f58c1d5eb95c40b683092a835f24d3f18f6b681c89058391217050c",
+        "state": "proposed",
+        "note": "2026-11-14 edge 전용 변환 검토: 부모 입력 항목 선택, 각 수신 edge, 로컬 기호·지표 도입, TM 말단·PM 귀납·CP 합성 대응을 원문 trees.tex 20–23,67–82,107–110,142–154와 대조. 독립 감사/confirmed 아님."
+       }
+      }
+     },
+     "introductions": [
+      {
+       "id": "partial",
+       "kind": "notation",
+       "symbol": "partial",
+       "expr": "\\partial:=\\partial_{t_j}",
+       "uses_symbols": [
+        "j"
+       ],
+       "scope": "fv.PM.partial"
+      },
+      {
+       "id": "d",
+       "kind": "arbitrary_index",
+       "symbol": "d",
+       "domain": {
+        "lower": 1,
+        "upper_symbol": "L"
+       },
+       "uses_symbols": [
+        "L"
+       ],
+       "scope": "fv.PM.d"
+      }
+     ],
+     "input_ports": {
+      "e1": {
+       "edge": "e1",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "recursion"
+        ]
+       },
+       "reviewed_fingerprint": "241db8471f7d243944d330a52791be0e48f4b0bb367c8227048c0f29419c639a"
+      },
+      "e2": {
+       "edge": "e2",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "kernel"
+        ]
+       },
+       "reviewed_fingerprint": "6bdea03581c9712f7fd7a419e29d03de3c13e410f5a64bfbacf27cd3e94317f8"
+      },
+      "e3": {
+       "edge": "e3",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "bounds"
+        ]
+       },
+       "reviewed_fingerprint": "629f6b6c170c570999ca516d6379afa774fe8cd86c23b49b0493479c291edde9"
+      },
+      "g2": {
+       "edge": "g2",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      }
+     },
+     "requires_bindings": {
+      "Y": "fv.input.Y",
+      "K_A": "fv.input.K_A",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k"
+     }
+    },
+    {
+     "id": "CP",
+     "kind": "step",
+     "title": "걸음을 이어 붙이기",
+     "summary": "깊이 $L$ 에서 $d$ 까지 $K^A$ 를 차례로 건다",
+     "inputs": [
+      "PM",
+      "TM",
+      "X4",
+      "XSET",
+      "X2"
+     ],
+     "abstraction": "exact",
+     "status": "complete",
+     "grounding": {
+      "cards": [
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 145–154",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 1
+     },
+     "subgraph": "cp",
+     "note": "유한한 여러 깊이의 대입은 원자 계산으로 숨기지 않고 하위 graph cp의 귀납으로 펼친다.",
+     "produces": [
+      {
+       "edge": "f4",
+       "by": "하위 graph cp의 END 출력."
+      }
+     ],
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     },
+     "input_ports": {
+      "o1": {
+       "edge": "o1",
+       "requires": {
+        "graph": "fv",
+        "node": "PM",
+        "output": "one_step"
+       },
+       "reviewed_fingerprint": "829b0f5f796ba8eca2e12d06ee5a51261a338edea1efc8c435e0588abbb4caf1"
+      },
+      "f2": {
+       "edge": "f2",
+       "requires": {
+        "graph": "fv",
+        "node": "TM",
+        "output": "terminal_derivative"
+       },
+       "reviewed_fingerprint": "d2649c8fb68bc943b745277b5dc9817a496470cd42b7136ce9fd15ce5a019e3f"
+      },
+      "f3": {
+       "edge": "f3",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "path_mean"
+        ]
+       },
+       "reviewed_fingerprint": "ef167fee16a00c4efce5bc99142adc283fd6e9c0900db27c18169805a4bbf098"
+      },
+      "g3": {
+       "edge": "g3",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      },
+      "k3": {
+       "edge": "k3",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "kernel"
+        ]
+       },
+       "reviewed_fingerprint": "6bdea03581c9712f7fd7a419e29d03de3c13e410f5a64bfbacf27cd3e94317f8"
+      }
+     },
+     "requires_bindings": {
+      "Y": "fv.input.Y",
+      "K_A": "fv.input.K_A",
+      "E_A": "fv.input.E_A",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k"
+     }
+    },
+    {
+     "id": "OUT",
+     "kind": "output",
+     "title": "첫 변분",
+     "summary": "$\\partial_{t_j}\\log Y_d=E^{A}[D_j/A\\mid\\mathscr F_d]$",
+     "inputs": [
+      "CP"
+     ],
+     "abstraction": "exact",
+     "grounding": {
+      "cards": [
+       "tree:first-variation"
+      ],
+      "source": "trees.tex 142–154",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 2
+     },
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     },
+     "input_ports": {
+      "kernel_form": {
+       "edge": "f4",
+       "requires": {
+        "graph": "diff",
+        "node": "D2",
+        "output": "kernel_form"
+       },
+       "reviewed_fingerprint": "16c4ad3bfebf99a4321f41c8e581ac965dff6714276a24449ee84b68a608bce9"
+      }
+     }
+    }
+   ],
+   "edges": [
+    {
+     "id": "e1",
+     "from": "X1",
+     "to": "PM",
+     "kind": "definition",
+     "summary": "$Y_{d-1}=(K_dY_d^{m_d})^{1/m_d}$",
+     "not_carried": "말단 조건 $Y_L=A$ 는 이 edge로 오지 않는다. 말단 node로 간다(f1).",
+     "grounding": {
+      "source": "trees.tex (tree:Y-recursion)"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "defines": [
+      "Y"
+     ],
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "recursion"
+      ]
+     }
+    },
+    {
+     "id": "e2",
+     "from": "X2",
+     "to": "PM",
+     "kind": "definition",
+     "summary": "$K_d^A[h]=K_d[(Y_d/Y_{d-1})^{m_d}h]$",
+     "not_carried": "없음.",
+     "grounding": {
+      "source": "trees.tex (tree:updated-kernel)"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "defines": [
+      "K_A"
+     ],
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     }
+    },
+    {
+     "id": "e3",
+     "from": "X3",
+     "to": "PM",
+     "kind": "call",
+     "summary": "$a\\le Y_d\\le b$",
+     "not_carried": "재귀의 동차성(같은 문장의 뒷부분)은 오지 않는다.",
+     "grounding": {
+      "source": "trees.tex 107–110"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "bounds"
+      ]
+     }
+    },
+    {
+     "id": "e4L",
+     "from": "TM",
+     "to": "PM",
+     "kind": "flow",
+     "label": "e4′",
+     "summary": "$d=L$ 일 때: $Y_L$ 미분 가능, $\\lvert\\partial\\log Y_L\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a}$",
+     "statement": "$Y_L$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_L\\bigr\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a} .$$ power mean을 처음 미분할 때($d=L$)의 귀납 가정이다.",
+     "not_carried": "말단의 항등식 $\\partial\\log Y_L=D_j/A$ 는 이 edge로 오지 않는다. 이어 붙이기로 간다(f2).",
+     "grounding": {
+      "source": "$Y_L=A$, $\\partial\\log A=D_j/A$, $A\\ge a$."
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true
+    },
+    {
+     "id": "e4",
+     "from": "PM",
+     "to": "PM",
+     "kind": "flow",
+     "label": "e4 = o2",
+     "summary": "$Y_{d-1}$ 미분 가능, $\\lvert\\partial\\log Y_{d-1}\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a}$ → 다음 걸음의 귀납 가정",
+     "statement": "$Y_{d-1}$ 은 $U$ 에서 $t_j$ 로 미분 가능하고 $$\\bigl\\lvert\\partial\\log Y_{d-1}\\bigr\\rvert\\le \\frac{\\lVert D_j\\rVert_\\infty}{a} .$$ 깊이 $d$ 의 걸음이 내보내고(o2), 깊이 $d-1$ 의 걸음이 귀납 가정으로 받는다(e4). 같은 edge다.",
+     "not_carried": "항등식 $\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$ 는 이 edge로 가지 않는다. o1로 간다.",
+     "grounding": {
+      "source": "귀납. 작성자가 세운 가정이고 원문은 따로 적지 않는다."
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "loop": {
+      "index": "d",
+      "step": "d → d−1",
+      "note": "깊이에 대한 귀납. 깊이가 한 칸씩 줄어 1에서 끝난다.",
+      "index_scope": "fv.PM.d"
+     }
+    },
+    {
+     "id": "o1",
+     "from": "PM",
+     "to": "CP",
+     "kind": "flow",
+     "summary": "$\\partial\\log Y_{d-1}=K_d^A[\\partial\\log Y_d]$, $d=1,\\ldots,L$",
+     "not_carried": "한계 $\\lvert\\partial\\log Y_{d-1}\\rvert\\le c$ 는 이 edge로 가지 않는다.",
+     "grounding": {
+      "source": "trees.tex 151–154"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "output_ref": {
+      "graph": "fv",
+      "node": "PM",
+      "output": "one_step"
+     }
+    },
+    {
+     "id": "f1",
+     "from": "X1",
+     "to": "TM",
+     "kind": "definition",
+     "summary": "$Y_L=A$",
+     "not_carried": "재귀식은 오지 않는다.",
+     "grounding": {
+      "source": "trees.tex (tree:Y-recursion)"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "defines": [
+      "Y"
+     ],
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "terminal"
+      ]
+     }
+    },
+    {
+     "id": "f2",
+     "from": "TM",
+     "to": "CP",
+     "kind": "flow",
+     "summary": "$\\partial\\log Y_L=D_j/A$",
+     "not_carried": "한계는 오지 않는다.",
+     "grounding": {
+      "source": "trees.tex 153–154"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "output_ref": {
+      "graph": "fv",
+      "node": "TM",
+      "output": "terminal_derivative"
+     }
+    },
+    {
+     "id": "f3",
+     "from": "X4",
+     "to": "CP",
+     "kind": "definition",
+     "summary": "$E^A[h\\mid\\mathscr F_d]=K^A_{d+1}\\cdots K^A_L\\,h$",
+     "not_carried": "없음.",
+     "grounding": {
+      "source": "trees.tex 147–151"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "defines": [
+      "E_A"
+     ],
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "path_mean"
+      ]
+     }
+    },
+    {
+     "id": "f4",
+     "from": "CP",
+     "to": "OUT",
+     "kind": "flow",
+     "summary": "$\\partial\\log Y_d=E^A[D_j/A\\mid\\mathscr F_d]$",
+     "not_carried": "없음.",
+     "grounding": {
+      "source": "trees.tex (tree:first-variation)"
+     },
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "output_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     }
+    },
+    {
+     "id": "g1",
+     "from": "XSET",
+     "to": "TM",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "g2",
+     "from": "XSET",
+     "to": "PM",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "g3",
+     "from": "XSET",
+     "to": "CP",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "k3",
+     "from": "X2",
+     "to": "CP",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "원래 X2 kernel 정의를 별도 전달"
+     }
+    }
+   ],
+   "drafts": [
+    {
+     "node": "CP",
+     "completion_record": {
+      "date": "2026-11-14",
+      "pass_criteria": "fv 안쪽 vertex의 sketch/open 0, 하위 cp의 안쪽 vertex complete, check.py 오류·경고 0.",
+      "scope": "TM/CP 완결, 상위 O1에 원문 단조성 명시, PM의 말단/귀납 입력과 edge 이름 보정. confirmed 변경 없음.",
+      "remaining": "PM의 원자성 및 바닥 선택은 사용자 설계 판정 전. 독립 수학 감사 미실시. 상위 diff/p7/top는 미완결.",
+      "validation": "check.py: 오류 0, 경고 0. 2단 비균등 유한 kernel의 깊이별 첫 변분 7개를 중심차분으로 대조: 최대 오차 1.93e-10 (h=1e-6). 이는 예제 검산이며 일반 증명의 대체가 아니다."
+     }
+    }
+   ],
+   "premise_mode": "edges_only"
+  },
+  {
+   "id": "cp",
+   "title": "유한 깊이의 이어 붙이기",
+   "summary": "context 없이 부모 CP의 입력 edge에서 항목을 선택해 받아 유한 하향 귀납과 path 평균 대입을 수행한다.",
+   "parent": {
+    "graph": "fv",
+    "node": "CP"
+   },
+   "nodes": [
+    {
+     "id": "XR",
+     "title": "각 깊이의 한 칸 항등식",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "external_ref": "PM",
+     "inputs": [],
+     "statement_ref": {
+      "graph": "fv",
+      "node": "PM",
+      "output": "one_step"
+     },
+     "import_edge": "o1"
+    },
+    {
+     "id": "XT",
+     "title": "말단 항등식",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 1
+     },
+     "external_ref": "TM",
+     "inputs": [],
+     "statement_ref": {
+      "graph": "fv",
+      "node": "TM",
+      "output": "terminal_derivative"
+     },
+     "import_edge": "f2"
+    },
+    {
+     "id": "XE",
+     "title": "조건부 기대값의 정의",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 2
+     },
+     "external_ref": "X4",
+     "inputs": [],
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "path_mean"
+      ]
+     },
+     "import_edge": "f3"
+    },
+    {
+     "id": "XS",
+     "kind": "external",
+     "title": "공유 입력: 부모 CP가 받은 설정",
+     "summary": "g3에서 항목 선택",
+     "external_ref": "XSET",
+     "import_edge": "g3",
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "inputs": [],
+     "abstraction": "exact",
+     "layout": {
+      "col": 0,
+      "row": 3
+     }
+    },
+    {
+     "id": "XK",
+     "kind": "external",
+     "title": "바뀐 kernel 정의",
+     "summary": "부모 k3에서 kernel 항목만 받음",
+     "external_ref": "X2",
+     "import_edge": "k3",
+     "statement_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "inputs": [],
+     "abstraction": "exact",
+     "layout": {
+      "col": 0,
+      "row": 4
+     }
+    },
+    {
+     "id": "BASE",
+     "title": "깊이 L에서 시작",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 0
+     },
+     "status": "complete",
+     "inputs": [
+      "XT",
+      "XS",
+      "XK"
+     ],
+     "statement": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+     "floor_used": [
+      "빈 합성은 항등 연산"
+     ],
+     "derivation": [
+      {
+       "expr": "$$\\partial\\log Y_L=D_j/A=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+       "by": "b0와 floor:1의 빈 합성 규약. p0 입력이 지표와 kernel 가족을 공급한다.",
+       "uses": [
+        "edge:b0",
+        "edge:p0",
+        "floor:1",
+        "intro:1",
+        "edge:k0"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "D",
+        "A",
+        "K_A",
+        "L"
+       ]
+      }
+     ],
+     "produces": [
+      {
+       "edge": "b1",
+       "by": "식 1.",
+       "lines": [
+        1
+       ],
+       "generalizes": []
+      }
+     ],
+     "reference_check": true,
+     "review": {
+      "checks": [],
+      "open": []
+     },
+     "introductions": [
+      {
+       "id": "partial",
+       "kind": "notation",
+       "symbol": "partial",
+       "expr": "\\partial:=\\partial_{t_j}",
+       "uses_symbols": [
+        "j"
+       ],
+       "scope": "cp.BASE.partial"
+      }
+     ],
+     "input_ports": {
+      "b0": {
+       "edge": "b0",
+       "requires": {
+        "graph": "fv",
+        "node": "TM",
+        "output": "terminal_derivative"
+       },
+       "reviewed_fingerprint": "d2649c8fb68bc943b745277b5dc9817a496470cd42b7136ce9fd15ce5a019e3f"
+      },
+      "p0": {
+       "edge": "p0",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      },
+      "k0": {
+       "edge": "k0",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "kernel"
+        ]
+       },
+       "reviewed_fingerprint": "6bdea03581c9712f7fd7a419e29d03de3c13e410f5a64bfbacf27cd3e94317f8"
+      }
+     },
+     "requires_bindings": {
+      "Y": "fv.input.Y",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k",
+      "K_A": "fv.input.K_A"
+     }
+    },
+    {
+     "id": "JOIN",
+     "title": "한 칸 대입",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 1
+     },
+     "status": "complete",
+     "inputs": [
+      "XR",
+      "BASE",
+      "JOIN",
+      "XS",
+      "XK"
+     ],
+     "statement": "모든 $r=L,\\ldots,0$ 에서 $\\partial\\log Y_r=K_{r+1}^A\\cdots K_L^A[D_j/A]$.",
+     "floor_used": [
+      "등식의 대입",
+      "연산자 합성의 결합 법칙",
+      "유한한 하향 귀납"
+     ],
+     "derivation": [
+      {
+       "expr": "$$\\partial\\log Y_{r-1}=K_r^A[\\partial\\log Y_r].$$",
+       "by": "s0에서 d=r로 쓴다.",
+       "uses": [
+        "edge:s0",
+        "edge:p1",
+        "floor:1",
+        "intro:1",
+        "intro:2",
+        "intro:3"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "K_A",
+        "r"
+       ]
+      },
+      {
+       "expr": "$$=K_r^A\\bigl[K_{r+1}^A\\cdots K_L^A[D_j/A]\\bigr]=K_r^A\\cdots K_L^A[D_j/A].$$",
+       "by": "b1 (r=L) 또는 b2 (r<L)로 받은 등식을 식 1에 대입하고 합성의 결합 법칙을 쓴다. 매개변수 미분을 추가로 하지 않는다.",
+       "uses": [
+        "line:1",
+        "edge:b1",
+        "edge:b2",
+        "edge:p1",
+        "floor:1",
+        "floor:2",
+        "intro:1",
+        "intro:2",
+        "intro:3"
+       ],
+       "uses_symbols": [
+        "K_A",
+        "D",
+        "A",
+        "L",
+        "r"
+       ]
+      },
+      {
+       "expr": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad 0\\le d\\le L.$$",
+       "by": "b1의 말단 d=L과 식 1–2를 r=L,…,1에 적용한 유한 하향 귀납. s0, b1, b2만 사용한다.",
+       "uses": [
+        "line:1",
+        "line:2",
+        "edge:b1",
+        "edge:b2",
+        "edge:s0",
+        "edge:p1",
+        "floor:3",
+        "intro:1",
+        "intro:2",
+        "intro:3",
+        "edge:k1"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "d",
+        "K_A",
+        "L",
+        "D",
+        "A"
+       ]
+      }
+     ],
+     "produces": [
+      {
+       "edge": "b2",
+       "by": "식 2: 다음 깊이에 넘길 항등식.",
+       "lines": [
+        2
+       ],
+       "generalizes": []
+      },
+      {
+       "edge": "s1",
+       "by": "식 3: 말단을 포함한 모든 깊이.",
+       "lines": [
+        3
+       ],
+       "generalizes": [
+        "cp.JOIN.r",
+        "cp.JOIN.d"
+       ]
+      }
+     ],
+     "reference_check": true,
+     "review": {
+      "checks": [],
+      "open": []
+     },
+     "introductions": [
+      {
+       "id": "partial",
+       "kind": "notation",
+       "symbol": "partial",
+       "expr": "\\partial:=\\partial_{t_j}",
+       "uses_symbols": [
+        "j"
+       ],
+       "scope": "cp.JOIN.partial"
+      },
+      {
+       "id": "r",
+       "kind": "arbitrary_index",
+       "symbol": "r",
+       "domain": {
+        "lower": 1,
+        "upper_symbol": "L"
+       },
+       "uses_symbols": [
+        "L"
+       ],
+       "scope": "cp.JOIN.r"
+      },
+      {
+       "id": "d",
+       "kind": "arbitrary_index",
+       "symbol": "d",
+       "domain": {
+        "lower": 0,
+        "upper_symbol": "L"
+       },
+       "uses_symbols": [
+        "L"
+       ],
+       "scope": "cp.JOIN.d"
+      }
+     ],
+     "input_ports": {
+      "s0": {
+       "edge": "s0",
+       "requires": {
+        "graph": "fv",
+        "node": "PM",
+        "output": "one_step"
+       },
+       "reviewed_fingerprint": "829b0f5f796ba8eca2e12d06ee5a51261a338edea1efc8c435e0588abbb4caf1"
+      },
+      "p1": {
+       "edge": "p1",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      },
+      "k1": {
+       "edge": "k1",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "kernel"
+        ]
+       },
+       "reviewed_fingerprint": "6bdea03581c9712f7fd7a419e29d03de3c13e410f5a64bfbacf27cd3e94317f8"
+      }
+     },
+     "requires_bindings": {
+      "Y": "fv.input.Y",
+      "K_A": "fv.input.K_A",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k"
+     }
+    },
+    {
+     "id": "IDENT",
+     "title": "path 평균으로 읽기",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 1
+     },
+     "status": "complete",
+     "inputs": [
+      "JOIN",
+      "XE",
+      "XS",
+      "XK"
+     ],
+     "floor_used": [
+      "등식의 대입"
+     ],
+     "derivation": [
+      {
+       "expr": "$$h:=D_j/A,\\qquad |h|\\le\\lVert D_j\\rVert_\\infty/a.$$",
+       "by": "p2 입력의 A≥a>0. h는 유계 path 함수다.",
+       "uses": [
+        "edge:p2",
+        "intro:1",
+        "intro:2"
+       ],
+       "uses_symbols": [
+        "h",
+        "D",
+        "A",
+        "a"
+       ],
+       "defines": [
+        "h"
+       ]
+      },
+      {
+       "expr": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[h]=E^A[h\\mid\\mathscr F_d],\\qquad 0\\le d\\le L.$$",
+       "by": "s1과 q0에 식 1의 h를 대입한다. d=L에서도 q0의 빈 곱 규약으로성립한다.",
+       "uses": [
+        "line:1",
+        "edge:s1",
+        "edge:q0",
+        "edge:p2",
+        "floor:1",
+        "intro:1",
+        "intro:2",
+        "edge:k2"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "d",
+        "K_A",
+        "L",
+        "h",
+        "E_A",
+        "F"
+       ]
+      }
+     ],
+     "produces": [
+      {
+       "edge": "q1",
+       "by": "식 1–2.",
+       "lines": [
+        1,
+        2
+       ],
+       "generalizes": [
+        "cp.IDENT.d"
+       ]
+      }
+     ],
+     "reference_check": true,
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     },
+     "review": {
+      "checks": [],
+      "open": []
+     },
+     "introductions": [
+      {
+       "id": "partial",
+       "kind": "notation",
+       "symbol": "partial",
+       "expr": "\\partial:=\\partial_{t_j}",
+       "uses_symbols": [
+        "j"
+       ],
+       "scope": "cp.IDENT.partial"
+      },
+      {
+       "id": "d",
+       "kind": "arbitrary_index",
+       "symbol": "d",
+       "domain": {
+        "lower": 0,
+        "upper_symbol": "L"
+       },
+       "uses_symbols": [
+        "L"
+       ],
+       "scope": "cp.IDENT.d"
+      }
+     ],
+     "input_ports": {
+      "q0": {
+       "edge": "q0",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "path_mean"
+        ]
+       },
+       "reviewed_fingerprint": "ef167fee16a00c4efce5bc99142adc283fd6e9c0900db27c18169805a4bbf098"
+      },
+      "p2": {
+       "edge": "p2",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "setting",
+         "insertion"
+        ]
+       },
+       "reviewed_fingerprint": "6ff69283aeffa0adf3b8ff749d6052c76071e04b5a6ad09157f0c4588def5a4e"
+      },
+      "k2": {
+       "edge": "k2",
+       "requires": {
+        "graph": "top",
+        "node": "O1",
+        "output": "fv_inputs",
+        "clauses": [
+         "kernel"
+        ]
+       },
+       "reviewed_fingerprint": "6bdea03581c9712f7fd7a419e29d03de3c13e410f5a64bfbacf27cd3e94317f8"
+      }
+     },
+     "requires_bindings": {
+      "E_A": "fv.input.E_A",
+      "K_A": "fv.input.K_A",
+      "L": "fv.input.L",
+      "K": "fv.input.K",
+      "m": "fv.input.m",
+      "F": "fv.input.F",
+      "A": "fv.input.A",
+      "D": "fv.input.D",
+      "t": "fv.input.t",
+      "U": "fv.input.U",
+      "a": "fv.input.a",
+      "b": "fv.input.b",
+      "j": "fv.input.j",
+      "k": "fv.input.k"
+     }
+    },
+    {
+     "id": "END",
+     "title": "첫 변분 출력",
+     "kind": "output",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 142–154; prefix 정의 20–23",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 3,
+      "row": 1
+     },
+     "inputs": [
+      "IDENT"
+     ],
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     }
+    }
+   ],
+   "edges": [
+    {
+     "id": "b0",
+     "from": "XT",
+     "to": "BASE",
+     "kind": "flow",
+     "summary": "$$\\partial_{t_j}\\log Y_L=\\frac{D_j}{A_{\\boldsymbol t}} .$$",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "defines": [
+      "Y"
+     ],
+     "output_ref": {
+      "graph": "fv",
+      "node": "TM",
+      "output": "terminal_derivative"
+     }
+    },
+    {
+     "id": "b1",
+     "from": "BASE",
+     "to": "JOIN",
+     "kind": "flow",
+     "statement": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+     "summary": "$$\\partial\\log Y_L=\\frac{D_j}{A}=K_{L+1}^A\\cdots K_L^A[D_j/A].$$",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "defines": [
+      "Y"
+     ]
+    },
+    {
+     "id": "s0",
+     "from": "XR",
+     "to": "JOIN",
+     "kind": "flow",
+     "summary": "각 $d=1,\\ldots,L$ 에 대해 $$\\partial_{t_j}\\log Y_{d-1}=K_d^{A}\\bigl[\\partial_{t_j}\\log Y_d\\bigr].$$",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "defines": [
+      "Y"
+     ],
+     "output_ref": {
+      "graph": "fv",
+      "node": "PM",
+      "output": "one_step"
+     }
+    },
+    {
+     "id": "b2",
+     "from": "JOIN",
+     "to": "JOIN",
+     "kind": "flow",
+     "statement": "깊이 r의 걸음에서 $\\partial\\log Y_{r-1}=K_r^A\\cdots K_L^A[D_j/A]$ 를 내보낸다. r>1이면 다음 걸음 r′=r−1의 가정으로 받는다. r=1이면 반복을 끝낸다.",
+     "summary": "깊이 r의 걸음에서 $\\partial\\log Y_{r-1}=K_r^A\\cdots K_L^A[D_j/A]$ 를 내보낸다. r>1이면 다음 걸음 r′=r−1의 가정으로 받는다. r=1이면 반복을 끝낸다.",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "loop": {
+      "index": "r",
+      "step": "r → r−1 (r>1); r=1에서 종료",
+      "index_scope": "cp.JOIN.r"
+     },
+     "defines": [
+      "Y"
+     ]
+    },
+    {
+     "id": "s1",
+     "from": "JOIN",
+     "to": "IDENT",
+     "kind": "flow",
+     "statement": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad d=0,\\ldots,L.$$",
+     "summary": "$$\\partial\\log Y_d=K_{d+1}^A\\cdots K_L^A[D_j/A],\\qquad d=0,\\ldots,L.$$",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "defines": [
+      "Y"
+     ]
+    },
+    {
+     "id": "q0",
+     "from": "XE",
+     "to": "IDENT",
+     "kind": "definition",
+     "summary": "path 함수 $h$ 에 대해 $$E^{A}[h\\mid\\mathscr F_d]=K^A_{d+1}K^A_{d+2}\\cdots K^A_L\\,h .$$ 깊이 $d$ 의 prefix 아래로 바뀐 kernel로 path 하나를 끝까지 뽑은 평균이다. $d=L$ 에서는 kernel의 빈 곱이 항등 연산이고 $E^A[h\\mid\\mathscr F_L]=h$ 이다.",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     },
+     "defines": [
+      "E_A"
+     ],
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "path_mean"
+      ]
+     }
+    },
+    {
+     "id": "q1",
+     "from": "IDENT",
+     "to": "END",
+     "kind": "flow",
+     "statement": "$$\\partial_{t_j}\\log Y_d=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$",
+     "summary": "$$\\partial_{t_j}\\log Y_d=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$",
+     "status": "connected",
+     "complete": true,
+     "in_complete_vertex": true,
+     "grounding": {
+      "source": "trees.tex 142–154에서 유한 대입으로 유도"
+     }
+    },
+    {
+     "id": "p0",
+     "from": "XS",
+     "to": "BASE",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "p1",
+     "from": "XS",
+     "to": "JOIN",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "p2",
+     "from": "XS",
+     "to": "IDENT",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "setting",
+       "insertion"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 입력의 항목 선택; trees.tex 20–23, 67–82, 142–154"
+     }
+    },
+    {
+     "id": "k0",
+     "from": "XK",
+     "to": "BASE",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 CP의 k3 → XK 항목 선택"
+     }
+    },
+    {
+     "id": "k1",
+     "from": "XK",
+     "to": "JOIN",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 CP의 k3 → XK 항목 선택"
+     }
+    },
+    {
+     "id": "k2",
+     "from": "XK",
+     "to": "IDENT",
+     "kind": "definition",
+     "output_ref": {
+      "graph": "top",
+      "node": "O1",
+      "output": "fv_inputs",
+      "clauses": [
+       "kernel"
+      ]
+     },
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "부모 CP의 k3 → XK 항목 선택"
+     }
+    }
+   ],
+   "premise_mode": "edges_only"
+  },
+  {
+   "id": "fresh",
+   "title": "fresh path vertex의 국소 확장",
+   "summary": "첫 변분 대입 → 독립 path 적분 → protected 형태 재포장. G의 가지별 분해를 요구하지 않는다.",
+   "parent": {
+    "graph": "diff",
+    "node": "D4"
+   },
+   "contexts": [
+    {
+     "id": "FFRESH",
+     "text": "유한 깊이 $L$과 tree $\\mathcal T$를 고정한다. $\\beta\\in\\operatorname{Int}(\\mathcal T)$, $d_\\beta<L$, old 자식 수 $n_\\beta$와 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$를 고정한다. $j$ 고정, $\\partial=\\partial_{t_j}$. $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방 안이며 root를 고정한다. $G,D_j$는 유계이고 매개변수에 무관하다. $x$는 $\\beta$ 아래에 추가하는 새 leaf 위치이며 old leaf와 구별한다(뽑힌 값은 같아도 됨). $\\mathcal T^+=\\mathcal T\\oplus\\beta$로 쓴다.",
+     "nodes": [
+      "FP_OBJ",
+      "FP_LOG",
+      "FP_VAR",
+      "FP_SAMPLE",
+      "FP_BIND",
+      "FP_EXT",
+      "FP_PACK",
+      "FP_OUT"
+     ],
+     "defines": [
+      "L",
+      "beta",
+      "d_beta",
+      "n_beta",
+      "gamma",
+      "j",
+      "partial",
+      "a",
+      "b",
+      "x",
+      "T"
+     ]
+    }
+   ],
+   "nodes": [
+    {
+     "id": "FP_OBJ",
+     "title": "정의와 protected F",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 0
+     },
+     "external_ref": "XO",
+     "statement": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "inputs": []
+    },
+    {
+     "id": "FP_LOG",
+     "title": "old 내부 계수",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 1
+     },
+     "external_ref": "D1",
+     "statement": "로그 밀도의 내부 항은 $\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}\\gamma_\\beta\\partial\\log Y_\\beta$이다. $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$에서 $n_\\beta$는 미분 전 old tree의 자식 수이며 매개변수와 무관하다. $Y_\\beta$는 깊이 $d_\\beta$의 prefix에서 평가한다. 여기서는 이 항에 기존 적분 인자를 곱한 기여를 재표현한다.",
+     "inputs": []
+    },
+    {
+     "id": "FP_VAR",
+     "title": "일반 첫 변분",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 2
+     },
+     "external_ref": "D2",
+     "inputs": [],
+     "statement_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     }
+    },
+    {
+     "id": "FP_SAMPLE",
+     "title": "삽입 후 표본 규칙",
+     "kind": "external",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 0,
+      "row": 3
+     },
+     "external_ref": "S1",
+     "statement": "각 vertex에서 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑힌다. leaf 일부를 지워도 남은 tree의 법칙은 바뀌지 않는다. 삽입 후에도 각 $K_d^A$가 확률 kernel이므로 같은 규칙이 성립한다. 내부 vertex $\beta$의 prefix에서 새 path를 추가하면, old tree를 먼저 뽑고 그 prefix 아래로 새 path를 독립적으로 뽑는 적분 순서로 쓸 수 있다. old 가지의 공동 법칙은 유지한다.",
+     "inputs": []
+    },
+    {
+     "id": "FP_BIND",
+     "title": "첫 변분에 prefix 대입",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 1
+     },
+     "inputs": [
+      "FP_OBJ",
+      "FP_VAR"
+     ],
+     "statement": "$\\partial\\log Y_\\beta=Q_\\beta[h]$, $h=D_j/A$; $Q_\\beta$는 새 path 평균이다.",
+     "status": "complete",
+     "reference_check": true,
+     "local_context": [
+      "유한 깊이 $L$과 tree $\\mathcal T$를 고정한다. $\\beta\\in\\operatorname{Int}(\\mathcal T)$, $d_\\beta<L$, old 자식 수 $n_\\beta$와 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$를 고정한다. $j$ 고정, $\\partial=\\partial_{t_j}$. $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방 안이며 root를 고정한다. $G,D_j$는 유계이고 매개변수에 무관하다. $x$는 $\\beta$ 아래에 추가하는 새 leaf 위치이며 old leaf와 구별한다(뽑힌 값은 같아도 됨). $\\mathcal T^+=\\mathcal T\\oplus\\beta$로 쓴다."
+     ],
+     "floor_used": [
+      "등식의 대입",
+      "유계 함수에 대한 유한 kernel 적분과 Fubini 법칙",
+      "유한 곱의 재배열과 기대값의 선형성"
+     ],
+     "derivation": [
+      {
+       "expr": "$$h:=D_j/A,\\quad Q_\\beta[h]:=K^A_{d_\\beta+1}\\cdots K_L^A[h],\\quad |h|\\le\\|D_j\\|_\\infty/a.$$",
+       "by": "fp-def-bind의 kernel 표기와 문맥의 양의 하한. 유한 합성은 확률 적분이다.",
+       "uses": [
+        "edge:fp-def-bind",
+        "context:FFRESH",
+        "floor:2"
+       ],
+       "uses_symbols": [
+        "h",
+        "Q",
+        "D",
+        "A",
+        "K_A",
+        "d_beta",
+        "L",
+        "a"
+       ],
+       "defines": [
+        "h",
+        "Q"
+       ]
+      },
+      {
+       "expr": "$$\\partial\\log Y_\\beta=Q_\\beta[h].$$",
+       "by": "fp-first에 d=d_beta와 해당 prefix를 대입한다.",
+       "uses": [
+        "edge:fp-first",
+        "line:1",
+        "context:FFRESH",
+        "floor:1"
+       ],
+       "uses_symbols": [
+        "partial",
+        "Y",
+        "Q",
+        "h",
+        "d_beta"
+       ],
+       "defines": []
+      }
+     ],
+     "produces": [
+      {
+       "edge": "fp-kernel",
+       "by": "식 1",
+       "lines": [
+        1
+       ]
+      },
+      {
+       "edge": "fp-identity",
+       "by": "식 2",
+       "lines": [
+        2
+       ]
+      }
+     ],
+     "input_ports": {
+      "first_variation": {
+       "edge": "fp-first",
+       "requires": {
+        "graph": "diff",
+        "node": "D2",
+        "output": "kernel_form"
+       },
+       "reviewed_fingerprint": "16c4ad3bfebf99a4321f41c8e581ac965dff6714276a24449ee84b68a608bce9"
+      }
+     }
+    },
+    {
+     "id": "FP_EXT",
+     "title": "old tree 뒤에 새 path 적분",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 1,
+      "row": 2
+     },
+     "inputs": [
+      "FP_OBJ",
+      "FP_SAMPLE",
+      "FP_BIND"
+     ],
+     "statement": "$E^A_{\\mathcal T^+}[Hh^x]=E^A_{\\mathcal T}[H Q_\\beta[h]]$.",
+     "status": "complete",
+     "reference_check": true,
+     "local_context": [
+      "유한 깊이 $L$과 tree $\\mathcal T$를 고정한다. $\\beta\\in\\operatorname{Int}(\\mathcal T)$, $d_\\beta<L$, old 자식 수 $n_\\beta$와 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$를 고정한다. $j$ 고정, $\\partial=\\partial_{t_j}$. $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방 안이며 root를 고정한다. $G,D_j$는 유계이고 매개변수에 무관하다. $x$는 $\\beta$ 아래에 추가하는 새 leaf 위치이며 old leaf와 구별한다(뽑힌 값은 같아도 됨). $\\mathcal T^+=\\mathcal T\\oplus\\beta$로 쓴다."
+     ],
+     "floor_used": [
+      "등식의 대입",
+      "유계 함수에 대한 유한 kernel 적분과 Fubini 법칙",
+      "유한 곱의 재배열과 기대값의 선형성"
+     ],
+     "derivation": [
+      {
+       "expr": "$$H:=G\\prod_{a\\in C}(A^a)^{-1},\\qquad |H|\\le\\|G\\|_\\infty a^{-|C|}.$$",
+       "by": "fp-def-ext와 문맥. H는 old tree의 함수이며 새 path 변수는 쓰지 않는다.",
+       "uses": [
+        "edge:fp-def-ext",
+        "context:FFRESH"
+       ],
+       "uses_symbols": [
+        "H",
+        "G",
+        "C",
+        "A",
+        "a"
+       ],
+       "defines": [
+        "H"
+       ]
+      },
+      {
+       "expr": "$$E^A_{\\mathcal T^+}[Hh^x]=E^A_{\\mathcal T}[H Q_\\beta[h]].$$",
+       "by": "fp-sampling에 따라 old tree를 먼저 뽑고 새 path를 적분한다. fp-kernel의 Q와 h를 사용한다. H와 h의 유계성으로 Fubini를 적용한다. G가 old 가지들을 함께 써도 H를 분해하지 않는다.",
+       "uses": [
+        "edge:fp-sampling",
+        "edge:fp-kernel",
+        "edge:fp-def-ext",
+        "line:1",
+        "context:FFRESH",
+        "floor:2"
+       ],
+       "uses_symbols": [
+        "E_A",
+        "T",
+        "H",
+        "h",
+        "Q",
+        "x"
+       ],
+       "defines": []
+      }
+     ],
+     "produces": [
+      {
+       "edge": "fp-extension",
+       "by": "식 1–2",
+       "lines": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FP_PACK",
+     "title": "계수 유지하며 protected 형태로 재포장",
+     "kind": "step",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 2,
+      "row": 1
+     },
+     "inputs": [
+      "FP_OBJ",
+      "FP_LOG",
+      "FP_BIND",
+      "FP_EXT"
+     ],
+     "statement": "각 old 내부 vertex $\\beta$에서 $$\\gamma_\\beta E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\,\\partial\\log Y_\\beta\\right]=\\gamma_\\beta F[\\mathcal T\\oplus\\beta,C\\cup\\{x\\},GD_j^x].$$ 새 leaf $x$는 protected다. $G$는 old 변수 전부에 의존해도 되며, 계수 $\\gamma_\\beta$는 추가 전 tree의 값이다. 이 등식을 유한한 내부 vertex들에 대해 더할 수 있다.",
+     "status": "complete",
+     "reference_check": true,
+     "local_context": [
+      "유한 깊이 $L$과 tree $\\mathcal T$를 고정한다. $\\beta\\in\\operatorname{Int}(\\mathcal T)$, $d_\\beta<L$, old 자식 수 $n_\\beta$와 $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$를 고정한다. $j$ 고정, $\\partial=\\partial_{t_j}$. $0<a\\le A_{\\boldsymbol t}\\le b$인 실수 근방 안이며 root를 고정한다. $G,D_j$는 유계이고 매개변수에 무관하다. $x$는 $\\beta$ 아래에 추가하는 새 leaf 위치이며 old leaf와 구별한다(뽑힌 값은 같아도 됨). $\\mathcal T^+=\\mathcal T\\oplus\\beta$로 쓴다."
+     ],
+     "floor_used": [
+      "등식의 대입",
+      "유계 함수에 대한 유한 kernel 적분과 Fubini 법칙",
+      "유한 곱의 재배열과 기대값의 선형성"
+     ],
+     "derivation": [
+      {
+       "expr": "$$Z_\\beta:=\\gamma_\\beta E^A_{\\mathcal T}[H\\,\\partial\\log Y_\\beta]=\\gamma_\\beta E^A_{\\mathcal T^+}[Hh^x].$$",
+       "by": "fp-old의 old 계수 항에 기존 적분 인자를 곱한 기여를 Z라 이름 붙인다. fp-identity와 fp-extension으로 등식을 대입한다.",
+       "uses": [
+        "edge:fp-old",
+        "edge:fp-identity",
+        "edge:fp-extension",
+        "context:FFRESH",
+        "floor:1"
+       ],
+       "uses_symbols": [
+        "Z",
+        "gamma",
+        "E_A",
+        "T",
+        "H",
+        "partial",
+        "Y",
+        "h"
+       ],
+       "defines": [
+        "Z"
+       ]
+      },
+      {
+       "expr": "$$Hh^x=G D_j^x\\prod_{a\\in C\\cup\\{x\\}}(A^a)^{-1},\\qquad Z_\\beta=\\gamma_\\beta F[\\mathcal T^+,C\\cup\\{x\\},GD_j^x].$$",
+       "by": "fp-extension의 H,h와 fp-def-pack의 F 정의. x는 C 밖의 새 위치라 분모가 하나 추가된다. 계수는 fp-old의 old gamma를 그대로 유지한다.",
+       "uses": [
+        "line:1",
+        "edge:fp-extension",
+        "edge:fp-def-pack",
+        "edge:fp-old",
+        "context:FFRESH",
+        "floor:1",
+        "floor:3"
+       ],
+       "uses_symbols": [
+        "H",
+        "h",
+        "G",
+        "D",
+        "C",
+        "x",
+        "A",
+        "Z",
+        "gamma",
+        "F",
+        "T"
+       ],
+       "defines": []
+      }
+     ],
+     "produces": [
+      {
+       "edge": "fp-result",
+       "by": "식 1–2. beta별 등식을 유한 합산할 수 있다.",
+       "lines": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FP_OUT",
+     "title": "fresh path 기여",
+     "kind": "output",
+     "abstraction": "exact",
+     "grounding": {
+      "source": "trees.tex 20–39, 76–82, 142–154, 180–202",
+      "state": "proposed"
+     },
+     "layout": {
+      "col": 3,
+      "row": 1
+     },
+     "inputs": [
+      "FP_PACK"
+     ],
+     "statement": "각 old 내부 vertex $\\beta$에서 $$\\gamma_\\beta E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\,\\partial\\log Y_\\beta\\right]=\\gamma_\\beta F[\\mathcal T\\oplus\\beta,C\\cup\\{x\\},GD_j^x].$$ 새 leaf $x$는 protected다. $G$는 old 변수 전부에 의존해도 되며, 계수 $\\gamma_\\beta$는 추가 전 tree의 값이다. 이 등식을 유한한 내부 vertex들에 대해 더할 수 있다."
+    }
+   ],
+   "edges": [
+    {
+     "id": "fp-def-bind",
+     "from": "FP_OBJ",
+     "to": "FP_BIND",
+     "kind": "definition",
+     "statement": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "summary": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "defines": [
+      "A",
+      "D",
+      "G",
+      "C",
+      "T",
+      "F",
+      "E_A",
+      "K_A",
+      "Y"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-first",
+     "from": "FP_VAR",
+     "to": "FP_BIND",
+     "kind": "flow",
+     "summary": "유계 $D_j$와 균등하게 양인 $A=1+\\sum_jt_jD_j$에서, 각 깊이 $0\\le d\\le L$에 대해 $$\\partial_{t_j}\\log Y_d=E^A[D_j/A\\mid\\mathscr F_d].$$ 오른쪽은 주어진 prefix 아래로 kernel $K_{d+1}^A,\\ldots,K_L^A$를 따라 path 하나를 뽑는 평균이다. 이 일반 식의 $d=d_\\beta$ 대입은 하위 graph의 FP_BIND가 수행한다.",
+     "defines": [
+      "Y",
+      "E_A"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "diff.D2.outputs.kernel_form; trees.tex 142–154"
+     },
+     "output_ref": {
+      "graph": "diff",
+      "node": "D2",
+      "output": "kernel_form"
+     }
+    },
+    {
+     "id": "fp-def-ext",
+     "from": "FP_OBJ",
+     "to": "FP_EXT",
+     "kind": "definition",
+     "statement": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "summary": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "defines": [
+      "A",
+      "D",
+      "G",
+      "C",
+      "T",
+      "F",
+      "E_A",
+      "K_A",
+      "Y"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-sampling",
+     "from": "FP_SAMPLE",
+     "to": "FP_EXT",
+     "kind": "flow",
+     "statement": "각 vertex에서 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑힌다. leaf 일부를 지워도 남은 tree의 법칙은 바뀌지 않는다. 삽입 후에도 각 $K_d^A$가 확률 kernel이므로 같은 규칙이 성립한다. 내부 vertex $\beta$의 prefix에서 새 path를 추가하면, old tree를 먼저 뽑고 그 prefix 아래로 새 path를 독립적으로 뽑는 적분 순서로 쓸 수 있다. old 가지의 공동 법칙은 유지한다.",
+     "summary": "각 vertex에서 서로 다른 자식은 prefix가 주어지면 같은 kernel로 독립으로 뽑힌다. leaf 일부를 지워도 남은 tree의 법칙은 바뀌지 않는다. 삽입 후에도 각 $K_d^A$가 확률 kernel이므로 같은 규칙이 성립한다. 내부 vertex $\beta$의 prefix에서 새 path를 추가하면, old tree를 먼저 뽑고 그 prefix 아래로 새 path를 독립적으로 뽑는 적분 순서로 쓸 수 있다. old 가지의 공동 법칙은 유지한다.",
+     "defines": [],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-def-pack",
+     "from": "FP_OBJ",
+     "to": "FP_PACK",
+     "kind": "definition",
+     "statement": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "summary": "삽입 후의 $E^A_{\\mathcal T}$는 확률 kernel $K_d^A$로 tree를 뽑은 root 조건부 평균이다. $Y_d$는 power-mean 재귀의 prefix 함수다. $C\\subseteq\\operatorname{Leaves}(\\mathcal T)$이고 $G$가 old tree 변수의 유계 함수일 때 $$F[\\mathcal T,C,G]:=E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\right].$$ $C$는 삽입 밀도의 leaf 인자가 상쇄된 protected 집합이다. $G$와 $D_j$는 $\\boldsymbol t$에 무관하며, $A=1+\\sum_jt_jD_j$이다.",
+     "defines": [
+      "A",
+      "D",
+      "G",
+      "C",
+      "T",
+      "F",
+      "E_A",
+      "K_A",
+      "Y"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-old",
+     "from": "FP_LOG",
+     "to": "FP_PACK",
+     "kind": "flow",
+     "statement": "로그 밀도의 내부 항은 $\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}\\gamma_\\beta\\partial\\log Y_\\beta$이다. $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$에서 $n_\\beta$는 미분 전 old tree의 자식 수이며 매개변수와 무관하다. $Y_\\beta$는 깊이 $d_\\beta$의 prefix에서 평가한다. 여기서는 이 항에 기존 적분 인자를 곱한 기여를 재표현한다.",
+     "summary": "로그 밀도의 내부 항은 $\\sum_{\\beta\\in\\operatorname{Int}(\\mathcal T)}\\gamma_\\beta\\partial\\log Y_\\beta$이다. $\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$에서 $n_\\beta$는 미분 전 old tree의 자식 수이며 매개변수와 무관하다. $Y_\\beta$는 깊이 $d_\\beta$의 prefix에서 평가한다. 여기서는 이 항에 기존 적분 인자를 곱한 기여를 재표현한다.",
+     "defines": [
+      "gamma",
+      "Y"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-kernel",
+     "from": "FP_BIND",
+     "to": "FP_EXT",
+     "kind": "flow",
+     "statement": "$h=D_j/A$, $|h|\\le\\|D_j\\|_\\infty/a$. $Q_\\beta$는 $\\beta$ prefix 아래로 $K^A_{d_\\beta+1},\\ldots,K_L^A$를 합성한 새 path의 확률 평균이다.",
+     "summary": "$h=D_j/A$, $|h|\\le\\|D_j\\|_\\infty/a$. $Q_\\beta$는 $\\beta$ prefix 아래로 $K^A_{d_\\beta+1},\\ldots,K_L^A$를 합성한 새 path의 확률 평균이다.",
+     "defines": [
+      "h",
+      "Q"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-identity",
+     "from": "FP_BIND",
+     "to": "FP_PACK",
+     "kind": "flow",
+     "statement": "$$\\partial\\log Y_\\beta=Q_\\beta[h],\\qquad h=D_j/A.$$",
+     "summary": "$$\\partial\\log Y_\\beta=Q_\\beta[h],\\qquad h=D_j/A.$$",
+     "defines": [
+      "h",
+      "Q"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-extension",
+     "from": "FP_EXT",
+     "to": "FP_PACK",
+     "kind": "flow",
+     "statement": "$H=G\\prod_{a\\in C}(A^a)^{-1}$와 $h=D_j/A$에 대해 $$E^A_{\\mathcal T^+}[Hh^x]=E^A_{\\mathcal T}[H Q_\\beta[h]].$$ $H$는 old tree 변수만 쓰며 새 path는 그 tree가 주어졌을 때 prefix 아래에서 독립으로 뽑힌다.",
+     "summary": "$H=G\\prod_{a\\in C}(A^a)^{-1}$와 $h=D_j/A$에 대해 $$E^A_{\\mathcal T^+}[Hh^x]=E^A_{\\mathcal T}[H Q_\\beta[h]].$$ $H$는 old tree 변수만 쓰며 새 path는 그 tree가 주어졌을 때 prefix 아래에서 독립으로 뽑힌다.",
+     "defines": [
+      "H",
+      "h",
+      "Q"
+     ],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    },
+    {
+     "id": "fp-result",
+     "from": "FP_PACK",
+     "to": "FP_OUT",
+     "kind": "flow",
+     "statement": "각 old 내부 vertex $\\beta$에서 $$\\gamma_\\beta E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\,\\partial\\log Y_\\beta\\right]=\\gamma_\\beta F[\\mathcal T\\oplus\\beta,C\\cup\\{x\\},GD_j^x].$$ 새 leaf $x$는 protected다. $G$는 old 변수 전부에 의존해도 되며, 계수 $\\gamma_\\beta$는 추가 전 tree의 값이다. 이 등식을 유한한 내부 vertex들에 대해 더할 수 있다.",
+     "summary": "각 old 내부 vertex $\\beta$에서 $$\\gamma_\\beta E^A_{\\mathcal T}\\left[G\\prod_{a\\in C}(A^a)^{-1}\\,\\partial\\log Y_\\beta\\right]=\\gamma_\\beta F[\\mathcal T\\oplus\\beta,C\\cup\\{x\\},GD_j^x].$$ 새 leaf $x$는 protected다. $G$는 old 변수 전부에 의존해도 되며, 계수 $\\gamma_\\beta$는 추가 전 tree의 값이다. 이 등식을 유한한 내부 vertex들에 대해 더할 수 있다.",
+     "defines": [],
+     "complete": true,
+     "status": "connected",
+     "grounding": {
+      "source": "trees.tex 180–202의 국소 전개"
+     }
+    }
+   ]
+  }
+ ]
+}

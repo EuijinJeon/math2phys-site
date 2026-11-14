@@ -1,0 +1,20 @@
+{
+  "id": "diff-e4",
+  "from": "D2",
+  "to": "D4",
+  "kind": "call",
+  "label": "1회",
+  "status": "connected",
+  "complete": true,
+  "grounding": {
+    "source": "diff.D2.outputs.kernel_form; trees.tex 142–154"
+  },
+  "not_carried": "전체 기대값의 미분 교환과 leaf 항은 이 edge의 내용이 아니다.",
+  "output_ref": {
+    "graph": "diff",
+    "node": "D2",
+    "output": "kernel_form"
+  },
+  "use_note": "받는 쪽 D4의 하위 graph FP_BIND가 $d=d_\\beta$와 해당 prefix를 대입한다.",
+  "statement": "각 깊이 $0\\le d\\le L$에 대해 $$\\partial_{t_j}\\log Y_d=K_{d+1}^{A_{\\boldsymbol t}}\\cdots K_L^{A_{\\boldsymbol t}}\\!\\left[\\frac{D_j}{A_{\\boldsymbol t}}\\right]=E^{A_{\\boldsymbol t}}\\!\\left[\\left.\\frac{D_j}{A_{\\boldsymbol t}}\\right|\\mathscr F_d\\right].$$ $\\mathscr F_d$는 주어진 깊이 $d$의 prefix이고 오른쪽은 그 아래로 삽입 후 확률 kernel $K_{d+1}^{A_{\\boldsymbol t}},\\ldots,K_L^{A_{\\boldsymbol t}}$를 따라 새 path 하나를 뽑는 평균이다. $d=L$에서는 kernel의 빈 합성을 항등 연산으로 읽는다.\n\n성립 조건: 유한 깊이 $L$과 확률 kernel 열, $0=m_0<\\cdots<m_L=1$을 고정한다. $A_{\\boldsymbol t}=1+\\sum_jt_jD_j$이고 $D_j$는 유계 실수 path 함수이며 kernel과 함께 매개변수에 무관하다. $0<a\\le A_{\\boldsymbol t}\\le b$가 성립하는 실수 근방 안이다. root는 고정하며 $j$ 방향으로 미분한다."
+}
