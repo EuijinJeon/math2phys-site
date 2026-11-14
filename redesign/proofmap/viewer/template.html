@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#fbfaf7; --ink:#1d1d1b; --muted:#6b6a65; --line:#cfcdc6; --panel:#ffffff;
+  --obj:#eeeeea; --obj-b:#8a8983;
+  --rule:#e3edf9; --rule-b:#2f6fb5;
+  --fact:#fbf0d9; --fact-b:#b07a12;
+  --step:#e4f3e6; --step-b:#2f8a45;
+  --ext:#ffffff; --ext-b:#8a8983;
+  --frame:#9a6fb0; --sel:#d2452f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#191918; --ink:#ecebe6; --muted:#a3a29b; --line:#4a4944; --panel:#232321;
+    --obj:#2e2e2b; --obj-b:#8f8e87;
+    --rule:#1d3048; --rule-b:#6aa6e6;
+    --fact:#3d3115; --fact-b:#d9a441;
+    --step:#1c3523; --step-b:#62bd78;
+    --ext:#232321; --ext-b:#8f8e87;
+    --frame:#b993cd; --sel:#ff7a63;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 -apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+header{padding:12px 16px 8px;border-bottom:1px solid var(--line)}
+h1{font-size:17px;margin:0 0 4px}
+.crumbs{font-size:13px;color:var(--muted)}
+.crumbs a{color:var(--rule-b);cursor:pointer;text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:12px;color:var(--muted);align-items:center}
+.chip{display:inline-block;width:14px;height:14px;border-radius:3px;border:1.5px solid;vertical-align:-2px;margin-right:4px}
+.lk{display:inline-block;width:26px;height:0;border-top:2px solid var(--ink);vertical-align:middle;margin-right:4px}
+.lk.call{border-top-style:dashed}
+.lk.def{border-top:1px solid var(--muted)}
+main{display:flex;gap:0;align-items:stretch;min-height:calc(100vh - 110px)}
+#stage{flex:1 1 auto;overflow:auto;padding:16px;min-width:0}
+#canvas{position:relative}
+#edges{position:absolute;left:0;top:0;pointer-events:none}
+#panel{flex:0 0 340px;max-width:340px;border-left:1px solid var(--line);background:var(--panel);padding:14px 16px;overflow:auto}
+@media (max-width:1100px){main{flex-direction:column}#panel{flex:none;max-width:none;border-left:0;border-top:1px solid var(--line)}}
+.node{position:absolute;width:210px;border:1.5px solid;border-radius:8px;padding:7px 9px 8px;cursor:pointer;background:var(--obj)}
+.node .k{font-size:11px;letter-spacing:.02em;color:var(--muted);display:flex;justify-content:space-between}
+.node .t{font-weight:600;margin:1px 0 3px}
+.node .s{font-size:12.5px;color:var(--ink);overflow-wrap:anywhere}
+.node.obj{background:var(--obj);border-color:var(--obj-b)}
+.node.rule{background:var(--rule);border-color:var(--rule-b)}
+.node.fact{background:var(--fact);border-color:var(--fact-b)}
+.node.step{background:var(--step);border-color:var(--step-b);border-radius:18px}
+.node.ext{background:var(--ext);border-color:var(--ext-b);border-style:dashed}
+.node.out{background:var(--rule);border-color:var(--rule-b);border-width:2.5px}
+.node.sel{outline:3px solid var(--sel);outline-offset:2px}
+.node.done{border-width:3px}
+.node.todo{opacity:.72;border-style:dotted}
+.elabel.member{border:1.5px solid var(--ink)}
+.elabel.wide.member .et b{color:var(--ink)}
+
+.node .z{font-size:11px;color:var(--rule-b);margin-top:4px}
+.frame{position:absolute;border:1.5px dashed var(--frame);border-radius:14px}
+.frame .cap{position:absolute;left:10px;right:10px;top:5px;font-size:12px;line-height:1.4;color:var(--frame);max-height:40px;overflow:hidden}
+.elabel{position:absolute;transform:translate(-50%,-50%);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 6px;font-size:11px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.elabel.sel{border-color:var(--sel);color:var(--sel)}
+.elabel.wide{white-space:normal;width:max-content;max-width:176px;text-align:left;border-radius:6px;padding:2px 6px;line-height:1.35;color:var(--ink)}
+.elabel .et{display:block;font-size:10px;color:var(--muted)}
+.recv{border-left:2px solid var(--line);padding:2px 0 4px 8px;margin:6px 0}
+.recv .tag{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:0 5px;margin-left:4px}
+.recv .rl{margin-top:3px}
+.recv .rl > span.lab{display:inline-block;font-size:11px;color:var(--muted);margin-right:6px}
+.recv details{margin-top:3px}
+.recv summary{font-size:12px;color:var(--rule-b);cursor:pointer}
+#panel h2{font-size:15px;margin:0 0 2px}
+#panel .kind{font-size:12px;color:var(--muted);margin-bottom:10px}
+#panel dl{margin:0}
+#panel dt{font-size:12px;color:var(--muted);margin-top:10px}
+#panel dd{margin:2px 0 0}
+#panel ul{margin:2px 0 0;padding-left:18px}
+#panel .formula{overflow-x:auto;padding:4px 0}
+button.zoom{margin-top:12px;font:inherit;padding:6px 10px;border-radius:6px;border:1px solid var(--rule-b);background:var(--rule);color:var(--ink);cursor:pointer}
+.check{margin-top:10px;font-size:12.5px;padding:6px 8px;border-radius:6px;border:1px solid var(--line)}
+.check.ok{border-color:var(--step-b)}
+.check.bad{border-color:var(--sel)}
+
+#vertex{display:none;max-width:1180px}
+#vertex h2{font-size:16px;margin:0 0 2px}
+#vertex h3{font-size:13px;margin:22px 0 8px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+#vertex .claim{margin:6px 0 0;color:var(--muted)}
+.vc{border:1.5px solid var(--line);border-radius:8px;padding:8px 12px;margin:8px 0;background:var(--panel)}
+.vc.ctx{border-color:var(--frame);border-style:dashed}
+.vc.in{border-left:5px solid var(--ink)}
+.vc.in.call{border-left-style:dashed}
+.vc.in.def{border-left-color:var(--muted)}
+.vc.step{border-color:var(--step-b);background:var(--step);border-radius:14px}
+.vc.out{border-right:5px solid var(--ink)}
+.vc .hd{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.vc .hd b{font-size:14px}
+.vc .tag{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:0 6px}
+.vc .row{margin-top:5px}
+.vc .row > .lab{display:inline-block;font-size:11px;color:var(--muted);margin-right:6px}
+.vc .formula{overflow-x:auto}
+.vc .flag{margin-top:5px;font-size:12.5px;color:var(--sel)}
+.vc ul{margin:0;padding-left:18px}
+
+#vertex.wide{max-width:none}
+.vgrid{display:grid;grid-template-columns:minmax(240px,1fr) minmax(320px,1.35fr) minmax(240px,1fr);gap:14px;align-items:start}
+@media (max-width:1000px){.vgrid{grid-template-columns:1fr}}
+.vc.edge{border:1.5px solid var(--ink);border-radius:4px}
+.vc.edge.def{border-color:var(--muted)}
+.vc.edge.fact{border-color:var(--fact-b)}
+.vc .eid{font-weight:700;color:var(--ink);border-color:var(--ink)}
+.chain{border-top:1px solid var(--step-b);margin-top:8px;padding-top:6px}
+.chain:first-of-type{border-top:0}
+.chain .cn{font-size:11px;color:var(--muted)}
+.arrowdown{text-align:center;color:var(--muted);font-size:18px;line-height:1;margin:2px 0}
+.note{font-size:12px;color:var(--muted);margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+code{font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>__TITLE__</h1>
+  <div class="crumbs" id="crumbs"></div>
+  <div class="legend">
+    <span><span class="chip" style="background:var(--obj);border-color:var(--obj-b)"></span>대상</span>
+    <span><span class="chip" style="background:var(--rule);border-color:var(--rule-b)"></span>rule</span>
+    <span><span class="chip" style="background:var(--fact);border-color:var(--fact-b)"></span>사실</span>
+    <span><span class="chip" style="background:var(--step);border-color:var(--step-b);border-radius:7px"></span>단계</span>
+    <span><span class="chip" style="background:var(--ext);border-color:var(--ext-b);border-style:dashed"></span>밖</span>
+    <span><span class="lk"></span>흐름</span>
+    <span><span class="lk call"></span>호출</span>
+    <span><span class="lk def"></span>정의</span>
+    <span><span class="chip" style="border-color:var(--frame);border-style:dashed;background:transparent"></span>틀</span>
+    <label><input type="checkbox" id="tp" checked> 화살표에 넘기는 것 표시</label>
+    <span>상자나 화살표 이름표를 누르면 내용이 뜹니다.</span>
+  </div>
+</header>
+<main>
+  <div id="stage"><div id="canvas"><svg id="edges"></svg></div><div id="vertex"></div></div>
+  <aside id="panel"></aside>
+</main>
+
+<script>
+const R = String.raw;
+const KIND = {obj:'대상', rule:'rule', fact:'사실', step:'단계', ext:'밖', out:'이 지도의 출력'};
+
+// 공통 근거 표기
+const PROPOSED = 'proposed (사용자 확인 전)';
+
+/*__DATA__*/
+/* ------------------------------------------------------------------ 그리기 */
+const COLW = 400, ROWH = 214, NW = 210, PADX = 24, PADY = 64;
+let cur = 'top', selNode = null, selEdge = null, showPass = true;
+const $ = s => document.querySelector(s);
+const canvas = $('#canvas'), svg = $('#edges'), panel = $('#panel');
+
+function tex(el){ if (window.renderMathInElement) renderMathInElement(el, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError:false}); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+function boundaryCheck(mapId){
+  const m = MAPS[mapId]; if (!m.parent) return null;
+  const pn = MAPS[m.parent.map].nodes.find(n => n.id === m.parent.node);
+  const want = new Set(pn.in);
+  const have = new Set();
+  m.nodes.filter(n => n.kind === 'ext' && n.ref).forEach(n => have.add(n.ref));
+  m.frames.forEach(f => (f.provides||[]).forEach(x => have.add(x)));
+  const missing = [...want].filter(x => !have.has(x));
+  const extra = [...have].filter(x => !want.has(x));
+  return {ok: !missing.length && !extra.length, missing, extra, parent: pn};
+}
+function full(n){ // 상위 지도의 상자를 가리키면 그 진술과 조건을 끌어온다
+  if (!n.pull) return {out: n.out, cond: n.cond || []};
+  const m = MAPS[cur], pm = m.parent ? MAPS[m.parent.map] : MAPS.top;
+  const t = pm.nodes.find(x => x.id === (n.kind === 'out' ? m.parent.node : n.ref));
+  return t ? {out: t.out, cond: t.cond || []} : {out: n.out, cond: n.cond || []};
+}
+function groundCount(mapId){
+  const ns = MAPS[mapId].nodes.filter(n => n.kind !== 'ext' && n.kind !== 'out');
+  return {all: ns.length, grounded: ns.filter(n => n.cards && n.cards.length).length};
+}
+function callCount(mapId, id){ return MAPS[mapId].edges.filter(e => e.from === id && e.type === 'call').length; }
+
+function render(){
+  if (cur.startsWith('v:')) return renderVertex();
+  canvas.style.display = ''; $('#vertex').style.display = 'none';
+  const m = MAPS[cur];
+  canvas.querySelectorAll('.node,.frame,.elabel').forEach(e => e.remove());
+  // crumbs
+  const chain = []; let c = cur; while (c){ chain.unshift(c); c = MAPS[c].parent ? MAPS[c].parent.map : null; }
+  $('#crumbs').innerHTML = chain.map((id,i) => i < chain.length-1 ? `<a data-go="${id}">${esc(MAPS[id].title)}</a>` : `<b>${esc(MAPS[id].title)}</b>`).join(' › ') + ` — ${esc(m.intro)}`;
+  $('#crumbs').querySelectorAll('a').forEach(a => a.onclick = () => go(a.dataset.go));
+  // nodes
+  const maxc = Math.max(...m.nodes.map(n => n.col)), maxr = Math.max(...m.nodes.map(n => n.row));
+  m.nodes.forEach(n => {
+    const d = document.createElement('div');
+    d.className = 'node ' + n.kind + (selNode === n.id ? ' sel' : '') + (n.status === '완결' ? ' done' : '') + (n.status === '미완결' ? ' todo' : '');
+    d.dataset.id = n.id;
+    d.style.left = (PADX + n.col*COLW) + 'px';
+    d.style.top = (PADY + n.row*ROWH) + 'px';
+    d.innerHTML = `<div class="k"><span>${KIND[n.kind]}</span><span>${n.status ? esc(n.status) : (n.type && n.type !== '-' ? esc(n.type) : '')}</span></div><div class="t">${esc(n.title)}</div><div class="s">${esc(n.short)}</div>` + (n.zoom ? `<div class="z">▸ 확대할 수 있음</div>` : '') + (VERTEX[n.id] && VERTEX[n.id].map === cur ? `<div class="z">◆ ${esc(VERTEX[n.id].label)}</div>` : '');
+    d.onclick = () => { selNode = n.id; selEdge = null; render(); };
+    d.ondblclick = () => { if (n.zoom) go(n.zoom); else if (VERTEX[n.id] && VERTEX[n.id].map === cur) go('v:' + n.id); };
+    canvas.appendChild(d);
+  });
+  tex(canvas);
+  // size
+  requestAnimationFrame(() => layoutRest(m, maxc, maxr));
+  showPanel();
+}
+
+function layoutRest(m, maxc, maxr){
+  const rect = id => { const el = canvas.querySelector(`.node[data-id="${id}"]`); return {x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight}; };
+  let H = 0; m.nodes.forEach(n => { const r = rect(n.id); H = Math.max(H, r.y + r.h); });
+  const W = PADX*2 + maxc*COLW + NW; H += PADY + 10;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  svg.setAttribute('width', W); svg.setAttribute('height', H);
+  const fit = Math.max(0.62, Math.min(1, ($('#stage').clientWidth - 32) / W));
+  canvas.style.transformOrigin = '0 0'; canvas.style.transform = `scale(${fit})`;
+  canvas.style.marginBottom = (-(H * (1 - fit))) + 'px'; canvas.style.marginRight = (-(W * (1 - fit))) + 'px';
+  // frames
+  m.frames.forEach(f => {
+    let x0=1e9,y0=1e9,x1=0,y1=0;
+    f.nodes.forEach(id => { const r = rect(id); x0=Math.min(x0,r.x); y0=Math.min(y0,r.y); x1=Math.max(x1,r.x+r.w); y1=Math.max(y1,r.y+r.h); });
+    const d = document.createElement('div'); d.className = 'frame';
+    d.style.left = (x0-14)+'px'; d.style.top = (y0-52)+'px'; d.style.width = (x1-x0+28)+'px'; d.style.height = (y1-y0+64)+'px';
+    d.innerHTML = `<div class="cap">${esc(f.cap)}</div>`;
+    d.style.pointerEvents = 'none';
+    canvas.insertBefore(d, canvas.firstChild);
+    tex(d);
+  });
+  // edges
+  const ink = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();
+  const muted = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim();
+  const sel = getComputedStyle(document.documentElement).getPropertyValue('--sel').trim();
+  let s = `<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${ink}"/></marker><marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${muted}"/></marker><marker id="ahs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${sel}"/></marker></defs>`;
+  const clip = (r, tx, ty) => { // 상자 중심에서 (tx,ty) 방향으로 나가 테두리와 만나는 점
+    const cx = r.x + r.w/2, cy = r.y + r.h/2, dx = tx - cx, dy = ty - cy;
+    if (!dx && !dy) return [cx, cy];
+    const k = Math.min(dx ? (r.w/2 + 3)/Math.abs(dx) : 1e9, dy ? (r.h/2 + 3)/Math.abs(dy) : 1e9);
+    return [cx + dx*k, cy + dy*k];
+  };
+  m.edges.forEach((e, i) => {
+    const a = rect(e.from), b = rect(e.to);
+    const loop = e.from === e.to;
+    let [x1,y1] = clip(a, b.x + b.w/2, b.y + b.h/2), [x2,y2] = clip(b, a.x + a.w/2, a.y + a.h/2);
+    if (loop){ x1 = a.x + a.w*0.68; x2 = a.x + a.w*0.32; y1 = y2 = a.y + a.h + 3; }
+    const isSel = selEdge === i;
+    const col = isSel ? sel : (e.type === 'def' ? muted : ink);
+    const dash = e.type === 'call' ? ' stroke-dasharray="6 4"' : '';
+    const wdt = (e.type === 'def' ? 1 : 1.6) + (e.member ? 1.4 : 0);
+    const mk = isSel ? 'ahs' : (e.type === 'def' ? 'ahm' : 'ah');
+    s += loop ? `<path d="M${x1},${y1} C${x1+30},${y1+70} ${x2-30},${y1+70} ${x2},${y2}" fill="none" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>` : `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${wdt}"${dash} marker-end="url(#${mk})"/>`;
+    const l = document.createElement('div'); l.className = 'elabel' + (isSel ? ' sel' : '');
+    l.style.left = ((x1+x2)/2) + 'px'; l.style.top = (loop ? y1 + 78 : (y1+y2)/2) + 'px';
+    if (e.stmt){ l.innerHTML = `<span class="et"><b>${esc(e.id)}</b> · ${{flow:'흐름',call:'사실',def:'정의'}[e.type]}</span>${esc(e.short)}`; l.classList.add('wide'); if (e.member) l.classList.add('member'); }
+    else { l.innerHTML = showPass ? `<span class="et">${{flow:'흐름',call:'호출',def:'정의'}[e.type]}</span>${esc(e.type === 'call' && e.inst ? e.inst : e.pass)}` : esc(e.label);
+    if (showPass) l.classList.add('wide'); }
+    l.onclick = ev => { ev.stopPropagation(); selEdge = i; selNode = null; render(); };
+    canvas.appendChild(l); tex(l);
+  });
+  svg.innerHTML = s;
+}
+
+
+
+function renderAtomic(v){
+  const el = $('#vertex');
+  const ecard = (e, dir) => `<div class="vc edge ${e.kind === '정의' ? 'def' : (e.kind === '사실' ? 'fact' : '')}"><div class="hd"><span class="tag eid">${e.id}</span><span class="tag">edge · ${e.kind}</span></div><div class="row"><span class="lab">${dir === 'in' ? '보낸 node' : '받는 node'}</span>${esc(dir === 'in' ? e.from : e.to)}</div><div class="row"><span class="lab">싣는 내용</span></div><div class="formula">${esc(e.stmt)}</div>${e.by ? `<div class="row"><span class="lab">나오는 곳</span>${esc(e.by)}</div>` : ''}<div class="row"><span class="lab">근거</span>${esc(e.src)}</div></div>`;
+  let h = `<h2>vertex: ${esc(v.title)}</h2><div class="claim">${esc(v.where)} vertex는 받는 edge, node, 보내는 edge를 모두 포함한다. 내용은 edge가 갖고, node는 edge의 번호만 가리킨다.</div>`;
+  h += `<h3>문맥 (context)</h3><div class="vc ctx"><ul>${v.context.map(x => `<li>${esc(x)}</li>`).join('')}</ul><div class="row"><span class="lab">바닥 (독자가 이미 가진 것)</span>${v.floor.map(esc).join(' · ')}</div></div>`;
+  h += `<div class="vgrid"><div><h3>받는 edge ${v.edgesIn.length}개</h3>${v.edgesIn.map(e => ecard(e,'in')).join('')}</div>`;
+  h += `<div><h3>node</h3><div class="vc step"><div class="hd"><b>${esc(v.title)}</b><span class="tag">${esc(v.node.kind)}</span></div>${v.node.chain.map((c,i) => `<div class="chain"><div class="cn">식 ${i+1}</div><div class="formula">${esc(c.expr)}</div><div class="row"><span class="lab">근거</span>${esc(c.by)}</div>${c.flag ? `<div class="flag">${esc(c.flag)}</div>` : ''}</div>`).join('')}</div></div>`;
+  h += `<div><h3>보내는 edge ${v.edgesOut.length}개</h3>${v.edgesOut.map(e => ecard(e,'out')).join('')}</div></div>`;
+  el.innerHTML = h; tex(el);
+  let q = `<h2>검사</h2><div class="kind">vertex · 문맥, 받는 edge ⊢ 보내는 edge</div><dl>`;
+  v.checks.forEach(c => { q += `<dt>${esc(c[0])}</dt><dd>${esc(c[1])}</dd>`; });
+  q += `<dt>판정이 필요한 것</dt><dd><ul>${v.open.map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>`;
+  q += `<dt>근거</dt><dd>${esc(v.source)}<br>상태: ${PROPOSED}</dd></dl><p class="note">검사표는 작성자가 손으로 채운 것이고 기계가 확인한 것이 아니다.</p>`;
+  panel.innerHTML = q; tex(panel);
+}
+
+function renderVertex(){
+  const id = cur.slice(2), v = VERTEX[id];
+  canvas.style.display = 'none'; const el = $('#vertex'); el.style.display = 'block';
+  const chain = []; let c = v.map; while (c){ chain.unshift(c); c = MAPS[c].parent ? MAPS[c].parent.map : null; }
+  $('#crumbs').innerHTML = chain.map(m => `<a data-go="${m}">${esc(MAPS[m].title)}</a>`).join(' › ') + ` › <b>${esc(v.title)}</b>`;
+  $('#crumbs').querySelectorAll('a').forEach(a => a.onclick = () => go(a.dataset.go));
+  if (v.atomic) return renderAtomic(v);
+  const cls = t => t === '호출' ? 'call' : (t === '정의' ? 'def' : '');
+  let h = `<h2>${esc(v.title)}</h2><div class="claim">${esc(v.claim)}</div>`;
+  h += `<h3>문맥 (context)</h3><div class="vc ctx"><ul>${v.context.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  h += `<h3>받는 화살표 ${v.inputs.length}개 — 넘어오는 내용 전체</h3>`;
+  v.inputs.forEach(i => {
+    h += `<div class="vc in ${cls(i.type)}"><div class="hd"><span class="tag">${i.id}</span><b>${esc(i.from)}</b><span class="tag">${i.type}</span></div><div class="row formula">${esc(i.stmt)}</div>`;
+    if (i.inst) h += `<div class="row"><span class="lab">대입</span>${esc(i.inst)}</div>`;
+    h += `<div class="row"><span class="lab">맞음</span>${esc(i.fit)}</div><div class="row"><span class="lab">오지 않는 것</span>${esc(i.nottaken)}</div><div class="row"><span class="lab">근거</span>${esc(i.src)}</div></div>`;
+  });
+  h += `<div class="arrowdown">↓</div><h3>상자 안의 유도 ${v.steps.length}걸음</h3>`;
+  v.steps.forEach(st => { h += `<div class="vc step"><div class="hd"><span class="tag">${st.n}</span><span class="tag">쓰는 것: ${esc(st.uses)}</span></div><div class="row formula">${esc(st.text)}</div>${st.flag ? `<div class="flag">${esc(st.flag)}</div>` : ''}</div>`; });
+  h += `<div class="arrowdown">↓</div><h3>보내는 화살표 ${v.outputs.length}개 — 넘기는 내용 전체</h3>`;
+  v.outputs.forEach(o => { h += `<div class="vc out"><div class="hd"><span class="tag">${o.id}</span><b>→ ${esc(o.to)}</b></div><div class="row formula">${esc(o.stmt)}</div><div class="row"><span class="lab">유도</span>걸음 ${esc(o.by)}</div><div class="row"><span class="lab">근거</span>${esc(o.src)}</div></div>`; });
+  el.innerHTML = h; tex(el);
+  let q = `<h2>검사</h2><div class="kind">펼친 상자 · ${esc(v.kind)}</div><dl>`;
+  q += `<dt>보내는 화살표가 모두 유도되는가</dt><dd><ul>${v.outputs.map(o => `<li>${o.id} ← 걸음 ${esc(o.by)}</li>`).join('')}</ul></dd>`;
+  q += `<dt>걸음이 받는 것과 문맥만 쓰는가</dt><dd><ul>${v.steps.map(st => `<li>${st.n}: ${esc(st.uses)}</li>`).join('')}</ul></dd>`;
+  q += `<dt>기호가 어디서 정의되는가</dt><dd><ul>${v.symbols.map(x => `<li>${esc(x[0])} — ${esc(x[1])}</li>`).join('')}</ul></dd>`;
+  q += `<dt>완결하면서 드러난 것</dt><dd><ul>${v.found.map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>`;
+  q += `<dt>근거</dt><dd>${esc(v.source)}<br>상태: ${PROPOSED}</dd></dl>`;
+  q += `<p class="note">이 검사표는 작성자가 손으로 채운 것이고 기계가 확인한 것이 아니다. 유도 4의 붉은 글은 원문에 없는 걸음을 작성자가 채웠다는 표시다.</p>`;
+  panel.innerHTML = q; tex(panel);
+}
+
+function showPanel(){
+  const m = MAPS[cur];
+  let h = '';
+  if (selNode){
+    const n = m.nodes.find(x => x.id === selNode);
+    const name = id => { const x = m.nodes.find(y => y.id === id) || MAPS.top.nodes.find(y => y.id === id); return x ? x.title : id; };
+    h += `<h2>${esc(n.title)}</h2><div class="kind">${KIND[n.kind]}${n.type && n.type !== '-' ? ' · 유형 ' + esc(n.type) : ''}</div><dl>`;
+    const fr = m.frames.filter(f => f.nodes.includes(n.id));
+    if (fr.length) h += `<dt>틀의 전제</dt><dd>${fr.map(f => esc(f.cap.replace(/^틀:\s*/, ''))).join('<br>')}</dd>`;
+    h += `<dt>받는 것</dt><dd>`;
+    if (!n.in.length) h += n.kind === 'ext' ? '이 장의 밖에서 온다.' : '틀의 전제 외에 없음.';
+    n.in.forEach(id => {
+      const src = m.nodes.find(y => y.id === id) || MAPS.top.nodes.find(y => y.id === id);
+      const e = m.edges.find(x => x.from === id && x.to === n.id);
+      const tn = e ? {flow:'흐름', call:'호출', def:'정의'}[e.type] : '정의';
+      h += `<div class="recv"><div class="rh"><b>${esc(src.title)}</b> <span class="tag">${tn}</span></div>`;
+      if (e && e.stmt) h += `<div class="rl"><span class="lab">edge ${esc(e.id)}</span>${esc(e.stmt)}</div>`;
+      else if (e && e.type === 'flow' && e.pass) h += `<div class="rl"><span class="lab">넘어오는 것</span>${esc(e.pass)}</div>`;
+      const so = full(src).out, sc = full(src).cond;
+      if (so && !(e && e.stmt)) h += `<details${e && e.type === 'flow' ? '' : ' open'}><summary>${e && e.type === 'flow' ? '보낸 상자의 진술 전체' : '진술'}</summary><div class="formula">${esc(so)}</div>${sc.length ? '<div class="rl"><span class="lab">그 조건</span>' + sc.map(esc).join(' ') + '</div>' : ''}</details>`;
+      if (e && e.inst) h += `<div class="rl"><span class="lab">대입</span>${esc(e.inst)}</div>`;
+      if (e && e.fit) h += `<div class="rl"><span class="lab">맞음</span>${esc(e.fit)}</div>`;
+      h += `</div>`;
+    });
+    h += `</dd>`;
+    h += `<dt>조건</dt><dd>${full(n).cond.length ? '<ul>' + full(n).cond.map(c => `<li>${esc(c)}</li>`).join('') + '</ul>' : '틀의 전제 외에 없음'}</dd>`;
+    h += `<dt>주는 것</dt><dd class="formula">${esc(full(n).out || '—')}</dd>`;
+    const outs = m.edges.filter(x => x.from === n.id);
+    if (outs.length) h += `<dt>쓰이는 곳</dt><dd><ul>${outs.map(x => `<li>${esc(m.nodes.find(y => y.id === x.to).title)}${x.inst ? ' — ' + esc(x.inst) : ''}${x.stmt ? ' — edge ' + esc(x.id) : ''}</li>`).join('')}</ul></dd>`;
+    h += `<dt>근거</dt><dd>${n.cards.length ? n.cards.map(c => `<code>${esc(c)}</code>`).join(', ') : '—'}${n.source ? '<br>' + esc(n.source) : ''}${n.cards.length ? '<br>상태: ' + PROPOSED : ''}</dd>`;
+    h += `<dt>library 대응</dt><dd>${esc(n.lib || '—')}</dd>`;
+    const cc = callCount(cur, n.id); if (cc) h += `<dt>이 장에서 호출되는 횟수</dt><dd>${cc}곳</dd>`;
+    if (n.note) h += `<dt>메모</dt><dd>${esc(n.note)}</dd>`;
+    if (n.example) h += `<dt>예로 확대</dt><dd>${esc(n.example)}</dd>`;
+    h += `</dl>`;
+    if (VERTEX[n.id] && VERTEX[n.id].map === cur) h += `<button class="zoom" data-go="v:${n.id}">${esc(VERTEX[n.id].label)} ◆</button>`;
+    if (n.zoom){
+      const g = groundCount(n.zoom), b = boundaryCheck(n.zoom);
+      h += `<button class="zoom" data-go="${n.zoom}">증명으로 확대 ▸</button>`;
+      h += `<div class="check ${b.ok ? 'ok' : 'bad'}">닿는 면: ${b.ok ? '일치' : '불일치'}${b.missing.length ? ' · 하위 지도에 없는 입력: ' + b.missing.map(name).join(', ') : ''}${b.extra.length ? ' · 상자에 없는 입력: ' + b.extra.map(name).join(', ') : ''}<br>하위 지도의 상자 ${g.all}개 가운데 카드에 닿는 것 ${g.grounded}개. 사용자 확인(confirmed) 0개.</div>`;
+    }
+  } else if (selEdge !== null){
+    const e = m.edges[selEdge];
+    const a = m.nodes.find(x => x.id === e.from), b = m.nodes.find(x => x.id === e.to);
+    const tn = {flow:'흐름', call:'호출', def:'정의'}[e.type];
+    if (e.stmt){ h += `<h2>edge ${esc(e.id)}</h2><div class="kind">edge · ${{flow:'흐름',call:'사실',def:'정의'}[e.type]}${e.member ? ' · 완결된 vertex의 일부' : ' · 양 끝 node 가운데 미완결이 있음'}</div><dl><dt>보낸 node</dt><dd>${esc(a.title)}</dd><dt>받는 node</dt><dd>${esc(b.title)}</dd><dt>싣는 내용</dt><dd class="formula">${esc(e.stmt)}</dd><dt>보낸 node의 출력 중 싣지 않는 것</dt><dd>${esc(e.nottaken)}</dd><dt>근거</dt><dd>${esc(e.src)}</dd></dl>`; }
+    else h += `<h2>${esc(a.title)} → ${esc(b.title)}</h2><div class="kind">화살표 · ${tn}</div><dl><dt>넘기는 것</dt><dd>${esc(e.pass)}</dd>${e.inst ? '<dt>대입</dt><dd>' + esc(e.inst) + '</dd>' : ''}<dt>맞음</dt><dd>${esc(e.fit)}</dd></dl>`;
+  } else {
+    const g = groundCount(cur);
+    const ne = m.edges.length, nc = m.edges.filter(e => e.type === 'call').length;
+    h += `<h2>${esc(m.title)}</h2><div class="kind">지도</div><p>${esc(m.intro)}</p><dl><dt>센 것</dt><dd>상자 ${m.nodes.length}개 (밖 ${m.nodes.filter(n => n.kind==='ext').length}개 포함), 화살표 ${ne}개 (호출 ${nc}개), 틀 ${m.frames.length}개.<br>카드에 닿는 상자 ${g.grounded}/${g.all}.</dd></dl>`;
+    if (m.parent){ const b = boundaryCheck(cur); h += `<div class="check ${b.ok ? 'ok' : 'bad'}">닿는 면: ${b.ok ? '상위 상자 「' + esc(b.parent.title) + '」의 받는 것과 일치' : '불일치'}</div>`; }
+    h += `<p class="note">상자를 누르면 칸이 열립니다. "확대할 수 있음"이 붙은 상자는 두 번 누르거나 오른쪽 단추로 하위 지도에 들어갑니다. 화살표의 이름표를 누르면 넘기는 것과 맞음이 뜹니다.</p>`;
+  }
+  h += `<p class="note">내용은 현행 L2 §6, rules.md, 카드에서 옮겼다. 모든 근거의 상태는 proposed이고 사용자 확인 전이다. 닿는 면 검사는 이 파일의 자료에서 계산한 것이다.</p>`;
+  panel.innerHTML = h;
+  panel.querySelectorAll('button.zoom').forEach(b => b.onclick = () => go(b.dataset.go));
+  tex(panel);
+}
+function go(id){ cur = id; selNode = null; selEdge = null; render(); $('#stage').scrollTo(0,0); }
+canvas.addEventListener('click', e => { if (e.target === canvas || e.target === svg){ selNode = null; selEdge = null; render(); } });
+window.addEventListener('load', () => { $('#tp').onchange = ev => { showPass = ev.target.checked; render(); }; render(); });
+let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(render, 150); });
+</script>
+</body>
+</html>

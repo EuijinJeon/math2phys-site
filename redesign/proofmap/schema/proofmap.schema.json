@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "proofmap/0.1",
+  "title": "Proof map document",
+  "description": "A hierarchical proof graph. Nodes are statements or inference steps, edges carry the statements passed between nodes, contexts hold assumptions shared by a region. A node may open into a subgraph. See SPEC.md.",
+  "type": "object",
+  "required": ["format", "id", "title", "graphs"],
+  "properties": {
+    "format": {"const": "proofmap/0.1"},
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "language": {"type": "string"},
+    "math_syntax": {"type": "string"},
+    "source": {"type": "object"},
+    "floor": {
+      "type": "object",
+      "description": "Where refinement stops. reader: what the reader already has. source: the level of detail the source text gives.",
+      "properties": {
+        "reader": {"type": "array", "items": {"type": "string"}},
+        "source": {"type": "string"}
+      }
+    },
+    "content_note": {"type": "string"},
+    "graphs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/graph"}}
+  },
+  "$defs": {
+    "graph": {
+      "type": "object",
+      "required": ["id", "title", "nodes", "edges"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "parent": {
+          "description": "The node this graph is the subproof of. null for the top graph.",
+          "oneOf": [
+            {"type": "null"},
+            {"type": "object", "required": ["graph", "node"], "properties": {"graph": {"type": "string"}, "node": {"type": "string"}}}
+          ]
+        },
+        "contexts": {"type": "array", "items": {"$ref": "#/$defs/context"}},
+        "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}},
+        "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+        "drafts": {"type": "array", "description": "Free-form work in progress attached to a node. Not normative.", "items": {"type": "object"}}
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": ["id", "text", "nodes"],
+      "properties": {
+        "id": {"type": "string"},
+        "text": {"type": "string", "description": "What is fixed, in what order limits are taken, standing assumptions."},
+        "nodes": {"type": "array", "items": {"type": "string"}, "description": "Ids of the nodes inside this context."},
+        "provides": {"type": "array", "items": {"type": "string"}, "description": "Ids of parent-level inputs that this context supplies to every node inside it."}
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "kind", "title"],
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"enum": ["object", "rule", "fact", "step", "external", "output"]},
+        "title": {"type": "string"},
+        "summary": {"type": "string", "description": "One line shown on the map."},
+        "statement": {"type": "string", "description": "What the node gives, in full."},
+        "conditions": {"type": "array", "items": {"type": "string"}},
+        "inputs": {"type": "array", "items": {"type": "string"}, "description": "Ids of the nodes this node receives from."},
+        "abstraction": {"enum": ["exact", "weakening", "blackbox", "approximation", null]},
+        "status": {"enum": ["complete", "sketch", null], "description": "complete: atomic with a derivation, or its subgraph is complete and the boundary matches. sketch: not yet. Absent: not assessed."},
+        "grounding": {
+          "type": "object",
+          "properties": {
+            "cards": {"type": "array", "items": {"type": "string"}},
+            "source": {"type": "string"},
+            "state": {"enum": ["proposed", "confirmed"], "description": "confirmed is set only by the user."}
+          }
+        },
+        "library": {"type": ["string", "null"], "description": "Counterpart in an outside library, with differences. '없음' if none."},
+        "note": {"type": "string"},
+        "example": {"type": "string"},
+        "external_ref": {"type": "string", "description": "For kind=external: the id, in the parent graph, of the node this stands for."},
+        "inherit_statement": {"type": "boolean", "description": "Take statement and conditions from the referenced parent-level node."},
+        "subgraph": {"type": "string", "description": "Id of the graph that proves this node."},
+        "local_context": {"type": "array", "items": {"type": "string"}, "description": "For an atomic node: the context restated for this vertex."},
+        "floor_used": {"type": "array", "items": {"type": "string"}},
+        "derivation": {
+          "type": "array",
+          "description": "For an atomic node: the lines of the single calculation. Each line cites incoming edge ids, the context or the floor.",
+          "items": {
+            "type": "object",
+            "required": ["expr", "by"],
+            "properties": {
+              "expr": {"type": "string"},
+              "by": {"type": "string"},
+              "author_filled": {"type": "string", "description": "Present when this line goes below the level of the source text. Says what was filled in."}
+            }
+          }
+        },
+        "produces": {
+          "type": "array",
+          "description": "Which derivation lines yield each outgoing edge.",
+          "items": {"type": "object", "required": ["edge", "by"], "properties": {"edge": {"type": "string"}, "by": {"type": "string"}}}
+        },
+        "review": {
+          "type": "object",
+          "properties": {
+            "checks": {"type": "array", "items": {"type": "object", "required": ["question", "answer"]}},
+            "open": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "layout": {"type": "object", "properties": {"col": {"type": "number"}, "row": {"type": "number"}}, "description": "Grid position for the viewer. Optional; has no meaning for the proof."}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "from", "to", "kind"],
+      "properties": {
+        "id": {"type": "string"},
+        "from": {"type": "string"},
+        "to": {"type": "string"},
+        "kind": {"enum": ["flow", "call", "definition"], "description": "flow: a result becomes an input. call: a rule or fact is used. definition: an object fixes notation."},
+        "label": {"type": "string", "description": "Display name if different from id."},
+        "summary": {"type": "string", "description": "Short content shown on the map."},
+        "statement": {"type": "string", "description": "Everything this edge carries. An edge carries a part of the sender's output, not all of it."},
+        "not_carried": {"type": "string", "description": "What the sender outputs that this edge does not carry, and where that goes."},
+        "substitution": {"type": "string", "description": "Legacy (complete=false). In the complete form a substitution is its own node."},
+        "fit": {"type": "string", "description": "Legacy (complete=false). Why the carried statement meets the receiver's conditions."},
+        "grounding": {"type": "object", "properties": {"source": {"type": "string"}}},
+        "status": {"enum": ["connected", "open"], "description": "open: no node provides this yet."},
+        "complete": {"type": "boolean", "description": "true: statement is the full content. false: statement is only a name or summary."},
+        "in_complete_vertex": {"type": "boolean"},
+        "loop": {
+          "type": "object",
+          "description": "Required when from == to. An induction: the index must decrease.",
+          "required": ["index", "step"],
+          "properties": {"index": {"type": "string"}, "step": {"type": "string"}, "note": {"type": "string"}}
+        }
+      }
+    }
+  }
+}
