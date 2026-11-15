@@ -294,6 +294,43 @@ def main():
         for n in g["nodes"]:
             if n.get("external_ref"):
                 n["external_ref"] = rn(n["external_ref"])
+    # 2026-11-16: 더 미세한 지도(move4/move5)로 가는 연결. 대응은 links.json(작성자 표). 대상이 실제로 있는지 확인한다.
+    lk = json.loads((HERE / "links.json").read_text(encoding="utf-8")) if (HERE / "links.json").exists() else {}
+    others = {d: {g["id"]: {n["id"]: n for n in g["nodes"]} for g in json.loads((PM / f"graphs/{d}.json").read_text(encoding="utf-8"))["graphs"]} for d in ("move4", "move5")}
+
+    def href(r):
+        gs = others[r["doc"]]
+        if r["graph"] not in gs or (r.get("node") and r["node"] not in gs[r["graph"]]):
+            log["bad_link"].append(r)
+            return None
+        h = f"{r['doc']}.html#g={r['graph']}" + (f"&n={r['node']}" if r.get("node") else "")
+        return {"href": h, "label": r["title"], "kind": r["kind"]}
+    by_id = {(g["id"], n["id"]): n for g in graphs for n in g["nodes"]}
+    m5top = {n.get("contract", {}).get("source_label"): n for n in json.loads((PM / "graphs/move5.json").read_text(encoding="utf-8"))["graphs"][0]["nodes"]}
+    for r in lk.get("nodes", []):
+        sec = sec_of.get(r["paper"])
+        n = by_id.get((gid(sec), r["paper"])) if sec and sec != "MAIN" else None
+        h = href(r)
+        if n is None or h is None:
+            log["bad_link"].append(r); continue
+        if r["doc"] == "move5":  # 기계 확인: move5 top node 의 원문 label 이 같은가
+            t = m5top.get(r["paper"])
+            h["checked"] = bool(t and (t.get("subgraph") == r["graph"] or t["id"] == r.get("node")))
+        n.setdefault("deep_links", []).append(h)
+        log["link"].append(r["paper"])
+    for r in lk.get("sections", []):
+        h = href(r)
+        if h:
+            next(x for x in graphs[0]["nodes"] if x["id"] == f"S_{r['paper']}").setdefault("deep_links", []).append(h)
+            log["link"].append(r["paper"])
+    for r in lk.get("open_needs", []):
+        h = href(r)
+        for g in graphs[1:]:
+            for n in g["nodes"]:
+                for nd in n.get("contract", {}).get("needs", []):
+                    if h and nd["binding"].get("type") == "open" and r["lines"] in nd["binding"].get("why", ""):
+                        nd["deep_link"] = h
+                        log["link"].append(f"{n['id']}/{nd.get('id')}")
     doc = {"format": "proofmap/0.1", "id": "paper", "title": "논문 전체 계약 (외부 입력 닫기, 증명 열지 않음)",
            "language": "ko", "math_syntax": "TeX ($...$)",
            "source": {"root": "redesign/source/sections", "files": [f"{s}.tex" for s in SECS]},
@@ -332,7 +369,7 @@ def main():
              "rejected": rejected, "mismatches": mism, "item_added_list": log["item_added"],
              "change_request_list": log["change_request"], "unplaced": log["unplaced"],
              "duplicate_node": log["duplicate_node"], "corrections": len(log["correction"]),
-             "correction_missed": log["correction_missed"]}
+             "correction_missed": log["correction_missed"], "links": log["link"], "bad_link": log["bad_link"]}
     (HERE / "stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps({k: v for k, v in stats.items() if not isinstance(v, list) or k in ("skeleton_nodes_missing",)}, ensure_ascii=False))
     print("bad_binding", len(log["bad_binding"]), "no_used_at", len(log["no_used_at"]), "opens", len(opens))

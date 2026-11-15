@@ -1,0 +1,22 @@
+{"note": "2026-11-16 작성자 대응표: paper.json 의 진술 → move4/move5 의 더 미세한 지도. move5 는 top node 의 contract.source_label 이 같아 기계로도 확인된다. move4 는 node 의 원문 근거(trees.tex 줄)와 제목으로 작성자가 정했다. href 는 build/ 안의 상대 경로. kind: subgraph = 하위 graph 가 있음, node = 그 지도의 node 하나(하위 graph 없음).",
+ "nodes": [
+  {"paper": "decor:average-holder", "doc": "move5", "graph": "avg", "kind": "subgraph", "title": "깊이 평균과 그 두 비교"},
+  {"paper": "decor:identity-error", "doc": "move5", "graph": "top", "node": "IDE", "kind": "node", "title": "항등식 오차의 유한 최대"},
+  {"paper": "decor:contractions", "doc": "move5", "graph": "con", "kind": "subgraph", "title": "축약과 세 사본"},
+  {"paper": "decor:depth-continuity", "doc": "move5", "graph": "dc", "kind": "subgraph", "title": "깊이에 대한 평균 연속성"},
+  {"paper": "decor:projection-bound", "doc": "move5", "graph": "pb", "kind": "subgraph", "title": "자식을 평균으로 바꾸는 사영"},
+  {"paper": "decor:conditional-concentration", "doc": "move5", "graph": "cc", "kind": "subgraph", "title": "조건부 decorrelation"},
+  {"paper": "decor:overlap-concentration", "doc": "move5", "graph": "thm", "kind": "subgraph", "title": "모든 multioverlap의 집중"},
+  {"paper": "pert:tree-identity", "doc": "move4", "graph": "top", "kind": "subgraph", "title": "수 4: 항등식을 이루는 규칙들"},
+  {"paper": "pert:tree-identity", "doc": "move4", "graph": "p7", "kind": "subgraph", "title": "P7(prescribed-tree 항등식)의 유도"},
+  {"paper": "tree:log-expansion", "doc": "move4", "graph": "top", "node": "R2", "kind": "node", "title": "수 4의 P6 — log 전개"},
+  {"paper": "tree:extension-expansion", "doc": "move4", "graph": "top", "node": "R3", "kind": "node", "title": "수 4의 P6′ ① — history 전개"},
+  {"paper": "tree:reference-total", "doc": "move4", "graph": "top", "node": "F1", "kind": "node", "title": "수 4의 P6′ ② — 모양별 총합"},
+  {"paper": "tree:charging", "doc": "move4", "graph": "top", "node": "F2", "kind": "node", "title": "수 4의 P6′ ③ — 계수 한계"}
+ ],
+ "sections": [
+  {"paper": "decorrelation", "doc": "move5", "graph": "top", "kind": "subgraph", "title": "수 5 계약 지도 (§7 전체)"}
+ ],
+ "open_needs": [
+  {"lines": "trees.tex 178–202", "doc": "move4", "graph": "diff", "kind": "subgraph", "title": "수 4: 미분 규칙의 유도 (번호 없는 문단)"}
+ ]}

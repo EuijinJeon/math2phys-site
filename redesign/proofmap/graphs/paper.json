@@ -518,7 +518,14 @@
       "state": "proposed"
      },
      "library": "미대조",
-     "subgraph": "s_decorrelation"
+     "subgraph": "s_decorrelation",
+     "deep_links": [
+      {
+       "href": "move5.html#g=top",
+       "label": "수 5 계약 지도 (§7 전체)",
+       "kind": "subgraph"
+      }
+     ]
     },
     {
      "id": "S_comparison",
@@ -3774,7 +3781,12 @@
         "card_ids": [
          "tree:log-expansion",
          "tree:log-expansion.s1"
-        ]
+        ],
+        "deep_link": {
+         "href": "move4.html#g=diff",
+         "label": "수 4: 미분 규칙의 유도 (번호 없는 문단)",
+         "kind": "subgraph"
+        }
        },
        {
         "id": "analytic_bounds",
@@ -3828,6 +3840,13 @@
      "symbols": [
       "protected_leaf",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move4.html#g=top&n=R2",
+       "label": "수 4의 P6 — log 전개",
+       "kind": "node"
+      }
      ]
     },
     {
@@ -3941,7 +3960,12 @@
         "card_ids": [
          "tree:extension-expansion",
          "tree:extension-expansion.s1"
-        ]
+        ],
+        "deep_link": {
+         "href": "move4.html#g=diff",
+         "label": "수 4: 미분 규칙의 유도 (번호 없는 문단)",
+         "kind": "subgraph"
+        }
        },
        {
         "id": "protected_leaf",
@@ -4034,6 +4058,13 @@
       "extension_history",
       "protected_leaf",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move4.html#g=top&n=R3",
+       "label": "수 4의 P6′ ① — history 전개",
+       "kind": "node"
+      }
      ]
     },
     {
@@ -4187,6 +4218,13 @@
       "extension_history",
       "path_kernels",
       "reference_paths"
+     ],
+     "deep_links": [
+      {
+       "href": "move4.html#g=top&n=F1",
+       "label": "수 4의 P6′ ② — 모양별 총합",
+       "kind": "node"
+      }
      ]
     },
     {
@@ -4344,6 +4382,13 @@
       "extension_history",
       "path_kernels",
       "reference_paths"
+     ],
+     "deep_links": [
+      {
+       "href": "move4.html#g=top&n=F2",
+       "label": "수 4의 P6′ ③ — 계수 한계",
+       "kind": "node"
+      }
      ]
     },
     {
@@ -9580,6 +9625,18 @@
       "mark_specification",
       "pert_selected_limits",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move4.html#g=top",
+       "label": "수 4: 항등식을 이루는 규칙들",
+       "kind": "subgraph"
+      },
+      {
+       "href": "move4.html#g=p7",
+       "label": "P7(prescribed-tree 항등식)의 유도",
+       "kind": "subgraph"
+      }
      ]
     },
     {
@@ -10779,6 +10836,14 @@
      },
      "symbols": [
       "eta_regular_assignment"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=avg",
+       "label": "깊이 평균과 그 두 비교",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {
@@ -10901,6 +10966,14 @@
      "symbols": [
       "decor_limit_order",
       "topology_depth_assignment"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=top&n=IDE",
+       "label": "항등식 오차의 유한 최대",
+       "kind": "node",
+       "checked": true
+      }
      ]
     },
     {
@@ -11379,6 +11452,14 @@
       "spin_product_vector",
       "topology_depth_assignment",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=thm",
+       "label": "모든 multioverlap의 집중",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {
@@ -11489,6 +11570,14 @@
      "symbols": [
       "conditional_covariance",
       "spin_product_vector"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=con",
+       "label": "축약과 세 사본",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {
@@ -11784,6 +11873,14 @@
       "spin_product_vector",
       "topology_depth_assignment",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=dc",
+       "label": "깊이에 대한 평균 연속성",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {
@@ -11965,6 +12062,14 @@
       "spin_product_vector",
       "topology_depth_assignment",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=pb",
+       "label": "자식을 평균으로 바꾸는 사영",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {
@@ -12692,6 +12797,14 @@
       "spin_product_vector",
       "topology_depth_assignment",
       "tree_sampling"
+     ],
+     "deep_links": [
+      {
+       "href": "move5.html#g=cc",
+       "label": "조건부 decorrelation",
+       "kind": "subgraph",
+       "checked": true
+      }
      ]
     },
     {

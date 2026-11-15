@@ -156,6 +156,7 @@ code{font-size:12px}
 <header>
   <h1>__TITLE__</h1>
   <div class="crumbs" id="crumbs"></div>
+  <div class="crumbs" id="backlink"></div>
   <div class="legend">
     <span><span class="chip" style="background:var(--obj);border-color:var(--obj-b)"></span>대상</span>
     <span><span class="chip" style="background:var(--rule);border-color:var(--rule-b)"></span>rule</span>
@@ -213,8 +214,12 @@ function itemBlock(it, open, used){
     + (it.lines ? srcBlock(it.lines) : '')
     + (used && used.length ? `<div class="it-from">받는 쪽이 쓰는 줄</div>` + srcList(used) : '') + `</details>`;
 }
+/* 다른 지도 파일로 가는 연결(2026-11-16). 돌아올 자리를 back= 으로 넘긴다. */
+function deepHref(l){ const here = (location.pathname.split('/').pop() || '') + '#g=' + encodeURIComponent(cur) + (selNode ? '&n=' + encodeURIComponent(selNode) : ''); return l.href + '&back=' + encodeURIComponent(here); }
+function linkList(ls){ return ls.map(l => `<div class="rl"><a class="deep-link" href="${esc(deepHref(l))}">${esc(l.label)} ${l.kind === 'subgraph' ? '(하위 지도) ' : '(그 지도의 node) '}↗</a></div>`).join(''); }
 function refPanel(n){
   const x = n.x || {}; let h = '';
+  if (x.links && x.links.length) h += `<dt>더 미세한 증명 지도</dt><dd>${linkList(x.links)}</dd>`;
   if (x.filled && x.filled.length) h += `<dt>원문에 없는 걸음 (작성자가 채움)</dt><dd>${x.filled.map(f => `<div class="filled">${esc(f)}</div>`).join('')}</dd>`;
   if (x.lines) h += `<dt>이 node의 원문</dt><dd>${srcBlock(x.lines, true)}</dd>`;
   if (x.card && CARDS[x.card]) h += `<dt>카드의 번역</dt><dd><details class="item" open><summary>${esc(CARDS[x.card].title)}</summary><div class="formula">${esc(CARDS[x.card].math)}</div></details></dd>`;
@@ -233,6 +238,7 @@ function needBlock(d){
   else if (d.type === 'floor') b = t ? `<div class="formula">${esc(t.statement)}</div><div class="rl">${t.kind === 'cited' ? '인용 정리' : '표준 사실'}${t.cite ? ' · ' + esc(t.cite) : ''}</div>${srcList(t.at)}` : '<div class="node-warning">바닥 목록에 없음</div>';
   else b = `<div class="node-warning">열림: ${esc(d.why || '')}</div>`;
   const org = (d.origin || []).join('+');
+  if (d.link) b += linkList([d.link]);
   return `<details class="item need-${esc(d.type)}"><summary>[${esc(NEED_KIND[d.type] || d.type)}] ${esc(d.what)}</summary>${b}${d.used && d.used.length ? '<div class="it-from">이 node가 쓰는 줄</div>' + srcList(d.used) : ''}${org ? '<div class="rl">출처: ' + esc(org) + '</div>' : ''}</details>`;
 }
 /* 글 안에 남은 참조를 그 자리에서 열리게 바꾼다: [NODE.item], NODE.item, 원문 label, 맨 위 node id */
@@ -582,7 +588,15 @@ function showPanel(){
 }
 function go(id){ cur = id; selNode = null; selEdge = null; render(); $('#stage').scrollTo(0,0); }
 canvas.addEventListener('click', e => { if (e.target === canvas || e.target === svg){ selNode = null; selEdge = null; render(); } });
-window.addEventListener('load', () => { $('#tp').onchange = ev => { showPass = ev.target.checked; render(); }; render(); });
+function readHash(){
+  const p = new URLSearchParams(location.hash.slice(1));
+  const g = p.get('g'), n = p.get('n'), back = p.get('back');
+  if (g && MAPS[g]){ cur = g; selEdge = null; selNode = (n && MAPS[g].nodes.some(x => x.id === n)) ? n : null; }
+  const bl = $('#backlink');
+  if (bl) bl.innerHTML = back && /^[\w.-]+\.html(#[\w%=&:.-]*)?$/.test(back) ? `<a href="${esc(back)}">← 돌아가기 (${esc(back.split('#')[0])})</a>` : '';
+}
+window.addEventListener('hashchange', () => { readHash(); render(); });
+window.addEventListener('load', () => { $('#tp').onchange = ev => { showPass = ev.target.checked; render(); }; readHash(); render(); });
 let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(render, 150); });
 </script>
 </body>

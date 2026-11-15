@@ -219,3 +219,35 @@ python3 redesign/proofmap/checks/2026-11-15-paper-contract/merge.py && python3 r
 3. s_comparison(external 13)은 받는 진술마다 쓰는 external이 갈린다. 그래서 안쪽 진술을 원문 단계(부호화 → 집중 → 비교)로 하위 graph 한 층 더 나누면 장마다 external 수도 함께 준다. 원문 구조로 자르는 규칙과 맞는지는 판정이 필요하다.
 
 **건드리지 않은 것.** 번호 없는 진술 셋, 순환 검사 단위, 바닥 목록은 그대로다. 커밋하지 않았다.
+
+## 7. 2026-11-16 — 더 미세한 지도(move4·move5)로 연결
+
+사용자: "그래프 만들어놓은건 다 연결돼?" → "연결해줘".
+
+**방식 (작성자 판단).** 처음 제안은 move4·move5의 하위 graph 사본을 `paper.json` 안에 붙이는 것이었다. 그러나 붙이면 닿는 면 검사가 깨진다. move5는 extension 규칙과 tree 표본 규칙을 external node(X_EXT, X_SAMP)로 두고, paper는 같은 것을 기호 표 항목으로 둔다. 그 밖에 하위 graph의 `import_edge`·싣는 항목이 move5 맨 위 edge를 가리킨다. 사본을 고쳐 맞추면 move4·move5와 다른 판이 하나 더 생긴다. 그래서 **자료를 복사하지 않고 지도 파일 사이를 연결했다.**
+- paper의 진술을 누르면 패널에 "더 미세한 증명 지도"가 뜨고, 누르면 그 파일의 해당 하위 graph(또는 node)가 바로 열린다.
+- 열린 쪽 머리에는 "← 돌아가기 (paper.html)"가 있어 원래 진술로 돌아온다.
+- move4·move5의 JSON은 고치지 않았다. 같은 틀로 html만 다시 만들었다.
+
+**연결 (확인).** 대응은 `links.json`(작성자 표)이고, `merge.py` 가 대상 graph·node가 실제로 있는지 확인한다(잘못된 연결 0).
+
+| paper | 연결 대상 |
+|---|---|
+| §7 절 node | move5 맨 위 |
+| decor:average-holder / contractions / depth-continuity / projection-bound / conditional-concentration / overlap-concentration | move5 하위 graph avg / con / dc / pb / cc / thm |
+| decor:identity-error | move5 맨 위 node IDE (하위 graph 없음) |
+| pert:tree-identity | move4 맨 위, move4 하위 graph p7 |
+| tree:log-expansion / extension-expansion / reference-total / charging | move4 맨 위 node R2 / R3 / F1 / F2 (하위 graph 없음) |
+| 열린 입력 "미분 규칙(trees.tex 178–202)" 2곳 | move4 하위 graph diff (그 아래 fv, cp, fresh) |
+
+- move5 쪽 7개는 move5 맨 위 node의 원문 label(`source_label`)이 paper 진술과 같음을 기계로 확인했다.
+- move4 쪽은 node의 원문 근거 줄과 제목으로 작성자가 정했다. R2·R3·F1이 L2·rules.md를 근거로 두는 곳은 원문 줄 대조를 다시 하지 않았다(**미확인**).
+- 열림 6개 가운데 미분 규칙 둘은 move4에 그 유도가 있다(`diff`). 그래도 paper 쪽 묶음 종류는 열림 그대로다. 번호 없는 진술을 node로 받을지는 사용자 판정 전이라 바꾸지 않았다.
+
+**검사 (확인).**
+- 브라우저: 연결 16개를 모두 열어, 16개 모두 목표 graph와 node가 열렸다. 돌아가기 링크가 원래 graph를 가리키는 것도 16개 모두 맞다.
+- 마우스로 직접 해 봤다: paper의 decor:depth-continuity → move5 dc → 돌아가기 → paper의 같은 진술.
+- paper 패널 맨몸 참조 0.
+- `check.py`: paper 오류 1·경고 12, move4 오류 0·경고 11, move5 오류 0·경고 5로 앞과 같다. 시험 실패 수 1/2/3도 같다.
+
+**연결되지 않은 것.** move4의 O1, XP5, XFAM, XM5, XM6과 move5의 X_* external은 paper로 돌아가는 역방향 연결이 없다(대응은 `correspondence.md` 에만 있다). 하위 graph가 없는 move4 R2·R3·F1·F2, p7의 T0–T5, paper 나머지 36개 진술은 더 들어갈 곳이 없다.

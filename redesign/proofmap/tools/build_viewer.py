@@ -207,6 +207,8 @@ def expand_refs(doc):
                              "at": refs(f.get("cited_at", ""))} if f else None
         else:
             out["why"] = b.get("why", "")
+        if d.get("deep_link"):
+            out["link"] = d["deep_link"]
         return out
 
     card_dir = REPO / "redesign/cards"
@@ -254,6 +256,8 @@ def expand_refs(doc):
                 x["filled"] = [a if isinstance(a, str) else (a.get("what", "") + (" " + a["expr"] if a.get("expr") else "")) for a in af]
             elif af:
                 x["filled"] = [af]
+            if n.get("deep_links"):
+                x["links"] = n["deep_links"]
             x["groundingRefs"] = refs(n.get("grounding", {}).get("source", ""))
             node_extra[(gid, n["id"])] = x
         for e in g["edges"]:

@@ -1198,5 +1198,24 @@
  ],
  "duplicate_node": [],
  "corrections": 1,
- "correction_missed": []
+ "correction_missed": [],
+ "links": [
+  "decor:average-holder",
+  "decor:identity-error",
+  "decor:contractions",
+  "decor:depth-continuity",
+  "decor:projection-bound",
+  "decor:conditional-concentration",
+  "decor:overlap-concentration",
+  "pert:tree-identity",
+  "pert:tree-identity",
+  "tree:log-expansion",
+  "tree:extension-expansion",
+  "tree:reference-total",
+  "tree:charging",
+  "decorrelation",
+  "tree:log-expansion/differentiation_rule",
+  "tree:extension-expansion/differentiation_rule"
+ ],
+ "bad_link": []
 }
