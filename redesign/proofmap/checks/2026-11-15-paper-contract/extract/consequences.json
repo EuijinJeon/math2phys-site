@@ -1,0 +1,264 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "consequences.tex",
+ "lines": 138,
+ "nodes": [
+  {
+   "id": "models:spin",
+   "rule": "S",
+   "env": "corollary",
+   "title_opt": "Viana--Bray and diluted even-spin models",
+   "statement_span": [
+    10,
+    22
+   ],
+   "proof_span": [
+    24,
+    34
+   ],
+   "span": [
+    [
+     10,
+     22
+    ],
+    [
+     24,
+     34
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "models:sat",
+   "rule": "S",
+   "env": "corollary",
+   "title_opt": "Soft random even-$K$ SAT",
+   "statement_span": [
+    36,
+    49
+   ],
+   "proof_span": [
+    51,
+    64
+   ],
+   "span": [
+    [
+     36,
+     49
+    ],
+    [
+     51,
+     64
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "models:ground",
+   "rule": "S",
+   "env": "corollary",
+   "title_opt": "Zero-temperature variational limit",
+   "statement_span": [
+    86,
+    101
+   ],
+   "proof_span": [
+    103,
+    125
+   ],
+   "span": [
+    [
+     86,
+     101
+    ],
+    [
+     103,
+     125
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "models:ground-formula",
+     "line": 93
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:main:formula",
+   "label": "main:formula",
+   "file": "model.tex",
+   "line": 133,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:main:theorem",
+   "label": "main:theorem",
+   "file": "model.tex",
+   "line": 130,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:model:functional",
+   "label": "model:functional",
+   "file": "model.tex",
+   "line": 112,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:model:hamiltonian",
+   "label": "model:hamiltonian",
+   "file": "model.tex",
+   "line": 12,
+   "env": "equation"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:introduction.tex",
+   "file": "introduction.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "models:section",
+     "line": 34
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "EXT:main:formula",
+   "to": "models:spin",
+   "item": "main:formula",
+   "ref_line": 19,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:main:theorem",
+   "to": "models:spin",
+   "item": "main:theorem",
+   "ref_line": 33,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:main:formula",
+   "to": "models:sat",
+   "item": "main:formula",
+   "ref_line": 47,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:main:theorem",
+   "to": "models:sat",
+   "item": "main:theorem",
+   "ref_line": 63,
+   "cmd": "cref"
+  },
+  {
+   "from": "models:spin",
+   "to": "models:ground",
+   "item": "models:spin",
+   "ref_line": 88,
+   "cmd": "cref"
+  },
+  {
+   "from": "models:sat",
+   "to": "models:ground",
+   "item": "models:sat",
+   "ref_line": 88,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:main:theorem",
+   "to": "models:ground",
+   "item": "main:theorem",
+   "ref_line": 112,
+   "cmd": "cref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "models:ground-formula",
+   "line": 123,
+   "cmd": "eqref",
+   "node": "models:ground"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "model:hamiltonian",
+   "line": 8,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:model:hamiltonian"
+  },
+  {
+   "label": "model:functional",
+   "line": 83,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:model:functional"
+  },
+  {
+   "label": "models:ground-formula",
+   "line": 127,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "models:ground"
+  },
+  {
+   "label": "models:sat",
+   "line": 132,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "models:sat"
+  },
+  {
+   "label": "model:functional",
+   "line": 137,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:model:functional"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "models:section",
+   "line": 2,
+   "env": null,
+   "referenced": true
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   9
+  ],
+  [
+   66,
+   85
+  ],
+  [
+   127,
+   138
+  ]
+ ],
+ "stats": {
+  "nodes": 3,
+  "edges": 7,
+  "internal_refs": 1,
+  "unassigned_refs": 5,
+  "external_inputs": 4,
+  "consumers": 1,
+  "refs_total": 13
+ }
+}

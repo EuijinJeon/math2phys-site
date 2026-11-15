@@ -1,0 +1,1202 @@
+{
+ "nodes": 43,
+ "skeleton_nodes_missing": [],
+ "inputs": 436,
+ "by_type": {
+  "symbol": 154,
+  "node": 234,
+  "floor": 42,
+  "open": 6
+ },
+ "by_origin_any": {
+  "card": 297,
+  "llm": 136,
+  "machine": 77
+ },
+ "by_origin_combo": {
+  "card": 223,
+  "llm": 136,
+  "card+machine": 74,
+  "machine": 3
+ },
+ "card_deps_rejected": 17,
+ "card_mismatches": 6,
+ "items_added": 6,
+ "change_requests": 0,
+ "bad_binding": [],
+ "no_used_at": [],
+ "symbols": 35,
+ "floors": 27,
+ "top_edges": 22,
+ "symbol_dup_diff": [],
+ "symbol_dup_same": 0,
+ "floor_dup_diff": [],
+ "opens": [
+  {
+   "node": "model:trial-bounds",
+   "need": "cavity_bounds",
+   "what": "$|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 대해 균등)",
+   "used_at": [
+    126,
+    127
+   ],
+   "why": "번호 없는 진술, model.tex 65–66"
+  },
+  {
+   "node": "tree:log-expansion",
+   "need": "differentiation_rule",
+   "what": "protected leaf 가 있을 때의 미분 규칙: 남는 항은 새 fresh path 뿐이고 계수는 $\\gamma_\\beta$",
+   "used_at": [
+    244,
+    245,
+    246
+   ],
+   "why": "번호 없는 진술, trees.tex 178–202"
+  },
+  {
+   "node": "tree:log-expansion",
+   "need": "analytic_bounds",
+   "what": "복소 영역에서의 해석성과 균등 경계 (수렴 영역)",
+   "used_at": [
+    231,
+    254
+   ],
+   "why": "번호 없는 진술, trees.tex 156–176"
+  },
+  {
+   "node": "tree:extension-expansion",
+   "need": "differentiation_rule",
+   "what": "protected leaf 가 있을 때의 미분 규칙",
+   "used_at": [
+    299,
+    300,
+    301
+   ],
+   "why": "번호 없는 진술, trees.tex 178–202"
+  },
+  {
+   "node": "tree:extension-expansion",
+   "need": "analytic_bounds",
+   "what": "해석적 경계",
+   "used_at": [
+    294,
+    295
+   ],
+   "why": "번호 없는 진술, trees.tex 156–176"
+  },
+  {
+   "node": "upper:bound",
+   "need": "cavity_bounds",
+   "what": "$|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 균등)",
+   "used_at": [
+    53,
+    54,
+    88,
+    89
+   ],
+   "why": "번호 없는 진술, model.tex 65–66"
+  }
+ ],
+ "floor_list": [
+  {
+   "id": "poisson_splitting",
+   "kind": "standard",
+   "statement": "Poisson 과정의 분할(thinning)과 중첩, 평균이 다른 두 Poisson 과정을 공통점으로 결합하면 서로 다른 점의 기대 개수는 평균의 차이 이하.",
+   "section": "cavity"
+  },
+  {
+   "id": "regular_conditional_probability",
+   "kind": "standard",
+   "statement": "표준 Borel 공간 위에서 조건부 확률분포(확률 kernel)는 가측 버전을 가진다.",
+   "cited_at": "comparison.tex 52–53",
+   "section": "comparison"
+  },
+  {
+   "id": "tv_product_telescoping",
+   "kind": "standard",
+   "statement": "곱측도의 전변 거리: $\\|\\mu^{\\otimes a}-\\nu^{\\otimes a}\\|_{\\rm TV}\\le a\\|\\mu-\\nu\\|_{\\rm TV}$ (망원합).",
+   "cited_at": "comparison.tex 112–118",
+   "section": "comparison"
+  },
+  {
+   "id": "tv_bounded_integral",
+   "kind": "standard",
+   "statement": "절댓값이 1 이하인 함수의 두 확률측도에 대한 적분의 차는 전변 거리의 2 배 이하이다.",
+   "cited_at": "comparison.tex 119",
+   "section": "comparison"
+  },
+  {
+   "id": "wald_identity",
+   "kind": "standard",
+   "statement": "독립인 Poisson 개수 $K$ 와 같은 법칙의 (적분가능한) 항들의 합에서 $\\mathbb E\\sum_{j\\le K}X_j=\\mathbb EK\\cdot\\mathbb EX_1$ (Wald).",
+   "cited_at": "comparison.tex 186–190",
+   "section": "comparison"
+  },
+  {
+   "id": "jensen",
+   "kind": "standard",
+   "statement": "Jensen 부등식: 오목 함수 (예: $x\\mapsto x^\\gamma$, $0<\\gamma\\le1$) 에 대해 평균의 함수 값이 함수 값의 평균 이상 (질량 $\\le1$ 인 측도에도 성립); 조건부 기댓값은 제곱 노름을 줄인다.",
+   "section": "decorrelation"
+  },
+  {
+   "id": "martingale_orthogonality",
+   "kind": "standard",
+   "statement": "유계 (벡터) martingale 의 증분은 서로 직교하므로 증분 제곱의 합은 마지막 값의 제곱 노름 이하이다.",
+   "section": "decorrelation"
+  },
+  {
+   "id": "l2_projection",
+   "kind": "standard",
+   "statement": "조건부 기댓값 $\\mathbb E[X\\mid\\mathcal G]$ 는 $L^2$ 에서 $\\mathcal G$-가측 함수 중 $X$ 에 가장 가까운 것이다.",
+   "section": "decorrelation"
+  },
+  {
+   "id": "product_difference",
+   "kind": "standard",
+   "statement": "$x_j,y_j\\in[-1,1]$ 이면 $|\\prod_jx_j-\\prod_jy_j|\\le\\sum_j|x_j-y_j|$ (따라서 제곱 노름은 $s\\sum_j$ 로 누를 수 있다).",
+   "section": "decorrelation"
+  },
+  {
+   "id": "power_mean_scaling",
+   "kind": "standard",
+   "statement": "조건부 거듭제곱 평균 $(\\mathbb E[X^m\\mid\\mathcal G])^{1/m}$ 은 $X$ 에 대해 단조이고, $\\mathcal G$-가측 양수 인자를 곱하면 그 인자만큼 곱해진다 (동차).",
+   "section": "model"
+  },
+  {
+   "id": "efron_stein",
+   "kind": "cited",
+   "statement": "Efron–Stein 분산 부등식: 독립 입력의 함수 $Z$ 에 대해 $\\operatorname{Var}Z\\le\\frac12\\sum_j\\mathbb E(Z-Z^{(j)})^2$ ($Z^{(j)}$ 는 $j$ 번째 입력을 독립으로 다시 뽑은 것; 동일 분포나 대칭 통계량은 필요 없다).",
+   "cite": "EfronStein",
+   "cited_at": "perturbations.tex 179",
+   "section": "perturbations"
+  },
+  {
+   "id": "total_variance",
+   "kind": "standard",
+   "statement": "전체 분산 법칙: $\\operatorname{Var}Z=\\mathbb E\\operatorname{Var}(Z\\mid\\mathcal G)+\\operatorname{Var}(\\mathbb E[Z\\mid\\mathcal G])$.",
+   "section": "perturbations"
+  },
+  {
+   "id": "convex_derivative_monotone",
+   "kind": "standard",
+   "statement": "볼록 함수의 도함수는 단조 증가하고 차분몫은 양쪽 도함수 사이에 끼인다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "fubini",
+   "kind": "standard",
+   "statement": "Fubini–Tonelli: 유계(또는 음이 아닌) 가측 함수의 곱측도 적분은 순서를 바꿔도 같다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "markov_inequality",
+   "kind": "standard",
+   "statement": "Markov 부등식: $X\\ge0$ 이면 $\\mathbb P(X>a)\\le\\mathbb EX/a$.",
+   "section": "perturbations"
+  },
+  {
+   "id": "diagonal_subsequence",
+   "kind": "standard",
+   "statement": "유계 실수열은 수렴 부분수열을 가지며, 가산 개의 유계 수열 족에는 대각선 논법으로 모두 동시에 수렴하는 공통 부분수열이 있다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "cauchy_schwarz",
+   "kind": "standard",
+   "statement": "Cauchy–Schwarz 와 Jensen: $\\mathbb E|X|\\le(\\mathbb EX^2)^{1/2}$, 합과 적분에 대한 $\\sum|x_iy_i|\\le(\\sum x_i^2)^{1/2}(\\sum y_i^2)^{1/2}$.",
+   "section": "perturbations"
+  },
+  {
+   "id": "poisson_moments",
+   "kind": "standard",
+   "statement": "Poisson 확률변수는 모든 moment 가 유한하고 분산은 평균과 같다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "poisson_add_one",
+   "kind": "standard",
+   "statement": "Poisson add-one (Mecke/Palm) 항등식: 평균 $\\lambda$ 인 Poisson 개수 $n$ 의 점들에 대한 합 $\\mathbb E\\sum_{q\\le n}F(\\xi_q,\\text{나머지})$ 는 독립인 새 점 $\\xi$ 를 더한 계에서 $\\lambda\\,\\mathbb EF(\\xi,\\text{나머지}\\cup\\{\\xi\\})$ 와 같다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "cauchy_estimates",
+   "kind": "standard",
+   "statement": "원판에서 $|f|\\le M$ 인 해석 함수의 Taylor 계수는 $|a_k|\\le M\\rho^{-k}$ (Cauchy 추정), 더 작은 원판에서 Taylor 꼬리는 기하급수적으로 작고 도함수도 균등하게 유계이다.",
+   "section": "perturbations"
+  },
+  {
+   "id": "polarization",
+   "kind": "standard",
+   "statement": "분극 항등식: 대칭 $k$-선형 형식 $\\mathcal L$ 과 $Q(g)=\\mathcal L(g,\\ldots,g)$ 에 대해 $\\mathcal L(g_1,\\ldots,g_k)=\\frac{1}{2^kk!}\\sum_{\\epsilon\\in\\{\\pm1\\}^k}\\bigl(\\prod_j\\epsilon_j\\bigr)Q\\bigl(\\sum_j\\epsilon_jg_j\\bigr)$.",
+   "section": "perturbations"
+  },
+  {
+   "id": "diff_under_expectation",
+   "kind": "standard",
+   "statement": "유계 함수의 적분(기댓값) 안에서 매개변수로 미분할 수 있다 (유계 지배에 의한 적분 기호 아래 미분).",
+   "section": "trees"
+  },
+  {
+   "id": "analytic_taylor",
+   "kind": "standard",
+   "statement": "원판에서 해석적인 함수는 그 원판 위에서 Taylor 급수와 같고, 계수는 $k$ 차 도함수를 $k!$ 로 나눈 값이다.",
+   "section": "trees"
+  },
+  {
+   "id": "poisson_derivative",
+   "kind": "standard",
+   "statement": "Poisson 평균에 대한 미분: 유계 $g$ 에 대해 $\\frac{d}{d\\lambda}\\mathbb E\\,g(\\mathrm{Pois}(\\lambda))=\\mathbb E[g(\\mathrm{Pois}(\\lambda)+1)-g(\\mathrm{Pois}(\\lambda))]$.",
+   "section": "upper"
+  },
+  {
+   "id": "dominated_convergence",
+   "kind": "standard",
+   "statement": "지배 수렴 정리.",
+   "section": "upper"
+  },
+  {
+   "id": "convex_even_power",
+   "kind": "standard",
+   "statement": "$p$ 가 짝수이면 $x\\mapsto x^p$ 는 $\\mathbb R$ 위에서 볼록이다.",
+   "section": "upper"
+  },
+  {
+   "id": "mean_value",
+   "kind": "standard",
+   "statement": "$[0,1]$ 에서 연속이고 $(0,1)$ 에서 미분가능한 $\\varphi$ 의 $\\varphi^{\\prime}$ 가 위에서 $c$ 로 막히면 $\\varphi(1)-\\varphi(0)\\le c$ (적분 또는 평균값 정리).",
+   "section": "upper"
+  }
+ ],
+ "floor_uses": [
+  {
+   "node": "cavity:increment",
+   "floor": "poisson_splitting",
+   "what": "Poisson 과정의 분할과 공통점 결합"
+  },
+  {
+   "node": "comp:encoding",
+   "floor": "regular_conditional_probability",
+   "what": "표준 Borel 공간 위의 조건부 확률 kernel 의 가측 버전 존재"
+  },
+  {
+   "node": "comp:patterns",
+   "floor": "tv_product_telescoping",
+   "what": "곱측도의 전변 거리 망원 부등식 $\\|\\pi^{\\otimes a}-\\bar\\pi^{\\otimes a}\\|_{\\rm TV}\\le a\\|\\pi-\\bar\\pi\\|_{\\rm TV}$"
+  },
+  {
+   "node": "comp:patterns",
+   "floor": "tv_bounded_integral",
+   "what": "1 로 유계인 함수의 적분은 전변 거리의 2 배 이하로 변한다"
+  },
+  {
+   "node": "comp:shape-error",
+   "floor": "cauchy_schwarz",
+   "what": "편차의 평균 절댓값을 분산의 제곱근으로 누름: Cauchy–Schwarz"
+  },
+  {
+   "node": "comp:insertion-comparison",
+   "floor": "dominated_convergence",
+   "what": "Poisson 꼬리 $\\mathbb E[(H+BK)\\mathbf1_{K>M}]\\to0$: 지배 수렴"
+  },
+  {
+   "node": "comp:insertion-comparison",
+   "floor": "wald_identity",
+   "what": "Poisson 개수 $K_{\\rm b}$ 개의 같은 법칙 항의 합의 기댓값 $=\\mathbb EK_{\\rm b}\\cdot\\mathbb E(\\text{항})$"
+  },
+  {
+   "node": "decor:average-holder",
+   "floor": "jensen",
+   "what": "질량 $\\le1$ 인 측도에 대한 오목 함수 $x\\mapsto x^\\gamma$ 의 Jensen 부등식"
+  },
+  {
+   "node": "decor:overlap-concentration",
+   "floor": "l2_projection",
+   "what": "조건부 기댓값은 $L^2$ 최적 사영"
+  },
+  {
+   "node": "decor:overlap-concentration",
+   "floor": "total_variance",
+   "what": "분산 분해"
+  },
+  {
+   "node": "decor:overlap-concentration",
+   "floor": "product_difference",
+   "what": "$[-1,1]$ 값 곱의 차 부등식"
+  },
+  {
+   "node": "decor:contractions",
+   "floor": "cauchy_schwarz",
+   "what": "$i,j$ 에 대한 Cauchy–Schwarz 와 prefix 에 대한 Cauchy–Schwarz/Jensen"
+  },
+  {
+   "node": "decor:depth-continuity",
+   "floor": "jensen",
+   "what": "Jensen 부등식 (조건부 기댓값은 제곱 노름을 줄임)"
+  },
+  {
+   "node": "decor:depth-continuity",
+   "floor": "product_difference",
+   "what": "$[-1,1]^s$ 위의 곱의 차 부등식"
+  },
+  {
+   "node": "decor:depth-continuity",
+   "floor": "martingale_orthogonality",
+   "what": "유계 벡터 martingale 의 증분은 서로 직교한다"
+  },
+  {
+   "node": "decor:conditional-concentration",
+   "floor": "cauchy_schwarz",
+   "what": "$|f|\\le1$ 일 때 $L^1$ 노름을 $L^2$ 노름으로 누름"
+  },
+  {
+   "node": "decor:conditional-concentration",
+   "floor": "product_difference",
+   "what": "곱의 차 부등식"
+  },
+  {
+   "node": "main:theorem",
+   "floor": "dominated_convergence",
+   "what": "$D_K,d_K\\to0$: 지배 수렴 정리"
+  },
+  {
+   "node": "model:trial-bounds",
+   "floor": "power_mean_scaling",
+   "what": "power mean 의 단조성·동차성"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "efron_stein",
+   "what": "Efron–Stein 분산 부등식"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "diff_under_expectation",
+   "what": "기대값 안에서의 매개변수 미분"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "total_variance",
+   "what": "전체 분산 법칙 (조건부 분산 + 조건부 평균의 분산)"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "poisson_splitting",
+   "what": "전체 개수에 조건을 걸면 type 과 site 는 독립 label (Poisson 분할)"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "poisson_moments",
+   "what": "Poisson 개수의 유한 moment 와 분산 $=$ 평균"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "cauchy_schwarz",
+   "what": "평균 절대편차를 분산의 제곱근으로 누르는 Cauchy–Schwarz/Jensen"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "convex_derivative_monotone",
+   "what": "볼록 함수의 차분몫과 도함수의 단조성"
+  },
+  {
+   "node": "pert:concentration",
+   "floor": "fubini",
+   "what": "나머지 곱측도에 대한 적분 순서 바꾸기"
+  },
+  {
+   "node": "pert:selection",
+   "floor": "markov_inequality",
+   "what": "Markov 부등식"
+  },
+  {
+   "node": "pert:selection",
+   "floor": "diagonal_subsequence",
+   "what": "가산 족 위의 유계 수열에 대한 대각 부분수열 논법"
+  },
+  {
+   "node": "pert:palm",
+   "floor": "poisson_add_one",
+   "what": "Poisson add-one 항등식"
+  },
+  {
+   "node": "pert:analytic",
+   "floor": "analytic_taylor",
+   "what": "해석 함수와 Taylor 급수 (계수 $=$ 도함수$/k!$), 첫 비영 계수가 있으면 $|H(j^{-1})|\\ge cj^{-q}$"
+  },
+  {
+   "node": "pert:analytic",
+   "floor": "cauchy_estimates",
+   "what": "균등 유계인 해석 함수의 Taylor 꼬리와 도함수의 기하급수적/균등 경계"
+  },
+  {
+   "node": "pert:analytic",
+   "floor": "mean_value",
+   "what": "$|H_N(t,u)-H_N(t,0)|\\le C|u|$ (균등한 $u$ 미분 경계)"
+  },
+  {
+   "node": "pert:tree-identity",
+   "floor": "polarization",
+   "what": "대칭 $k$-선형 형식을 대각 값으로부터 복원하는 분극 항등식"
+  },
+  {
+   "node": "reduction:stability",
+   "floor": "power_mean_scaling",
+   "what": "거듭제곱 평균은 root-가측 곱셈 유계를 보존하고 root-가측 인자는 밖으로 나온다"
+  },
+  {
+   "node": "reduction:stability",
+   "floor": "wald_identity",
+   "what": "Poisson 개수 (평균 $\\alpha N$, $\\alpha p$, $\\alpha(p-1)$) 와 독립 항의 기댓값의 곱"
+  },
+  {
+   "node": "tree:first-variation",
+   "floor": "diff_under_expectation",
+   "what": "power mean 안에서 매개변수 미분"
+  },
+  {
+   "node": "tree:log-expansion",
+   "floor": "analytic_taylor",
+   "what": "해석 함수는 Taylor 급수와 같다"
+  },
+  {
+   "node": "upper:bound",
+   "floor": "poisson_derivative",
+   "what": "Poisson 평균에 대한 미분"
+  },
+  {
+   "node": "upper:bound",
+   "floor": "dominated_convergence",
+   "what": "$\\lambda\\uparrow1$ 에서 정규화 증분의 극한"
+  },
+  {
+   "node": "upper:bound",
+   "floor": "convex_even_power",
+   "what": "$x\\mapsto x^p$ 의 볼록성 ($p$ 짝수)"
+  },
+  {
+   "node": "upper:bound",
+   "floor": "mean_value",
+   "what": "$t\\in[0,1]$ 적분"
+  }
+ ],
+ "rejected": [
+  {
+   "card": "cavity:increment.s4",
+   "use": "cavity:negligible",
+   "why": "증명 71–115 에 (5.3) 을 쓰는 줄이 없다: 증분 경계는 $|\\log Y_{0,\\rm s}|\\le H+BK_{\\rm s}$ 와 coupling 평가(109–113)로만 얻는다.",
+   "node": "cavity:increment"
+  },
+  {
+   "card": "comp:low-increments",
+   "use": "cavity:increment",
+   "why": "8–15행은 증분의 균등 유계나 reservoir 항등식을 쓰지 않는다. 증분은 $P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$ 라는 정의로만 쓰이고 그 정의는 pert_increment 로 묶었다.",
+   "node": "comp:low-increments"
+  },
+  {
+   "card": "x:comp-standing",
+   "use": "cavity:grid",
+   "why": "깊이 $L\\ge2$ 는 9행이 직접 다시 적는다. 격자 $m_d=d/L$ 은 8–15행에 나오지 않는다.",
+   "node": "comp:low-increments"
+  },
+  {
+   "card": "x:comp-standing",
+   "use": "x:pert-selected-limits",
+   "why": "이 node 가 쓰는 것이 아니라 정의하는 것이다. §8 약속(8–12행)이 pert:selection 을 직접 인용해 $N$ 을 선택된 수열 위의 크기로 정한다(perturbations.tex 308–312 의 약속은 인용하지 않는다).",
+   "node": "comp:low-increments"
+  },
+  {
+   "card": "comp:encoding",
+   "use": "pert:factor",
+   "why": "증명이 $\\psi_\\nu$ 를 직접 쓰지 않는다. 섭동은 reservoir(cavity:increment)와 그 tilted kernel 에 들어 있다. (finite mark 공간은 mark_specification 으로, 가중치 양수성은 perturbation_factors 로 묶었다.)",
+   "node": "comp:encoding"
+  },
+  {
+   "card": "comp:encoding",
+   "use": "pert:selection",
+   "why": "'선택된 매개변수 벡터'는 §8 약속(comp_selection)으로 묶었다. 렘마는 벡터가 고정되어 있다는 것만 쓰고 pert:selection 의 (i)–(iii) 를 쓰지 않는다.",
+   "node": "comp:encoding"
+  },
+  {
+   "card": "comp:shape-error-bound",
+   "use": "tree:averaging-remark",
+   "why": "번호 없는 remark 이고 그 내용(깊이 합→$Q_k$ 평균, 부분 shape 오차)은 tree:regular-shapes 의 assignment_probability 와 irregular_probability 로 이미 묶었다(comparison.tex 141–152).",
+   "node": "comp:shape-error"
+  },
+  {
+   "card": "comp:shape-error",
+   "use": "x:decor-limit-order",
+   "why": "§8 이 극한 순서를 직접 적는다(130행, 153–155행: 고정 $L$ 에서 $N$ 극한 후 $L\\to\\infty$). decorrelation.tex 4–9 의 약속은 인용하지 않으며 comp_selection 과 decor:overlap-concentration 진술로 충분하다.",
+   "node": "comp:shape-error"
+  },
+  {
+   "card": "comp:bounded-lower",
+   "use": "cavity:grid",
+   "why": "격자는 원문에 $\\mathbf m^{(L)}$ 로만 나타나며 그 정의(comparison.tex 161–162)를 symbol uniform_grid_vector 로 묶었다.",
+   "node": "comp:bounded-lower"
+  },
+  {
+   "card": "decor:identity-error",
+   "use": "decor:average-definition",
+   "why": "범위(49–58) 안에서 깊이 평균 $\\mathcal A$ 를 쓰지 않는다; 오차는 깊이 평균 이전에 유한 족에서 최대화한다.",
+   "node": "decor:identity-error"
+  },
+  {
+   "card": "decor:overlap-concentration.s4",
+   "use": "x:decor-average-comparisons",
+   "why": "증명은 Hölder 형 비교나 좌표 비교 문장을 직접 인용하지 않고 (decor:fiber-bound) 로 받는다 (605–609).",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "decor:overlap-concentration.s4",
+   "use": "decor:average-holder",
+   "why": "증명은 Hölder 형 비교나 좌표 비교 문장을 직접 인용하지 않고 (decor:fiber-bound) 로 받는다 (605–609).",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "decor:overlap-concentration",
+   "use": "decor:identity-error",
+   "why": "증명은 $o_N(1)$ 만 쓰고 $\\varepsilon_{N,L,k}$ 를 인용하지 않는다 (533–569); 카드가 말한 $\\varepsilon$ 최대화는 이 node 의 줄에 없다.",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "decor:overlap-concentration.s4",
+   "use": "decor:identity-error",
+   "why": "증명은 $o_N(1)$ 만 쓰고 $\\varepsilon_{N,L,k}$ 를 인용하지 않는다 (533–569); 카드가 말한 $\\varepsilon$ 최대화는 이 node 의 줄에 없다.",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "decor:projection-bound",
+   "use": "x:decor-eta-regular",
+   "why": "범위(208–230) 에는 $\\eta$-regular 조건이 나오지 않는다; 결과는 정규성 없이 성립한다.",
+   "node": "decor:projection-bound"
+  },
+  {
+   "card": "pert:score-identity",
+   "use": "pert:factor",
+   "why": "$\\psi_\\nu$ 는 이 node 범위(316–329)에서 직접 쓰이지 않는다; $D_\\nu$ 는 pert:error 의 항목으로 받는다.",
+   "node": "pert:score-identity"
+  },
+  {
+   "card": "pert:analytic.s1",
+   "use": "x:tree-analytic-bounds",
+   "why": "원문은 해석적 경계를 별도 문단이 아니라 Lemma tree:extension-expansion (그 진술의 \"analytic bounds ... uniformly\") 에서 가져온다 (391); 그 입력은 tree:extension-expansion 의 lhs_analytic 로 묶었다.",
+   "node": "pert:analytic"
+  }
+ ],
+ "mismatches": [
+  {
+   "card": "comp:low-increments",
+   "what": "카드 source 는 12–15행이지만 뼈대 범위는 8–15행이다(8–12행의 절 약속 카드 x:comp-standing 을 이 node 에 붙였다). 약속 자체는 symbol comp_selection 으로 받았다.",
+   "node": "comp:low-increments"
+  },
+  {
+   "card": "comp:shape-error",
+   "what": "카드는 $Q_k$ 정의를 tree:log-expansion 에 건다(원문 123행 \\cref). 정의 자체는 trees.tex 209–217 (tree:telescoping 의 Q_rule)이며 log-expansion 은 그것을 쓰는 곳이다.",
+   "node": "comp:shape-error"
+  },
+  {
+   "card": "decor:overlap-concentration",
+   "what": "카드는 진술을 63–83 로 잡았으나 77–83 은 증명 개요 문단이고 526–530 도 증명 앞의 도입 문단이다 (진술은 63–75).",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "decor:overlap-concentration.s4",
+   "what": "카드는 591–609 에서 평균 Hölder (36–43), 비교 (44–47) 를 쓴다고 하나 원문은 (decor:fiber-bound) 만 인용한다.",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "card": "pert:analytic.s1",
+   "what": "카드는 391–397 의 해석적 경계가 trees.tex 156–176 의 번호 없는 문단 (x:tree-analytic-bounds) 에서 온다고 하나, 원문은 Lemma tree:extension-expansion 를 인용한다.",
+   "node": "pert:analytic"
+  },
+  {
+   "card": "x:reduction-power-mean-scaling",
+   "what": "카드는 model.tex 90–97 이 단조·동차성을 말한다고 보지만 그 줄은 $T_d$ 의 정의뿐이고 단조성·동차성은 원문에 진술되어 있지 않다 (카드 자신이 '작성자 정식화'). 표준 사실이므로 floor power_mean_scaling 에 묶었다.",
+   "node": "reduction:stability"
+  }
+ ],
+ "item_added_list": [
+  {
+   "node": "comp:encoding",
+   "item": "independent_of_new_disorder",
+   "by": "comp:insertion-comparison",
+   "where": "same_agent"
+  },
+  {
+   "node": "decor:average-holder",
+   "item": "unused_coordinate",
+   "by": "decor:conditional-concentration",
+   "where": "same_agent"
+  },
+  {
+   "node": "decor:average-holder",
+   "item": "integer_shift",
+   "by": "decor:conditional-concentration",
+   "where": "same_agent"
+  },
+  {
+   "node": "tree:telescoping",
+   "item": "subtree_telescoping",
+   "by": "tree:reference-total",
+   "where": "same_agent"
+  },
+  {
+   "node": "upper:bound",
+   "item": "bounded_factors",
+   "by": "model:factorization",
+   "where": "same_agent"
+  },
+  {
+   "node": "cavity:increment",
+   "item": "log_insertion_bound",
+   "by": "comp:insertion-comparison",
+   "where": "request"
+  }
+ ],
+ "change_request_list": [],
+ "unplaced": [
+  {
+   "lines": [
+    3,
+    9
+   ],
+   "what": "절 머리: reservoir 비교의 소개와 문헌, 섭동을 더해 spin tree 의 항등식을 얻는다는 약속",
+   "handled": "list",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    11,
+    14
+   ],
+   "what": "하한 증명의 유계·순열 불변 가정",
+   "handled": "symbol:cavity_bounded",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    16,
+    19
+   ],
+   "what": "$L\\ge2$, $r=L-1$, 균등 격자 (식 cavity:grid)",
+   "handled": "symbol:cavity_grid",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    20,
+    27
+   ],
+   "what": "Poisson 섭동 factor 족과 한계 (식 cavity:factor-bounds)",
+   "handled": "symbol:perturbation_factors",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    28,
+    32
+   ],
+   "what": "섭동의 개수·type·site 는 root, 매개변수 $\\mathbf u$ 는 고정",
+   "handled": "symbol:perturbation_root_convention",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    117,
+    121
+   ],
+   "what": "하한의 모든 spin tree 는 이 reservoir 에서 뽑는다",
+   "handled": "symbol:cavity_tree_sampling",
+   "section": "cavity"
+  },
+  {
+   "lines": [
+    4,
+    6
+   ],
+   "what": "절 머리의 약속: 세 단계(부호화, multioverlap 집중으로 site 분리, insertion logarithm 비교)로 reservoir 를 시행 법칙으로 바꾼다는 개요",
+   "handled": "list",
+   "section": "comparison"
+  },
+  {
+   "lines": [
+    8,
+    12
+   ],
+   "what": "§8 절 머리 관례: $\\varepsilon>0$ 고정, 각 $L\\ge2$ 에서 pert:selection 의 선택 수열과 매개변수, $N$ 은 그 수열 위의 크기, $\\underline F$ 는 모든 크기의 liminf",
+   "handled": "symbol:comp_selection",
+   "section": "comparison"
+  },
+  {
+   "lines": [
+    130,
+    130
+   ],
+   "what": "안쪽 극한은 선택된 고정-$L$ 수열을 따른다는 주의 (comp_selection 의 재진술)",
+   "handled": "symbol:comp_selection",
+   "section": "comparison"
+  },
+  {
+   "lines": [
+    140,
+    140
+   ],
+   "what": "singleton 의 평균은 깊이 좌표가 없다는 주의 (decor:overlap-concentration 의 singleton 항목이 담음)",
+   "handled": "list",
+   "section": "comparison"
+  },
+  {
+   "lines": [
+    4,
+    8
+   ],
+   "what": "절 머리 관례: 명명 모형은 factorization 의 표준 예이며 Poisson 개수와 복원추출을 유지한다",
+   "handled": "symbol:cons_standard_models",
+   "section": "consequences"
+  },
+  {
+   "lines": [
+    66,
+    84
+   ],
+   "what": "에너지 점수 $\\mathcal E_N$, $Z_N(\\beta)$, $\\mathcal B_{r,\\beta}$ 의 정의 (번호 없는 정의 문단)",
+   "handled": "symbol:energy_score",
+   "section": "consequences"
+  },
+  {
+   "lines": [
+    127,
+    129
+   ],
+   "what": "식 (10.1) 의 infimum 은 각 양의 온도에서 유한 hierarchy 전체에 대해 취하며 달성이나 극한 hierarchy 를 요구하지 않는다 (진술 뒤 문단)",
+   "handled": "list",
+   "section": "consequences"
+  },
+  {
+   "lines": [
+    131,
+    138
+   ],
+   "what": "Remark 10.4: 짝수 arity 가정이 random 3-SAT 을 제외한다는 주의 (외부 논문 인용)",
+   "handled": "list",
+   "section": "consequences"
+  },
+  {
+   "lines": [
+    4,
+    4
+   ],
+   "what": "절 머리 약속: $m_d=d/L$, $\\delta=L^{-1}$",
+   "handled": "symbol:cavity_grid",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    4,
+    9
+   ],
+   "what": "절 머리 약속: 고정된 $L$ 마다 선택된 수열을 따르는 $N$ 극한과 항등식 사용",
+   "handled": "symbol:decor_limit_order",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    8,
+    9
+   ],
+   "what": "논증은 이 항등식과 tree 표본 규칙만 쓰며 상호작용 인수분해는 쓰지 않는다 (범위 주장)",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    11,
+    13
+   ],
+   "what": "목표: 분리된 내부 branching 깊이에 대한 평균에서 모든 유한 multioverlap 의 집중 (§8 비교에 쓰임)",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    18,
+    21
+   ],
+   "what": "topology, 깊이 배정, $b(S)$ 의 정의",
+   "handled": "symbol:topology_depth_assignment",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    21,
+    28
+   ],
+   "what": "$\\eta$-regular 깊이 배정의 정의",
+   "handled": "symbol:eta_regular_assignment",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    60,
+    61
+   ],
+   "what": "$R_S$ 는 sampled leaf 들의 multioverlap 이라는 되새김",
+   "handled": "symbol:spin_product_vector",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    77,
+    83
+   ],
+   "what": "증명 개요 (공분산 귀납, 한 단계 늦추기, marker anchor, 깊이 평균의 필수성)",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    87,
+    92
+   ],
+   "what": "$A_S$, $R_S$, 내적과 노름의 정의",
+   "handled": "symbol:spin_product_vector",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    94,
+    106
+   ],
+   "what": "$\\mathscr F_d$, $\\mu_{d,S}$, $v_N(S,d)$ 의 정의와 유계성",
+   "handled": "symbol:conditional_covariance",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    105,
+    106
+   ],
+   "what": "이어지는 lemma 가 제곱 공분산을 귀납량으로 삼는 이유를 설명하는 문장",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    305,
+    330
+   ],
+   "what": "그림: 목표 갈라짐을 한 칸 늦출 때의 국소 효과 (계수 $-\\delta$)",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    526,
+    530
+   ],
+   "what": "§7.3 도입: 공분산 추정과 marker anchor, 평균 연속성의 결합",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    613,
+    623
+   ],
+   "what": "Remark: 극한의 순서 (작은 분모는 항등식 오차에만, $N$ 극한은 $L$ 에 균등하지 않음)",
+   "handled": "list",
+   "section": "decorrelation"
+  },
+  {
+   "lines": [
+    138,
+    140
+   ],
+   "what": "주정리가 말하지 않는 것: 우변은 유한 hierarchy 위 infimum 이며 달성이나 무한 깊이 극한 Gibbs 상태의 구성을 가정하지 않는다 (remark)",
+   "handled": "list",
+   "section": "main"
+  },
+  {
+   "lines": [
+    3,
+    5
+   ],
+   "what": "절 머리 약속: $p$ 짝수, $\\alpha>0$, $\\theta$, $h$, $B(\\theta)$ (node model:integrability 의 출력 setting 으로도 받음)",
+   "handled": "list",
+   "section": "model"
+  },
+  {
+   "lines": [
+    46,
+    54
+   ],
+   "what": "message $x$ 와 $q_x$ 의 정의, site 항·edge 항의 뜻",
+   "handled": "symbol:message_q",
+   "section": "model"
+  },
+  {
+   "lines": [
+    55,
+    58
+   ],
+   "what": "edge 분배함수 $C_\\theta$ (식 model:edge)",
+   "handled": "symbol:edge_partition",
+   "section": "model"
+  },
+  {
+   "lines": [
+    59,
+    64
+   ],
+   "what": "cavity log-weight $U_\\theta$ (식 model:site-message)",
+   "handled": "symbol:site_log_weight",
+   "section": "model"
+  },
+  {
+   "lines": [
+    65,
+    66
+   ],
+   "what": "번호 없는 사실 진술: $|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 균등)",
+   "handled": "list",
+   "section": "model"
+  },
+  {
+   "lines": [
+    138,
+    140
+   ],
+   "what": "주정리가 말하지 않는 것 (remark; main:theorem 단계 몫)",
+   "handled": "list",
+   "section": "model"
+  },
+  {
+   "lines": [
+    4,
+    10
+   ],
+   "what": "절 머리 약속: 유계 모형, 고정 깊이 $L\\ge2$, 두 계에 적용, 고정 매개변수에서의 기대값",
+   "handled": "symbol:pert_standing",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    12,
+    24
+   ],
+   "what": "전략 요약 단락 (집중에서 항등식으로, 부호로 깊이 선택)과 선행 연구(GG98, AC98, BarraDeSanctis07, Pan13) 언급",
+   "handled": "list",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    28,
+    38
+   ],
+   "what": "mark specification 정의",
+   "handled": "symbol:mark_specification",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    40,
+    50
+   ],
+   "what": "섭동 type 과 매개변수 $t_\\nu,I_\\nu,u_\\nu$ (식 pert:parameters)",
+   "handled": "symbol:pert_parameters",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    51,
+    65
+   ],
+   "what": "Poisson 섭동 factor $\\psi_\\nu$ (식 pert:factor)",
+   "handled": "symbol:pert_factor",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    67,
+    71
+   ],
+   "what": "매개변수 측도 $\\pi$",
+   "handled": "symbol:pert_parameter_measure",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    248,
+    253
+   ],
+   "what": "$\\underline F$ 와 $\\Delta_N(\\mathbf u)$ 의 정의",
+   "handled": "symbol:pert_increment",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    308,
+    312
+   ],
+   "what": "이후 $N\\to\\infty$ 는 선택된 수열을 따른다는 약속",
+   "handled": "symbol:pert_selected_limits",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    429,
+    449
+   ],
+   "what": "spin/marker anchor, 추가 color, 제약 $\\mathcal C$, 허용 history, $R_E$",
+   "handled": "symbol:colored_extensions",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    538,
+    547
+   ],
+   "what": "Remark: 선택의 순서 (mark 와 $c_\\nu$ 먼저, 수열 선택, $N\\to\\infty$ 후 $j\\to\\infty$, 그 뒤에 $L$)",
+   "handled": "list",
+   "section": "perturbations"
+  },
+  {
+   "lines": [
+    4,
+    7
+   ],
+   "what": "절 머리의 약속: bounded·순열 불변 하한과 factorization·positivity 상한을 상수 이동과 균등 근사로 잇는다는 개요",
+   "handled": "list",
+   "section": "reduction"
+  },
+  {
+   "lines": [
+    3,
+    12
+   ],
+   "what": "절 머리: 두 전개의 소개와 문헌, 유한 kernel 열에서 직접 유도한다는 약속",
+   "handled": "list",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    14,
+    27
+   ],
+   "what": "path kernel 열, 지수 $m_d$, prefix $\\sigma$-field",
+   "handled": "symbol:path_kernels",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    29,
+    39
+   ],
+   "what": "유한 tree, 표본 기대값, split, 사영 일관성",
+   "handled": "symbol:tree_sampling",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    51,
+    65
+   ],
+   "what": "분배함수에서 만든 tilted kernel (식 tree:original-tilt)",
+   "handled": "symbol:original_tilt",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    135,
+    140
+   ],
+   "what": "원래 모형에 없던 변수를 쓰는 insertion",
+   "handled": "symbol:extra_variables",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    156,
+    176
+   ],
+   "what": "번호 없는 사실 진술: 복소 영역에서의 해석성과 균등 경계 (Analytic bounds)",
+   "handled": "list",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    180,
+    183
+   ],
+   "what": "protected leaf 의 정의",
+   "handled": "symbol:protected_leaf",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    184,
+    202
+   ],
+   "what": "번호 없는 사실 진술: protected leaf 와 fresh path 가 있을 때의 미분 규칙",
+   "handled": "list",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    259,
+    276
+   ],
+   "what": "canceled-anchor 확장 규칙과 extension history",
+   "handled": "symbol:extension_history",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    311,
+    315
+   ],
+   "what": "reference path 와 제약의 범위",
+   "handled": "symbol:reference_paths",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    317,
+    335
+   ],
+   "what": "두 path 예: 부호 있는 합 $-\\delta$ 대 절댓값 합 $2+\\delta$ (remark 성 계산 예)",
+   "handled": "list",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    460,
+    467
+   ],
+   "what": "regular shape 의 정의",
+   "handled": "symbol:regular_shape",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    516,
+    525
+   ],
+   "what": "remark tree:averaging-remark: 깊이 평균을 $Q_k$ 평균으로 옮기기",
+   "handled": "list",
+   "section": "trees"
+  },
+  {
+   "lines": [
+    3,
+    9
+   ],
+   "what": "절 머리: 문헌 소개와 완전한 시행 법칙 클래스를 다룬다는 약속",
+   "handled": "list",
+   "section": "upper"
+  }
+ ],
+ "duplicate_node": [],
+ "corrections": 1,
+ "correction_missed": []
+}

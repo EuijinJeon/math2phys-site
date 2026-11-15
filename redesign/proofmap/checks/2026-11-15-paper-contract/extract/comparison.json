@@ -1,0 +1,524 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "comparison.tex",
+ "lines": 246,
+ "nodes": [
+  {
+   "id": "comp:low-increments",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     8,
+     15
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "comp:low-increments",
+     "line": 13
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "comp:encoding",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Recursive law encoding",
+   "statement_span": [
+    19,
+    25
+   ],
+   "proof_span": [
+    27,
+    83
+   ],
+   "span": [
+    [
+     19,
+     25
+    ],
+    [
+     27,
+     83
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": [
+    {
+     "label": "comp:single-label-moments",
+     "line": 75,
+     "refs_outside": [
+      {
+       "file": "comparison.tex",
+       "line": 110
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "comp:patterns",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Empirical-pattern comparison",
+   "statement_span": [
+    87,
+    97
+   ],
+   "proof_span": [
+    99,
+    121
+   ],
+   "span": [
+    [
+     87,
+     97
+    ],
+    [
+     99,
+     121
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "comp:pattern-error",
+     "line": 92
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "comp:shape-error",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     123,
+     156
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "comp:shape-error",
+     "line": 125
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "comp:shape-error-bound",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     123,
+     156
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "comp:shape-error-bound",
+     "line": 133
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "comp:insertion-comparison",
+   "rule": "S",
+   "env": "proposition",
+   "title_opt": "",
+   "statement_span": [
+    160,
+    168
+   ],
+   "proof_span": [
+    170,
+    223
+   ],
+   "span": [
+    [
+     160,
+     168
+    ],
+    [
+     170,
+     223
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "comp:increment-comparison",
+     "line": 163
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "comp:bounded-lower",
+   "rule": "S",
+   "env": "corollary",
+   "title_opt": "",
+   "statement_span": [
+    225,
+    231
+   ],
+   "proof_span": [
+    233,
+    246
+   ],
+   "span": [
+    [
+     225,
+     231
+    ],
+    [
+     233,
+     246
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:cavity:identity",
+   "label": "cavity:identity",
+   "file": "cavity.tex",
+   "line": 51,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:cavity:increment",
+   "label": "cavity:increment",
+   "file": "cavity.tex",
+   "line": 43,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:decor:overlap-concentration",
+   "label": "decor:overlap-concentration",
+   "file": "decorrelation.tex",
+   "line": 64,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:model:chain",
+   "label": "model:chain",
+   "file": "model.tex",
+   "line": 72,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:model:section",
+   "label": "model:section",
+   "file": "model.tex",
+   "line": 1,
+   "env": null
+  },
+  {
+   "id": "EXT:model:trial-bounds",
+   "label": "model:trial-bounds",
+   "file": "model.tex",
+   "line": 125,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:model:vs",
+   "label": "model:vs",
+   "file": "model.tex",
+   "line": 87,
+   "env": "align"
+  },
+  {
+   "id": "EXT:pert:selection",
+   "label": "pert:selection",
+   "file": "perturbations.tex",
+   "line": 256,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:tree:Y-recursion",
+   "label": "tree:Y-recursion",
+   "file": "trees.tex",
+   "line": 68,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:log-expansion",
+   "label": "tree:log-expansion",
+   "file": "trees.tex",
+   "line": 224,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:tree:regular-shapes",
+   "label": "tree:regular-shapes",
+   "file": "trees.tex",
+   "line": 469,
+   "env": "lemma"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:decorrelation.tex",
+   "file": "decorrelation.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "comp:section",
+     "line": 13
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "comp:section",
+     "line": 40
+    }
+   ]
+  },
+  {
+   "id": "OUT:reduction.tex",
+   "file": "reduction.tex",
+   "uses": [
+    {
+     "node": "comp:bounded-lower",
+     "item": "comp:bounded-lower",
+     "line": 4
+    },
+    {
+     "node": "comp:bounded-lower",
+     "item": "comp:bounded-lower",
+     "line": 64
+    },
+    {
+     "node": "comp:bounded-lower",
+     "item": "comp:bounded-lower",
+     "line": 76
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "EXT:pert:selection",
+   "to": "comp:low-increments",
+   "item": "pert:selection",
+   "ref_line": 9,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:model:chain",
+   "to": "comp:encoding",
+   "item": "model:chain",
+   "ref_line": 72,
+   "cmd": "eqref"
+  },
+  {
+   "from": "comp:encoding",
+   "to": "comp:patterns",
+   "item": "comp:encoding",
+   "ref_line": 91,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:encoding",
+   "to": "comp:patterns",
+   "item": "comp:single-label-moments",
+   "ref_line": 110,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:log-expansion",
+   "to": "comp:shape-error",
+   "item": "tree:log-expansion",
+   "ref_line": 123,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:tree:regular-shapes",
+   "to": "comp:shape-error",
+   "item": "tree:regular-shapes",
+   "ref_line": 141,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:shape-error-bound",
+   "to": "comp:shape-error",
+   "item": "comp:shape-error-bound",
+   "ref_line": 153,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:decor:overlap-concentration",
+   "to": "comp:shape-error",
+   "item": "decor:overlap-concentration",
+   "ref_line": 153,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:encoding",
+   "to": "comp:insertion-comparison",
+   "item": "comp:encoding",
+   "ref_line": 161,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:cavity:increment",
+   "to": "comp:insertion-comparison",
+   "item": "cavity:increment",
+   "ref_line": 171,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:encoding",
+   "to": "comp:insertion-comparison",
+   "item": "comp:encoding",
+   "ref_line": 172,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:tree:Y-recursion",
+   "to": "comp:insertion-comparison",
+   "item": "tree:Y-recursion",
+   "ref_line": 175,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:model:vs",
+   "to": "comp:insertion-comparison",
+   "item": "model:vs",
+   "ref_line": 180,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:cavity:identity",
+   "to": "comp:insertion-comparison",
+   "item": "cavity:identity",
+   "ref_line": 195,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:log-expansion",
+   "to": "comp:insertion-comparison",
+   "item": "tree:log-expansion",
+   "ref_line": 205,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:patterns",
+   "to": "comp:insertion-comparison",
+   "item": "comp:patterns",
+   "ref_line": 208,
+   "cmd": "cref"
+  },
+  {
+   "from": "comp:shape-error",
+   "to": "comp:insertion-comparison",
+   "item": "comp:shape-error",
+   "ref_line": 210,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:cavity:identity",
+   "to": "comp:insertion-comparison",
+   "item": "cavity:identity",
+   "ref_line": 222,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:model:section",
+   "to": "comp:bounded-lower",
+   "item": "model:section",
+   "ref_line": 227,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:model:trial-bounds",
+   "to": "comp:bounded-lower",
+   "item": "model:trial-bounds",
+   "ref_line": 235,
+   "cmd": "eqref"
+  },
+  {
+   "from": "comp:low-increments",
+   "to": "comp:bounded-lower",
+   "item": "comp:low-increments",
+   "ref_line": 236,
+   "cmd": "eqref"
+  },
+  {
+   "from": "comp:insertion-comparison",
+   "to": "comp:bounded-lower",
+   "item": "comp:insertion-comparison",
+   "ref_line": 244,
+   "cmd": "cref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "comp:shape-error",
+   "line": 156,
+   "cmd": "eqref",
+   "node": "comp:shape-error"
+  },
+  {
+   "label": "comp:increment-comparison",
+   "line": 222,
+   "cmd": "eqref",
+   "node": "comp:insertion-comparison"
+  }
+ ],
+ "unassigned_refs": [],
+ "excluded_labels": [
+  {
+   "label": "comp:section",
+   "line": 2,
+   "env": null,
+   "referenced": true
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   7
+  ],
+  [
+   17,
+   18
+  ],
+  [
+   85,
+   86
+  ],
+  [
+   158,
+   159
+  ]
+ ],
+ "stats": {
+  "nodes": 7,
+  "edges": 22,
+  "internal_refs": 2,
+  "unassigned_refs": 0,
+  "external_inputs": 11,
+  "consumers": 3,
+  "refs_total": 24
+ }
+}

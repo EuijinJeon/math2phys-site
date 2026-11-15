@@ -1,0 +1,262 @@
+{
+  "graph": {
+    "id": "dc",
+    "title": "Lemma: 깊이에 대한 평균 연속성 (증명)",
+    "parent": {"graph": "top", "node": "DC"},
+    "summary": "처음 stem 을 따라 path 하나를 뽑으면 $\\mu_{t,T}$ 가 유계 vector martingale 이고 증분의 직교성에서 에너지 합 $\\le1$ 이 나온다. 이를 평가 깊이에 대해 더하고 $L$ 로 나누면 평가 깊이 주장이 된다. branching vertex 하나의 분기를 $q$ 에서 $q+1$ 로 늦추는 차이를 Jensen 과 곱 차이 부등식으로 자식 평균의 증분으로 누르고, $q$ 에 대해 더할 때 에너지 합을 쓴다. 조상 쪽 평가로의 전파는 축약이고, 나머지 깊이 좌표 평균으로 shift 하나의 $C/L$ 를 얻는다. 여러 shift 는 하나씩 바꾸며 제곱 삼각부등식을 쓰고, regularity 가 중간 모양의 정의역을 보장한다. 한-prefix 주변 법칙의 불변성으로 더 큰 표본 tree 로 옮긴다.",
+    "nodes": [
+      {
+        "id": "ext_AVG",
+        "kind": "external",
+        "title": "AVG: shift 후 regularity",
+        "external_ref": "AVG",
+        "import_edge": "t19",
+        "items": ["shift_regular"],
+        "statement": "좌표의 임의 부분집합을 고정 정수만큼 옮기면, 충분히 큰 $L$ 에서 $\\eta$-regular 배정이 $\\eta/2$-regular 배정으로 단사로 간다.",
+        "grounding": {"source": "decorrelation.tex 202–203", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "ext_XSAMP",
+        "kind": "external",
+        "title": "X_SAMP: leaf 제거",
+        "external_ref": "X_SAMP",
+        "import_edge": "t20",
+        "items": ["leaf_removal"],
+        "statement": "leaf 몇 개와 남은 leaf가 쓰지 않는 path 부분을 지우면 남은 tree의 표본 법칙이 보존된다.",
+        "grounding": {"source": "decorrelation.tex 204–205", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d1",
+        "kind": "step",
+        "title": "처음 stem 위의 martingale",
+        "statement": "$T$ 의 나중 branching 깊이를 고정하고 처음 stem 을 따라 path 하나를 뽑는다. 이 path 위에서 $\\mu_{t,T}$ 는 유계 vector martingale 이다.",
+        "symbols": ["mu", "F_d", "A_S", "topology"],
+        "local_symbols": [
+          {"id": "T", "tex": "$T$", "defined_at": "decorrelation.tex 169", "text": "증명에서 쓰는 임의의 모양(topology와 깊이 배정). 원문에 따로 도입하는 문장이 없다."},
+          {"id": "t", "tex": "$t$", "defined_at": "decorrelation.tex 170", "text": "처음 stem 위의 평가 깊이."}
+        ],
+        "derivation": [
+          {"line": 1, "text": "$\\mathscr F_t$ 는 $t$ 에 대해 증가하므로 $\\mu_{t,T}=\\mathbb E[A_T\\mid\\mathscr F_t]$ 는 tower property 로 martingale.", "by": "floor: tower property"},
+          {"line": 2, "text": "$A_T$ 좌표가 $\\le1$ 이므로 $\\mu_{t,T}$ 좌표도 $\\le1$.", "by": "floor: 조건부 기대값의 단조성"}
+        ],
+        "floor_used": ["tower property", "조건부 기대값의 단조성"],
+        "author_filled": "martingale 성질이 $\\mathscr F_t$ 의 증가와 tower property 에서, 유계성이 $|A_{T,i}|\\le1$ 에서 나온다는 것을 채웠다.",
+        "grounding": {"source": "decorrelation.tex 169–171", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d2",
+        "kind": "step",
+        "title": "증분의 직교성과 에너지 합",
+        "statement": "증분의 직교성에서 $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$ \\eqref{decor:martingale-energy}.",
+        "symbols": ["mu", "A_S"],
+        "derivation": [
+          {"line": 1, "text": "직교성: $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2=\\mathbb E\\|\\mu_{\\mathrm{last},T}\\|_N^2-\\mathbb E\\|\\mu_{\\mathrm{first},T}\\|_N^2$.", "by": "e1, floor: martingale 증분의 직교성"},
+          {"line": 2, "text": "좌표가 $\\le1$ 이므로 $\\|\\cdot\\|_N^2\\le1$, 따라서 합 $\\le1$.", "by": "line 1, e1"}
+        ],
+        "floor_used": ["martingale 증분의 직교성"],
+        "author_filled": "telescoping 등식과 $\\|x\\|_N^2\\le1$ 로 1 이하가 되는 단계를 채웠다.",
+        "grounding": {"source": "decorrelation.tex 171–175", "state": "proposed"},
+        "status": "complete"
+      },
+      {
+        "id": "d3",
+        "kind": "step",
+        "title": "평가 깊이 주장",
+        "statement": "범위를 가진 깊이에 대해 더하고 $L$ 로 나누면 평가 깊이 주장 \\eqref{decor:evaluation-depth-continuity} 가 나온다.",
+        "symbols": ["A_avg", "mu", "eta_regular"],
+        "derivation": [
+          {"line": 1, "text": "나머지 branching 깊이를 고정하면 $d$ 에 대한 합은 \\eqref{decor:martingale-energy} 로 $\\le1$.", "by": "e2"},
+          {"line": 2, "text": "$\\mathcal A_{L,\\eta}$ 의 정규화 $L^{-a}$ 에서 $L^{-1}$ 하나는 $d$ 합에, 나머지 $L^{-(a-1)}$ 와 나머지 좌표 합은 총질량 $\\le1$ 에 쓰여 $\\le1/L$.", "by": "line 1, floor: $\\mathcal A_{L,\\eta}$ 의 총질량 $\\le1$"}
+        ],
+        "floor_used": ["$\\mathcal A_{L,\\eta}$ 의 정의(기호 표)"],
+        "author_filled": "원문은 '더하고 $L$ 로 나눈다'만 적는다. $\\mathcal A_{L,\\eta}$ 정규화와 결합해 상수 1 의 $C/L$ 이 되는 셈을 채웠다. 처음 unary 구간 위의 $\\mu_{d,S}$ 가 d1 의 $T=S$ 경우라는 대응도 채웠다.",
+        "grounding": {"source": "decorrelation.tex 176–177", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d4",
+        "kind": "step",
+        "title": "branching vertex 하나의 원래 평균과 늦춘 평균",
+        "statement": "깊이 $q$ 의 branching vertex 가 자식 모양 $T_1,\\ldots,T_s$ 를 갖는다. 그들의 나중 깊이를 고정하면 원래 조건부 평균은 좌표별 곱 $\\prod_j\\mu_{q,T_j}$ 이다. 분기를 $q+1$ 로 늦추면 같은 깊이 $q$ prefix 에서의 조건부 평균은 $\\mathbb E[\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]$ 이고, 자식 평균은 공통 한 걸음 연장 위에서 평가한다.",
+        "symbols": ["mu", "F_d", "topology", "S_U"],
+        "local_symbols": [
+          {"id": "q", "tex": "$q$", "defined_at": "decorrelation.tex 179", "text": "옮기는 branching vertex 의 깊이."},
+          {"id": "T_j", "tex": "$T_1,\\ldots,T_s$", "defined_at": "decorrelation.tex 179–180", "text": "그 vertex 의 자식 모양들, $s$ 는 자식 수."}
+        ],
+        "author_filled": "곱 공식은 깊이 $q$ prefix 가 주어지면 자식 가지들이 조건부 독립이라는 것에서 나온다고 읽었다. 원문은 이 독립성을 적지 않는다.",
+        "grounding": {"source": "decorrelation.tex 179–185", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d5",
+        "kind": "step",
+        "title": "한 vertex shift 의 차이",
+        "statement": "Jensen 부등식과 $[-1,1]^s$ 위의 곱 차이 부등식으로 $\\mathbb E\\|\\prod_j\\mu_{q,T_j}-\\mathbb E[\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]\\|_N^2\\le s\\sum_j\\mathbb E\\|\\mu_{q+1,T_j}-\\mu_{q,T_j}\\|_N^2$ \\eqref{decor:one-vertex-shift}.",
+        "symbols": ["mu", "F_d"],
+        "derivation": [
+          {"line": 1, "text": "$\\prod_j\\mu_{q,T_j}$ 는 $\\mathscr F_q$-가측이므로 차이는 $\\mathbb E[\\prod_j\\mu_{q,T_j}-\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]$; Jensen 으로 제곱 norm 은 조건부 기대값 안으로.", "by": "e4, floor: 조건부 Jensen"},
+          {"line": 2, "text": "좌표별로 $|\\prod_ja_j-\\prod_jb_j|\\le\\sum_j|a_j-b_j|$ ($a,b\\in[-1,1]^s$), $(\\sum_j x_j)^2\\le s\\sum_jx_j^2$.", "by": "line 1, floor: 곱 차이 부등식, Cauchy–Schwarz"}
+        ],
+        "floor_used": ["조건부 Jensen", "곱 차이 부등식", "Cauchy–Schwarz"],
+        "author_filled": "$\\prod_j\\mu_{q,T_j}$ 의 $\\mathscr F_q$-가측성, 곱 차이 부등식의 형태, 계수 $s$ 가 Cauchy–Schwarz 에서 온다는 것을 채웠다.",
+        "grounding": {"source": "decorrelation.tex 185–193", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d6",
+        "kind": "step",
+        "title": "$q$ 에 대한 합",
+        "statement": "$q$ 에 대해 더할 때 각 자식 모양을 고정하고 \\eqref{decor:martingale-energy} 를 쓴다.",
+        "symbols": ["mu"],
+        "derivation": [
+          {"line": 1, "text": "각 $j$ 에 대해 $\\sum_q\\mathbb E\\|\\mu_{q+1,T_j}-\\mu_{q,T_j}\\|_N^2\\le1$ ($T=T_j$ 로 둔 에너지 합).", "by": "e2b"},
+          {"line": 2, "text": "따라서 \\eqref{decor:one-vertex-shift} 우변의 $q$ 합은 $\\le s^2$.", "by": "line 1, e5"}
+        ],
+        "author_filled": "자식 모양 $T_j$ 의 '처음 stem' 이 깊이 $q$ 에서 시작하는 것으로 읽어 에너지 합을 적용했고, 합의 상수 $s^2$ 를 채웠다.",
+        "grounding": {"source": "decorrelation.tex 194–195", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d7",
+        "kind": "step",
+        "title": "조상 쪽 평가로 전파하고 한 shift 의 $C/L$",
+        "statement": "바뀐 subtree 평균을 조상 쪽 평가로 전파하는 것은 조건부 기대값과 절댓값 1 이하 인자의 곱으로 이루어지고, 둘 다 이 제곱 norm 을 축약한다. 나머지 깊이 좌표에 대해 평균하면 shift 하나에 대한 $C/L$ 경계가 나온다.",
+        "symbols": ["A_avg", "mu", "S_U"],
+        "derivation": [
+          {"line": 1, "text": "조건부 기대값은 $L^2$ 에서 축약(Jensen), $|f_i|\\le1$ 인 좌표별 곱도 $\\|\\cdot\\|_N^2$ 을 늘리지 않는다.", "by": "floor: 조건부 Jensen"},
+          {"line": 2, "text": "그러므로 $\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2$ 은 \\eqref{decor:one-vertex-shift} 좌변 이하.", "by": "line 1, e5"},
+          {"line": 3, "text": "$\\mathcal A_{L,\\eta}$ 에서 $q$ 좌표의 $L^{-1}$ 과 d6 의 $q$ 합 $\\le s^2$, 나머지 좌표의 총질량 $\\le1$ 로 $\\le s^2/L$.", "by": "line 2, e6"}
+        ],
+        "floor_used": ["조건부 Jensen", "$\\mathcal A_{L,\\eta}$ 의 정의(기호 표)"],
+        "author_filled": "전파 단계가 축약이라는 이유(Jensen, 유계 인자)와 평균 셈에서 상수 $s^2$ 가 나오는 것을 채웠다. $d$ 가 범위를 가지는 경우 $d$ 도 평균에 들어가지만 상수에 영향이 없다는 것도 채웠다.",
+        "grounding": {"source": "decorrelation.tex 195–199", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d8",
+        "kind": "step",
+        "title": "여러 shift",
+        "statement": "여러 shift 는 vertex 를 하나씩 바꾸고 shift 수와 같은 인자를 갖는 제곱 삼각부등식을 쓴다. regularity 가 중간 모양이 같은 조상 관계를 갖고, 큰 $L$ 에서 넓힌 $\\eta/2$-regular 정의역 안에 있도록 보장한다.",
+        "symbols": ["S_U", "eta_regular", "A_avg"],
+        "derivation": [
+          {"line": 1, "text": "$U=\\{u_1,\\ldots,u_k\\}$ 를 하나씩 올린 중간 모양 $S^{\\{u_1\\}},S^{\\{u_1,u_2\\}},\\ldots$ 사이에서 $\\|\\sum_{m=1}^k x_m\\|^2\\le k\\sum_m\\|x_m\\|^2$.", "by": "e7, floor: 제곱 삼각부등식"},
+          {"line": 2, "text": "중간 모양의 깊이 배정은 원래 배정에서 좌표 부분집합을 1 옮긴 것이므로 큰 $L$ 에서 $\\eta/2$-regular, 단사이므로 평균의 중복 셈이 없다.", "by": "e8"},
+          {"line": 3, "text": "각 단계에 d7 를 적용해 $\\le k\\cdot k\\cdot s^2/L$ 꼴.", "by": "line 1, line 2, e7"}
+        ],
+        "floor_used": ["제곱 삼각부등식"],
+        "author_filled": "중간 모양의 사슬, 넓힌 정의역에서도 d7 이 같은 상수로 성립한다는 것, 단사성이 평균 셈을 허락한다는 것을 채웠다. 원문은 'same ancestry relations' 의 필요를 설명하지 않는다.",
+        "grounding": {"source": "decorrelation.tex 199–203", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "d9",
+        "kind": "step",
+        "title": "더 큰 표본 tree",
+        "statement": "관련된 모든 한-prefix 주변 법칙은 다른 표본 가지를 빼도 변하지 않으므로 이 평가들은 임의의 더 큰 표본 tree 에서도 성립한다.",
+        "symbols": ["mu", "F_d"],
+        "derivation": [
+          {"line": 1, "text": "평가에 들어가는 양은 한 prefix 와 그 위 모양의 주변 법칙에만 의존한다.", "by": "e3, e5, e7"},
+          {"line": 2, "text": "다른 가지를 빼도 그 주변 법칙이 보존된다.", "by": "e9"}
+        ],
+        "author_filled": "어떤 양이 '한-prefix 주변 법칙'에만 의존하는지(위 평가 전부)를 명시했다.",
+        "grounding": {"source": "decorrelation.tex 203–205", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "out_martingale_energy",
+        "kind": "output",
+        "title": "martingale 에너지",
+        "statement": "$T$ 의 나중 branching 깊이를 고정하고 처음 stem을 따라 path 하나를 뽑으면 $\\mu_{t,T}$ 는 유계 vector martingale이고 $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$.",
+        "symbols": ["mu"],
+        "output_items": ["martingale_energy"],
+        "grounding": {"source": "decorrelation.tex 169–175", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "out_eval_shift",
+        "kind": "output",
+        "title": "평가 깊이 연속성",
+        "statement": "$d$ 가 $S$ 의 처음 unary 구간을 따라 움직이면 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d+1,S}-\\mu_{d,S}\\|_N^2\\le C/L$ (평균은 $d$ 와 모든 branching 깊이, 같은 표본 path 위).",
+        "symbols": ["A_avg", "mu"],
+        "output_items": ["eval_shift"],
+        "grounding": {"source": "decorrelation.tex 155–163, 176–177", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "out_branch_shift",
+        "kind": "output",
+        "title": "branching 깊이 연속성",
+        "statement": "충분히 큰 $L$ 에서 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$ (같은 표본 prefix, 모든 branching 깊이 평균, $d$ 는 범위가 있으면 평균하고 아니면 고정).",
+        "symbols": ["A_avg", "mu", "S_U", "eta_regular", "topology"],
+        "output_items": ["branch_shift"],
+        "grounding": {"source": "decorrelation.tex 144–155, 179–203", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "out_uniform_constant",
+        "kind": "output",
+        "title": "상수의 균일성",
+        "statement": "상수는 vertex 수와 shift 수에만 의존하고 $N$, 평가 깊이, transition kernel 에 균일하다.",
+        "symbols": [],
+        "output_items": ["uniform_constant"],
+        "author_filled": "원문 증명은 균일성을 따로 논하지 않는다. d3 의 상수 1, d7–d8 의 상수가 $s$ 와 shift 수에만 의존하고, 에너지 합 경계 1 이 $N$, 깊이, kernel 과 무관하다는 데서 읽었다. $s\\le$ vertex 수.",
+        "grounding": {"source": "decorrelation.tex 163–165", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "out_larger_tree",
+        "kind": "output",
+        "title": "더 큰 표본 tree",
+        "statement": "관련된 한-prefix 주변 법칙은 다른 표본 가지를 빼도 변하지 않으므로 이 평가들은 더 큰 표본 tree 안에서도 성립한다.",
+        "symbols": [],
+        "output_items": ["larger_tree"],
+        "grounding": {"source": "decorrelation.tex 203–205", "state": "proposed"},
+        "status": "sketch"
+      }
+    ],
+    "edges": [
+      {"id": "e1", "from": "d1", "to": "d2", "kind": "flow", "statement": "처음 stem path 위에서 $\\mu_{t,T}$ 는 좌표 $\\le1$ 인 vector martingale.", "carries": [{"item": "bounded_martingale", "used_at": [171]}], "grounding": {"source": "decorrelation.tex 169–171", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2", "from": "d2", "to": "d3", "kind": "flow", "statement": "$\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$.", "carries": [{"item": "martingale_energy", "used_at": [176]}], "grounding": {"source": "decorrelation.tex 172–177", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2b", "from": "d2", "to": "d6", "kind": "flow", "statement": "$\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$, 각 자식 모양 $T=T_j$ 에 적용.", "carries": [{"item": "martingale_energy", "used_at": [194]}], "grounding": {"source": "decorrelation.tex 194–195", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2o", "from": "d2", "to": "out_martingale_energy", "kind": "flow", "statement": "\\eqref{decor:martingale-energy} 와 martingale 성질.", "carries": [{"item": "martingale_energy", "used_at": [173]}], "grounding": {"source": "decorrelation.tex 169–175", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e3", "from": "d3", "to": "out_eval_shift", "kind": "flow", "statement": "$\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d+1,S}-\\mu_{d,S}\\|_N^2\\le1/L$.", "carries": [{"item": "eval_shift", "used_at": [177]}], "grounding": {"source": "decorrelation.tex 176–177", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e4", "from": "d4", "to": "d5", "kind": "definition", "statement": "원래 평균 $\\prod_j\\mu_{q,T_j}$, 늦춘 평균 $\\mathbb E[\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]$ (공통 한 걸음 연장).", "carries": [{"item": "two_means", "used_at": [186, 188, 189]}], "grounding": {"source": "decorrelation.tex 179–185", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e5", "from": "d5", "to": "d6", "kind": "flow", "statement": "\\eqref{decor:one-vertex-shift}: 한 vertex 차이 $\\le s\\sum_j\\mathbb E\\|\\mu_{q+1,T_j}-\\mu_{q,T_j}\\|_N^2$.", "carries": [{"item": "one_vertex_shift", "used_at": [194]}], "grounding": {"source": "decorrelation.tex 187–194", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e6", "from": "d6", "to": "d7", "kind": "flow", "statement": "한 vertex 차이의 $q$ 합 $\\le s^2$.", "carries": [{"item": "q_sum", "used_at": [198, 199]}], "grounding": {"source": "decorrelation.tex 194–199", "state": "proposed"}, "status": "connected", "complete": false},
+      {"id": "e7", "from": "d7", "to": "d8", "kind": "flow", "statement": "shift 하나에 대해 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$.", "carries": [{"item": "one_shift", "used_at": [199, 200]}], "grounding": {"source": "decorrelation.tex 198–201", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e8", "from": "ext_AVG", "to": "d8", "kind": "definition", "statement": "[AVG.shift_regular] 좌표 부분집합을 고정 정수만큼 옮기면 큰 $L$ 에서 $\\eta$-regular 배정이 $\\eta/2$-regular 배정으로 단사로 간다.", "carries": [{"item": "shift_regular", "used_at": [202, 203]}], "grounding": {"source": "decorrelation.tex 201–203", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e10", "from": "d8", "to": "out_branch_shift", "kind": "flow", "statement": "여러 shift 에 대해 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$.", "carries": [{"item": "branch_shift", "used_at": [199, 203]}], "grounding": {"source": "decorrelation.tex 199–203", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e11", "from": "d8", "to": "out_uniform_constant", "kind": "flow", "statement": "branching 쪽 상수는 자식 수와 shift 수에만 의존.", "carries": [{"item": "uniform_constant", "used_at": [200, 201]}], "grounding": {"source": "decorrelation.tex 199–201", "state": "proposed"}, "status": "connected", "complete": false},
+      {"id": "e12", "from": "d3", "to": "out_uniform_constant", "kind": "flow", "statement": "평가 깊이 쪽 상수는 1.", "carries": [{"item": "uniform_constant", "used_at": [173, 177]}], "grounding": {"source": "decorrelation.tex 173–177", "state": "proposed"}, "status": "connected", "complete": false},
+      {"id": "e9", "from": "ext_XSAMP", "to": "d9", "kind": "call", "statement": "[X_SAMP.leaf_removal] leaf 몇 개와 남은 leaf가 쓰지 않는 path 부분을 지우면 남은 tree의 표본 법칙이 보존된다.", "carries": [{"item": "leaf_removal", "used_at": [204, 205]}], "grounding": {"source": "decorrelation.tex 203–205", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e13", "from": "d9", "to": "out_larger_tree", "kind": "flow", "statement": "위 평가들은 임의의 더 큰 표본 tree 에서 성립.", "carries": [{"item": "larger_tree", "used_at": [205]}], "grounding": {"source": "decorrelation.tex 203–205", "state": "proposed"}, "status": "connected", "complete": true}
+    ]
+  },
+  "parent_change_requests": [
+    {
+      "target": "node DC",
+      "kind": "change_item",
+      "detail": "martingale_energy 문구에서 $T$ 와 $t$ 가 무엇인지 적는다: '$T$ 는 임의의 모양(topology와 깊이 배정), $t$ 는 그 처음 stem 위의 평가 깊이'. 증명 안 식 참조라는 괄호 주석은 그대로 둔다.",
+      "reason": "원문 169 은 $T$ 를 도입 없이 쓰고, 이 항목은 t14 로 THM 에 나가므로 밖에서 읽을 때 $T$ 의 범위가 필요하다. 증명 194 에서는 자식 모양 $T_j$ 에도 적용된다.",
+      "source_lines": "decorrelation.tex 169–175, 194–195"
+    },
+    {
+      "target": "symbol F_d",
+      "kind": "change_symbol",
+      "detail": "$\\mathscr F_q$ 를 처음 stem 위만이 아니라 branching vertex 깊이 $q$ 의 prefix(자식 모양의 처음 stem 시작점)에도 쓴다는 것을 기호 표에 덧붙인다.",
+      "reason": "증명 184 의 $\\mathbb E[\\cdot\\mid\\mathscr F_q]$ 와 194 의 자식 모양에 대한 에너지 합은 깊이 $q$ 의 branching vertex 에서 시작하는 prefix 를 쓰는데, 기호 표의 정의는 '처음 stem 위의 깊이 $d$' 로 되어 있다.",
+      "source_lines": "decorrelation.tex 184, 194"
+    }
+  ],
+  "missed_dependencies": [
+    {
+      "what": "깊이 $q$ prefix 가 주어지면 자식 가지들의 표본이 조건부 독립이라는 것(원래 조건부 평균이 $\\prod_j\\mu_{q,T_j}$ 라는 곱 공식의 근거)",
+      "used_at": "decorrelation.tex 180–181",
+      "likely_from": "X_SAMP"
+    }
+  ],
+  "notes": "확신이 낮은 곳: (1) d6 의 상수 $s^2$ 와 d7–d8 의 상수 셈은 원문이 적지 않아 채웠다. (2) 'same ancestry relations' 가 왜 필요한지는 원문에 없고, 중간 모양이 같은 topology 로 읽히게 하려는 것으로 짐작했다. (3) uniform_constant 는 증명에 별도 논증이 없어 d3, d8 에서 읽었고 해당 edge 는 complete:false 로 두었다. (4) 늦춘 평균의 '공통 한 걸음 연장'이 S^U 의 표본 구조와 정확히 어떻게 맞는지(같은 표본 prefix 비교)는 상위 정의에 맡겼다. (5) 안쪽 step node 는 9개(d1–d9)."
+}

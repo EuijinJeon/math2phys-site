@@ -1,0 +1,25 @@
+{"node_bound": 396, "line_overlap": 260, "rejected": 22, "none": 24}
+main:theorem main:theorem x:model-hypotheses
+main:theorem main:theorem.s4 x:model-hypotheses
+upper:bound upper:bound x:model-hypotheses
+decor:conditional-concentration decor:conditional-concentration tree:extension-expansion
+decor:conditional-concentration decor:conditional-concentration.s2 tree:extension-expansion
+decor:conditional-concentration decor:conditional-concentration.s2.s1 tree:extension-expansion
+decor:conditional-concentration decor:conditional-concentration.s5 tree:extension-expansion
+decor:conditional-concentration decor:conditional-concentration.s5.s1 tree:extension-expansion
+comp:encoding comp:encoding x:comp-standing
+comp:encoding comp:encoding.s1 x:comp-standing
+comp:shape-error comp:shape-error x:pert-selected-limits
+comp:shape-error comp:shape-error x:comp-standing
+comp:shape-error comp:shape-error.s2 x:comp-standing
+comp:shape-error comp:shape-error tree:log-expansion
+comp:insertion-comparison comp:insertion-comparison x:comp-standing
+comp:insertion-comparison comp:insertion-comparison.s3 x:comp-standing
+comp:bounded-lower comp:bounded-lower.s2 x:pert-selected-limits
+reduction:stability reduction:stability x:reduction-power-mean-scaling
+reduction:stability reduction:stability.s2 x:reduction-power-mean-scaling
+reduction:stability reduction:stability.s3 x:reduction-power-mean-scaling
+models:spin models:spin x:model-hypotheses
+models:spin models:spin.s3 x:model-hypotheses
+models:sat models:sat x:model-hypotheses
+models:sat models:sat.s3 x:model-hypotheses

@@ -15,6 +15,9 @@ from pathlib import Path
 _spec = importlib.util.spec_from_file_location('proofmap_contracts', Path(__file__).with_name('output_contracts.py'))
 contracts = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(contracts)
+_carries_spec = importlib.util.spec_from_file_location('proofmap_carries', Path(__file__).with_name('carries.py'))
+carries = importlib.util.module_from_spec(_carries_spec)
+_carries_spec.loader.exec_module(carries)
 
 NODE_KINDS = {"object", "rule", "fact", "step", "external", "output"}
 EDGE_KINDS = {"flow", "call", "definition"}
@@ -115,8 +118,64 @@ def check_references(g, n):
     return errors, warnings, report
 
 
-def check(doc):
+def check_bindings(doc):
+    """[제안] 논문 전체 계약(graphs/paper.json, 2026-11-15)의 입력 묶음 검사.
+    node `contract.needs[]` 가 `binding` 을 가진 꼴에만 적용한다(예전 자료는 건드리지 않는다).
+    binding.type: node(다른 node 의 출력 항목) / symbol(문서 symbols) / floor(문서 floors) / open.
+    묶인 곳이 실제로 있는지, 닫힌 입력에 쓰이는 줄(used_at)이 있는지, 묶인 곳에 위치(lines / defined_at /
+    cited_at)가 있는지만 본다. 원문 줄이 그 내용을 말하는지는 보지 않는다."""
     errors, warnings, report = [], [], []
+    syms = {s["id"]: s for s in doc.get("symbols", [])}
+    floors = {f["id"]: f for f in doc.get("floors", [])}
+    items = {}
+    for g in doc.get("graphs", []):
+        for n in g.get("nodes", []):
+            c = n.get("contract", {})
+            if n.get("kind") != "external" and c.get("source_label"):
+                items[c["source_label"]] = {o["id"]: o for o in c.get("outputs", [])}
+    count = {}
+    for g in doc.get("graphs", []):
+        for n in g.get("nodes", []):
+            for d in n.get("contract", {}).get("needs", []) or []:
+                if not isinstance(d, dict) or "binding" not in d:
+                    continue
+                b, where = d["binding"], f"[{g['id']}] node {n['id']} 입력 {d.get('id')}"
+                t = b.get("type")
+                count[t] = count.get(t, 0) + 1
+                if t == "node":
+                    o = items.get(b.get("node"), {}).get(b.get("item"))
+                    if b.get("node") not in items:
+                        errors.append(f"{where} [BINDING]: node {b.get('node')!r} 가 없다")
+                    elif o is None:
+                        errors.append(f"{where} [BINDING]: 항목 {b.get('node')}.{b.get('item')} 가 없다")
+                    elif not o.get("lines"):
+                        errors.append(f"{where} [BINDING]: 항목 {b.get('node')}.{b.get('item')} 에 원문 줄이 없다")
+                elif t == "symbol":
+                    s = syms.get(b.get("symbol"))
+                    if s is None:
+                        errors.append(f"{where} [BINDING]: 기호 {b.get('symbol')!r} 가 표에 없다")
+                    elif not s.get("defined_at"):
+                        errors.append(f"{where} [BINDING]: 기호 {b.get('symbol')} 에 정의 위치가 없다")
+                elif t == "floor":
+                    f = floors.get(b.get("floor"))
+                    if f is None:
+                        errors.append(f"{where} [BINDING]: 바닥 {b.get('floor')!r} 가 없다")
+                    elif f.get("kind") == "cited" and not (f.get("cite") and f.get("cited_at")):
+                        errors.append(f"{where} [BINDING]: 인용 바닥 {b.get('floor')} 에 인용 표기·인용 줄이 없다")
+                elif t == "open":
+                    warnings.append(f"{where} [BINDING]: 열림 — {b.get('why', '')}")
+                else:
+                    errors.append(f"{where} [BINDING]: 종류 {t!r}")
+                if t in ("node", "symbol", "floor") and not all(isinstance(x, int) for x in d.get("used_at") or [None]):
+                    errors.append(f"{where} [BINDING]: 쓰이는 줄(used_at)이 없다")
+    if count:
+        report.append("입력 묶음: " + ", ".join(f"{k} {v}" for k, v in sorted(count.items(), key=lambda kv: str(kv[0]))))
+    return errors, warnings, report
+
+
+def check(doc):
+    errors, warnings, report = check_bindings(doc)
+    doc = carries.resolve(doc)  # carries 참조를 메모리에서 펼친다(SPEC 7.7 [제안]). carries 없는 자료는 그대로.
     bindings = contracts.contract_audit(doc)
     for (gid, nid), issues in bindings['nodes'].items():
         for issue in issues:
@@ -250,6 +309,24 @@ def check(doc):
                 bad = [m["id"] for m in sub["nodes"] if m["kind"] in ("step", "rule", "fact") and m.get("status") != "complete"] if sub else []
                 if bad:
                     errors.append(f"{where} node {n['id']}: 완결이라는데 하위 graph에 미완결 node가 있다: {bad}")
+            elif n.get("lines") and n.get("source_derivation") is not None:
+                # SPEC 7.8 원문 참조 node: 원문 줄이 유도다. 받는 edge를 모두 uses 에 적고,
+                # 보내는 edge를 모두 produces 에 적어야 한다. 원문이 적지 않은 걸음은 author_filled 로.
+                sd = n["source_derivation"]
+                lo, hi = (n["lines"][0], n["lines"][-1]) if isinstance(n["lines"], list) and n["lines"] else (None, None)
+                if not (isinstance(lo, int) and isinstance(hi, int) and lo <= hi):
+                    errors.append(f"{where} node {n['id']} [SOURCE_REF]: lines 가 [시작, 끝] 정수가 아니다")
+                missing_uses = [e["id"] for e in inc if e["id"] not in sd.get("uses", [])]
+                if missing_uses:
+                    errors.append(f"{where} node {n['id']} [SOURCE_REF]: 완결이라는데 받는 edge {missing_uses} 를 source_derivation.uses 에 적지 않았다")
+                stray = [u for u in sd.get("uses", []) if u not in {e['id'] for e in inc}]
+                if stray:
+                    errors.append(f"{where} node {n['id']} [SOURCE_REF]: uses 에 받지 않는 edge {stray}")
+                produced = {p["edge"] for p in n.get("produces", [])}
+                for e in out:
+                    if e["id"] not in produced:
+                        errors.append(f"{where} node {n['id']} [SOURCE_REF]: 보내는 edge {e['id']} 가 produces 에 없다")
+                report.append(f"{where} node {n['id']}: 원문 참조 완결 선언 (원문 {lo}–{hi}, 받는 edge {len(inc)}, 작성자가 채운 걸음 {len(n.get('author_filled') or [])}). 수학적 충분성은 검사하지 않는다")
             elif not n.get("derivation"):
                 errors.append(f"{where} node {n['id']}: 완결이라는데 derivation 도 subgraph 도 없다")
             for e in inc + out:

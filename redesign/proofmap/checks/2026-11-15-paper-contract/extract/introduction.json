@@ -1,0 +1,72 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "introduction.tex",
+ "lines": 86,
+ "nodes": [],
+ "external_inputs": [
+  {
+   "id": "EXT:main:theorem",
+   "label": "main:theorem",
+   "file": "model.tex",
+   "line": 130,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:model:section",
+   "label": "model:section",
+   "file": "model.tex",
+   "line": 1,
+   "env": null
+  },
+  {
+   "id": "EXT:models:section",
+   "label": "models:section",
+   "file": "consequences.tex",
+   "line": 2,
+   "env": null
+  }
+ ],
+ "consumers": [],
+ "edges": [],
+ "internal_refs": [],
+ "unassigned_refs": [
+  {
+   "label": "model:section",
+   "line": 32,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:model:section"
+  },
+  {
+   "label": "models:section",
+   "line": 34,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:models:section"
+  },
+  {
+   "label": "main:theorem",
+   "line": 85,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:main:theorem"
+  }
+ ],
+ "excluded_labels": [],
+ "uncovered_lines": [
+  [
+   1,
+   86
+  ]
+ ],
+ "stats": {
+  "nodes": 0,
+  "edges": 0,
+  "internal_refs": 0,
+  "unassigned_refs": 3,
+  "external_inputs": 3,
+  "consumers": 0,
+  "refs_total": 3
+ }
+}

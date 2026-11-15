@@ -1,0 +1,649 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "perturbations.tex",
+ "lines": 547,
+ "nodes": [
+  {
+   "id": "pert:error",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     75,
+     93
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:error",
+     "line": 92
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:concentration",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Averaged score concentration",
+   "statement_span": [
+    95,
+    104
+   ],
+   "proof_span": [
+    106,
+    244
+   ],
+   "span": [
+    [
+     95,
+     104
+    ],
+    [
+     106,
+     244
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:concentration-eq",
+     "line": 100
+    }
+   ],
+   "internal_eqs": [
+    {
+     "label": "pert:score-bounds",
+     "line": 117,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:first-derivative",
+     "line": 134,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:second-derivative",
+     "line": 139,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:thermal-variance",
+     "line": 153,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:thermal-bound",
+     "line": 160,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:root-variance",
+     "line": 174,
+     "refs_outside": []
+    },
+    {
+     "label": "pert:convex-bound",
+     "line": 231,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:selection",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Deterministic parameter selection",
+   "statement_span": [
+    255,
+    267
+   ],
+   "proof_span": [
+    269,
+    306
+   ],
+   "span": [
+    [
+     255,
+     267
+    ],
+    [
+     269,
+     306
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:score-identity",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     316,
+     329
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:score-identity",
+     "line": 328
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:analytic-difference",
+   "rule": "E",
+   "env": "align",
+   "span": [
+    [
+     331,
+     348
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:analytic-difference",
+     "line": 346
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:palm",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Palm identity",
+   "statement_span": [
+    350,
+    360
+   ],
+   "proof_span": [
+    362,
+    381
+   ],
+   "span": [
+    [
+     350,
+     360
+    ],
+    [
+     362,
+     381
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:palm-bound",
+     "line": 355
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:analytic",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Vanishing insertion coefficients",
+   "statement_span": [
+    383,
+    388
+   ],
+   "proof_span": [
+    390,
+    425
+   ],
+   "span": [
+    [
+     383,
+     388
+    ],
+    [
+     390,
+     425
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "pert:tree-identity",
+   "rule": "S",
+   "env": "theorem",
+   "title_opt": "Identity on prescribed trees",
+   "statement_span": [
+    451,
+    470
+   ],
+   "proof_span": [
+    472,
+    536
+   ],
+   "span": [
+    [
+     451,
+     470
+    ],
+    [
+     472,
+     536
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "pert:identity",
+     "line": 453
+    },
+    {
+     "label": "pert:tree-identity-eq",
+     "line": 463
+    }
+   ],
+   "internal_eqs": [
+    {
+     "label": "pert:mark-selector",
+     "line": 510,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:cavity:increment",
+   "label": "cavity:increment",
+   "file": "cavity.tex",
+   "line": 43,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:cavity:negligible",
+   "label": "cavity:negligible",
+   "file": "cavity.tex",
+   "line": 38,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:density",
+   "label": "tree:density",
+   "file": "trees.tex",
+   "line": 98,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:extension-expansion",
+   "label": "tree:extension-expansion",
+   "file": "trees.tex",
+   "line": 278,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:tree:insertion",
+   "label": "tree:insertion",
+   "file": "trees.tex",
+   "line": 84,
+   "env": "lemma"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:cavity.tex",
+   "file": "cavity.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "pert:section",
+     "line": 32
+    }
+   ]
+  },
+  {
+   "id": "OUT:comparison.tex",
+   "file": "comparison.tex",
+   "uses": [
+    {
+     "node": "pert:selection",
+     "item": "pert:selection",
+     "line": 9
+    }
+   ]
+  },
+  {
+   "id": "OUT:decorrelation.tex",
+   "file": "decorrelation.tex",
+   "uses": [
+    {
+     "node": "pert:selection",
+     "item": "pert:selection",
+     "line": 6
+    },
+    {
+     "node": "pert:tree-identity",
+     "item": "pert:tree-identity",
+     "line": 7
+    },
+    {
+     "node": "pert:tree-identity",
+     "item": "pert:tree-identity",
+     "line": 51
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": "pert:selection",
+     "item": "pert:selection",
+     "line": 18
+    },
+    {
+     "node": "pert:tree-identity",
+     "item": "pert:tree-identity",
+     "line": 24
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "pert:error",
+   "to": "pert:concentration",
+   "item": "pert:error",
+   "ref_line": 239,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:cavity:negligible",
+   "to": "pert:selection",
+   "item": "cavity:negligible",
+   "ref_line": 271,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:cavity:increment",
+   "to": "pert:selection",
+   "item": "cavity:increment",
+   "ref_line": 277,
+   "cmd": "Cref"
+  },
+  {
+   "from": "pert:concentration",
+   "to": "pert:selection",
+   "item": "pert:concentration",
+   "ref_line": 282,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:error",
+   "to": "pert:score-identity",
+   "item": "pert:error",
+   "ref_line": 322,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:insertion",
+   "to": "pert:analytic-difference",
+   "item": "tree:insertion",
+   "ref_line": 334,
+   "cmd": "ref"
+  },
+  {
+   "from": "EXT:tree:density",
+   "to": "pert:analytic-difference",
+   "item": "tree:density",
+   "ref_line": 335,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:density",
+   "to": "pert:palm",
+   "item": "tree:density",
+   "ref_line": 370,
+   "cmd": "eqref"
+  },
+  {
+   "from": "pert:score-identity",
+   "to": "pert:palm",
+   "item": "pert:score-identity",
+   "ref_line": 379,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:extension-expansion",
+   "to": "pert:analytic",
+   "item": "tree:extension-expansion",
+   "ref_line": 391,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:analytic-difference",
+   "to": "pert:analytic",
+   "item": "pert:analytic-difference",
+   "ref_line": 393,
+   "cmd": "eqref"
+  },
+  {
+   "from": "pert:selection",
+   "to": "pert:analytic",
+   "item": "pert:selection",
+   "ref_line": 406,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:palm",
+   "to": "pert:analytic",
+   "item": "pert:palm",
+   "ref_line": 412,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:palm",
+   "to": "pert:analytic",
+   "item": "pert:palm",
+   "ref_line": 419,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:selection",
+   "to": "pert:tree-identity",
+   "item": "pert:selection",
+   "ref_line": 455,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:analytic",
+   "to": "pert:tree-identity",
+   "item": "pert:analytic",
+   "ref_line": 474,
+   "cmd": "cref"
+  },
+  {
+   "from": "pert:analytic",
+   "to": "pert:tree-identity",
+   "item": "pert:analytic",
+   "ref_line": 490,
+   "cmd": "ref"
+  },
+  {
+   "from": "pert:analytic-difference",
+   "to": "pert:tree-identity",
+   "item": "pert:analytic-difference",
+   "ref_line": 527,
+   "cmd": "eqref"
+  },
+  {
+   "from": "pert:analytic",
+   "to": "pert:tree-identity",
+   "item": "pert:analytic",
+   "ref_line": 529,
+   "cmd": "ref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "pert:second-derivative",
+   "line": 147,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:second-derivative",
+   "line": 165,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:root-variance",
+   "line": 208,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:score-bounds",
+   "line": 209,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:root-variance",
+   "line": 225,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:thermal-bound",
+   "line": 240,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:concentration-eq",
+   "line": 243,
+   "cmd": "eqref",
+   "node": "pert:concentration"
+  },
+  {
+   "label": "pert:palm-bound",
+   "line": 378,
+   "cmd": "eqref",
+   "node": "pert:palm"
+  },
+  {
+   "label": "pert:mark-selector",
+   "line": 515,
+   "cmd": "eqref",
+   "node": "pert:tree-identity"
+  },
+  {
+   "label": "pert:tree-identity-eq",
+   "line": 531,
+   "cmd": "eqref",
+   "node": "pert:tree-identity"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "cavity:increment",
+   "line": 6,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:cavity:increment"
+  },
+  {
+   "label": "cavity:negligible",
+   "line": 65,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:cavity:negligible"
+  },
+  {
+   "label": "pert:selection",
+   "line": 309,
+   "cmd": "ref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "pert:selection"
+  },
+  {
+   "label": "tree:extension-expansion",
+   "line": 433,
+   "cmd": "ref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:tree:extension-expansion"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "pert:section",
+   "line": 2,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": "pert:parameters",
+   "line": 49,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "pert:factor",
+   "line": 58,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "pert:score",
+   "line": 81,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "pert:palm-expression",
+   "line": 342,
+   "env": "align",
+   "referenced": false
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   74
+  ],
+  [
+   246,
+   254
+  ],
+  [
+   308,
+   315
+  ],
+  [
+   427,
+   450
+  ],
+  [
+   538,
+   547
+  ]
+ ],
+ "stats": {
+  "nodes": 8,
+  "edges": 19,
+  "internal_refs": 10,
+  "unassigned_refs": 4,
+  "external_inputs": 5,
+  "consumers": 4,
+  "refs_total": 33
+ }
+}

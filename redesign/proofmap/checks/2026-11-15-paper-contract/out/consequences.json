@@ -1,0 +1,692 @@
+{
+ "section": "consequences",
+ "nodes": [
+  {
+   "id": "models:spin",
+   "title": "Viana–Bray 와 희석 짝수 $p$-spin 모형 (Corollary 10.1)",
+   "env": "corollary",
+   "statement_span": [
+    10,
+    22
+   ],
+   "proof_span": [
+    24,
+    34
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "spin_formula",
+     "label": "models:spin",
+     "statement": "짝수 $p\\ge2$, $\\alpha>0$, 독립인 실확률변수 $J,H$ ($J$ 는 대칭분포, $\\mathbb E|J|+\\mathbb E|H|<\\infty$) 와 모든 $\\beta>0$ 에 대해 $\\theta_\\beta(s)=\\beta J\\prod_\\ell s_\\ell$, $h_\\beta=\\beta H$ 인 모형은 이 법칙들에서 시행 함수를 계산한 변분 공식 (main:formula) 을 만족한다.",
+     "lines": [
+      12,
+      20
+     ]
+    },
+    {
+     "id": "viana_bray",
+     "statement": "Viana–Bray 모형은 $p=2$ 인 경우이다 (그래서 위 공식이 성립).",
+     "lines": [
+      20,
+      21
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "standard_models",
+     "what": "명명 모형도 Poisson 개수와 복원추출을 유지한다",
+     "used_at": [
+      15,
+      16,
+      19
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cons_standard_models"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin"
+     ]
+    },
+    {
+     "id": "model_setting",
+     "what": "짝수 $p$, $\\alpha>0$, $B(\\theta)=\\max_s|\\theta(s)|$",
+     "used_at": [
+      12,
+      32
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "상호작용 $\\theta_\\beta$ 와 장 $h_\\beta$ 를 쓰는 모형 ($H_N$, $F_N$)",
+     "used_at": [
+      15,
+      16,
+      17,
+      19
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin"
+     ]
+    },
+    {
+     "id": "hyp_integrability",
+     "what": "(model:integrability): $\\mathbb EB(\\theta_\\beta)+\\mathbb E|h_\\beta|<\\infty$ ($B(\\theta_\\beta)=\\beta|J|$, $|h_\\beta|=\\beta|H|$)",
+     "used_at": [
+      14,
+      32
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin",
+      "models:spin.s3"
+     ]
+    },
+    {
+     "id": "hyp_factorization",
+     "what": "(model:factorization): $a=\\cosh\\beta J$, $b=\\tanh\\beta J$, $f_\\ell(s)=s$ (결정적 독립 복사, 곱 유계 $|b|<1$)",
+     "used_at": [
+      25,
+      27,
+      29,
+      30
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "factorization"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin",
+      "models:spin.s1",
+      "models:spin.s3"
+     ]
+    },
+    {
+     "id": "hyp_positivity",
+     "what": "(model:positivity): 대칭성으로 홀수 moment 가 0, 짝수 moment 는 음이 아님",
+     "used_at": [
+      30,
+      31
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "positivity"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin",
+      "models:spin.s2",
+      "models:spin.s3"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "이 상호작용·장 법칙에서 평가한 시행 함수 (식 model:functional)",
+     "used_at": [
+      19,
+      20
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:spin"
+     ]
+    },
+    {
+     "id": "main_result",
+     "what": "주정리: 가정이 성립하면 $\\lim F_N=\\inf_r\\Phi_r$",
+     "used_at": [
+      19,
+      33
+     ],
+     "binding": {
+      "type": "node",
+      "node": "main:theorem",
+      "item": "main_formula"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "models:spin",
+      "models:spin.s3"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "models:sat",
+   "title": "soft random 짝수 $K$-SAT (Corollary 10.2)",
+   "env": "corollary",
+   "statement_span": [
+    36,
+    49
+   ],
+   "proof_span": [
+    51,
+    64
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "sat_formula",
+     "label": "models:sat",
+     "statement": "짝수 $K\\ge2$, $\\alpha>0$, 독립인 공정한 부호 $\\varepsilon_1,\\ldots,\\varepsilon_K$, 부호와 독립이고 $\\mathbb EW<\\infty$ 인 $W\\ge0$ 과 모든 $\\beta>0$ 에 대해 $\\theta_\\beta(s)=-\\beta W\\prod_{\\ell=1}^K\\frac{1+\\varepsilon_\\ell s_\\ell}2$, $h=0$ 인 상호작용은 (main:formula) 을 만족한다.",
+     "lines": [
+      38,
+      47
+     ]
+    },
+    {
+     "id": "sat_naming",
+     "statement": "$W=1$ 이 soft random 짝수 $K$-SAT 모형이고 $W$ 는 독립인 음이 아닌 clause 무게이다.",
+     "lines": [
+      47,
+      48
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "standard_models",
+     "what": "명명 모형도 Poisson 개수와 복원추출을 유지한다",
+     "used_at": [
+      41,
+      42,
+      43,
+      44,
+      47
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cons_standard_models"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat"
+     ]
+    },
+    {
+     "id": "model_setting",
+     "what": "짝수 arity ($K$ 가 $p$ 의 자리), $\\alpha>0$, $B(\\theta)$",
+     "used_at": [
+      38,
+      62,
+      63
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "상호작용 $\\theta_\\beta$ 와 장 $h=0$ 을 쓰는 모형 ($H_N$, $F_N$)",
+     "used_at": [
+      41,
+      42,
+      43,
+      44,
+      45,
+      47
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat"
+     ]
+    },
+    {
+     "id": "hyp_integrability",
+     "what": "(model:integrability): $B(\\theta_\\beta)=\\beta W$, $\\mathbb EW<\\infty$, $h=0$",
+     "used_at": [
+      40,
+      62,
+      63
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat",
+      "models:sat.s3"
+     ]
+    },
+    {
+     "id": "hyp_factorization",
+     "what": "(model:factorization): $a=1$, $b=e^{-\\beta W}-1$, $f_\\ell(s)=(1+\\varepsilon_\\ell s)/2$ (독립 복사이고 $b$ 와 독립, 곱 유계)",
+     "used_at": [
+      56,
+      57,
+      59,
+      60,
+      61
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "factorization"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat",
+      "models:sat.s2",
+      "models:sat.s3"
+     ]
+    },
+    {
+     "id": "hyp_positivity",
+     "what": "(model:positivity): $0\\le-b<1$ 이므로 모든 $\\mathbb E[(-b)^n]\\ge0$",
+     "used_at": [
+      61,
+      62
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "positivity"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat",
+      "models:sat.s2",
+      "models:sat.s3"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "이 상호작용 법칙에서 평가한 시행 함수 (식 model:functional)",
+     "used_at": [
+      47
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:sat"
+     ]
+    },
+    {
+     "id": "main_result",
+     "what": "주정리: 가정이 성립하면 $\\lim F_N=\\inf_r\\Phi_r$",
+     "used_at": [
+      47,
+      63
+     ],
+     "binding": {
+      "type": "node",
+      "node": "main:theorem",
+      "item": "main_formula"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "models:sat",
+      "models:sat.s3"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "models:ground",
+   "title": "영온도 변분 극한 (Corollary 10.3, 식 (10.1))",
+   "env": "corollary",
+   "statement_span": [
+    86,
+    101
+   ],
+   "proof_span": [
+    103,
+    125
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "ground_limit",
+     "label": "models:ground",
+     "statement": "위 두 모형 각각에 대해 $g=\\lim_{N\\to\\infty}\\frac1N\\mathbb E\\max_\\sigma\\mathcal E_N(\\sigma)$ 가 존재한다.",
+     "lines": [
+      88,
+      92
+     ]
+    },
+    {
+     "id": "ground_formula",
+     "label": "models:ground-formula",
+     "statement": "$g=\\lim_{\\beta\\to\\infty}\\frac1\\beta\\inf_{r\\ge0}\\inf_{\\zeta,\\mathbf m}\\mathcal B_{r,\\beta}(\\zeta,\\mathbf m)$.",
+     "lines": [
+      93,
+      97
+     ]
+    },
+    {
+     "id": "ground_bracket",
+     "statement": "온도 극한 안의 식 $\\frac1\\beta\\inf_{r}\\inf_{\\zeta,\\mathbf m}\\mathcal B_{r,\\beta}$ 은 $[g,\\,g+\\log(2)/\\beta]$ 에 있다.",
+     "lines": [
+      98,
+      99
+     ]
+    },
+    {
+     "id": "sat_violations",
+     "statement": "단위 무게 SAT 에서 변수당 위반 clause 수의 기댓값의 극한 최솟값은 $-g$ 이다.",
+     "lines": [
+      99,
+      100
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "spin_model",
+     "what": "spin 모형 ($J,H$, $\\theta_\\beta$, $h_\\beta$) 의 정의",
+     "used_at": [
+      88,
+      106
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_model"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "sat_model",
+     "what": "SAT 모형 ($W,\\varepsilon_\\ell$, $\\theta_\\beta$) 의 정의",
+     "used_at": [
+      88,
+      106
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "sat_model"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "spin_result",
+     "what": "spin 모형이 모든 $\\beta>0$ 에서 변분 공식을 만족",
+     "used_at": [
+      88,
+      112
+     ],
+     "binding": {
+      "type": "node",
+      "node": "models:spin",
+      "item": "spin_formula"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "models:ground",
+      "models:ground.s1",
+      "models:ground.s2"
+     ]
+    },
+    {
+     "id": "sat_result",
+     "what": "SAT 모형이 모든 $\\beta>0$ 에서 변분 공식을 만족",
+     "used_at": [
+      88,
+      112
+     ],
+     "binding": {
+      "type": "node",
+      "node": "models:sat",
+      "item": "sat_formula"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "models:ground",
+      "models:ground.s1",
+      "models:ground.s2"
+     ]
+    },
+    {
+     "id": "main_result",
+     "what": "주정리: 고정 $\\beta$ 에서 $P_N(\\beta)\\to I(\\beta)$",
+     "used_at": [
+      112,
+      113,
+      114
+     ],
+     "binding": {
+      "type": "node",
+      "node": "main:theorem",
+      "item": "main_formula"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "models:ground",
+      "models:ground.s2"
+     ]
+    },
+    {
+     "id": "energy_score",
+     "what": "$\\beta$ 를 뗀 에너지 점수 $\\mathcal E_N$, $Z_N(\\beta)$, $\\mathcal B_{r,\\beta}$",
+     "used_at": [
+      90,
+      96,
+      105,
+      109,
+      113,
+      114
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "energy_score"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "models:ground",
+      "models:ground.s1",
+      "models:ground.s2",
+      "models:ground.s4"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "$M_N$, 독립 지표 $i_{\\ell,k}$ 가 있는 모형 정의 (식 model:hamiltonian)",
+     "used_at": [
+      69,
+      75,
+      76,
+      90
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "시행 함수 $\\mathcal B_r(\\zeta,\\mathbf m)$ 와 $\\Phi_r$ (식 model:functional)",
+     "used_at": [
+      95,
+      96,
+      114
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "what": "$r=0$ 의 $\\mathcal B_0$ (inf 가 $r\\ge0$ 을 포함)",
+     "used_at": [
+      95
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "cons_standard_models",
+   "tex": "$\\text{Poisson 개수, 복원추출}$",
+   "defined_at": "consequences.tex 4–8",
+   "text": "명명 모형(희석 spin 모형, random satisfiability)도 (model:hamiltonian) 의 Poisson 개수와 복원추출 지표를 유지한다."
+  },
+  {
+   "id": "spin_model",
+   "tex": "$J,H,\\theta_\\beta,h_\\beta$",
+   "defined_at": "consequences.tex 12–18",
+   "text": "희석 짝수 $p$-spin 모형: 독립 실확률변수 $J$ (대칭분포), $H$ ($\\mathbb E|J|+\\mathbb E|H|<\\infty$), $\\theta_\\beta(s)=\\beta J\\prod_\\ell s_\\ell$, $h_\\beta=\\beta H$ ($\\beta>0$)."
+  },
+  {
+   "id": "sat_model",
+   "tex": "$W,\\varepsilon_\\ell,\\theta_\\beta$",
+   "defined_at": "consequences.tex 38–46",
+   "text": "soft random 짝수 $K$-SAT 모형: 독립 공정한 부호 $\\varepsilon_\\ell$, 부호와 독립인 $W\\ge0$ ($\\mathbb EW<\\infty$), $\\theta_\\beta(s)=-\\beta W\\prod_\\ell(1+\\varepsilon_\\ell s_\\ell)/2$, $h=0$."
+  },
+  {
+   "id": "energy_score",
+   "tex": "$\\mathcal E_N,\\ Z_N(\\beta),\\ \\mathcal B_{r,\\beta}$",
+   "defined_at": "consequences.tex 66–84",
+   "text": "두 모형의 $\\beta$ 를 뗀 에너지 점수 $\\mathcal E_N(\\sigma)$ (spin: $\\sum_kJ_k\\prod\\sigma+\\sum_iH_i\\sigma_i$, SAT: $-\\sum_kW_k\\prod(1+\\varepsilon_{\\ell,k}\\sigma)/2$), 분배함수 $Z_N(\\beta)=\\sum_\\sigma e^{\\beta\\mathcal E_N(\\sigma)}$, 그리고 해당 법칙·역온도 $\\beta$ 에서 평가한 시행 함수 $\\mathcal B_{r,\\beta}$."
+  }
+ ],
+ "floors_new": [],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    4,
+    8
+   ],
+   "what": "절 머리 관례: 명명 모형은 factorization 의 표준 예이며 Poisson 개수와 복원추출을 유지한다",
+   "handled": "symbol:cons_standard_models"
+  },
+  {
+   "lines": [
+    66,
+    84
+   ],
+   "what": "에너지 점수 $\\mathcal E_N$, $Z_N(\\beta)$, $\\mathcal B_{r,\\beta}$ 의 정의 (번호 없는 정의 문단)",
+   "handled": "symbol:energy_score"
+  },
+  {
+   "lines": [
+    127,
+    129
+   ],
+   "what": "식 (10.1) 의 infimum 은 각 양의 온도에서 유한 hierarchy 전체에 대해 취하며 달성이나 극한 hierarchy 를 요구하지 않는다 (진술 뒤 문단)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    131,
+    138
+   ],
+   "what": "Remark 10.4: 짝수 arity 가정이 random 3-SAT 을 제외한다는 주의 (외부 논문 인용)",
+   "handled": "list"
+  }
+ ]
+}

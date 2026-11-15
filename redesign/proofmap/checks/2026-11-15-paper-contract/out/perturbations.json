@@ -1,0 +1,2517 @@
+{
+ "section": "perturbations",
+ "nodes": [
+  {
+   "id": "pert:error",
+   "title": "score $D_\\nu$ 와 오차 $e_{\\nu,N}(\\mathbf u)$ 의 정의",
+   "env": "equation",
+   "statement_span": [
+    75,
+    93
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "score",
+     "statement": "한 type $\\nu$ 에 대해 tilted path (마지막 Gibbs 배위 포함) 위에서 $D_\\nu=\\sum_{q=1}^{n_\\nu}\\frac{g_{0,q}S_{0,q}}{1+t_\\nu g_q\\sigma_{i_q}+u_\\nu g_{0,q}S_{0,q}}$ 로 정의한다.",
+     "lines": [
+      75,
+      82
+     ],
+     "label": "pert:score"
+    },
+    {
+     "id": "averaging_notation",
+     "statement": "$\\langle\\cdot\\rangle$ 는 root 가 주어졌을 때 tilted path 하나에 대한 기대값, $\\mathbb E_{\\mathbf u}$ 는 고정된 $\\mathbf u$ 에서 root 를 평균하는 기대값이다.",
+     "lines": [
+      83,
+      85
+     ]
+    },
+    {
+     "id": "score_error",
+     "statement": "$e_{\\nu,N}(\\mathbf u)=\\frac1{c_\\nu s_N}\\mathbb E_{\\mathbf u}\\big\\langle\\big|D_\\nu-\\mathbb E_{\\mathbf u}\\langle D_\\nu\\rangle\\big|\\big\\rangle$.",
+     "lines": [
+      86,
+      93
+     ],
+     "label": "pert:error"
+    }
+   ],
+   "needs": [
+    {
+     "id": "psi_form",
+     "what": "score 분모 $1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$ (factor $\\psi_\\nu$ 의 꼴), 개수 $n_\\nu$, site $i_q$",
+     "used_at": [
+      78,
+      79,
+      80
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_factor"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:score"
+     ]
+    },
+    {
+     "id": "tilted_path",
+     "what": "tilted path 와 그 마지막 Gibbs 배위 위의 기대값",
+     "used_at": [
+      75,
+      76,
+      83
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:score"
+     ]
+    },
+    {
+     "id": "fixed_parameter_expectation",
+     "what": "지정된 매개변수 벡터에서의 기대값은 그 벡터를 고정한 채 취한다는 약속",
+     "used_at": [
+      84,
+      89
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_standing"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:error"
+     ]
+    },
+    {
+     "id": "marks",
+     "what": "mark 변수 $g_q,g_{0,q},S_{0,q}$ 의 뜻",
+     "used_at": [
+      79,
+      80
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "u_vector",
+     "what": "매개변수 벡터 $\\mathbf u=(u_\\nu)_\\nu$",
+     "used_at": [
+      84,
+      89,
+      90
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameter_measure"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "counts_scale",
+     "what": "$c_\\nu$, $s_N$, 개수 $n_\\nu$ (평균 $c_\\nu s_N$ 인 Poisson)",
+     "used_at": [
+      78,
+      88
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "root_variables",
+     "what": "root 는 개수·type·site 이다",
+     "used_at": [
+      83,
+      84
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_root_convention"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:concentration",
+   "title": "매개변수 평균한 score 집중 (Lemma 6.1)",
+   "env": "lemma",
+   "statement_span": [
+    95,
+    104
+   ],
+   "proof_span": [
+    106,
+    244
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "concentration",
+     "statement": "고정된 $L$ 과 고정된 type $\\nu$ 에 대해 $\\int e_{\\nu,N}(\\mathbf u)\\,\\pi(d\\mathbf u)\\to0$ ($N\\to\\infty$).",
+     "lines": [
+      97,
+      101
+     ],
+     "label": "pert:concentration-eq"
+    },
+    {
+     "id": "both_systems",
+     "statement": "이 주장은 원래 계뿐 아니라 reservoir 에서도 성립한다.",
+     "lines": [
+      102,
+      103
+     ]
+    },
+    {
+     "id": "nonuniform",
+     "statement": "상수는 $L$ 이나 $\\nu$ 에 대해 균등할 필요가 없다.",
+     "lines": [
+      103,
+      103
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "psi_bounds",
+     "what": "factor $\\psi_{\\nu,q}$ 와 $1/2<\\psi<3/2$, $|t_\\nu|+|u|<1/2$ 에서 $|D_\\nu|\\le2n$, $-4n\\le\\partial_uD_\\nu\\le0$",
+     "used_at": [
+      109,
+      112,
+      115
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_factor"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s1",
+      "pert:concentration.s3",
+      "pert:concentration.s3.s2",
+      "pert:concentration.s4.s2"
+     ]
+    },
+    {
+     "id": "type_parameters",
+     "what": "$t_\\nu$, 구간 $I_\\nu=[a,b]$, $u_\\nu\\in I_\\nu$ 와 $|I_\\nu|$",
+     "used_at": [
+      108,
+      109,
+      147,
+      158
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameters"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s1"
+     ]
+    },
+    {
+     "id": "tilted_recursion",
+     "what": "root log partition 함수 $X_0(u)$, 뒤로 가는 한 단계 $X_{d-1}=m_d^{-1}\\log K_de^{m_dX_d}$ 와 tilted kernel 의 미분",
+     "used_at": [
+      121,
+      125,
+      127,
+      141
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s2",
+      "pert:concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "path_exponents",
+     "what": "지수 $m_d$ ($m_L=1$, $m_1>0$), kernel $K_d$, 접두사 $\\sigma$-field $\\mathscr F_d$",
+     "used_at": [
+      124,
+      127,
+      130,
+      132,
+      138
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "path_kernels"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s2",
+      "pert:concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "pi_measure",
+     "what": "매개변수 측도 $\\pi$ 와 그에 대한 적분",
+     "used_at": [
+      99,
+      242
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameter_measure"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s2",
+      "pert:concentration.s2.s2",
+      "pert:concentration.s4",
+      "pert:concentration.s4.s1",
+      "pert:concentration.s4.s2"
+     ]
+    },
+    {
+     "id": "standing",
+     "what": "고정 깊이 $L$, 두 계(원래 계와 reservoir), 고정 매개변수에서의 기대값",
+     "used_at": [
+      97,
+      102,
+      173
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_standing"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s3",
+      "pert:concentration.s3.s2",
+      "pert:concentration.s3.s3"
+     ]
+    },
+    {
+     "id": "extra_mark_variables",
+     "what": "쓰지 않는 독립 mark 변수는 prior 로 적분해 없앨 수 있다",
+     "used_at": [
+      194,
+      195,
+      196
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s3",
+      "pert:concentration.s3.s3"
+     ]
+    },
+    {
+     "id": "power_mean_preserves_bounded_change",
+     "what": "spin weight 의 유계 변화가 각 power mean 에서 보존된다 (root 가측 상수 사이의 비 유지)",
+     "used_at": [
+      193,
+      194
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "monotone_homogeneous"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s3",
+      "pert:concentration.s3.s3"
+     ]
+    },
+    {
+     "id": "score_def",
+     "what": "score $D_\\nu$ 와 그 $u$ 미분",
+     "used_at": [
+      112,
+      113,
+      132,
+      134
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s1",
+      "pert:concentration.s2.s1",
+      "pert:concentration.s4",
+      "pert:concentration.s4.s2"
+     ]
+    },
+    {
+     "id": "averaging_notation",
+     "what": "$\\langle\\cdot\\rangle$ 와 $\\mathbb E_{\\mathbf u}$",
+     "used_at": [
+      132,
+      134,
+      141,
+      150,
+      173,
+      228
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "averaging_notation"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s1",
+      "pert:concentration.s2.s1",
+      "pert:concentration.s4",
+      "pert:concentration.s4.s2"
+     ]
+    },
+    {
+     "id": "score_error_def",
+     "what": "오차 $e_{\\nu,N}$ (식 (6.4))",
+     "used_at": [
+      239
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score_error"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:concentration",
+      "pert:concentration.s1",
+      "pert:concentration.s2.s1",
+      "pert:concentration.s4",
+      "pert:concentration.s4.s2"
+     ]
+    },
+    {
+     "id": "bounded_disorder",
+     "what": "상호작용과 장이 유계이다 (한 항을 다시 뽑아도 $X_0$ 가 유계만큼 바뀐다)",
+     "used_at": [
+      193,
+      194
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "lambda_scale",
+     "what": "$\\lambda_\\nu=c_\\nu s_N$, $s_N=N^{3/4}$, Poisson 개수 $n=n_\\nu$",
+     "used_at": [
+      108,
+      233,
+      235,
+      237
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "root_counts",
+     "what": "개수·type·site 는 root 변수이다 (개수에 조건을 걸면 type 과 site 는 독립 label)",
+     "used_at": [
+      176,
+      177,
+      178
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_root_convention"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "reservoir_system",
+     "what": "reservoir 의 물리 disorder (평균 $O(N)$ 개의 독립 유계 상호작용과 $N$ 개의 독립 유계 장)",
+     "used_at": [
+      102
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "hamiltonian_system",
+     "what": "원래 $N$-spin 계의 Poisson 상호작용 개수와 독립 장",
+     "used_at": [
+      176,
+      192
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "efron_stein",
+     "what": "Efron–Stein 분산 부등식",
+     "used_at": [
+      179,
+      180,
+      191
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "efron_stein"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "diff_under_E",
+     "what": "기대값 안에서의 매개변수 미분",
+     "used_at": [
+      142,
+      143,
+      144
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "diff_under_expectation"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "total_var",
+     "what": "전체 분산 법칙 (조건부 분산 + 조건부 평균의 분산)",
+     "used_at": [
+      197,
+      198
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "total_variance"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "poisson_label_split",
+     "what": "전체 개수에 조건을 걸면 type 과 site 는 독립 label (Poisson 분할)",
+     "used_at": [
+      176,
+      177,
+      178
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "poisson_splitting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "poisson_moments",
+     "what": "Poisson 개수의 유한 moment 와 분산 $=$ 평균",
+     "used_at": [
+      145,
+      204,
+      238
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "poisson_moments"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "cs_for_abs_dev",
+     "what": "평균 절대편차를 분산의 제곱근으로 누르는 Cauchy–Schwarz/Jensen",
+     "used_at": [
+      155,
+      156,
+      159,
+      229,
+      238
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "cauchy_schwarz"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "convex_difference_quotient",
+     "what": "볼록 함수의 차분몫과 도함수의 단조성",
+     "used_at": [
+      214,
+      220,
+      221
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "convex_derivative_monotone"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "fubini",
+     "what": "나머지 곱측도에 대한 적분 순서 바꾸기",
+     "used_at": [
+      241,
+      242
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "fubini"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:selection",
+   "title": "결정적 매개변수 선택 (Lemma 6.2)",
+   "env": "lemma",
+   "statement_span": [
+    255,
+    267
+   ],
+   "proof_span": [
+    269,
+    306
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "existence",
+     "statement": "고정된 $L\\ge2$ 와 $\\varepsilon>0$ 에 대해 크기 $N_j\\uparrow\\infty$ 와 결정적 벡터 $\\mathbf u_j$ 가 있어 아래 (i)–(iii) 이 성립한다.",
+     "lines": [
+      257,
+      258
+     ]
+    },
+    {
+     "id": "low_increment",
+     "statement": "(i) $\\Delta_{N_j}(\\mathbf u_j)\\le\\underline F+2\\varepsilon$.",
+     "lines": [
+      260,
+      260
+     ]
+    },
+    {
+     "id": "score_concentration_sequence",
+     "statement": "(ii) 고정된 모든 type $\\nu$ 에 대해 reservoir 에서 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$.",
+     "lines": [
+      261,
+      262
+     ]
+    },
+    {
+     "id": "tree_moments_converge",
+     "statement": "(iii) reservoir 에서 깊이 $L$ 의 고정된 유한 prescribed tree 위의 multioverlap 유한 곱의 기대값이 이 수열을 따라 수렴한다.",
+     "lines": [
+      263,
+      265
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "increment_notation",
+     "what": "$\\underline F=\\liminf_NF_N$ 과 $\\Delta_N(\\mathbf u)=P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$",
+     "used_at": [
+      260,
+      273,
+      276
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_increment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s1"
+     ]
+    },
+    {
+     "id": "pi_measure",
+     "what": "매개변수 측도 $\\pi$ (결정적 벡터를 고르는 데만 씀)",
+     "used_at": [
+      273,
+      276,
+      287,
+      291
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameter_measure"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s1",
+      "pert:selection.s2"
+     ]
+    },
+    {
+     "id": "standing",
+     "what": "고정 깊이 $L\\ge2$, reservoir 에서의 진술",
+     "used_at": [
+      257,
+      262,
+      263
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_standing"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "깊이 $L$ 의 유한 labeled prescribed tree 와 그 위의 표본",
+     "used_at": [
+      263,
+      264,
+      302,
+      303
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s3"
+     ]
+    },
+    {
+     "id": "increment_bounded",
+     "what": "$|\\Delta_N(\\mathbf u)|\\le C$ 의 균등 유계",
+     "used_at": [
+      277,
+      279
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "increment_bounded"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s1"
+     ]
+    },
+    {
+     "id": "reservoir",
+     "what": "진술 (ii), (iii) 이 말하는 reservoir",
+     "used_at": [
+      262,
+      263
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s1"
+     ]
+    },
+    {
+     "id": "negligible",
+     "what": "$|P_N^{L,\\mathbf u}-NF_N|\\le(\\log2)s_N$ 으로 $\\liminf\\frac1N\\int P_N\\,d\\pi=\\underline F$",
+     "used_at": [
+      271
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:negligible",
+      "item": "negligible"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s1"
+     ]
+    },
+    {
+     "id": "pressure_def",
+     "what": "$P_N^{L,\\mathbf u}$ 는 섭동된 계의 root 평균 log partition 함수",
+     "used_at": [
+      271,
+      273
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:negligible",
+      "item": "pressure_def"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "concentration",
+     "what": "매개변수 평균한 score 집중 $\\int e_{\\nu,N}\\,d\\pi\\to0$",
+     "used_at": [
+      282,
+      287
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:concentration",
+      "item": "concentration"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s2"
+     ]
+    },
+    {
+     "id": "score_error",
+     "what": "오차 $e_{\\nu,N}(\\mathbf u)$",
+     "used_at": [
+      262,
+      287,
+      290
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score_error"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s2"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap 과 그 유한 곱 (절댓값 1 이하)",
+     "used_at": [
+      263,
+      303,
+      304
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:selection",
+      "pert:selection.s3"
+     ]
+    },
+    {
+     "id": "types",
+     "what": "고정된 type $\\nu$ 와 번호 매김",
+     "used_at": [
+      261,
+      285,
+      290
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameters"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "F_N",
+     "what": "$F_N=\\frac1N\\mathbb E\\log Z_N$",
+     "used_at": [
+      273
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "bounded_model",
+     "what": "유계 모형",
+     "used_at": [
+      271
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "markov",
+     "what": "Markov 부등식",
+     "used_at": [
+      283
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "markov_inequality"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "diagonal",
+     "what": "가산 족 위의 유계 수열에 대한 대각 부분수열 논법",
+     "used_at": [
+      304,
+      305
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "diagonal_subsequence"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:score-identity",
+   "title": "anchor score 와 시험함수의 분리 (6.13)",
+   "env": "equation",
+   "statement_span": [
+    316,
+    329
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "test_setup",
+     "statement": "old labeled tree $\\mathcal T$, 지정된 leaf $a_*$, 그 old replica 들의 multioverlap 에 대한 유계 다항식 $f$ 를 고정한다 ($f$ 와 계수는 $N$ 과 insertion 매개변수가 변해도 고정). $\\mathbb Ef$ 는 이 tree 위의 root 평균 기대값이고 anchor 의 주변분포는 항상 tilted path 하나이다.",
+     "lines": [
+      316,
+      321
+     ]
+    },
+    {
+     "id": "score_identity",
+     "statement": "고정된 type $\\nu$ 에 대해 $\\Big|\\dfrac{\\mathbb E[fD_\\nu^{a_*}]-\\mathbb Ef\\,\\mathbb E\\langle D_\\nu\\rangle}{c_\\nu s_N}\\Big|\\le\\|f\\|_\\infty e_{\\nu,N}\\to0$.",
+     "lines": [
+      322,
+      329
+     ],
+     "label": "pert:score-identity"
+    }
+   ],
+   "needs": [
+    {
+     "id": "score_error",
+     "what": "오차 $e_{\\nu,N}$ (6.4)",
+     "used_at": [
+      322,
+      327
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score_error"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:score-identity"
+     ]
+    },
+    {
+     "id": "score",
+     "what": "score $D_\\nu^{a_*}$ (replica $a_*$ 위의 $D_\\nu$)",
+     "used_at": [
+      324,
+      325
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "averaging_notation",
+     "what": "$\\langle D_\\nu\\rangle$ 와 $\\mathbb E$",
+     "used_at": [
+      325
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "averaging_notation"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "error_to_zero",
+     "what": "$e_{\\nu,N}\\to0$ 은 선택된 수열 위에서 성립한다",
+     "used_at": [
+      327
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:selection",
+      "item": "score_concentration_sequence"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:score-identity"
+     ]
+    },
+    {
+     "id": "selected_limits",
+     "what": "$N\\to\\infty$ 는 선택된 수열을 따르고 기대값은 선택된 결정적 벡터에서 계산한다",
+     "used_at": [
+      327
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_selected_limits"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:score-identity",
+      "x:pert-test-setup"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "old labeled tree 와 replica leaf, tree 표본",
+     "used_at": [
+      316,
+      317,
+      320
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "x:pert-test-setup"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "시험함수 $f$ 는 old replica 들의 multioverlap 의 다항식",
+     "used_at": [
+      317,
+      318
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "x:pert-test-setup"
+     ]
+    },
+    {
+     "id": "tilted_anchor",
+     "what": "anchor 의 주변분포는 tilted path 하나",
+     "used_at": [
+      321
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "reservoir_tree",
+     "what": "tree 는 reservoir 에서 tilted kernel 로 표본추출한다",
+     "used_at": [
+      316,
+      320,
+      321
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_tree_sampling"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "counts_scale",
+     "what": "$c_\\nu s_N$",
+     "used_at": [
+      326
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "pert:score-identity",
+     "use": "pert:factor",
+     "why": "$\\psi_\\nu$ 는 이 node 범위(316–329)에서 직접 쓰이지 않는다; $D_\\nu$ 는 pert:error 의 항목으로 받는다."
+    }
+   ],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:analytic-difference",
+   "title": "insertion 기대값 $J_{N,\\mathcal T}$ 와 차 $H_N$ (6.14)–(6.15)",
+   "env": "align",
+   "statement_span": [
+    331,
+    348
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "insertion_setup",
+     "statement": "고정된 mark specification 에 대해 독립인 새 uniform site 와 mark 과정 사본을 두고 $A=1+tg\\sigma_i+ug_0S_0$ 로 놓는다. $Y$ 는 그 insertion 재귀, $W_{\\mathcal T}(A)$ 는 바뀐 tree 밀도이다. 아래 기대값은 insertion 변수를 prior kernel 로 확대한, 수정되지 않은 reservoir 에서 취한다.",
+     "lines": [
+      331,
+      337
+     ]
+    },
+    {
+     "id": "palm_expression",
+     "statement": "$J_{N,\\mathcal T}(t,u)=\\mathbb E\\Big[f\\,\\dfrac{g_0^{a_*}S_0^{a_*}}{A^{a_*}}W_{\\mathcal T}(A)\\Big]$.",
+     "lines": [
+      338,
+      342
+     ],
+     "label": "pert:palm-expression"
+    },
+    {
+     "id": "analytic_difference",
+     "statement": "$H_N(t,u)=J_{N,\\mathcal T}(t,u)-\\mathbb Ef\\,J_{N,\\{a_*\\}}(t,u)$.",
+     "lines": [
+      343,
+      346
+     ],
+     "label": "pert:analytic-difference"
+    },
+    {
+     "id": "single_anchor_convention",
+     "statement": "단일 anchor 식 $J_{N,\\{a_*\\}}$ 에서 시험함수는 $1$ 이다.",
+     "lines": [
+      348,
+      348
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "marks",
+     "what": "mark specification, 새 site 와 mark 과정 사본",
+     "used_at": [
+      331,
+      332,
+      333
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "A_form",
+     "what": "$A=1+tg\\sigma_i+ug_0S_0$ (factor 의 꼴)",
+     "used_at": [
+      333
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_factor"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "extra_variables",
+     "what": "insertion 변수를 prior kernel 로 확대",
+     "used_at": [
+      336,
+      337
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "Y_def",
+     "what": "양의 path 함수 $A$ 의 insertion 재귀 $Y_d$",
+     "used_at": [
+      333
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:Y-recursion",
+      "item": "Y_recursion"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "Y_from_insertion",
+     "what": "Lemma tree:insertion 의 insertion 재귀 $Y$",
+     "used_at": [
+      333,
+      334
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "root_log_shift"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "updated_density",
+     "what": "바뀐 tree 밀도 $W_{\\mathcal T}(A)=\\prod_aA^a\\prod_\\beta Y_\\beta^{\\gamma_\\beta}$ (식 tree:density)",
+     "used_at": [
+      335
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "density"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "test_setup",
+     "what": "old tree $\\mathcal T$, anchor $a_*$, 시험함수 $f$",
+     "used_at": [
+      339,
+      341,
+      345
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:score-identity",
+      "item": "test_setup"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic-difference",
+      "pert:palm-expression"
+     ]
+    },
+    {
+     "id": "reservoir",
+     "what": "수정되지 않은 reservoir",
+     "used_at": [
+      336
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:palm",
+   "title": "Palm 항등식 (Lemma 6.3)",
+   "env": "lemma",
+   "statement_span": [
+    350,
+    360
+   ],
+   "proof_span": [
+    362,
+    381
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "palm_bound",
+     "statement": "지정된 mark 를 가진 type $\\nu$ 에 대해 $|H_N(t_\\nu,u_\\nu)|\\le\\|f\\|_\\infty e_{\\nu,N}$.",
+     "lines": [
+      352,
+      356
+     ],
+     "label": "pert:palm-bound"
+    },
+    {
+     "id": "H_type_independent",
+     "statement": "고정된 mark specification 에서 $H_N(t,u)$ 는 그 모든 type $j$ 에 대해 같은 함수이다: base reservoir 는 모든 type 을 포함한 원래 Poisson family 전체를 담는다.",
+     "lines": [
+      357,
+      359
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "insertion_form",
+     "what": "score $g_0^{a_*}S_0^{a_*}/A^{a_*}$ 의 분모 $A$ (factor 의 꼴)",
+     "used_at": [
+      368,
+      369
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_factor"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s1"
+     ]
+    },
+    {
+     "id": "type_parameters",
+     "what": "type $\\nu$ 의 $t_\\nu,u_\\nu$",
+     "used_at": [
+      354,
+      368
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameters"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm"
+     ]
+    },
+    {
+     "id": "extra_variables",
+     "what": "새 insertion 변수는 prior 로 확대되어 나머지 모형은 원래 reservoir 법칙이다",
+     "used_at": [
+      366,
+      367,
+      368
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s1"
+     ]
+    },
+    {
+     "id": "H_def",
+     "what": "$H_N=J_{N,\\mathcal T}-\\mathbb Ef\\,J_{N,\\{a_*\\}}$",
+     "used_at": [
+      354,
+      357
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic-difference",
+      "item": "analytic_difference"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s1",
+      "pert:palm.s2"
+     ]
+    },
+    {
+     "id": "J_def",
+     "what": "$J_{N,\\mathcal T}(t,u)$ 와 단일 anchor 식",
+     "used_at": [
+      373,
+      376
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic-difference",
+      "item": "palm_expression"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "insertion_setup",
+     "what": "새 insertion 과 base reservoir",
+     "used_at": [
+      367,
+      368
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic-difference",
+      "item": "insertion_setup"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "score_error",
+     "what": "오차 $e_{\\nu,N}$",
+     "used_at": [
+      354,
+      379
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:error",
+      "item": "score_error"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s1"
+     ]
+    },
+    {
+     "id": "score_identity",
+     "what": "분리 부등식 (6.13)",
+     "used_at": [
+      378,
+      379
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:score-identity",
+      "item": "score_identity"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s2"
+     ]
+    },
+    {
+     "id": "density",
+     "what": "바뀐 tree 밀도 (tree:density), anchor 인자 $A^{a_*}$ 가 상쇄",
+     "used_at": [
+      369,
+      370
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "density"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:palm",
+      "pert:palm.s1"
+     ]
+    },
+    {
+     "id": "poisson_add_one",
+     "what": "Poisson add-one 항등식",
+     "used_at": [
+      363
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "poisson_add_one"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "counts",
+     "what": "type $\\nu$ 의 Poisson 개수 (평균 $c_\\nu s_N$) 와 다른 개수들",
+     "used_at": [
+      364,
+      365
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "marks",
+     "what": "지정된 mark",
+     "used_at": [
+      352
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "reservoir",
+     "what": "원래 reservoir 법칙",
+     "used_at": [
+      366,
+      367
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "pert:analytic",
+   "title": "insertion 계수의 소멸 (Lemma 6.4)",
+   "env": "lemma",
+   "statement_span": [
+    383,
+    388
+   ],
+   "proof_span": [
+    390,
+    425
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "taylor_coefficients_vanish",
+     "statement": "perturbation family 에 속한 모든 mark specification, old tree, anchor, 유계 overlap 다항식 시험 $f$ 에 대해 $H_N(t,0)$ 의 $t=0$ 에서의 모든 Taylor 계수가 선택된 수열을 따라 $0$ 으로 간다.",
+     "lines": [
+      385,
+      387
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "type_parameters",
+     "what": "$t=j^{-1}$, $u_{\\nu,N}\\le2j^{-j}$",
+     "used_at": [
+      414,
+      415,
+      416
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_parameters"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s3"
+     ]
+    },
+    {
+     "id": "marks",
+     "what": "mark specification, 지수 $j$",
+     "used_at": [
+      385,
+      397
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic"
+     ]
+    },
+    {
+     "id": "selected_limits",
+     "what": "극한은 선택된 수열을 따른다",
+     "used_at": [
+      387,
+      414
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_selected_limits"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s1",
+      "pert:analytic.s3"
+     ]
+    },
+    {
+     "id": "H_def",
+     "what": "$H_N(t,u)$ 와 $J$ (식 (6.15))",
+     "used_at": [
+      393,
+      399,
+      414
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic-difference",
+      "item": "analytic_difference"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s1",
+      "pert:analytic.s2"
+     ]
+    },
+    {
+     "id": "palm_bound",
+     "what": "$|H_N(j^{-1},u)|\\le\\|f\\|_\\infty e_{\\nu,N}$",
+     "used_at": [
+      412
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:palm",
+      "item": "palm_bound"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s3"
+     ]
+    },
+    {
+     "id": "H_same",
+     "what": "$H_N$ 은 모든 type $j$ 에 대해 같은 함수이다",
+     "used_at": [
+      419
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:palm",
+      "item": "H_type_independent"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "moments_converge",
+     "what": "multioverlap 모멘트가 선택된 수열에서 수렴",
+     "used_at": [
+      406
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:selection",
+      "item": "tree_moments_converge"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s2",
+      "pert:analytic.s3"
+     ]
+    },
+    {
+     "id": "score_error_zero",
+     "what": "고정된 $j$ 에서 score 오차가 $0$ 으로 간다",
+     "used_at": [
+      418
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:selection",
+      "item": "score_concentration_sequence"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "analytic_bound",
+     "what": "복소 근방에서 $H_N$ 이 해석적이고 $N$ 과 선택된 매개변수에 균등하게 유계",
+     "used_at": [
+      391,
+      392,
+      393,
+      396
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:extension-expansion",
+      "item": "lhs_analytic"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s1",
+      "pert:analytic.s2"
+     ]
+    },
+    {
+     "id": "finite_coefficients",
+     "what": "Taylor 계수가 old tree 위의 유한 개의 extension 으로 표현된다",
+     "used_at": [
+      402,
+      403,
+      404
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:extension-expansion",
+      "item": "mixed_expansion"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "identical_directions",
+     "what": "같은 방향이면 $t^k$ 의 계수는 우변을 $k!$ 로 나눈 것",
+     "used_at": [
+      399,
+      400
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:extension-expansion",
+      "item": "identical_directions"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "insertion site 를 평균하면 spin 곱이 multioverlap 이 된다",
+     "used_at": [
+      404,
+      405
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:analytic",
+      "pert:analytic.s2"
+     ]
+    },
+    {
+     "id": "taylor",
+     "what": "해석 함수와 Taylor 급수 (계수 $=$ 도함수$/k!$), 첫 비영 계수가 있으면 $|H(j^{-1})|\\ge cj^{-q}$",
+     "used_at": [
+      407,
+      408,
+      421,
+      422
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "analytic_taylor"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "cauchy_estimates",
+     "what": "균등 유계인 해석 함수의 Taylor 꼬리와 도함수의 기하급수적/균등 경계",
+     "used_at": [
+      392,
+      395,
+      407,
+      408
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "cauchy_estimates"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "mean_value",
+     "what": "$|H_N(t,u)-H_N(t,0)|\\le C|u|$ (균등한 $u$ 미분 경계)",
+     "used_at": [
+      414,
+      415,
+      416
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "mean_value"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "pert:analytic.s1",
+     "use": "x:tree-analytic-bounds",
+     "why": "원문은 해석적 경계를 별도 문단이 아니라 Lemma tree:extension-expansion (그 진술의 \"analytic bounds ... uniformly\") 에서 가져온다 (391); 그 입력은 tree:extension-expansion 의 lhs_analytic 로 묶었다."
+    }
+   ],
+   "card_mismatches": [
+    {
+     "card": "pert:analytic.s1",
+     "what": "카드는 391–397 의 해석적 경계가 trees.tex 156–176 의 번호 없는 문단 (x:tree-analytic-bounds) 에서 온다고 하나, 원문은 Lemma tree:extension-expansion 를 인용한다."
+    }
+   ]
+  },
+  {
+   "id": "pert:tree-identity",
+   "title": "prescribed tree 위의 항등식 (Theorem 6.5)",
+   "env": "theorem",
+   "statement_span": [
+    451,
+    470
+   ],
+   "proof_span": [
+    472,
+    536
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "tree_identity",
+     "statement": "perturbation family 에 대해 Lemma pert:selection 의 모든 수열을 따라 $\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\,\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\,\\mathbb E[R_E]\\to0$.",
+     "lines": [
+      454,
+      464
+     ],
+     "label": "pert:tree-identity-eq"
+    },
+    {
+     "id": "generality",
+     "statement": "이는 고정된 모든 old tree, 두 종류의 anchor, 그 multioverlap 의 모든 유계 다항식 $f$, 순서 있는 added color 의 모든 유한 개수, 모든 prescribed constraint $\\mathcal C$ 에 대해 성립한다.",
+     "lines": [
+      465,
+      467
+     ],
+     "label": "pert:identity"
+    },
+    {
+     "id": "empty_addition",
+     "statement": "빈 추가 ($k=0$) 도 허용된다.",
+     "lines": [
+      468,
+      468
+     ]
+    },
+    {
+     "id": "limit_order",
+     "statement": "오차는 고정된 $L$, 고정된 tree 와 제약에서 $0$ 으로 가며, $L$ 극한보다 먼저 취한다.",
+     "lines": [
+      468,
+      469
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "colored_extensions",
+     "what": "anchor 종류, added color, 제약 $\\mathcal C$, 허용 history 집합 $\\mathfrak E$, $R_E$",
+     "used_at": [
+      457,
+      458,
+      460,
+      461,
+      466,
+      467
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "colored_extensions"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s2",
+      "pert:tree-identity.s4"
+     ]
+    },
+    {
+     "id": "marks",
+     "what": "mark specification 과 그 가산 족, 부호 곱과 유리 평균",
+     "used_at": [
+      475,
+      489,
+      521,
+      522,
+      523
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s1",
+      "pert:tree-identity.s2",
+      "pert:tree-identity.s3"
+     ]
+    },
+    {
+     "id": "selected_limits",
+     "what": "극한은 선택된 수열을 따른다",
+     "used_at": [
+      454,
+      462
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_selected_limits"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "sampled tree 위의 replica 위치, 공유 vertex, 표본 규칙",
+     "used_at": [
+      496,
+      498,
+      512,
+      516
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s2",
+      "pert:tree-identity.s3"
+     ]
+    },
+    {
+     "id": "vanishing_coefficients",
+     "what": "$H_N(t,0)$ 의 Taylor 계수가 $0$ 으로 감",
+     "used_at": [
+      473,
+      474,
+      490,
+      529
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic",
+      "item": "taylor_coefficients_vanish"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s1",
+      "pert:tree-identity.s4"
+     ]
+    },
+    {
+     "id": "H_def",
+     "what": "차 $H_N$ (식 (6.15))",
+     "used_at": [
+      481,
+      527
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:analytic-difference",
+      "item": "analytic_difference"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s1",
+      "pert:tree-identity.s2",
+      "pert:tree-identity.s4"
+     ]
+    },
+    {
+     "id": "test_setup",
+     "what": "old tree, anchor $a_*$, 시험함수 $f$ 의 설정",
+     "used_at": [
+      465,
+      466
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:score-identity",
+      "item": "test_setup"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity"
+     ]
+    },
+    {
+     "id": "selection_sequence",
+     "what": "Lemma pert:selection 이 주는 수열",
+     "used_at": [
+      454,
+      455
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:selection",
+      "item": "existence"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity"
+     ]
+    },
+    {
+     "id": "mixed_expansion",
+     "what": "혼합 canceled-anchor 전개",
+     "used_at": [
+      526,
+      527
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:extension-expansion",
+      "item": "mixed_expansion"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "pert:tree-identity",
+      "pert:tree-identity.s1",
+      "pert:tree-identity.s4"
+     ]
+    },
+    {
+     "id": "identical_directions",
+     "what": "같은 방향의 $t^k$ 계수는 우변$/k!$",
+     "used_at": [
+      479,
+      481,
+      491
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:extension-expansion",
+      "item": "identical_directions"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "extension_rule",
+     "what": "canceled-anchor extension 규칙, history $E$, 계수 $c_E$, 색 $a_j(E)$",
+     "used_at": [
+      457,
+      491,
+      533,
+      534
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extension_history"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap 과 그 다항식",
+     "used_at": [
+      466
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "polarization",
+     "what": "대칭 $k$-선형 형식을 대각 값으로부터 복원하는 분극 항등식",
+     "used_at": [
+      479,
+      480,
+      486,
+      490
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "polarization"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "pert_standing",
+   "tex": "$L,\\ N$ (절 약속)",
+   "defined_at": "perturbations.tex 4–10",
+   "text": "§6 내내 상호작용과 장은 유계이고 깊이 $L\\ge2$ 는 고정이다. 논증은 $N$-spin 계와 cavity reservoir 에 모두 적용된다 (reservoir 의 물리적 disorder 는 평균 $O(N)$ 인 Poisson 개수의 독립 유계 상호작용과 $N$ 개의 독립 유계 장). 지정된 매개변수 벡터에서의 진술의 모든 기대값은 그 벡터를 고정한 채 취한다.",
+   "note": "cavity_bounded 와 cavity_grid 의 약속을 §6 쪽에서 되풀이한 것."
+  },
+  {
+   "id": "mark_specification",
+   "tex": "$g,\\ g_0,\\ S_0$",
+   "defined_at": "perturbations.tex 28–38",
+   "text": "mark specification: 유한 개 $n\\ge0$ 의 labeled Rademacher 좌표, 각 좌표에 배정된 깊이 ($1,\\ldots,L-1$), 두 함수 $g,g_0:\\{-1,1\\}^n\\to\\mathbb Q\\cap[-1,1]$, 선택 $S_0=1$ 또는 $S_0=\\sigma_i$. 각 좌표는 배정된 깊이에서 보조 path 를 따라 표본추출되고, 서로 다른 좌표는 독립이며 같은 vertex 에서는 값을 공유하고 다른 vertex 에서는 독립이다. 이런 specification 전체는 가산 족이다."
+  },
+  {
+   "id": "pert_parameters",
+   "tex": "$t_\\nu,\\ I_\\nu,\\ u_\\nu$",
+   "defined_at": "perturbations.tex 40–50",
+   "text": "각 mark specification 과 각 정수 $j\\ge4$ 마다 type $\\nu$ 가 있고 $t_\\nu=j^{-1}$, $I_\\nu=[j^{-j},2j^{-j}]$, $u_\\nu\\in I_\\nu$ (식 pert:parameters). type 들을 $\\nu\\in\\mathbb N$ 으로 번호 매기고 $c_\\nu>0$, $\\sum_\\nu c_\\nu=1$ 을 고른다."
+  },
+  {
+   "id": "pert_factor",
+   "tex": "$\\psi_\\nu,\\ n_\\nu$",
+   "defined_at": "perturbations.tex 51–65",
+   "text": "type 마다 독립인 $n_\\nu\\sim\\mathrm{Poisson}(c_\\nu s_N)$ ($s_N=N^{3/4}$) 개의 항이 있고 각 항은 독립 uniform site $i\\in[N]$ 와 mark 과정의 독립 사본을 가지며, leaf 에서 spin weight 에 $\\psi_\\nu=1+t_\\nu g\\sigma_i+u_\\nu g_0S_0$ 를 곱한다 (식 pert:factor, $1/2<\\psi_\\nu<3/2$). 개수·type·site 는 root, mark 는 곱 prior 로 배정된 깊이에서 표본추출한다.",
+   "note": "cavity.tex 20–27 의 perturbation_factors 를 이 절에서 구체화한 꼴 (같은 factor 족)."
+  },
+  {
+   "id": "pert_parameter_measure",
+   "tex": "$\\pi,\\ \\mathbf u$",
+   "defined_at": "perturbations.tex 67–71",
+   "text": "$\\pi$ 는 구간 $I_\\nu$ 위의 uniform 확률측도들의 곱, $\\mathbf u=(u_\\nu)_\\nu$. $\\pi$ 는 결정적 매개변수 벡터를 고르는 데만 쓰고 그 벡터의 quenched 법칙의 일부가 아니다. 고정된 type 에서 구간은 양의 길이를 가지므로 집중 추정은 그 길이에 의존해도 된다."
+  },
+  {
+   "id": "pert_increment",
+   "tex": "$\\underline F,\\ \\Delta_N(\\mathbf u)$",
+   "defined_at": "perturbations.tex 248–253",
+   "text": "$\\underline F=\\liminf_NF_N$ (유계 모형), $P_N^{L,\\mathbf u}$ 는 root 평균 섭동된 log partition 함수, $\\Delta_N(\\mathbf u)=P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$."
+  },
+  {
+   "id": "pert_selected_limits",
+   "defined_at": "perturbations.tex 308–312",
+   "text": "이 지점부터 $L$ 은 고정이고 $N\\to\\infty$ 는 Lemma pert:selection 의 수열을 따른 수렴이며, 기대값은 선택된 결정적 벡터에서 계산하고 $N$ 에 대한 의존은 생략한다. $L$, path 개수, 섭동 type 에 대한 균등성은 이 극한에 대해 주장하지 않는다."
+  },
+  {
+   "id": "colored_extensions",
+   "tex": "$\\mathfrak E(\\mathcal T,a_*,\\mathcal C),\\ R_E$",
+   "defined_at": "perturbations.tex 429–449",
+   "text": "$S_0=\\sigma_i$ 이면 spin anchor, $S_0=1$ 이면 marker anchor. anchor 는 색 $0$, 추가된 색은 순서대로 $1,\\ldots,k$ 이고 서로 다른 replica 위치를 차지하며 canceled-anchor extension 규칙을 따른다. 제약 $\\mathcal C$ 는 추가된 색과 anchor 사이의 쌍별 split 깊이의 일관된 모음을 지정하고 다른 old replica 에 대한 제한은 두지 않는다. $\\mathfrak E(\\mathcal T,a_*,\\mathcal C)$ 는 허용 extension history 들의 집합, 계수 $c_E$, $R_E$ 는 spin anchor 일 때 $\\frac1N\\sum_i\\sigma_i^{a_*}\\prod_j\\sigma_i^{a_j(E)}$, marker anchor 일 때 $\\frac1N\\sum_i\\prod_j\\sigma_i^{a_j(E)}$ ($k=0$ 이면 $R_{\\{a_*\\}}$ 또는 $1$)."
+  }
+ ],
+ "floors_new": [
+  {
+   "id": "efron_stein",
+   "kind": "cited",
+   "statement": "Efron–Stein 분산 부등식: 독립 입력의 함수 $Z$ 에 대해 $\\operatorname{Var}Z\\le\\frac12\\sum_j\\mathbb E(Z-Z^{(j)})^2$ ($Z^{(j)}$ 는 $j$ 번째 입력을 독립으로 다시 뽑은 것; 동일 분포나 대칭 통계량은 필요 없다).",
+   "cite": "EfronStein",
+   "cited_at": "perturbations.tex 179"
+  },
+  {
+   "id": "total_variance",
+   "kind": "standard",
+   "statement": "전체 분산 법칙: $\\operatorname{Var}Z=\\mathbb E\\operatorname{Var}(Z\\mid\\mathcal G)+\\operatorname{Var}(\\mathbb E[Z\\mid\\mathcal G])$."
+  },
+  {
+   "id": "convex_derivative_monotone",
+   "kind": "standard",
+   "statement": "볼록 함수의 도함수는 단조 증가하고 차분몫은 양쪽 도함수 사이에 끼인다."
+  },
+  {
+   "id": "fubini",
+   "kind": "standard",
+   "statement": "Fubini–Tonelli: 유계(또는 음이 아닌) 가측 함수의 곱측도 적분은 순서를 바꿔도 같다."
+  },
+  {
+   "id": "markov_inequality",
+   "kind": "standard",
+   "statement": "Markov 부등식: $X\\ge0$ 이면 $\\mathbb P(X>a)\\le\\mathbb EX/a$."
+  },
+  {
+   "id": "diagonal_subsequence",
+   "kind": "standard",
+   "statement": "유계 실수열은 수렴 부분수열을 가지며, 가산 개의 유계 수열 족에는 대각선 논법으로 모두 동시에 수렴하는 공통 부분수열이 있다."
+  },
+  {
+   "id": "cauchy_schwarz",
+   "kind": "standard",
+   "statement": "Cauchy–Schwarz 와 Jensen: $\\mathbb E|X|\\le(\\mathbb EX^2)^{1/2}$, 합과 적분에 대한 $\\sum|x_iy_i|\\le(\\sum x_i^2)^{1/2}(\\sum y_i^2)^{1/2}$."
+  },
+  {
+   "id": "poisson_moments",
+   "kind": "standard",
+   "statement": "Poisson 확률변수는 모든 moment 가 유한하고 분산은 평균과 같다."
+  },
+  {
+   "id": "poisson_add_one",
+   "kind": "standard",
+   "statement": "Poisson add-one (Mecke/Palm) 항등식: 평균 $\\lambda$ 인 Poisson 개수 $n$ 의 점들에 대한 합 $\\mathbb E\\sum_{q\\le n}F(\\xi_q,\\text{나머지})$ 는 독립인 새 점 $\\xi$ 를 더한 계에서 $\\lambda\\,\\mathbb EF(\\xi,\\text{나머지}\\cup\\{\\xi\\})$ 와 같다."
+  },
+  {
+   "id": "cauchy_estimates",
+   "kind": "standard",
+   "statement": "원판에서 $|f|\\le M$ 인 해석 함수의 Taylor 계수는 $|a_k|\\le M\\rho^{-k}$ (Cauchy 추정), 더 작은 원판에서 Taylor 꼬리는 기하급수적으로 작고 도함수도 균등하게 유계이다."
+  },
+  {
+   "id": "polarization",
+   "kind": "standard",
+   "statement": "분극 항등식: 대칭 $k$-선형 형식 $\\mathcal L$ 과 $Q(g)=\\mathcal L(g,\\ldots,g)$ 에 대해 $\\mathcal L(g_1,\\ldots,g_k)=\\frac{1}{2^kk!}\\sum_{\\epsilon\\in\\{\\pm1\\}^k}\\bigl(\\prod_j\\epsilon_j\\bigr)Q\\bigl(\\sum_j\\epsilon_jg_j\\bigr)$."
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    4,
+    10
+   ],
+   "what": "절 머리 약속: 유계 모형, 고정 깊이 $L\\ge2$, 두 계에 적용, 고정 매개변수에서의 기대값",
+   "handled": "symbol:pert_standing"
+  },
+  {
+   "lines": [
+    12,
+    24
+   ],
+   "what": "전략 요약 단락 (집중에서 항등식으로, 부호로 깊이 선택)과 선행 연구(GG98, AC98, BarraDeSanctis07, Pan13) 언급",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    28,
+    38
+   ],
+   "what": "mark specification 정의",
+   "handled": "symbol:mark_specification"
+  },
+  {
+   "lines": [
+    40,
+    50
+   ],
+   "what": "섭동 type 과 매개변수 $t_\\nu,I_\\nu,u_\\nu$ (식 pert:parameters)",
+   "handled": "symbol:pert_parameters"
+  },
+  {
+   "lines": [
+    51,
+    65
+   ],
+   "what": "Poisson 섭동 factor $\\psi_\\nu$ (식 pert:factor)",
+   "handled": "symbol:pert_factor"
+  },
+  {
+   "lines": [
+    67,
+    71
+   ],
+   "what": "매개변수 측도 $\\pi$",
+   "handled": "symbol:pert_parameter_measure"
+  },
+  {
+   "lines": [
+    248,
+    253
+   ],
+   "what": "$\\underline F$ 와 $\\Delta_N(\\mathbf u)$ 의 정의",
+   "handled": "symbol:pert_increment"
+  },
+  {
+   "lines": [
+    308,
+    312
+   ],
+   "what": "이후 $N\\to\\infty$ 는 선택된 수열을 따른다는 약속",
+   "handled": "symbol:pert_selected_limits"
+  },
+  {
+   "lines": [
+    429,
+    449
+   ],
+   "what": "spin/marker anchor, 추가 color, 제약 $\\mathcal C$, 허용 history, $R_E$",
+   "handled": "symbol:colored_extensions"
+  },
+  {
+   "lines": [
+    538,
+    547
+   ],
+   "what": "Remark: 선택의 순서 (mark 와 $c_\\nu$ 먼저, 수열 선택, $N\\to\\infty$ 후 $j\\to\\infty$, 그 뒤에 $L$)",
+   "handled": "list"
+  }
+ ]
+}

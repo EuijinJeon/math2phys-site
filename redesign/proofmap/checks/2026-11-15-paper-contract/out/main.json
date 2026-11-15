@@ -1,0 +1,426 @@
+{
+ "section": "main",
+ "nodes": [
+  {
+   "id": "main:theorem",
+   "title": "주정리: $\\lim_NF_N=\\inf_{r\\ge0}\\Phi_r$",
+   "env": "theorem",
+   "statement_span": [
+    130,
+    136
+   ],
+   "proof_span": [
+    45,
+    87
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "limit_exists",
+     "label": "main:theorem",
+     "statement": "(model:integrability)–(model:positivity) 아래 열역학 극한 $\\lim_NF_N$ 이 존재한다.",
+     "lines": [
+      131,
+      132
+     ]
+    },
+    {
+     "id": "main_formula",
+     "label": "main:formula",
+     "statement": "$\\lim_{N\\to\\infty}F_N=\\inf_{r\\ge0}\\Phi_r$.",
+     "lines": [
+      133,
+      135
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "hyp_integrability",
+     "what": "가정 (model:integrability): $\\mathbb EB(\\theta)+\\mathbb E|h|<\\infty$ (짝수 $p$, $\\alpha>0$)",
+     "used_at": [
+      131
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s1",
+      "main:theorem.s2",
+      "main:theorem.s4"
+     ]
+    },
+    {
+     "id": "hyp_factorization",
+     "what": "가정 (model:factorization): $e^\\theta=a(1+b\\prod f_\\ell)$, 곱 유계",
+     "used_at": [
+      131
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "factorization"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s4"
+     ]
+    },
+    {
+     "id": "hyp_positivity",
+     "what": "가정 (model:positivity): $\\mathbb E[(-b)^n]\\ge0$",
+     "used_at": [
+      131
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "positivity"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s4"
+     ]
+    },
+    {
+     "id": "stmt_pressure",
+     "what": "$F_N$ (식 model:hamiltonian)",
+     "used_at": [
+      132,
+      134
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem"
+     ]
+    },
+    {
+     "id": "stmt_functional",
+     "what": "$\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r$",
+     "used_at": [
+      134
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "stmt_depth_zero",
+     "what": "$r=0$ 의 $\\Phi_0=\\inf_\\zeta\\mathcal B_0(\\zeta)$ (infimum 이 $r=0$ 을 포함)",
+     "used_at": [
+      134
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "proof_factorization",
+     "what": "factorization 표현: 승수 $a$ 가 비대칭으로 의존해도 되고, $f_\\ell$ 은 서로 독립·동분포이며 $b$ 와 독립",
+     "used_at": [
+      46,
+      47,
+      49,
+      50,
+      53,
+      54,
+      56,
+      57,
+      58
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "factorization"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem.s1"
+     ]
+    },
+    {
+     "id": "proof_multiplier",
+     "what": "승수 $a$ 는 다른 모든 변수에 의존해도 된다 (소거 대상)",
+     "used_at": [
+      46,
+      48,
+      56
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "multiplier_a"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    },
+    {
+     "id": "proof_model_setting",
+     "what": "$B(\\theta)=\\max_s|\\theta(s)|$ 와 $\\mathbb EB(\\theta)<\\infty$, $p,\\alpha$",
+     "used_at": [
+      50,
+      59
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    },
+    {
+     "id": "proof_integrability",
+     "what": "$\\mathbb EB(\\theta)<\\infty$ 로 $c$ 의 적분가능성과 $\\mathbb EB(\\widehat\\theta)\\le2\\mathbb EB(\\theta)$",
+     "used_at": [
+      50,
+      59
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    },
+    {
+     "id": "proof_pressure",
+     "what": "$F_N$, $\\widehat F_N$ 의 liminf·limsup",
+     "used_at": [
+      78,
+      84,
+      85
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    },
+    {
+     "id": "proof_functional",
+     "what": "정규화된 시행 함수와 그 infimum $\\widehat I,I_K,\\widehat\\Phi_r$",
+     "used_at": [
+      70,
+      71,
+      72,
+      78,
+      79,
+      80,
+      83,
+      84
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    },
+    {
+     "id": "bounded_lower",
+     "what": "bounded·순열 불변 법칙의 하한 $\\liminf F_N\\ge\\inf\\Phi_r$ (자른 법칙에 적용)",
+     "used_at": [
+      63,
+      64,
+      76
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:bounded-lower",
+      "item": "bounded_lower"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s2",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "free_stability",
+     "what": "pressure 안정성 $|F_N-F_N'|\\le\\alpha D+d$",
+     "used_at": [
+      76,
+      79,
+      80
+     ],
+     "binding": {
+      "type": "node",
+      "node": "reduction:stability",
+      "item": "free_stability"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "trial_stability",
+     "what": "시행 함수 안정성 $\\le\\alpha(2p-1)D+d$",
+     "used_at": [
+      72,
+      74,
+      79,
+      80
+     ],
+     "binding": {
+      "type": "node",
+      "node": "reduction:stability",
+      "item": "trial_stability"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "constant_shift",
+     "what": "상수 이동 $\\widehat F_N=F_N-\\alpha\\mathbb Ec$, $\\widehat{\\mathcal B}_r=\\mathcal B_r-\\alpha\\mathbb Ec$",
+     "used_at": [
+      48,
+      49,
+      78,
+      83,
+      84
+     ],
+     "binding": {
+      "type": "node",
+      "node": "reduction:stability",
+      "item": "shift"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s3"
+     ]
+    },
+    {
+     "id": "upper_bound",
+     "what": "상한 $\\limsup_NF_N\\le\\inf_r\\Phi_r$",
+     "used_at": [
+      85,
+      86
+     ],
+     "binding": {
+      "type": "node",
+      "node": "upper:bound",
+      "item": "inf_bound"
+     },
+     "origin": [
+      "card"
+     ],
+     "used_file": "reduction.tex",
+     "card_ids": [
+      "main:theorem",
+      "main:theorem.s4"
+     ]
+    },
+    {
+     "id": "dominated",
+     "what": "$D_K,d_K\\to0$: 지배 수렴 정리",
+     "used_at": [
+      65,
+      66,
+      67,
+      68
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "dominated_convergence"
+     },
+     "origin": [
+      "llm"
+     ],
+     "used_file": "reduction.tex"
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": [],
+   "proof_file": "reduction.tex"
+  }
+ ],
+ "symbols_new": [],
+ "floors_new": [],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    138,
+    140
+   ],
+   "what": "주정리가 말하지 않는 것: 우변은 유한 hierarchy 위 infimum 이며 달성이나 무한 깊이 극한 Gibbs 상태의 구성을 가정하지 않는다 (remark)",
+   "handled": "list"
+  }
+ ]
+}

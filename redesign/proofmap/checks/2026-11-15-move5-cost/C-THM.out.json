@@ -1,0 +1,107 @@
+{
+  "graph": {
+    "id": "thm",
+    "parent": {"graph": "top", "node": "THM"},
+    "nodes": [
+      {"id": "s1", "kind": "step", "title": "singleton: spin anchor", "lines": [533, 535], "card": "decor:overlap-concentration.s1",
+       "status": "sketch",
+       "author_filled": [
+         {"what": "추가 color가 없으므로 허용 history는 빈 history 하나뿐이고 계수는 1이다.", "expr": "\\mathfrak E(\\mathcal T,a_*,\\mathcal C)=\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)=\\{\\varnothing\\},\\ c_\\varnothing=1"},
+         {"what": "spin anchor가 singleton $S$ 의 leaf 자체이므로 $R_E=\\frac1N\\sum_i\\sigma_i^{a_*}=R_S$ 이고, 항등식은 그대로 분산이 된다.", "expr": "\\mathbb E[R_SR_S]-\\mathbb ER_S\\,\\mathbb ER_S=\\operatorname{Var}(R_S)\\to0"}
+       ],
+       "note": "출력의 singleton 부분(72–74줄)을 맡는다."},
+      {"id": "s2", "kind": "step", "title": "marker 구성과 C(S,e)", "lines": [537, 549], "card": "decor:overlap-concentration.s2.s1",
+       "status": "sketch", "defines": ["C(S,e)"],
+       "author_filled": [
+         {"what": "anchor 혼자인 쪽에서도 추가 사본의 첫 path는 anchor와 $e-1$ 에서 갈라져야 하므로 같은 제약이 같은 계수를 낸다. 계수가 0이 아닌 것은 $\\delta>0$ 와 $\\kappa(S)\\ne0$ (각 인자 $m_{d}-jm_{d+1}\\ne0$) 에서 온다.", "expr": "C(S,e)=-\\delta\\kappa(S)\\ne0"}
+       ]},
+      {"id": "s3", "kind": "step", "title": "두 쪽의 조건부 기대", "lines": [550, 555], "card": null,
+       "status": "sketch", "defines": ["M"],
+       "author_filled": [
+         {"what": "old 쪽: 조건부 독립과 같은 조건부 법칙으로 곱의 기대가 조건부 기대의 곱이 된다.", "expr": "\\mathbb E[R_S^{\\text{old}}R_S^{\\text{tgt}}]=\\mathbb E\\bigl[\\mathbb E[R_S\\mid\\mathscr F_{e-1}]^2\\bigr]=\\mathbb EM^2"},
+         {"what": "anchor 혼자인 쪽: marker anchor는 $R_E$ 에 들어가지 않으므로 그 연속을 지운 뒤 $R_E$ 는 보통 표본의 $R_S$ 이고, $\\mathbb Ef$ 와 곱해져 $(\\mathbb ER_S)^2$ 이 된다.", "expr": "\\mathbb Ef\\cdot\\mathbb E[R_E]=(\\mathbb ER_S)^2"}
+       ],
+       "note": "카드 s2.s2 (550–570)의 앞부분."},
+      {"id": "s4", "kind": "step", "title": "Var(M)→0", "lines": [556, 569], "card": "decor:overlap-concentration.s2.s2",
+       "status": "sketch",
+       "author_filled": [
+         {"what": "탑 성질로 $\\mathbb EM=\\mathbb ER_S$ 이므로 차가 분산이다.", "expr": "\\mathbb EM^2-(\\mathbb ER_S)^2=\\operatorname{Var}(M)"},
+         {"what": "항등식 오차는 고정 $L$ 에서 $o_N(1)$ 이고 $C(S,e)$ 는 $N$ 에 의존하지 않으므로 나눌 수 있다."}
+       ],
+       "note": "카드 s2.s2 는 550줄부터 시작한다. 이 node는 556–569."},
+      {"id": "s5", "kind": "step", "title": "G, G_- 와 사영 경계", "lines": [571, 581], "card": "decor:overlap-concentration.s3",
+       "status": "sketch", "defines": ["G", "G_-"],
+       "author_filled": [
+         {"what": "projection bound 에 $B=\\mathbf 1$ (prefix와 무관하므로 독립)을 넣고 $R_S=\\mathbf1\\cdot A_S$, $a_{S,e}=\\prod_j\\mu_{e,T_j}$ 를 쓰면 $R_S-G=(A_S-a_{S,e})\\cdot\\mathbf1$.", "expr": "\\mathbb E(R_S-G)^2=\\|(A_S-a_{S,e})\\cdot\\mathbf1\\|_{L^2}^2\\le p_N(S,e)^2"},
+         {"what": "$T_j$ 는 깊이 $e$ 까지 $S$ 의 처음 stem을 공유하므로 $\\mu_{e-1,T_j}$ 는 그 stem의 깊이 $e-1$ prefix의 함수이고, 따라서 $G_-$ 는 $\\mathscr F_{e-1}$-가측이다."}
+       ],
+       "note": "카드 s3 은 571–590 으로 s5, s6 을 함께 덮는다."},
+      {"id": "s6", "kind": "step", "title": "인접 prefix 오차", "lines": [582, 589], "card": null,
+       "status": "sketch",
+       "author_filled": [
+         {"what": "곱 차이 부등식: 좌표가 $[-1,1]$ 인 vector의 좌표별 곱에서 차는 인자별 차의 합으로 누르고, $\\mathbf1\\cdot x$ 는 정규화 norm으로 누른다.", "expr": "|G-G_-|\\le\\sum_j\\|\\mu_{e,T_j}-\\mu_{e-1,T_j}\\|_N,\\quad (G-G_-)^2\\le s\\sum_j\\|\\mu_{e,T_j}-\\mu_{e-1,T_j}\\|_N^2"},
+         {"what": "자식 깊이를 고정하고 $e$ 에 대해 합하면 각 자식에서 martingale energy 가 1 이하이고, $e$ 좌표의 평균이 $1/L$ 을 준다.", "expr": "\\mathcal A_{L,\\eta}\\mathbb E(G-G_-)^2\\le L^{-1}\\cdot s\\cdot\\max_{\\text{child depths}}\\sum_j\\sum_e\\mathbb E\\|\\mu_{e,T_j}-\\mu_{e-1,T_j}\\|_N^2\\le s/L\\le C_k/L"}
+       ],
+       "note": "카드 s3 (571–590)의 뒷부분."},
+      {"id": "s7", "kind": "step", "title": "L² 사영 비교", "lines": [589, 595], "card": null,
+       "status": "sketch",
+       "author_filled": [
+         {"what": "두 번째 부등호는 $R_S-G_-=(R_S-G)+(G-G_-)$ 와 $(a+b)^2\\le2a^2+2b^2$.", "expr": "\\mathbb E(R_S-G_-)^2\\le2\\mathbb E(R_S-G)^2+2\\mathbb E(G-G_-)^2"}
+       ],
+       "note": "카드 s4 (591–609)의 앞부분."},
+      {"id": "s8", "kind": "step", "title": "분산 추정", "lines": [596, 609], "card": "decor:overlap-concentration.s4",
+       "status": "sketch",
+       "author_filled": [
+         {"what": "분산 분해.", "expr": "\\operatorname{Var}(R_S)=\\mathbb E(R_S-M)^2+\\operatorname{Var}(M)"},
+         {"what": "고정 $L$ 에서 $\\mathcal A_{L,\\eta}$ 는 유한 합이므로 $\\limsup_N$ 과 바꿀 수 있고, 각 배정에서 $\\operatorname{Var}(M)\\to0$ 이므로 그 기여는 0.", "expr": "\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(M)=0"},
+         {"what": "$p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$ 는 $(\\sum_{j=1}^sx_j)^2\\le s\\sum_jx_j^2$ 를 $x_j=v_N(T_j,e)^{1/4}$ 에 쓴 것."},
+         {"what": "fiber bound ($\\gamma=1/2$)를 $e$ 를 자식의 prefix 깊이 $d$ 로 보아 쓰고, $|T_j|\\le k-1$ 이므로 각 자식 항은 $V_{k-1,L}(\\eta/2)^{1/2}$ 이하. $\\limsup_N$ 은 오목한 $x\\mapsto x^{1/2}$ 안으로 들어간다. '충분히 큰 $L$' 은 fiber bound 의 $\\eta/2$-regular 조건에서 온다.", "expr": "\\limsup_N\\mathcal A_{L,\\eta}v_N(T_j,e)^{1/2}\\le\\bigl(\\limsup_N\\mathcal A_{L,\\eta/2}v_N(T_j,e)\\bigr)^{1/2}\\le V_{k-1,L}(\\eta/2)^{1/2}"}
+       ],
+       "note": "카드 s4 와 범위가 같다(591–609 중 591–595 는 s7 에 둠)."},
+      {"id": "s9", "kind": "step", "title": "마무리", "lines": [609, 611], "card": "decor:overlap-concentration.s5",
+       "status": "sketch",
+       "author_filled": [
+         {"what": "$L\\to\\infty$ 에서 $L^{-1}\\to0$ 이고 V_to_zero ($k-1$, $\\eta/2$ 에서)로 둘째 항도 0이므로 s8 의 우변이 0으로 간다.", "expr": "\\lim_{L\\to\\infty}C_k\\bigl(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2}\\bigr)=0"}
+       ]},
+      {"id": "x_PB", "kind": "external", "external_ref": "PB", "import_edge": "t13", "items": ["projection", "product_mean"]},
+      {"id": "x_DC", "kind": "external", "external_ref": "DC", "import_edge": "t14", "items": ["martingale_energy"]},
+      {"id": "x_CC", "kind": "external", "external_ref": "CC", "import_edge": "t15", "items": ["fiber_bound", "V_to_zero", "main"]},
+      {"id": "x_TI", "kind": "external", "external_ref": "X_TI", "import_edge": "t16", "items": ["identity", "anchor_constraint"]},
+      {"id": "x_RT", "kind": "external", "external_ref": "X_RT", "import_edge": "t17", "items": ["kappa_total"]},
+      {"id": "x_SAMP", "kind": "external", "external_ref": "X_SAMP", "import_edge": "t18", "items": ["children_independent", "leaf_removal"]},
+      {"id": "out", "kind": "output", "output_items": ["main"], "lines": [65, 74]}
+    ],
+    "edges": [
+      {"id": "e1", "from": "x_TI", "to": "s1", "carries": ["identity"], "used_at": [533]},
+      {"id": "e2", "from": "x_TI", "to": "s2", "carries": ["anchor_constraint", "identity"], "used_at": [539, 540, 545]},
+      {"id": "e3", "from": "x_RT", "to": "s2", "carries": ["kappa_total"], "used_at": [545, 547]},
+      {"id": "e4", "from": "s2", "to": "s3", "carries": ["result"], "used_at": [550]},
+      {"id": "e5", "from": "x_SAMP", "to": "s3", "carries": ["children_independent", "leaf_removal"], "used_at": [550, 553, 555]},
+      {"id": "e6", "from": "s2", "to": "s4", "carries": ["result"], "used_at": [558, 568]},
+      {"id": "e7", "from": "s3", "to": "s4", "carries": ["result"], "used_at": [556, 558]},
+      {"id": "e8", "from": "x_TI", "to": "s4", "carries": ["identity"], "used_at": [556]},
+      {"id": "e9", "from": "x_PB", "to": "s5", "carries": ["projection", "product_mean"], "used_at": [576, 580]},
+      {"id": "e10", "from": "s5", "to": "s6", "carries": ["result"], "used_at": [582, 585]},
+      {"id": "e11", "from": "x_DC", "to": "s6", "carries": ["martingale_energy"], "used_at": [583]},
+      {"id": "e12", "from": "s3", "to": "s7", "carries": ["result"], "used_at": [592]},
+      {"id": "e13", "from": "s5", "to": "s7", "carries": ["result"], "used_at": [593, 594]},
+      {"id": "e14", "from": "s7", "to": "s8", "carries": ["result"], "used_at": [596]},
+      {"id": "e15", "from": "s4", "to": "s8", "carries": ["result"], "used_at": [597]},
+      {"id": "e16", "from": "s6", "to": "s8", "carries": ["result"], "used_at": [601]},
+      {"id": "e17", "from": "x_CC", "to": "s8", "carries": ["fiber_bound", "V_to_zero"], "used_at": [601, 607]},
+      {"id": "e18", "from": "s8", "to": "s9", "carries": ["result"], "used_at": [609]},
+      {"id": "e19", "from": "x_CC", "to": "s9", "carries": ["V_to_zero", "main"], "used_at": [609]},
+      {"id": "e20", "from": "s1", "to": "out", "carries": ["result"], "used_at": [72, 73, 74]},
+      {"id": "e21", "from": "s9", "to": "out", "carries": ["result"], "used_at": [65, 69]}
+    ]
+  },
+  "parent_change_requests": [
+    {"target": "symbols", "kind": "new_symbol", "detail": "$v_N(S,d)$ (prefix 깊이 $d$ 에서의 분산 양)가 V_kL, a_p 의 설명과 601, 606줄에 쓰이지만 기호 표에 자기 항목이 없다. THM.symbols 에 넣을 항목이 필요하다.", "source_lines": "decorrelation.tex 601, 606"},
+    {"target": "t16", "kind": "change_item", "detail": "X_TI.anchor_constraint 의 used_at 에 533 추가: singleton 단계도 spin anchor 규정($S_0=\\sigma_i$, $R_E$ 의 꼴)을 쓴다.", "source_lines": "decorrelation.tex 533"}
+  ],
+  "missed_dependencies": [
+    {"what": "계수 $C(S,e)=-\\delta\\kappa(S)$ 의 인자 $-\\delta$: 첫 target path가 anchor와 $e-1$ 에서 fresh로 갈라질 때의 한 걸음 계수 규칙. kappa_total 은 $\\kappa(S)$ 만 준다.", "used_at": "decorrelation.tex 541–547", "likely_from": "모름 (X_RT 또는 ext_hist 의 extension 계수 규칙)"},
+    {"what": "$v_N(S,d)$ 의 정의 자체 (s8 의 fiber bound 적용과 $p_N$ 경계에 필요)", "used_at": "decorrelation.tex 601, 606", "likely_from": "CC"}
+  ],
+  "notes": "s2 의 '양쪽 계수가 같다'는 근거와 $-\\delta$ 의 출처는 묶음 안에서 확인할 수 없다. s8 에서 fiber bound 를 $\\mathcal A_{L,\\eta}$ 에서 $\\mathcal A_{L,\\eta/2}$ 로 옮길 때 $e$ 를 자식의 $d$ 로 읽은 것은 609줄의 $D_j=b(T_j)+1$ 에 기댄 해석이다. CC.main 과 CC.V_to_zero 는 609줄에서 둘 다 받았지만 실제로 쓰이는 것은 V_to_zero 다."
+}

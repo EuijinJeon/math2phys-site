@@ -1,0 +1,22 @@
+{
+ "A": {
+  "misstatements": [],
+  "missed_dependencies": [],
+  "unsupported_additions": [
+   {
+    "where": "c2 (derivation line 1)",
+    "what": "|B_i|<=1 (lemma 가정 B in [-1,1]^N) 을 써서 절댓값 상계를 얻는다는 걸음. 원문 줄 129-130 은 결과 'at most N^{-2} sum|C_ij|' 만 적고 이 사용을 적지 않는다. author_filled 표시가 없다 (판 B 는 같은 걸음에 표시했다). 수학적으로는 옳은 사소한 채움이다."
+   },
+   {
+    "where": "c3 (derivation line 1)",
+    "what": "Cauchy-Schwarz 의 명시적 꼴 N^{-2} sum|C|*1 <= (N^{-2} sum C^2)^{1/2} (N^{-2} sum 1)^{1/2}. 원문은 'first over i,j' 만 적는다. author_filled 표시가 없다 (판 B 는 표시했다). 수학적으로는 옳다."
+   }
+  ]
+ },
+ "B": {
+  "misstatements": [],
+  "missed_dependencies": [],
+  "unsupported_additions": []
+ },
+ "notes": "두 판 모두 원문 줄 128-139 의 유도식과 두 결과식의 지수, 상수, 부등호를 하나씩 대조했고 틀린 곳은 없었다. 확인한 값은 N^{-2} sum C_ij B_i B_j, N^{-2} sum|C_ij|, 2/N^2 tr((C+mu mu^T)C) >= 2/N^2 tr(C^2), v_N^{1/4}, v_N^{1/2} 이다. 판 갈림 1: 이 파일 밖에 있는 v_N(S,d) = E N^{-2} sum C_ij^2 의 정의와 mu_{d,S} = E[A_S|F_d] 의 정의는 원문 발췌(줄 108-140)에 없다. 두 판 모두 '기호 v_N' 같은 기호 표 참조로만 쓰고 node 에 정의를 적지 않는다. 판 A 는 c1 line 3 에서 '기호 mu' 를 인용한다. 판 B 의 c1 은 mu 를 인용하지 않고 E[(A_i-mu_i)(A_j-mu_j)|F_d,B]=C_ij 를 쓴다. 이 파일만으로는 기호 표를 볼 수 없어 missed dependency 로 세지 않았고, 엄격히 읽으면 두 판 모두 해당할 수 있다. 판 갈림 2: 판 A 의 t4 는 원문에 없는 마무리(바깥 기대값, tr(C^2) = sum C_ij^2)이고 author_filled 가 있어 세지 않았다. 판 B 는 같은 내용을 c7 에서 filled 로 표시했다. 판 갈림 3: 판 A 가 'over the prefix' 를 기호 E_root 로 읽은 것은 filled 로 표시돼 있어 세지 않았다. 판 갈림 4: 두 판 모두 tr(C^2) = sum C_ij^2 에 C 의 대칭성(공분산 행렬이므로 성립)을 floor 로 쓴다. 원문에 없지만 정의에서 따르는 사실이라 세지 않았다."
+}

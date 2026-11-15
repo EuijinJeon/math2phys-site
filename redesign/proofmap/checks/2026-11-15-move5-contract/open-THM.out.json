@@ -1,0 +1,293 @@
+{
+  "graph": {
+    "id": "thm",
+    "title": "Theorem decor:overlap-concentration 의 증명",
+    "parent": {"graph": "top", "node": "THM"},
+    "summary": "singleton은 spin-anchor 항등식으로 바로 끝난다. 그 밖에는 첫 split 깊이 $e$ 보다 한 걸음 앞 $e-1$ 에 marker anchor를 두고 $S$ 의 사본을 붙여 prescribed-tree 항등식에서 $C(S,e)\\operatorname{Var}(M)=o_N(1)$ 을 얻고, $M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$ 아래의 조건부 분산은 projection bound와 martingale energy로 $G_-$ 에 대한 $L^2$ 거리로 누른다. 분산 분해와 fiber bound로 $V_{k-1,L}(\\eta/2)$ 에 대한 재귀 부등식을 얻고 Proposition conditional-concentration 으로 끝낸다.",
+    "nodes": [
+      {
+        "id": "ext_PB",
+        "kind": "external",
+        "external_ref": "PB",
+        "import_edge": "t13",
+        "items": ["projection", "product_mean"],
+        "title": "PB에서 받는 것",
+        "statement": "[PB.projection] $\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e)$. [PB.product_mean] $\\mu_{e,S}=\\prod_j\\mu_{e,T_j}$.",
+        "symbols": ["a_p", "mu"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 576, 580", "state": "proposed"}
+      },
+      {
+        "id": "ext_DC",
+        "kind": "external",
+        "external_ref": "DC",
+        "import_edge": "t14",
+        "items": ["martingale_energy"],
+        "title": "DC에서 받는 것",
+        "statement": "[DC.martingale_energy] $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$.",
+        "symbols": ["mu", "F_d"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 583", "state": "proposed"}
+      },
+      {
+        "id": "ext_CC",
+        "kind": "external",
+        "external_ref": "CC",
+        "import_edge": "t15",
+        "items": ["fiber_bound", "V_to_zero", "main"],
+        "title": "CC에서 받는 것",
+        "statement": "[CC.fiber_bound] $\\gamma$-거듭제곱 fiber 경계. [CC.V_to_zero] $V_{k,L}(\\eta)\\to0$. [CC.main] $\\lim_L\\limsup_N\\mathcal A_{L,\\eta}v_N(S,d)=0$.",
+        "symbols": ["V_kL", "A_avg", "eta_regular"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 601, 607, 609", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_TI",
+        "kind": "external",
+        "external_ref": "X_TI",
+        "import_edge": "t16",
+        "items": ["identity", "anchor_constraint"],
+        "title": "X_TI (prescribed-tree 항등식)에서 받는 것",
+        "statement": "[X_TI.identity] $\\sum_{E}c_E\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E}c_E\\mathbb E[R_E]\\to0$. [X_TI.anchor_constraint] spin / marker anchor, 추가 color, 제약 $\\mathcal C$, $R_E$.",
+        "symbols": ["anchor", "ext_hist", "N_lim"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 533, 539–540, 545, 556", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_RT",
+        "kind": "external",
+        "external_ref": "X_RT",
+        "import_edge": "t17",
+        "items": ["kappa_total"],
+        "title": "X_RT에서 받는 것",
+        "statement": "[X_RT.kappa_total] 처방한 tree $S$ 를 이루는 호환 extension 위의 계수 총합은 $\\kappa(S)$.",
+        "symbols": ["kappa"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 545, 547", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_SAMP",
+        "kind": "external",
+        "external_ref": "X_SAMP",
+        "import_edge": "t18",
+        "items": ["children_independent", "leaf_removal"],
+        "title": "X_SAMP에서 받는 것",
+        "statement": "[X_SAMP.children_independent] 서로 다른 자식은 독립으로 뽑는다. [X_SAMP.leaf_removal] leaf와 쓰지 않는 path 부분을 지워도 남은 tree의 표본 법칙은 보존된다.",
+        "symbols": ["E_root"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 550, 553, 555", "state": "proposed"}
+      },
+      {
+        "id": "s1_singleton",
+        "kind": "step",
+        "title": "singleton의 경우",
+        "statement": "singleton $S$ 에 대해 spin-anchor 항등식을 추가 color 없이 $f=R_S$ 로 쓰면 $\\mathbb ER_S^2=(\\mathbb ER_S)^2+o_N(1)$, 곧 각 고정 $L$ 에서 $\\operatorname{Var}(R_S)\\to0$.",
+        "symbols": ["R_S", "anchor", "ext_hist", "N_lim", "E_root"],
+        "derivation": [
+          {"line": "spin anchor, 빈 추가, $f=R_S$ 로 [X_TI.identity] 를 쓴다.", "by": ["e1"]},
+          {"line": "$\\mathbb ER_S^2-(\\mathbb ER_S)^2=o_N(1)$.", "by": ["e1", "e2"], "author_filled": "빈 추가에서 history는 하나뿐이고 그 계수가 0이 아니며, 두 항이 각각 $\\mathbb ER_S^2$ 와 $(\\mathbb ER_S)^2$ (의 같은 상수배) 가 된다는 읽기는 원문이 적지 않았다."}
+        ],
+        "author_filled": ["빈 추가의 spin-anchor 항등식이 왜 정확히 $\\mathbb ER_S^2$ 와 $(\\mathbb ER_S)^2$ 를 주는지(계수와 $R_E$ 의 식별)를 채웠다."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 533–535", "state": "proposed"}
+      },
+      {
+        "id": "s2_marker_setup",
+        "kind": "step",
+        "title": "$e-1$ 에서의 marker anchor 구성",
+        "statement": "$S$ 가 깊이 $e$ 에서 처음 proper child shape $T_1,\\ldots,T_s$ 로 갈라진다고 하자. $S$ 를 old tree로 쓰고 그 leaf 하나를 marker anchor로 지정하고, 모든 leaf가 anchor로부터 $e-1$ 에서 갈라지는 $S$ 의 온전한 사본을 추가한다. 추가 사본의 첫 path는 $e-1$ 에서 fresh여야 하며(old tree가 거기서 아직 갈라지지 않았으므로), 다른 target path는 모두 그 결과 생긴 fresh subtree 안에 있다.",
+        "symbols": ["topology", "anchor", "ext_hist"],
+        "local_symbols": [
+          {"id": "e", "tex": "$e$", "defined_at": "decorrelation.tex 537", "text": "$S$ 의 첫 split 깊이. 평균에서 범위를 도는 좌표."},
+          {"id": "T_j", "tex": "$T_1,\\ldots,T_s$", "defined_at": "decorrelation.tex 537–538", "text": "깊이 $e$ 에서의 proper child shape, $s$ 는 그 수."}
+        ],
+        "derivation": [
+          {"line": "old tree $=S$, marker anchor $=S$ 의 leaf 하나, 추가 color $=$ anchor와 $e-1$ 에서 갈라지는 $S$ 의 사본.", "by": ["e3"]},
+          {"line": "old tree는 $e-1$ 에서 아직 갈라지지 않았으므로 첫 path는 $e-1$ 에서 fresh.", "by": ["e3"]}
+        ],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 537–543", "state": "proposed"}
+      },
+      {
+        "id": "s3_coefficient",
+        "kind": "step",
+        "title": "extension 계수 $C(S,e)=-\\delta\\kappa(S)$",
+        "statement": "prescribed-tree 항등식 양쪽의 extension 계수는 같은 0 아닌 수 $C(S,e)=-\\delta\\kappa(S)$ 이다.",
+        "symbols": ["kappa", "delta", "ext_hist"],
+        "local_symbols": [
+          {"id": "C_Se", "tex": "$C(S,e)$", "defined_at": "decorrelation.tex 547", "text": "marker 구성의 extension 계수 $-\\delta\\kappa(S)$."}
+        ],
+        "derivation": [
+          {"line": "호환 extension 위의 계수 총합은 $\\kappa(S)$.", "by": ["e5"]},
+          {"line": "$C(S,e)=-\\delta\\kappa(S)\\neq0$ 이고 양쪽에서 같다.", "by": ["e5", "e4"]}
+        ],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 544–549", "state": "proposed"}
+      },
+      {
+        "id": "s4_two_sides",
+        "kind": "step",
+        "title": "항등식 두 쪽의 값",
+        "statement": "target 사본과 old 사본은 $\\mathscr F_{e-1}$ 아래에서 조건부 독립이고 같은 분포다. $f=R_S$, $M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$ 이면 그 곱의 조건부 기대값은 $M^2$. anchor만 있는 쪽에서는 marker의 $e-1$ 아래 연속을 지우면 확률 kernel이 1로 적분되고 보통의 target 법칙 $S$ 가 남아 평균은 $\\mathbb ER_S$.",
+        "symbols": ["R_S", "F_d", "anchor", "E_root"],
+        "local_symbols": [
+          {"id": "M", "tex": "$M$", "defined_at": "decorrelation.tex 552", "text": "$M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$."}
+        ],
+        "derivation": [
+          {"line": "두 사본은 $\\mathscr F_{e-1}$ 아래에서 조건부 iid.", "by": ["e6", "s2_marker_setup"], "author_filled": "fresh subtree 의 자식이 독립으로 뽑힌다는 [X_SAMP.children_independent] 를 두 사본의 조건부 iid로 읽었다."},
+          {"line": "$\\mathbb E[R_S^{\\rm old}R_S^{\\rm target}\\mid\\mathscr F_{e-1}]=M^2$.", "by": ["앞선 줄"]},
+          {"line": "anchor-alone 쪽: marker 연속을 지우면 target 법칙 $S$, 평균 $\\mathbb ER_S$.", "by": ["e7"]}
+        ],
+        "author_filled": ["두 사본의 조건부 iid 를 children_independent 로부터 읽은 것."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 550–555", "state": "proposed"}
+      },
+      {
+        "id": "s5_prefix_variance",
+        "kind": "step",
+        "title": "prefix projection의 집중",
+        "statement": "항등식은 $C(S,e)(\\mathbb EM^2-(\\mathbb ER_S)^2)=C(S,e)\\operatorname{Var}(M)=o_N(1)$ 을 주고, 따라서 각 고정 $L,S,e$ 에서 $\\operatorname{Var}(M)\\to0$. $C(S,e)$ 로 나누는 것은 고정 $L$ 에서만이며 $L\\to\\infty$ 에서 균일한 하계는 필요 없다.",
+        "symbols": ["N_lim", "delta"],
+        "derivation": [
+          {"line": "$C(S,e)\\bigl(\\mathbb EM^2-(\\mathbb ER_S)^2\\bigr)=o_N(1)$.", "by": ["e8", "e9", "e10"]},
+          {"line": "$\\mathbb EM^2-(\\mathbb ER_S)^2=\\operatorname{Var}(M)$.", "by": ["앞선 줄", "floor:tower"], "author_filled": "$\\mathbb EM=\\mathbb ER_S$ (tower property)."},
+          {"line": "고정 $L$ 에서 $C(S,e)\\neq0$ 으로 나누어 $\\operatorname{Var}(M)\\to0$.", "by": ["앞선 줄", "e9"]}
+        ],
+        "floor_used": ["tower property of conditional expectation"],
+        "author_filled": ["$\\mathbb EM=\\mathbb ER_S$ 로 $\\mathbb EM^2-(\\mathbb ER_S)^2=\\operatorname{Var}(M)$ 를 쓴 것."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 556–569", "state": "proposed"}
+      },
+      {
+        "id": "s6_projection",
+        "kind": "step",
+        "title": "$G$, $G_-$ 와 projection bound",
+        "statement": "$G=\\mathbf1\\cdot\\prod_j\\mu_{e,T_j}$, $G_-=\\mathbf1\\cdot\\prod_j\\mu_{e-1,T_j}$ 로 둔다. $G_-$ 는 $\\mathscr F_{e-1}$-가측. projection bound로 $\\mathbb E(R_S-G)^2\\le p_N(S,e)^2$. child covariance는 $e$ 에서 재며 $e$ 는 그 branching 깊이들과 떨어져 있고, $e-1$ 로의 이동은 martingale 연속성으로 한다.",
+        "symbols": ["mu", "F_d", "a_p", "R_S"],
+        "local_symbols": [
+          {"id": "G", "tex": "$G$", "defined_at": "decorrelation.tex 576", "text": "$G=\\mathbf1\\cdot\\prod_j\\mu_{e,T_j}$."},
+          {"id": "G_minus", "tex": "$G_-$", "defined_at": "decorrelation.tex 577", "text": "$G_-=\\mathbf1\\cdot\\prod_j\\mu_{e-1,T_j}$."}
+        ],
+        "derivation": [
+          {"line": "$G=\\mathbf1\\cdot a_{S,e}$ ($=\\mathbf1\\cdot\\mu_{e,S}$).", "by": ["e11"]},
+          {"line": "$G_-$ 는 $\\mathscr F_{e-1}$-가측.", "by": ["앞선 줄"], "author_filled": "$\\mu_{e-1,T_j}=\\mathbb E[A_{T_j}\\mid\\mathscr F_{e-1}]$ 의 정의에서 가측성을 읽었다."},
+          {"line": "$\\mathbb E(R_S-G)^2\\le p_N(S,e)^2$.", "by": ["e12"], "author_filled": "projection bound에서 $B=\\mathbf1$ 로 두고 $R_S=\\mathbf1\\cdot A_S$ 를 써서 $L^2$ norm의 제곱으로 읽었다."}
+        ],
+        "author_filled": ["$G_-$ 의 $\\mathscr F_{e-1}$-가측성.", "projection bound에 $B=\\mathbf1$ 을 넣은 것."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 571–581", "state": "proposed"}
+      },
+      {
+        "id": "s7_adjacent_prefix",
+        "kind": "step",
+        "title": "이웃 prefix 오차",
+        "statement": "proper child 깊이를 모두 고정하면 곱 차이 부등식과 martingale energy로 $\\mathcal A_{L,\\eta}\\mathbb E(G-G_-)^2\\le C_k/L$. $e$ 자체가 범위를 도는 좌표이므로 한 걸음 증분을 먼저 합하고 $L$ 로 나눈다.",
+        "symbols": ["A_avg", "mu"],
+        "local_symbols": [
+          {"id": "C_k", "tex": "$C_k$", "defined_at": "decorrelation.tex 585", "text": "$k$ 에만 의존하는 상수. ($k$ 는 $|S|$ 로 읽음)"}
+        ],
+        "derivation": [
+          {"line": "$\\mathbb E(G-G_-)^2\\le C\\sum_j\\mathbb E\\|\\mu_{e,T_j}-\\mu_{e-1,T_j}\\|_N^2$.", "by": ["missed:product_difference_inequality"]},
+          {"line": "$e$ 에 대해 합하면 각 $j$ 마다 $\\le1$; $L$ 로 나눠 $\\mathcal A_{L,\\eta}\\mathbb E(G-G_-)^2\\le C_k/L$.", "by": ["e13", "앞선 줄"], "author_filled": "곱 차이 부등식의 꼴과, 나머지 좌표의 평균은 질량 $\\le1$ 이라 상수에 흡수된다는 셈을 채웠다."}
+        ],
+        "author_filled": ["곱 차이 부등식의 꼴과 $e$ 합 후 $L$ 로 나누는 셈."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 582–589", "state": "proposed"}
+      },
+      {
+        "id": "s8_conditional_L2",
+        "kind": "step",
+        "title": "조건부 기대값의 $L^2$ 최적성",
+        "statement": "$\\mathbb E(R_S-M)^2\\le\\mathbb E(R_S-G_-)^2\\le2p_N(S,e)^2+2\\mathbb E(G-G_-)^2$.",
+        "symbols": ["F_d", "a_p"],
+        "derivation": [
+          {"line": "$G_-$ 가 $\\mathscr F_{e-1}$-가측이고 $M$ 이 최적 $L^2$ projection이므로 $\\mathbb E(R_S-M)^2\\le\\mathbb E(R_S-G_-)^2$.", "by": ["e14", "floor:L2_projection"]},
+          {"line": "$R_S-G_-=(R_S-G)+(G-G_-)$ 와 $(a+b)^2\\le2a^2+2b^2$, 그리고 $\\mathbb E(R_S-G)^2\\le p_N^2$.", "by": ["e14", "floor:(a+b)^2<=2a^2+2b^2"], "author_filled": "둘째 부등식의 분해와 기초 부등식을 원문은 적지 않았다."}
+        ],
+        "floor_used": ["conditional expectation is the optimal L^2 projection", "(a+b)^2 <= 2a^2+2b^2"],
+        "author_filled": ["둘째 부등식을 $(a+b)^2\\le2a^2+2b^2$ 로 푼 것."],
+        "status": "complete",
+        "grounding": {"source": "decorrelation.tex 589–595", "state": "proposed"}
+      },
+      {
+        "id": "s9_variance_estimate",
+        "kind": "step",
+        "title": "분산 추정 (재귀 부등식)",
+        "statement": "분산 분해와 prefix projection의 집중으로, 충분히 큰 모든 $L$ 에서 $\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)\\le C_k\\bigl(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2}\\bigr)$. 여기서 $p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$ 과 $\\gamma=1/2$ 인 fiber bound를 썼고, 전체 평균은 $d$ 가 없으므로 $D=b(S)$ 좌표, 여전히 $D_j=b(T_j)+1$.",
+        "symbols": ["A_avg", "V_kL", "b_S", "a_p", "eta_regular", "N_lim"],
+        "derivation": [
+          {"line": "$\\operatorname{Var}(R_S)=\\mathbb E(R_S-M)^2+\\operatorname{Var}(M)$.", "by": ["floor:variance_decomposition"], "author_filled": "분산 분해의 구체적 꼴."},
+          {"line": "$\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(M)=0$.", "by": ["e15"], "author_filled": "각 고정 좌표에서 $\\operatorname{Var}(M)\\to0$ 이고 고정 $L$ 에서 평균은 유한 합이므로 limsup 과 교환된다."},
+          {"line": "$p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$.", "by": ["floor:Cauchy-Schwarz"]},
+          {"line": "$\\gamma=1/2$, $D=b(S)$, $D_j=b(T_j)+1$ 로 fiber bound: $\\limsup_N\\mathcal A_{L,\\eta}v_N(T_j,e)^{1/2}\\le V_{k-1,L}(\\eta/2)^{1/2}$.", "by": ["e17"], "author_filled": "$|T_j|\\le k-1$ 이라 $\\limsup_N L^{-D_j}\\sum v_N(T_j,\\cdot)\\le V_{k-1,L}(\\eta/2)$ 로 묶는 것, 그리고 $\\limsup$ 을 $\\gamma$-거듭제곱 안으로 넣는 것."},
+          {"line": "앞의 줄들과 이웃 prefix 오차, $L^2$ 부등식을 합쳐 (decor:variance-estimate).", "by": ["e16", "e18", "앞선 줄"]}
+        ],
+        "floor_used": ["variance decomposition", "Cauchy–Schwarz (sum of s terms)"],
+        "author_filled": ["분산 분해의 꼴.", "고정 $L$ 에서 유한 평균과 limsup 교환으로 $\\operatorname{Var}(M)$ 항을 지운 것.", "$|T_j|\\le k-1$ 로 $V_{k-1,L}(\\eta/2)$ 에 묶고 limsup 을 거듭제곱 안으로 넣은 것."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 596–609", "state": "proposed"}
+      },
+      {
+        "id": "s10_finish",
+        "kind": "step",
+        "title": "Proposition conditional-concentration 으로 마무리",
+        "statement": "Proposition decor:conditional-concentration 이 증명을 끝낸다: $L\\to\\infty$ 에서 $V_{k-1,L}(\\eta/2)\\to0$ 이고 $C_kL^{-1}\\to0$.",
+        "symbols": ["V_kL"],
+        "derivation": [
+          {"line": "$V_{k-1,L}(\\eta/2)\\to0$ ($L\\to\\infty$).", "by": ["e19"]},
+          {"line": "$\\lim_L\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$.", "by": ["e20", "앞선 줄"], "author_filled": "Proposition 이 무엇을 주는지(여기서는 $V$ 의 소멸)와 극한 계산을 원문은 한 줄로만 적었다."}
+        ],
+        "author_filled": ["Proposition 인용을 $V_{k-1,L}(\\eta/2)\\to0$ 과 $C_k/L\\to0$ 으로 풀어 쓴 것."],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 609–610", "state": "proposed"}
+      },
+      {
+        "id": "out_main",
+        "kind": "output",
+        "output_items": ["main"],
+        "title": "THM.main",
+        "statement": "모든 고정 labeled topology $S$ 와 $\\eta>0$ 에서 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$. $b(S)$ 개의 branching 깊이만 평균한다. singleton은 각 고정 $L$ 에서 $\\operatorname{Var}(R_S)\\to0$ ($N\\to\\infty$).",
+        "symbols": ["R_S", "A_avg", "b_S", "topology", "N_lim"],
+        "status": "sketch",
+        "grounding": {"source": "decorrelation.tex 65–74", "state": "proposed"}
+      }
+    ],
+    "edges": [
+      {"id": "e1", "from": "ext_X_TI", "to": "s1_singleton", "kind": "call", "statement": "[X_TI.identity] 를 spin anchor, 빈 추가, $f=R_S$ 로 부른다.", "carries": [{"item": "identity", "used_at": [533]}], "grounding": {"source": "decorrelation.tex 533–535", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2", "from": "ext_X_TI", "to": "s1_singleton", "kind": "definition", "statement": "[X_TI.anchor_constraint] spin anchor의 정의와 빈 추가 허용.", "carries": [{"item": "anchor_constraint", "used_at": [533]}], "grounding": {"source": "decorrelation.tex 533", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e3", "from": "ext_X_TI", "to": "s2_marker_setup", "kind": "definition", "statement": "[X_TI.anchor_constraint] marker anchor ($S_0=1$), 추가 color가 anchor 아닌 자리를 차지하고 $\\mathcal C$ 가 추가 color와 anchor의 split 깊이($e-1$)를 처방.", "carries": [{"item": "anchor_constraint", "used_at": [539, 540]}], "grounding": {"source": "decorrelation.tex 539–543", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e4", "from": "s2_marker_setup", "to": "s3_coefficient", "kind": "flow", "statement": "marker 구성: old tree $S$, $e-1$ 에서 갈라지는 추가 사본, 첫 path가 $e-1$ 에서 fresh.", "carries": [{"item": "marker_construction", "used_at": [544]}], "grounding": {"source": "decorrelation.tex 539–545", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e5", "from": "ext_X_RT", "to": "s3_coefficient", "kind": "call", "statement": "[X_RT.kappa_total] 처방 tree $S$ 를 이루는 extension 계수 총합 $\\kappa(S)$.", "carries": [{"item": "kappa_total", "used_at": [545, 547]}], "grounding": {"source": "decorrelation.tex 545–547", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e6", "from": "ext_X_SAMP", "to": "s4_two_sides", "kind": "call", "statement": "[X_SAMP.children_independent] 서로 다른 자식은 독립으로 뽑는다.", "carries": [{"item": "children_independent", "used_at": [550]}], "grounding": {"source": "decorrelation.tex 550–551", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e7", "from": "ext_X_SAMP", "to": "s4_two_sides", "kind": "call", "statement": "[X_SAMP.leaf_removal] marker의 연속을 지워도 남은 tree의 표본 법칙 보존.", "carries": [{"item": "leaf_removal", "used_at": [553, 555]}], "grounding": {"source": "decorrelation.tex 553–555", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e8", "from": "s4_two_sides", "to": "s5_prefix_variance", "kind": "flow", "statement": "extension 쪽의 값 $\\mathbb EM^2$ (곱의 조건부 기대값 $M^2$), anchor-alone 쪽의 평균 $\\mathbb ER_S$.", "carries": [{"item": "two_sides", "used_at": [556, 558]}], "grounding": {"source": "decorrelation.tex 550–558", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e9", "from": "s3_coefficient", "to": "s5_prefix_variance", "kind": "flow", "statement": "양쪽 공통의 0 아닌 계수 $C(S,e)=-\\delta\\kappa(S)$.", "carries": [{"item": "C_Se", "used_at": [558, 568]}], "grounding": {"source": "decorrelation.tex 545–547, 558, 568", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e10", "from": "ext_X_TI", "to": "s5_prefix_variance", "kind": "call", "statement": "[X_TI.identity] 를 marker 구성, $f=R_S$ 로 부르면 두 쪽의 차가 $o_N(1)$.", "carries": [{"item": "identity", "used_at": [545, 556]}], "grounding": {"source": "decorrelation.tex 544–545, 556", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e11", "from": "ext_PB", "to": "s6_projection", "kind": "flow", "statement": "[PB.product_mean] $\\mu_{e,S}=\\prod_j\\mu_{e,T_j}$, 곧 $G=\\mathbf1\\cdot a_{S,e}$.", "carries": [{"item": "product_mean", "used_at": [576]}], "grounding": {"source": "decorrelation.tex 576", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e12", "from": "ext_PB", "to": "s6_projection", "kind": "flow", "statement": "[PB.projection] $\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e)$.", "carries": [{"item": "projection", "used_at": [580]}], "grounding": {"source": "decorrelation.tex 579–581", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e13", "from": "ext_DC", "to": "s7_adjacent_prefix", "kind": "flow", "statement": "[DC.martingale_energy] $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$ 를 각 $T_j$ 에.", "carries": [{"item": "martingale_energy", "used_at": [583]}], "grounding": {"source": "decorrelation.tex 582–585", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e14", "from": "s6_projection", "to": "s8_conditional_L2", "kind": "flow", "statement": "$G_-$ 의 $\\mathscr F_{e-1}$-가측성과 $\\mathbb E(R_S-G)^2\\le p_N(S,e)^2$.", "carries": [{"item": "G_minus_measurable", "used_at": [579, 593]}, {"item": "projection_L2", "used_at": [581, 594]}], "grounding": {"source": "decorrelation.tex 579–581, 592–594", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e15", "from": "s5_prefix_variance", "to": "s9_variance_estimate", "kind": "flow", "statement": "각 고정 $L,S,e$ 에서 $\\operatorname{Var}(M)\\to0$ (decor:prefix-projection-concentration).", "carries": [{"item": "prefix_projection_concentration", "used_at": [597]}], "grounding": {"source": "decorrelation.tex 564–566, 597", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e16", "from": "s8_conditional_L2", "to": "s9_variance_estimate", "kind": "flow", "statement": "$\\mathbb E(R_S-M)^2\\le2p_N(S,e)^2+2\\mathbb E(G-G_-)^2$.", "carries": [{"item": "conditional_L2_bound", "used_at": [596]}], "grounding": {"source": "decorrelation.tex 592–596", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e17", "from": "ext_CC", "to": "s9_variance_estimate", "kind": "flow", "statement": "[CC.fiber_bound] 를 $\\gamma=1/2$, $D=b(S)$, $D_j=b(T_j)+1$ 로; [CC.V_to_zero] 가 쓰는 $V_{k-1,L}(\\eta/2)$ 로 우변을 적는다.", "carries": [{"item": "fiber_bound", "used_at": [607]}, {"item": "V_to_zero", "used_at": [601]}], "grounding": {"source": "decorrelation.tex 601, 606–609", "state": "proposed"}, "status": "connected", "complete": false},
+      {"id": "e18", "from": "s7_adjacent_prefix", "to": "s9_variance_estimate", "kind": "flow", "statement": "$\\mathcal A_{L,\\eta}\\mathbb E(G-G_-)^2\\le C_k/L$ (decor:adjacent-prefix-error).", "carries": [{"item": "adjacent_prefix_error", "used_at": [601]}], "grounding": {"source": "decorrelation.tex 585, 601", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e19", "from": "ext_CC", "to": "s10_finish", "kind": "flow", "statement": "[CC.V_to_zero] $V_{k,L}(\\eta)\\to0$, [CC.main] Proposition decor:conditional-concentration.", "carries": [{"item": "V_to_zero", "used_at": [609]}, {"item": "main", "used_at": [609]}], "grounding": {"source": "decorrelation.tex 609–610", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e20", "from": "s9_variance_estimate", "to": "s10_finish", "kind": "flow", "statement": "충분히 큰 $L$ 에서 $\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)\\le C_k(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2})$.", "carries": [{"item": "variance_estimate", "used_at": [609]}], "grounding": {"source": "decorrelation.tex 598–603", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e21", "from": "s10_finish", "to": "out_main", "kind": "flow", "statement": "split하는 $S$ 에 대해 $\\lim_L\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$.", "carries": [{"item": "main", "used_at": [610]}], "grounding": {"source": "decorrelation.tex 609–610", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e22", "from": "s1_singleton", "to": "out_main", "kind": "flow", "statement": "singleton에서 각 고정 $L$ 에 $\\operatorname{Var}(R_S)\\to0$.", "carries": [{"item": "main", "used_at": [535]}], "grounding": {"source": "decorrelation.tex 533–535", "state": "proposed"}, "status": "connected", "complete": true}
+    ]
+  },
+  "parent_change_requests": [
+    {"target": "new symbol", "kind": "new_symbol", "detail": "$v_N(S,d)$ (prefix 깊이 $d$ 에서의 조건부 분산량) 을 기호 표에 넣고 THM의 symbols 에 추가.", "reason": "$p_N(S,e)$, $V_{k,L}$ 의 정의와 증명의 $p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$ 가 $v_N$ 을 쓰는데 이 묶음의 기호 표에 정의가 없다.", "source_lines": "decorrelation.tex 601, 606"},
+    {"target": "new symbol", "kind": "new_symbol", "detail": "vector multioverlap $A_S$ (와 $\\mathbf1\\cdot$, $\\|\\cdot\\|_N$) 를 기호 표에 넣고 THM의 symbols 에 추가.", "reason": "$R_S=\\mathbf1\\cdot A_S$, $\\mu_{d,S}=\\mathbb E[A_S\\mid\\mathscr F_d]$, $G=\\mathbf1\\cdot\\prod_j\\mu_{e,T_j}$ 가 모두 $A_S$ 를 쓰는데 기호 표 항목이 없다.", "source_lines": "decorrelation.tex 576–577"},
+    {"target": "edge t17", "kind": "change_item", "detail": "kappa_total 항목에, $e-1$ 에서 fresh인 첫 path를 포함한 marker 구성에서 계수가 $-\\delta\\kappa(S)$ 이고 0이 아니라는 내용(또는 그 근거)을 싣는다.", "reason": "증명은 $C(S,e)=-\\delta\\kappa(S)\\neq0$ 을 쓰는데 t17 은 총합 $\\kappa(S)$ 만 싣고 $-\\delta$ 인자와 0 아님을 주지 않는다.", "source_lines": "decorrelation.tex 544–547"},
+    {"target": "edge t14", "kind": "add_item", "detail": "'product difference inequality' ($\\|\\prod_j x_j-\\prod_j y_j\\|\\le\\sum_j\\|x_j-y_j\\|$ 꼴, 좌표 $[-1,1]$) 을 받는 항목으로 추가하거나, 바닥 사실로 지정.", "reason": "이웃 prefix 오차 (decor:adjacent-prefix-error) 가 martingale energy와 함께 이 부등식을 쓰는데 받는 edge 어디에도 없다. 출처가 DC인지 확신 없음.", "source_lines": "decorrelation.tex 582–583"}
+  ],
+  "missed_dependencies": [
+    {"what": "product difference inequality (곱 차이 부등식)", "used_at": "decorrelation.tex 582–583", "likely_from": "DC"},
+    {"what": "marker 계수의 $-\\delta$ 인자: $e-1$ 에서 fresh인 첫 path의 계수", "used_at": "decorrelation.tex 541–547", "likely_from": "X_RT"},
+    {"what": "$\\kappa(S)\\neq0$ (곧 $C(S,e)\\neq0$): $m_{d_v}-jm_{d_v+1}\\neq0$", "used_at": "decorrelation.tex 545", "likely_from": "모름"},
+    {"what": "singleton에서 빈 추가 spin-anchor 항등식의 계수가 0이 아니고 두 항이 $\\mathbb ER_S^2$, $(\\mathbb ER_S)^2$ 로 식별된다는 것", "used_at": "decorrelation.tex 533–535", "likely_from": "X_TI"}
+  ],
+  "notes": "확신이 낮은 곳: (1) singleton 걸음(533–535)에서 빈 추가 spin-anchor 항등식이 어떻게 $\\mathbb ER_S^2$ 를 주는지 묶음만으로 확인할 수 없어 author_filled 로 두었다. (2) $k$ 는 원문에 정의되지 않았고 $|S|$ 로 읽었다($C_k$, $V_{k-1,L}$). (3) e17 은 $V_{k-1,L}(\\eta/2)$ 로 묶는 단계($v_N(T_j,e)$ 와 $V$ 의 관계, $|T_j|\\le k-1$)가 statement 에 다 담기지 않아 complete:false. (4) CC.main (Proposition conditional-concentration) 과 CC.V_to_zero 가 609 에서 함께 쓰인다고 2절이 적었으나 원문은 Proposition 하나만 인용한다; 둘 다 e19 에 실었다. (5) 'for all sufficiently large L' 은 fiber bound 의 '$\\eta/2$-regular 이면 큰 $L$ 에서' 조건에서 온다고 읽었다. (6) floor:variance_decomposition, floor:L2_projection 등은 바닥 사실로 처리했다. s8 만 complete 로 두었다(받는 edge e14 와 바닥만 씀). 2절의 모든 from (PB, DC, CC, X_TI, X_RT, X_SAMP) 은 external 로 있고 모두 쓰인다."
+}

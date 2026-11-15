@@ -1,0 +1,2045 @@
+{
+ "section": "decorrelation",
+ "nodes": [
+  {
+   "id": "decor:average-holder",
+   "title": "깊이 평균 $\\mathcal A_{L,\\eta}$ 와 분수 거듭제곱 부등식",
+   "env": "equation",
+   "statement_span": [
+    30,
+    47
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "average_definition",
+     "statement": "$a$ 개의 깊이 좌표 위의 음이 아닌 배열 $z(\\mathbf q)$ 에 대해 $\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$.",
+     "lines": [
+      30,
+      35
+     ],
+     "label": "decor:average-definition"
+    },
+    {
+     "id": "restriction_domain",
+     "statement": "$d<\\min_vq_v$ 같은 추가 순서 제한은 합의 영역에 포함한다.",
+     "lines": [
+      36,
+      37
+     ]
+    },
+    {
+     "id": "total_mass",
+     "statement": "이 평균은 정규화되지 않은 것으로 전체 질량이 $1$ 이하이다.",
+     "lines": [
+      37,
+      38
+     ]
+    },
+    {
+     "id": "average_holder",
+     "statement": "$0<\\gamma\\le1$ 에 대해 $\\mathcal A_{L,\\eta}(z^\\gamma)\\le(\\mathcal A_{L,\\eta}z)^\\gamma$.",
+     "lines": [
+      38,
+      43
+     ],
+     "label": "decor:average-holder"
+    },
+    {
+     "id": "unused_coordinate",
+     "statement": "쓰지 않는 좌표에 대해 합하는 비용은 최대 $L$ 이고 정규화가 이를 상쇄한다.",
+     "lines": [
+      44,
+      45
+     ],
+     "added_by": "decor:conditional-concentration"
+    },
+    {
+     "id": "integer_shift",
+     "statement": "좌표의 일부 부분집합을 고정된 정수만큼 이동하면 충분히 큰 $L$ 에서 $\\eta$-regular 배정이 $\\eta/2$-regular 배정으로 단사적으로 옮겨진다.",
+     "lines": [
+      45,
+      47
+     ],
+     "added_by": "decor:conditional-concentration"
+    }
+   ],
+   "needs": [
+    {
+     "id": "eta_regular",
+     "what": "$\\eta$-regular 깊이 배정 (합의 영역)",
+     "used_at": [
+      30,
+      33,
+      47
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "eta_regular_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:average-definition",
+      "x:decor-average-comparisons"
+     ]
+    },
+    {
+     "id": "jensen",
+     "what": "질량 $\\le1$ 인 측도에 대한 오목 함수 $x\\mapsto x^\\gamma$ 의 Jensen 부등식",
+     "used_at": [
+      38,
+      40,
+      41
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "jensen"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "decor:identity-error",
+   "title": "prescribed-tree 항등식 오차의 최대 $\\varepsilon_{N,L,k}$",
+   "env": "equation",
+   "statement_span": [
+    49,
+    58
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "finite_maximization",
+     "statement": "크기가 유계인 labeled topology 는 유한 개이고 고정된 $L$ 에서 그 깊이 배정도 유한 개이므로, Theorem pert:tree-identity 의 오차는 아래에서 쓰는 어떤 유한 족에 대해서도 $N\\to\\infty$ 전에 최대화할 수 있다.",
+     "lines": [
+      49,
+      52
+     ]
+    },
+    {
+     "id": "identity_error_max",
+     "statement": "그런 최대를 $\\varepsilon_{N,L,k}$ 로 쓰면 고정된 $L,k$ 에서 $\\varepsilon_{N,L,k}\\to0$.",
+     "lines": [
+      53,
+      57
+     ],
+     "label": "decor:identity-error"
+    },
+    {
+     "id": "constant_dependence",
+     "statement": "이 오차에 곱해지는 상수는 $L$ 에 임의로 의존해도 된다.",
+     "lines": [
+      58,
+      58
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "tree_identity",
+     "what": "prescribed tree 항등식과 그 오차",
+     "used_at": [
+      51,
+      52
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:tree-identity",
+      "item": "tree_identity"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:identity-error"
+     ]
+    },
+    {
+     "id": "limit_order",
+     "what": "$N\\to\\infty$ 는 선택된 수열을 따르고 항등식이 성립",
+     "used_at": [
+      52,
+      55
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "decor_limit_order"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:identity-error"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "labeled topology 와 깊이 배정",
+     "used_at": [
+      49,
+      50
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:identity-error"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "decor:identity-error",
+     "use": "decor:average-definition",
+     "why": "범위(49–58) 안에서 깊이 평균 $\\mathcal A$ 를 쓰지 않는다; 오차는 깊이 평균 이전에 유한 족에서 최대화한다."
+    }
+   ],
+   "card_mismatches": []
+  },
+  {
+   "id": "decor:overlap-concentration",
+   "title": "모든 multioverlap 의 깊이 평균 집중",
+   "env": "theorem",
+   "statement_span": [
+    63,
+    75
+   ],
+   "proof_span": [
+    532,
+    611
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "overlap_concentration",
+     "statement": "고정된 모든 labeled topology $S$ 와 $\\eta>0$ 에 대해 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)=0$. 여기서 $S$ 의 $b(S)$ 개 branching depth 만 평균한다.",
+     "lines": [
+      65,
+      72
+     ],
+     "label": "decor:overlap-concentration-equation"
+    },
+    {
+     "id": "singleton",
+     "statement": "좌표가 없는 평균을 갖는 singleton 에서는 모든 고정된 $L$ 에서 $N\\to\\infty$ 일 때 $\\operatorname{Var}(R_S)\\to0$.",
+     "lines": [
+      72,
+      74
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "eta_regular",
+     "what": "$\\eta$-regular 깊이 배정",
+     "used_at": [
+      66,
+      68
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "eta_regular_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration"
+     ]
+    },
+    {
+     "id": "limit_order",
+     "what": "선택된 수열을 따르는 $N$ 극한, 순서 $\\lim_L\\limsup_N$",
+     "used_at": [
+      67,
+      68
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "decor_limit_order"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration"
+     ]
+    },
+    {
+     "id": "mesh",
+     "what": "$\\delta=1/L$",
+     "used_at": [
+      547,
+      585
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s2",
+      "decor:overlap-concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "spin_vectors",
+     "what": "spin 곱 벡터와 내적 ($G=\\mathbf1\\cdot\\prod_j\\mu_{e,T_j}$)",
+     "used_at": [
+      576,
+      577
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s1"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "labeled topology $S$, 자식 모양 $T_j$, $b(S)$",
+     "used_at": [
+      65,
+      72,
+      537,
+      538
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "old 복사와 target 복사의 조건부 독립성, 지운 가지가 확률 kernel 로 적분되어 사라짐",
+     "used_at": [
+      550,
+      551,
+      554,
+      555
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration.s2",
+      "decor:overlap-concentration.s2.s2"
+     ]
+    },
+    {
+     "id": "colored_extensions",
+     "what": "marker anchor 와 추가된 복사, extension 계수",
+     "used_at": [
+      538,
+      539,
+      540,
+      544
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "colored_extensions"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration.s1",
+      "decor:overlap-concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "average_op",
+     "what": "깊이 평균 $\\mathcal A_{L,\\eta}$",
+     "used_at": [
+      68,
+      585,
+      600
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_definition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s3"
+     ]
+    },
+    {
+     "id": "conditional_concentration",
+     "what": "조건부 공분산의 깊이 평균 집중 (Proposition) — 마무리",
+     "used_at": [
+      609,
+      610
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:conditional-concentration",
+      "item": "conditional_concentration_equation"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s4",
+      "decor:overlap-concentration.s5"
+     ]
+    },
+    {
+     "id": "fiber_bound",
+     "what": "$\\gamma=1/2$ 에서의 fiber bound ($p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$ 의 평균)",
+     "used_at": [
+      606,
+      607
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:conditional-concentration",
+      "item": "fiber_bound"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "martingale_energy",
+     "what": "martingale energy 부등식 (인접 prefix 오차 $C_k/L$)",
+     "used_at": [
+      583,
+      585
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:depth-continuity",
+      "item": "martingale_energy"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s3"
+     ]
+    },
+    {
+     "id": "projection",
+     "what": "자식 평균으로의 사영 오차 $\\mathbb E(R_S-G)^2\\le p_N(S,e)^2$",
+     "used_at": [
+      580,
+      581
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "projection_bound"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s3"
+     ]
+    },
+    {
+     "id": "p_N",
+     "what": "$p_N(S,e)$ 의 정의",
+     "used_at": [
+      581,
+      606
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "projection_definition"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "tree_identity",
+     "what": "prescribed-tree 항등식 (marker anchor, $f=R_S$; singleton 의 spin anchor)",
+     "used_at": [
+      533,
+      544,
+      556
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:tree-identity",
+      "item": "tree_identity"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s1",
+      "decor:overlap-concentration.s2",
+      "decor:overlap-concentration.s2.s1",
+      "decor:overlap-concentration.s2.s2"
+     ]
+    },
+    {
+     "id": "kappa",
+     "what": "계수 총합 $\\kappa(S)$, $C(S,e)=-\\delta\\kappa(S)$",
+     "used_at": [
+      546,
+      547
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:reference-total",
+      "item": "kappa_total"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:overlap-concentration",
+      "decor:overlap-concentration.s2",
+      "decor:overlap-concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap $R_S$",
+     "used_at": [
+      68,
+      533,
+      534
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "extension_rule",
+     "what": "첫 경로는 $e-1$ 에서 fresh 해야 한다는 canceled-anchor extension 규칙",
+     "used_at": [
+      540,
+      541,
+      542,
+      543
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extension_history"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "l2_projection",
+     "what": "조건부 기댓값은 $L^2$ 최적 사영",
+     "used_at": [
+      591,
+      592
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "l2_projection"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "variance_decomposition",
+     "what": "분산 분해",
+     "used_at": [
+      596,
+      597
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "total_variance"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "product_difference",
+     "what": "$[-1,1]$ 값 곱의 차 부등식",
+     "used_at": [
+      582
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "product_difference"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "decor:overlap-concentration.s4",
+     "use": "x:decor-average-comparisons",
+     "why": "증명은 Hölder 형 비교나 좌표 비교 문장을 직접 인용하지 않고 (decor:fiber-bound) 로 받는다 (605–609)."
+    },
+    {
+     "card": "decor:overlap-concentration.s4",
+     "use": "decor:average-holder",
+     "why": "증명은 Hölder 형 비교나 좌표 비교 문장을 직접 인용하지 않고 (decor:fiber-bound) 로 받는다 (605–609)."
+    },
+    {
+     "card": "decor:overlap-concentration",
+     "use": "decor:identity-error",
+     "why": "증명은 $o_N(1)$ 만 쓰고 $\\varepsilon_{N,L,k}$ 를 인용하지 않는다 (533–569); 카드가 말한 $\\varepsilon$ 최대화는 이 node 의 줄에 없다."
+    },
+    {
+     "card": "decor:overlap-concentration.s4",
+     "use": "decor:identity-error",
+     "why": "증명은 $o_N(1)$ 만 쓰고 $\\varepsilon_{N,L,k}$ 를 인용하지 않는다 (533–569); 카드가 말한 $\\varepsilon$ 최대화는 이 node 의 줄에 없다."
+    }
+   ],
+   "card_mismatches": [
+    {
+     "card": "decor:overlap-concentration",
+     "what": "카드는 진술을 63–83 로 잡았으나 77–83 은 증명 개요 문단이고 526–530 도 증명 앞의 도입 문단이다 (진술은 63–75)."
+    },
+    {
+     "card": "decor:overlap-concentration.s4",
+     "what": "카드는 591–609 에서 평균 Hölder (36–43), 비교 (44–47) 를 쓴다고 하나 원문은 (decor:fiber-bound) 만 인용한다."
+    }
+   ]
+  },
+  {
+   "id": "decor:contractions",
+   "title": "축약 부등식과 세 사본 부등식",
+   "env": "lemma",
+   "statement_span": [
+    108,
+    125
+   ],
+   "proof_span": [
+    127,
+    140
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "contraction_bound",
+     "statement": "랜덤 벡터 $B\\in[-1,1]^N$ 가 $\\mathscr F_d$ 가 주어졌을 때 $A_S$ 와 조건부 독립이면 $\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$.",
+     "lines": [
+      110,
+      115
+     ],
+     "label": "decor:contraction-bound"
+    },
+    {
+     "id": "three_copy_bound",
+     "statement": "$X,Y,Z$ 가 시그마 대수 $\\mathscr G$ 가 주어졌을 때 유계 랜덤 벡터의 조건부 독립 사본이고 $C$ 가 그 조건부 공분산 행렬이면 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{i,j}C_{ij}^2$.",
+     "lines": [
+      117,
+      124
+     ],
+     "label": "decor:three-copy-bound"
+    }
+   ],
+   "needs": [
+    {
+     "id": "cov_def",
+     "what": "$\\mathscr F_d$, $\\mu_{d,S}$, $v_N(S,d)$",
+     "used_at": [
+      110,
+      113,
+      114
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "conditional_covariance"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:contractions",
+      "decor:contractions.s1"
+     ]
+    },
+    {
+     "id": "spin_vectors",
+     "what": "$A_S$, 내적 $x\\cdot y$, 노름 $\\|\\cdot\\|_N$",
+     "used_at": [
+      113,
+      121,
+      122
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:contractions"
+     ]
+    },
+    {
+     "id": "cauchy_schwarz",
+     "what": "$i,j$ 에 대한 Cauchy–Schwarz 와 prefix 에 대한 Cauchy–Schwarz/Jensen",
+     "used_at": [
+      130,
+      131
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "cauchy_schwarz"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "decor:depth-continuity",
+   "title": "깊이에 대한 평균 연속성",
+   "env": "lemma",
+   "statement_span": [
+    142,
+    166
+   ],
+   "proof_span": [
+    168,
+    206
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "branch_depth_continuity",
+     "statement": "topology $S$ 와 branching vertex 부분집합 $U$ 에 대해, $S^U$ 를 $U$ 의 vertex 깊이를 하나씩 늘린 같은 topology 라 하자. 조상 평가 깊이 $d$ 에서 같은 sampled prefix 로 평균을 비교하면 충분히 큰 $L$ 에서 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$.",
+     "lines": [
+      144,
+      153
+     ],
+     "label": "decor:branch-depth-continuity"
+    },
+    {
+     "id": "averaging_range",
+     "statement": "평균은 모든 branching depth 에 걸치고, 좌표 $d$ 는 움직이면 평균에 포함하고 아니면 고정한다.",
+     "lines": [
+      154,
+      156
+     ]
+    },
+    {
+     "id": "evaluation_depth_continuity",
+     "statement": "$d$ 가 $S$ 의 초기 unary 구간을 움직이면 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d+1,S}-\\mu_{d,S}\\|_N^2\\le C/L$ (평균에 $d$ 와 모든 branching depth 포함, 같은 sampled path 위에서 평가).",
+     "lines": [
+      156,
+      162
+     ],
+     "label": "decor:evaluation-depth-continuity"
+    },
+    {
+     "id": "constant_dependence",
+     "statement": "상수는 vertex 개수와 이동 개수에만 의존하고 $N$, 평가 깊이, 전이 kernel 에 대해 균등하다.",
+     "lines": [
+      162,
+      165
+     ]
+    },
+    {
+     "id": "martingale_energy",
+     "statement": "뒤쪽 branching depth 를 고정하고 초기 stem 을 따라 path 하나를 뽑으면 $\\mu_{t,T}$ 는 유계 벡터 martingale 이고 증분의 직교성으로 $\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\le1$.",
+     "lines": [
+      169,
+      174
+     ],
+     "label": "decor:martingale-energy",
+     "exported": true
+    }
+   ],
+   "needs": [
+    {
+     "id": "cov_def",
+     "what": "조건부 평균 $\\mu_{d,S}$ 와 $\\mathscr F_d$",
+     "used_at": [
+      150,
+      158,
+      170
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "conditional_covariance"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:depth-continuity",
+      "decor:depth-continuity.s1",
+      "decor:depth-continuity.s2"
+     ]
+    },
+    {
+     "id": "eta_regular",
+     "what": "$\\eta$-regular 와 이동 후의 $\\eta/2$-regular 영역",
+     "used_at": [
+      148,
+      201,
+      203
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "eta_regular_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:depth-continuity",
+      "decor:depth-continuity.s3"
+     ]
+    },
+    {
+     "id": "spin_vectors",
+     "what": "벡터 노름 $\\|\\cdot\\|_N$ 과 좌표별 곱",
+     "used_at": [
+      173,
+      181,
+      188,
+      191
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "x:decor-product-difference"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "topology, branching vertex 와 깊이, 자식 모양 $T_j$",
+     "used_at": [
+      144,
+      145,
+      146,
+      179
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:depth-continuity.s2"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "sampled prefix 의 한 단계 연속, 다른 가지를 빼도 prefix 주변분포가 같음, 더 큰 sampled tree",
+     "used_at": [
+      147,
+      169,
+      184,
+      204,
+      205
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:depth-continuity",
+      "decor:depth-continuity.s2",
+      "decor:depth-continuity.s4"
+     ]
+    },
+    {
+     "id": "average_op",
+     "what": "깊이 평균 $\\mathcal A_{L,\\eta}$",
+     "used_at": [
+      150,
+      158,
+      198
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_definition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:depth-continuity",
+      "decor:depth-continuity.s1",
+      "decor:depth-continuity.s3",
+      "decor:depth-continuity.s4"
+     ]
+    },
+    {
+     "id": "unused_coordinate",
+     "what": "쓰지 않는 좌표에 대해 평균하는 비용",
+     "used_at": [
+      198,
+      199,
+      204,
+      205
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "unused_coordinate"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "integer_shift",
+     "what": "이동된 깊이가 확대된 $\\eta/2$-regular 영역에 놓임",
+     "used_at": [
+      201,
+      202,
+      203
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "integer_shift"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "jensen",
+     "what": "Jensen 부등식 (조건부 기댓값은 제곱 노름을 줄임)",
+     "used_at": [
+      185,
+      197
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "jensen"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "product_difference",
+     "what": "$[-1,1]^s$ 위의 곱의 차 부등식",
+     "used_at": [
+      186,
+      191
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "product_difference"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "martingale_orthogonality",
+     "what": "유계 벡터 martingale 의 증분은 서로 직교한다",
+     "used_at": [
+      172,
+      173
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "martingale_orthogonality"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "decor:projection-bound",
+   "title": "첫 갈라짐에서 자식을 평균으로 바꾸는 오차",
+   "env": "equation",
+   "statement_span": [
+    208,
+    230
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "child_means",
+     "statement": "$S$ 가 깊이 $e$ 에서 처음 갈라져 proper child shape $T_1,\\ldots,T_s$ 가 되면 자식들의 조건부 독립성으로 $\\mu_{e,S}=\\prod_j\\mu_{e,T_j}$.",
+     "lines": [
+      208,
+      210
+     ]
+    },
+    {
+     "id": "projection_definition",
+     "statement": "$a_{S,e}=\\prod_{j=1}^s\\mu_{e,T_j}$, $p_N(S,e)=\\sum_{j=1}^sv_N(T_j,e)^{1/4}$.",
+     "lines": [
+      211,
+      214
+     ],
+     "label": "decor:projection-definition"
+    },
+    {
+     "id": "projection_bound",
+     "statement": "$S$ 의 연속과 그 prefix ($e$) 가 주어졌을 때 조건부 독립인 벡터 $B\\in[-1,1]^N$ 에 대해 $\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e)$.",
+     "lines": [
+      216,
+      220
+     ],
+     "label": "decor:projection-bound"
+    },
+    {
+     "id": "applicability",
+     "statement": "이는 특히 $B=\\mathbf1$ 과, $e$ 이전에 갈라진 다른 쪽에서 뽑은 벡터에 적용되며, 두 쪽이 있으면 둘 다 사영해 전체 $L^2$ 오차가 $2p_N(S,e)$ 이하이다.",
+     "lines": [
+      225,
+      228
+     ]
+    },
+    {
+     "id": "scalar_test",
+     "statement": "$|f|\\le1$ 인 스칼라 시험 $f$ (상관되어도) 를 곱해도 축약된 오차의 $L^1$ 경계는 늘지 않는다.",
+     "lines": [
+      228,
+      230
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "cov_def",
+     "what": "자식의 조건부 공분산 $v_N(T_j,e)$",
+     "used_at": [
+      213
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "conditional_covariance"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:projection-definition"
+     ]
+    },
+    {
+     "id": "spin_vectors",
+     "what": "$A_S$, 내적",
+     "used_at": [
+      216,
+      220
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:projection-bound"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "proper child shape, 첫 갈라짐 깊이",
+     "used_at": [
+      208,
+      209
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:projection-definition"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "같은 prefix 아래 자식들의 조건부 독립, $B$ 의 독립성",
+     "used_at": [
+      209,
+      210,
+      216,
+      217,
+      225
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:projection-bound",
+      "decor:projection-definition"
+     ]
+    },
+    {
+     "id": "contraction",
+     "what": "축약 부등식 $\\|(A_T-\\mu_{d,T})\\cdot B\\|_{L^2}\\le v_N(T,d)^{1/4}$",
+     "used_at": [
+      218,
+      223,
+      224
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:contractions",
+      "item": "contraction_bound"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:projection-bound"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "decor:projection-bound",
+     "use": "x:decor-eta-regular",
+     "why": "범위(208–230) 에는 $\\eta$-regular 조건이 나오지 않는다; 결과는 정규성 없이 성립한다."
+    }
+   ],
+   "card_mismatches": []
+  },
+  {
+   "id": "decor:conditional-concentration",
+   "title": "조건부 decorrelation: $\\mathcal A_{L,\\eta}v_N(S,d)\\to0$",
+   "env": "proposition",
+   "statement_span": [
+    234,
+    245
+   ],
+   "proof_span": [
+    247,
+    524
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "conditional_concentration_equation",
+     "statement": "고정된 모든 labeled topology $S$ 와 $\\eta>0$ 에 대해 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}v_N(S,d)=0$.",
+     "lines": [
+      236,
+      241
+     ],
+     "label": "decor:conditional-concentration-equation"
+    },
+    {
+     "id": "average_range",
+     "statement": "평균은 $S$ 의 모든 branching depth 와 첫 갈라짐 이전의 추가 regular depth $d$ 에 걸치며, singleton 이면 $d$ 만 평균한다.",
+     "lines": [
+      242,
+      244
+     ]
+    },
+    {
+     "id": "relative_absolute_cost",
+     "statement": "충분히 큰 $L$ 에서 $J=\\kappa(S^+)^2$ 로 두면 ($S^+$ 는 모든 내부 branching depth 를 1 씩 늘린 $S$, $b=b(S)$ 일 때 $|J|\\ge c_{k,\\eta}\\delta^{2b}>0$) 허용되는 모든 extension 의 계수 절댓값 합에 대해 $\\frac1{|J|}\\sum_{\\text{allowed extensions}}|c|\\le C_{k,\\eta}$.",
+     "lines": [
+      332,
+      352
+     ],
+     "label": "decor:relative-absolute-cost",
+     "exported": true
+    },
+    {
+     "id": "fiber_bound",
+     "statement": "깊이 좌표 $D=b(S)+1$ 개와 자식 $T_j$ 의 $D_j=b(T_j)+1$ 개 좌표, 사상 $\\pi_j(\\mathbf q)=(e+1,(q_v+1)_{v\\in\\mathrm{Br}(T_j)})$ 에 대해 $0<\\gamma\\le1$ 이면 $L^{-D}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}w_j(\\pi_j(\\mathbf q))^\\gamma\\le L^{-D_j}\\sum_{\\mathbf y\\ \\eta/2\\text{-regular}}w_j(\\mathbf y)^\\gamma\\le\\bigl(L^{-D_j}\\sum_{\\mathbf y\\ \\eta/2\\text{-regular}}w_j(\\mathbf y)\\bigr)^\\gamma$ ($w_j$ 는 자식 공분산을 이 좌표들의 함수로 본 것). 이동하지 않은 항도 이동 없이 같은 경계를 갖는다.",
+     "lines": [
+      491,
+      509
+     ],
+     "label": "decor:fiber-bound",
+     "exported": true
+    }
+   ],
+   "needs": [
+    {
+     "id": "cov_def",
+     "what": "조건부 공분산 제곱 $v_N(S,d)$ 와 $\\mathscr F_d$",
+     "used_at": [
+      239,
+      255
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "conditional_covariance"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s1"
+     ]
+    },
+    {
+     "id": "eta_regular",
+     "what": "$\\eta$-regular 배정 ($\\eta/2$ 로의 이동 포함, $|$factor$|\\ge\\eta/2$)",
+     "used_at": [
+      254,
+      255,
+      261,
+      338,
+      339,
+      498,
+      503
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "eta_regular_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s2",
+      "decor:conditional-concentration.s2.s2",
+      "decor:conditional-concentration.s3",
+      "decor:conditional-concentration.s3.s1",
+      "decor:conditional-concentration.s3.s2",
+      "decor:conditional-concentration.s3.s3",
+      "decor:conditional-concentration.s4.s1",
+      "decor:conditional-concentration.s7.s1"
+     ]
+    },
+    {
+     "id": "limit_order",
+     "what": "선택된 수열 위의 극한과 순서",
+     "used_at": [
+      238,
+      255,
+      512
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "decor_limit_order"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration"
+     ]
+    },
+    {
+     "id": "mesh",
+     "what": "$m_d=d/L$, $\\delta=1/L$ ($c_d=(d+2)\\delta$, $c_\\ell=\\delta$)",
+     "used_at": [
+      271,
+      272,
+      421,
+      463
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s2",
+      "decor:conditional-concentration.s2.s1",
+      "decor:conditional-concentration.s3",
+      "decor:conditional-concentration.s3.s2",
+      "decor:conditional-concentration.s5.s1",
+      "decor:conditional-concentration.s5.s3"
+     ]
+    },
+    {
+     "id": "spin_vectors",
+     "what": "spin 곱 벡터, 내적과 overlap $R_{ab}$",
+     "used_at": [
+      276,
+      382
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration.s2.s1"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "topology, 자식 모양, branching vertex 집합, $b(S)$",
+     "used_at": [
+      293,
+      294,
+      296,
+      297,
+      332
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration.s3.s1"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "세 사본이 $d$ 아래에서 조건부 독립, 지운 가지가 적분되어 사라짐, 표본 규칙",
+     "used_at": [
+      294,
+      296,
+      404,
+      405,
+      480
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration.s4",
+      "decor:conditional-concentration.s4.s1",
+      "decor:conditional-concentration.s4.s2",
+      "decor:conditional-concentration.s5",
+      "decor:conditional-concentration.s5.s2",
+      "decor:conditional-concentration.s5.s3"
+     ]
+    },
+    {
+     "id": "colored_extensions",
+     "what": "anchor, 추가된 색, prescribed tree 제약, 허용 history, $R_E$",
+     "used_at": [
+      265,
+      266,
+      298,
+      299,
+      301,
+      387
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "colored_extensions"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration.s2.s1",
+      "decor:conditional-concentration.s3.s1"
+     ]
+    },
+    {
+     "id": "average_op",
+     "what": "깊이 평균 $\\mathcal A_{L,\\eta}$ 의 정의",
+     "used_at": [
+      255,
+      261
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_definition"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s1",
+      "decor:conditional-concentration.s2.s2",
+      "decor:conditional-concentration.s7",
+      "decor:conditional-concentration.s7.s3",
+      "decor:conditional-concentration.s7.s4"
+     ]
+    },
+    {
+     "id": "restriction",
+     "what": "추가 순서 제한 ($d<\\min_vq_v$) 은 합의 영역에 포함",
+     "used_at": [
+      242,
+      243,
+      255
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "restriction_domain"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "average_holder",
+     "what": "$\\mathcal A(z^\\gamma)\\le(\\mathcal Az)^\\gamma$",
+     "used_at": [
+      262,
+      506
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_holder"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "unused_coordinate",
+     "what": "쓰지 않는 좌표 비용",
+     "used_at": [
+      261
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "unused_coordinate"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "integer_shift",
+     "what": "이동한 좌표의 $\\eta/2$-regular 성",
+     "used_at": [
+      260,
+      261,
+      497,
+      498
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "integer_shift"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "three_copy",
+     "what": "세 사본 부등식 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum C_{ij}^2$",
+     "used_at": [
+      288,
+      483
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:contractions",
+      "item": "three_copy_bound"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s2",
+      "decor:conditional-concentration.s2.s2",
+      "decor:conditional-concentration.s7",
+      "decor:conditional-concentration.s7.s2"
+     ]
+    },
+    {
+     "id": "branch_shift",
+     "what": "분기 깊이를 한 칸 되돌릴 때의 오차 $C/L$",
+     "used_at": [
+      366,
+      367,
+      368,
+      369
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:depth-continuity",
+      "item": "branch_depth_continuity"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s4",
+      "decor:conditional-concentration.s4.s1"
+     ]
+    },
+    {
+     "id": "eval_shift",
+     "what": "평가 깊이를 $e+1$ 에서 $e$ 로 옮길 때의 오차 $C/L$",
+     "used_at": [
+      367,
+      368,
+      369
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:depth-continuity",
+      "item": "evaluation_depth_continuity"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "identity_error",
+     "what": "$\\varepsilon_{N,L,k}\\to0$",
+     "used_at": [
+      450,
+      457,
+      488,
+      514
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:identity-error",
+      "item": "identity_error_max"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s6",
+      "decor:conditional-concentration.s7",
+      "decor:conditional-concentration.s7.s4"
+     ]
+    },
+    {
+     "id": "projection_bound",
+     "what": "$\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e)$",
+     "used_at": [
+      364,
+      460
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "projection_bound"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s4",
+      "decor:conditional-concentration.s4.s1",
+      "decor:conditional-concentration.s4.s2",
+      "decor:conditional-concentration.s6",
+      "decor:conditional-concentration.s7",
+      "decor:conditional-concentration.s7.s1",
+      "decor:conditional-concentration.s7.s2",
+      "decor:conditional-concentration.s7.s3"
+     ]
+    },
+    {
+     "id": "projection_def",
+     "what": "$a_{S,e}$, $p_N(S,e)$",
+     "used_at": [
+      365,
+      382,
+      449,
+      482
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "projection_definition"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "two_sides",
+     "what": "두 쪽의 사영 오차 $2p_N$, $B=\\mathbf1$ 로의 적용",
+     "used_at": [
+      364,
+      366,
+      460,
+      461,
+      481,
+      482
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "applicability"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "scalar_test",
+     "what": "시험 $f$ ($|f|\\le1$) 를 곱해도 오차가 늘지 않음",
+     "used_at": [
+      453,
+      454
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:projection-bound",
+      "item": "scalar_test"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "tree_identity",
+     "what": "prescribed-tree 항등식 (두 복사 $S^+$, 오차)",
+     "used_at": [
+      279,
+      298,
+      301,
+      434,
+      435,
+      456,
+      457
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:tree-identity",
+      "item": "tree_identity"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s2",
+      "decor:conditional-concentration.s2.s1",
+      "decor:conditional-concentration.s3",
+      "decor:conditional-concentration.s3.s1",
+      "decor:conditional-concentration.s6"
+     ]
+    },
+    {
+     "id": "relative_charging",
+     "what": "fresh split 에 작은 인자를 매기는 상대 절댓값 비용",
+     "used_at": [
+      348,
+      349,
+      350,
+      351
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:charging",
+      "item": "relative_charging"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s3",
+      "decor:conditional-concentration.s3.s3"
+     ]
+    },
+    {
+     "id": "kappa",
+     "what": "$\\kappa(T)$ 와 prescribed tree 의 계수 총합",
+     "used_at": [
+      332,
+      333,
+      334,
+      416,
+      418
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:reference-total",
+      "item": "kappa_total"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s3",
+      "decor:conditional-concentration.s3.s2",
+      "decor:conditional-concentration.s5",
+      "decor:conditional-concentration.s5.s3"
+     ]
+    },
+    {
+     "id": "one_reference",
+     "what": "한 단계 reference 총합 $m_d-jm_{d+1}$ ($c_d,c_\\ell$ 계수)",
+     "used_at": [
+      268,
+      270,
+      272,
+      391,
+      393
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:reference-total",
+      "item": "one_reference_total"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "iterated_reference",
+     "what": "한 단계 규칙을 반복해 뒤쪽 색들을 합산",
+     "used_at": [
+      414,
+      415,
+      416
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:reference-total",
+      "item": "iterated_one_step"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "extension_rule",
+     "what": "canceled-anchor extension 규칙과 계수 $c_E$ (fresh path, old leaf 재사용)",
+     "used_at": [
+      265,
+      267,
+      298,
+      303,
+      390,
+      391,
+      405
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extension_history"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "decor:conditional-concentration",
+      "decor:conditional-concentration.s2",
+      "decor:conditional-concentration.s2.s1",
+      "decor:conditional-concentration.s5",
+      "decor:conditional-concentration.s5.s1"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap $R_{12}$, $R_{13}$",
+     "used_at": [
+      276,
+      387
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "cauchy_schwarz",
+     "what": "$|f|\\le1$ 일 때 $L^1$ 노름을 $L^2$ 노름으로 누름",
+     "used_at": [
+      453,
+      454
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "cauchy_schwarz"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "product_difference",
+     "what": "곱의 차 부등식",
+     "used_at": [
+      367
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "product_difference"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "decor_limit_order",
+   "tex": "$\\lim_L\\limsup_N$",
+   "defined_at": "decorrelation.tex 4–9",
+   "text": "고정된 $L$ 마다 $N$ 극한은 Lemma pert:selection 이 준 크기와 매개변수 선택을 따르고, 그 위에서 Theorem pert:tree-identity 의 항등식이 성립한다. $L$ 이 다르면 수열이 달라도 된다. 논증은 이 항등식과 tree 표본 규칙만 쓰며 상호작용 인수분해는 쓰지 않는다.",
+   "note": "pert_selected_limits 를 §7 에서 되풀이한 약속."
+  },
+  {
+   "id": "topology_depth_assignment",
+   "tex": "$S,\\ b(S)$",
+   "defined_at": "decorrelation.tex 18–21",
+   "text": "topology 는 unary vertex 를 지운 labeled leaf 위의 유한 뿌리 tree 이고, 각 branching vertex 에 $\\{0,\\ldots,L-1\\}$ 의 정수 깊이를 주되 모든 가지를 따라 엄격 증가하게 한다. $b(S)$ 는 $S$ 의 branching vertex 개수."
+  },
+  {
+   "id": "eta_regular_assignment",
+   "tex": "$\\eta$-regular",
+   "defined_at": "decorrelation.tex 21–28",
+   "text": "$\\eta>0$ 에 대해 깊이 배정이 $\\eta$-regular 라는 것은 모든 깊이를 $L$ 로 나눈 값이 $(\\eta,1-\\eta)$ 에 있고 서로 다른 branching vertex 의 정규화 깊이가 $\\eta$ 보다 더 떨어져 있다는 것이다. 추가 prefix 깊이 $d$ 가 지정되면 모든 branching 깊이에 대해 같은 제약을 받는다. 한 topology 의 두 사본이 정렬된 깊이를 쓰면 대응 vertex 는 한 깊이 좌표를 공유하고 정규성은 그 서로 다른 좌표에 부과된다.",
+   "note": "trees.tex 의 regular_shape (한 tree 의 regular shape) 와는 별개의, 깊이 배정에 대한 정의."
+  },
+  {
+   "id": "spin_product_vector",
+   "tex": "$A_S,\\ R_S,\\ x\\cdot y,\\ \\|x\\|_N$",
+   "defined_at": "decorrelation.tex 87–92",
+   "text": "sampled 복사 $S$ 에 대해 $A_S=(\\prod_{a\\in S}\\sigma_i^a)_{i\\le N}$, $R_S=\\mathbf1\\cdot A_S$, $x\\cdot y=N^{-1}\\sum_{i=1}^Nx_iy_i$, $\\|x\\|_N^2=x\\cdot x$ ($R_S$ 는 tree:multioverlap 의 multioverlap 과 같은 것)."
+  },
+  {
+   "id": "conditional_covariance",
+   "tex": "$\\mathscr F_d,\\ \\mu_{d,S},\\ v_N(S,d)$",
+   "defined_at": "decorrelation.tex 94–106",
+   "text": "$S$ 의 초기 stem 위의 깊이 $d$ (첫 branching 깊이 포함) 에서 $\\mathscr F_d$ 는 root 와 깊이 $d$ 까지의 sampled prefix 가 생성하는 시그마 대수, $\\mu_{d,S}=\\mathbb E[A_S\\mid\\mathscr F_d]$, $v_N(S,d)=\\frac1{N^2}\\mathbb E\\sum_{i,j}\\operatorname{Cov}(A_{S,i},A_{S,j}\\mid\\mathscr F_d)^2$ (기대값은 root 포함). $A_S$ 와 $\\mu_{d,S}$ 의 좌표는 절댓값 $\\le1$, $0\\le v_N\\le1$."
+  }
+ ],
+ "floors_new": [
+  {
+   "id": "jensen",
+   "kind": "standard",
+   "statement": "Jensen 부등식: 오목 함수 (예: $x\\mapsto x^\\gamma$, $0<\\gamma\\le1$) 에 대해 평균의 함수 값이 함수 값의 평균 이상 (질량 $\\le1$ 인 측도에도 성립); 조건부 기댓값은 제곱 노름을 줄인다."
+  },
+  {
+   "id": "martingale_orthogonality",
+   "kind": "standard",
+   "statement": "유계 (벡터) martingale 의 증분은 서로 직교하므로 증분 제곱의 합은 마지막 값의 제곱 노름 이하이다."
+  },
+  {
+   "id": "l2_projection",
+   "kind": "standard",
+   "statement": "조건부 기댓값 $\\mathbb E[X\\mid\\mathcal G]$ 는 $L^2$ 에서 $\\mathcal G$-가측 함수 중 $X$ 에 가장 가까운 것이다."
+  },
+  {
+   "id": "product_difference",
+   "kind": "standard",
+   "statement": "$x_j,y_j\\in[-1,1]$ 이면 $|\\prod_jx_j-\\prod_jy_j|\\le\\sum_j|x_j-y_j|$ (따라서 제곱 노름은 $s\\sum_j$ 로 누를 수 있다)."
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    4,
+    4
+   ],
+   "what": "절 머리 약속: $m_d=d/L$, $\\delta=L^{-1}$",
+   "handled": "symbol:cavity_grid"
+  },
+  {
+   "lines": [
+    4,
+    9
+   ],
+   "what": "절 머리 약속: 고정된 $L$ 마다 선택된 수열을 따르는 $N$ 극한과 항등식 사용",
+   "handled": "symbol:decor_limit_order"
+  },
+  {
+   "lines": [
+    8,
+    9
+   ],
+   "what": "논증은 이 항등식과 tree 표본 규칙만 쓰며 상호작용 인수분해는 쓰지 않는다 (범위 주장)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    11,
+    13
+   ],
+   "what": "목표: 분리된 내부 branching 깊이에 대한 평균에서 모든 유한 multioverlap 의 집중 (§8 비교에 쓰임)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    18,
+    21
+   ],
+   "what": "topology, 깊이 배정, $b(S)$ 의 정의",
+   "handled": "symbol:topology_depth_assignment"
+  },
+  {
+   "lines": [
+    21,
+    28
+   ],
+   "what": "$\\eta$-regular 깊이 배정의 정의",
+   "handled": "symbol:eta_regular_assignment"
+  },
+  {
+   "lines": [
+    60,
+    61
+   ],
+   "what": "$R_S$ 는 sampled leaf 들의 multioverlap 이라는 되새김",
+   "handled": "symbol:spin_product_vector"
+  },
+  {
+   "lines": [
+    77,
+    83
+   ],
+   "what": "증명 개요 (공분산 귀납, 한 단계 늦추기, marker anchor, 깊이 평균의 필수성)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    87,
+    92
+   ],
+   "what": "$A_S$, $R_S$, 내적과 노름의 정의",
+   "handled": "symbol:spin_product_vector"
+  },
+  {
+   "lines": [
+    94,
+    106
+   ],
+   "what": "$\\mathscr F_d$, $\\mu_{d,S}$, $v_N(S,d)$ 의 정의와 유계성",
+   "handled": "symbol:conditional_covariance"
+  },
+  {
+   "lines": [
+    105,
+    106
+   ],
+   "what": "이어지는 lemma 가 제곱 공분산을 귀납량으로 삼는 이유를 설명하는 문장",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    305,
+    330
+   ],
+   "what": "그림: 목표 갈라짐을 한 칸 늦출 때의 국소 효과 (계수 $-\\delta$)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    526,
+    530
+   ],
+   "what": "§7.3 도입: 공분산 추정과 marker anchor, 평균 연속성의 결합",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    613,
+    623
+   ],
+   "what": "Remark: 극한의 순서 (작은 분모는 항등식 오차에만, $N$ 극한은 $L$ 에 균등하지 않음)",
+   "handled": "list"
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "upper.tex",
+ "lines": 128,
+ "nodes": [
+  {
+   "id": "upper:bound",
+   "rule": "S",
+   "env": "proposition",
+   "title_opt": "",
+   "statement_span": [
+    11,
+    15
+   ],
+   "proof_span": [
+    17,
+    128
+   ],
+   "span": [
+    [
+     11,
+     15
+    ],
+    [
+     17,
+     128
+    ]
+   ],
+   "outputs": [],
+   "internal_eqs": [
+    {
+     "label": "upper:derivative",
+     "line": 59,
+     "refs_outside": []
+    },
+    {
+     "label": "upper:regularization",
+     "line": 78,
+     "refs_outside": []
+    },
+    {
+     "label": "upper:remainder",
+     "line": 115,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:main:theorem",
+   "label": "main:theorem",
+   "file": "model.tex",
+   "line": 130,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:model:factorization",
+   "label": "model:factorization",
+   "file": "model.tex",
+   "line": 26,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:model:positivity",
+   "label": "model:positivity",
+   "file": "model.tex",
+   "line": 35,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:log-expansion",
+   "label": "tree:log-expansion",
+   "file": "trees.tex",
+   "line": 224,
+   "env": "lemma"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:model.tex",
+   "file": "model.tex",
+   "uses": [
+    {
+     "node": "upper:bound",
+     "item": "upper:bound",
+     "line": 41
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "upper:section",
+     "line": 4
+    }
+   ]
+  },
+  {
+   "id": "OUT:reduction.tex",
+   "file": "reduction.tex",
+   "uses": [
+    {
+     "node": "upper:bound",
+     "item": "upper:bound",
+     "line": 85
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "EXT:main:theorem",
+   "to": "upper:bound",
+   "item": "main:theorem",
+   "ref_line": 12,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:model:factorization",
+   "to": "upper:bound",
+   "item": "model:factorization",
+   "ref_line": 63,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:log-expansion",
+   "to": "upper:bound",
+   "item": "tree:log-expansion",
+   "ref_line": 81,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:tree:log-expansion",
+   "to": "upper:bound",
+   "item": "tree:log-expansion",
+   "ref_line": 97,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:tree:log-expansion",
+   "to": "upper:bound",
+   "item": "tree:log-expansion",
+   "ref_line": 121,
+   "cmd": "cref"
+  },
+  {
+   "from": "EXT:model:positivity",
+   "to": "upper:bound",
+   "item": "model:positivity",
+   "ref_line": 125,
+   "cmd": "eqref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "upper:regularization",
+   "line": 90,
+   "cmd": "eqref",
+   "node": "upper:bound"
+  },
+  {
+   "label": "upper:remainder",
+   "line": 125,
+   "cmd": "eqref",
+   "node": "upper:bound"
+  },
+  {
+   "label": "upper:derivative",
+   "line": 126,
+   "cmd": "eqref",
+   "node": "upper:bound"
+  }
+ ],
+ "unassigned_refs": [],
+ "excluded_labels": [
+  {
+   "label": "upper:section",
+   "line": 1,
+   "env": null,
+   "referenced": true
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   10
+  ]
+ ],
+ "stats": {
+  "nodes": 1,
+  "edges": 6,
+  "internal_refs": 3,
+  "unassigned_refs": 0,
+  "external_inputs": 4,
+  "consumers": 3,
+  "refs_total": 9
+ }
+}

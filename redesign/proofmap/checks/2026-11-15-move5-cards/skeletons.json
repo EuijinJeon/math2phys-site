@@ -1,0 +1,706 @@
+{
+ "AVG": {
+  "node": "AVG",
+  "card": "decor:average-holder",
+  "member_rule": "원문 범위 안의 카드",
+  "inner": [
+   {
+    "id": "k1",
+    "card": "decor:average-definition",
+    "title": "깊이 평균 $\\mathcal A_{L,\\eta}$",
+    "lines": [
+     30,
+     38
+    ],
+    "kind": "definition"
+   },
+   {
+    "id": "k2",
+    "card": "decor:average-holder",
+    "title": "깊이 평균의 분수 거듭제곱 부등식",
+    "lines": [
+     36,
+     43
+    ],
+    "kind": "lemma"
+   },
+   {
+    "id": "k3",
+    "card": "x:decor-average-comparisons",
+    "title": "깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)",
+    "lines": [
+     44,
+     47
+    ],
+    "kind": "lemma"
+   }
+  ],
+  "edges": [
+   {
+    "from": "k1",
+    "to": "k2",
+    "origin": "card",
+    "via": "decor:average-definition"
+   },
+   {
+    "from": "k1",
+    "to": "k3",
+    "origin": "card",
+    "via": "decor:average-definition"
+   }
+  ],
+  "externals": [],
+  "symbols": [
+   "eta_regular"
+  ],
+  "floor": [],
+  "unmapped": [],
+  "card_inputs_not_in_contract": [],
+  "contract_inputs_not_in_cards": [],
+  "mapping": [],
+  "card_math": {
+   "decor:average-definition": "$a$개의 깊이 좌표 위의 음이 아닌 배열 $z(\\mathbf q)$에 대해\n$$\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q).$$\n$d<\\min_vq_v$ 같은 추가 순서 조건은 합의 범위에 넣는다. $\\eta$-regular 배정의 수는 $L^a$ 이하이므로 총 질량 $\\mathcal A_{L,\\eta}1\\le1$이다(정규화하지 않은 평균). $a=0$이면 $\\mathcal A_{L,\\eta}z=z$.",
+   "decor:average-holder": "음이 아닌 $z$와 $0<\\gamma\\le1$에 대해 $\\mathcal A_{L,\\eta}(z^\\gamma)\\le(\\mathcal A_{L,\\eta}z)^\\gamma$.",
+   "x:decor-average-comparisons": "(i) 안 쓰는 좌표. $\\pi$가 $a$개 좌표 중 $a'$개만 남기는 사영이고 $w\\ge0$가 남은 좌표의 함수이면, 각 상이 많아야 $L^{a-a'}$개의 원상을 가지므로 $L^{-a}\\sum_{\\mathbf q}w(\\pi\\mathbf q)\\le L^{-a'}\\sum_{\\mathbf y\\in\\pi(\\text{domain})}w(\\mathbf y)$.\n(ii) 정수 이동. 좌표의 일부를 고정된 정수만큼 옮기는 사상은 단사이고, $L\\ge L_0(\\eta,\\text{이동량})$이면 $\\eta$-regular 배정을 $\\eta/2$-regular 배정으로 보낸다 (가지를 따른 엄격한 증가도 보존된다).\n(iii) (작성자 추가, 자명) $\\eta'\\le\\eta$이면 $\\eta$-regular 배정은 $\\eta'$-regular이므로 $z\\ge0$에 대해 $\\mathcal A_{L,\\eta}z\\le\\mathcal A_{L,\\eta'}z$."
+  }
+ },
+ "IDE": {
+  "node": "IDE",
+  "card": "decor:identity-error",
+  "member_rule": "원문 범위 안의 카드",
+  "inner": [
+   {
+    "id": "k1",
+    "card": "decor:identity-error",
+    "title": "항등식 오차의 최대 $\\varepsilon_{N,L,k}$",
+    "lines": [
+     49,
+     58
+    ],
+    "kind": "definition"
+   }
+  ],
+  "edges": [
+   {
+    "from": "x_X_TI",
+    "to": "k1",
+    "origin": "card",
+    "via": "pert:tree-identity"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k1",
+    "origin": "card",
+    "via": "decor:average-definition"
+   }
+  ],
+  "externals": [
+   "AVG",
+   "X_TI"
+  ],
+  "symbols": [
+   "N_lim",
+   "b_S",
+   "topology"
+  ],
+  "floor": [],
+  "unmapped": [],
+  "card_inputs_not_in_contract": [
+   "AVG"
+  ],
+  "contract_inputs_not_in_cards": [],
+  "mapping": [
+   {
+    "card_use": "pert:tree-identity",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:average-definition",
+    "top": "AVG",
+    "how": "author_table"
+   }
+  ],
+  "card_math": {
+   "decor:identity-error": "고정된 $L,k$에 대해, 아래에서 쓰는 pert:tree-identity의 사례들(leaf 수가 $k$에만 의존하는 상한 이하인 labeled topology와 그 $\\{0,\\ldots,L-1\\}$-깊이 배정으로 만든 old tree, anchor, 제약, 차수가 유계인 multioverlap 단항식 $f$, 유계 개수의 added color)은 유한 개다. 그 사례들에 대한 pert:tree-identity-eq 좌변의 절댓값의 최대를 $\\varepsilon_{N,L,k}$라 하면, x:decor-limit-order의 수열을 따라 각 고정 $L,k$에서\n$$\\varepsilon_{N,L,k}\\longrightarrow0\\qquad(N\\to\\infty).$$\n이 오차에 곱하는 상수는 $L$에 임의로 의존해도 된다.\n같은 유한성 때문에, 고정 $L$에서 깊이 평균 $\\mathcal A_{L,\\eta}$는 유한 개 배정에 대한 합이다. 따라서 음이 아닌 $z_N(\\mathbf q)$에 대해 $\\limsup_N\\mathcal A_{L,\\eta}z_N\\le\\mathcal A_{L,\\eta}\\limsup_Nz_N$이고, 특히 각 고정 배정에서 $o_N(1)$인 항(예: $C_{L,k,\\eta}\\varepsilon_{N,L,k}$, 고정 배정마다의 $\\operatorname{Var}(M)$)은 깊이 평균을 취한 뒤에도 $N\\to\\infty$에서 사라진다. 이 교환은 깊이 평균이나 $L$ 극한보다 먼저 한다 (tex 49–52, 616–618)."
+  }
+ },
+ "DC": {
+  "node": "DC",
+  "card": "decor:depth-continuity",
+  "member_rule": "카드의 잎 자식",
+  "inner": [
+   {
+    "id": "k1",
+    "card": "decor:depth-continuity.s1",
+    "title": "martingale energy와 평가 깊이 연속성",
+    "lines": [
+     168,
+     177
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k2",
+    "card": "decor:depth-continuity.s2",
+    "title": "갈라짐 하나를 한 칸 늦추는 효과",
+    "lines": [
+     178,
+     193
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k3",
+    "card": "decor:depth-continuity.s3",
+    "title": "이동 하나의 비용 $C/L$",
+    "lines": [
+     194,
+     199
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k4",
+    "card": "decor:depth-continuity.s4",
+    "title": "여러 이동과 더 큰 tree",
+    "lines": [
+     199,
+     206
+    ],
+    "kind": "step"
+   }
+  ],
+  "edges": [
+   {
+    "from": "x_AVG",
+    "to": "k1",
+    "origin": "card",
+    "via": "decor:average-definition"
+   },
+   {
+    "from": "k1",
+    "to": "k2",
+    "origin": "card",
+    "via": "decor:depth-continuity.s1"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k2",
+    "origin": "card",
+    "via": "x:decor-tree-sampling"
+   },
+   {
+    "from": "k1",
+    "to": "k3",
+    "origin": "card",
+    "via": "decor:depth-continuity.s1"
+   },
+   {
+    "from": "k2",
+    "to": "k3",
+    "origin": "card",
+    "via": "decor:depth-continuity.s2"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k3",
+    "origin": "card",
+    "via": "decor:average-definition"
+   },
+   {
+    "from": "k3",
+    "to": "k4",
+    "origin": "card",
+    "via": "decor:depth-continuity.s3"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k4",
+    "origin": "card",
+    "via": "x:decor-average-comparisons"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k4",
+    "origin": "card",
+    "via": "x:decor-tree-sampling"
+   }
+  ],
+  "externals": [
+   "AVG",
+   "X_SAMP"
+  ],
+  "symbols": [
+   "F_d",
+   "b_S",
+   "eta_regular",
+   "mu",
+   "topology",
+   "v_N"
+  ],
+  "floor": [
+   "곱 차이 부등식"
+  ],
+  "unmapped": [],
+  "card_inputs_not_in_contract": [],
+  "contract_inputs_not_in_cards": [],
+  "mapping": [
+   {
+    "card_use": "decor:average-definition",
+    "top": "AVG",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:decor-tree-sampling",
+    "top": "X_SAMP",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:average-definition",
+    "top": "AVG",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:decor-average-comparisons",
+    "top": "AVG",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:decor-tree-sampling",
+    "top": "X_SAMP",
+    "how": "author_table"
+   }
+  ],
+  "card_math": {
+   "decor:depth-continuity.s1": "모양 $T$의 나중 branching depth를 고정하고 initial stem을 따라 한 경로를 뽑으면 $t\\mapsto\\mu_{t,T}$는 그 stem의 prefix filtration $(\\mathscr F_t)$에 대한 vector martingale이고 좌표가 $[-1,1]$에 있다. 증분의 직교성에서\n$$\\sum_t\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2=\\mathbb E\\|\\mu_{t_1,T}\\|_N^2-\\mathbb E\\|\\mu_{t_0,T}\\|_N^2\\le1$$\n(합은 initial stem 위의 $t,t+1$에 대해, $t_0$, $t_1$은 그 범위의 처음과 끝). 특히 $t\\mapsto\\mathbb E\\|\\mu_{t,T}\\|_N^2$는 증가한다(각 증분이 $\\mathbb E\\|\\mu_{t+1,T}-\\mu_{t,T}\\|_N^2\\ge0$). 이것을 범위를 갖는 $d$에 대해 합하고 정규화 $L^{-1}$을 곱하면, 나머지 좌표의 합은 $L$의 거듭제곱으로 상쇄되어 $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d+1,S}-\\mu_{d,S}\\|_N^2\\le1/L$.",
+   "decor:depth-continuity.s2": "깊이 $q$의 branching vertex $v$ (첫 갈라짐이 아니어도 된다)가 자식 모양 $T_1,\\ldots,T_s$를 갖고 그 나중 깊이들을 고정한다. x:decor-topology의 약속대로 각 $T_j$는 root에서 $v$까지의 경로를 stem으로 갖는 topology이므로 $q$는 $T_j$의 initial stem 위에 있고, $\\mathscr F_q$는 root와 그 경로의 깊이 $q$까지 sampled prefix가 생성하는 $\\sigma$-field, $\\mu_{q,T_j}=\\mathbb E[A_{T_j}\\mid\\mathscr F_q]$는 decor:covariance-definition을 $T_j$에 적용한 것이다. $q+1$이 각 $T_j$의 첫 branching depth보다 작으면(그리고 $T_j$가 leaf 하나이면 $q+1\\le L-1$) $\\mu_{q+1,T_j}$도 같은 뜻으로 정의된다. 그 vertex 아래 spin 곱의 원래 조건부 평균은 $\\prod_j\\mu_{q,T_j}$ (좌표별)이다. 갈라짐을 $q+1$로 늦추면 같은 깊이-$q$ prefix에서의 조건부 평균은 $\\mathbb E[\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]$이다 (자식 평균은 공통 한 걸음 continuation 위에서 계산). 그리고\n$$\\mathbb E\\Bigl\\|\\prod_j\\mu_{q,T_j}-\\mathbb E\\Bigl[\\prod_j\\mu_{q+1,T_j}\\Bigm|\\mathscr F_q\\Bigr]\\Bigr\\|_N^2\\le s\\sum_j\\mathbb E\\|\\mu_{q+1,T_j}-\\mu_{q,T_j}\\|_N^2.$$",
+   "decor:depth-continuity.s3": "$|U|=1$, $U=\\{v\\}$이고 깊이 배정이 $\\eta'$-regular ($\\eta'>0$; 평균도 $\\mathcal A_{L,\\eta'}$)이면 $\\eta'L\\ge1$일 때 $\\mathcal A_{L,\\eta'}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$ ($C$는 $S$의 vertex 수에만 의존). 조건 $\\eta'L\\ge1$은 작성자 유도다(원문은 이 단계에서 큰 $L$을 따로 부르지 않는다): regularity에서 $v$의 자식의 다음 branching depth $q'$는 $q'-q_v>\\eta'L\\ge1$이므로 $q_v+1<q'$이고, $q_v<(1-\\eta')L$이므로 $q_v+1\\le L-1$이다. 그래서 s2의 $\\mu_{q_v+1,T_j}$가 정의되고 $S^U$의 깊이 배정이 가지를 따라 엄격히 증가한다. 근거: s2의 우변을 $q=q_v$에 대해 합하면 각 자식 모양에 대해 s1에 의해 $s\\cdot s$ 이하다. 깊이 $q_v$에서 바뀐 부분 tree 평균을 조상 깊이 $d$로 올리는 연산은 조건부 기대값과 절댓값 1 이하 인자의 좌표별 곱뿐이므로 $\\mathbb E\\|\\cdot\\|_N^2$를 늘리지 않는다. 나머지 좌표에 대한 평균은 $L$의 거듭제곱으로 상쇄된다.",
+   "decor:depth-continuity.s4": "$U=\\{v_1,\\ldots,v_u\\}$이면 $S=S^{U_0},S^{U_1},\\ldots,S^{U_u}=S^U$ ($U_r=\\{v_1,\\ldots,v_r\\}$)로 하나씩 바꾸고 $\\|\\sum_{r=1}^u x_r\\|^2\\le u\\sum_r\\|x_r\\|^2$를 쓴다. regularity 때문에 중간 모양들은 같은 조상 관계를 갖고, $L$이 크면 그 깊이 배정은 $\\eta/2$-regular이다 (tex 201–203 \"for large $L$, lie in the enlarged $\\eta/2$-regular domain\"; x:decor-average-comparisons (ii)). 그래서 각 항에 $\\eta'=\\eta/2$로 s3을 적용해($\\eta L/2\\ge1$도 큰 $L$에서 성립) $\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le u^2C/L$. 한 prefix의 marginal law는 다른 sampled branch를 빼도 바뀌지 않으므로 이 추정은 더 큰 sampled tree 안에서도 성립한다."
+  }
+ },
+ "PB": {
+  "node": "PB",
+  "card": "decor:projection-bound",
+  "member_rule": "원문 범위 안의 카드",
+  "inner": [
+   {
+    "id": "k1",
+    "card": "decor:projection-definition",
+    "title": "첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$",
+    "lines": [
+     208,
+     215
+    ],
+    "kind": "definition"
+   },
+   {
+    "id": "k2",
+    "card": "decor:projection-bound",
+    "title": "첫 갈라짐에서 자식을 평균으로 바꾸는 오차",
+    "lines": [
+     216,
+     230
+    ],
+    "kind": "lemma"
+   }
+  ],
+  "edges": [
+   {
+    "from": "x_X_SAMP",
+    "to": "k1",
+    "origin": "card",
+    "via": "x:decor-tree-sampling"
+   },
+   {
+    "from": "k1",
+    "to": "k2",
+    "origin": "card",
+    "via": "decor:projection-definition"
+   },
+   {
+    "from": "x_CON",
+    "to": "k2",
+    "origin": "card",
+    "via": "decor:contractions"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k2",
+    "origin": "card",
+    "via": "x:decor-tree-sampling"
+   }
+  ],
+  "externals": [
+   "CON",
+   "X_SAMP"
+  ],
+  "symbols": [
+   "A_S",
+   "F_d",
+   "R_S",
+   "b_S",
+   "eta_regular",
+   "mu",
+   "topology",
+   "v_N"
+  ],
+  "floor": [],
+  "unmapped": [],
+  "card_inputs_not_in_contract": [],
+  "contract_inputs_not_in_cards": [],
+  "mapping": [
+   {
+    "card_use": "x:decor-tree-sampling",
+    "top": "X_SAMP",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:contractions",
+    "top": "CON",
+    "how": "prefix"
+   },
+   {
+    "card_use": "x:decor-tree-sampling",
+    "top": "X_SAMP",
+    "how": "author_table"
+   }
+  ],
+  "card_math": {
+   "decor:projection-definition": "$|S|\\ge2$이고 $S$가 깊이 $e$에서 처음 갈라져 proper child shape $T_1,\\ldots,T_s$를 갖는다고 하자. $e$는 각 $T_j$의 initial stem 위에 있다. 자식들은 $\\mathscr F_e$가 주어지면 조건부 독립이므로 $\\mu_{e,S}=\\prod_j\\mu_{e,T_j}$ (좌표별 곱)이다.\n$$a_{S,e}=\\prod_{j=1}^s\\mu_{e,T_j},\\qquad p_N(S,e)=\\sum_{j=1}^sv_N(T_j,e)^{1/4}.$$\n$0\\le p_N(S,e)\\le s\\le|S|$.",
+   "decor:projection-bound": "decor:projection-definition의 상황에서, $B\\in[-1,1]^N$가 $\\mathscr F_e$가 주어지면 $S$의 깊이 $e$ 아래 continuation과 조건부 독립인 확률 벡터이면\n$$\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e).$$\n특히 $B=\\mathbf1$일 때, 그리고 $B$가 $e$ 이전에 갈라진 다른 측에서 뽑은 $[-1,1]^N$ 벡터일 때 성립한다. 두 측 I, II가 각각 같은 모양 $S$의 사본이고, 깊이 배정이 aligned이며(대응하는 vertex가 깊이 좌표 하나를 공유, x:decor-eta-regular) $e$ 이전(예: 깊이 $d<e$)에서 갈라졌으면, $\\|A_S^{\\rm I}\\cdot A_S^{\\rm II}-a^{\\rm I}_{S,e}\\cdot a^{\\rm II}_{S,e}\\|_{L^2}\\le2p_N(S,e)$. 마지막으로 $|f|\\le1$인 임의의 스칼라 $f$ (오차와 상관이 있어도 됨)에 대해 $\\mathbb E|f\\,Z|\\le\\|Z\\|_{L^2}$이므로, 위 오차에 $f$를 곱해도 $L^1$ 상계는 커지지 않는다."
+  }
+ },
+ "THM": {
+  "node": "THM",
+  "card": "decor:overlap-concentration",
+  "member_rule": "카드의 잎 자식",
+  "inner": [
+   {
+    "id": "k1",
+    "card": "decor:overlap-concentration.s1",
+    "title": "singleton: 추가 color 없는 spin anchor",
+    "lines": [
+     532,
+     536
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k2",
+    "card": "decor:overlap-concentration.s2.s1",
+    "title": "marker anchor 구성과 계수 $C(S,e)$",
+    "lines": [
+     537,
+     549
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k3",
+    "card": "decor:overlap-concentration.s2.s2",
+    "title": "$C(S,e)\\operatorname{Var}(M)=o_N(1)$",
+    "lines": [
+     550,
+     570
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k4",
+    "card": "decor:overlap-concentration.s3",
+    "title": "prefix 아래의 조건부 분산: $G$와 $G_-$",
+    "lines": [
+     571,
+     590
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k5",
+    "card": "decor:overlap-concentration.s4",
+    "title": "분산 추정 $\\limsup_N\\mathcal A\\operatorname{Var}(R_S)\\le C_k(L^{-1}+V_{k-1,L}^{1/2})$",
+    "lines": [
+     591,
+     609
+    ],
+    "kind": "step"
+   },
+   {
+    "id": "k6",
+    "card": "decor:overlap-concentration.s5",
+    "title": "마무리: conditional-concentration 적용",
+    "lines": [
+     609,
+     611
+    ],
+    "kind": "step"
+   }
+  ],
+  "edges": [
+   {
+    "from": "x_X_TI",
+    "to": "k1",
+    "origin": "card",
+    "via": "pert:tree-identity"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k1",
+    "origin": "card",
+    "via": "x:pert-colored-extensions"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k2",
+    "origin": "card",
+    "via": "pert:tree-identity"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k2",
+    "origin": "card",
+    "via": "x:pert-colored-extensions"
+   },
+   {
+    "from": "x_X_RT",
+    "to": "k2",
+    "origin": "card",
+    "via": "tree:reference-total"
+   },
+   {
+    "from": "k2",
+    "to": "k3",
+    "origin": "card",
+    "via": "decor:overlap-concentration.s2.s1"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k3",
+    "origin": "card",
+    "via": "pert:tree-identity"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k3",
+    "origin": "card",
+    "via": "x:decor-tree-sampling"
+   },
+   {
+    "from": "x_PB",
+    "to": "k4",
+    "origin": "card",
+    "via": "decor:projection-bound"
+   },
+   {
+    "from": "x_DC",
+    "to": "k4",
+    "origin": "card",
+    "via": "decor:depth-continuity"
+   },
+   {
+    "from": "x_DC",
+    "to": "k4",
+    "origin": "card",
+    "via": "decor:depth-continuity.s1"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k4",
+    "origin": "card",
+    "via": "decor:average-definition"
+   },
+   {
+    "from": "k3",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:overlap-concentration.s2",
+    "rule": "last_leaf"
+   },
+   {
+    "from": "k4",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:overlap-concentration.s3"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:conditional-concentration.s1"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:conditional-concentration.s7.s3"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:conditional-concentration"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k5",
+    "origin": "card",
+    "via": "x:decor-average-comparisons"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:average-holder"
+   },
+   {
+    "from": "x_IDE",
+    "to": "k5",
+    "origin": "card",
+    "via": "decor:identity-error"
+   },
+   {
+    "from": "k5",
+    "to": "k6",
+    "origin": "card",
+    "via": "decor:overlap-concentration.s4"
+   },
+   {
+    "from": "x_CC",
+    "to": "k6",
+    "origin": "card",
+    "via": "decor:conditional-concentration"
+   }
+  ],
+  "externals": [
+   "AVG",
+   "CC",
+   "DC",
+   "IDE",
+   "PB",
+   "X_RT",
+   "X_SAMP",
+   "X_TI"
+  ],
+  "symbols": [
+   "A_S",
+   "R_S",
+   "a_p",
+   "b_S",
+   "delta",
+   "m_d",
+   "topology"
+  ],
+  "floor": [
+   "곱 차이 부등식"
+  ],
+  "unmapped": [],
+  "card_inputs_not_in_contract": [
+   "AVG",
+   "IDE"
+  ],
+  "contract_inputs_not_in_cards": [
+   "X_EXT"
+  ],
+  "mapping": [
+   {
+    "card_use": "pert:tree-identity",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:pert-colored-extensions",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "pert:tree-identity",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:pert-colored-extensions",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "tree:reference-total",
+    "top": "X_RT",
+    "how": "author_table"
+   },
+   {
+    "card_use": "pert:tree-identity",
+    "top": "X_TI",
+    "how": "author_table"
+   },
+   {
+    "card_use": "x:decor-tree-sampling",
+    "top": "X_SAMP",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:projection-bound",
+    "top": "PB",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:depth-continuity",
+    "top": "DC",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:depth-continuity.s1",
+    "top": "DC",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:average-definition",
+    "top": "AVG",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:conditional-concentration.s1",
+    "top": "CC",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:conditional-concentration.s7.s3",
+    "top": "CC",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:conditional-concentration",
+    "top": "CC",
+    "how": "prefix"
+   },
+   {
+    "card_use": "x:decor-average-comparisons",
+    "top": "AVG",
+    "how": "author_table"
+   },
+   {
+    "card_use": "decor:average-holder",
+    "top": "AVG",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:identity-error",
+    "top": "IDE",
+    "how": "prefix"
+   },
+   {
+    "card_use": "decor:conditional-concentration",
+    "top": "CC",
+    "how": "prefix"
+   }
+  ],
+  "card_math": {
+   "decor:overlap-concentration.s1": "singleton $S$에서 old tree를 $S$ 자신, spin anchor를 그 leaf, added color 없음, $f=R_S$로 둔 pert:tree-identity는 $\\mathbb ER_S^2-(\\mathbb ER_S)^2\\to0$, 즉 각 고정 $L$에서 $\\operatorname{Var}(R_S)\\to0$을 준다.",
+   "decor:overlap-concentration.s2.s1": "old tree는 $S$의 sampled copy, 그 leaf 하나가 marker anchor다. added color $k=|S|$개가 $S$의 사본 하나를 이루고 그 모든 leaf가 anchor와 깊이 $e-1$에서 갈라진다는 제약을 둔다. 그러면 첫 target 경로는 깊이 $e-1$에서 fresh여야 하고(old tree는 거기서 아직 갈라지지 않았고 옛 leaf들은 anchor와 깊이 $e$까지 prefix를 공유하므로 쓸 수 없다), 나머지 target 경로는 그렇게 생긴 fresh 부분 tree 안에 놓인다. 확장 계수의 총합은 old tree 쪽과 anchor 혼자인 쪽 모두\n$$C(S,e)=-\\delta\\,\\kappa(S)\\ne0.$$",
+   "decor:overlap-concentration.s2.s2": "target 사본과 old 사본은 $\\mathscr F_{e-1}$가 주어지면 조건부 독립이고 같은 조건부 법칙을 가진다. $f=R_S$ (old), $M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$이면 old 쪽 각 항은 $\\mathbb E[fR_E]=\\mathbb EM^2$이다. anchor 혼자인 쪽은 marker의 $e-1$ 아래 continuation을 지우면 보통의 target 법칙 $S$가 남아 평균이 $\\mathbb ER_S$이다. 따라서\n$$C(S,e)\\bigl(\\mathbb EM^2-(\\mathbb ER_S)^2\\bigr)=C(S,e)\\operatorname{Var}(M)=o_N(1),$$\n그리고 고정 $L$에서 $C(S,e)\\ne0$으로 나누어 $\\operatorname{Var}(M)\\to0$ (각 고정 $L,S,e$). $L\\to\\infty$에서 균등한 하계는 필요 없다.",
+   "decor:overlap-concentration.s3": "$|S|=k\\ge2$, 첫 갈라짐 $e$, 자식 $T_1,\\ldots,T_s$에 대해 $G=\\mathbf1\\cdot\\prod_j\\mu_{e,T_j}$, $G_-=\\mathbf1\\cdot\\prod_j\\mu_{e-1,T_j}$로 둔다. $G_-$는 $\\mathscr F_{e-1}$-가측이고, decor:projection-bound ($B=\\mathbf1$)에서 $\\mathbb E(R_S-G)^2\\le p_N(S,e)^2$이다. 자식 깊이를 고정하고 곱 차이 부등식과 martingale energy를 쓰면 $L$이 클 때\n$$\\mathcal A_{L,\\eta}\\,\\mathbb E(G-G_-)^2\\le C_k/L.$$",
+   "decor:overlap-concentration.s4": "조건부 기대값이 최적 $L^2$ 사영이므로 $\\mathbb E(R_S-M)^2\\le\\mathbb E(R_S-G_-)^2\\le2p_N(S,e)^2+2\\mathbb E(G-G_-)^2$이다. 분산 분해 $\\operatorname{Var}(R_S)=\\mathbb E(R_S-M)^2+\\operatorname{Var}(M)$와 s2, s3, 그리고 고정 $L$에서 유한 합인 $\\mathcal A_{L,\\eta}$와 $\\limsup_N$의 교환(decor:identity-error: 각 고정 배정에서 $\\operatorname{Var}(M)\\to0$이므로 $\\limsup_N\\mathcal A_{L,\\eta}\\operatorname{Var}(M)=0$)에서, $L$이 충분히 크면\n$$\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\operatorname{Var}(R_S)\\le C_k\\bigl(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2}\\bigr).$$\n여기서 $p_N(S,e)^2\\le s\\sum_jv_N(T_j,e)^{1/2}$와 fiber bound(conditional-concentration.s7.s3)를 $\\gamma=1/2$로 쓴다. 이번에는 $d$가 없으므로 전체 평균은 $D=b(S)$개 좌표, 자식 항은 여전히 $D_j=b(T_j)+1$개 좌표를 쓴다.",
+   "decor:overlap-concentration.s5": "decor:conditional-concentration (s1의 동치 형태)에서 $\\lim_{L\\to\\infty}V_{k-1,L}(\\eta/2)=0$이므로 s4의 우변이 $L\\to\\infty$에서 0으로 가고 정리가 증명된다."
+  }
+ }
+}

@@ -1,0 +1,2196 @@
+{
+ "section": "comparison",
+ "nodes": [
+  {
+   "id": "comp:low-increments",
+   "title": "선택된 수열 위의 낮은 증분 (8.1)",
+   "env": "equation",
+   "statement_span": [
+    8,
+    15
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "low_increments",
+     "label": "comp:low-increments",
+     "statement": "각 $L\\ge2$ 와 선택된 수열 위의 크기 $N$ 에 대해 $\\Delta_N^{L,\\mathbf u_{L,N}}\\le\\underline F+2\\varepsilon$.",
+     "lines": [
+      13,
+      15
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "selection",
+     "what": "pert:selection 의 (i): 선택된 크기와 결정적 벡터 위에서 증분이 $\\underline F+2\\varepsilon$ 이하",
+     "used_at": [
+      9,
+      14
+     ],
+     "binding": {
+      "type": "node",
+      "node": "pert:selection",
+      "item": "low_increment"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:low-increments",
+      "x:comp-standing"
+     ]
+    },
+    {
+     "id": "increment_symbol",
+     "what": "$\\underline F$ (모든 크기에 대한 liminf) 와 섭동된 증분 $\\Delta_N$",
+     "used_at": [
+      12,
+      14
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "pert_increment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:low-increments",
+      "x:comp-standing"
+     ]
+    },
+    {
+     "id": "bounded_model",
+     "what": "bounded 모형 (하한 증명의 유계·순열 불변 가정)",
+     "used_at": [
+      11
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "x:comp-standing"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "comp:low-increments",
+     "use": "cavity:increment",
+     "why": "8–15행은 증분의 균등 유계나 reservoir 항등식을 쓰지 않는다. 증분은 $P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$ 라는 정의로만 쓰이고 그 정의는 pert_increment 로 묶었다."
+    },
+    {
+     "card": "x:comp-standing",
+     "use": "cavity:grid",
+     "why": "깊이 $L\\ge2$ 는 9행이 직접 다시 적는다. 격자 $m_d=d/L$ 은 8–15행에 나오지 않는다."
+    },
+    {
+     "card": "x:comp-standing",
+     "use": "x:pert-selected-limits",
+     "why": "이 node 가 쓰는 것이 아니라 정의하는 것이다. §8 약속(8–12행)이 pert:selection 을 직접 인용해 $N$ 을 선택된 수열 위의 크기로 정한다(perturbations.tex 308–312 의 약속은 인용하지 않는다)."
+    }
+   ],
+   "card_mismatches": [
+    {
+     "card": "comp:low-increments",
+     "what": "카드 source 는 12–15행이지만 뼈대 범위는 8–15행이다(8–12행의 절 약속 카드 x:comp-standing 을 이 node 에 붙였다). 약속 자체는 symbol comp_selection 으로 받았다."
+    }
+   ]
+  },
+  {
+   "id": "comp:encoding",
+   "title": "재귀적 법칙 부호화: reservoir 의 한 site 를 시행 법칙 $\\zeta_{L,N}$ 으로",
+   "env": "lemma",
+   "statement_span": [
+    19,
+    25
+   ],
+   "proof_span": [
+    27,
+    83
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "trial_law",
+     "label": "comp:encoding",
+     "statement": "고정된 $N$, $L\\ge2$, 선택된 매개변수 벡터에서 reservoir root disorder 를 평균하면, 단일 label spin 과정이 모든 prescribed tree 위에서 reservoir 의 균등하게 고른 한 site 와 같은 spin 곱의 기댓값을 갖는 결정적 시행 법칙 $\\zeta_{L,N}\\in\\mathcal M_L$ 이 있다.",
+     "lines": [
+      20,
+      23
+     ]
+    },
+    {
+     "id": "independent_labels",
+     "statement": "서로 다른 시행 label 은 독립적으로 고를 수 있다.",
+     "lines": [
+      23,
+      24
+     ]
+    },
+    {
+     "id": "single_label_moments",
+     "label": "comp:single-label-moments",
+     "statement": "leaf 의 모든 부분집합 $S$ 에 대해 $\\mathbb E\\prod_{a\\in S}\\tau^a=\\frac1N\\sum_{i=1}^N\\mathbb E\\prod_{a\\in S}\\sigma_i^a=\\mathbb E R_S$ ($\\tau$ 는 시행 단일 label spin).",
+     "lines": [
+      75,
+      79
+     ],
+     "exported": true
+    },
+    {
+     "id": "independent_of_new_disorder",
+     "statement": "label 마다 (reservoir root 와 균등 site 를 포함한) 전체 구성의 독립 복사를 쓰면 시행 message 들은 cavity insertion 의 새 물리적 disorder 와 독립이다.",
+     "lines": [
+      80,
+      82
+     ],
+     "exported": true,
+     "added_by": "comp:insertion-comparison"
+    }
+   ],
+   "needs": [
+    {
+     "id": "selected_vector",
+     "what": "선택된 매개변수 벡터와 선택된 수열 (§8 약속)",
+     "used_at": [
+      20,
+      21
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "comp_selection"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1"
+     ]
+    },
+    {
+     "id": "reservoir",
+     "what": "$N$ 개 spin 의 reservoir 와 그 root disorder",
+     "used_at": [
+      20,
+      22,
+      28,
+      29
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1",
+      "comp:encoding.s4"
+     ]
+    },
+    {
+     "id": "tree_sampling_rule",
+     "what": "모든 spin tree 는 reservoir 에서 tilted 보조 kernel 과 terminal Gibbs kernel 로 표본추출한다",
+     "used_at": [
+      22,
+      29,
+      30,
+      41,
+      42
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1"
+     ]
+    },
+    {
+     "id": "tilted_kernels",
+     "what": "분배함수에서 만든 tilted 보조 kernel",
+     "used_at": [
+      29,
+      30
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1"
+     ]
+    },
+    {
+     "id": "path_structure",
+     "what": "깊이 $d$ 까지의 prefix $\\sigma$-field 와 path 구조, $r=L-1$",
+     "used_at": [
+      30,
+      31,
+      32
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "path_kernels"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1"
+     ]
+    },
+    {
+     "id": "tree_law",
+     "what": "prescribed(유한) tree, 자식의 조건부 독립 표본추출, 사영 일관성",
+     "used_at": [
+      22,
+      58,
+      59,
+      61,
+      62,
+      69
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1",
+      "comp:encoding.s3"
+     ]
+    },
+    {
+     "id": "extra_root_variable",
+     "what": "원래 모형에 없던 root 변수(균등 site $i$)를 root 에 넣는 처리",
+     "used_at": [
+      28,
+      29
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1"
+     ]
+    },
+    {
+     "id": "message_prob",
+     "what": "message $x$ 와 spin 법칙 $q_x$",
+     "used_at": [
+      34,
+      40
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "message_q"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s1",
+      "comp:encoding.s3"
+     ]
+    },
+    {
+     "id": "message_hierarchy",
+     "what": "$\\mathcal M_j$, $\\zeta\\in\\mathcal M_L$, 위계 message 사슬 (model:chain)",
+     "used_at": [
+      50,
+      51,
+      72
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "message_chain"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s2",
+      "comp:encoding.s3",
+      "comp:encoding.s4"
+     ]
+    },
+    {
+     "id": "mark_spaces",
+     "what": "보조 prior 가 유한 mark 공간의 곱: mark specification",
+     "used_at": [
+      54,
+      55,
+      56
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "mark_specification"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s2"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap $R_S$",
+     "used_at": [
+      74,
+      78
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:encoding",
+      "comp:encoding.s4"
+     ]
+    },
+    {
+     "id": "expectation_conv",
+     "what": "$\\mathbb E$ 는 root 와 tree 표본추출을 모두 평균",
+     "used_at": [
+      76,
+      77,
+      78
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "expectation_convention"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "positive_weights",
+     "what": "perturbation factor $\\psi_\\nu>0$ 로 유한 $N$ 에서 모든 배위 무게가 양수",
+     "used_at": [
+      36,
+      37,
+      38
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "regular_conditional",
+     "what": "표준 Borel 공간 위의 조건부 확률 kernel 의 가측 버전 존재",
+     "used_at": [
+      52,
+      53
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "regular_conditional_probability"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "comp:encoding",
+     "use": "pert:factor",
+     "why": "증명이 $\\psi_\\nu$ 를 직접 쓰지 않는다. 섭동은 reservoir(cavity:increment)와 그 tilted kernel 에 들어 있다. (finite mark 공간은 mark_specification 으로, 가중치 양수성은 perturbation_factors 로 묶었다.)"
+    },
+    {
+     "card": "comp:encoding",
+     "use": "pert:selection",
+     "why": "'선택된 매개변수 벡터'는 §8 약속(comp_selection)으로 묶었다. 렘마는 벡터가 고정되어 있다는 것만 쓰고 pert:selection 의 (i)–(iii) 를 쓰지 않는다."
+    }
+   ],
+   "card_mismatches": []
+  },
+  {
+   "id": "comp:patterns",
+   "title": "경험 pattern 비교: 균등 site 의 pattern 을 시행 label 의 pattern 으로 바꾸는 오차",
+   "env": "lemma",
+   "statement_span": [
+    87,
+    97
+   ],
+   "proof_span": [
+    99,
+    121
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "pattern_error",
+     "label": "comp:pattern-error",
+     "statement": "$k$ 개 leaf 의 고정된 prescribed tree 에서, 절댓값이 1 이하이고 $a$ 개의 독립 균등 site label 의 replica-spin pattern 을 쓰는 관측량의 기댓값은, 그 pattern 을 comp:encoding 의 $a$ 개 독립 시행 label pattern 으로 바꾸면 많아야 $a\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|$ 만큼 변한다.",
+     "lines": [
+      88,
+      94
+     ]
+    },
+    {
+     "id": "insertion_disorder",
+     "statement": "관측량은 reservoir 와 독립인 새 insertion disorder 에도 의존할 수 있다 (같은 오차 한계).",
+     "lines": [
+      95,
+      96
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "trial_law",
+     "what": "시행 법칙 $\\zeta_{L,N}$ 과 단일 label spin 과정 (comp:encoding)",
+     "used_at": [
+      90,
+      91,
+      111
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "trial_law"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:patterns"
+     ]
+    },
+    {
+     "id": "label_independence",
+     "what": "서로 다른 시행 label 은 독립 (trial 분포가 $\\bar\\pi^{\\otimes a}$)",
+     "used_at": [
+      90,
+      112
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "independent_labels"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:patterns",
+      "comp:patterns.s1"
+     ]
+    },
+    {
+     "id": "trial_distribution",
+     "what": "시행 pattern 분포 $\\bar\\pi=\\mathbb E\\pi$ (단일 label 의 spin 곱 moment 가 $\\mathbb ER_S$)",
+     "used_at": [
+      109,
+      110
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "single_label_moments"
+     },
+     "origin": [
+      "machine"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap $R_S$, $R_\\varnothing=1$",
+     "used_at": [
+      93,
+      102,
+      106,
+      117
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:patterns",
+      "comp:patterns.s1"
+     ]
+    },
+    {
+     "id": "tree_law",
+     "what": "prescribed tree 와 그 leaf 위의 replica spin",
+     "used_at": [
+      88,
+      101
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:patterns",
+      "comp:patterns.s1"
+     ]
+    },
+    {
+     "id": "reservoir_samples",
+     "what": "reservoir 에서 표본추출한 배위 (조건부로 고정)",
+     "used_at": [
+      100,
+      101,
+      111
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:patterns"
+     ]
+    },
+    {
+     "id": "uniform_site_labels",
+     "what": "표시된 지표는 $[N]$ 의 독립 균등 지표 (복원추출)",
+     "used_at": [
+      89,
+      111
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "insertion_counts"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "insertion_independence",
+     "what": "insertion 의 새 root disorder 는 reservoir 와 독립",
+     "used_at": [
+      95,
+      96,
+      120
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "insertion_setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "tv_product",
+     "what": "곱측도의 전변 거리 망원 부등식 $\\|\\pi^{\\otimes a}-\\bar\\pi^{\\otimes a}\\|_{\\rm TV}\\le a\\|\\pi-\\bar\\pi\\|_{\\rm TV}$",
+     "used_at": [
+      112,
+      113,
+      116
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "tv_product_telescoping"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "tv_integral",
+     "what": "1 로 유계인 함수의 적분은 전변 거리의 2 배 이하로 변한다",
+     "used_at": [
+      119
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "tv_bounded_integral"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "comp:shape-error",
+   "title": "tree 법칙으로 평균한 multioverlap 요동이 사라진다 (shape error)",
+   "env": "equation",
+   "statement_span": [
+    123,
+    156
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "shape_error",
+     "label": "comp:shape-error",
+     "statement": "고정된 $k$ 에 대해 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathbb E_{Q_k}\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|=0$ (안쪽 극한은 선택된 고정-$L$ 수열을 따른다).",
+     "lines": [
+      125,
+      130
+     ]
+    },
+    {
+     "id": "shape_error_bound",
+     "label": "comp:shape-error-bound",
+     "statement": "$0<\\eta<1/2$ 에 대해 $\\mathbb E_{Q_k}\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|\\le C_k\\bigl(\\eta+L^{-1}+\\sum_{U\\in\\mathfrak S_k}(\\mathcal A_{L,\\eta}\\mathrm{Var}(R_U))^{1/2}\\bigr)$. 여기서 $\\mathfrak S_k$ 는 $[k]$ 의 비지 않은 부분집합 위 labeled topology 의 유한 모임.",
+     "lines": [
+      131,
+      139
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "q_law",
+     "what": "tree 법칙 $Q_k$ (leaf 가 $k$ 개)",
+     "used_at": [
+      123,
+      127,
+      134
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:telescoping",
+      "item": "Q_rule"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound"
+     ]
+    },
+    {
+     "id": "multioverlap",
+     "what": "multioverlap $R_S$",
+     "used_at": [
+      127,
+      135,
+      150
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "multioverlap"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1"
+     ]
+    },
+    {
+     "id": "expectation_conv",
+     "what": "$\\mathbb E$ 는 root 와 tree 를 모두 평균, $\\mathbb E_{Q_k}$ 는 tree 법칙 평균",
+     "used_at": [
+      128,
+      135
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:multioverlap",
+      "item": "expectation_convention"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "selected_sequence",
+     "what": "안쪽 극한은 선택된 고정-$L$ 수열을 따른다",
+     "used_at": [
+      130,
+      154
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "comp_selection"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error.s2"
+     ]
+    },
+    {
+     "id": "tree_law",
+     "what": "tree 표본 규칙 (labeled leaf, 사영 일관성)",
+     "used_at": [
+      123,
+      127,
+      131
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "topology",
+     "what": "labeled topology $U$, branching vertex 개수 $a$, 깊이 배정",
+     "used_at": [
+      131,
+      132,
+      137,
+      143,
+      144,
+      145
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "topology_depth_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "eta_regular",
+     "what": "$\\eta$-regular 깊이 배정과 $\\eta$ 의 범위",
+     "used_at": [
+      131,
+      138,
+      143,
+      148
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "eta_regular_assignment"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "regular_tree",
+     "what": "tree 의 regular shape (깊이가 안쪽이고 서로 떨어짐)",
+     "used_at": [
+      142,
+      143
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "regular_shape"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "grid",
+     "what": "균등 격자 $m_d=d/L$ (확률 $C_kL^{-a}$, $L^{-1}$ 의 근거)",
+     "used_at": [
+      136,
+      144,
+      145
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound"
+     ]
+    },
+    {
+     "id": "spin_product",
+     "what": "$R_U$ 와 spin 곱 벡터 $A_S$ (topology 에 대한 요동 $\\mathrm{Var}(R_U)$)",
+     "used_at": [
+      135,
+      138,
+      150
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "spin_product_vector"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s3"
+     ]
+    },
+    {
+     "id": "depth_average",
+     "what": "깊이 평균 $\\mathcal A_{L,\\eta}$ 의 정의와 정규화",
+     "used_at": [
+      138,
+      148
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_definition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2",
+      "comp:shape-error-bound.s3"
+     ]
+    },
+    {
+     "id": "unused_coordinates",
+     "what": "쓰지 않는 깊이 좌표를 합하는 비용은 $L$ 의 거듭제곱이고 정규화가 상쇄",
+     "used_at": [
+      146,
+      147,
+      148
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "unused_coordinate"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2",
+      "comp:shape-error-bound.s3"
+     ]
+    },
+    {
+     "id": "average_power",
+     "what": "평균에 대한 분수 거듭제곱 부등식 $\\mathcal A(z^{1/2})\\le(\\mathcal Az)^{1/2}$",
+     "used_at": [
+      149,
+      150
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:average-holder",
+      "item": "average_holder"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "irregular_prob",
+     "what": "비정규 tree 의 확률 $\\le C_k(\\eta+L^{-1})$",
+     "used_at": [
+      141,
+      142
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:regular-shapes",
+      "item": "irregular_probability"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "assignment_prob",
+     "what": "한 깊이 배정의 $Q_k$ 확률 $\\le C_kL^{-a}$",
+     "used_at": [
+      144,
+      145
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:regular-shapes",
+      "item": "assignment_probability"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "deletion_regular",
+     "what": "regular tree 의 induced subtree 도 regular",
+     "used_at": [
+      143,
+      144
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:regular-shapes",
+      "item": "deletion_regular"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error-bound",
+      "comp:shape-error-bound.s1",
+      "comp:shape-error-bound.s2"
+     ]
+    },
+    {
+     "id": "overlap_concentration",
+     "what": "모든 multioverlap 의 깊이 평균 집중 (고정 $\\eta$, $L\\to\\infty$ 에서 $\\limsup_N\\mathcal A_{L,\\eta}\\mathrm{Var}(R_S)\\to0$)",
+     "used_at": [
+      153,
+      154,
+      155
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:overlap-concentration",
+      "item": "overlap_concentration"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:shape-error",
+      "comp:shape-error.s2"
+     ]
+    },
+    {
+     "id": "singleton_case",
+     "what": "singleton 은 깊이 좌표가 없고 분산이 $N\\to\\infty$ 에서 0",
+     "used_at": [
+      140,
+      153
+     ],
+     "binding": {
+      "type": "node",
+      "node": "decor:overlap-concentration",
+      "item": "singleton"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "cauchy_schwarz",
+     "what": "편차의 평균 절댓값을 분산의 제곱근으로 누름: Cauchy–Schwarz",
+     "used_at": [
+      149,
+      150
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "cauchy_schwarz"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "comp:shape-error-bound",
+     "use": "tree:averaging-remark",
+     "why": "번호 없는 remark 이고 그 내용(깊이 합→$Q_k$ 평균, 부분 shape 오차)은 tree:regular-shapes 의 assignment_probability 와 irregular_probability 로 이미 묶었다(comparison.tex 141–152)."
+    },
+    {
+     "card": "comp:shape-error",
+     "use": "x:decor-limit-order",
+     "why": "§8 이 극한 순서를 직접 적는다(130행, 153–155행: 고정 $L$ 에서 $N$ 극한 후 $L\\to\\infty$). decorrelation.tex 4–9 의 약속은 인용하지 않으며 comp_selection 과 decor:overlap-concentration 진술로 충분하다."
+    }
+   ],
+   "card_mismatches": [
+    {
+     "card": "comp:shape-error",
+     "what": "카드는 $Q_k$ 정의를 tree:log-expansion 에 건다(원문 123행 \\cref). 정의 자체는 trees.tex 209–217 (tree:telescoping 의 Q_rule)이며 log-expansion 은 그것을 쓰는 곳이다."
+    }
+   ]
+  },
+  {
+   "id": "comp:insertion-comparison",
+   "title": "삽입 logarithm 의 비교: $\\Delta_N\\approx\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})$",
+   "env": "proposition",
+   "statement_span": [
+    160,
+    168
+   ],
+   "proof_span": [
+    170,
+    223
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "increment_comparison",
+     "label": "comp:increment-comparison",
+     "statement": "comp:encoding 의 시행 법칙과 $\\mathbf m^{(L)}=(1/L,\\ldots,(L-1)/L)$ 에 대해 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\bigl|\\Delta_N^{L,\\mathbf u_{L,N}}-\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\bigr|=0$.",
+     "lines": [
+      163,
+      167
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "selected_sequence",
+     "what": "선택된 수열과 벡터 $\\mathbf u_{L,N}$ (§8 약속)",
+     "used_at": [
+      165,
+      219,
+      220
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "comp_selection"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "grid",
+     "what": "균등 격자 $m_d=d/L$, $r=L-1$",
+     "used_at": [
+      162,
+      166
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s2"
+     ]
+    },
+    {
+     "id": "bounded_model",
+     "what": "$B(\\theta)\\le B$, $|h|\\le H$ 와 순열 불변",
+     "used_at": [
+      200,
+      201,
+      216
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "tree_sampling_rule",
+     "what": "모든 spin tree 는 reservoir 에서 tilted 보조 kernel 과 terminal Gibbs kernel 로 표본추출",
+     "used_at": [
+      171,
+      172,
+      174,
+      175
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison"
+     ]
+    },
+    {
+     "id": "path_structure",
+     "what": "path kernel 열 $K_d$ 와 지수 (시행 kernel 을 쓴 재귀)",
+     "used_at": [
+      175,
+      176
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "path_kernels"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison.s1.s1"
+     ]
+    },
+    {
+     "id": "edge_factor",
+     "what": "edge 분배함수 $C_\\theta$ (edge factor)",
+     "used_at": [
+      181,
+      182
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "edge_partition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison.s1.s3"
+     ]
+    },
+    {
+     "id": "site_weight",
+     "what": "cavity log-weight $U_\\theta$ (terminal spin 에 대한 평균)",
+     "used_at": [
+      178,
+      179,
+      180
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "site_log_weight"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison.s1.s2"
+     ]
+    },
+    {
+     "id": "reservoir",
+     "what": "reservoir 의 spin 과 site label",
+     "used_at": [
+      171,
+      172
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "reservoir"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s3",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "insertion_setting",
+     "what": "insertion 재귀는 tilted reservoir kernel 과 독립인 새 root disorder 를 쓴다",
+     "used_at": [
+      171,
+      176,
+      195
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "insertion_setting"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s3",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "site_insertion",
+     "what": "site insertion $A_{\\rm s}$",
+     "used_at": [
+      171,
+      173,
+      178
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "site_insertion"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s3",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "bond_insertion",
+     "what": "bond insertion $A_{\\rm b}$",
+     "used_at": [
+      171,
+      173,
+      181
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "bond_insertion"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s3",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "insertion_counts",
+     "what": "Poisson 개수 $K_{\\rm s},K_{\\rm b}$ 와 균등 지표",
+     "used_at": [
+      198,
+      199,
+      216,
+      217
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "insertion_counts"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s3",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "increment_identity",
+     "what": "증분 항등식 $\\Delta_N=\\log2+\\mathbb E\\log Y_{0,\\rm s}-\\mathbb E\\log Y_{0,\\rm b}+o_N(1)$",
+     "used_at": [
+      195,
+      221,
+      222
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "identity"
+     },
+     "origin": [
+      "machine"
+     ]
+    },
+    {
+     "id": "reservoir_log_bound",
+     "what": "reservoir 쪽 insertion logarithm 의 유계 $|\\log Y_{0,\\rm s}|\\le H+BK_{\\rm s}$, $|\\log Y_{0,\\rm b}|\\le BK_{\\rm b}$",
+     "used_at": [
+      215,
+      216
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:increment",
+      "item": "log_insertion_bound",
+      "new_item": {
+       "statement": "$|\\log Y_{0,\\rm s}|\\le H+BK_{\\rm s}$, $|\\log Y_{0,\\rm b}|\\le BK_{\\rm b}$ ($H,B$ 는 bounded 가정의 상수, $K_{\\rm s},K_{\\rm b}$ 는 insertion 의 Poisson 개수).",
+       "lines": [
+        108,
+        110
+       ]
+      }
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "trial_law",
+     "what": "시행 법칙 $\\zeta_{L,N}$ 과 독립 spin 과정으로 reservoir spin 대체",
+     "used_at": [
+      161,
+      171,
+      172
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "trial_law"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "label_independence",
+     "what": "시행 label 별 독립 복사",
+     "used_at": [
+      172,
+      182,
+      183
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "independent_labels"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1"
+     ]
+    },
+    {
+     "id": "independent_of_disorder",
+     "what": "시행 message 는 새 물리적 disorder 와 독립",
+     "used_at": [
+      183,
+      184,
+      185
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "independent_of_new_disorder"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "pattern_comparison",
+     "what": "pattern 을 시행 label pattern 으로 바꾸는 오차 $\\le pM\\sum_S\\mathbb E|R_S-\\mathbb ER_S|$",
+     "used_at": [
+      208,
+      209
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:patterns",
+      "item": "pattern_error"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "pattern_with_disorder",
+     "what": "관측량이 새 insertion disorder 에 의존해도 같은 한계",
+     "used_at": [
+      205,
+      206,
+      208
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:patterns",
+      "item": "insertion_disorder"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "shape_error",
+     "what": "tree 평균한 multioverlap 요동의 소멸",
+     "used_at": [
+      209,
+      210
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:shape-error",
+      "item": "shape_error"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "message_hierarchy",
+     "what": "$\\mathcal M_L$ 의 시행 법칙과 위계 사슬, $r=L-1$",
+     "used_at": [
+      161,
+      166,
+      192
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "message_chain"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s3"
+     ]
+    },
+    {
+     "id": "site_term",
+     "what": "$V_{\\rm s}$ (식 model:vs)",
+     "used_at": [
+      180,
+      190
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "site_term"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s2"
+     ]
+    },
+    {
+     "id": "edge_term",
+     "what": "$V_{\\rm e}$",
+     "used_at": [
+      189
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "edge_term"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s3"
+     ]
+    },
+    {
+     "id": "power_means",
+     "what": "조건부 거듭제곱 평균 $T_d$",
+     "used_at": [
+      180,
+      184,
+      185,
+      189
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "power_means"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s2",
+      "comp:insertion-comparison.s1.s3"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "$\\mathcal B_r(\\zeta,\\mathbf m)=\\log2+\\mathbb E\\log T_0V_{\\rm s}-\\alpha(p-1)\\mathbb E\\log T_0V_{\\rm e}$",
+     "used_at": [
+      166,
+      190,
+      191,
+      192
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s3"
+     ]
+    },
+    {
+     "id": "label_disjointness",
+     "what": "서로 다른 message label 사용",
+     "used_at": [
+      182,
+      183
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "label_independence"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "trial_bounds",
+     "what": "시행 쪽 insertion logarithm 의 유계 $|\\log T_0V_{\\rm s}|\\le|h|+\\sum B(\\theta_j)$",
+     "used_at": [
+      216,
+      217
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:trial-bounds",
+      "item": "trial_bounds"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "Y_recursion",
+     "what": "insertion 재귀 $Y_d$ (식 tree:Y-recursion)",
+     "used_at": [
+      174,
+      175
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:Y-recursion",
+      "item": "Y_recursion"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s1",
+      "comp:insertion-comparison.s1.s1",
+      "comp:insertion-comparison.s1.s2",
+      "comp:insertion-comparison.s2"
+     ]
+    },
+    {
+     "id": "homogeneity",
+     "what": "root-가측 양수 상수를 곱하면 모든 $Y_d$ 에 곱해진다 ($\\log z$ 가 상쇄)",
+     "used_at": [
+      200,
+      203
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "monotone_homogeneous"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s2",
+      "comp:insertion-comparison.s4"
+     ]
+    },
+    {
+     "id": "log_series",
+     "what": "$\\log Y_0$ 의 급수 전개 (식 tree:log-expansion)",
+     "used_at": [
+      205,
+      206
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:log-expansion",
+      "item": "log_series"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "log_tail",
+     "what": "$K$ 차 이후 나머지 $\\le\\sum_{k>K}c^k/k$",
+     "used_at": [
+      211,
+      212,
+      213
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:log-expansion",
+      "item": "log_tail"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison",
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "q_law",
+     "what": "전개의 tree 평균 $\\mathbb E_{Q_k}$",
+     "used_at": [
+      205,
+      209,
+      210
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:telescoping",
+      "item": "Q_rule"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:insertion-comparison.s3"
+     ]
+    },
+    {
+     "id": "dominated",
+     "what": "Poisson 꼬리 $\\mathbb E[(H+BK)\\mathbf1_{K>M}]\\to0$: 지배 수렴",
+     "used_at": [
+      217
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "dominated_convergence"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "wald",
+     "what": "Poisson 개수 $K_{\\rm b}$ 개의 같은 법칙 항의 합의 기댓값 $=\\mathbb EK_{\\rm b}\\cdot\\mathbb E(\\text{항})$",
+     "used_at": [
+      188,
+      189
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "wald_identity"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "comp:bounded-lower",
+   "title": "bounded 법칙의 하한: $\\liminf_NF_N\\ge\\inf_{r\\ge0}\\Phi_r$",
+   "env": "corollary",
+   "statement_span": [
+    225,
+    231
+   ],
+   "proof_span": [
+    233,
+    246
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "bounded_lower",
+     "label": "comp:bounded-lower",
+     "statement": "유계이고 순열 불변인 모든 상호작용 법칙과 유계인 장 법칙에 대해 $\\liminf_{N\\to\\infty}F_N\\ge\\inf_{r\\ge0}\\Phi_r$.",
+     "lines": [
+      226,
+      230
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "bounded_model",
+     "what": "유계 ($B(\\theta)\\le B$, $|h|\\le H$)·순열 불변 가정",
+     "used_at": [
+      226
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "pressure",
+     "what": "$F_N$ (식 model:hamiltonian)",
+     "used_at": [
+      229
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "$\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r(\\zeta,\\mathbf m)$ 와 $\\mathcal B_{L-1}$",
+     "used_at": [
+      227,
+      229,
+      234,
+      241
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "what": "$r=0$ 의 $\\mathcal B_0,\\Phi_0$ (infimum 이 $r=0$ 을 포함)",
+     "used_at": [
+      229,
+      234
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "message_hierarchy",
+     "what": "시행 법칙 $\\zeta_{L,N}\\in\\mathcal M_L$ 의 위계 사슬",
+     "used_at": [
+      235,
+      241
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "message_chain"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "trial_bounds",
+     "what": "$A=\\inf_r\\Phi_r$ 의 유한성: 시행 값의 유계",
+     "used_at": [
+      234,
+      235
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:trial-bounds",
+      "item": "trial_bounds"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "trial_law",
+     "what": "encoded 시행 값 $\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\ge A$ (시행 법칙 $\\zeta_{L,N}$)",
+     "used_at": [
+      235,
+      236,
+      241
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:encoding",
+      "item": "trial_law"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "grid_vector",
+     "what": "$\\mathbf m^{(L)}$ (균등 지수 벡터)",
+     "used_at": [
+      238,
+      241
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "uniform_grid_vector"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "low_increments",
+     "what": "선택된 수열 위의 낮은 증분 $\\Delta_N\\le\\underline F+2\\varepsilon$",
+     "used_at": [
+      236
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:low-increments",
+      "item": "low_increments"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1"
+     ]
+    },
+    {
+     "id": "increment_comparison",
+     "what": "삽입 logarithm 의 비교 (고정 $L$ 의 $\\limsup_N$ 후 $L\\to\\infty$)",
+     "used_at": [
+      240,
+      244
+     ],
+     "binding": {
+      "type": "node",
+      "node": "comp:insertion-comparison",
+      "item": "increment_comparison"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s2"
+     ]
+    },
+    {
+     "id": "selected_sequence",
+     "what": "선택된 수열 ($\\varepsilon$, 깊이별 수열)",
+     "used_at": [
+      236,
+      238,
+      243
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "comp_selection"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "comp:bounded-lower",
+      "comp:bounded-lower.s1",
+      "comp:bounded-lower.s2"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "comp:bounded-lower",
+     "use": "cavity:grid",
+     "why": "격자는 원문에 $\\mathbf m^{(L)}$ 로만 나타나며 그 정의(comparison.tex 161–162)를 symbol uniform_grid_vector 로 묶었다."
+    }
+   ],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "comp_selection",
+   "tex": "$\\varepsilon,\\ \\mathbf u_{L,N}$",
+   "defined_at": "comparison.tex 8–12",
+   "text": "$\\varepsilon>0$ 를 고정한다. 각 깊이 $L\\ge2$ 에서 pert:selection 이 준 크기 수열과 결정적 매개변수 선택 $\\mathbf u_{L,N}$ 을 쓰고, $N$ 은 그 수열 위의 크기이다. 선택은 $L$ 에 의존해도 되고 §8 의 모든 진술이 이 선택에 대한 것이다. $\\underline F$ 는 선택 전, 모든 크기에 대한 bounded 모형의 liminf 로 유지한다.",
+   "note": "perturbations.tex 308–312 (pert_selected_limits) 와 decorrelation.tex 4–9 (decor_limit_order) 의 약속과 같은 취지이나 §8 이 직접 다시 적는 약속이라 별도 id 로 두었다."
+  },
+  {
+   "id": "uniform_grid_vector",
+   "tex": "$\\mathbf m^{(L)}$",
+   "defined_at": "comparison.tex 161–162",
+   "text": "$\\mathbf m^{(L)}=(1/L,\\ldots,(L-1)/L)$: 깊이 $L$ 의 균등 지수 벡터 ($r=L-1$ 단계)."
+  }
+ ],
+ "floors_new": [
+  {
+   "id": "regular_conditional_probability",
+   "kind": "standard",
+   "statement": "표준 Borel 공간 위에서 조건부 확률분포(확률 kernel)는 가측 버전을 가진다.",
+   "cited_at": "comparison.tex 52–53"
+  },
+  {
+   "id": "tv_product_telescoping",
+   "kind": "standard",
+   "statement": "곱측도의 전변 거리: $\\|\\mu^{\\otimes a}-\\nu^{\\otimes a}\\|_{\\rm TV}\\le a\\|\\mu-\\nu\\|_{\\rm TV}$ (망원합).",
+   "cited_at": "comparison.tex 112–118"
+  },
+  {
+   "id": "tv_bounded_integral",
+   "kind": "standard",
+   "statement": "절댓값이 1 이하인 함수의 두 확률측도에 대한 적분의 차는 전변 거리의 2 배 이하이다.",
+   "cited_at": "comparison.tex 119"
+  },
+  {
+   "id": "wald_identity",
+   "kind": "standard",
+   "statement": "독립인 Poisson 개수 $K$ 와 같은 법칙의 (적분가능한) 항들의 합에서 $\\mathbb E\\sum_{j\\le K}X_j=\\mathbb EK\\cdot\\mathbb EX_1$ (Wald).",
+   "cited_at": "comparison.tex 186–190"
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    4,
+    6
+   ],
+   "what": "절 머리의 약속: 세 단계(부호화, multioverlap 집중으로 site 분리, insertion logarithm 비교)로 reservoir 를 시행 법칙으로 바꾼다는 개요",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    8,
+    12
+   ],
+   "what": "§8 절 머리 관례: $\\varepsilon>0$ 고정, 각 $L\\ge2$ 에서 pert:selection 의 선택 수열과 매개변수, $N$ 은 그 수열 위의 크기, $\\underline F$ 는 모든 크기의 liminf",
+   "handled": "symbol:comp_selection"
+  },
+  {
+   "lines": [
+    130,
+    130
+   ],
+   "what": "안쪽 극한은 선택된 고정-$L$ 수열을 따른다는 주의 (comp_selection 의 재진술)",
+   "handled": "symbol:comp_selection"
+  },
+  {
+   "lines": [
+    140,
+    140
+   ],
+   "what": "singleton 의 평균은 깊이 좌표가 없다는 주의 (decor:overlap-concentration 의 singleton 항목이 담음)",
+   "handled": "list"
+  }
+ ]
+}

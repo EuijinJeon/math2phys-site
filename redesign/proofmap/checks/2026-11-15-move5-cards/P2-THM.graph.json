@@ -1,0 +1,573 @@
+{
+ "id": "thm",
+ "title": "Theorem: 모든 multioverlap의 집중 — 카드 뼈대 판",
+ "parent": {
+  "graph": "top",
+  "node": "THM"
+ },
+ "summary": "카드(redesign/cards)의 경계와 의존에서 기계로 만든 뼈대에, LLM이 카드에 없는 의존과 원문에 없는 걸음만 채웠다. 진술은 원문 줄과 카드 번역이다(SPEC 7.8).",
+ "build": {
+  "skeleton": "card_skeleton.py",
+  "fill": "P2-fill.json",
+  "assemble": "assemble_cards.py"
+ },
+ "card_mismatch": [
+  {
+   "card": "decor:overlap-concentration.s3 / s4",
+   "issue": "k4(571-590)와 k5(591-609)의 경계가 문장 한가운데를 자른다. 'Since conditional expectation is the optimal L^2 projection,'(589-590)이 k4에, 그 결론 부등식(591-595)이 k5에 있다. 이 부등식은 k4의 G, G_- 추정을 묶는 것이므로 k4 쪽 논리이다"
+  },
+  {
+   "card": "decor:overlap-concentration.s4 / s5",
+   "issue": "k5(…-609)와 k6(609-…)이 609에서 겹친다"
+  },
+  {
+   "card": "decor:overlap-concentration",
+   "issue": "x_AVG→k4, x_AVG→k5(2개), x_IDE→k5 edge의 출처 node가 THM 입력 목록에 항목을 내놓지 않는다. 반대로 X_EXT 항목(rule, empty_weight)은 입력에 있는데 뼈대 edge가 하나도 없다"
+  },
+  {
+   "card": "decor:overlap-concentration.s1",
+   "issue": "x_X_TI→k1 두 edge가 서로 구별되지 않는 중복으로 적혀 있다(identity와 empty_addition으로 나누어야 한다). k2의 두 X_TI edge도 마찬가지이다"
+  },
+  {
+   "card": "decor:overlap-concentration.s5",
+   "issue": "x_CC→k5 세 edge 가운데 CC.main/V_to_zero 쓰임은 k6에 있다. k5에서는 fiber_bound만 실제로 쓰인다"
+  },
+  {
+   "card": "decor:overlap-concentration.s1",
+   "issue": "singleton 주장(73-74)은 k1에서 끝나는데, k1에서 k6(마무리)으로 가는 edge가 없다. 정리의 두 갈래가 뼈대에 합쳐지지 않는다"
+  },
+  {
+   "card": "decor:overlap-concentration.s4",
+   "issue": "C_k의 k(정리 안 귀납 지표, V_{k-1,L})가 원문 이 범위에서 정의되지 않는다. S의 크기와 어떻게 연결되는지 카드 경계 밖에 있다"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "k1",
+   "kind": "step",
+   "title": "singleton: 추가 color 없는 spin anchor",
+   "lines": [
+    532,
+    536
+   ],
+   "card": "decor:overlap-concentration.s1",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "identity에서 E[R_S·R_S] - E R_S·E R_S → 0이므로 Var(R_S)→0. f=R_S는 |R_S|≤1인 유계 다항식이다"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 532–536",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k2",
+   "kind": "step",
+   "title": "marker anchor 구성과 계수 $C(S,e)$",
+   "lines": [
+    537,
+    549
+   ],
+   "card": "decor:overlap-concentration.s2.s1",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "S가 e에서 처음 갈라지므로 old tree는 e-1에서 unary이다(n_β=1). 첫 target path의 계수는 γ = m_{e-1}-m_e = -δ이고 나머지 fresh subtree의 계수 합은 κ(S)이므로 C(S,e) = -δκ(S)"
+    },
+    {
+     "what": "anchor-alone 쪽(old tree {a_*})도 e-1에서 unary이므로 같은 계수 C(S,e)를 얻는다. δ≠0이고 κ(S)≠0이므로 C(S,e)≠0"
+    },
+    {
+     "what": "S의 old leaf들은 anchor에서 e 이후에 갈라지므로 e-1 처방을 채울 수 없다. 그래서 target path는 모두 fresh subtree에 있다"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 537–549",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k3",
+   "kind": "step",
+   "title": "$C(S,e)\\operatorname{Var}(M)=o_N(1)$",
+   "lines": [
+    550,
+    570
+   ],
+   "card": "decor:overlap-concentration.s2.s2",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "E[R_S^{old}R_S^{tgt}] = E[E(R^{old}|F_{e-1})E(R^{tgt}|F_{e-1})] = EM^2. tower 성질로 EM = E R_S이므로 EM^2 - (ER_S)^2 = Var(M)"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 550–570",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k4",
+   "kind": "step",
+   "title": "prefix 아래의 조건부 분산: $G$와 $G_-$",
+   "lines": [
+    571,
+    590
+   ],
+   "card": "decor:overlap-concentration.s3",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "R_S = 1·A_S(정규화 내적)이므로 R_S - G = (A_S - a_{S,e})·1이 되고, 이를 제곱하면 E(R_S-G)^2 ≤ p_N^2"
+    },
+    {
+     "what": "|1·x|^2 ≤ ||x||_N^2, 곱 차이 부등식으로 E(G-G_-)^2 ≤ sΣ_jE||μ_{e,T_j}-μ_{e-1,T_j}||^2. e에 대해 합하면 ≤ s^2, L로 나누면 C/L. e-1과 e는 T_j의 처음 stem 위에 있다(regularity)"
+    }
+   ],
+   "floor_used": [
+    "곱 차이 부등식"
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 571–590",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k5",
+   "kind": "step",
+   "title": "분산 추정 $\\limsup_N\\mathcal A\\operatorname{Var}(R_S)\\le C_k(L^{-1}+V_{k-1,L}^{1/2})$",
+   "lines": [
+    591,
+    609
+   ],
+   "card": "decor:overlap-concentration.s4",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "고정 L에서 \\mathcal A는 유한합이므로 limsup_N \\mathcal A Var(M) = 0"
+    },
+    {
+     "what": "fiber: 항 v_N(T_j,e)는 (T_j의 branching 깊이, e)만 쓰고 나머지 b(S)-D_j개 좌표가 자유이다. e는 T_j의 branching보다 엄격히 앞서고, 충분히 큰 L에서 η/2-regular이다"
+    },
+    {
+     "what": "limsup_N을 ^{1/2} 안으로 넣는다(단조·연속). T_j는 S보다 작으므로 limsup_N L^{-D_j}Σ v_N(T_j,e) ≤ V_{k-1,L}(η/2)"
+    }
+   ],
+   "floor_used": [
+    "L^2 사영",
+    "Cauchy-Schwarz",
+    "분산 분해"
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 591–609",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k6",
+   "kind": "step",
+   "title": "마무리: conditional-concentration 적용",
+   "lines": [
+    609,
+    611
+   ],
+   "card": "decor:overlap-concentration.s5",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "(variance-estimate)에서 L→∞로 보내면 C_k(L^{-1} + V_{k-1,L}(η/2)^{1/2})→0"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 609–611",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "x_CC",
+   "kind": "external",
+   "title": "Proposition: 조건부 decorrelation",
+   "external_ref": "CC",
+   "import_edge": "t15",
+   "items": [
+    "V_to_zero",
+    "fiber_bound",
+    "main"
+   ]
+  },
+  {
+   "id": "x_DC",
+   "kind": "external",
+   "title": "Lemma: 깊이에 대한 평균 연속성",
+   "external_ref": "DC",
+   "import_edge": "t14",
+   "items": []
+  },
+  {
+   "id": "x_PB",
+   "kind": "external",
+   "title": "자식을 평균으로 바꾸는 사영",
+   "external_ref": "PB",
+   "import_edge": "t13",
+   "items": [
+    "product_mean",
+    "projection"
+   ]
+  },
+  {
+   "id": "x_X_EXT",
+   "kind": "external",
+   "title": "extension 규칙 (계수 $1$, $\\gamma_\\beta$)",
+   "external_ref": "X_EXT",
+   "import_edge": "t23",
+   "items": [
+    "empty_weight",
+    "rule"
+   ]
+  },
+  {
+   "id": "x_X_RT",
+   "kind": "external",
+   "title": "Lemma: reference-path 총합",
+   "external_ref": "X_RT",
+   "import_edge": "t17",
+   "items": [
+    "kappa_total"
+   ]
+  },
+  {
+   "id": "x_X_SAMP",
+   "kind": "external",
+   "title": "tree 표본 규칙",
+   "external_ref": "X_SAMP",
+   "import_edge": "t18",
+   "items": [
+    "children_independent",
+    "leaf_removal"
+   ]
+  },
+  {
+   "id": "x_X_TI",
+   "kind": "external",
+   "title": "Theorem: prescribed tree 위의 항등식",
+   "external_ref": "X_TI",
+   "import_edge": "t16",
+   "items": [
+    "anchor_constraint",
+    "empty_addition",
+    "identity"
+   ]
+  },
+  {
+   "id": "o_main",
+   "kind": "output",
+   "title": "main",
+   "output_items": [
+    "main"
+   ],
+   "lines": [
+    65,
+    74
+   ],
+   "note": "계약 항목의 줄이 어느 카드 걸음에도 걸치지 않는다(진술 안의 항목). 증명 걸음에서 오지 않는다"
+  }
+ ],
+ "edges": [
+  {
+   "id": "c1",
+   "from": "x_X_TI",
+   "to": "k1",
+   "kind": "call",
+   "carries": [
+    "identity",
+    "anchor_constraint",
+    "empty_addition"
+   ],
+   "used_at": [
+    533
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "X_TI.empty_addition을 쓴다. 'no added colors'이므로 R_E=R_{\\{a_*\\}}=R_S"
+  },
+  {
+   "id": "c2",
+   "from": "x_X_TI",
+   "to": "k2",
+   "kind": "call",
+   "carries": [
+    "identity",
+    "anchor_constraint",
+    "empty_addition"
+   ],
+   "used_at": [
+    539,
+    540,
+    541
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "X_TI.anchor_constraint를 쓴다. marker anchor이고, 추가 color와 anchor의 split 깊이를 e-1로 처방한다"
+  },
+  {
+   "id": "c3",
+   "from": "x_X_RT",
+   "to": "k2",
+   "kind": "call",
+   "carries": [
+    "kappa_total"
+   ],
+   "used_at": [
+    543,
+    544,
+    545,
+    546,
+    547
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "X_RT.kappa_total을 쓴다. fresh subtree 위의 계수 총합은 κ(S)"
+  },
+  {
+   "id": "c4",
+   "from": "k2",
+   "to": "k3",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    557,
+    558,
+    559,
+    568
+   ],
+   "origin": "card",
+   "status": "connected"
+  },
+  {
+   "id": "c5",
+   "from": "x_X_TI",
+   "to": "k3",
+   "kind": "call",
+   "carries": [
+    "identity",
+    "anchor_constraint",
+    "empty_addition"
+   ],
+   "used_at": [
+    556,
+    557,
+    558,
+    559
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "X_TI.identity를 쓴다"
+  },
+  {
+   "id": "c6",
+   "from": "x_X_SAMP",
+   "to": "k3",
+   "kind": "call",
+   "carries": [
+    "children_independent",
+    "leaf_removal"
+   ],
+   "used_at": [
+    550,
+    551,
+    552,
+    553
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "X_SAMP.children_independent를 쓴다. target과 old copy는 \\mathscr F_{e-1} 아래에서 조건부 독립이다"
+  },
+  {
+   "id": "c7",
+   "from": "x_PB",
+   "to": "k4",
+   "kind": "call",
+   "carries": [
+    "projection",
+    "product_mean"
+   ],
+   "used_at": [
+    579,
+    580,
+    581
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "PB.projection(B=1)을 쓴다"
+  },
+  {
+   "id": "c8",
+   "from": "k3",
+   "to": "k5",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    596,
+    597
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "(prefix-projection-concentration)을 쓴다"
+  },
+  {
+   "id": "c9",
+   "from": "k4",
+   "to": "k5",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    591,
+    592,
+    593,
+    594
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "G, G_-, (projection-bound)의 결과, (adjacent-prefix-error)를 쓴다"
+  },
+  {
+   "id": "c10",
+   "from": "k5",
+   "to": "k6",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    609,
+    610
+   ],
+   "origin": "card",
+   "status": "connected"
+  },
+  {
+   "id": "c11",
+   "from": "x_CC",
+   "to": "k6",
+   "kind": "call",
+   "carries": [
+    "fiber_bound",
+    "V_to_zero",
+    "main"
+   ],
+   "used_at": [
+    609,
+    610
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "Proposition conditional-concentration(CC.main), 실제로는 V_{k-1,L}(η/2)→0"
+  },
+  {
+   "id": "c12",
+   "from": "x_X_EXT",
+   "to": "k1",
+   "kind": "call",
+   "carries": [
+    "empty_weight"
+   ],
+   "used_at": [
+    533,
+    534,
+    535
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "빈 extension의 무게 1(k=0이면 c_E 합이 1)"
+  },
+  {
+   "id": "c13",
+   "from": "x_X_EXT",
+   "to": "k2",
+   "kind": "call",
+   "carries": [
+    "rule"
+   ],
+   "used_at": [
+    541,
+    542,
+    547
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "e-1에서의 fresh path 계수 γ_β = m_{e-1} - n_β m_e (n_β=1)"
+  },
+  {
+   "id": "c14",
+   "from": "x_X_TI",
+   "to": "k3",
+   "kind": "call",
+   "carries": [
+    "anchor_constraint"
+   ],
+   "used_at": [
+    552,
+    553
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "marker anchor에서 R_E는 target color들의 multioverlap, 곧 target copy의 R_S이다"
+  },
+  {
+   "id": "c15",
+   "from": "x_X_SAMP",
+   "to": "k3",
+   "kind": "call",
+   "carries": [
+    "leaf_removal"
+   ],
+   "used_at": [
+    553,
+    554,
+    555
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "marker의 e-1 아래 연속을 지워도 target의 법칙은 보통의 S 법칙으로 남는다"
+  },
+  {
+   "id": "c16",
+   "from": "x_PB",
+   "to": "k4",
+   "kind": "call",
+   "carries": [
+    "product_mean"
+   ],
+   "used_at": [
+    576
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "PB.product_mean: G = 1·a_{S,e} = 1·μ_{e,S}"
+  },
+  {
+   "id": "c17",
+   "from": "x_CC",
+   "to": "k6",
+   "kind": "call",
+   "carries": [
+    "V_to_zero"
+   ],
+   "used_at": [
+    609,
+    610
+   ],
+   "origin": "llm_fill",
+   "status": "connected",
+   "note": "V_{k-1,L}(η/2)→0 (L→∞)"
+  }
+ ]
+}

@@ -1,0 +1,265 @@
+{
+ "id": "pb",
+ "title": "자식을 평균으로 바꾸는 사영 — 카드 뼈대 판",
+ "parent": {
+  "graph": "top",
+  "node": "PB"
+ },
+ "summary": "카드(redesign/cards)의 경계와 의존에서 기계로 만든 뼈대에, LLM이 카드에 없는 의존과 원문에 없는 걸음만 채웠다. 진술은 원문 줄과 카드 번역이다(SPEC 7.8).",
+ "build": {
+  "skeleton": "card_skeleton.py",
+  "fill": "P2-fill.json",
+  "assemble": "assemble_cards.py"
+ },
+ "card_mismatch": [
+  {
+   "card": "decor:projection-bound",
+   "issue": "k2(216-230)에는 식 (projection-bound)의 증명(216-225)과 따름 용법 셋(B=1, 다른 side 둘, 상관된 스칼라 f를 곱한 L^1 경계, 226-230)이 한 카드에 섞여 있다. THM은 B=1 경우만 쓴다"
+  },
+  {
+   "card": "decor:projection-definition",
+   "issue": "k1에 들어 있는 μ_{e,S}=∏μ_{e,T_j}(209-210)는 정의가 아니라 사실이며, THM 입력 목록에서는 별도 항목 PB.product_mean으로 나간다. 정의 카드와 경계가 맞지 않는다"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "k1",
+   "kind": "step",
+   "title": "첫 갈라짐에서의 사영 $a_{S,e}$와 오차량 $p_N(S,e)$",
+   "lines": [
+    208,
+    215
+   ],
+   "card": "decor:projection-definition",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "A_S = ∏_j A_{T_j}(좌표별)이고 μ_{e,S}=E[A_S|F_e]. 조건부 독립이면 E[∏A_{T_j}|F_e] = ∏E[A_{T_j}|F_e]"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 208–215",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k2",
+   "kind": "step",
+   "title": "첫 갈라짐에서 자식을 평균으로 바꾸는 오차",
+   "lines": [
+    216,
+    230
+   ],
+   "card": "decor:projection-bound",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "망원 분해: A_S - a_{S,e} = Σ_j (∏_{i<j}μ_{e,T_i})(A_{T_j}-μ_{e,T_j})(∏_{i>j}A_{T_i}). 각 항에서 B' = B·(나머지 인수) ∈ [-1,1]^N는 F_e 아래에서 A_{T_j}와 조건부 독립이므로(B가 S의 연속과 독립이고 자식들이 서로 독립) CON에 의해 ≤ v_N(T_j,e)^{1/4}"
+    },
+    {
+     "what": "두 side: 각 side를 차례로 사영하면, 다른 side는 유계 multiplier이므로 오차가 각각 ≤ p_N이고, 삼각부등식으로 합계 ≤ 2p_N"
+    }
+   ],
+   "floor_used": [
+    "삼각부등식",
+    "L^1≤L^2, 유계 곱"
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 216–230",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "x_CON",
+   "kind": "external",
+   "title": "Lemma: 축약과 세 사본",
+   "external_ref": "CON",
+   "import_edge": "t2",
+   "items": [
+    "contraction"
+   ]
+  },
+  {
+   "id": "x_X_SAMP",
+   "kind": "external",
+   "title": "tree 표본 규칙",
+   "external_ref": "X_SAMP",
+   "import_edge": "t21",
+   "items": [
+    "children_independent"
+   ]
+  },
+  {
+   "id": "o_product_mean",
+   "kind": "output",
+   "title": "product_mean",
+   "output_items": [
+    "product_mean"
+   ],
+   "lines": [
+    208,
+    210
+   ]
+  },
+  {
+   "id": "o_projection",
+   "kind": "output",
+   "title": "projection",
+   "output_items": [
+    "projection"
+   ],
+   "lines": [
+    216,
+    225
+   ]
+  },
+  {
+   "id": "o_two_sides",
+   "kind": "output",
+   "title": "two_sides",
+   "output_items": [
+    "two_sides"
+   ],
+   "lines": [
+    225,
+    228
+   ]
+  },
+  {
+   "id": "o_scalar_test",
+   "kind": "output",
+   "title": "scalar_test",
+   "output_items": [
+    "scalar_test"
+   ],
+   "lines": [
+    228,
+    230
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "id": "c1",
+   "from": "x_X_SAMP",
+   "to": "k1",
+   "kind": "call",
+   "carries": [
+    "children_independent"
+   ],
+   "used_at": [
+    209,
+    210
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "children_independent를 써서 μ_{e,S}=∏μ_{e,T_j}를 얻는다. a_{S,e}의 정의(212) 자체는 이 항목이 없어도 선다"
+  },
+  {
+   "id": "c2",
+   "from": "k1",
+   "to": "k2",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    220
+   ],
+   "origin": "card",
+   "status": "connected"
+  },
+  {
+   "id": "c3",
+   "from": "x_CON",
+   "to": "k2",
+   "kind": "call",
+   "carries": [
+    "contraction"
+   ],
+   "used_at": [
+    217,
+    218,
+    223,
+    224,
+    225
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "CON.contraction을 T_j, d=e에 적용한다"
+  },
+  {
+   "id": "c4",
+   "from": "x_X_SAMP",
+   "to": "k2",
+   "kind": "call",
+   "carries": [
+    "children_independent"
+   ],
+   "used_at": [
+    223,
+    224,
+    225
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "나머지 자식이 바꾸는 자식과 \\mathscr F_e 아래에서 독립이다"
+  },
+  {
+   "id": "c5",
+   "from": "k1",
+   "to": "o_product_mean",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    210
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c6",
+   "from": "k2",
+   "to": "o_projection",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    225
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c7",
+   "from": "k2",
+   "to": "o_two_sides",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    228
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c8",
+   "from": "k2",
+   "to": "o_scalar_test",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    230
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  }
+ ]
+}

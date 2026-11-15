@@ -1,0 +1,696 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "trees.tex",
+ "lines": 525,
+ "nodes": [
+  {
+   "id": "tree:multioverlap",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     41,
+     49
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:multioverlap",
+     "line": 44
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:Y-recursion",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     67,
+     82
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:Y-recursion",
+     "line": 68
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:updated-kernel",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     67,
+     82
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:updated-kernel",
+     "line": 76
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:insertion",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Insertion calculus",
+   "statement_span": [
+    84,
+    111
+   ],
+   "proof_span": [
+    113,
+    133
+   ],
+   "span": [
+    [
+     84,
+     111
+    ],
+    [
+     113,
+     133
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:density",
+     "line": 98
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:first-variation",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     142,
+     154
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:first-variation",
+     "line": 146
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:telescoping",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     204,
+     222
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:telescoping",
+     "line": 205
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:Q-rule",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     204,
+     222
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:Q-rule",
+     "line": 213
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:log-expansion",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Logarithmic expansion",
+   "statement_span": [
+    224,
+    239
+   ],
+   "proof_span": [
+    241,
+    257
+   ],
+   "span": [
+    [
+     224,
+     239
+    ],
+    [
+     241,
+     257
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:log-series",
+     "line": 226
+    },
+    {
+     "label": "tree:log-tail",
+     "line": 236
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:extension-expansion",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Canceled-anchor expansion",
+   "statement_span": [
+    278,
+    296
+   ],
+   "proof_span": [
+    298,
+    304
+   ],
+   "span": [
+    [
+     278,
+     296
+    ],
+    [
+     298,
+     304
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:mixed-expansion",
+     "line": 283
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:reference-total",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Reference-path totals",
+   "statement_span": [
+    337,
+    357
+   ],
+   "proof_span": [
+    359,
+    386
+   ],
+   "span": [
+    [
+     337,
+     357
+    ],
+    [
+     359,
+     386
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:one-reference-total",
+     "line": 343
+    },
+    {
+     "label": "tree:K",
+     "line": 349
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:charging",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Charging fresh splits",
+   "statement_span": [
+    393,
+    415
+   ],
+   "proof_span": [
+    417,
+    456
+   ],
+   "span": [
+    [
+     393,
+     415
+    ],
+    [
+     417,
+     456
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:charging-bound",
+     "line": 400
+    },
+    {
+     "label": "tree:relative-charging",
+     "line": 411
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "tree:regular-shapes",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Regular shapes",
+   "statement_span": [
+    469,
+    484
+   ],
+   "proof_span": [
+    486,
+    514
+   ],
+   "span": [
+    [
+     469,
+     484
+    ],
+    [
+     486,
+     514
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "tree:irregular-probability",
+     "line": 472
+    },
+    {
+     "label": "tree:assignment-probability",
+     "line": 478
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:model:chain",
+   "label": "model:chain",
+   "file": "model.tex",
+   "line": 72,
+   "env": "equation"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:comparison.tex",
+   "file": "comparison.tex",
+   "uses": [
+    {
+     "node": "tree:log-expansion",
+     "item": "tree:log-expansion",
+     "line": 123
+    },
+    {
+     "node": "tree:regular-shapes",
+     "item": "tree:regular-shapes",
+     "line": 141
+    },
+    {
+     "node": "tree:Y-recursion",
+     "item": "tree:Y-recursion",
+     "line": 175
+    },
+    {
+     "node": "tree:log-expansion",
+     "item": "tree:log-expansion",
+     "line": 205
+    }
+   ]
+  },
+  {
+   "id": "OUT:decorrelation.tex",
+   "file": "decorrelation.tex",
+   "uses": [
+    {
+     "node": "tree:multioverlap",
+     "item": "tree:multioverlap",
+     "line": 61
+    },
+    {
+     "node": "tree:reference-total",
+     "item": "tree:K",
+     "line": 332
+    },
+    {
+     "node": "tree:charging",
+     "item": "tree:charging",
+     "line": 348
+    },
+    {
+     "node": "tree:reference-total",
+     "item": "tree:reference-total",
+     "line": 414
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "tree:section",
+     "line": 24
+    }
+   ]
+  },
+  {
+   "id": "OUT:perturbations.tex",
+   "file": "perturbations.tex",
+   "uses": [
+    {
+     "node": "tree:insertion",
+     "item": "tree:insertion",
+     "line": 334
+    },
+    {
+     "node": "tree:insertion",
+     "item": "tree:density",
+     "line": 335
+    },
+    {
+     "node": "tree:insertion",
+     "item": "tree:density",
+     "line": 370
+    },
+    {
+     "node": "tree:extension-expansion",
+     "item": "tree:extension-expansion",
+     "line": 391
+    },
+    {
+     "node": "tree:extension-expansion",
+     "item": "tree:extension-expansion",
+     "line": 433
+    }
+   ]
+  },
+  {
+   "id": "OUT:upper.tex",
+   "file": "upper.tex",
+   "uses": [
+    {
+     "node": "tree:log-expansion",
+     "item": "tree:log-expansion",
+     "line": 81
+    },
+    {
+     "node": "tree:log-expansion",
+     "item": "tree:log-expansion",
+     "line": 97
+    },
+    {
+     "node": "tree:log-expansion",
+     "item": "tree:log-expansion",
+     "line": 121
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "tree:Y-recursion",
+   "to": "tree:insertion",
+   "item": "tree:Y-recursion",
+   "ref_line": 89,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:updated-kernel",
+   "to": "tree:insertion",
+   "item": "tree:updated-kernel",
+   "ref_line": 90,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:updated-kernel",
+   "to": "tree:insertion",
+   "item": "tree:updated-kernel",
+   "ref_line": 123,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:updated-kernel",
+   "to": "tree:insertion",
+   "item": "tree:updated-kernel",
+   "ref_line": 126,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:Y-recursion",
+   "to": "tree:insertion",
+   "item": "tree:Y-recursion",
+   "ref_line": 132,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:Y-recursion",
+   "to": "tree:first-variation",
+   "item": "tree:Y-recursion",
+   "ref_line": 142,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:first-variation",
+   "to": "tree:log-expansion",
+   "item": "tree:first-variation",
+   "ref_line": 243,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:telescoping",
+   "to": "tree:log-expansion",
+   "item": "tree:telescoping",
+   "ref_line": 247,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:telescoping",
+   "to": "tree:charging",
+   "item": "tree:telescoping",
+   "ref_line": 418,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:Q-rule",
+   "to": "tree:regular-shapes",
+   "item": "tree:Q-rule",
+   "ref_line": 490,
+   "cmd": "eqref"
+  },
+  {
+   "from": "tree:Q-rule",
+   "to": "tree:regular-shapes",
+   "item": "tree:Q-rule",
+   "ref_line": 504,
+   "cmd": "eqref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "tree:density",
+   "line": 131,
+   "cmd": "eqref",
+   "node": "tree:insertion"
+  },
+  {
+   "label": "tree:telescoping",
+   "line": 218,
+   "cmd": "eqref",
+   "node": "tree:telescoping"
+  },
+  {
+   "label": "tree:log-series",
+   "line": 254,
+   "cmd": "eqref",
+   "node": "tree:log-expansion"
+  },
+  {
+   "label": "tree:log-tail",
+   "line": 256,
+   "cmd": "eqref",
+   "node": "tree:log-expansion"
+  },
+  {
+   "label": "tree:K",
+   "line": 385,
+   "cmd": "eqref",
+   "node": "tree:reference-total"
+  },
+  {
+   "label": "tree:charging-bound",
+   "line": 446,
+   "cmd": "eqref",
+   "node": "tree:charging"
+  },
+  {
+   "label": "tree:irregular-probability",
+   "line": 497,
+   "cmd": "eqref",
+   "node": "tree:regular-shapes"
+  },
+  {
+   "label": "tree:assignment-probability",
+   "line": 501,
+   "cmd": "eqref",
+   "node": "tree:regular-shapes"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "model:chain",
+   "line": 26,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:model:chain"
+  },
+  {
+   "label": "tree:density",
+   "line": 173,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "tree:insertion"
+  },
+  {
+   "label": "tree:density",
+   "line": 185,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "tree:insertion"
+  },
+  {
+   "label": "tree:first-variation",
+   "line": 196,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "tree:first-variation"
+  },
+  {
+   "label": "tree:assignment-probability",
+   "line": 518,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "tree:regular-shapes"
+  },
+  {
+   "label": "tree:irregular-probability",
+   "line": 523,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "tree:regular-shapes"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "tree:section",
+   "line": 1,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": "tree:original-tilt",
+   "line": 58,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "tree:averaging-remark",
+   "line": 516,
+   "env": "remark",
+   "referenced": false
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   40
+  ],
+  [
+   51,
+   66
+  ],
+  [
+   135,
+   141
+  ],
+  [
+   156,
+   203
+  ],
+  [
+   259,
+   277
+  ],
+  [
+   306,
+   336
+  ],
+  [
+   388,
+   392
+  ],
+  [
+   458,
+   468
+  ],
+  [
+   516,
+   525
+  ]
+ ],
+ "stats": {
+  "nodes": 12,
+  "edges": 11,
+  "internal_refs": 8,
+  "unassigned_refs": 6,
+  "external_inputs": 1,
+  "consumers": 5,
+  "refs_total": 25
+ }
+}

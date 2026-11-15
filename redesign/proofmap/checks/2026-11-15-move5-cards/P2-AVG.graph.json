@@ -1,0 +1,233 @@
+{
+ "id": "avg",
+ "title": "깊이 평균과 그 두 비교 — 카드 뼈대 판",
+ "parent": {
+  "graph": "top",
+  "node": "AVG"
+ },
+ "summary": "카드(redesign/cards)의 경계와 의존에서 기계로 만든 뼈대에, LLM이 카드에 없는 의존과 원문에 없는 걸음만 채웠다. 진술은 원문 줄과 카드 번역이다(SPEC 7.8).",
+ "build": {
+  "skeleton": "card_skeleton.py",
+  "fill": "P2-fill.json",
+  "assemble": "assemble_cards.py"
+ },
+ "card_mismatch": [
+  {
+   "card": "decor:average-definition / decor:average-holder",
+   "issue": "k1(30-38)과 k2(36-43)가 36-38에서 겹친다. 정의식은 30-35에서 끝나고, 36-38(순서 제한, 질량 ≤1)은 k1의 정의 보충이자 k2의 전제이다"
+  },
+  {
+   "card": "x:decor-average-comparisons",
+   "issue": "k3에는 서로 다른 주장 둘(45의 안 쓰는 좌표, 45-47의 정수 이동)이 한 카드에 묶여 있다. 다른 node는 이 둘을 따로 쓴다(DC는 shift_regular만 받는다)"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "k1",
+   "kind": "step",
+   "title": "깊이 평균 $\\mathcal A_{L,\\eta}$",
+   "lines": [
+    30,
+    38
+   ],
+   "card": "decor:average-definition",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "질량 ≤1의 근거: 각 좌표가 L개 이하의 값을 가지므로 η-regular q는 많아야 L^a개이고, 따라서 L^{-a}·#{q} ≤ 1"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 30–38",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k2",
+   "kind": "step",
+   "title": "깊이 평균의 분수 거듭제곱 부등식",
+   "lines": [
+    36,
+    43
+   ],
+   "card": "decor:average-holder",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "w=L^{-a}·1_{reg}, m=Σw≤1로 두면 Σw z^γ ≤ m^{1-γ}(Σw z)^γ ≤ (Σw z)^γ (Hölder 지수 1/γ, 1/(1-γ))"
+    }
+   ],
+   "floor_used": [
+    "Jensen(오목, 질량 ≤1)"
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 36–43",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "k3",
+   "kind": "step",
+   "title": "깊이 평균의 두 기본 비교 (안 쓰는 좌표, 정수 이동)",
+   "lines": [
+    44,
+    47
+   ],
+   "card": "x:decor-average-comparisons",
+   "status": "sketch",
+   "author_filled": [
+    {
+     "what": "안 쓰는 좌표: 받는 항이 q_v와 무관하므로 Σ_{q_v} ≤ L·(나머지)이고, 이 L이 L^{-a} 안의 인수 L^{-1}과 상쇄된다"
+    },
+    {
+     "what": "정수 이동: 고정 정수 c만큼 옮기면 간격과 경계까지의 거리가 많아야 2|c| 바뀐다. 2|c| ≤ ηL/2이면(충분히 큰 L) η-regular가 η/2-regular로 가고, 평행이동이라 단사이다"
+    }
+   ],
+   "grounding": {
+    "source": "decorrelation.tex 44–47",
+    "state": "proposed"
+   }
+  },
+  {
+   "id": "o_def_A",
+   "kind": "output",
+   "title": "def_A",
+   "output_items": [
+    "def_A"
+   ],
+   "lines": [
+    30,
+    38
+   ]
+  },
+  {
+   "id": "o_holder",
+   "kind": "output",
+   "title": "holder",
+   "output_items": [
+    "holder"
+   ],
+   "lines": [
+    38,
+    43
+   ]
+  },
+  {
+   "id": "o_unused_coord",
+   "kind": "output",
+   "title": "unused_coord",
+   "output_items": [
+    "unused_coord"
+   ],
+   "lines": [
+    44,
+    45
+   ]
+  },
+  {
+   "id": "o_shift_regular",
+   "kind": "output",
+   "title": "shift_regular",
+   "output_items": [
+    "shift_regular"
+   ],
+   "lines": [
+    45,
+    47
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "id": "c1",
+   "from": "k1",
+   "to": "k2",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    37,
+    38,
+    40,
+    41
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "k2는 \"total mass at most one\"(37-38)과 \\mathcal A의 정규화 L^{-a}를 써서 (40-41)을 얻는다"
+  },
+  {
+   "id": "c2",
+   "from": "k1",
+   "to": "k3",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    45,
+    46,
+    47
+   ],
+   "origin": "card",
+   "status": "connected",
+   "note": "45는 \\mathcal A의 L^{-a} 정규화를 쓰고, 46-47은 \\mathcal A의 합 범위인 η-regular 배정을 쓴다"
+  },
+  {
+   "id": "c3",
+   "from": "k2",
+   "to": "o_def_A",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    38
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c4",
+   "from": "k2",
+   "to": "o_holder",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    43
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c5",
+   "from": "k3",
+   "to": "o_unused_coord",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    45
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  },
+  {
+   "id": "c6",
+   "from": "k3",
+   "to": "o_shift_regular",
+   "kind": "flow",
+   "carries": [
+    "result"
+   ],
+   "used_at": [
+    47
+   ],
+   "origin": "machine_output",
+   "status": "connected"
+  }
+ ]
+}

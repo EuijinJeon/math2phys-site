@@ -1,0 +1,359 @@
+{
+ "section": "reduction",
+ "nodes": [
+  {
+   "id": "reduction:stability",
+   "title": "Stability: $L^1$ 안정성과 상수 이동",
+   "env": "lemma",
+   "statement_span": [
+    9,
+    26
+   ],
+   "proof_span": [
+    28,
+    43
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "free_stability",
+     "label": "reduction:free-stability",
+     "statement": "결합된 두 상호작용 법칙 $\\theta,\\theta'$ 와 두 장 법칙 $h,h'$ (각각 (model:integrability) 를 만족, $p,\\alpha$ 고정) 에 대해 $D=\\mathbb E\\max_s|\\theta(s)-\\theta'(s)|$, $d=\\mathbb E|h-h'|$ 로 두면 모든 $N$ 에서 $|F_N-F_N'|\\le\\alpha D+d$.",
+     "lines": [
+      10,
+      15
+     ]
+    },
+    {
+     "id": "trial_stability",
+     "label": "reduction:trial-stability",
+     "statement": "같은 조건에서 모든 $r\\ge0$ (r=0 포함) 과 모든 시행 법칙에 대해 $|\\mathcal B_r(\\zeta,\\mathbf m)-\\mathcal B_r'(\\zeta,\\mathbf m)|\\le\\alpha(2p-1)D+d$ ($N,r$, 시행 법칙에 대해 균등).",
+     "lines": [
+      16,
+      19
+     ]
+    },
+    {
+     "id": "shift",
+     "label": "reduction:shift",
+     "statement": "적분가능한 확률 상수 $c$ (상호작용에 딸림) 에 대해 $\\widehat\\theta=\\theta-c$ 이면 $\\widehat F_N=F_N-\\alpha\\mathbb Ec$, $\\widehat{\\mathcal B}_r=\\mathcal B_r-\\alpha\\mathbb Ec$.",
+     "lines": [
+      20,
+      24
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "integrability",
+     "what": "두 법칙 모두 (model:integrability): $\\mathbb EB(\\theta)+\\mathbb E|h|<\\infty$",
+     "used_at": [
+      11
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s1",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "model_setting",
+     "what": "$p,\\alpha$, $B(\\theta)=\\max_s|\\theta(s)|$",
+     "used_at": [
+      11,
+      12
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "$H_N$, $Z_N$, $F_N$ 의 정의와 Poisson 개수·지표",
+     "used_at": [
+      15,
+      23,
+      29,
+      30,
+      31
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s1",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "$\\mathcal B_r$ 와 $\\widehat{\\mathcal B}_r$ (식 model:functional)",
+     "used_at": [
+      16,
+      17,
+      24,
+      40,
+      41,
+      42
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "what": "$r=0$ 의 $\\mathcal B_0$",
+     "used_at": [
+      19
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "message_hierarchy",
+     "what": "시행 법칙 $\\zeta$, 지수 $\\mathbf m$ 의 위계 message 사슬",
+     "used_at": [
+      16,
+      19
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "message_chain"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2"
+     ]
+    },
+    {
+     "id": "site_term",
+     "what": "site 항 $V_{\\rm s}$ (평균 $\\alpha p$ 개의 interaction)",
+     "used_at": [
+      35,
+      41
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "site_term"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "edge_term",
+     "what": "edge 항 $V_{\\rm e}$",
+     "used_at": [
+      34,
+      36,
+      41
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "edge_term"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "power_means",
+     "what": "조건부 거듭제곱 평균 $T_d$",
+     "used_at": [
+      34,
+      35,
+      39,
+      40
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "power_means"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "edge_partition",
+     "what": "edge 분배함수 $C_\\theta$ ('edge logarithm')",
+     "used_at": [
+      34
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "edge_partition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "cavity_weight",
+     "what": "cavity log-weight $U_\\theta$ ('cavity interaction')",
+     "used_at": [
+      33
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "site_log_weight"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "trial_finiteness",
+     "what": "시행 함수 $\\mathcal B_r$ 의 구성 요소가 유한 (차를 쓸 수 있음)",
+     "used_at": [
+      16
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:trial-bounds",
+      "item": "finiteness"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2"
+     ]
+    },
+    {
+     "id": "power_mean_monotone_homogeneous",
+     "what": "거듭제곱 평균은 root-가측 곱셈 유계를 보존하고 root-가측 인자는 밖으로 나온다",
+     "used_at": [
+      34,
+      35,
+      39,
+      40
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "power_mean_scaling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "reduction:stability",
+      "reduction:stability.s2",
+      "reduction:stability.s3"
+     ]
+    },
+    {
+     "id": "wald",
+     "what": "Poisson 개수 (평균 $\\alpha N$, $\\alpha p$, $\\alpha(p-1)$) 와 독립 항의 기댓값의 곱",
+     "used_at": [
+      35,
+      36,
+      41,
+      42
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "wald_identity"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": [
+    {
+     "card": "x:reduction-power-mean-scaling",
+     "what": "카드는 model.tex 90–97 이 단조·동차성을 말한다고 보지만 그 줄은 $T_d$ 의 정의뿐이고 단조성·동차성은 원문에 진술되어 있지 않다 (카드 자신이 '작성자 정식화'). 표준 사실이므로 floor power_mean_scaling 에 묶었다."
+    }
+   ]
+  }
+ ],
+ "symbols_new": [],
+ "floors_new": [],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    4,
+    7
+   ],
+   "what": "절 머리의 약속: bounded·순열 불변 하한과 factorization·positivity 상한을 상수 이동과 균등 근사로 잇는다는 개요",
+   "handled": "list"
+  }
+ ]
+}

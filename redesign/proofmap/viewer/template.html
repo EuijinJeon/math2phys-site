@@ -75,6 +75,13 @@ main{display:flex;gap:0;align-items:stretch;min-height:calc(100vh - 110px)}
 .recv .rl > span.lab{display:inline-block;font-size:11px;color:var(--muted);margin-right:6px}
 .recv details{margin-top:3px}
 .recv summary{font-size:12px;color:var(--rule-b);cursor:pointer}
+details.src summary,details.item summary,details.sym summary{font-size:12px;cursor:pointer;color:var(--rule-b)}
+details.src pre{font-size:11px;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:4px 6px;margin:3px 0;max-height:260px;overflow:auto}
+details.item,details.sym{border-left:2px solid var(--line);padding:1px 0 3px 8px;margin:5px 0}
+details.item .it-body{margin-top:3px}
+.it-from{font-size:11px;color:var(--muted)}
+.filled{color:#a33;font-size:12.5px}
+button.linkish{background:none;border:0;padding:0;color:var(--rule-b);cursor:pointer;text-decoration:underline;font:inherit;text-align:left}
 #panel h2{font-size:15px;margin:0 0 2px}
 #panel .kind{font-size:12px;color:var(--muted);margin-bottom:10px}
 #panel dl{margin:0}
@@ -186,6 +193,79 @@ const canvas = $('#canvas'), svg = $('#edges'), panel = $('#panel');
 
 function tex(el){ if (window.renderMathInElement) renderMathInElement(el, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}], throwOnError:false}); }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+/* SPEC 7.7 [제안]: 참조는 그 자리에 펼치거나 눌러서 바로 연다. 번호만 남기지 않는다. */
+const SRC = (typeof SRCLINES !== 'undefined') ? SRCLINES : {};
+const CARDS = (typeof CARDTEXT !== 'undefined') ? CARDTEXT : {};
+function rangeName(r){ return `${r[0]} ${r[1]}${r[2] !== r[1] ? '–' + r[2] : ''}행`; }
+function srcBlock(r, open){
+  if (!r) return '';
+  const L = SRC[r[0]] || {}; let t = '';
+  for (let i = r[1]; i <= r[2]; i++) if (L[i] !== undefined) t += String(i).padStart(4) + '  ' + L[i] + '\n';
+  return `<details class="src"${open ? ' open' : ''}><summary>원문 ${esc(rangeName(r))}</summary><pre>${esc(t || '(이 보기에 실리지 않은 줄)')}</pre></details>`;
+}
+function srcList(rs, open){ return (rs || []).map(r => srcBlock(r, open)).join(''); }
+function itemBlock(it, open, used){
+  if (!it) return '';
+  if (it.statement === undefined && it.fromRange) return `<details class="item"${open ? ' open' : ''}><summary>${esc(it.fromTitle)}의 결과</summary>${srcBlock(it.fromRange, true)}${used && used.length ? '<div class="it-from">받는 쪽이 쓰는 줄</div>' + srcList(used) : ''}</details>`;
+  if (it.statement === undefined) return `<div class="rl">${esc(it.item)}${used && used.length ? srcList(used) : ''}</div>`;
+  return `<details class="item"${open ? ' open' : ''}><summary>${esc(it.from)} — ${esc(it.item)}</summary><div class="it-body formula">${esc(it.statement)}</div>`
+    + (it.flag ? `<div class="filled">원문에 없는 부분: ${esc(it.flag)}</div>` : '')
+    + (it.lines ? srcBlock(it.lines) : '')
+    + (used && used.length ? `<div class="it-from">받는 쪽이 쓰는 줄</div>` + srcList(used) : '') + `</details>`;
+}
+function refPanel(n){
+  const x = n.x || {}; let h = '';
+  if (x.filled && x.filled.length) h += `<dt>원문에 없는 걸음 (작성자가 채움)</dt><dd>${x.filled.map(f => `<div class="filled">${esc(f)}</div>`).join('')}</dd>`;
+  if (x.lines) h += `<dt>이 node의 원문</dt><dd>${srcBlock(x.lines, true)}</dd>`;
+  if (x.card && CARDS[x.card]) h += `<dt>카드의 번역</dt><dd><details class="item" open><summary>${esc(CARDS[x.card].title)}</summary><div class="formula">${esc(CARDS[x.card].math)}</div></details></dd>`;
+  if (x.contract && x.contract.length) h += `<dt>출력 항목 (계약)</dt><dd>${x.contract.map(it => itemBlock(it, true)).join('')}</dd>`;
+  if (x.needs && x.needs.length) h += `<dt>입력과 묶인 곳 (${x.needs.length})</dt><dd>${x.needs.map(needBlock).join('')}</dd>`;
+  if (x.items && x.items.length) h += `<dt>밖에서 받아 쓰는 항목</dt><dd>${x.items.map(it => itemBlock(it, true)).join('')}</dd>`;
+  if (x.jump) h += `<dt>보낸 진술</dt><dd><button class="linkish jump-node" data-map="${esc(x.jump[0])}" data-node="${esc(x.jump[1])}">원래 절의 그 node 열기 ↗</button></dd>`;
+  if (x.symbols && x.symbols.length) h += `<dt>쓰는 기호</dt><dd>${x.symbols.map(sy => `<details class="sym"><summary>${esc(sy.tex)}${sy.local ? ' (증명 안)' : ''}</summary><div class="formula">${esc(sy.text)}</div>${srcList(sy.at)}</details>`).join('')}</dd>`;
+  return h;
+}
+const NEED_KIND = {node: '다른 node의 출력', symbol: '기호·정의 표', floor: '바닥', open: '열림'};
+function needBlock(d){
+  const t = d.target; let b = '';
+  if (d.type === 'node') b = t ? itemBlock(t, true) + (d.jump ? `<button class="linkish jump-node" data-map="${esc(d.jump[0])}" data-node="${esc(d.jump[1])}">그 node 열기 ↗</button>` : '') : '<div class="node-warning">묶인 항목을 찾지 못함</div>';
+  else if (d.type === 'symbol') b = t ? `<div class="formula">${esc(t.tex)} — ${esc(t.text)}</div>${srcList(t.at)}` : '<div class="node-warning">기호 표에 없음</div>';
+  else if (d.type === 'floor') b = t ? `<div class="formula">${esc(t.statement)}</div><div class="rl">${t.kind === 'cited' ? '인용 정리' : '표준 사실'}${t.cite ? ' · ' + esc(t.cite) : ''}</div>${srcList(t.at)}` : '<div class="node-warning">바닥 목록에 없음</div>';
+  else b = `<div class="node-warning">열림: ${esc(d.why || '')}</div>`;
+  const org = (d.origin || []).join('+');
+  return `<details class="item need-${esc(d.type)}"><summary>[${esc(NEED_KIND[d.type] || d.type)}] ${esc(d.what)}</summary>${b}${d.used && d.used.length ? '<div class="it-from">이 node가 쓰는 줄</div>' + srcList(d.used) : ''}${org ? '<div class="rl">출처: ' + esc(org) + '</div>' : ''}</details>`;
+}
+/* 글 안에 남은 참조를 그 자리에서 열리게 바꾼다: [NODE.item], NODE.item, 원문 label, 맨 위 node id */
+function linkifyPanel(root){
+  const LAB = CARDS.__labels__ || {}, IT = CARDS.__items__ || {}, LN = CARDS.__label_node__ || {}, TN = CARDS.__top_nodes__ || {}, TOP = CARDS.__top__;
+  if (!Object.keys(IT).length && !Object.keys(LAB).length) return;
+  const nodeIds = Object.keys(TN).filter(k => k.length >= 2).sort((a,b) => b.length - a.length);
+  const re = new RegExp(String.raw`\[([A-Z][A-Za-z_]*\.[a-z_]+)\]|\b([A-Z][A-Z_]+\.[a-z_]+)\b|\b((?:decor|pert|tree|comp|cavity|model|upper|reduction|cons|intro|over|main|x)[a-z]*:[a-z0-9.-]*[a-z0-9])|\b(` + nodeIds.map(x => x.replace(/[^A-Za-z0-9_]/g,'')).join('|') + String.raw`)\b`, 'g');
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list = [];
+  while (w.nextNode()){ const t = w.currentNode; if (t.parentElement.closest('summary,button,pre,code,.katex,script')) continue; if (re.test(t.textContent)) list.push(t); re.lastIndex = 0; }
+  list.forEach(t => {
+    const frag = document.createElement('span'); let last = 0, out = '';
+    t.textContent.replace(re, (m, a, b, lab, nid, off) => {
+      out += esc(t.textContent.slice(last, off)); last = off + m.length;
+      const key = a || b;
+      if (key && IT[key]) out += itemBlock(IT[key], false);
+      else if (lab && LN[lab]){ const t = LN[lab], mp = Array.isArray(t) ? t[0] : TOP, nd = Array.isArray(t) ? t[1] : t, tt = Array.isArray(t) ? ((CARDS.__node_titles__ || {})[nd] || nd) : TN[nd]; out += `<button class="linkish jump-node" data-map="${esc(mp)}" data-node="${esc(nd)}">${esc(lab)} (${esc(tt)}) ↗</button>`; }
+      else if (lab && CARDS[lab] && CARDS[lab].math !== undefined) out += `<details class="item"><summary>${esc(lab)} — ${esc(CARDS[lab].title)} (카드)</summary><div class="formula">${esc(CARDS[lab].math)}</div></details>`;
+      else if (lab && LAB[lab]) out += `<details class="src"><summary>${esc(lab)}</summary>${srcBlock(LAB[lab], true)}</details>`;
+      else if (nid && TN[nid]) out += `<button class="linkish jump-node" data-map="${esc(TOP)}" data-node="${esc(nid)}">${esc(TN[nid])} ↗</button>`;
+      else out += esc(m);
+      return m;
+    });
+    out += esc(t.textContent.slice(last));
+    frag.innerHTML = out; t.replaceWith(frag);
+  });
+  root.querySelectorAll('button.jump-node').forEach(b => b.onclick = ev => { ev.preventDefault(); cur = b.dataset.map; selEdge = null; selNode = b.dataset.node; render(); });
+}
+function carriesBlock(e, open){
+  const x = e.x || {};
+  if (!x.carries || !x.carries.length) return '';
+  return x.carries.map(it => itemBlock(it, open, it.used)).join('');
+}
 
 function boundaryCheck(mapId){
   const m = MAPS[mapId]; if (!m.parent) return null;
@@ -437,6 +517,7 @@ function showPanel(){
     const name = id => { const x = m.nodes.find(y => y.id === id) || MAPS.top.nodes.find(y => y.id === id); return x ? x.title : id; };
     h += `<h2>${esc(n.title)}</h2><div class="kind">${KIND[n.kind]}${n.type && n.type !== '-' ? ' · 유형 ' + esc(n.type) : ''}</div><dl>`;
     h += auditPanel(n);
+    h += refPanel(n);
     h += inputCoverage(n);
     const fr = m.frames.filter(f => f.nodes.includes(n.id));
     if (fr.length) h += `<dt>틀의 전제</dt><dd>${fr.map(f => esc(f.cap.replace(/^틀:\s*/, ''))).join('<br>')}</dd>`;
@@ -447,7 +528,8 @@ function showPanel(){
       const e = m.edges.find(x => x.from === id && x.to === n.id);
       const tn = e ? {flow:'흐름', call:'호출', def:'정의'}[e.type] : '정의';
       h += `<div class="recv"><div class="rh"><b>${esc(src ? src.title : id)}</b> <span class="tag">${tn}</span></div>`;
-      if (e && e.stmt) h += `<div class="rl"><span class="lab">edge ${esc(e.id)}</span>${esc(e.stmt)}</div>`;
+      if (e && e.x && e.x.carries && e.x.carries.length) h += `<div class="rl"><button class="linkish sel-edge" data-edge="${esc(e.id)}">이 edge 열기 (${esc(e.displayId)})</button></div>` + carriesBlock(e, false);
+      else if (e && e.stmt) h += `<div class="rl"><button class="linkish sel-edge" data-edge="${esc(e.id)}">edge ${esc(e.displayId)}</button> ${esc(e.stmt)}</div>`;
       else if (e && e.type === 'flow' && e.pass) h += `<div class="rl"><span class="lab">넘어오는 것</span>${esc(e.pass)}</div>`;
       if (!e) h += '<div class="node-warning">입력 edge가 없습니다. 아래 원본 진술은 참고이며 이 vertex에 전달된 내용이 아닙니다.</div>';
       const so = src ? full(src).out : '', sc = src ? full(src).cond : [];
@@ -461,8 +543,8 @@ function showPanel(){
     h += `<dt>${n.coverage.pending.length && n.coverage.bodyMode !== 'reference' ? '기존 전체 본문 · 선택 출력과 별도' : '주는 것'}</dt><dd class="formula">${esc(full(n).out || '—')}</dd>`;
     if (Object.keys(n.outputs).length) h += `<dt>이름 붙은 출력</dt><dd>${Object.entries(n.outputs).map(([key,o]) => `<code>${esc(key)}</code> · ${esc(o.title || key)}<br>유도: ${o.proof ? esc(o.proof.graph) + ' / ' + esc(o.proof.node) : '선언된 외부 가정·정의·인용 사실'}`).join('<br>')}</dd>`;
     const outs = m.edges.filter(x => x.from === n.id);
-    if (outs.length) h += `<dt>쓰이는 곳</dt><dd><ul>${outs.map(x => `<li>${esc(m.nodes.find(y => y.id === x.to).title)}${x.inst ? ' — ' + esc(x.inst) : ''}${x.stmt ? ' — edge ' + esc(x.id) : ''}</li>`).join('')}</ul></dd>`;
-    h += `<dt>근거</dt><dd>${n.cards.length ? n.cards.map(c => `<code>${esc(c)}</code>`).join(', ') : '—'}${n.source ? '<br>' + esc(n.source) : ''}${n.cards.length ? '<br>상태: ' + PROPOSED : ''}</dd>`;
+    if (outs.length) h += `<dt>쓰이는 곳</dt><dd><ul>${outs.map(x => `<li><button class="linkish sel-edge" data-edge="${esc(x.id)}">${esc(m.nodes.find(y => y.id === x.to).title)}로 가는 edge ${esc(x.displayId)}</button>${x.inst ? ' — ' + esc(x.inst) : ''}${x.x && x.x.carries ? carriesBlock(x, false) : ''}</li>`).join('')}</ul></dd>`;
+    h += `<dt>근거</dt><dd>${n.cards.length ? n.cards.map(c => `<code>${esc(c)}</code>`).join(', ') : ''}${n.x && n.x.groundingRefs && n.x.groundingRefs.length ? srcList(n.x.groundingRefs) : (n.source ? esc(n.source) : '—')}${n.cards.length ? '<br>상태: ' + PROPOSED : ''}</dd>`;
     h += `<dt>library 대응</dt><dd>${esc(n.lib || '—')}</dd>`;
     const cc = callCount(cur, n.id); if (cc) h += `<dt>이 장에서 호출되는 횟수</dt><dd>${cc}곳</dd>`;
     if (n.note) h += `<dt>메모</dt><dd>${esc(n.note)}</dd>`;
@@ -478,7 +560,7 @@ function showPanel(){
     const e = m.edges[selEdge];
     const a = m.nodes.find(x => x.id === e.from), b = m.nodes.find(x => x.id === e.to);
     const tn = {flow:'흐름', call:'호출', def:'정의'}[e.type];
-    h += `<h2>edge ${esc(e.displayId)} · ${esc(e.caption)}</h2><div class="kind"><code>${esc(e.id)}</code> · ${tn} · ${e.open ? '열린 연결' : (e.contentComplete ? '내용 완결' : '내용 미작성')}</div><dl>${e.outputRef ? '<dt>연결 검토</dt><dd>' + (e.contractIssues.length ? '재검토 필요' : (MAPS[e.outputRef.graph].nodes.find(n => n.id === e.outputRef.node).outputs[e.outputRef.output].role === 'given' ? '선언 입력 항목 참조 연결 · 기존 전체 본문 대응은 별도 검토' : '출력 참조 연결됨 · 검토 기록 일치')) + '</dd><dt>참조 출력</dt><dd><code>' + esc(e.outputRef.graph + '/' + e.outputRef.node + '.' + e.outputRef.output) + '</code></dd>' : ''}${e.contractIssues.length ? '<dt>출력 대응 문제</dt><dd class="node-warning">' + e.contractIssues.map(esc).join('<br>') + '</dd>' : ''}${e.useNote ? '<dt>받는 쪽의 사용 설명</dt><dd>' + esc(e.useNote) + '</dd>' : ''}<dt>보낸 node</dt><dd>${esc(a.title)} · ${esc(a.audit.label)}</dd><dt>받는 node</dt><dd>${esc(b.title)} · ${esc(b.audit.label)}</dd><dt>${e.contentComplete ? '싣는 내용 전체' : '현재 초안 · 전달 내용 미완결'}</dt><dd class="formula">${esc(e.stmt || e.pass || '아직 작성되지 않음')}</dd>${e.inst ? '<dt>예전 대입 표기</dt><dd>' + esc(e.inst) + '</dd>' : ''}${e.fit ? '<dt>연결 설명</dt><dd>' + esc(e.fit) + '</dd>' : ''}${e.nottaken ? '<dt>싣지 않는 것</dt><dd>' + esc(e.nottaken) + '</dd>' : ''}<dt>근거</dt><dd>${esc(e.src || '미기재')}</dd></dl><p class="note">edge 내용의 완결과 양 끝 vertex의 완결은 별도로 표시합니다.</p>`;
+    h += `<h2>edge ${esc(e.displayId)} · ${esc(e.caption)}</h2><div class="kind"><code>${esc(e.id)}</code> · ${tn} · ${e.open ? '열린 연결' : (e.contentComplete ? '내용 완결' : '내용 미작성')}</div><dl>${e.outputRef ? '<dt>연결 검토</dt><dd>' + (e.contractIssues.length ? '재검토 필요' : (MAPS[e.outputRef.graph].nodes.find(n => n.id === e.outputRef.node).outputs[e.outputRef.output].role === 'given' ? '선언 입력 항목 참조 연결 · 기존 전체 본문 대응은 별도 검토' : '출력 참조 연결됨 · 검토 기록 일치')) + '</dd><dt>참조 출력</dt><dd><code>' + esc(e.outputRef.graph + '/' + e.outputRef.node + '.' + e.outputRef.output) + '</code></dd>' : ''}${e.contractIssues.length ? '<dt>출력 대응 문제</dt><dd class="node-warning">' + e.contractIssues.map(esc).join('<br>') + '</dd>' : ''}${e.useNote ? '<dt>받는 쪽의 사용 설명</dt><dd>' + esc(e.useNote) + '</dd>' : ''}<dt>보낸 node</dt><dd>${esc(a.title)} · ${esc(a.audit.label)}</dd><dt>받는 node</dt><dd>${esc(b.title)} · ${esc(b.audit.label)}</dd>${e.x && e.x.carries && e.x.carries.length && e.x.carries[0].statement !== undefined ? '<dt>싣는 항목 (보낸 node의 출력)</dt><dd>' + carriesBlock(e, true) + '</dd>' : '<dt>' + (e.contentComplete ? '싣는 내용 전체' : '현재 초안 · 전달 내용 미완결') + '</dt><dd class="formula">' + esc(e.stmt || e.pass || '아직 작성되지 않음') + '</dd>' + (e.x && e.x.carries ? carriesBlock(e, true) : '')}${e.inst ? '<dt>예전 대입 표기</dt><dd>' + esc(e.inst) + '</dd>' : ''}${e.fit ? '<dt>연결 설명</dt><dd>' + esc(e.fit) + '</dd>' : ''}${e.nottaken ? '<dt>싣지 않는 것</dt><dd>' + esc(e.nottaken) + '</dd>' : ''}<dt>근거</dt><dd>${e.x && e.x.srcRefs && e.x.srcRefs.length ? srcList(e.x.srcRefs) : esc(e.src || '미기재')}</dd></dl><p class="note">edge 내용의 완결과 양 끝 vertex의 완결은 별도로 표시합니다.</p>`;
   } else {
     h += coveragePanel(m);
     const g = groundCount(cur);
@@ -492,6 +574,8 @@ function showPanel(){
   h += `<p class="note">내용은 현행 L2 §6, rules.md, 카드에서 옮겼다. 모든 근거의 상태는 proposed이고 사용자 확인 전이다. 닿는 면 검사는 이 파일의 자료에서 계산한 것이다.</p>`;
   panel.innerHTML = h;
   panel.querySelectorAll('button.focus-node').forEach(b => b.onclick = () => { selNode = b.dataset.node; selEdge = null; render(); });
+  for (let pass = 0; pass < 3; pass++) linkifyPanel(panel);  // 펼친 항목 안의 참조도 펼친다(깊이 3까지)
+  panel.querySelectorAll('button.sel-edge').forEach(b => b.onclick = () => { const i = MAPS[cur].edges.findIndex(x => x.id === b.dataset.edge); if (i >= 0){ selNode = null; selEdge = i; render(); } });
   panel.querySelectorAll('button.zoom').forEach(b => b.onclick = () => go(b.dataset.go));
   panel.querySelectorAll('button.follow-import').forEach(b => b.onclick = () => { cur=b.dataset.map; selNode=null; selEdge=MAPS[cur].edges.findIndex(e => e.id === b.dataset.edge); if (selEdge < 0) selEdge=null; render(); });
   tex(panel);

@@ -1,0 +1,617 @@
+{
+ "section": "cavity",
+ "nodes": [
+  {
+   "id": "cavity:negligible",
+   "title": "섭동의 비용 $|P_N^{L,\\mathbf u}-NF_N|\\le(\\log2)s_N$ (5.3)",
+   "env": "equation",
+   "statement_span": [
+    34,
+    41
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "pressure_def",
+     "statement": "섭동된 leaf 분배함수에 power-mean 재귀를 적용한 expected root logarithm 을 $P_N^{L,\\mathbf u}$ 로 쓴다.",
+     "lines": [
+      34,
+      36
+     ]
+    },
+    {
+     "id": "negligible",
+     "label": "cavity:negligible",
+     "statement": "섭동되지 않은 spin weight 와 점별로 비교한 뒤 재귀를 적용하면 $|P_N^{L,\\mathbf u}-NF_N|\\le(\\log2)s_N$; 위계, 그 매개변수, $N$ 에 대해 균등.",
+     "lines": [
+      36,
+      41
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "perturbation_factors",
+     "what": "섭동 factor 족 $\\psi_\\nu$, 개수 평균 $c_\\nu s_N$, 한계 $1/2\\le\\psi_\\nu\\le3/2$",
+     "used_at": [
+      34,
+      36,
+      38
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible",
+      "x:cavity-root-logarithm"
+     ]
+    },
+    {
+     "id": "cavity_grid",
+     "what": "$L$, $r=L-1$, 균등 격자 (재귀의 지수)",
+     "used_at": [
+      35,
+      41
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "x:cavity-root-logarithm"
+     ]
+    },
+    {
+     "id": "root_convention",
+     "what": "개수·type·site 는 root, 매개변수 $\\mathbf u$ 는 고정",
+     "used_at": [
+      35,
+      41
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_root_convention"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible",
+      "x:cavity-root-logarithm"
+     ]
+    },
+    {
+     "id": "original_tilt",
+     "what": "leaf 분배함수에 대한 backward power-mean 재귀",
+     "used_at": [
+      34,
+      35
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible",
+      "x:cavity-root-logarithm"
+     ]
+    },
+    {
+     "id": "extra_variables",
+     "what": "섭동 factor 가 쓰는 원래 모형에 없던 보조변수",
+     "used_at": [
+      38,
+      39
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "$F_N$ 과 분배함수",
+     "used_at": [
+      39
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible",
+      "x:cavity-root-logarithm"
+     ]
+    },
+    {
+     "id": "monotone_homogeneous",
+     "what": "점별 비교 후 재귀가 단조이고 root-가측 상수에 대해 동차이므로 그 비교가 보존됨",
+     "used_at": [
+      38,
+      39
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "monotone_homogeneous"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:negligible"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "cavity:increment",
+   "title": "Cavity increments (cavity 증분)",
+   "env": "lemma",
+   "statement_span": [
+    43,
+    69
+   ],
+   "proof_span": [
+    71,
+    115
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "increment_bounded",
+     "statement": "증분 $\\Delta_N^{L,\\mathbf u}=P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$ 은 $N,L,\\mathbf u$ 에 대해 균등하게 유계이다.",
+     "lines": [
+      44,
+      45
+     ]
+    },
+    {
+     "id": "reservoir",
+     "statement": "$N$ 개 spin 의 reservoir 가 있어 물리적 상호작용 개수의 평균이 $\\rho_N$, 장은 통상의 것, 섭동 개수의 평균이 $c_\\nu s_N$ 이고 아래 항등식이 성립한다.",
+     "lines": [
+      45,
+      50
+     ]
+    },
+    {
+     "id": "reservoir_mean",
+     "label": "cavity:reservoir-mean",
+     "statement": "$\\rho_N=\\alpha(N+1)\\bigl(\\frac N{N+1}\\bigr)^p$.",
+     "lines": [
+      47,
+      49
+     ]
+    },
+    {
+     "id": "identity",
+     "label": "cavity:identity",
+     "statement": "$\\Delta_N^{L,\\mathbf u}=\\log2+\\mathbb E\\log Y_{0,\\rm s}-\\mathbb E\\log Y_{0,\\rm b}+o_N(1)$.",
+     "lines": [
+      51,
+      53
+     ]
+    },
+    {
+     "id": "identity_error_uniform",
+     "statement": "오차는 $L,\\mathbf u$ 에 대해 균등하다.",
+     "lines": [
+      55,
+      55
+     ]
+    },
+    {
+     "id": "insertion_setting",
+     "statement": "삽입 재귀는 tilted reservoir kernel 과 독립인 새 root disorder 를 쓰고, 끝 삽입은 아래 $A_{\\rm s}$, $A_{\\rm b}$ 이다.",
+     "lines": [
+      55,
+      57
+     ]
+    },
+    {
+     "id": "site_insertion",
+     "label": "cavity:site-insertion",
+     "statement": "$A_{\\rm s}(\\sigma)=\\frac12\\sum_{\\varepsilon=\\pm1}\\exp\\bigl(h\\varepsilon+\\sum_{j=1}^{K_{\\rm s}}\\theta_j(\\sigma_{i_{1,j}},\\ldots,\\sigma_{i_{p-1,j}},\\varepsilon)\\bigr)$.",
+     "lines": [
+      58,
+      62
+     ]
+    },
+    {
+     "id": "bond_insertion",
+     "label": "cavity:bond-insertion",
+     "statement": "$A_{\\rm b}(\\sigma)=\\exp\\bigl(\\sum_{j=1}^{K_{\\rm b}}\\theta_j(\\sigma_{i_{1,j}},\\ldots,\\sigma_{i_{p,j}})\\bigr)$.",
+     "lines": [
+      63,
+      65
+     ]
+    },
+    {
+     "id": "insertion_counts",
+     "statement": "$K_{\\rm s}\\sim\\mathrm{Pois}(\\alpha p)$, $K_{\\rm b}\\sim\\mathrm{Pois}(\\alpha(p-1))$ 이고 표시된 모든 지표는 $[N]$ 의 독립 균등 지표이다.",
+     "lines": [
+      67,
+      68
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "root_log_pressure",
+     "what": "$P_N^{L,\\mathbf u}$ (expected root logarithm)",
+     "used_at": [
+      44
+     ],
+     "binding": {
+      "type": "node",
+      "node": "cavity:negligible",
+      "item": "pressure_def"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s3"
+     ]
+    },
+    {
+     "id": "cavity_bounded",
+     "what": "$B(\\theta)\\le B$, $|h|\\le H$, $\\theta$ 법칙의 순열 불변성",
+     "used_at": [
+      76,
+      96,
+      109
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_bounded"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s1",
+      "cavity:increment.s2",
+      "cavity:increment.s4"
+     ]
+    },
+    {
+     "id": "cavity_grid",
+     "what": "$L$, 균등 격자 ($N,L,\\mathbf u$ 에 균등한 경계)",
+     "used_at": [
+      44,
+      45
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "cavity_grid"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment"
+     ]
+    },
+    {
+     "id": "perturbation_factors",
+     "what": "섭동 factor 족과 개수 평균 $c_\\nu s_N$",
+     "used_at": [
+      50,
+      89,
+      95
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_factors"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s2"
+     ]
+    },
+    {
+     "id": "root_convention",
+     "what": "섭동 개수는 root 변수, 매개변수 $\\mathbf u$ 는 고정",
+     "used_at": [
+      44,
+      50
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "perturbation_root_convention"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s2"
+     ]
+    },
+    {
+     "id": "extra_variables",
+     "what": "쓰이지 않는 보조변수는 사전으로 적분해 없앨 수 있음, 새 root disorder",
+     "used_at": [
+      56,
+      97,
+      98
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s2",
+      "cavity:increment.s3"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "$(N+1)$-spin 계의 Poisson 상호작용 과정, 지표, 장",
+     "used_at": [
+      50,
+      73,
+      81
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s1"
+     ]
+    },
+    {
+     "id": "setting",
+     "what": "$p$, $\\alpha$, $\\theta$ 와 $h$ 의 법칙",
+     "used_at": [
+      67,
+      73,
+      76,
+      83
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "original_tilt",
+     "what": "tilted reservoir kernel",
+     "used_at": [
+      56
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s2",
+      "cavity:increment.s3"
+     ]
+    },
+    {
+     "id": "Y_recursion",
+     "what": "삽입 재귀 $Y_{0,\\rm s}$, $Y_{0,\\rm b}$",
+     "used_at": [
+      53,
+      55
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:Y-recursion",
+      "item": "Y_recursion"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment"
+     ]
+    },
+    {
+     "id": "Y_insertion",
+     "what": "power mean 의 삽입 항등식 (누적 root 로그의 변화가 $\\log Y_0$)",
+     "used_at": [
+      105,
+      106
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "root_log_shift"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "cavity:increment",
+      "cavity:increment.s2",
+      "cavity:increment.s3",
+      "cavity:increment.s4"
+     ]
+    },
+    {
+     "id": "monotone_homogeneous",
+     "what": "삽입 하나가 root 로그를 최대 $\\log2$ (섭동) 또는 $B$ (상호작용) 만 바꿈, $|\\log Y_0|$ 경계",
+     "used_at": [
+      95,
+      96,
+      109,
+      110
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "monotone_homogeneous"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "poisson_splitting",
+     "what": "Poisson 과정의 분할과 공통점 결합",
+     "used_at": [
+      73,
+      74,
+      76,
+      79,
+      90
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "poisson_splitting"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [
+    {
+     "card": "cavity:increment.s4",
+     "use": "cavity:negligible",
+     "why": "증명 71–115 에 (5.3) 을 쓰는 줄이 없다: 증분 경계는 $|\\log Y_{0,\\rm s}|\\le H+BK_{\\rm s}$ 와 coupling 평가(109–113)로만 얻는다."
+    }
+   ],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "perturbation_factors",
+   "tex": "$\\psi_\\nu,\\ c_\\nu,\\ s_N,\\ \\mathbf u$",
+   "defined_at": "cavity.tex 20–27",
+   "text": "$c_\\nu>0$, $\\sum c_\\nu=1$, $s_N=N^{3/4}$ 로 두고, 평균 $c_\\nu s_N$ 인 독립 Poisson 개수, $[N]$ 의 독립 균등 site 의 단일 site factor $\\psi_\\nu$ (각자의 보조변수를 위계를 따라 곱 사전으로 뽑음) 를 spin weight 에 더한다. $1/2\\le\\psi_\\nu\\le3/2$ (식 cavity:factor-bounds). 전체 개수는 $\\mathrm{Pois}(s_N)$."
+  },
+  {
+   "id": "cavity_grid",
+   "tex": "$L,\\ r,\\ m_d,\\ \\delta$",
+   "defined_at": "cavity.tex 16–19",
+   "text": "깊이 $L\\ge2$, $r=L-1$ 단계, 균등 격자 $m_d=d/L$ ($0\\le d\\le L$), $\\delta=1/L$ (식 cavity:grid)."
+  },
+  {
+   "id": "perturbation_root_convention",
+   "tex": "",
+   "defined_at": "cavity.tex 28–32",
+   "text": "섭동의 개수·type·site 는 root 변수이고 섭동 매개변수 $\\mathbf u$ 는 평균을 명시하지 않는 한 고정값이다."
+  },
+  {
+   "id": "cavity_bounded",
+   "tex": "$B,\\ H$",
+   "defined_at": "cavity.tex 11–14",
+   "text": "하한 증명에서 $B(\\theta)\\le B$, $|h|\\le H$ a.s. 이고 $\\theta$ 의 법칙이 $p$ 개 좌표의 순열에 불변이다 (절 §9 전까지). 인수분해·양성 가정은 쓰지 않는다."
+  },
+  {
+   "id": "cavity_tree_sampling",
+   "tex": "",
+   "defined_at": "cavity.tex 117–121",
+   "text": "하한 증명의 나머지에서 모든 spin tree 는 이 reservoir 에서 tilted 보조 kernel 과 terminal Gibbs kernel 로 표본추출한다."
+  }
+ ],
+ "floors_new": [
+  {
+   "id": "poisson_splitting",
+   "kind": "standard",
+   "statement": "Poisson 과정의 분할(thinning)과 중첩, 평균이 다른 두 Poisson 과정을 공통점으로 결합하면 서로 다른 점의 기대 개수는 평균의 차이 이하."
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    3,
+    9
+   ],
+   "what": "절 머리: reservoir 비교의 소개와 문헌, 섭동을 더해 spin tree 의 항등식을 얻는다는 약속",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    11,
+    14
+   ],
+   "what": "하한 증명의 유계·순열 불변 가정",
+   "handled": "symbol:cavity_bounded"
+  },
+  {
+   "lines": [
+    16,
+    19
+   ],
+   "what": "$L\\ge2$, $r=L-1$, 균등 격자 (식 cavity:grid)",
+   "handled": "symbol:cavity_grid"
+  },
+  {
+   "lines": [
+    20,
+    27
+   ],
+   "what": "Poisson 섭동 factor 족과 한계 (식 cavity:factor-bounds)",
+   "handled": "symbol:perturbation_factors"
+  },
+  {
+   "lines": [
+    28,
+    32
+   ],
+   "what": "섭동의 개수·type·site 는 root, 매개변수 $\\mathbf u$ 는 고정",
+   "handled": "symbol:perturbation_root_convention"
+  },
+  {
+   "lines": [
+    117,
+    121
+   ],
+   "what": "하한의 모든 spin tree 는 이 reservoir 에서 뽑는다",
+   "handled": "symbol:cavity_tree_sampling"
+  }
+ ]
+}

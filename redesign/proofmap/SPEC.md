@@ -294,3 +294,43 @@ edge와 문맥의 `defines: ["Y", "K_A"]`는 해당 진술에서 의미를 주�
   }]
 }
 ```
+
+### 7.7 [제안] 원문 구조 계약 graph (수 5 PoC, 2026-11-15)
+
+사용자 판정 전의 확장이다. `graphs/move5.json` 만 쓴다. `check.py` 는 이 키들을 모르고 통과시킨다(검사하지 않는다).
+
+- 문서 `symbols: [{id, tex, defined_at, text, added_by?}]` — 전역 기호·정의 표. 한 기호에 정의 위치(파일:줄) 하나. node는 `symbols: [id…]` 로 참조만 하고 정의를 다시 쓰지 않는다. 증명 안에서만 쓰는 기호는 하위 node의 `local_symbols`.
+- node `contract: {source_label, extraction_rule, statement_span, proof_span, outputs: [{id, statement, lines, author_filled?, added_by?}], needs: [{from, items}]}` — 계약. `extraction_rule` 은 `S`(진술 환경+증명), `E`(본문의 참조되는 번호 식), `external-ref`, `supplemented`(번호 없이 쓰는 외부 입력), `consumer`.
+- edge `carries: [{node, item, used_at: [줄], origin}]` — 보낸 node의 어느 출력 항목을 싣고 원문 어디서 쓰는지. `origin`: `machine`(\\ref/\\eqref/\\cref 로 추출), `supplemented`(계약 단계에서 증명 본문으로 보충), `found_on_open`(여는 작업에서 드러남). edge의 `origin` 은 그 합(`mixed` 가능). `statement` 는 실은 항목 진술을 이어 붙인 사본이다.
+- 하위 graph의 external node `import_edge`, `items` — 7.5절과 같은 뜻이지만 `edges_only` 가 아닌 graph에서도 쓴다. output node `output_items` — 맡는 계약 출력 항목.
+- 유도 줄 `by_refs` — subagent가 근거를 목록으로 쓴 원래 꼴. `by` 는 그것을 이은 문자열.
+- 무효화 규칙: 출력 항목·기호·바닥의 **추가**는 기존 사용처를 재검토로 돌리지 않는다. 기존 항목의 `statement`·조건이나 기호의 `text` 를 바꾸면 그 항목을 싣는 모든 edge의 받는 node를 재검토로 돌린다(아직 도구 없음; `checks/2026-11-15-move5-contract/integrate.py --diff` 가 둘레 밖 변경을 센다).
+- (2026-11-15 후속) **저장 단일화.** 맨 위 graph의 edge `statement`·`summary` 와 계약을 가진 node의 `statement` 는 저장하지 않는다. `tools/carries.py` 의 `resolve` 가 검사(`check.py`)와 보기(`build_viewer.py`) 전에 `carries` 와 `contract.outputs` 에서 메모리 사본을 만든다. 저장된 `statement` 가 있으면 그것을 쓴다(예전 자료 호환).
+- (2026-11-15 후속) **화면의 참조.** 보기는 출력 항목·싣는 항목·기호·원문 줄을 그 자리에 펼치거나 눌러 연다. 글 안에 남은 `[NODE.item]`, `NODE.item`, 원문 label, 맨 위 node id는 펼침 또는 그 node로 가는 단추가 된다. 독자가 번호를 들고 찾아가야 하는 곳은 결함이다(`checks/2026-11-15-move5-cost/audit_refs.js`).
+- (2026-11-15 후속) **원문 참조 node와 edge (구조만 판).** 7.8절로 올렸다. 하위 node가 `lines: [lo, hi]`(와 선택 `card`)를 가지면 그 원문 줄이 node의 진술이다. 그런 node에서 나오는 edge의 `carries: ["result"]` 는 "보낸 node의 원문 줄"을 싣는다는 뜻이고, (이 줄을 쓸 때의 판단 요청은 7.8절에서 "내용을 찾으면 완결"로 정했다.)
+
+### 7.8 원문 참조 node·edge (2026-11-15, 7.7절 끝의 [제안]에서 올림)
+
+하위 graph의 안쪽 node가 `lines: [시작, 끝]`(선택 `source_file`, 기본 `decorrelation.tex`; 선택 `card`)을 가지면 **그 원문 줄이 node의 진술이다.** `statement` 를 쓰지 않는다. 원문이 적지 않은 걸음은 `author_filled: [{what, expr?}]` 에 적는다.
+
+edge의 `carries` 가 문자열 목록이면 내용은 다음과 같이 정한다(`tools/carries.py` 의 `resolve`):
+
+- 보낸 node가 원문 참조 node이면(`carries: ["result"]` 꼴): 그 node의 원문 줄.
+- 보낸 node가 `import_edge` 를 가진 external이면: 부모 edge가 싣는 같은 이름 항목의 계약 진술.
+
+모두 찾으면 그 edge는 내용 완결(`complete: true`, `content_ref: source|item`)로 다룬다. 하나라도 못 찾으면 완결로 다루지 않는다. `used_at` 은 받는 쪽 원문 줄이다.
+
+원문 참조 node의 완결 선언(`status: complete`)은 `source_derivation: {"uses": [받는 edge id…]}` 를 함께 적어야 하고, `check.py` 는 다음을 본다: `lines` 가 [시작, 끝] 정수, 받는 edge가 모두 `uses` 에 있음, `uses` 에 받지 않는 edge 없음, 보내는 edge가 모두 `produces` 에 있음, 닿는 edge가 모두 내용 완결. 원문 줄이 결론을 실제로 증명하는지는 보지 않는다. 회귀 시험: `python3 redesign/proofmap/tools/test_source_ref.py`.
+
+보기는 원문 줄, 카드 번역(`card`), 원문에 없는 걸음을 그 자리에 펼친다. 카드 뼈대에서 이런 graph를 만드는 도구는 `checks/2026-11-15-move5-cards/card_skeleton.py`, `assemble_cards.py` 다.
+
+### 7.9 [제안] 논문 전체 계약과 입력 묶음 (2026-11-15)
+
+사용자 판정 전. `graphs/paper.json` 만 쓴다. 근거: `checks/2026-11-15-paper-contract/REPORT.md`.
+
+- 맨 위 graph `top`: 절 node `S_<절>`(id에 접두어를 붙여 보통 낱말이 화면에서 node 단추로 바뀌지 않게 한다)과 주정리 node `MAIN`. 절 → 절 edge는 절을 건너는 입력 항목을 싣는다. 하위 graph `s_<절>`: 그 절의 번호 붙은 진술이 node, 들어오는 절마다 external 하나(`external_ref` = 그 절 node, `import_edge` = 맨 위 edge), output node `OUT`.
+- 같은 문단의 참조 번호 식 여럿은 node 하나다(첫 label이 id, 나머지는 `contract.labels`).
+- node `contract.needs: [{id, what, used_at, used_file?, origin: [machine|card|llm], card_ids?, binding}]`. `binding.type` 은 `node`(`node` = 원문 label, `item`), `symbol`(문서 `symbols`), `floor`(문서 `floors: [{id, kind: cited|standard, statement, cite?, cited_at?}]`), `open`(`why`). `used_file` 은 쓰는 줄이 node의 기본 파일이 아닐 때다(주정리의 증명은 reduction.tex). 통합자가 바꾼 묶음은 `binding_by_author`·`integrator_note` 로 남긴다.
+- edge `carries[].graph`: 보낸 node가 다른 graph에 있을 때 그 graph id. `carries[].used_file` 은 위와 같다. `tools/carries.py`·`build_viewer.py` 가 이 키를 읽는다.
+- `check.py` 의 `check_bindings` 는 `binding` 을 가진 needs에만 적용한다. 대상이 있는지, 위치(항목 `lines`, 기호 `defined_at`, 인용 바닥의 `cite`·`cited_at`)가 있는지, 닫힌 입력에 `used_at` 이 있는지 본다. 열림은 경고다. 원문 줄이 그 내용을 말하는지는 보지 않는다. 시험: `tools/test_bindings.py`.
+- **파일을 건너는 참조 [제안, 아직 구현 없음].** `move4.json`·`move5.json` 의 외부 입력 node가 `paper.json` 의 항목을 가리키려면 external node에 `paper_ref: [{doc: "paper", node: <원문 label>, item}] | [{doc: "paper", symbol}]` 를 두고, 검사가 그 대상을 `paper.json` 에서 찾게 한다. 지금은 대응을 `checks/2026-11-15-paper-contract/correspondence.json` 에만 두었고 두 파일은 고치지 않았다.

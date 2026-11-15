@@ -1,0 +1,705 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "decorrelation.tex",
+ "lines": 623,
+ "nodes": [
+  {
+   "id": "decor:average-holder",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     30,
+     47
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:average-holder",
+     "line": 42
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "decor:identity-error",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     49,
+     58
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:identity-error",
+     "line": 56
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "decor:overlap-concentration",
+   "rule": "S",
+   "env": "theorem",
+   "title_opt": "",
+   "statement_span": [
+    63,
+    75
+   ],
+   "proof_span": [
+    532,
+    611
+   ],
+   "span": [
+    [
+     63,
+     75
+    ],
+    [
+     532,
+     611
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:overlap-concentration-equation",
+     "line": 70
+    }
+   ],
+   "internal_eqs": [
+    {
+     "label": "decor:marker-coefficient",
+     "line": 548,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:marker-variance-identity",
+     "line": 560,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:prefix-projection-concentration",
+     "line": 566,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:adjacent-prefix-error",
+     "line": 586,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:variance-estimate",
+     "line": 603,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": []
+  },
+  {
+   "id": "decor:contractions",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Contractions and three copies",
+   "statement_span": [
+    108,
+    125
+   ],
+   "proof_span": [
+    127,
+    140
+   ],
+   "span": [
+    [
+     108,
+     125
+    ],
+    [
+     127,
+     140
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:contraction-bound",
+     "line": 115
+    },
+    {
+     "label": "decor:three-copy-bound",
+     "line": 123
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "decor:depth-continuity",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Averaged continuity in depth",
+   "statement_span": [
+    142,
+    166
+   ],
+   "proof_span": [
+    168,
+    206
+   ],
+   "span": [
+    [
+     142,
+     166
+    ],
+    [
+     168,
+     206
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:branch-depth-continuity",
+     "line": 152
+    },
+    {
+     "label": "decor:evaluation-depth-continuity",
+     "line": 160
+    }
+   ],
+   "internal_eqs": [
+    {
+     "label": "decor:one-vertex-shift",
+     "line": 192,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": [
+    {
+     "label": "decor:martingale-energy",
+     "line": 174,
+     "refs_outside": [
+      {
+       "file": "decorrelation.tex",
+       "line": 583
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "decor:projection-bound",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     208,
+     230
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:projection-bound",
+     "line": 221
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "decor:conditional-concentration",
+   "rule": "S",
+   "env": "proposition",
+   "title_opt": "",
+   "statement_span": [
+    234,
+    245
+   ],
+   "proof_span": [
+    247,
+    524
+   ],
+   "span": [
+    [
+     234,
+     245
+    ],
+    [
+     247,
+     524
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "decor:conditional-concentration-equation",
+     "line": 240
+    }
+   ],
+   "internal_eqs": [
+    {
+     "label": "decor:V-definition",
+     "line": 256,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:c-weights",
+     "line": 273,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:singleton-identity",
+     "line": 285,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:shift-figure",
+     "line": 329,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:J-definition",
+     "line": 335,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:J-lower-bound",
+     "line": 343,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:projection-shift-error",
+     "line": 372,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:induction-identity",
+     "line": 442,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:induction-error",
+     "line": 451,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:projected-three-copy",
+     "line": 478,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:covariance-induction-estimate",
+     "line": 489,
+     "refs_outside": []
+    },
+    {
+     "label": "decor:induction-recursion",
+     "line": 518,
+     "refs_outside": []
+    }
+   ],
+   "exported_eqs": [
+    {
+     "label": "decor:relative-absolute-cost",
+     "line": 352,
+     "refs_outside": [
+      {
+       "file": "decorrelation.tex",
+       "line": 620
+      }
+     ]
+    },
+    {
+     "label": "decor:fiber-bound",
+     "line": 507,
+     "refs_outside": [
+      {
+       "file": "decorrelation.tex",
+       "line": 607
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:comp:section",
+   "label": "comp:section",
+   "file": "comparison.tex",
+   "line": 2,
+   "env": null
+  },
+  {
+   "id": "EXT:pert:selection",
+   "label": "pert:selection",
+   "file": "perturbations.tex",
+   "line": 256,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:pert:tree-identity",
+   "label": "pert:tree-identity",
+   "file": "perturbations.tex",
+   "line": 452,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:tree:K",
+   "label": "tree:K",
+   "file": "trees.tex",
+   "line": 349,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:charging",
+   "label": "tree:charging",
+   "file": "trees.tex",
+   "line": 393,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:tree:multioverlap",
+   "label": "tree:multioverlap",
+   "file": "trees.tex",
+   "line": 44,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:tree:reference-total",
+   "label": "tree:reference-total",
+   "file": "trees.tex",
+   "line": 337,
+   "env": "lemma"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:comparison.tex",
+   "file": "comparison.tex",
+   "uses": [
+    {
+     "node": "decor:overlap-concentration",
+     "item": "decor:overlap-concentration",
+     "line": 153
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "decor:section",
+     "line": 33
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "EXT:pert:tree-identity",
+   "to": "decor:identity-error",
+   "item": "pert:tree-identity",
+   "ref_line": 51,
+   "cmd": "ref"
+  },
+  {
+   "from": "decor:contractions",
+   "to": "decor:projection-bound",
+   "item": "decor:contraction-bound",
+   "ref_line": 218,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:average-holder",
+   "to": "decor:conditional-concentration",
+   "item": "decor:average-holder",
+   "ref_line": 262,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:contractions",
+   "to": "decor:conditional-concentration",
+   "item": "decor:three-copy-bound",
+   "ref_line": 288,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:K",
+   "to": "decor:conditional-concentration",
+   "item": "tree:K",
+   "ref_line": 332,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:tree:charging",
+   "to": "decor:conditional-concentration",
+   "item": "tree:charging",
+   "ref_line": 348,
+   "cmd": "ref"
+  },
+  {
+   "from": "decor:projection-bound",
+   "to": "decor:conditional-concentration",
+   "item": "decor:projection-bound",
+   "ref_line": 364,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:depth-continuity",
+   "to": "decor:conditional-concentration",
+   "item": "decor:depth-continuity",
+   "ref_line": 368,
+   "cmd": "ref"
+  },
+  {
+   "from": "EXT:tree:reference-total",
+   "to": "decor:conditional-concentration",
+   "item": "tree:reference-total",
+   "ref_line": 414,
+   "cmd": "ref"
+  },
+  {
+   "from": "decor:projection-bound",
+   "to": "decor:conditional-concentration",
+   "item": "decor:projection-bound",
+   "ref_line": 460,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:contractions",
+   "to": "decor:conditional-concentration",
+   "item": "decor:three-copy-bound",
+   "ref_line": 483,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:identity-error",
+   "to": "decor:conditional-concentration",
+   "item": "decor:identity-error",
+   "ref_line": 514,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:projection-bound",
+   "to": "decor:overlap-concentration",
+   "item": "decor:projection-bound",
+   "ref_line": 580,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:depth-continuity",
+   "to": "decor:overlap-concentration",
+   "item": "decor:martingale-energy",
+   "ref_line": 583,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:conditional-concentration",
+   "to": "decor:overlap-concentration",
+   "item": "decor:fiber-bound",
+   "ref_line": 607,
+   "cmd": "eqref"
+  },
+  {
+   "from": "decor:conditional-concentration",
+   "to": "decor:overlap-concentration",
+   "item": "decor:conditional-concentration",
+   "ref_line": 609,
+   "cmd": "ref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "decor:contraction-bound",
+   "line": 131,
+   "cmd": "eqref",
+   "node": "decor:contractions"
+  },
+  {
+   "label": "decor:martingale-energy",
+   "line": 194,
+   "cmd": "eqref",
+   "node": "decor:depth-continuity"
+  },
+  {
+   "label": "decor:shift-figure",
+   "line": 303,
+   "cmd": "Cref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:relative-absolute-cost",
+   "line": 358,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:projection-shift-error",
+   "line": 378,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:relative-absolute-cost",
+   "line": 456,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:induction-identity",
+   "line": 465,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:induction-identity",
+   "line": 473,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:projected-three-copy",
+   "line": 484,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:projection-shift-error",
+   "line": 513,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:V-definition",
+   "line": 520,
+   "cmd": "eqref",
+   "node": "decor:conditional-concentration"
+  },
+  {
+   "label": "decor:overlap-concentration",
+   "line": 532,
+   "cmd": "cref",
+   "node": "decor:overlap-concentration"
+  },
+  {
+   "label": "decor:prefix-projection-concentration",
+   "line": 597,
+   "cmd": "eqref",
+   "node": "decor:overlap-concentration"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "pert:selection",
+   "line": 6,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:pert:selection"
+  },
+  {
+   "label": "pert:tree-identity",
+   "line": 7,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:pert:tree-identity"
+  },
+  {
+   "label": "comp:section",
+   "line": 13,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:comp:section"
+  },
+  {
+   "label": "tree:multioverlap",
+   "line": 61,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:tree:multioverlap"
+  },
+  {
+   "label": "decor:relative-absolute-cost",
+   "line": 620,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "decor:conditional-concentration"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "decor:section",
+   "line": 2,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": "decor:averages",
+   "line": 16,
+   "env": null,
+   "referenced": false
+  },
+  {
+   "label": "decor:average-definition",
+   "line": 34,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "decor:covariance-definition",
+   "line": 101,
+   "env": "align",
+   "referenced": false
+  },
+  {
+   "label": "decor:projection-definition",
+   "line": 214,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "decor:order-of-limits",
+   "line": 614,
+   "env": "remark",
+   "referenced": false
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   29
+  ],
+  [
+   60,
+   62
+  ],
+  [
+   77,
+   107
+  ],
+  [
+   232,
+   233
+  ],
+  [
+   526,
+   531
+  ],
+  [
+   613,
+   623
+  ]
+ ],
+ "stats": {
+  "nodes": 7,
+  "edges": 16,
+  "internal_refs": 13,
+  "unassigned_refs": 5,
+  "external_inputs": 7,
+  "consumers": 2,
+  "refs_total": 34
+ }
+}

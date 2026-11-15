@@ -1,0 +1,442 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "model.tex",
+ "lines": 140,
+ "nodes": [
+  {
+   "id": "model:integrability",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     3,
+     23
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:integrability",
+     "line": 6
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:hamiltonian",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     3,
+     23
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:hamiltonian",
+     "line": 12
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:factorization",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     25,
+     44
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:factorization",
+     "line": 26
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:positivity",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     25,
+     44
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:positivity",
+     "line": 35
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:chain",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     68,
+     120
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:chain",
+     "line": 72
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:vs",
+   "rule": "E",
+   "env": "align",
+   "span": [
+    [
+     68,
+     120
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:vs",
+     "line": 87
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:functional",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     68,
+     120
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:functional",
+     "line": 112
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "model:trial-bounds",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     122,
+     128
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "model:trial-bounds",
+     "line": 125
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "main:theorem",
+   "rule": "S",
+   "env": "theorem",
+   "title_opt": "",
+   "statement_span": [
+    130,
+    136
+   ],
+   "proof_span": null,
+   "span": [
+    [
+     130,
+     136
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "main:formula",
+     "line": 133
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:upper:bound",
+   "label": "upper:bound",
+   "file": "upper.tex",
+   "line": 11,
+   "env": "proposition"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:comparison.tex",
+   "file": "comparison.tex",
+   "uses": [
+    {
+     "node": "model:chain",
+     "item": "model:chain",
+     "line": 72
+    },
+    {
+     "node": "model:vs",
+     "item": "model:vs",
+     "line": 180
+    },
+    {
+     "node": null,
+     "item": "model:section",
+     "line": 227
+    },
+    {
+     "node": "model:trial-bounds",
+     "item": "model:trial-bounds",
+     "line": 235
+    }
+   ]
+  },
+  {
+   "id": "OUT:consequences.tex",
+   "file": "consequences.tex",
+   "uses": [
+    {
+     "node": "model:hamiltonian",
+     "item": "model:hamiltonian",
+     "line": 8
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:formula",
+     "line": 19
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 33
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:formula",
+     "line": 47
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 63
+    },
+    {
+     "node": "model:functional",
+     "item": "model:functional",
+     "line": 83
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 112
+    },
+    {
+     "node": "model:functional",
+     "item": "model:functional",
+     "line": 137
+    }
+   ]
+  },
+  {
+   "id": "OUT:introduction.tex",
+   "file": "introduction.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "model:section",
+     "line": 32
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 85
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 50
+    }
+   ]
+  },
+  {
+   "id": "OUT:reduction.tex",
+   "file": "reduction.tex",
+   "uses": [
+    {
+     "node": "model:integrability",
+     "item": "model:integrability",
+     "line": 11
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 45
+    },
+    {
+     "node": "main:theorem",
+     "item": "main:formula",
+     "line": 86
+    }
+   ]
+  },
+  {
+   "id": "OUT:trees.tex",
+   "file": "trees.tex",
+   "uses": [
+    {
+     "node": "model:chain",
+     "item": "model:chain",
+     "line": 26
+    }
+   ]
+  },
+  {
+   "id": "OUT:upper.tex",
+   "file": "upper.tex",
+   "uses": [
+    {
+     "node": "main:theorem",
+     "item": "main:theorem",
+     "line": 12
+    },
+    {
+     "node": "model:factorization",
+     "item": "model:factorization",
+     "line": 63
+    },
+    {
+     "node": "model:positivity",
+     "item": "model:positivity",
+     "line": 125
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "model:positivity",
+   "to": "model:factorization",
+   "item": "model:positivity",
+   "ref_line": 38,
+   "cmd": "eqref"
+  },
+  {
+   "from": "EXT:upper:bound",
+   "to": "model:factorization",
+   "item": "upper:bound",
+   "ref_line": 41,
+   "cmd": "cref"
+  },
+  {
+   "from": "model:functional",
+   "to": "model:trial-bounds",
+   "item": "model:functional",
+   "ref_line": 122,
+   "cmd": "eqref"
+  },
+  {
+   "from": "model:integrability",
+   "to": "main:theorem",
+   "item": "model:integrability",
+   "ref_line": 131,
+   "cmd": "eqref"
+  },
+  {
+   "from": "model:positivity",
+   "to": "main:theorem",
+   "item": "model:positivity",
+   "ref_line": 131,
+   "cmd": "eqref"
+  }
+ ],
+ "internal_refs": [],
+ "unassigned_refs": [],
+ "excluded_labels": [
+  {
+   "label": "model:section",
+   "line": 1,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": "model:edge",
+   "line": 58,
+   "env": "align",
+   "referenced": false
+  },
+  {
+   "label": "model:site-message",
+   "line": 63,
+   "env": "align",
+   "referenced": false
+  },
+  {
+   "label": "model:ve",
+   "line": 88,
+   "env": "align",
+   "referenced": false
+  },
+  {
+   "label": "model:power-means",
+   "line": 92,
+   "env": "equation",
+   "referenced": false
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   2
+  ],
+  [
+   46,
+   67
+  ],
+  [
+   138,
+   140
+  ]
+ ],
+ "stats": {
+  "nodes": 9,
+  "edges": 5,
+  "internal_refs": 0,
+  "unassigned_refs": 0,
+  "external_inputs": 1,
+  "consumers": 7,
+  "refs_total": 5
+ }
+}

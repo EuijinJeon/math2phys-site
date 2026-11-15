@@ -1,0 +1,20 @@
+[
+{"k":1,"a":"yes","b":"yes","verdict":"correct","reason":"perturbations.tex 282–287 은 Lemma pert:concentration 과 Markov 로 sum ∫e_{ν,N_j}dπ ≤ j^{-3} 를 고른다. 97–101 이 고정 L, ν 에 대해 ∫e_{ν,N}dπ→0 을 정확히 말한다."},
+{"k":2,"a":"yes","b":"partial","verdict":"partial","reason":"reduction.tex 46–58 은 a 를 없애고 f_ℓ 의 iid 성질, b 와의 독립을 써서 permutation invariance 를 얻는다. model.tex 25–34 는 표현, f_ℓ iid, b 독립을 말하지만, 'a 는 다른 변수에 비대칭으로 의존해도 된다'는 model.tex 43–44 에 있어 범위 밖이다."},
+{"k":3,"a":"yes","b":"yes","verdict":"correct","reason":"decorrelation.tex 533(spin anchor, f=R_S), 544–545(marker anchor 의 prescribed-tree identity 계수), 556 이 Theorem pert:tree-identity 를 쓴다. perturbations.tex 452–463 이 바로 그 식 (pert:tree-identity-eq) 이다."},
+{"k":4,"a":"yes","b":"yes","verdict":"correct","reason":"comparison.tex 182–185 는 물리적 disorder 를 조건으로 두어도 label group 들이 독립이라는 사실로 power mean 을 인수분해한다. comparison.tex 80–82(comp:encoding 증명 끝)가 label 마다 독립 복사를 쓰므로 message 가 새 물리적 disorder 와 독립이라고 말한다."},
+{"k":5,"a":"yes","b":"partial","verdict":"partial","reason":"comparison.tex 227, 229, 234, 241 이 Φ_r 과 B_{L-1} 을 쓰고, model.tex 112–116 에 정의가 있다. 다만 그 식의 label 은 model:functional(112행)이다. 묶음이 가리키는 node 'model:chain' 은 72행의 다른 식이다."},
+{"k":6,"a":"yes","b":"yes","verdict":"correct","reason":"comparison.tex 161, 166, 192 는 comp:encoding 의 trial law ζ_{L,N} 과 L-1 단계 사슬 위의 B_{L-1} 을 쓴다. model.tex 68–76 은 M_{j+1}=P(M_j), ζ∈M_{r+1} 과 label 마다의 사슬을 정의하므로 r=L-1 이면 M_L 이 된다."},
+{"k":7,"a":"yes","b":"yes","verdict":"correct","reason":"cavity.tex 56(새 root disorder 는 독립)과 96–98(안 쓰이는 보조변수는 사전으로 적분해 없앤다)이 이 입력을 쓴다. trees.tex 135–140 이 추가 변수를 독립 사전 kernel 로 확대해도 tilt 가 바뀌지 않고 추가 root 변수는 quenched 로 둔다고 정한다."},
+{"k":8,"a":"yes","b":"yes","verdict":"correct","reason":"decorrelation.tex 65–68 의 정리 진술은 A_{L,η} 를 통해 η-regular 깊이 배정을 쓴다. 66행 자체는 topology 만 말하지만 같은 진술 문장이다. 정의는 decorrelation.tex 21–28 에 있다. trees.tex 460–467 의 regular shape 는 다른 개념이다."},
+{"k":9,"a":"partial","b":"yes","verdict":"partial","reason":"perturbations.tex 9–10 의 절 약속은 내용이 맞다. 그러나 84행 자체가 'E_u average the root at fixed u' 로 그 약속을 이 정의 안에서 직접 정한다. 그래서 84행은 바깥 입력을 쓰는 곳이라기보다 스스로 정하는 곳이고, 89행만 그것을 쓴다."},
+{"k":10,"a":"yes","b":"yes","verdict":"correct","reason":"decorrelation.tex 294–296(두 사본이 d 에서 갈라짐), 404–405(지운 subtree 는 kernel 로 적분하면 1), 480(d 아래 세 사본이 조건부 독립)은 표본 규칙을 쓴다. trees.tex 29–39 가 자식의 독립 추출(32–33)과 leaf 를 지울 때의 사영 일관성(38–39)을 정의한다."},
+{"k":11,"a":"yes","b":"partial","verdict":"partial","reason":"cavity.tex 29 는 'Counts, types, and sites are root variables' 라고 말한다. 같은 내용이 pert:error 와 같은 절인 perturbations.tex 60–61 에도 다시 정의되어 있어, 정의 위치가 하나가 아니다. 이 섭동 family 에는 perturbations.tex 60–61 이 더 직접적인 출처다."},
+{"k":12,"a":"yes","b":"yes","verdict":"correct","reason":"trees.tex 473(not regular), 482(leaf 를 지운 regular tree), 511–513(정규성 보존)이 regular shape 를 쓴다. 정의는 trees.tex 460–467 에 있다."},
+{"k":13,"a":"yes","b":"yes","verdict":"correct","reason":"trees.tex 144–145, 152–154 는 유계 D_j 와 균등하게 양수인 A 에 대해 power mean 을 미분하는데, 이는 표준적인 적분 기호 아래 미분이다. 156–176 의 analytic bounds 는 'subsequent differentiations' 에 대한 정당화라서 이 앞선 1차 변분을 대신하지 않는다."},
+{"k":14,"a":"yes","b":"yes","verdict":"correct","reason":"perturbations.tex 213–215 는 전진·후진 차분몫을 쓰고 220–221 은 'The monotonicity of \\bar G'' 를 쓴다. 볼록 함수 도함수의 단조성은 논문 밖의 표준 사실이다."},
+{"k":15,"a":"yes","b":"yes","verdict":"correct","reason":"decorrelation.tex 366–368 의 문장이 'The product difference inequality' 를 쓴다 (문구 자체는 368행). [-1,1] 위 곱의 차 부등식은 표준 사실이고 논문에 증명이 없다."},
+{"k":16,"a":"yes","b":"yes","verdict":"correct","reason":"perturbations.tex 176 에서 개수로 조건화한 뒤, 197–198 은 조건부 분산의 상한과 조건부 평균의 Lipschitz 분산을 따로 누른다. 이는 전체 분산 법칙을 쓰는 것이고, 표준 사실이다."},
+{"k":17,"a":"yes","b":"partial","verdict":"partial","reason":"perturbations.tex 179 의 \\cite{EfronStein} 과 191 의 재인용은 맞다. 그러나 181–190 에서 논문이 Doob 차분, 직교성, Jensen 으로 그 부등식을 'For completeness' 로 직접 증명하므로, 순수 인용 바닥이라기보다 node 자신의 증명 안에서 얻는 사실에 가깝다."},
+{"k":18,"a":"yes","b":"yes","verdict":"correct","reason":"upper.tex 90–94 는 2B(θ) 의 유계와 λ↑1 에서의 균등 수렴으로 'Dominated convergence' 를 명시해 쓰고, 126 이 λ↑1 을 취한다. 지배 수렴 정리는 표준 사실이다."}
+]

@@ -1,0 +1,156 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "overview.tex",
+ "lines": 51,
+ "nodes": [],
+ "external_inputs": [
+  {
+   "id": "EXT:cavity:section",
+   "label": "cavity:section",
+   "file": "cavity.tex",
+   "line": 1,
+   "env": null
+  },
+  {
+   "id": "EXT:comp:section",
+   "label": "comp:section",
+   "file": "comparison.tex",
+   "line": 2,
+   "env": null
+  },
+  {
+   "id": "EXT:decor:section",
+   "label": "decor:section",
+   "file": "decorrelation.tex",
+   "line": 2,
+   "env": null
+  },
+  {
+   "id": "EXT:main:theorem",
+   "label": "main:theorem",
+   "file": "model.tex",
+   "line": 130,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:pert:selection",
+   "label": "pert:selection",
+   "file": "perturbations.tex",
+   "line": 256,
+   "env": "lemma"
+  },
+  {
+   "id": "EXT:pert:tree-identity",
+   "label": "pert:tree-identity",
+   "file": "perturbations.tex",
+   "line": 452,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:reduction:section",
+   "label": "reduction:section",
+   "file": "reduction.tex",
+   "line": 2,
+   "env": null
+  },
+  {
+   "id": "EXT:tree:section",
+   "label": "tree:section",
+   "file": "trees.tex",
+   "line": 1,
+   "env": null
+  },
+  {
+   "id": "EXT:upper:section",
+   "label": "upper:section",
+   "file": "upper.tex",
+   "line": 1,
+   "env": null
+  }
+ ],
+ "consumers": [],
+ "edges": [],
+ "internal_refs": [],
+ "unassigned_refs": [
+  {
+   "label": "upper:section",
+   "line": 4,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:upper:section"
+  },
+  {
+   "label": "cavity:section",
+   "line": 18,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:cavity:section"
+  },
+  {
+   "label": "pert:selection",
+   "line": 18,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:pert:selection"
+  },
+  {
+   "label": "tree:section",
+   "line": 24,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:tree:section"
+  },
+  {
+   "label": "pert:tree-identity",
+   "line": 24,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:pert:tree-identity"
+  },
+  {
+   "label": "decor:section",
+   "line": 33,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:decor:section"
+  },
+  {
+   "label": "comp:section",
+   "line": 40,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:comp:section"
+  },
+  {
+   "label": "main:theorem",
+   "line": 50,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:main:theorem"
+  },
+  {
+   "label": "reduction:section",
+   "line": 51,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:reduction:section"
+  }
+ ],
+ "excluded_labels": [],
+ "uncovered_lines": [
+  [
+   1,
+   51
+  ]
+ ],
+ "stats": {
+  "nodes": 0,
+  "edges": 0,
+  "internal_refs": 0,
+  "unassigned_refs": 9,
+  "external_inputs": 9,
+  "consumers": 0,
+  "refs_total": 9
+ }
+}

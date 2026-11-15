@@ -1,0 +1,425 @@
+{
+  "graph": {
+    "id": "cc",
+    "title": "Proposition: 조건부 decorrelation 의 증명",
+    "parent": {"graph": "top", "node": "CC"},
+    "summary": "잎 수 $k$ 에 대한 귀납. $V_{k,L}(\\eta)$ 를 두고, 잎 하나에서는 prescribed-tree identity 와 three-copy 부등식으로 $V_{1,L}(\\eta)\\le\\delta/\\eta$. $k\\ge2$ 에서는 $S$ 의 aligned 두 사본(I, II)을 old tree로 두고 목표를 branching 깊이를 하나씩 미룬 두 사본 $S^+$ 로 처방한다. $J=\\kappa(S^+)^2$ 로 나누면 Lemma tree:charging 이 절대 계수 합을 $C_{k,\\eta}$ 로 막고, 목표 두 쪽을 깊이 $e+1$ 에서 사영한 뒤 깊이를 되돌린다. side-II 첫 path의 prefix로 class를 나누어 계수를 합하면 귀납 항등식이 되고, $f$ 를 $a\\cdot b$ 로 바꾸어 음 아닌 사영 three-copy 경계를 얻는다. 세 사본으로 $v_N(S,d)$ 를 막고 fiber 경계로 깊이 평균을 자식의 단일 사본 평균으로 옮겨 $V_{k,L}(\\eta)\\le C(L^{-1/2}+V_{k-1,L}(\\eta/2)^{1/4})$ 를 얻는다.",
+    "nodes": [
+      {
+        "id": "ext_AVG", "kind": "external", "external_ref": "AVG", "import_edge": "t3",
+        "items": ["holder", "unused_coord", "shift_regular"],
+        "title": "평균의 성질 (AVG)",
+        "grounding": {"source": "decorrelation.tex 259–262, 497–506", "state": "proposed"}
+      },
+      {
+        "id": "ext_CON", "kind": "external", "external_ref": "CON", "import_edge": "t4",
+        "items": ["three_copy"],
+        "title": "three-copy 부등식 (CON)",
+        "grounding": {"source": "decorrelation.tex 288, 483", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_RT", "kind": "external", "external_ref": "X_RT", "import_edge": "t5",
+        "items": ["kappa_total", "one_reference_total"],
+        "title": "reference 계수 총합 (X_RT, Lemma tree:reference-total)",
+        "grounding": {"source": "decorrelation.tex 332, 414–418", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_CH", "kind": "external", "external_ref": "X_CH", "import_edge": "t6",
+        "items": ["relative_charging"],
+        "title": "상대 charging (X_CH, Lemma tree:charging)",
+        "grounding": {"source": "decorrelation.tex 348–352", "state": "proposed"}
+      },
+      {
+        "id": "ext_PB", "kind": "external", "external_ref": "PB", "import_edge": "t7",
+        "items": ["projection", "two_sides", "scalar_test"],
+        "title": "사영 경계 (PB, eq decor:projection-bound)",
+        "grounding": {"source": "decorrelation.tex 364, 453–454, 460, 481–482", "state": "proposed"}
+      },
+      {
+        "id": "ext_DC", "kind": "external", "external_ref": "DC", "import_edge": "t8",
+        "items": ["branch_shift", "eval_shift", "larger_tree"],
+        "title": "깊이 연속성 (DC, Lemma decor:depth-continuity)",
+        "grounding": {"source": "decorrelation.tex 366–368", "state": "proposed"}
+      },
+      {
+        "id": "ext_IDE", "kind": "external", "external_ref": "IDE", "import_edge": "t9",
+        "items": ["eps_def", "eps_to_zero", "L_constants"],
+        "title": "항등식 오차 $\\varepsilon_{N,L,k}$ (IDE)",
+        "grounding": {"source": "decorrelation.tex 450, 457, 514", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_TI", "kind": "external", "external_ref": "X_TI", "import_edge": "t10",
+        "items": ["identity", "anchor_constraint"],
+        "title": "prescribed-tree identity (X_TI, Theorem pert:tree-identity)",
+        "grounding": {"source": "decorrelation.tex 250, 265, 279, 296–299, 435", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_EXT", "kind": "external", "external_ref": "X_EXT", "import_edge": "t11",
+        "items": ["rule"],
+        "title": "extension 규칙 (X_EXT)",
+        "grounding": {"source": "decorrelation.tex 266–269, 391–393", "state": "proposed"}
+      },
+      {
+        "id": "ext_X_SAMP", "kind": "external", "external_ref": "X_SAMP", "import_edge": "t12",
+        "items": ["children_independent", "leaf_removal"],
+        "title": "표본 tree 의 법칙 (X_SAMP)",
+        "grounding": {"source": "decorrelation.tex 277, 287, 363, 395, 404–405, 466", "state": "proposed"}
+      },
+
+      {
+        "id": "s1_setup", "kind": "step", "status": "sketch",
+        "title": "귀납의 틀과 $V_{k,L}$",
+        "statement": "잎 수 $k$ 에 대해 귀납한다. $V_{k,L}(\\eta)=\\max_{1\\le|S|\\le k}\\limsup_N\\mathcal A_{L,\\eta}v_N(S,d)$ (유한 개 labeled topology 위의 최대). 아래에서 쓰는 더 낮은 차수 공분산의 평균은, 쓰지 않는 좌표나 옮긴 깊이가 더 있어도 $V_{k-1,L}(\\eta/2)$ 로 막히고, 분수 거듭제곱이 나오면 eq decor:average-holder 를 쓴다.",
+        "symbols": ["V_kL", "v_N", "A_avg", "eta_regular", "topology"],
+        "derivation": [
+          {"line": "lower-order 평균 $\\le V_{k-1,L}(\\eta/2)$ (쓰지 않는 좌표, 옮긴 깊이 포함)", "by": ["e1"]},
+          {"line": "분수 거듭제곱: $\\mathcal A(z^\\gamma)\\le(\\mathcal Az)^\\gamma$", "by": ["e1"]}
+        ],
+        "grounding": {"source": "decorrelation.tex 248–262", "state": "proposed"}
+      },
+      {
+        "id": "s2_one_leaf", "kind": "step", "status": "sketch",
+        "title": "잎 하나: $V_{1,L}(\\eta)\\le\\delta/\\eta$",
+        "statement": "$d$ 에서 갈라지는 old path 둘(path 1이 spin anchor)에 color 하나를 붙이되 anchor와 정확히 $d$ 에서 갈라지게 한다. old path 2 는 계수 $1$, 두 old path에서 $d$ 에서 갈라지는 fresh path는 $-c_d$, path 2를 따라가다 $\\ell>d$ 에서 떠나면 $-c_\\ell$; $c_d=2m_{d+1}-m_d=(d+2)\\delta$, $c_\\ell=\\delta$. anchor만에서의 총계수는 $-\\delta$. $X=R_{12}$, $X_\\ell=R_{13}$ 로 두면 $X_\\ell$ 은 $X$ 와 주변 법칙이 같고 $\\sum_{\\ell=d}^{L-1}c_\\ell=1+\\delta$. $f=X$ 로 identity를 쓰면 $\\frac12\\sum_\\ell c_\\ell\\mathbb E(X-X_\\ell)^2=\\delta\\operatorname{Var}(X)+o_N(1)\\le\\delta+o_N(1)$. $\\ell=d$ 에서 세 spin vector는 $d$ 아래에서 조건부 독립이므로 three-copy 부등식과 $c_d\\ge\\eta$ 로 $v_N(S,d)\\le\\delta/\\eta+o_N(1)$ (고정 $L,d$). 따라서 $V_{1,L}(\\eta)\\le\\delta/\\eta$.",
+        "symbols": ["m_d", "delta", "R_S", "v_N", "V_kL", "anchor", "ext_hist", "F_d", "E_root"],
+        "local_symbols": [
+          {"id": "c_ell", "tex": "$c_d,\\ c_\\ell$", "defined_at": "decorrelation.tex 270–273", "text": "$c_d=2m_{d+1}-m_d=(d+2)\\delta$, $c_\\ell=\\delta$ ($d<\\ell\\le L-1$). eq decor:c-weights."},
+          {"id": "X_one_leaf", "tex": "$X,\\ X_\\ell$", "defined_at": "decorrelation.tex 276–277", "text": "$X=R_{12}$, $X_\\ell=R_{13}$ (fresh extension 3 이 $\\ell$ 에서 갈라짐)."}
+        ],
+        "derivation": [
+          {"line": "계수: old path 2 는 $1$, $d$ 의 2-자식 vertex 에서 fresh 는 $m_d-2m_{d+1}=-c_d$, path 2 위 unary vertex $\\ell$ 에서 $m_\\ell-m_{\\ell+1}=-\\delta$", "by": ["e4", "floor: m_d=d/L"]},
+          {"line": "anchor 만: 단일 path 위 $d$ 에서 $m_d-m_{d+1}=-\\delta$", "by": ["e4"]},
+          {"line": "$X_\\ell\\overset{d}{=}X$, $\\sum_{\\ell=d}^{L-1}c_\\ell=(d+2)\\delta+(L-1-d)\\delta=1+\\delta$", "by": ["e5", "floor: 산술"]},
+          {"line": "identity ($f=X$): $\\mathbb EX^2-\\sum_\\ell c_\\ell\\mathbb E[XX_\\ell]+\\delta(\\mathbb EX)^2=o_N(1)$ 이므로 $\\frac12\\sum c_\\ell\\mathbb E(X-X_\\ell)^2=\\delta\\operatorname{Var}X+o_N(1)$", "by": ["e3", "앞 줄들"]},
+          {"line": "$\\ell=d$: three-copy 로 $\\mathbb E(X-X_d)^2\\ge 2v_N(S,d)$; $c_d=(d+2)/L\\ge\\eta$", "by": ["e5", "e6", "floor: eta_regular"]},
+          {"line": "$v_N(S,d)\\le\\delta/\\eta+o_N(1)$, 따라서 $V_{1,L}(\\eta)\\le\\delta/\\eta$", "by": ["앞 줄들", "f1"]}
+        ],
+        "author_filled": "identity 를 $f=X$ 에 펼쳐 $\\delta\\operatorname{Var}X$ 가 나오는 계산($\\mathbb EX_\\ell^2=\\mathbb EX^2$, anchor-alone 항의 $\\mathbb ER=\\mathbb EX$), 계수 $-c_d,-\\delta$ 를 extension 규칙에서 읽는 것, $c_d\\ge\\eta$ 를 $d$ 의 regularity 에서 읽는 것, three-copy 에서 $X\\cdot Y-X\\cdot Z=X-X_d$, $\\mathscr G=\\mathscr F_d$ 로 맞추는 것은 원문이 적지 않아 작성자가 채웠다.",
+        "grounding": {"source": "decorrelation.tex 264–290", "state": "proposed"}
+      },
+      {
+        "id": "s3_shifted_copies", "kind": "step", "status": "sketch",
+        "title": "두 사본과 미룬 목표 $S^+$",
+        "statement": "$|S|=k\\ge2$, 첫 split $e>d$, proper child shape $T_1,\\ldots,T_s$. old tree 는 stem이 $d$ 에서 갈라지고 내부 깊이 배정이 aligned 인 $S$ 의 두 사본 I, II. I 의 old leaf 하나를 spin anchor로 고정한다. $S^+$ 는 $S$ 의 모든 내부 branching 깊이를 1씩 올린 topology. identity에서 anchor와 추가 color들이 $d$ 에서 분리된 $S^+$ 두 사본을 이루고 anchor가 첫 사본의 원래 labeled 자리에 있도록 처방한다. 이 제약은 anchor와 추가 color만 건드린다. side I 의 color를 먼저, 그다음 side II 의 color를 붙인다.",
+        "symbols": ["S_plus", "topology", "anchor", "eta_regular"],
+        "local_symbols": [
+          {"id": "e_split", "tex": "$e$", "defined_at": "decorrelation.tex 293", "text": "$S$ 의 첫 split 깊이, $e>d$."},
+          {"id": "T_j", "tex": "$T_1,\\ldots,T_s$", "defined_at": "decorrelation.tex 293–294", "text": "$S$ 의 proper child shape."},
+          {"id": "I_II", "tex": "I, II", "defined_at": "decorrelation.tex 294–296", "text": "old tree 를 이루는 $S$ 의 aligned 두 사본, stem 이 $d$ 에서 갈라짐."}
+        ],
+        "grounding": {"source": "decorrelation.tex 292–303 (그림 305–330)", "state": "proposed"}
+      },
+      {
+        "id": "s4_coefficient_J", "kind": "step", "status": "sketch",
+        "title": "$J=\\kappa(S^+)^2$ 와 상대 절대 비용",
+        "statement": "$J=\\kappa(S^+)^2$. 각 vertex 에서 $j=1$ 인자는 $-\\delta$, $j\\ge2$ 인자는 큰 $L$ 에서 절댓값이 $\\eta/2$ 이상이므로 $b=b(S)$ 일 때 $|J|\\ge c_{k,\\eta}\\delta^{2b}>0$. 큰 $L$ 에서 regularity 로 옮긴 깊이는 old tree 의 모든 branching 깊이($d$ 포함)와 다르므로 $2b$ 개 목표 branching vertex 는 fresh unary split 으로 만들어져야 한다. Lemma tree:charging 으로 $\\frac1{|J|}\\sum_{\\text{allowed}}|c|\\le C_{k,\\eta}$. 두 사본은 깊이는 aligned 이지만 branching vertex 가 달라 각 vertex 가 자기 $\\delta$ 를 낸다. 전체 부호 계수에는 $d$ 에서의 분리로 $-\\delta$ 가 더 붙고, $J$ 로 나누되 그 인자는 identity 안에 남긴다.",
+        "symbols": ["J", "kappa", "S_plus", "b_S", "m_d", "delta", "eta_regular", "ext_hist"],
+        "derivation": [
+          {"line": "$J=\\kappa(S^+)^2$", "by": ["e8", "f4"]},
+          {"line": "$j=1$: $m_{q}-m_{q+1}=-\\delta$; $j\\ge2$: $|m_q-jm_{q+1}|=|(j-1)q/L+j\\delta|\\ge(j-1)\\eta-j\\delta\\ge\\eta/2$ (큰 $L$)", "by": ["floor: m_d=d/L, eta_regular"]},
+          {"line": "$|J|\\ge c_{k,\\eta}\\delta^{2b}$", "by": ["앞 줄"]},
+          {"line": "옮긴 깊이 $\\ne$ old branching 깊이 ⇒ $2b$ 개 vertex 는 fresh unary split", "by": ["floor: eta_regular"]},
+          {"line": "$\\frac1{|J|}\\sum_{\\text{allowed}}|c|\\le C_{k,\\eta}$", "by": ["e9", "앞 줄"]}
+        ],
+        "author_filled": "$j=1$ 인자가 $-\\delta$ 이고 $j\\ge2$ 인자가 $\\eta/2$ 이상이라는 산술(목표 깊이가 $q_v+1$ 이고 $m_{q_v+1}\\ge\\eta$)은 원문이 결론만 적어 작성자가 채웠다.",
+        "grounding": {"source": "decorrelation.tex 332–359", "state": "proposed"}
+      },
+      {
+        "id": "s5_projection", "kind": "step", "status": "sketch",
+        "title": "목표 두 쪽의 사영과 깊이 되돌림",
+        "statement": "모든 extension 에서 목표 tree 의 주변은 $d$ 에서의 분리 아래로 독립인 $S^+$ 두 보통 사본이다. eq decor:projection-bound 로 그 multioverlap 은 $e+1$ 에서 사영한 평균들의 축약과 $L^2$ 에서 많아야 $2p_N(S^+,e+1)$ 차이. proper child 깊이를 하나씩 되돌리고 평가 깊이를 $e+1$ 에서 $e$ 로 바꾸면 product difference inequality 와 Lemma decor:depth-continuity 로 $L^2$ 오차가 많아야 $h_N(S)$ 늘고 $\\mathcal A_{L,\\eta}h_N(S)^2\\le C_k/L$. $h_N(S)$ 는 이 비교들의 유한 개 $L^2(\\|\\cdot\\|_N)$ 거리 합에 크기 상수를 곱한 것으로, 단일 사본 주변 shape 에만 의존하므로 extension 합 안의 비교에 균일하게 성립한다(old 와 목표 tree 의 합집합이 regular 깊이가 아니어도). $a,b$ 를 old stem I, II 위의 $a_{S,e}$ 라 하면, 목표 stem I 은 anchor 를 담아 old prefix 를 $e$ 까지 공유하므로 최종 사영 vector 는 $a$.",
+        "symbols": ["a_p", "S_plus", "mu", "A_S", "A_avg", "F_d"],
+        "local_symbols": [
+          {"id": "h_N", "tex": "$h_N(S)$", "defined_at": "decorrelation.tex 369–377", "text": "깊이 되돌림과 평가 깊이 변경 비교들의 $L^2(\\|\\cdot\\|_N)$ 거리 합에 크기 상수를 곱한 것. $\\mathcal A_{L,\\eta}h_N(S)^2\\le C_k/L$ (eq decor:projection-shift-error)."},
+          {"id": "a_b", "tex": "$a,\\ b$", "defined_at": "decorrelation.tex 382", "text": "old stem I, II 위의 $a_{S,e}$."}
+        ],
+        "grounding": {"source": "decorrelation.tex 361–384", "state": "proposed"}
+      },
+      {
+        "id": "s6_classes", "kind": "step", "status": "sketch",
+        "title": "side-II 첫 path 로 class 나누기",
+        "statement": "$f$ 는 $2k$ 개 old leaf 전체의 overlap(허용 고정 monomial). target-I 추가는 $d$ 아래 anchor 가지에 머물러 old-II stem 과 자식 수를 바꾸지 않는다. target side II 의 첫 추가 path 를 $e$ 까지의 prefix 로 나눈다: $\\ell=d$ 에서 fresh 로 갈라짐(계수 $-c_d$), old II stem 을 따라가다 $d<\\ell<e$ 에서 갈라짐(계수 $-\\delta$), 나머지는 old II prefix 를 $e$ 까지 따라가 최종 사영 vector $b$. 새 stem 위의 $a_{S,e}$ 를 $b_\\ell$ 이라 하면 $\\ell$ 까지 old II prefix 를 공유하고, $\\ell=d$ 에서 $a,b,b_d$ 를 나르는 stem 은 $d$ 아래로 조건부 독립. side II 의 이후 목표 path 는 첫 path 를 $e$ 까지 따른다(가장 이른 split 이 $e+1$). 고정 history 에서 old path 전부와 첫 target-II prefix 만 남기고 나머지 새 가지를 지우면, 지운 subtree 는 kernel 아래 적분이 1이고 재사용 old leaf 는 새 변수를 들이지 않는다. 남은 tree 는 class 에만 의존하므로 old path 와 사영 prefix 의 결합 주변은 class 안에서 고정이고, $f$ 곱하기 사영 overlap 의 기대값은 class 안에서 상수라 총 부호 계수를 곱할 수 있다.",
+        "symbols": ["a_p", "ext_hist", "R_S", "E_root"],
+        "local_symbols": [
+          {"id": "f_test", "tex": "$f$", "defined_at": "decorrelation.tex 387–388", "text": "$2k$ 개 old leaf 전체의 overlap."},
+          {"id": "b_ell", "tex": "$b_\\ell$", "defined_at": "decorrelation.tex 393–395", "text": "side-II 첫 path 가 $\\ell$ 에서 fresh 로 갈라지는 class 에서 새 stem 위의 $a_{S,e}$."}
+        ],
+        "grounding": {"source": "decorrelation.tex 386–412", "state": "proposed"}
+      },
+      {
+        "id": "s7_class_totals", "kind": "step", "status": "sketch",
+        "title": "class 별 총계수",
+        "statement": "Lemma tree:reference-total 로 이후 side-II color 를 거꾸로 합하면 첫 path 선택마다 $\\kappa(S^+)$, side-I 선택을 합하면 다른 인자 $\\kappa(S^+)$. 따라서 $\\ell$ 의 fresh class 총계수는 $-c_\\ell J$. 총계수는 old tree 에서나 anchor 만에서나 $-\\delta J$. $\\sum_{\\ell=d}^{e-1}c_\\ell=(e+1)\\delta=m_e+\\delta$ 이므로 $e$ 까지 old prefix class 의 계수는 $m_eJ$. 표: fresh divergence $d\\le\\ell<e$ 는 $a\\cdot b_\\ell$, $-c_\\ell J$; old prefix through $e$ 는 $a\\cdot b$, $m_eJ$.",
+        "symbols": ["kappa", "J", "m_d", "delta", "S_plus"],
+        "derivation": [
+          {"line": "class $\\ell$: $-c_\\ell\\cdot\\kappa(S^+)\\cdot\\kappa(S^+)=-c_\\ell J$", "by": ["e15", "f11"]},
+          {"line": "총계수 $-\\delta J$", "by": ["e15"]},
+          {"line": "$\\sum_{\\ell=d}^{e-1}c_\\ell=(d+2)\\delta+(e-1-d)\\delta=(e+1)\\delta$", "by": ["floor: 산술"]},
+          {"line": "나머지 class: $-\\delta J+(e+1)\\delta J=m_eJ$", "by": ["앞 줄들"]}
+        ],
+        "grounding": {"source": "decorrelation.tex 414–432", "state": "proposed"}
+      },
+      {
+        "id": "s8_induction_identity", "kind": "step", "status": "sketch",
+        "title": "귀납 항등식과 오차 $\\rho_N$",
+        "statement": "각 행의 사영 overlap 에 $f$ 를 곱하고 identity 를 $J$ 로 나누어 정리하면 $\\sum_{\\ell=d}^{e-1}c_\\ell\\mathbb E[f(a\\cdot b-a\\cdot b_\\ell)]=\\delta(\\mathbb E[f(a\\cdot b)]-\\mathbb Ef\\,\\mathbb ER_{\\mathrm{target}})+\\rho_N(S,d)$, $R_{\\mathrm{target}}$ 은 anchor-alone extension 의 목표 overlap(절댓값 $\\le1$). $|\\rho_N(S,d)|\\le C_{k,\\eta}(p_N(S^+,e+1)+h_N(S))+C_{L,k,\\eta}\\varepsilon_{N,L,k}$: 사영 오차에 $|f|\\le1$ 을 곱해도(상관되어도) $L^2$ 노름 이상 들지 않고, 절대 계수로 합해 상대 절대 비용을 쓴다. 마지막 항은 원 identity 오차를 $J$ 로 나눈 것을 포함하며 고정 $L$ 에서 0으로 간다.",
+        "symbols": ["eps_NLk", "a_p", "J", "anchor", "N_lim"],
+        "local_symbols": [
+          {"id": "rho_N", "tex": "$\\rho_N(S,d)$", "defined_at": "decorrelation.tex 441–452", "text": "귀납 항등식 eq decor:induction-identity 의 오차; eq decor:induction-error 로 막힘."},
+          {"id": "R_target", "tex": "$R_{\\mathrm{target}}$", "defined_at": "decorrelation.tex 444–445", "text": "anchor-alone extension 의 목표 overlap, $|R_{\\mathrm{target}}|\\le1$."}
+        ],
+        "grounding": {"source": "decorrelation.tex 434–457", "state": "proposed"}
+      },
+      {
+        "id": "s9_close", "kind": "step", "status": "sketch",
+        "title": "사영 three-copy 경계와 $v_N(S,d)$ 의 귀납 추정",
+        "statement": "eq decor:projection-bound 로 $\\|f-a\\cdot b\\|_{L^2}\\le2p_N(S,e)$, $\\sum_{\\ell=d}^{e-1}c_\\ell=(e+1)\\delta\\le1$ 이므로 왼쪽에서 $f$ 를 $a\\cdot b$ 로 바꾸는 비용은 많아야 $4p_N(S,e)$. $a\\cdot b_\\ell$ 은 $a\\cdot b$ 와 주변 법칙이 같아 왼쪽은 $\\frac12\\sum_\\ell c_\\ell\\mathbb E(a\\cdot b-a\\cdot b_\\ell)^2$; 항들은 음 아니고 $c_d\\ge\\eta$. 오른쪽은 $2\\delta+|\\rho_N|$ 이하. 따라서 $\\mathbb E(a\\cdot b-a\\cdot b_d)^2\\le C_\\eta(\\delta+p_N(S,e)+|\\rho_N(S,d)|)$. $A_S$ 세 사본을 $d$ 아래로 조건부 독립으로 뽑고 첫 사본을 포함한 두 축약을 사영하면 각각 $L^2$ 에서 많아야 $2p_N(S,e)$ 바뀐다. three-copy 부등식, 위 경계, $p_N(S,e)\\le k$ 로 $v_N(S,d)\\le C_{k,\\eta}(\\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S))+C_{L,k,\\eta}\\varepsilon_{N,L,k}$.",
+        "symbols": ["a_p", "v_N", "A_S", "F_d", "eps_NLk", "delta"],
+        "derivation": [
+          {"line": "$|\\sum c_\\ell\\mathbb E[(f-a\\cdot b)(a\\cdot b-a\\cdot b_\\ell)]|\\le(e+1)\\delta\\cdot2p\\cdot2=4p_N(S,e)$", "by": ["e19", "floor: Cauchy–Schwarz, |a·b|≤1"]},
+          {"line": "$\\mathbb E[a\\cdot b(a\\cdot b-a\\cdot b_\\ell)]=\\frac12\\mathbb E(a\\cdot b-a\\cdot b_\\ell)^2$", "by": ["e22"]},
+          {"line": "$\\frac{c_d}2\\mathbb E(a\\cdot b-a\\cdot b_d)^2\\le2\\delta+|\\rho_N|+4p_N(S,e)$", "by": ["f13", "앞 줄들", "floor: eta_regular"]},
+          {"line": "$2v_N(S,d)\\le\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\le3\\mathbb E(a\\cdot b-a\\cdot b_d)^2+C(2p_N(S,e))^2$, $p_N\\le k$ 로 $p_N^2\\le kp_N$", "by": ["e20", "e19", "앞 줄"]},
+          {"line": "eq decor:covariance-induction-estimate", "by": ["앞 줄", "f13"]}
+        ],
+        "author_filled": "$f\\to a\\cdot b$ 교체 비용 $4p$ 의 Cauchy–Schwarz 계산, 사영한 세 사본의 축약 $X\\cdot Y,X\\cdot Z$ 를 $a\\cdot b,a\\cdot b_d$ 와 같은 법칙으로 맞추는 것, 제곱 오차를 $p_N\\le k$ 로 선형으로 만드는 것은 원문이 적지 않아 작성자가 채웠다.",
+        "grounding": {"source": "decorrelation.tex 459–490", "state": "proposed"}
+      },
+      {
+        "id": "s10_average", "kind": "step", "status": "sketch",
+        "title": "fiber 경계, 재귀식, 결론",
+        "statement": "$p_N$ 의 각 자식은 잎이 $k$ 개보다 적다. aligned 구성은 $d,e$ 를 포함해 $D=b(S)+1$ 개 서로 다른 깊이 좌표를 갖고, $T_j$ 의 항은 $D_j=b(T_j)+1$ 개 좌표만 쓴다. shift 항에서 그 좌표는 $\\pi_j(\\mathbf q)=(e+1,(q_v+1)_{v\\in\\operatorname{Br}(T_j)})$. 남는 배정마다 원상이 많아야 $L^{D-D_j}$ 개이고 큰 $L$ 에서 좌표는 $\\eta/2$-regular. $w_j$ 를 이 좌표의 함수로 본 자식 공분산이라 하면 $0<\\gamma\\le1$ 에서 $L^{-D}\\sum_{\\mathbf q\\ \\eta\\text{-reg}}w_j(\\pi_j(\\mathbf q))^\\gamma\\le L^{-D_j}\\sum_{\\mathbf y\\ \\eta/2\\text{-reg}}w_j(\\mathbf y)^\\gamma\\le(L^{-D_j}\\sum_{\\mathbf y\\ \\eta/2\\text{-reg}}w_j(\\mathbf y))^\\gamma$. shift 하지 않은 항은 좌표를 옮기지 않고 같은 경계. 두 aligned 사본은 단일 사본 추정을 쓰고 대각선 제한은 없다. $\\gamma=1/4$, $\\limsup_N$, eq decor:projection-shift-error, eq decor:identity-error 로 큰 $L$ 에서 $V_{k,L}(\\eta)\\le C_{k,\\eta}(L^{-1/2}+V_{k-1,L}(\\eta/2)^{1/4})$. 더 작은 topology 위의 최대는 공분산이 1 이하라 오른쪽에 흡수된다. base case 와 귀납으로 모든 고정 $k,\\eta$ 에서 $V_{k,L}(\\eta)\\to0$, 명제가 증명된다.",
+        "symbols": ["V_kL", "A_avg", "eta_regular", "b_S", "a_p", "v_N", "eps_NLk", "N_lim", "delta"],
+        "local_symbols": [
+          {"id": "D_coords", "tex": "$D,\\ D_j$", "defined_at": "decorrelation.tex 492–494", "text": "$D=b(S)+1$ (aligned 구성의 서로 다른 깊이 좌표 수, $d,e$ 포함), $D_j=b(T_j)+1$."},
+          {"id": "pi_j", "tex": "$\\pi_j(\\mathbf q)$", "defined_at": "decorrelation.tex 495–496", "text": "shift 항이 쓰는 좌표 $(e+1,(q_v+1)_{v\\in\\operatorname{Br}(T_j)})$."},
+          {"id": "w_j", "tex": "$w_j$", "defined_at": "decorrelation.tex 498–499", "text": "자식 $T_j$ 의 공분산을 그 좌표의 함수로 본 것."},
+          {"id": "gamma", "tex": "$\\gamma$", "defined_at": "decorrelation.tex 499, 512", "text": "$0<\\gamma\\le1$ 인 지수; 쓰임에서는 $\\gamma=1/4$."}
+        ],
+        "derivation": [
+          {"line": "첫 부등식: 원상 수 $\\le L^{D-D_j}$, 상 좌표 $\\eta/2$-regular", "by": ["e2"]},
+          {"line": "둘째 부등식: $\\mathcal A_{L,\\eta/2}(z^\\gamma)\\le(\\mathcal A_{L,\\eta/2}z)^\\gamma$", "by": ["e2"]},
+          {"line": "$\\mathcal A_{L,\\eta}p_N\\le\\sum_j(\\mathcal A_{L,\\eta/2}v_N(T_j,\\cdot))^{1/4}$, $\\limsup_N$ 뒤 $\\le sV_{k-1,L}(\\eta/2)^{1/4}$", "by": ["앞 줄들", "f2"]},
+          {"line": "$\\mathcal A h_N\\le(\\mathcal Ah_N^2)^{1/2}\\le(C_k/L)^{1/2}$, $\\delta\\le L^{-1/2}$, $\\varepsilon$ 항은 $\\limsup_N$ 에서 0", "by": ["f9", "e21", "floor: Cauchy–Schwarz, 총질량 ≤1"]},
+          {"line": "$V_{k,L}(\\eta)\\le C_{k,\\eta}(L^{-1/2}+V_{k-1,L}(\\eta/2)^{1/4})$ (eq decor:induction-recursion)", "by": ["f14", "앞 줄들"]},
+          {"line": "$V_{1,L}(\\eta)\\le\\delta/\\eta$ 와 재귀로 $V_{k,L}(\\eta)\\to0$", "by": ["f3", "앞 줄"]}
+        ],
+        "author_filled": "재귀식으로 가는 평균 단계(유한 합의 $\\limsup$ 교환, $h_N$ 의 평균을 Cauchy–Schwarz 로 $L^{-1/2}$ 로 막는 것, $\\delta\\le L^{-1/2}$), 그리고 귀납 가정을 '모든 고정 $\\eta$' 에 대해 두어 $\\eta/2$ 로 내려가도 닫히게 하는 것은 원문이 적지 않아 작성자가 채웠다.",
+        "grounding": {"source": "decorrelation.tex 491–523", "state": "proposed"}
+      },
+
+      {
+        "id": "out_main_V", "kind": "output", "output_items": ["main", "V_to_zero"],
+        "title": "결론: $V_{k,L}(\\eta)\\to0$ 과 명제",
+        "statement": "모든 고정 $k,\\eta$ 에서 $V_{k,L}(\\eta)\\to0$ ($L\\to\\infty$). 따라서 모든 고정 labeled topology $S$ 와 $\\eta>0$ 에서 $\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}v_N(S,d)=0$ (평균은 $S$ 의 모든 branching 깊이와 첫 split 보다 엄격히 앞선 regular 깊이 $d$; singleton 이면 $d$ 만).",
+        "symbols": ["V_kL", "v_N", "A_avg", "topology"],
+        "grounding": {"source": "decorrelation.tex 236–244, 522–523", "state": "proposed"}
+      },
+      {
+        "id": "out_relative_cost", "kind": "output", "output_items": ["relative_cost"],
+        "title": "상대 절대 비용 eq decor:relative-absolute-cost",
+        "statement": "구성($S^+$, $J$) 안에서 Lemma tree:charging 으로 $\\frac1{|J|}\\sum_{\\text{allowed}}|c|\\le C_{k,\\eta}$.",
+        "symbols": ["J", "S_plus"],
+        "grounding": {"source": "decorrelation.tex 345–353", "state": "proposed"}
+      },
+      {
+        "id": "out_fiber_bound", "kind": "output", "output_items": ["fiber_bound"],
+        "title": "fiber 경계 eq decor:fiber-bound",
+        "statement": "깊이 좌표 $D$ 개의 평균 안에서 어떤 항이 좌표 $D_j$ 개만 쓰고, 남는 배정마다 원상이 많아야 $L^{D-D_j}$ 개이며 그 좌표가 큰 $L$ 에서 $\\eta/2$-regular 이면, $0<\\gamma\\le1$ 에 대해 $L^{-D}\\sum_{\\mathbf q\\ \\eta\\text{-reg}}w_j(\\pi_j(\\mathbf q))^\\gamma\\le(L^{-D_j}\\sum_{\\mathbf y\\ \\eta/2\\text{-reg}}w_j(\\mathbf y))^\\gamma$. shift 하지 않은 항은 좌표를 옮기지 않고 같은 경계.",
+        "symbols": ["A_avg", "eta_regular"],
+        "author_filled": "(계약에서 이어받음) 원문은 이 부등식을 aligned 두 사본 구성($D=b(S)+1$)에서만 적는다. 가정을 일반형으로 적은 것은 작성자다.",
+        "grounding": {"source": "decorrelation.tex 491–509", "state": "proposed"}
+      }
+    ],
+    "edges": [
+      {"id": "e1", "from": "ext_AVG", "to": "s1_setup", "kind": "definition",
+       "statement": "[AVG.holder] $0<\\gamma\\le1$ 이면 $\\mathcal A_{L,\\eta}(z^\\gamma)\\le(\\mathcal A_{L,\\eta}z)^\\gamma$. [AVG.unused_coord] 쓰지 않는 좌표에 대한 합은 많아야 $L$ 배이고 그 좌표의 정규화가 상쇄한다. [AVG.shift_regular] 좌표 부분집합을 고정 정수만큼 옮기면 큰 $L$ 에서 $\\eta$-regular 배정이 $\\eta/2$-regular 배정으로 단사로 간다.",
+       "carries": [{"item": "holder", "used_at": [262]}, {"item": "unused_coord", "used_at": [259, 260]}, {"item": "shift_regular", "used_at": [260]}],
+       "grounding": {"source": "decorrelation.tex 259–262", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2", "from": "ext_AVG", "to": "s10_average", "kind": "definition",
+       "statement": "[AVG.shift_regular] 옮긴 좌표의 $\\eta$-regular 배정이 큰 $L$ 에서 $\\eta/2$-regular 배정으로 단사. [AVG.unused_coord] 쓰지 않는 좌표의 합은 많아야 $L$ 배, 정규화가 상쇄 (원상 $\\le L^{D-D_j}$). [AVG.holder] $\\mathcal A(z^\\gamma)\\le(\\mathcal Az)^\\gamma$ (fiber 경계의 둘째 부등식).",
+       "carries": [{"item": "shift_regular", "used_at": [497, 498]}, {"item": "unused_coord", "used_at": [497]}, {"item": "holder", "used_at": [503, 505]}],
+       "grounding": {"source": "decorrelation.tex 497–506", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e3", "from": "ext_X_TI", "to": "s2_one_leaf", "kind": "call",
+       "statement": "[X_TI.identity] 섭동족과 선택 수열을 따라 $\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\mathbb E[R_E]\\to0$ (여기서 $f=X$, 추가 color 하나). [X_TI.anchor_constraint] path 1 이 spin anchor, 제약 $\\mathcal C$ 는 추가 color 가 anchor 와 정확히 $d$ 에서 갈라지는 것.",
+       "carries": [{"item": "identity", "used_at": [278, 279]}, {"item": "anchor_constraint", "used_at": [265, 266]}],
+       "grounding": {"source": "decorrelation.tex 265–266, 278–283", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e4", "from": "ext_X_EXT", "to": "s2_one_leaf", "kind": "call",
+       "statement": "[X_EXT.rule] 다음 color 는 안 쓴 old leaf(계수 $1$) 또는 내부 vertex $\\beta$ 의 fresh path(계수 $m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$). 여기서 old path 2 는 $1$, $d$ 에서 fresh 는 $-c_d$, path 2 위 $\\ell$ 에서 fresh 는 $-c_\\ell$, anchor 만에서는 $-\\delta$.",
+       "carries": [{"item": "rule", "used_at": [266, 267, 268, 269, 275]}],
+       "grounding": {"source": "decorrelation.tex 266–275", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e5", "from": "ext_X_SAMP", "to": "s2_one_leaf", "kind": "call",
+       "statement": "[X_SAMP.children_independent] 서로 다른 자식은 kernel 로 독립 (세 spin vector 가 $d$ 아래로 조건부 독립). [X_SAMP.leaf_removal] leaf 를 지워도 남은 tree 의 표본 법칙이 보존 ($X_\\ell$ 과 $X$ 의 주변 법칙이 같음).",
+       "carries": [{"item": "children_independent", "used_at": [287]}, {"item": "leaf_removal", "used_at": [277]}],
+       "grounding": {"source": "decorrelation.tex 276–277, 287–288", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e6", "from": "ext_CON", "to": "s2_one_leaf", "kind": "flow",
+       "statement": "[CON.three_copy] 조건부 독립 사본 $X,Y,Z$ 와 조건부 공분산 $C$ 에 대해 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{i,j}C_{ij}^2$.",
+       "carries": [{"item": "three_copy", "used_at": [288]}],
+       "grounding": {"source": "decorrelation.tex 287–289", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e7", "from": "ext_X_TI", "to": "s3_shifted_copies", "kind": "call",
+       "statement": "[X_TI.anchor_constraint] old leaf 하나를 spin anchor 로, $\\mathcal C$ 는 anchor 와 추가 color 만의 split 깊이를 처방 (두 사본 $S^+$, $d$ 에서 분리). [X_TI.identity] 이 처방으로 prescribed-tree identity 를 쓴다.",
+       "carries": [{"item": "anchor_constraint", "used_at": [296, 299, 301]}, {"item": "identity", "used_at": [298]}],
+       "grounding": {"source": "decorrelation.tex 296–302", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e8", "from": "ext_X_RT", "to": "s4_coefficient_J", "kind": "call",
+       "statement": "[X_RT.kappa_total] 처방 tree 를 이루는 호환 extension 위의 계수 총합은 $\\kappa(S)$ (reference 계수 eq tree:K).",
+       "carries": [{"item": "kappa_total", "used_at": [332]}],
+       "grounding": {"source": "decorrelation.tex 332–336", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e9", "from": "ext_X_CH", "to": "s4_coefficient_J", "kind": "call",
+       "statement": "[X_CH.relative_charging] $J=\\prod_v\\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$, 모든 $m_{d_v}\\ge\\eta$ 이면 $J\\ne0$ 이고 $\\frac1{|J|}\\sum_{E\\text{ allowed}}|c_E|\\le C_{q,k,\\eta}$.",
+       "carries": [{"item": "relative_charging", "used_at": [348, 352]}],
+       "grounding": {"source": "decorrelation.tex 345–352", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e10", "from": "ext_X_SAMP", "to": "s5_projection", "kind": "call",
+       "statement": "[X_SAMP.children_independent] 목표 tree 의 주변은 $d$ 에서 분리 아래로 독립인 $S^+$ 두 보통 사본.",
+       "carries": [{"item": "children_independent", "used_at": [363]}],
+       "grounding": {"source": "decorrelation.tex 362–363", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e11", "from": "ext_PB", "to": "s5_projection", "kind": "flow",
+       "statement": "[PB.projection] $\\|(A_S-a_{S,e})\\cdot B\\|_{L^2}\\le p_N(S,e)$. [PB.two_sides] 두 쪽을 함께 사영하면 총 $L^2$ 오차 $\\le2p_N(S^+,e+1)$.",
+       "carries": [{"item": "projection", "used_at": [364]}, {"item": "two_sides", "used_at": [364, 366]}],
+       "grounding": {"source": "decorrelation.tex 364–366", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e12", "from": "ext_DC", "to": "s5_projection", "kind": "flow",
+       "statement": "[DC.branch_shift] branching 깊이를 옮긴 $S^U$ 와 $S$ 의 평균 비교 $\\le C/L$. [DC.eval_shift] 평가 깊이 이동 $\\mathcal A\\mathbb E\\|\\mu_{d+1,S}-\\mu_{d,S}\\|_N^2\\le C/L$. [DC.larger_tree] 더 큰 표본 tree 안에서도 성립.",
+       "carries": [{"item": "branch_shift", "used_at": [366, 368]}, {"item": "eval_shift", "used_at": [367, 368]}, {"item": "larger_tree", "used_at": [368, 379]}],
+       "grounding": {"source": "decorrelation.tex 366–380", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e13", "from": "ext_X_EXT", "to": "s6_classes", "kind": "call",
+       "statement": "[X_EXT.rule] side-II 첫 path 의 계수: $d$ 에서 fresh 는 $-c_d$, old II stem 위 $d<\\ell<e$ 에서 fresh 는 $-\\delta$, old leaf 재사용은 $1$.",
+       "carries": [{"item": "rule", "used_at": [391, 392, 393]}],
+       "grounding": {"source": "decorrelation.tex 390–393", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e14", "from": "ext_X_SAMP", "to": "s6_classes", "kind": "call",
+       "statement": "[X_SAMP.children_independent] $\\ell=d$ 에서 $a,b,b_d$ 를 나르는 stem 은 $d$ 아래로 조건부 독립. [X_SAMP.leaf_removal] 지운 subtree 는 kernel 아래 적분이 1, 남은 tree 의 법칙 보존.",
+       "carries": [{"item": "children_independent", "used_at": [395, 396]}, {"item": "leaf_removal", "used_at": [404, 405]}],
+       "grounding": {"source": "decorrelation.tex 395–405", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e15", "from": "ext_X_RT", "to": "s7_class_totals", "kind": "call",
+       "statement": "[X_RT.one_reference_total] 처방 reference prefix 를 따라가다 $j$ 개 자식과 다른 자식으로 들어가는 선택의 계수 합 $m_d-jm_{d+1}$ (거꾸로 합하기). [X_RT.kappa_total] 호환 extension 위 계수 총합 $\\kappa$; 각 side 에서 $\\kappa(S^+)$, 전체(분리 $d$ 포함)에서 $-\\delta J$.",
+       "carries": [{"item": "one_reference_total", "used_at": [414]}, {"item": "kappa_total", "used_at": [414, 415, 416, 418]}],
+       "grounding": {"source": "decorrelation.tex 414–419", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e16", "from": "ext_X_TI", "to": "s8_induction_identity", "kind": "call",
+       "statement": "[X_TI.identity] $f$ = old leaf 전체 overlap 으로 prescribed-tree identity; 오차는 고정 $L$ 에서 0.",
+       "carries": [{"item": "identity", "used_at": [435]}],
+       "grounding": {"source": "decorrelation.tex 434–441", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e17", "from": "ext_PB", "to": "s8_induction_identity", "kind": "flow",
+       "statement": "[PB.scalar_test] $|f|\\le1$ 인 scalar 시험함수를 축약 오차에 곱해도 상관되어 있든 $L^1$ 경계가 커지지 않는다.",
+       "carries": [{"item": "scalar_test", "used_at": [453, 454]}],
+       "grounding": {"source": "decorrelation.tex 453–454", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e18", "from": "ext_IDE", "to": "s8_induction_identity", "kind": "flow",
+       "statement": "[IDE.eps_def] identity 오차의 유한 모음 위 최대 $\\varepsilon_{N,L,k}$. [IDE.L_constants] 곱하는 상수는 $L$ 에 의존해도 됨 ($C_{L,k,\\eta}$). [IDE.eps_to_zero] 고정 $L,k$ 에서 $\\varepsilon_{N,L,k}\\to0$.",
+       "carries": [{"item": "eps_def", "used_at": [450]}, {"item": "L_constants", "used_at": [450]}, {"item": "eps_to_zero", "used_at": [457]}],
+       "grounding": {"source": "decorrelation.tex 448–457", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e19", "from": "ext_PB", "to": "s9_close", "kind": "flow",
+       "statement": "[PB.projection] $\\|f-a\\cdot b\\|_{L^2}\\le2p_N(S,e)$. [PB.two_sides] 첫 사본을 포함한 두 축약을 사영하면 각각 $L^2$ 에서 많아야 $2p_N(S,e)$ 바뀐다.",
+       "carries": [{"item": "projection", "used_at": [460, 461]}, {"item": "two_sides", "used_at": [461, 481, 482]}],
+       "grounding": {"source": "decorrelation.tex 460–461, 480–482", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e20", "from": "ext_CON", "to": "s9_close", "kind": "flow",
+       "statement": "[CON.three_copy] 조건부 독립 세 사본에 대해 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum C_{ij}^2=2v_N(S,d)$.",
+       "carries": [{"item": "three_copy", "used_at": [483]}],
+       "grounding": {"source": "decorrelation.tex 480–490", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e21", "from": "ext_IDE", "to": "s10_average", "kind": "flow",
+       "statement": "[IDE.eps_def] eq decor:identity-error 의 $\\varepsilon_{N,L,k}$. [IDE.eps_to_zero] 고정 $L$ 에서 $\\limsup_N$ 하면 그 항은 0.",
+       "carries": [{"item": "eps_def", "used_at": [514]}, {"item": "eps_to_zero", "used_at": [514]}],
+       "grounding": {"source": "decorrelation.tex 512–514", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e22", "from": "ext_X_SAMP", "to": "s9_close", "kind": "call",
+       "statement": "[X_SAMP.leaf_removal] leaf 를 지워도 남은 tree 의 법칙이 보존되므로 각 $a\\cdot b_\\ell$ 은 $a\\cdot b$ 와 주변 법칙이 같다.",
+       "carries": [{"item": "leaf_removal", "used_at": [466]}],
+       "grounding": {"source": "decorrelation.tex 466–467", "state": "proposed"}, "status": "connected", "complete": false},
+
+      {"id": "f1", "from": "s1_setup", "to": "s2_one_leaf", "kind": "flow",
+       "statement": "$V_{k,L}(\\eta)$ 의 정의 (base case $k=1$ 의 대상).",
+       "carries": [{"item": "V_definition", "used_at": [290]}],
+       "grounding": {"source": "decorrelation.tex 253–257, 290", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f2", "from": "s1_setup", "to": "s10_average", "kind": "flow",
+       "statement": "낮은 차수 공분산의 평균(쓰지 않는 좌표, 옮긴 깊이 포함)은 $V_{k-1,L}(\\eta/2)$ 로 막힌다; $V$ 의 최대는 유한 개 topology 위.",
+       "carries": [{"item": "lower_order_bound", "used_at": [512, 517]}, {"item": "V_definition", "used_at": [520]}],
+       "grounding": {"source": "decorrelation.tex 258–262, 512–522", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f3", "from": "s2_one_leaf", "to": "s10_average", "kind": "flow",
+       "statement": "base case $V_{1,L}(\\eta)\\le\\delta/\\eta$.",
+       "carries": [{"item": "base_case", "used_at": [522]}],
+       "grounding": {"source": "decorrelation.tex 290, 522", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f4", "from": "s3_shifted_copies", "to": "s4_coefficient_J", "kind": "definition",
+       "statement": "$S^+$ 와 처방(두 사본 $S^+$, $d$ 에서 분리), $b=b(S)$, 목표 branching vertex $2b$ 개.",
+       "carries": [{"item": "S_plus_construction", "used_at": [334, 346, 347]}],
+       "grounding": {"source": "decorrelation.tex 297–301, 332–347", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f5", "from": "s3_shifted_copies", "to": "s5_projection", "kind": "flow",
+       "statement": "목표는 $d$ 에서 분리된 $S^+$ 두 사본, anchor 는 첫 사본; old stem I, II.",
+       "carries": [{"item": "S_plus_construction", "used_at": [362, 363, 382, 383]}],
+       "grounding": {"source": "decorrelation.tex 294–301, 362–384", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f6", "from": "s3_shifted_copies", "to": "s6_classes", "kind": "flow",
+       "statement": "side I color 를 먼저, 다음 side II; anchor 는 I 의 old leaf; 첫 split $e$.",
+       "carries": [{"item": "addition_order", "used_at": [388, 389, 390]}],
+       "grounding": {"source": "decorrelation.tex 302–303, 388–390", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f7", "from": "s4_coefficient_J", "to": "s8_induction_identity", "kind": "flow",
+       "statement": "$J\\ne0$ 이고 $\\frac1{|J|}\\sum_{\\text{allowed}}|c|\\le C_{k,\\eta}$; $d$ 분리의 $-\\delta$ 는 identity 에 남긴다.",
+       "carries": [{"item": "relative_cost", "used_at": [435, 456]}],
+       "grounding": {"source": "decorrelation.tex 349–359, 435, 455–456", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f8", "from": "s5_projection", "to": "s8_induction_identity", "kind": "flow",
+       "statement": "각 extension 의 목표 overlap 과 사영 overlap 의 $L^2$ 차이 $\\le2p_N(S^+,e+1)+h_N(S)$; 목표 I 의 사영 vector 는 $a$.",
+       "carries": [{"item": "projection_error", "used_at": [449, 453]}],
+       "grounding": {"source": "decorrelation.tex 364–384, 448–455", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f9", "from": "s5_projection", "to": "s10_average", "kind": "flow",
+       "statement": "$\\mathcal A_{L,\\eta}h_N(S)^2\\le C_k/L$ (eq decor:projection-shift-error).",
+       "carries": [{"item": "h_bound", "used_at": [513]}],
+       "grounding": {"source": "decorrelation.tex 370–372, 513", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f10", "from": "s5_projection", "to": "s6_classes", "kind": "definition",
+       "statement": "$a,b$ = old stem I, II 위의 $a_{S,e}$.",
+       "carries": [{"item": "a_b_vectors", "used_at": [394, 395, 397]}],
+       "grounding": {"source": "decorrelation.tex 382–384, 393–397", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f11", "from": "s6_classes", "to": "s7_class_totals", "kind": "flow",
+       "statement": "class 안에서 $f$ 곱하기 사영 overlap 의 기대값은 상수이므로 총 부호 계수를 곱하면 된다; class 는 fresh $d\\le\\ell<e$ 와 old prefix through $e$.",
+       "carries": [{"item": "class_constant", "used_at": [414, 417, 423]}],
+       "grounding": {"source": "decorrelation.tex 409–423", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f12", "from": "s7_class_totals", "to": "s8_induction_identity", "kind": "flow",
+       "statement": "계수 표: fresh $d\\le\\ell<e$ 는 $a\\cdot b_\\ell$ 에 $-c_\\ell J$, old prefix through $e$ 는 $a\\cdot b$ 에 $m_eJ$; 총 $-\\delta J$.",
+       "carries": [{"item": "coefficient_table", "used_at": [434, 435]}],
+       "grounding": {"source": "decorrelation.tex 424–435", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f13", "from": "s8_induction_identity", "to": "s9_close", "kind": "flow",
+       "statement": "eq decor:induction-identity 와 $|\\rho_N(S,d)|\\le C_{k,\\eta}(p_N(S^+,e+1)+h_N(S))+C_{L,k,\\eta}\\varepsilon_{N,L,k}$; $|R_{\\mathrm{target}}|\\le1$.",
+       "carries": [{"item": "induction_identity", "used_at": [465, 472, 473, 474]}, {"item": "rho_bound", "used_at": [477, 486, 487, 488]}],
+       "grounding": {"source": "decorrelation.tex 436–452, 464–488", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f14", "from": "s9_close", "to": "s10_average", "kind": "flow",
+       "statement": "$v_N(S,d)\\le C_{k,\\eta}(\\delta+p_N(S,e)+p_N(S^+,e+1)+h_N(S))+C_{L,k,\\eta}\\varepsilon_{N,L,k}$ (eq decor:covariance-induction-estimate).",
+       "carries": [{"item": "covariance_estimate", "used_at": [491, 512]}],
+       "grounding": {"source": "decorrelation.tex 485–490, 512–517", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f15", "from": "s4_coefficient_J", "to": "out_relative_cost", "kind": "flow",
+       "statement": "$\\frac1{|J|}\\sum_{\\text{allowed}}|c|\\le C_{k,\\eta}$ (eq decor:relative-absolute-cost).",
+       "carries": [{"item": "relative_cost", "used_at": [350, 351]}],
+       "grounding": {"source": "decorrelation.tex 345–353", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f16", "from": "s10_average", "to": "out_fiber_bound", "kind": "flow",
+       "statement": "eq decor:fiber-bound 와 shift 하지 않은 항의 같은 경계.",
+       "carries": [{"item": "fiber_bound", "used_at": [500, 507, 509]}],
+       "grounding": {"source": "decorrelation.tex 491–509", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "f17", "from": "s10_average", "to": "out_main_V", "kind": "flow",
+       "statement": "재귀식 $V_{k,L}(\\eta)\\le C_{k,\\eta}(L^{-1/2}+V_{k-1,L}(\\eta/2)^{1/4})$ 와 base case 로 $V_{k,L}(\\eta)\\to0$; 따라서 명제.",
+       "carries": [{"item": "V_to_zero", "used_at": [522, 523]}, {"item": "main", "used_at": [523]}],
+       "grounding": {"source": "decorrelation.tex 515–523", "state": "proposed"}, "status": "connected", "complete": true}
+    ]
+  },
+  "parent_change_requests": [
+    {"target": "new symbol",
+     "kind": "new_symbol",
+     "detail": "$D$, $D_j$, $\\pi_j(\\mathbf q)$, $w_j$ (그리고 $\\gamma$) 를 기호 표에 올리고 CC 와 t15 의 symbols 에 넣는다. 정의: $D=b(S)+1$ (aligned 구성의 서로 다른 깊이 좌표 수), $D_j=b(T_j)+1$, $\\pi_j(\\mathbf q)=(e+1,(q_v+1)_{v\\in\\operatorname{Br}(T_j)})$, $w_j$ = 자식 공분산을 그 좌표의 함수로 본 것.",
+     "reason": "fiber_bound 출력과 보내는 edge t15 의 statement 가 이 기호들을 쓰고 THM(607–609)이 다시 쓰므로 증명 밖에서도 쓰인다. 지금은 하위 graph 의 local_symbols 에만 있다.",
+     "source_lines": "decorrelation.tex 492–499"},
+    {"target": "edge t3",
+     "kind": "other",
+     "detail": "carries 의 used_at 보강: holder 에 503–505, unused_coord 에 497 을 더한다.",
+     "reason": "fiber 경계의 둘째 부등식이 Hölder(오목성)이고 원상 수 $L^{D-D_j}$ 가 쓰지 않는 좌표의 상쇄다. 지금 used_at 은 262, 259–260 뿐이다.",
+     "source_lines": "decorrelation.tex 497–506"},
+    {"target": "edge t12",
+     "kind": "other",
+     "detail": "X_SAMP.leaf_removal 의 used_at 에 277, 466 을 더한다.",
+     "reason": "'$X_\\ell$ 은 $X$ 와 주변 법칙이 같다'(277)와 '$a\\cdot b_\\ell$ 은 $a\\cdot b$ 와 주변 법칙이 같다'(466)가 leaf 를 지운 tree 의 법칙 보존에서 나온다고 읽었다(원문은 근거를 적지 않음).",
+     "source_lines": "decorrelation.tex 277, 466"},
+    {"target": "edge t5",
+     "kind": "other",
+     "detail": "X_RT.kappa_total 의 used_at 에 416, 418 을 더한다.",
+     "reason": "side-I 선택의 합이 $\\kappa(S^+)$ (416)이고 총계수 $-\\delta J$ (418)도 같은 총합 규칙(분리 깊이 $d$ 의 인자 $m_d-m_{d+1}=-\\delta$ 포함)에서 나온다.",
+     "source_lines": "decorrelation.tex 414–419"}
+  ],
+  "missed_dependencies": [
+    {"what": "product difference inequality (곱의 차를 각 인자 차의 합으로 막는 부등식). 깊이 되돌림 오차 $h_N(S)$ 를 만들 때 쓴다. 받는 edge 어디에도 없다.",
+     "used_at": "decorrelation.tex 367–369",
+     "likely_from": "모름 (이 절 앞부분의 보조 부등식일 가능성; PB 또는 DC 근처)"},
+    {"what": "Lemma tree:charging 의 가정 문맥: t6 의 '그 $b$ 개 vertex' 가 무엇인지(목표 branching vertex 가 fresh unary split 으로 만들어져야 한다는 조건)가 t6 statement 에 없다. 증명은 345–347 에서 이 조건을 확인한 뒤 Lemma 를 부른다.",
+     "used_at": "decorrelation.tex 345–348",
+     "likely_from": "X_CH"}
+  ],
+  "notes": "안쪽 node 는 원문 문단(One leaf / Shifted copies / 그림 뒤 J / Projecting / signed extension sum 두 문단 / 계수 표 / induction identity / Closing 의 두 부분)을 따라 10 개로 두었다. 모두 sketch (대부분 다른 정리를 부름). 확신이 낮은 곳: (1) t5 kappa_total 의 used_at 332 는 실제로는 $\\kappa$ 정의(eq tree:K) 참조이고 총합 성질은 414–418 에서 쓰인다. (2) e22 는 leaf_removal 로 466 의 주변 법칙 일치를 읽은 작성자 해석이라 complete=false 로 두었다. (3) 계약의 relative_cost 문구 '밖의 참조는 remark 하나뿐' 은 이 묶음으로 확인할 수 없다. (4) fiber_bound 는 원문이 aligned 구성에서만 적는다(계약 author_filled 그대로). (5) eq decor:identity-error (514) 는 IDE 의 eps_def 로 보았다. 계약 출력 항목 문구는 원문과 맞아 change_item 은 없다."
+}

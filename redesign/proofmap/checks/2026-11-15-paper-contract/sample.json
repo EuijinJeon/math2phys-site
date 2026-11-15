@@ -1,0 +1,337 @@
+[
+ {
+  "k": 1,
+  "type": "node",
+  "node": "pert:selection",
+  "node_file": "perturbations.tex",
+  "input": "매개변수 평균한 score 집중 $\\int e_{\\nu,N}\\,d\\pi\\to0$",
+  "used_at": [
+   282,
+   287
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "where": "perturbations.tex 97–101",
+   "node": "pert:concentration",
+   "item": "concentration",
+   "statement": "고정된 $L$ 과 고정된 type $\\nu$ 에 대해 $\\int e_{\\nu,N}(\\mathbf u)\\,\\pi(d\\mathbf u)\\to0$ ($N\\to\\infty$)."
+  }
+ },
+ {
+  "k": 2,
+  "type": "node",
+  "node": "main:theorem",
+  "node_file": "model.tex",
+  "input": "factorization 표현: 승수 $a$ 가 비대칭으로 의존해도 되고, $f_\\ell$ 은 서로 독립·동분포이며 $b$ 와 독립",
+  "used_at": [
+   46,
+   47,
+   49,
+   50,
+   53,
+   54,
+   56,
+   57,
+   58
+  ],
+  "used_file": "reduction.tex",
+  "bound_to": {
+   "where": "model.tex 25–34",
+   "node": "model:factorization",
+   "item": "factorization",
+   "statement": "모든 spin 튜플에 대해 $e^{\\theta(s_1,\\ldots,s_p)}=a\\bigl(1+b\\prod_{\\ell=1}^pf_\\ell(s_\\ell)\\bigr)$ 이고 $|b\\prod_\\ell f_\\ell(s_\\ell)|<1$ a.s. 인 표현이 존재한다. $a>0$, $b$ 는 실수 확률변수, $f_\\ell:\\{-1,1\\}\\to\\mathbb R$ 는 한 무작위 함수의 독립 복사이고 $b$ 는 이들과 독립이다."
+  }
+ },
+ {
+  "k": 3,
+  "type": "node",
+  "node": "decor:overlap-concentration",
+  "node_file": "decorrelation.tex",
+  "input": "prescribed-tree 항등식 (marker anchor, $f=R_S$; singleton 의 spin anchor)",
+  "used_at": [
+   533,
+   544,
+   556
+  ],
+  "used_file": "decorrelation.tex",
+  "bound_to": {
+   "where": "perturbations.tex 454–464",
+   "node": "pert:tree-identity",
+   "item": "tree_identity",
+   "statement": "perturbation family 에 대해 Lemma pert:selection 의 모든 수열을 따라 $\\sum_{E\\in\\mathfrak E(\\mathcal T,a_*,\\mathcal C)}c_E\\,\\mathbb E[fR_E]-\\mathbb Ef\\sum_{E\\in\\mathfrak E(\\{a_*\\},a_*,\\mathcal C)}c_E\\,\\mathbb E[R_E]\\to0$."
+  }
+ },
+ {
+  "k": 4,
+  "type": "node",
+  "node": "comp:insertion-comparison",
+  "node_file": "comparison.tex",
+  "input": "시행 message 는 새 물리적 disorder 와 독립",
+  "used_at": [
+   183,
+   184,
+   185
+  ],
+  "used_file": "comparison.tex",
+  "bound_to": {
+   "where": "comparison.tex 80–82",
+   "node": "comp:encoding",
+   "item": "independent_of_new_disorder",
+   "statement": "label 마다 (reservoir root 와 균등 site 를 포함한) 전체 구성의 독립 복사를 쓰면 시행 message 들은 cavity insertion 의 새 물리적 disorder 와 독립이다."
+  }
+ },
+ {
+  "k": 5,
+  "type": "node",
+  "node": "comp:bounded-lower",
+  "node_file": "comparison.tex",
+  "input": "$\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r(\\zeta,\\mathbf m)$ 와 $\\mathcal B_{L-1}$",
+  "used_at": [
+   227,
+   229,
+   234,
+   241
+  ],
+  "used_file": "comparison.tex",
+  "bound_to": {
+   "where": "model.tex 111–117",
+   "node": "model:chain",
+   "item": "functional",
+   "statement": "$\\mathcal B_r(\\zeta,\\mathbf m)=\\log2+\\mathbb E\\log T_0V_{\\rm s}-\\alpha(p-1)\\,\\mathbb E\\log T_0V_{\\rm e}$, $\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r(\\zeta,\\mathbf m)$."
+  }
+ },
+ {
+  "k": 6,
+  "type": "node",
+  "node": "comp:insertion-comparison",
+  "node_file": "comparison.tex",
+  "input": "$\\mathcal M_L$ 의 시행 법칙과 위계 사슬, $r=L-1$",
+  "used_at": [
+   161,
+   166,
+   192
+  ],
+  "used_file": "comparison.tex",
+  "bound_to": {
+   "where": "model.tex 68–76",
+   "node": "model:chain",
+   "item": "message_chain",
+   "statement": "$\\mathcal P(E)$ 는 $E$ 위의 Borel 확률측도, $\\mathcal M_1=\\mathcal P(\\mathbb R)$, $\\mathcal M_{j+1}=\\mathcal P(\\mathcal M_j)$ (약수렴 위상과 Borel $\\sigma$-field). $r\\ge1$, $\\zeta\\in\\mathcal M_{r+1}$, $0<m_1<\\cdots<m_r<1$ 을 고정한다. 각 message label $\\omega$ 마다 독립으로 $\\eta_0^\\omega\\sim\\zeta$, $\\eta_{d+1}^\\omega\\mid\\eta_d^\\omega\\sim\\eta_d^\\omega$ ($0\\le d\\le r-2$), $x^\\omega\\mid\\eta_{r-1}^\\omega\\sim\\eta_{r-1}^\\omega$ 를 뽑는다."
+  }
+ },
+ {
+  "k": 7,
+  "type": "symbol",
+  "node": "cavity:increment",
+  "node_file": "cavity.tex",
+  "input": "쓰이지 않는 보조변수는 사전으로 적분해 없앨 수 있음, 새 root disorder",
+  "used_at": [
+   56,
+   97,
+   98
+  ],
+  "used_file": "cavity.tex",
+  "bound_to": {
+   "where": "trees.tex 135–140",
+   "tex": "",
+   "text": "원래 모형에 없던 변수를 쓰는 insertion 은 각 path kernel 을 그 변수들의 독립 사전 kernel 로 확대해서 다루고, 원래 backward 로그가 그 변수에 의존하지 않으므로 original tilt 는 그 조건부 사전 kernel 을 바꾸지 않고, 추가 root 변수는 quenched 로 둔다."
+  }
+ },
+ {
+  "k": 8,
+  "type": "symbol",
+  "node": "decor:overlap-concentration",
+  "node_file": "decorrelation.tex",
+  "input": "$\\eta$-regular 깊이 배정",
+  "used_at": [
+   66,
+   68
+  ],
+  "used_file": "decorrelation.tex",
+  "bound_to": {
+   "where": "decorrelation.tex 21–28",
+   "tex": "$\\eta$-regular",
+   "text": "$\\eta>0$ 에 대해 깊이 배정이 $\\eta$-regular 라는 것은 모든 깊이를 $L$ 로 나눈 값이 $(\\eta,1-\\eta)$ 에 있고 서로 다른 branching vertex 의 정규화 깊이가 $\\eta$ 보다 더 떨어져 있다는 것이다. 추가 prefix 깊이 $d$ 가 지정되면 모든 branching 깊이에 대해 같은 제약을 받는다. 한 topology 의 두 사본이 정렬된 깊이를 쓰면 대응 vertex 는 한 깊이 좌표를 공유하고 정규성은 그 서로 다른 좌표에 부과된다."
+  }
+ },
+ {
+  "k": 9,
+  "type": "symbol",
+  "node": "pert:error",
+  "node_file": "perturbations.tex",
+  "input": "지정된 매개변수 벡터에서의 기대값은 그 벡터를 고정한 채 취한다는 약속",
+  "used_at": [
+   84,
+   89
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "where": "perturbations.tex 4–10",
+   "tex": "$L,\\ N$ (절 약속)",
+   "text": "§6 내내 상호작용과 장은 유계이고 깊이 $L\\ge2$ 는 고정이다. 논증은 $N$-spin 계와 cavity reservoir 에 모두 적용된다 (reservoir 의 물리적 disorder 는 평균 $O(N)$ 인 Poisson 개수의 독립 유계 상호작용과 $N$ 개의 독립 유계 장). 지정된 매개변수 벡터에서의 진술의 모든 기대값은 그 벡터를 고정한 채 취한다."
+  }
+ },
+ {
+  "k": 10,
+  "type": "symbol",
+  "node": "decor:conditional-concentration",
+  "node_file": "decorrelation.tex",
+  "input": "세 사본이 $d$ 아래에서 조건부 독립, 지운 가지가 적분되어 사라짐, 표본 규칙",
+  "used_at": [
+   294,
+   296,
+   404,
+   405,
+   480
+  ],
+  "used_file": "decorrelation.tex",
+  "bound_to": {
+   "where": "trees.tex 29–39",
+   "tex": "$\\mathcal T,\\ E_{\\mathcal T}$",
+   "text": "공통 root 와 $L$ 깊이까지 가는 labeled path 유한 개로 된 유한 tree, 같은 vertex 의 자식은 kernel 로 독립 추출, root 조건부 표본 기대값 $E_{\\mathcal T}$, split, leaf 를 지워도 표본 법칙이 유지되는 사영 일관성."
+  }
+ },
+ {
+  "k": 11,
+  "type": "symbol",
+  "node": "pert:error",
+  "node_file": "perturbations.tex",
+  "input": "root 는 개수·type·site 이다",
+  "used_at": [
+   83,
+   84
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "where": "cavity.tex 28–32",
+   "tex": "",
+   "text": "섭동의 개수·type·site 는 root 변수이고 섭동 매개변수 $\\mathbf u$ 는 평균을 명시하지 않는 한 고정값이다."
+  }
+ },
+ {
+  "k": 12,
+  "type": "symbol",
+  "node": "tree:regular-shapes",
+  "node_file": "trees.tex",
+  "input": "regular shape",
+  "used_at": [
+   473,
+   482,
+   511,
+   512,
+   513
+  ],
+  "used_file": "trees.tex",
+  "bound_to": {
+   "where": "trees.tex 460–467",
+   "tex": "$\\eta$-regular shape",
+   "text": "$m_d=d/L$ 에서 unary 구간을 지워 유한 topology 와 branching-depth 좌표로 shape 를 적고, $0<\\eta<1/2$ 에 대해 모든 branching depth 를 $L$ 로 나눈 값이 $(\\eta,1-\\eta)$ 에 있고 서로 다른 두 branching vertex 의 정규화 깊이가 $\\eta$ 보다 더 떨어져 있으면 regular 라 한다. singleton 은 regular."
+  }
+ },
+ {
+  "k": 13,
+  "type": "floor",
+  "node": "tree:first-variation",
+  "node_file": "trees.tex",
+  "input": "power mean 안에서 매개변수 미분",
+  "used_at": [
+   144,
+   145,
+   152
+  ],
+  "used_file": "trees.tex",
+  "bound_to": {
+   "id": "diff_under_expectation",
+   "kind": "standard",
+   "statement": "유계 함수의 적분(기댓값) 안에서 매개변수로 미분할 수 있다 (유계 지배에 의한 적분 기호 아래 미분)."
+  }
+ },
+ {
+  "k": 14,
+  "type": "floor",
+  "node": "pert:concentration",
+  "node_file": "perturbations.tex",
+  "input": "볼록 함수의 차분몫과 도함수의 단조성",
+  "used_at": [
+   214,
+   220,
+   221
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "id": "convex_derivative_monotone",
+   "kind": "standard",
+   "statement": "볼록 함수의 도함수는 단조 증가하고 차분몫은 양쪽 도함수 사이에 끼인다."
+  }
+ },
+ {
+  "k": 15,
+  "type": "floor",
+  "node": "decor:conditional-concentration",
+  "node_file": "decorrelation.tex",
+  "input": "곱의 차 부등식",
+  "used_at": [
+   367
+  ],
+  "used_file": "decorrelation.tex",
+  "bound_to": {
+   "id": "product_difference",
+   "kind": "standard",
+   "statement": "$x_j,y_j\\in[-1,1]$ 이면 $|\\prod_jx_j-\\prod_jy_j|\\le\\sum_j|x_j-y_j|$ (따라서 제곱 노름은 $s\\sum_j$ 로 누를 수 있다)."
+  }
+ },
+ {
+  "k": 16,
+  "type": "floor",
+  "node": "pert:concentration",
+  "node_file": "perturbations.tex",
+  "input": "전체 분산 법칙 (조건부 분산 + 조건부 평균의 분산)",
+  "used_at": [
+   197,
+   198
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "id": "total_variance",
+   "kind": "standard",
+   "statement": "전체 분산 법칙: $\\operatorname{Var}Z=\\mathbb E\\operatorname{Var}(Z\\mid\\mathcal G)+\\operatorname{Var}(\\mathbb E[Z\\mid\\mathcal G])$."
+  }
+ },
+ {
+  "k": 17,
+  "type": "floor",
+  "node": "pert:concentration",
+  "node_file": "perturbations.tex",
+  "input": "Efron–Stein 분산 부등식",
+  "used_at": [
+   179,
+   180,
+   191
+  ],
+  "used_file": "perturbations.tex",
+  "bound_to": {
+   "id": "efron_stein",
+   "kind": "cited",
+   "statement": "Efron–Stein 분산 부등식: 독립 입력의 함수 $Z$ 에 대해 $\\operatorname{Var}Z\\le\\frac12\\sum_j\\mathbb E(Z-Z^{(j)})^2$ ($Z^{(j)}$ 는 $j$ 번째 입력을 독립으로 다시 뽑은 것; 동일 분포나 대칭 통계량은 필요 없다).",
+   "cite": "EfronStein",
+   "cited_at": "perturbations.tex 179"
+  }
+ },
+ {
+  "k": 18,
+  "type": "floor",
+  "node": "upper:bound",
+  "node_file": "upper.tex",
+  "input": "$\\lambda\\uparrow1$ 에서 정규화 증분의 극한",
+  "used_at": [
+   93,
+   126
+  ],
+  "used_file": "upper.tex",
+  "bound_to": {
+   "id": "dominated_convergence",
+   "kind": "standard",
+   "statement": "지배 수렴 정리."
+  }
+ }
+]

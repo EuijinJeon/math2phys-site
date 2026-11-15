@@ -1,0 +1,696 @@
+{
+ "section": "upper",
+ "nodes": [
+  {
+   "id": "upper:bound",
+   "title": "interpolation 상한 $F_N\\le\\mathcal B_r(\\zeta,\\mathbf m)$",
+   "env": "proposition",
+   "statement_span": [
+    11,
+    15
+   ],
+   "proof_span": [
+    17,
+    128
+   ],
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "finite_level_bound",
+     "statement": "주정리의 가정 아래 모든 $N$ 과 모든 허용되는 유한 단계 시행 법칙에 대해 $F_N\\le\\mathcal B_r(\\zeta,\\mathbf m)$.",
+     "lines": [
+      12,
+      14
+     ]
+    },
+    {
+     "id": "inf_bound",
+     "statement": "따라서 $F_N\\le\\inf_{r\\ge0}\\Phi_r$.",
+     "lines": [
+      14,
+      14
+     ]
+    },
+    {
+     "id": "bounded_factors",
+     "statement": "비퇴화 경우 ($b$ 와 $M=\\max_s|f(s)|$ 가 둘 다 거의 확실히 0 이 아닐 때) $\\|b\\|_\\infty\\le u^{-p}$, $\\|M\\|_\\infty\\le(vu^{p-1})^{-1}$ (여기서 $\\mathbb P(M\\ge u)>0$, $\\mathbb P(|b|\\ge v)>0$). 그래서 이후 쓰는 모든 moment 가 유한하다.",
+     "lines": [
+      24,
+      34
+     ],
+     "exported": true,
+     "added_by": "model:factorization"
+    }
+   ],
+   "needs": [
+    {
+     "id": "hypotheses",
+     "what": "주정리의 가정 ((2.1)–(2.4): 적분 가능성, 인수분해, 양성)",
+     "used_at": [
+      12
+     ],
+     "binding": {
+      "type": "node",
+      "node": "main:theorem",
+      "item": "hypotheses",
+      "new_item": {
+       "statement": "가정 (model:integrability)–(model:positivity): 적분 가능성, 인수분해 표현, 양성.",
+       "lines": [
+        131,
+        132
+       ]
+      }
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound"
+     ]
+    },
+    {
+     "id": "functional",
+     "what": "$\\mathcal B_r(\\zeta,\\mathbf m)$, $\\Phi_r$",
+     "used_at": [
+      13,
+      14,
+      22,
+      60,
+      127
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s1",
+      "upper:bound.s4"
+     ]
+    },
+    {
+     "id": "message_chain",
+     "what": "허용되는 유한 단계 시행 법칙 $(\\zeta,\\mathbf m)$ 과 message 사슬",
+     "used_at": [
+      13,
+      37
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "message_chain"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s2",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "site_term",
+     "what": "$V_{\\rm s}$",
+     "used_at": [
+      48
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "site_term"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s1",
+      "upper:bound.s2"
+     ]
+    },
+    {
+     "id": "edge_term",
+     "what": "$V_{\\rm e}$",
+     "used_at": [
+      60,
+      68
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "edge_term"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s1",
+      "upper:derivative",
+      "upper:derivative.s1"
+     ]
+    },
+    {
+     "id": "power_means",
+     "what": "power mean 연산자 $T_d$",
+     "used_at": [
+      42,
+      48,
+      68
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "power_means"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s2",
+      "upper:derivative",
+      "upper:derivative.s1"
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "what": "$r=0$ 규약: message 가 quenched",
+     "used_at": [
+      43,
+      44,
+      108,
+      109
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s2",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "trial_bounds",
+     "what": "시행 법칙에서의 유한성 $|\\log T_0V|$ 경계",
+     "used_at": [
+      48,
+      60
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:trial-bounds",
+      "item": "trial_bounds"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s2"
+     ]
+    },
+    {
+     "id": "setting",
+     "what": "$p$ 짝수, $\\theta$, $B(\\theta)$",
+     "used_at": [
+      39,
+      54,
+      88,
+      123
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "what": "Poisson 상호작용 개수, $F_N$, 분배함수",
+     "used_at": [
+      13,
+      22,
+      37,
+      47
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "hamiltonian"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s1",
+      "upper:bound.s2"
+     ]
+    },
+    {
+     "id": "integrability",
+     "what": "$\\mathbb E B(\\theta)+\\mathbb E|h|<\\infty$ (뺀 상수의 적분 가능성, 지배 수렴의 지배함수)",
+     "used_at": [
+      74,
+      93
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s1",
+      "upper:bound.s3",
+      "upper:regularization"
+     ]
+    },
+    {
+     "id": "factorization",
+     "what": "인수분해 표현 $e^\\theta=a(1+b\\prod f_\\ell)$ 와 엄격한 곱 유계",
+     "used_at": [
+      19,
+      26,
+      62,
+      63,
+      73
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "factorization"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s1",
+      "upper:derivative.s1",
+      "upper:regularization",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "positivity",
+     "what": "$\\mathbb E[(-b)^n]\\ge0$",
+     "used_at": [
+      116,
+      125
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "positivity"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "multiplier_a",
+     "what": "$a$ 는 다른 변수에 의존해도 되고 $\\log a$ 적분 가능성 불필요",
+     "used_at": [
+      71
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:factorization",
+      "item": "multiplier_a"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "message_q",
+     "what": "$q_x$ 와 message $x$ ($\\bar f(x)=\\sum_sf(s)q_x(s)$ 에 쓰임)",
+     "used_at": [
+      66,
+      89
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "message_q"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:derivative.s1",
+      "upper:regularization",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "site_log_weight",
+     "what": "cavity 상호작용 $U_\\theta$",
+     "used_at": [
+      39
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "site_log_weight"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s2",
+      "upper:derivative.s1"
+     ]
+    },
+    {
+     "id": "edge_partition",
+     "what": "edge 항 $C_\\theta$ (edge 삽입)",
+     "used_at": [
+      66,
+      68
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "edge_partition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:derivative.s1"
+     ]
+    },
+    {
+     "id": "cavity_bounds",
+     "what": "$|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 균등)",
+     "used_at": [
+      53,
+      54,
+      88,
+      89
+     ],
+     "binding": {
+      "type": "open",
+      "why": "번호 없는 진술, model.tex 65–66"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s3"
+     ]
+    },
+    {
+     "id": "original_tilt",
+     "what": "spin 분배함수에 대한 backward power-mean 재귀 (tilted kernel)",
+     "used_at": [
+      42,
+      43
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "original_tilt"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s2"
+     ]
+    },
+    {
+     "id": "extra_variables",
+     "what": "원래 계에 없던 message 과정을 tilted tree 에 덧붙임",
+     "used_at": [
+      67,
+      68,
+      105,
+      106
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "extra_variables"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound.s3",
+      "upper:derivative.s1"
+     ]
+    },
+    {
+     "id": "tree_sampling",
+     "what": "replica leaf $n$ 개의 tree $\\mathcal T$ 와 그 위의 기댓값",
+     "used_at": [
+      97,
+      98,
+      117
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "tree_sampling"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "Y_recursion",
+     "what": "삽입 재귀 $Y_0$",
+     "used_at": [
+      79,
+      81
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:Y-recursion",
+      "item": "Y_recursion"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:regularization"
+     ]
+    },
+    {
+     "id": "Y_insertion",
+     "what": "삽입 증분은 $\\log Y_0$",
+     "used_at": [
+      52,
+      53,
+      68,
+      79
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "root_log_shift"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:bound.s3",
+      "upper:derivative.s1",
+      "upper:regularization"
+     ]
+    },
+    {
+     "id": "monotone_homogeneous",
+     "what": "재귀가 점별 곱셈 유계를 보존함",
+     "used_at": [
+      54,
+      88
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:insertion",
+      "item": "monotone_homogeneous"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "log_series",
+     "what": "$\\log Y_0$ 의 급수 전개",
+     "used_at": [
+      81,
+      97,
+      121
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:log-expansion",
+      "item": "log_series"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "upper:bound",
+      "upper:regularization",
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "log_tail",
+     "what": "급수의 계수 경계 ($\\sum\\lambda^n/n$ 로 제어)",
+     "used_at": [
+      122,
+      123
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:log-expansion",
+      "item": "log_tail"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "Q_rule",
+     "what": "tree 법칙 $Q_n$",
+     "used_at": [
+      117,
+      120,
+      121
+     ],
+     "binding": {
+      "type": "node",
+      "node": "tree:telescoping",
+      "item": "Q_rule"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "upper:remainder"
+     ]
+    },
+    {
+     "id": "poisson_derivative",
+     "what": "Poisson 평균에 대한 미분",
+     "used_at": [
+      51
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "poisson_derivative"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "dominated_convergence",
+     "what": "$\\lambda\\uparrow1$ 에서 정규화 증분의 극한",
+     "used_at": [
+      93,
+      126
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "dominated_convergence"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "convex_even_power",
+     "what": "$x\\mapsto x^p$ 의 볼록성 ($p$ 짝수)",
+     "used_at": [
+      123,
+      124
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "convex_even_power"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "mean_value",
+     "what": "$t\\in[0,1]$ 적분",
+     "used_at": [
+      126,
+      127
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "mean_value"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [],
+ "floors_new": [
+  {
+   "id": "poisson_derivative",
+   "kind": "standard",
+   "statement": "Poisson 평균에 대한 미분: 유계 $g$ 에 대해 $\\frac{d}{d\\lambda}\\mathbb E\\,g(\\mathrm{Pois}(\\lambda))=\\mathbb E[g(\\mathrm{Pois}(\\lambda)+1)-g(\\mathrm{Pois}(\\lambda))]$."
+  },
+  {
+   "id": "dominated_convergence",
+   "kind": "standard",
+   "statement": "지배 수렴 정리."
+  },
+  {
+   "id": "convex_even_power",
+   "kind": "standard",
+   "statement": "$p$ 가 짝수이면 $x\\mapsto x^p$ 는 $\\mathbb R$ 위에서 볼록이다."
+  },
+  {
+   "id": "mean_value",
+   "kind": "standard",
+   "statement": "$[0,1]$ 에서 연속이고 $(0,1)$ 에서 미분가능한 $\\varphi$ 의 $\\varphi^{\\prime}$ 가 위에서 $c$ 로 막히면 $\\varphi(1)-\\varphi(0)\\le c$ (적분 또는 평균값 정리)."
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    3,
+    9
+   ],
+   "what": "절 머리: 문헌 소개와 완전한 시행 법칙 클래스를 다룬다는 약속",
+   "handled": "list"
+  }
+ ]
+}

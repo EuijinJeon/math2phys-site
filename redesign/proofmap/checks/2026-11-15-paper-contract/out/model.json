@@ -1,0 +1,576 @@
+{
+ "section": "model",
+ "nodes": [
+  {
+   "id": "model:integrability",
+   "title": "매개변수 $p$, $\\alpha$, 법칙 $\\theta$, $h$ 와 1차 moment 가정, Hamiltonian",
+   "env": "equation",
+   "statement_span": [
+    3,
+    23
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "setting",
+     "statement": "$p\\ge2$ 는 짝수 정수, $\\alpha>0$, $\\theta$ 는 $\\{-1,1\\}^p$ 위의 무작위 실함수, $h$ 는 실수 확률변수이고 $B(\\theta)=\\max_s|\\theta(s)|$.",
+     "lines": [
+      3,
+      5
+     ]
+    },
+    {
+     "id": "integrability",
+     "label": "model:integrability",
+     "statement": "$\\mathbb E\\,B(\\theta)+\\mathbb E|h|<\\infty$.",
+     "lines": [
+      6,
+      8
+     ]
+    },
+    {
+     "id": "hamiltonian",
+     "label": "model:hamiltonian",
+     "statement": "독립인 $M_N\\sim\\mathrm{Pois}(\\alpha N)$, $\\theta$ 의 독립 복사 $\\theta_k$, $h$ 의 독립 복사 $h_i$, 독립 균등 지표 $i_{\\ell,k}\\in[N]$ 에 대해 $-H_N(\\sigma)=\\sum_{k=1}^{M_N}\\theta_k(\\sigma_{i_{1,k}},\\ldots,\\sigma_{i_{p,k}})+\\sum_{i=1}^Nh_i\\sigma_i$, $Z_N=\\sum_{\\sigma\\in\\{-1,1\\}^N}e^{-H_N(\\sigma)}$, $F_N=\\frac1N\\mathbb E\\log Z_N$.",
+     "lines": [
+      9,
+      20
+     ]
+    },
+    {
+     "id": "independence",
+     "statement": "이 정의의 모든 family 는 서로 독립이다. 지표는 복원추출이고 모형 매개변수와 disorder 법칙은 $N$ 에 대해 고정이다.",
+     "lines": [
+      21,
+      23
+     ]
+    }
+   ],
+   "needs": [],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "model:factorization",
+   "title": "factor weight 의 인수분해 전개와 양성 가정",
+   "env": "equation",
+   "statement_span": [
+    25,
+    44
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "factorization",
+     "label": "model:factorization",
+     "statement": "모든 spin 튜플에 대해 $e^{\\theta(s_1,\\ldots,s_p)}=a\\bigl(1+b\\prod_{\\ell=1}^pf_\\ell(s_\\ell)\\bigr)$ 이고 $|b\\prod_\\ell f_\\ell(s_\\ell)|<1$ a.s. 인 표현이 존재한다. $a>0$, $b$ 는 실수 확률변수, $f_\\ell:\\{-1,1\\}\\to\\mathbb R$ 는 한 무작위 함수의 독립 복사이고 $b$ 는 이들과 독립이다.",
+     "lines": [
+      25,
+      34
+     ]
+    },
+    {
+     "id": "positivity",
+     "label": "model:positivity",
+     "statement": "$\\mathbb E[(-b)^n]\\ge0$ ($n\\ge1$).",
+     "lines": [
+      35,
+      37
+     ]
+    },
+    {
+     "id": "positivity_finite",
+     "statement": "위 기댓값은 유한한 실수 기댓값으로 해석한다. 비퇴화인 경우 독립성과 엄격한 곱 유계로 $b$ 와 $\\max_s|f_1(s)|$ 가 본질적으로 유계가 되어 자동으로 성립한다 (upper:bound 참조).",
+     "lines": [
+      38,
+      41
+     ]
+    },
+    {
+     "id": "degenerate_case",
+     "statement": "곱 항이 항등적으로 0 이면 상호작용은 spin 에 무관하고 $b=0$ 으로 잡을 수 있다.",
+     "lines": [
+      41,
+      43
+     ]
+    },
+    {
+     "id": "multiplier_a",
+     "statement": "곱수 $a$ 는 표현의 다른 모든 변수에 의존해도 되고 $\\log a$ 의 별도 적분 가능성은 가정하지 않는다.",
+     "lines": [
+      43,
+      44
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "setting",
+     "what": "$\\theta$, $p$, spin 튜플의 설정",
+     "used_at": [
+      27,
+      28,
+      30
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:factorization"
+     ]
+    },
+    {
+     "id": "bounded_factors",
+     "what": "비퇴화 경우 $b$ 와 $\\max_s|f_1(s)|$ 의 본질적 유계성 (upper:bound 증명 안)",
+     "used_at": [
+      39,
+      40,
+      41
+     ],
+     "binding": {
+      "type": "node",
+      "node": "upper:bound",
+      "item": "bounded_factors"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "x:model-moment-finiteness"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "model:chain",
+   "title": "시행 법칙: $\\mathcal M_j$, $\\zeta$, $\\mathbf m$, label별 사슬, $V_{\\rm s}$, $V_{\\rm e}$, power mean, 함수 $\\mathcal B_r$, $r=0$",
+   "env": "equation",
+   "statement_span": [
+    68,
+    120
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "message_chain",
+     "label": "model:chain",
+     "statement": "$\\mathcal P(E)$ 는 $E$ 위의 Borel 확률측도, $\\mathcal M_1=\\mathcal P(\\mathbb R)$, $\\mathcal M_{j+1}=\\mathcal P(\\mathcal M_j)$ (약수렴 위상과 Borel $\\sigma$-field). $r\\ge1$, $\\zeta\\in\\mathcal M_{r+1}$, $0<m_1<\\cdots<m_r<1$ 을 고정한다. 각 message label $\\omega$ 마다 독립으로 $\\eta_0^\\omega\\sim\\zeta$, $\\eta_{d+1}^\\omega\\mid\\eta_d^\\omega\\sim\\eta_d^\\omega$ ($0\\le d\\le r-2$), $x^\\omega\\mid\\eta_{r-1}^\\omega\\sim\\eta_{r-1}^\\omega$ 를 뽑는다.",
+     "lines": [
+      68,
+      76
+     ]
+    },
+    {
+     "id": "label_independence",
+     "statement": "이 변수들은 모두 물리적 disorder 와 독립이고, $x_1,\\ldots,x_p$ 와 $x_\\ell^j$ ($j\\ge1$, $1\\le\\ell<p$) 에는 서로 다른 label 을 쓴다.",
+     "lines": [
+      79,
+      81
+     ]
+    },
+    {
+     "id": "site_term",
+     "label": "model:vs",
+     "statement": "독립인 $k\\sim\\mathrm{Pois}(\\alpha p)$, $\\theta,\\theta_1,\\ldots$, $h$ 에 대해 $V_{\\rm s}=\\frac12\\sum_{\\varepsilon=\\pm1}\\exp\\bigl(h\\varepsilon+\\sum_{j=1}^kU_{\\theta_j}(x_1^j,\\ldots,x_{p-1}^j;\\varepsilon)\\bigr)$.",
+     "lines": [
+      82,
+      87
+     ]
+    },
+    {
+     "id": "edge_term",
+     "label": "model:ve",
+     "statement": "$V_{\\rm e}=C_\\theta(x_1,\\ldots,x_p)$.",
+     "lines": [
+      88,
+      88
+     ]
+    },
+    {
+     "id": "power_means",
+     "label": "model:power-means",
+     "statement": "$0\\le d<r$ 에 대해 $\\mathscr F_d$ 를 이 식들의 모든 물리적 disorder 와 $\\eta_j^\\omega$ ($0\\le j\\le d$) 가 생성하는 $\\sigma$-field 로 두고 $T_rV=V$, $T_dV=\\bigl(\\mathbb E[(T_{d+1}V)^{m_{d+1}}\\mid\\mathscr F_d]\\bigr)^{1/m_{d+1}}$ ($d=r-1,\\ldots,0$).",
+     "lines": [
+      90,
+      96
+     ]
+    },
+    {
+     "id": "messages_only",
+     "statement": "이 조건부 기댓값에서는 보조 message 만 적분한다.",
+     "lines": [
+      97,
+      97
+     ]
+    },
+    {
+     "id": "disorder_fixed",
+     "statement": "굵은 기호는 $V$ 의 모든 message label 을 모은 것이고, 물리적 disorder 는 약식 전개를 포함해 전체에서 고정된다.",
+     "lines": [
+      109,
+      110
+     ]
+    },
+    {
+     "id": "functional",
+     "label": "model:functional",
+     "statement": "$\\mathcal B_r(\\zeta,\\mathbf m)=\\log2+\\mathbb E\\log T_0V_{\\rm s}-\\alpha(p-1)\\,\\mathbb E\\log T_0V_{\\rm e}$, $\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r(\\zeta,\\mathbf m)$.",
+     "lines": [
+      111,
+      117
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "statement": "$r=0$ 에서는 message 들이 공통 법칙 $\\zeta\\in\\mathcal P(\\mathbb R)$ 로 독립이고 $T_d$ 는 생략된다; 이것이 $\\mathcal B_0(\\zeta)$ 와 $\\Phi_0$ 를 정한다.",
+     "lines": [
+      118,
+      120
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "setting",
+     "what": "$\\theta$, $h$ 의 법칙, $\\alpha$, $p$",
+     "used_at": [
+      82,
+      115
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "setting"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:chain",
+      "model:functional",
+      "model:ve"
+     ]
+    },
+    {
+     "id": "message_q",
+     "what": "message $x$ (실수) 와 그것이 정하는 spin 분포",
+     "used_at": [
+      75,
+      81,
+      86,
+      88
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "message_q"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:chain"
+     ]
+    },
+    {
+     "id": "site_log_weight",
+     "what": "$V_{\\rm s}$ 안의 $U_{\\theta_j}$",
+     "used_at": [
+      86
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "site_log_weight"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:vs"
+     ]
+    },
+    {
+     "id": "edge_partition",
+     "what": "$V_{\\rm e}$ 가 쓰는 $C_\\theta$",
+     "used_at": [
+      88
+     ],
+     "binding": {
+      "type": "symbol",
+      "symbol": "edge_partition"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:ve"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  },
+  {
+   "id": "model:trial-bounds",
+   "title": "moment 조건 없는 유한성 (2.12)",
+   "env": "equation",
+   "statement_span": [
+    122,
+    128
+   ],
+   "proof_span": null,
+   "span_fix": null,
+   "outputs": [
+    {
+     "id": "finiteness",
+     "statement": "$\\mathcal B_r$ 의 구성 요소는 시행 message 에 moment 가정이 없어도 유한하다 (power mean 은 점별 곱셈 유계를 보존한다).",
+     "lines": [
+      122,
+      124
+     ]
+    },
+    {
+     "id": "trial_bounds",
+     "label": "model:trial-bounds",
+     "statement": "$|\\log T_0V_{\\rm s}|\\le|h|+\\sum_{j=1}^kB(\\theta_j)$, $|\\log T_0V_{\\rm e}|\\le B(\\theta)$.",
+     "lines": [
+      125,
+      128
+     ]
+    }
+   ],
+   "needs": [
+    {
+     "id": "functional",
+     "what": "$\\mathcal B_r$ 의 정의",
+     "used_at": [
+      122
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "functional"
+     },
+     "origin": [
+      "machine",
+      "card"
+     ],
+     "card_ids": [
+      "model:trial-bounds"
+     ]
+    },
+    {
+     "id": "site_term",
+     "what": "$V_{\\rm s}$",
+     "used_at": [
+      126
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "site_term"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "edge_term",
+     "what": "$V_{\\rm e}$",
+     "used_at": [
+      127
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "edge_term"
+     },
+     "origin": [
+      "llm"
+     ]
+    },
+    {
+     "id": "power_means",
+     "what": "$T_d$ 연산자",
+     "used_at": [
+      123,
+      126,
+      127
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "power_means"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:trial-bounds"
+     ]
+    },
+    {
+     "id": "depth_zero",
+     "what": "$r=0$ 규약 ($\\mathcal B_0$)",
+     "used_at": [
+      122
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:chain",
+      "item": "depth_zero"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:trial-bounds"
+     ]
+    },
+    {
+     "id": "integrability",
+     "what": "$\\mathbb E B(\\theta)+\\mathbb E|h|<\\infty$",
+     "used_at": [
+      126,
+      127
+     ],
+     "binding": {
+      "type": "node",
+      "node": "model:integrability",
+      "item": "integrability"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:trial-bounds"
+     ],
+     "note": "유한성 주장에서 $|h|$, $B(\theta_j)$ 의 적분 가능성을 쓴다는 것은 원문이 적지 않았고 카드와 읽기에서 온 것이다."
+    },
+    {
+     "id": "cavity_bounds",
+     "what": "$|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 대해 균등)",
+     "used_at": [
+      126,
+      127
+     ],
+     "binding": {
+      "type": "open",
+      "why": "번호 없는 진술, model.tex 65–66"
+     },
+     "origin": [
+      "card"
+     ],
+     "card_ids": [
+      "model:trial-bounds"
+     ]
+    },
+    {
+     "id": "power_mean_scaling",
+     "what": "power mean 의 단조성·동차성",
+     "used_at": [
+      123,
+      124
+     ],
+     "binding": {
+      "type": "floor",
+      "floor": "power_mean_scaling"
+     },
+     "origin": [
+      "llm"
+     ]
+    }
+   ],
+   "card_deps_rejected": [],
+   "card_mismatches": []
+  }
+ ],
+ "symbols_new": [
+  {
+   "id": "message_q",
+   "tex": "$x,\\ q_x$",
+   "defined_at": "model.tex 46–54",
+   "text": "message $x\\in\\mathbb R$ 는 spin 하나 위의 확률분포 $q_x(s)=e^{xs}/(2\\cosh x)$ ($s=\\pm1$) 를 정한다."
+  },
+  {
+   "id": "site_log_weight",
+   "tex": "$U_\\theta$",
+   "defined_at": "model.tex 59–64",
+   "text": "cavity log-weight $U_\\theta(x_1,\\ldots,x_{p-1};\\varepsilon)=\\log\\sum_{s\\in\\{-1,1\\}^{p-1}}e^{\\theta(s_1,\\ldots,s_{p-1},\\varepsilon)}\\prod_\\ell q_{x_\\ell}(s_\\ell)$ (식 model:site-message)."
+  },
+  {
+   "id": "edge_partition",
+   "tex": "$C_\\theta$",
+   "defined_at": "model.tex 55–58",
+   "text": "edge 분배함수 $C_\\theta(x_1,\\ldots,x_p)=\\sum_{s\\in\\{-1,1\\}^p}e^{\\theta(s)}\\prod_{\\ell}q_{x_\\ell}(s_\\ell)$ (식 model:edge)."
+  }
+ ],
+ "floors_new": [
+  {
+   "id": "power_mean_scaling",
+   "kind": "standard",
+   "statement": "조건부 거듭제곱 평균 $(\\mathbb E[X^m\\mid\\mathcal G])^{1/m}$ 은 $X$ 에 대해 단조이고, $\\mathcal G$-가측 양수 인자를 곱하면 그 인자만큼 곱해진다 (동차)."
+  }
+ ],
+ "change_requests": [],
+ "unplaced": [
+  {
+   "lines": [
+    3,
+    5
+   ],
+   "what": "절 머리 약속: $p$ 짝수, $\\alpha>0$, $\\theta$, $h$, $B(\\theta)$ (node model:integrability 의 출력 setting 으로도 받음)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    46,
+    54
+   ],
+   "what": "message $x$ 와 $q_x$ 의 정의, site 항·edge 항의 뜻",
+   "handled": "symbol:message_q"
+  },
+  {
+   "lines": [
+    55,
+    58
+   ],
+   "what": "edge 분배함수 $C_\\theta$ (식 model:edge)",
+   "handled": "symbol:edge_partition"
+  },
+  {
+   "lines": [
+    59,
+    64
+   ],
+   "what": "cavity log-weight $U_\\theta$ (식 model:site-message)",
+   "handled": "symbol:site_log_weight"
+  },
+  {
+   "lines": [
+    65,
+    66
+   ],
+   "what": "번호 없는 사실 진술: $|\\log C_\\theta|,|U_\\theta|\\le B(\\theta)$ (message 에 균등)",
+   "handled": "list"
+  },
+  {
+   "lines": [
+    138,
+    140
+   ],
+   "what": "주정리가 말하지 않는 것 (remark; main:theorem 단계 몫)",
+   "handled": "list"
+  }
+ ]
+}

@@ -1,0 +1,214 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "reduction.tex",
+ "lines": 87,
+ "nodes": [
+  {
+   "id": "reduction:stability",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Stability",
+   "statement_span": [
+    9,
+    26
+   ],
+   "proof_span": [
+    28,
+    43
+   ],
+   "span": [
+    [
+     9,
+     26
+    ],
+    [
+     28,
+     43
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "reduction:free-stability",
+     "line": 15
+    },
+    {
+     "label": "reduction:trial-stability",
+     "line": 17
+    },
+    {
+     "label": "reduction:shift",
+     "line": 22
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:comp:bounded-lower",
+   "label": "comp:bounded-lower",
+   "file": "comparison.tex",
+   "line": 225,
+   "env": "corollary"
+  },
+  {
+   "id": "EXT:main:formula",
+   "label": "main:formula",
+   "file": "model.tex",
+   "line": 133,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:main:theorem",
+   "label": "main:theorem",
+   "file": "model.tex",
+   "line": 130,
+   "env": "theorem"
+  },
+  {
+   "id": "EXT:model:integrability",
+   "label": "model:integrability",
+   "file": "model.tex",
+   "line": 6,
+   "env": "equation"
+  },
+  {
+   "id": "EXT:upper:bound",
+   "label": "upper:bound",
+   "file": "upper.tex",
+   "line": 11,
+   "env": "proposition"
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:cavity.tex",
+   "file": "cavity.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "reduction:section",
+     "line": 11
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "reduction:section",
+     "line": 51
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "EXT:model:integrability",
+   "to": "reduction:stability",
+   "item": "model:integrability",
+   "ref_line": 11,
+   "cmd": "eqref"
+  }
+ ],
+ "internal_refs": [
+  {
+   "label": "reduction:free-stability",
+   "line": 32,
+   "cmd": "eqref",
+   "node": "reduction:stability"
+  },
+  {
+   "label": "reduction:trial-stability",
+   "line": 37,
+   "cmd": "eqref",
+   "node": "reduction:stability"
+  },
+  {
+   "label": "reduction:shift",
+   "line": 39,
+   "cmd": "eqref",
+   "node": "reduction:stability"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "comp:bounded-lower",
+   "line": 4,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:comp:bounded-lower"
+  },
+  {
+   "label": "main:theorem",
+   "line": 45,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:main:theorem"
+  },
+  {
+   "label": "comp:bounded-lower",
+   "line": 64,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:comp:bounded-lower"
+  },
+  {
+   "label": "comp:bounded-lower",
+   "line": 76,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:comp:bounded-lower"
+  },
+  {
+   "label": "upper:bound",
+   "line": 85,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:upper:bound"
+  },
+  {
+   "label": "main:formula",
+   "line": 86,
+   "cmd": "eqref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:main:formula"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "reduction:section",
+   "line": 2,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": null,
+   "line": 45,
+   "env": "proof(주인 없음)"
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   8
+  ],
+  [
+   45,
+   87
+  ]
+ ],
+ "stats": {
+  "nodes": 1,
+  "edges": 1,
+  "internal_refs": 3,
+  "unassigned_refs": 6,
+  "external_inputs": 5,
+  "consumers": 2,
+  "refs_total": 10
+ }
+}

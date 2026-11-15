@@ -1,0 +1,211 @@
+{
+ "tool": "extract_tex.py",
+ "root": "/Users/euijinjeon/math2phys-site/redesign/source/sections",
+ "target": "cavity.tex",
+ "lines": 121,
+ "nodes": [
+  {
+   "id": "cavity:negligible",
+   "rule": "E",
+   "env": "equation",
+   "span": [
+    [
+     34,
+     41
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "cavity:negligible",
+     "line": 38
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  },
+  {
+   "id": "cavity:increment",
+   "rule": "S",
+   "env": "lemma",
+   "title_opt": "Cavity increments",
+   "statement_span": [
+    43,
+    69
+   ],
+   "proof_span": [
+    71,
+    115
+   ],
+   "span": [
+    [
+     43,
+     69
+    ],
+    [
+     71,
+     115
+    ]
+   ],
+   "outputs": [
+    {
+     "label": "cavity:reservoir-mean",
+     "line": 47
+    },
+    {
+     "label": "cavity:identity",
+     "line": 51
+    },
+    {
+     "label": "cavity:site-insertion",
+     "line": 62
+    },
+    {
+     "label": "cavity:bond-insertion",
+     "line": 65
+    }
+   ],
+   "internal_eqs": [],
+   "exported_eqs": []
+  }
+ ],
+ "external_inputs": [
+  {
+   "id": "EXT:pert:section",
+   "label": "pert:section",
+   "file": "perturbations.tex",
+   "line": 2,
+   "env": null
+  },
+  {
+   "id": "EXT:reduction:section",
+   "label": "reduction:section",
+   "file": "reduction.tex",
+   "line": 2,
+   "env": null
+  }
+ ],
+ "consumers": [
+  {
+   "id": "OUT:comparison.tex",
+   "file": "comparison.tex",
+   "uses": [
+    {
+     "node": "cavity:increment",
+     "item": "cavity:increment",
+     "line": 171
+    },
+    {
+     "node": "cavity:increment",
+     "item": "cavity:identity",
+     "line": 195
+    },
+    {
+     "node": "cavity:increment",
+     "item": "cavity:identity",
+     "line": 222
+    }
+   ]
+  },
+  {
+   "id": "OUT:overview.tex",
+   "file": "overview.tex",
+   "uses": [
+    {
+     "node": null,
+     "item": "cavity:section",
+     "line": 18
+    }
+   ]
+  },
+  {
+   "id": "OUT:perturbations.tex",
+   "file": "perturbations.tex",
+   "uses": [
+    {
+     "node": "cavity:increment",
+     "item": "cavity:increment",
+     "line": 6
+    },
+    {
+     "node": "cavity:negligible",
+     "item": "cavity:negligible",
+     "line": 65
+    },
+    {
+     "node": "cavity:negligible",
+     "item": "cavity:negligible",
+     "line": 271
+    },
+    {
+     "node": "cavity:increment",
+     "item": "cavity:increment",
+     "line": 277
+    }
+   ]
+  }
+ ],
+ "edges": [],
+ "internal_refs": [
+  {
+   "label": "cavity:identity",
+   "line": 107,
+   "cmd": "eqref",
+   "node": "cavity:increment"
+  }
+ ],
+ "unassigned_refs": [
+  {
+   "label": "reduction:section",
+   "line": 11,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:reduction:section"
+  },
+  {
+   "label": "pert:section",
+   "line": 32,
+   "cmd": "cref",
+   "why": "어느 node에도 들지 않는 줄",
+   "from": "EXT:pert:section"
+  }
+ ],
+ "excluded_labels": [
+  {
+   "label": "cavity:section",
+   "line": 1,
+   "env": null,
+   "referenced": true
+  },
+  {
+   "label": "cavity:grid",
+   "line": 17,
+   "env": "equation",
+   "referenced": false
+  },
+  {
+   "label": "cavity:factor-bounds",
+   "line": 25,
+   "env": "equation",
+   "referenced": false
+  }
+ ],
+ "uncovered_lines": [
+  [
+   1,
+   33
+  ],
+  [
+   117,
+   121
+  ]
+ ],
+ "stats": {
+  "nodes": 2,
+  "edges": 0,
+  "internal_refs": 1,
+  "unassigned_refs": 2,
+  "external_inputs": 2,
+  "consumers": 3,
+  "refs_total": 3
+ }
+}

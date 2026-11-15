@@ -1,0 +1,5 @@
+[
+ {"node": "upper:bound", "need": "hypotheses",
+  "binding": {"type": "node", "node": "model:integrability", "item": "integrability"},
+  "why": "upper.tex 12 'Under the hypotheses of \\cref{main:theorem}' 는 model.tex 131 의 '(model:integrability)–(model:positivity)' 를 가리킨다. 작성 agent 는 main:theorem 에 항목 hypotheses 를 추가해 묶었으나, 그러면 맨 위 graph 에 MAIN → upper → MAIN 순환이 생긴다. 가정 셋 가운데 factorization·positivity 는 같은 node 의 다른 입력으로 이미 따로 묶여 있으므로 이 입력은 integrability 에 묶는다. 통합자 보정."}
+]

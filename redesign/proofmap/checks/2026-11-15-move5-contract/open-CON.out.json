@@ -1,0 +1,169 @@
+{
+  "graph": {
+    "id": "con",
+    "title": "Lemma: 축약과 세 사본 — 증명",
+    "parent": {"graph": "top", "node": "CON"},
+    "summary": "두 주장을 따로 증명한다. (1) $\\mathscr F_d$ 와 $B$ 가 주어졌을 때 축약의 제곱의 조건부 기대값을 조건부 공분산으로 쓰고, $|B_i|\\le1$ 로 $N^{-2}\\sum|C_{ij}|$ 로 누른 뒤 Cauchy–Schwarz 를 $i,j$ 에 대해, 다음 prefix(기대값)에 대해 써서 $v_N(S,d)^{1/4}$ 를 얻는다. (2) $\\mu=\\mathbb E[X\\mid\\mathscr G]$ 로 두고 조건부 독립으로 조건부 기대값을 $\\frac2{N^2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$ 로 계산한 뒤 $C$ 의 양반정치성으로 $\\frac2{N^2}\\operatorname{tr}(C^2)$ 이하를 버린다.",
+    "nodes": [
+      {
+        "id": "C1",
+        "kind": "step",
+        "title": "축약 제곱의 조건부 기대값",
+        "statement": "$\\mathscr F_d$ 와 $B$ 가 주어졌을 때 $\\mathbb E\\bigl[((A_S-\\mu_{d,S})\\cdot B)^2\\mid\\mathscr F_d,B\\bigr]=N^{-2}\\sum_{i,j}C_{ij}B_iB_j$, 여기서 $C_{ij}=\\operatorname{Cov}(A_{S,i},A_{S,j}\\mid\\mathscr F_d)$.",
+        "symbols": ["A_S", "F_d", "mu"],
+        "local_symbols": [
+          {"id": "B", "tex": "$B$", "defined_at": "decorrelation.tex 110–111", "text": "$\\mathscr F_d$ 가 주어졌을 때 $A_S$ 와 조건부 독립인 $[-1,1]^N$ 값 random vector."},
+          {"id": "C_F", "tex": "$C_{ij}$ (첫 주장)", "defined_at": "decorrelation.tex 129 (암묵)", "text": "첫 주장에서 $C_{ij}=\\operatorname{Cov}(A_{S,i},A_{S,j}\\mid\\mathscr F_d)$. 원문은 정의 없이 $C$ 를 쓴다."}
+        ],
+        "derivation": [
+          {"line": "$((A_S-\\mu_{d,S})\\cdot B)^2=N^{-2}\\sum_{i,j}(A_{S,i}-\\mu_{d,S,i})(A_{S,j}-\\mu_{d,S,j})B_iB_j$", "by": ["floor: 내적 전개"]},
+          {"line": "조건부 독립으로 $\\mathbb E[(A_{S,i}-\\mu_i)(A_{S,j}-\\mu_j)\\mid\\mathscr F_d,B]=\\operatorname{Cov}(A_{S,i},A_{S,j}\\mid\\mathscr F_d)=C_{ij}$", "by": ["floor: 조건부 독립", "symbol mu"]}
+        ],
+        "floor_used": ["내적 전개", "조건부 독립이면 $B$ 를 더 조건해도 $A_S$ 의 조건부 분포가 같다"],
+        "author_filled": "원문은 $C$ 를 정의하지 않는다. 첫 주장의 $C$ 를 $A_S$ 의 $\\mathscr F_d$-조건부 공분산 행렬로 읽었고, $B$ 를 더 조건해도 그 공분산이 바뀌지 않는 이유(조건부 독립)를 채웠다.",
+        "grounding": {"source": "decorrelation.tex 128–129", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "C2",
+        "kind": "step",
+        "title": "절댓값 한계",
+        "statement": "$\\bigl|N^{-2}\\sum_{i,j}C_{ij}B_iB_j\\bigr|\\le N^{-2}\\sum_{i,j}|C_{ij}|$.",
+        "symbols": [],
+        "derivation": [
+          {"line": "$|C_{ij}B_iB_j|\\le|C_{ij}|$", "by": ["e1", "floor: $|B_i|\\le1$"]},
+          {"line": "삼각부등식으로 합에 대해", "by": ["앞 줄", "floor: 삼각부등식"]}
+        ],
+        "floor_used": ["$B\\in[-1,1]^N$", "삼각부등식"],
+        "grounding": {"source": "decorrelation.tex 129–130", "state": "proposed"},
+        "status": "complete"
+      },
+      {
+        "id": "C3",
+        "kind": "step",
+        "title": "$i,j$ 에 대한 Cauchy–Schwarz",
+        "statement": "$N^{-2}\\sum_{i,j}|C_{ij}|\\le\\bigl(N^{-2}\\sum_{i,j}C_{ij}^2\\bigr)^{1/2}$.",
+        "symbols": [],
+        "derivation": [
+          {"line": "$\\sum_{i,j}|C_{ij}|\\le N\\bigl(\\sum_{i,j}C_{ij}^2\\bigr)^{1/2}$ ($N^2$ 개 항)", "by": ["e2", "floor: Cauchy–Schwarz"]},
+          {"line": "$N^{-2}$ 을 곱한다", "by": ["앞 줄"]}
+        ],
+        "floor_used": ["Cauchy–Schwarz"],
+        "author_filled": "원문은 'Cauchy–Schwarz, first over $i,j$' 라고만 한다. 항 수 $N^2$ 와 정규화된 꼴을 적어 넣었다.",
+        "grounding": {"source": "decorrelation.tex 130", "state": "proposed"},
+        "status": "complete"
+      },
+      {
+        "id": "C4",
+        "kind": "step",
+        "title": "prefix 에 대한 Cauchy–Schwarz",
+        "statement": "$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}^2=\\mathbb E\\,\\mathbb E[\\cdots\\mid\\mathscr F_d,B]\\le\\mathbb E\\bigl(N^{-2}\\sum C_{ij}^2\\bigr)^{1/2}\\le v_N(S,d)^{1/2}$, 따라서 $\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$.",
+        "symbols": ["v_N", "E_root", "F_d"],
+        "derivation": [
+          {"line": "탑 성질로 $L^2$ 노름의 제곱 $=\\mathbb E$ 조건부 기대값 $\\le\\mathbb E(N^{-2}\\sum C_{ij}^2)^{1/2}$", "by": ["e3", "floor: 탑 성질"]},
+          {"line": "$\\mathbb E(\\cdot)^{1/2}\\le(\\mathbb E\\,\\cdot)^{1/2}=v_N(S,d)^{1/2}$", "by": ["앞 줄", "floor: Cauchy–Schwarz", "symbol v_N"]},
+          {"line": "제곱근을 취한다", "by": ["앞 줄"]}
+        ],
+        "floor_used": ["탑 성질", "Cauchy–Schwarz ($\\mathbb E\\sqrt W\\le\\sqrt{\\mathbb EW}$)"],
+        "author_filled": "'then over the prefix' 를 $\\mathbb E\\sqrt W\\le\\sqrt{\\mathbb E W}$ 로 읽었다. 기대값이 root 를 포함하는 $\\mathbb E$ 라는 점, 탑 성질, 마지막 제곱근(지수 $1/2\\to1/4$)을 채웠다.",
+        "grounding": {"source": "decorrelation.tex 130–131", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "T1",
+        "kind": "step",
+        "title": "조건부 평균을 둔다",
+        "statement": "둘째 주장: $\\mu=\\mathbb E[X\\mid\\mathscr G]$ 로 쓴다.",
+        "symbols": [],
+        "local_symbols": [
+          {"id": "XYZ", "tex": "$X,Y,Z$", "defined_at": "decorrelation.tex 117–118", "text": "$\\mathscr G$ 가 주어졌을 때 유계 random vector 의 조건부 독립 사본."},
+          {"id": "G", "tex": "$\\mathscr G$", "defined_at": "decorrelation.tex 118", "text": "둘째 주장의 sigma field."},
+          {"id": "C_G", "tex": "$C$ (둘째 주장)", "defined_at": "decorrelation.tex 118–119", "text": "$X$ 의 $\\mathscr G$-조건부 공분산 행렬."},
+          {"id": "mu_G", "tex": "$\\mu$", "defined_at": "decorrelation.tex 132", "text": "$\\mu=\\mathbb E[X\\mid\\mathscr G]$. 기호 표의 $\\mu_{d,S}$ 와 다른 국소 기호."}
+        ],
+        "grounding": {"source": "decorrelation.tex 132", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "T2",
+        "kind": "step",
+        "title": "조건부 독립으로 계산",
+        "statement": "$\\mathbb E[(X\\cdot Y-X\\cdot Z)^2\\mid\\mathscr G]=\\frac2{N^2}\\operatorname{tr}\\bigl((C+\\mu\\mu^{\\mathsf T})C\\bigr)$.",
+        "symbols": [],
+        "derivation": [
+          {"line": "$M=\\mathbb E[XX^{\\mathsf T}\\mid\\mathscr G]=C+\\mu\\mu^{\\mathsf T}$", "by": ["e5"]},
+          {"line": "$\\mathbb E[(X\\cdot Y)^2\\mid\\mathscr G]=\\mathbb E[(X\\cdot Z)^2\\mid\\mathscr G]=N^{-2}\\operatorname{tr}(M^2)$", "by": ["앞 줄", "floor: 조건부 독립, 같은 분포"]},
+          {"line": "$\\mathbb E[(X\\cdot Y)(X\\cdot Z)\\mid\\mathscr G]=N^{-2}\\mu^{\\mathsf T}M\\mu=N^{-2}\\operatorname{tr}(M\\mu\\mu^{\\mathsf T})$", "by": ["앞 줄", "floor: 조건부 독립"]},
+          {"line": "전개하면 $2N^{-2}\\operatorname{tr}(M(M-\\mu\\mu^{\\mathsf T}))=\\frac2{N^2}\\operatorname{tr}(MC)$", "by": ["앞 줄"]}
+        ],
+        "floor_used": ["조건부 독립이면 조건부 기대값이 곱으로 갈라진다", "유계라서 모든 기대값이 유한"],
+        "author_filled": "원문은 'Conditional independence gives' 뒤에 결과만 적는다. 이차 모멘트 $M=C+\\mu\\mu^{\\mathsf T}$, 세 항의 전개와 상쇄를 채웠다.",
+        "grounding": {"source": "decorrelation.tex 133–136", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "T3",
+        "kind": "step",
+        "title": "양반정치성으로 버린다",
+        "statement": "$\\frac2{N^2}\\operatorname{tr}\\bigl((C+\\mu\\mu^{\\mathsf T})C\\bigr)\\ge\\frac2{N^2}\\operatorname{tr}(C^2)$, $C$ 가 양반정치이므로.",
+        "symbols": [],
+        "derivation": [
+          {"line": "$\\operatorname{tr}(\\mu\\mu^{\\mathsf T}C)=\\mu^{\\mathsf T}C\\mu\\ge0$", "by": ["e6", "floor: 공분산 행렬은 양반정치"]},
+          {"line": "더한다", "by": ["앞 줄"]}
+        ],
+        "floor_used": ["공분산 행렬은 양반정치", "trace 의 순환성"],
+        "author_filled": "버리는 항이 $\\mu^{\\mathsf T}C\\mu\\ge0$ 이라는 것을 적었다.",
+        "grounding": {"source": "decorrelation.tex 137–139", "state": "proposed"},
+        "status": "complete"
+      },
+      {
+        "id": "T4",
+        "kind": "step",
+        "title": "기대값을 취한다",
+        "statement": "$\\operatorname{tr}(C^2)=\\sum_{i,j}C_{ij}^2$ 이고 양변에 $\\mathbb E$ 를 취하면 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{i,j}C_{ij}^2$.",
+        "symbols": ["E_root"],
+        "derivation": [
+          {"line": "$C$ 대칭이므로 $\\operatorname{tr}(C^2)=\\sum_{i,j}C_{ij}^2$", "by": ["e7", "floor: 대칭 행렬"]},
+          {"line": "탑 성질로 바깥 기대값", "by": ["앞 줄", "floor: 탑 성질"]}
+        ],
+        "floor_used": ["대칭 행렬의 $\\operatorname{tr}(C^2)$", "탑 성질"],
+        "author_filled": "원문 증명은 조건부 부등식에서 멈춘다. 바깥 기대값과 $\\operatorname{tr}(C^2)=\\sum C_{ij}^2$ 를 채워 진술 (decor:three-copy-bound) 과 이었다.",
+        "grounding": {"source": "decorrelation.tex 121–122, 137", "state": "proposed"},
+        "status": "complete"
+      },
+      {
+        "id": "OUT_contraction",
+        "kind": "output",
+        "title": "출력: contraction",
+        "output_items": ["contraction"],
+        "statement": "random vector $B\\in[-1,1]^N$ 이 $\\mathscr F_d$ 가 주어졌을 때 $A_S$ 와 조건부 독립이면 $\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$.",
+        "symbols": ["A_S", "F_d", "mu", "v_N"],
+        "grounding": {"source": "decorrelation.tex 110–116", "state": "proposed"},
+        "status": "sketch"
+      },
+      {
+        "id": "OUT_three_copy",
+        "kind": "output",
+        "title": "출력: three_copy",
+        "output_items": ["three_copy"],
+        "statement": "$X,Y,Z$ 가 sigma field $\\mathscr G$ 가 주어졌을 때 유계 random vector의 조건부 독립 사본이고 $C$ 가 그 조건부 공분산 행렬이면 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{i,j}C_{ij}^2$.",
+        "symbols": ["E_root"],
+        "grounding": {"source": "decorrelation.tex 117–124", "state": "proposed"},
+        "status": "sketch"
+      }
+    ],
+    "edges": [
+      {"id": "e1", "from": "C1", "to": "C2", "kind": "flow", "statement": "$\\mathbb E[((A_S-\\mu_{d,S})\\cdot B)^2\\mid\\mathscr F_d,B]=N^{-2}\\sum_{i,j}C_{ij}B_iB_j$.", "carries": [{"item": "cond_second_moment", "used_at": [129]}], "grounding": {"source": "decorrelation.tex 128–129", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e2", "from": "C2", "to": "C3", "kind": "flow", "statement": "조건부 기대값의 절댓값 $\\le N^{-2}\\sum_{i,j}|C_{ij}|$.", "carries": [{"item": "abs_bound", "used_at": [130]}], "grounding": {"source": "decorrelation.tex 129–130", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e3", "from": "C3", "to": "C4", "kind": "flow", "statement": "조건부 기대값 $\\le(N^{-2}\\sum_{i,j}C_{ij}^2)^{1/2}$.", "carries": [{"item": "cs_ij", "used_at": [130, 131]}], "grounding": {"source": "decorrelation.tex 130", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e4", "from": "C4", "to": "OUT_contraction", "kind": "flow", "statement": "$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$.", "carries": [{"item": "contraction", "used_at": [131]}], "grounding": {"source": "decorrelation.tex 131", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e5", "from": "T1", "to": "T2", "kind": "definition", "statement": "$\\mu=\\mathbb E[X\\mid\\mathscr G]$.", "carries": [{"item": "mu_G", "used_at": [136]}], "grounding": {"source": "decorrelation.tex 132", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e6", "from": "T2", "to": "T3", "kind": "flow", "statement": "$\\mathbb E[(X\\cdot Y-X\\cdot Z)^2\\mid\\mathscr G]=\\frac2{N^2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$.", "carries": [{"item": "cond_identity", "used_at": [136, 137]}], "grounding": {"source": "decorrelation.tex 135–136", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e7", "from": "T3", "to": "T4", "kind": "flow", "statement": "$\\mathbb E[(X\\cdot Y-X\\cdot Z)^2\\mid\\mathscr G]\\ge\\frac2{N^2}\\operatorname{tr}(C^2)$.", "carries": [{"item": "cond_bound", "used_at": [137]}], "grounding": {"source": "decorrelation.tex 137–139", "state": "proposed"}, "status": "connected", "complete": true},
+      {"id": "e8", "from": "T4", "to": "OUT_three_copy", "kind": "flow", "statement": "$\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{i,j}C_{ij}^2$.", "carries": [{"item": "three_copy", "used_at": [121, 122]}], "grounding": {"source": "decorrelation.tex 121–122", "state": "proposed"}, "status": "connected", "complete": true}
+    ]
+  },
+  "parent_change_requests": [],
+  "missed_dependencies": [],
+  "notes": "받는 edge(2절)가 비어 있으므로 external node 는 두지 않았다. 증명은 기초 사실(조건부 독립, 삼각부등식, Cauchy–Schwarz, 탑 성질, 공분산의 양반정치성)만 쓴다. 확신이 낮은 곳: (1) 원문이 첫 주장에서 $C$ 를 정의 없이 쓰므로 $\\operatorname{Cov}(A_S\\mid\\mathscr F_d)$ 로 읽었다(C1 국소 기호 C_F); 둘째 주장의 $C$ 와 같은 글자라 겹친다. (2) 'then over the prefix' 를 $\\mathscr F_d$ 를 생성하는 root+prefix 에 대한 바깥 기대값의 Cauchy–Schwarz($\\mathbb E\\sqrt W\\le\\sqrt{\\mathbb EW}$)로 읽었다. (3) 둘째 주장의 국소 $\\mu$ 는 기호 표의 mu($\\mu_{d,S}$)와 다르다. 이 국소 기호들은 증명 밖에서 쓰이지 않으므로 기호 표 추가 요청은 하지 않았다."
+}

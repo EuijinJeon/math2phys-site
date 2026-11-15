@@ -1,0 +1,714 @@
+{
+ "AVG": {
+  "edge_used_at": [
+   {
+    "from": "k1",
+    "to": "k2",
+    "lines": [
+     37,
+     38,
+     40,
+     41
+    ],
+    "note": "k2는 \"total mass at most one\"(37-38)과 \\mathcal A의 정규화 L^{-a}를 써서 (40-41)을 얻는다"
+   },
+   {
+    "from": "k1",
+    "to": "k3",
+    "lines": [
+     45,
+     46,
+     47
+    ],
+    "note": "45는 \\mathcal A의 L^{-a} 정규화를 쓰고, 46-47은 \\mathcal A의 합 범위인 η-regular 배정을 쓴다"
+   }
+  ],
+  "missing": [
+   {
+    "to": "k2",
+    "what": "정규화 안 된 측도(질량 ≤1)에 대한 오목함수 t^γ의 Jensen/Hölder",
+    "lines": [
+     38,
+     41
+    ],
+    "from": "floor:Jensen(오목, 질량 ≤1)"
+   }
+  ],
+  "author_filled": [
+   {
+    "at": "k1",
+    "what": "질량 ≤1의 근거: 각 좌표가 L개 이하의 값을 가지므로 η-regular q는 많아야 L^a개이고, 따라서 L^{-a}·#{q} ≤ 1"
+   },
+   {
+    "at": "k2",
+    "what": "w=L^{-a}·1_{reg}, m=Σw≤1로 두면 Σw z^γ ≤ m^{1-γ}(Σw z)^γ ≤ (Σw z)^γ (Hölder 지수 1/γ, 1/(1-γ))"
+   },
+   {
+    "at": "k3",
+    "what": "안 쓰는 좌표: 받는 항이 q_v와 무관하므로 Σ_{q_v} ≤ L·(나머지)이고, 이 L이 L^{-a} 안의 인수 L^{-1}과 상쇄된다"
+   },
+   {
+    "at": "k3",
+    "what": "정수 이동: 고정 정수 c만큼 옮기면 간격과 경계까지의 거리가 많아야 2|c| 바뀐다. 2|c| ≤ ηL/2이면(충분히 큰 L) η-regular가 η/2-regular로 가고, 평행이동이라 단사이다"
+   }
+  ],
+  "mismatch": [
+   {
+    "card": "decor:average-definition / decor:average-holder",
+    "issue": "k1(30-38)과 k2(36-43)가 36-38에서 겹친다. 정의식은 30-35에서 끝나고, 36-38(순서 제한, 질량 ≤1)은 k1의 정의 보충이자 k2의 전제이다"
+   },
+   {
+    "card": "x:decor-average-comparisons",
+    "issue": "k3에는 서로 다른 주장 둘(45의 안 쓰는 좌표, 45-47의 정수 이동)이 한 카드에 묶여 있다. 다른 node는 이 둘을 따로 쓴다(DC는 shift_regular만 받는다)"
+   }
+  ]
+ },
+ "DC": {
+  "edge_used_at": [
+   {
+    "from": "x_AVG",
+    "to": "k1",
+    "lines": [
+     176,
+     177
+    ],
+    "note": "k1이 쓰는 것은 '좌표에 대해 합하고 L로 나누기'(\\mathcal A의 정규화, 안 쓰는 좌표 비교)이다. DC가 받는 AVG 항목은 shift_regular뿐이라 이 쓰임에 맞는 항목이 없다"
+   },
+   {
+    "from": "k1",
+    "to": "k2",
+    "lines": [
+     184,
+     185
+    ],
+    "note": "k2는 k1의 대상인 μ_{t,T}와 \\mathscr F_q만 쓴다. martingale energy 부등식은 k2에서 쓰이지 않고 k3(194)에서 쓰인다"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k2",
+    "lines": null,
+    "note": "DC가 받는 X_SAMP 항목은 leaf_removal뿐인데 k2(178-193)에는 그 쓰임이 없다. leaf_removal은 204-205(k4)에서 쓰인다. k2가 실제로 쓰는 것은 자식 조건부 독립(181)이다"
+   },
+   {
+    "from": "k1",
+    "to": "k3",
+    "lines": [
+     194
+    ],
+    "note": null
+   },
+   {
+    "from": "k2",
+    "to": "k3",
+    "lines": [
+     194
+    ],
+    "note": "(one-vertex-shift)를 q에 대해 합한다"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k3",
+    "lines": [
+     198,
+     199
+    ],
+    "note": "198-199가 쓰는 것은 '다른 깊이 좌표에 대해 평균'(안 쓰는 좌표 비교)이지 shift_regular가 아니다"
+   },
+   {
+    "from": "k3",
+    "to": "k4",
+    "lines": [
+     199,
+     200,
+     201
+    ],
+    "note": null
+   },
+   {
+    "from": "x_AVG",
+    "to": "k4",
+    "lines": [
+     201,
+     202,
+     203
+    ],
+    "note": "AVG.shift_regular를 쓴다"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k4",
+    "lines": [
+     204,
+     205
+    ],
+    "note": "X_SAMP.leaf_removal을 쓴다"
+   }
+  ],
+  "missing": [
+   {
+    "to": "k2",
+    "what": "원래 조건부 평균 = ∏_j μ_{q,T_j} (자식들의 조건부 독립)",
+    "lines": [
+     180,
+     181
+    ],
+    "from": "모름 (X_SAMP.children_independent는 DC 입력 목록에 없다)"
+   },
+   {
+    "to": "k2",
+    "what": "조건부 Jensen: ||E[X|F]||^2 ≤ E[||X||^2|F]",
+    "lines": [
+     185,
+     186
+    ],
+    "from": "floor:조건부 Jensen"
+   },
+   {
+    "to": "k3",
+    "what": "조건부 기대값과 크기 ≤1인 인수와의 좌표별 곱이 ||·||_N^2를 늘리지 않음",
+    "lines": [
+     195,
+     196,
+     197,
+     198
+    ],
+    "from": "floor:L^2 축소(조건부 기대값, 유계 곱)"
+   },
+   {
+    "to": "k4",
+    "what": "제곱 삼각부등식 ||Σ_{i=1}^m x_i||^2 ≤ m Σ||x_i||^2",
+    "lines": [
+     200,
+     201
+    ],
+    "from": "floor:제곱 삼각부등식"
+   },
+   {
+    "to": "k1",
+    "what": "martingale 증분의 직교성",
+    "lines": [
+     171,
+     172,
+     173
+    ],
+    "from": "floor:martingale 증분 직교"
+   }
+  ],
+  "author_filled": [
+   {
+    "at": "k1",
+    "what": "Σ_t E||μ_{t+1}-μ_t||^2 = E||μ_end||^2 - E||μ_start||^2 ≤ 1. ||·||_N이 정규화되어 있고 좌표가 [-1,1]에 있으므로 성립한다"
+   },
+   {
+    "at": "k1",
+    "what": "d가 S의 처음 unary stretch에 있으므로 μ_{d,S}는 그 stem 위의 μ_{t,T} martingale과 같다. d에 대해 합한 뒤 L로 나누고, 나머지 branching 깊이의 평균은 질량 ≤1이므로 C/L(C=1)이 된다"
+   },
+   {
+    "at": "k2",
+    "what": "∏μ_q는 \\mathscr F_q-가측이므로 ∏μ_q - E[∏μ_{q+1}|F_q] = E[∏μ_q - ∏μ_{q+1}|F_q]. 여기에 Jensen을 쓰고, [-1,1]^s에서 |∏x_j - ∏y_j|^2 ≤ sΣ|x_j-y_j|^2를 좌표별로 쓴다"
+   },
+   {
+    "at": "k3",
+    "what": "Σ_q sΣ_j E||μ_{q+1,T_j}-μ_{q,T_j}||^2 ≤ s·s. q에 대해 L로 나누면 s^2/L이 된다. q가 T_j의 처음 stem 위에 있어야 하는데, 이는 regularity(q < T_j의 branching 깊이)로 보장된다"
+   },
+   {
+    "at": "k4",
+    "what": "중간 shape의 깊이 배정은 원래 배정의 정수 이동이다. 단사이므로 η-regular 평균은 η/2-regular 평균 이하로 눌리고, 거기에 η/2에서의 k3 경계를 쓴다(상수가 η에 의존하지 않거나 η/2에서 다시 잡아야 한다)"
+   },
+   {
+    "at": "k4",
+    "what": "η-regular이면 깊이 간격이 ≥ηL > 1이므로, 한 칸 올려도 깊이 순서와 ancestry가 바뀌지 않는다"
+   }
+  ],
+  "mismatch": [
+   {
+    "card": "decor:depth-continuity.s3 / s4",
+    "issue": "k3(194-199)와 k4(199-206)가 199에서 겹친다. 한 줄 안에서 'for one shift.'로 끝나는 문장과 'For several shifts'로 시작하는 문장이 갈린다"
+   },
+   {
+    "card": "decor:depth-continuity.s2",
+    "issue": "edge x_X_SAMP→k2는 원문과 다르다. k2는 자식 독립을 쓰는데, 들어오는 항목은 leaf_removal(k4에서 쓰임)이다"
+   },
+   {
+    "card": "decor:depth-continuity.s1",
+    "issue": "edge x_AVG→k1과 x_AVG→k3이 가리키는 쓰임은 정규화와 안 쓰는 좌표인데, DC로 오는 AVG 항목은 shift_regular뿐이다. 입력 항목 목록에 AVG의 '안 쓰는 좌표' 비교가 빠져 있다"
+   },
+   {
+    "card": "decor:depth-continuity.s3",
+    "issue": "진술 154-155의 'd가 범위를 돌면 d도 평균' 경우를 증명은 따로 다루지 않는다. 198의 '다른 모든 깊이 좌표 평균'에 묻혀 있다"
+   }
+  ]
+ },
+ "PB": {
+  "edge_used_at": [
+   {
+    "from": "x_X_SAMP",
+    "to": "k1",
+    "lines": [
+     209,
+     210
+    ],
+    "note": "children_independent를 써서 μ_{e,S}=∏μ_{e,T_j}를 얻는다. a_{S,e}의 정의(212) 자체는 이 항목이 없어도 선다"
+   },
+   {
+    "from": "k1",
+    "to": "k2",
+    "lines": [
+     220
+    ],
+    "note": null
+   },
+   {
+    "from": "x_CON",
+    "to": "k2",
+    "lines": [
+     217,
+     218,
+     223,
+     224,
+     225
+    ],
+    "note": "CON.contraction을 T_j, d=e에 적용한다"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k2",
+    "lines": [
+     223,
+     224,
+     225
+    ],
+    "note": "나머지 자식이 바꾸는 자식과 \\mathscr F_e 아래에서 독립이다"
+   }
+  ],
+  "missing": [
+   {
+    "to": "k2",
+    "what": "L^2 삼각부등식으로 s개 치환 오차를 더한다",
+    "lines": [
+     217,
+     220
+    ],
+    "from": "floor:삼각부등식"
+   },
+   {
+    "to": "k2",
+    "what": "|f|≤1이면 ||fX||_{L^1} ≤ ||X||_{L^1} ≤ ||X||_{L^2}",
+    "lines": [
+     228,
+     229,
+     230
+    ],
+    "from": "floor:L^1≤L^2, 유계 곱"
+   }
+  ],
+  "author_filled": [
+   {
+    "at": "k1",
+    "what": "A_S = ∏_j A_{T_j}(좌표별)이고 μ_{e,S}=E[A_S|F_e]. 조건부 독립이면 E[∏A_{T_j}|F_e] = ∏E[A_{T_j}|F_e]"
+   },
+   {
+    "at": "k2",
+    "what": "망원 분해: A_S - a_{S,e} = Σ_j (∏_{i<j}μ_{e,T_i})(A_{T_j}-μ_{e,T_j})(∏_{i>j}A_{T_i}). 각 항에서 B' = B·(나머지 인수) ∈ [-1,1]^N는 F_e 아래에서 A_{T_j}와 조건부 독립이므로(B가 S의 연속과 독립이고 자식들이 서로 독립) CON에 의해 ≤ v_N(T_j,e)^{1/4}"
+   },
+   {
+    "at": "k2",
+    "what": "두 side: 각 side를 차례로 사영하면, 다른 side는 유계 multiplier이므로 오차가 각각 ≤ p_N이고, 삼각부등식으로 합계 ≤ 2p_N"
+   }
+  ],
+  "mismatch": [
+   {
+    "card": "decor:projection-bound",
+    "issue": "k2(216-230)에는 식 (projection-bound)의 증명(216-225)과 따름 용법 셋(B=1, 다른 side 둘, 상관된 스칼라 f를 곱한 L^1 경계, 226-230)이 한 카드에 섞여 있다. THM은 B=1 경우만 쓴다"
+   },
+   {
+    "card": "decor:projection-definition",
+    "issue": "k1에 들어 있는 μ_{e,S}=∏μ_{e,T_j}(209-210)는 정의가 아니라 사실이며, THM 입력 목록에서는 별도 항목 PB.product_mean으로 나간다. 정의 카드와 경계가 맞지 않는다"
+   }
+  ]
+ },
+ "THM": {
+  "edge_used_at": [
+   {
+    "from": "x_X_TI",
+    "to": "k1",
+    "lines": [
+     533,
+     534,
+     535
+    ],
+    "note": "X_TI.identity(spin anchor, f=R_S)를 쓴다"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k1",
+    "lines": [
+     533
+    ],
+    "note": "X_TI.empty_addition을 쓴다. 'no added colors'이므로 R_E=R_{\\{a_*\\}}=R_S"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k2",
+    "lines": [
+     544,
+     545
+    ],
+    "note": "X_TI.identity(prescribed-tree identity)를 쓴다"
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k2",
+    "lines": [
+     539,
+     540,
+     541
+    ],
+    "note": "X_TI.anchor_constraint를 쓴다. marker anchor이고, 추가 color와 anchor의 split 깊이를 e-1로 처방한다"
+   },
+   {
+    "from": "x_X_RT",
+    "to": "k2",
+    "lines": [
+     543,
+     544,
+     545,
+     546,
+     547
+    ],
+    "note": "X_RT.kappa_total을 쓴다. fresh subtree 위의 계수 총합은 κ(S)"
+   },
+   {
+    "from": "k2",
+    "to": "k3",
+    "lines": [
+     557,
+     558,
+     559,
+     568
+    ],
+    "note": null
+   },
+   {
+    "from": "x_X_TI",
+    "to": "k3",
+    "lines": [
+     556,
+     557,
+     558,
+     559
+    ],
+    "note": "X_TI.identity를 쓴다"
+   },
+   {
+    "from": "x_X_SAMP",
+    "to": "k3",
+    "lines": [
+     550,
+     551,
+     552,
+     553
+    ],
+    "note": "X_SAMP.children_independent를 쓴다. target과 old copy는 \\mathscr F_{e-1} 아래에서 조건부 독립이다"
+   },
+   {
+    "from": "x_PB",
+    "to": "k4",
+    "lines": [
+     579,
+     580,
+     581
+    ],
+    "note": "PB.projection(B=1)을 쓴다"
+   },
+   {
+    "from": "x_DC",
+    "to": "k4",
+    "lines": [
+     582,
+     583,
+     584,
+     585
+    ],
+    "note": "DC.martingale_energy를 쓴다"
+   },
+   {
+    "from": "x_DC",
+    "to": "k4",
+    "lines": null,
+    "note": "중복 edge이다. DC에서 THM으로 오는 항목은 martingale_energy 하나뿐이고, 그 쓰임은 582-583에서 한 번이다(573-574의 'martingale continuity' 예고는 같은 쓰임)"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k4",
+    "lines": [
+     588,
+     589
+    ],
+    "note": "ranged 좌표 e의 증분을 합한 뒤 L로 나누는 정규화를 쓴다. THM 입력 목록에 AVG 항목이 없다"
+   },
+   {
+    "from": "k3",
+    "to": "k5",
+    "lines": [
+     596,
+     597
+    ],
+    "note": "(prefix-projection-concentration)을 쓴다"
+   },
+   {
+    "from": "k4",
+    "to": "k5",
+    "lines": [
+     591,
+     592,
+     593,
+     594
+    ],
+    "note": "G, G_-, (projection-bound)의 결과, (adjacent-prefix-error)를 쓴다"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "lines": [
+     605,
+     606,
+     607,
+     608,
+     609
+    ],
+    "note": "CC.fiber_bound(γ=1/2, D=b(S), D_j=b(T_j)+1)를 쓴다"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "lines": [
+     601
+    ],
+    "note": "k5는 V_{k-1,L}(η/2)라는 양만 쓰고, 수렴(CC.V_to_zero)은 k6에서 쓴다"
+   },
+   {
+    "from": "x_CC",
+    "to": "k5",
+    "lines": null,
+    "note": "k5에서 CC.main 또는 V_to_zero의 쓰임을 찾지 못했다. 둘 다 609-610(k6)에서 쓰인다"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k5",
+    "lines": [
+     596,
+     597,
+     598,
+     599,
+     600
+    ],
+    "note": "\\mathcal A의 선형성과, 상수항을 평균해도 커지지 않는다는 질량 ≤1을 쓴다. THM 입력 목록에 AVG 항목이 없다"
+   },
+   {
+    "from": "x_AVG",
+    "to": "k5",
+    "lines": [
+     607
+    ],
+    "note": "γ=1/2 거듭제곱 평균은 fiber_bound 안에서 처리된다. AVG.holder를 따로 쓴 흔적은 불분명하다. THM 입력 목록에 AVG 항목이 없다"
+   },
+   {
+    "from": "x_IDE",
+    "to": "k5",
+    "lines": null,
+    "note": "THM 입력 목록에 IDE 항목이 없고, 591-609에서 IDE에 해당하는 쓰임을 찾지 못했다(596의 variance decomposition은 초등적 사실)"
+   },
+   {
+    "from": "k5",
+    "to": "k6",
+    "lines": [
+     609,
+     610
+    ],
+    "note": null
+   },
+   {
+    "from": "x_CC",
+    "to": "k6",
+    "lines": [
+     609,
+     610
+    ],
+    "note": "Proposition conditional-concentration(CC.main), 실제로는 V_{k-1,L}(η/2)→0"
+   }
+  ],
+  "missing": [
+   {
+    "to": "k1",
+    "what": "빈 extension의 무게 1(k=0이면 c_E 합이 1)",
+    "lines": [
+     533,
+     534,
+     535
+    ],
+    "from": "X_EXT.empty_weight"
+   },
+   {
+    "to": "k2",
+    "what": "e-1에서의 fresh path 계수 γ_β = m_{e-1} - n_β m_e (n_β=1)",
+    "lines": [
+     541,
+     542,
+     547
+    ],
+    "from": "X_EXT.rule"
+   },
+   {
+    "to": "k3",
+    "what": "marker anchor에서 R_E는 target color들의 multioverlap, 곧 target copy의 R_S이다",
+    "lines": [
+     552,
+     553
+    ],
+    "from": "X_TI.anchor_constraint"
+   },
+   {
+    "to": "k3",
+    "what": "marker의 e-1 아래 연속을 지워도 target의 법칙은 보통의 S 법칙으로 남는다",
+    "lines": [
+     553,
+     554,
+     555
+    ],
+    "from": "X_SAMP.leaf_removal"
+   },
+   {
+    "to": "k4",
+    "what": "곱 차이 부등식",
+    "lines": [
+     582,
+     583
+    ],
+    "from": "floor:곱 차이 부등식"
+   },
+   {
+    "to": "k4",
+    "what": "PB.product_mean: G = 1·a_{S,e} = 1·μ_{e,S}",
+    "lines": [
+     576
+    ],
+    "from": "PB.product_mean"
+   },
+   {
+    "to": "k5",
+    "what": "조건부 기대값은 L^2 최적 사영이다(G_-는 \\mathscr F_{e-1}-가측)",
+    "lines": [
+     589,
+     590,
+     591,
+     592,
+     593
+    ],
+    "from": "floor:L^2 사영"
+   },
+   {
+    "to": "k5",
+    "what": "(a+b)^2 ≤ 2a^2+2b^2, 그리고 (Σ_{j=1}^s x_j)^2 ≤ sΣx_j^2",
+    "lines": [
+     594,
+     606
+    ],
+    "from": "floor:Cauchy-Schwarz"
+   },
+   {
+    "to": "k5",
+    "what": "분산 분해 Var(R_S) = E(R_S-M)^2 + Var(M)",
+    "lines": [
+     596
+    ],
+    "from": "floor:분산 분해"
+   },
+   {
+    "to": "k6",
+    "what": "V_{k-1,L}(η/2)→0 (L→∞)",
+    "lines": [
+     609,
+     610
+    ],
+    "from": "CC.V_to_zero"
+   }
+  ],
+  "author_filled": [
+   {
+    "at": "k1",
+    "what": "identity에서 E[R_S·R_S] - E R_S·E R_S → 0이므로 Var(R_S)→0. f=R_S는 |R_S|≤1인 유계 다항식이다"
+   },
+   {
+    "at": "k2",
+    "what": "S가 e에서 처음 갈라지므로 old tree는 e-1에서 unary이다(n_β=1). 첫 target path의 계수는 γ = m_{e-1}-m_e = -δ이고 나머지 fresh subtree의 계수 합은 κ(S)이므로 C(S,e) = -δκ(S)"
+   },
+   {
+    "at": "k2",
+    "what": "anchor-alone 쪽(old tree {a_*})도 e-1에서 unary이므로 같은 계수 C(S,e)를 얻는다. δ≠0이고 κ(S)≠0이므로 C(S,e)≠0"
+   },
+   {
+    "at": "k2",
+    "what": "S의 old leaf들은 anchor에서 e 이후에 갈라지므로 e-1 처방을 채울 수 없다. 그래서 target path는 모두 fresh subtree에 있다"
+   },
+   {
+    "at": "k3",
+    "what": "E[R_S^{old}R_S^{tgt}] = E[E(R^{old}|F_{e-1})E(R^{tgt}|F_{e-1})] = EM^2. tower 성질로 EM = E R_S이므로 EM^2 - (ER_S)^2 = Var(M)"
+   },
+   {
+    "at": "k4",
+    "what": "R_S = 1·A_S(정규화 내적)이므로 R_S - G = (A_S - a_{S,e})·1이 되고, 이를 제곱하면 E(R_S-G)^2 ≤ p_N^2"
+   },
+   {
+    "at": "k4",
+    "what": "|1·x|^2 ≤ ||x||_N^2, 곱 차이 부등식으로 E(G-G_-)^2 ≤ sΣ_jE||μ_{e,T_j}-μ_{e-1,T_j}||^2. e에 대해 합하면 ≤ s^2, L로 나누면 C/L. e-1과 e는 T_j의 처음 stem 위에 있다(regularity)"
+   },
+   {
+    "at": "k5",
+    "what": "고정 L에서 \\mathcal A는 유한합이므로 limsup_N \\mathcal A Var(M) = 0"
+   },
+   {
+    "at": "k5",
+    "what": "fiber: 항 v_N(T_j,e)는 (T_j의 branching 깊이, e)만 쓰고 나머지 b(S)-D_j개 좌표가 자유이다. e는 T_j의 branching보다 엄격히 앞서고, 충분히 큰 L에서 η/2-regular이다"
+   },
+   {
+    "at": "k5",
+    "what": "limsup_N을 ^{1/2} 안으로 넣는다(단조·연속). T_j는 S보다 작으므로 limsup_N L^{-D_j}Σ v_N(T_j,e) ≤ V_{k-1,L}(η/2)"
+   },
+   {
+    "at": "k6",
+    "what": "(variance-estimate)에서 L→∞로 보내면 C_k(L^{-1} + V_{k-1,L}(η/2)^{1/2})→0"
+   }
+  ],
+  "mismatch": [
+   {
+    "card": "decor:overlap-concentration.s3 / s4",
+    "issue": "k4(571-590)와 k5(591-609)의 경계가 문장 한가운데를 자른다. 'Since conditional expectation is the optimal L^2 projection,'(589-590)이 k4에, 그 결론 부등식(591-595)이 k5에 있다. 이 부등식은 k4의 G, G_- 추정을 묶는 것이므로 k4 쪽 논리이다"
+   },
+   {
+    "card": "decor:overlap-concentration.s4 / s5",
+    "issue": "k5(…-609)와 k6(609-…)이 609에서 겹친다"
+   },
+   {
+    "card": "decor:overlap-concentration",
+    "issue": "x_AVG→k4, x_AVG→k5(2개), x_IDE→k5 edge의 출처 node가 THM 입력 목록에 항목을 내놓지 않는다. 반대로 X_EXT 항목(rule, empty_weight)은 입력에 있는데 뼈대 edge가 하나도 없다"
+   },
+   {
+    "card": "decor:overlap-concentration.s1",
+    "issue": "x_X_TI→k1 두 edge가 서로 구별되지 않는 중복으로 적혀 있다(identity와 empty_addition으로 나누어야 한다). k2의 두 X_TI edge도 마찬가지이다"
+   },
+   {
+    "card": "decor:overlap-concentration.s5",
+    "issue": "x_CC→k5 세 edge 가운데 CC.main/V_to_zero 쓰임은 k6에 있다. k5에서는 fiber_bound만 실제로 쓰인다"
+   },
+   {
+    "card": "decor:overlap-concentration.s1",
+    "issue": "singleton 주장(73-74)은 k1에서 끝나는데, k1에서 k6(마무리)으로 가는 edge가 없다. 정리의 두 갈래가 뼈대에 합쳐지지 않는다"
+   },
+   {
+    "card": "decor:overlap-concentration.s4",
+    "issue": "C_k의 k(정리 안 귀납 지표, V_{k-1,L})가 원문 이 범위에서 정의되지 않는다. S의 크기와 어떻게 연결되는지 카드 경계 밖에 있다"
+   }
+  ]
+ }
+}
