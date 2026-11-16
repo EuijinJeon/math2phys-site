@@ -1,3 +1,9 @@
+# 현재 운영 절차
+
+이 문서의 1–12절은 2026-11-16에 첫 지도를 만들던 당시의 기록이다. 당시에는 HTML 내부 JS와 Claude Artifact 게시를 사용했고, 아래 코드·게시 명령은 현재 저장소에 그대로 적용되지 않는다. **노드 질문을 받아 기존 지도를 고치고 GitHub Pages에 게시하는 작업은 [UPDATE-PROCEDURE.md](UPDATE-PROCEDURE.md)를 따른다.** 현재 자료는 `graphs/*.json`, 공통 보기 틀은 `viewer/decor-thm-template.html`, 검사와 빌드는 저장소 뿌리의 `make check`다.
+
+---
+
 # 유도 지도 만드는 절차
 
 `decor-thm-derivation.html` 을 만든 과정을 실제 순서대로 적는다. 각 단계에 **한 일**, **판단 규칙**, **이번에 나온 값**을 둔다. 다른 정리에 적용할 때는 12절의 점검표만 따라가도 된다.

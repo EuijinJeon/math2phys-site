@@ -1,5 +1,6 @@
 # 증명 지도 변경 기록
 
+- 2026-11-16 · “노드 질문부터 그래프·원문 탐색, 유도 작성, 지도 반영, 웹페이지 갱신까지 따라 할 절차를 문서화” · PROCEDURE, UPDATE-PROCEDURE, AGENTS, show_node, check_decor · 원문 밖 보충 없음 · 검사 오류 0
 - 2026-11-16 · “B_DC 이건 어떻게 유도하지?” · B_DC, DC_ME, DC_EVAL, DC_PROD, DC_ONE, DC_SUM, DC_ALL · 원문 밖 보충 없음 · 세부 지도와 왕복 링크
 - 2026-11-16 · “B_ME 설명해줘” · B_ME · 원문 밖 보충 없음 · 두 지도 검사 오류 0
 - 2026-11-16 · “모바일 하위 유도가 깨짐; 원래 페이지 같은 별도 페이지와 왕복 링크” · B_CON, BC_C, BC_Q, BC_CS, BC_DIFF, BC_TRACE · 원문 밖 보충 없음 · 두 지도 검사 오류 0

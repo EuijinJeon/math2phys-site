@@ -20,3 +20,5 @@ ID는 화면 node와 선택 패널에서 보이며 패널의 **참조 복사**�
 - 선택한 node는 `#node=ID` 주소로 다시 열 수 있다. 부모의 `links`에 `{ "label": "…", "href": "자식파일.html" }`, 자식 `meta.parent`에 `{ "label": "…", "href": "부모파일.html#node=ID" }`를 둔다. 공개 URL에서는 링크 복사를 쓴다.
 
 저장소 뿌리에서 `make check`를 실행한다. 검사 오류 0이면 HTML 빌드와 `NODES.md` 표 갱신까지 끝난다. 화면 확인은 선택 사항이며 CDN이 막히면 로컬 MathJax가 필요하다. 요청 한 건마다 `CHANGELOG.md`에 날짜 · 요청 원문 · 바꾼 ID · 원문 밖 보충 여부를 한 줄 추가한다.
+
+질문에서 공개 웹페이지 갱신까지의 명령과 검토 순서는 `checks/2026-11-16-thm-derivation-map/UPDATE-PROCEDURE.md`에 있다. 첫 지도 작성의 기록은 같은 폴더의 `PROCEDURE.md`다.
