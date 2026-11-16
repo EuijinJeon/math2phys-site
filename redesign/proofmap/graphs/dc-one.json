@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "DC_ONE: 곱 차이의 제곱 경계",
+    "description": "같은 prefix에서 곱의 차이를 자식별 한 칸 증분으로 제어하는 네 단계. 각 node를 누르면 계산이 보인다.",
+    "parent": {
+      "label": "← DC_ONE으로 돌아가기",
+      "href": "b-dc-derivation.html?v=dc-one-20261116#node=DC_ONE"
+    },
+    "focusGroup": "s72"
+  },
+  "groups": {
+    "s72": {
+      "label": "DC_ONE · 곱 차이와 Jensen",
+      "fill": "--g-72",
+      "b": "--g-72-b"
+    }
+  },
+  "nodes": [
+    {
+      "id": "DO_SETUP",
+      "t": "두 곱을 같은 prefix에서 비교",
+      "f": "$A=\\prod_{j=1}^{s}a_j,\\quad B=\\mathbb E[\\prod_{j=1}^{s}b_j\\mid\\mathscr F_q]$",
+      "body": "<p>$a_j=\\mu_{q,T_j}$는 깊이 $q$의 prefix $\\mathscr F_q$가 주어지면 고정된다. $b_j=\\mu_{q+1,T_j}$는 모든 자식에 공통인 다음 한 걸음에서 평가한다. $A$는 원래 $q$에서 갈라진 곱이고 $B$는 갈라짐을 $q+1$로 미룬 곱의 조건부 평균이다. 각 좌표의 $a_j,b_j$는 $[-1,1]$에 있다.</p>",
+      "src": "decorrelation.tex 179–190",
+      "tag": "eq decor:one-vertex-shift",
+      "g": "s72",
+      "col": 0
+    },
+    {
+      "id": "DO_TELE",
+      "t": "곱을 한 인자씩 바꾸기",
+      "f": "$|\\prod_j a_j-\\prod_j b_j|\\le\\sum_j|a_j-b_j|$",
+      "body": "<p>두 자식이면 $a_1a_2-b_1b_2=(a_1-b_1)a_2+b_1(a_2-b_2)$. $|a_j|,|b_j|\\le1$이므로 $|a_1a_2-b_1b_2|\\le|a_1-b_1|+|a_2-b_2|$다. 일반적인 $s$개 자식도 곱을 한 인자씩 바꿔 망원경식으로 전개한다. 이 부등식은 벡터의 각 좌표에 적용한다.</p>",
+      "src": "decorrelation.tex 185–191",
+      "tag": "eq decor:one-vertex-shift",
+      "g": "s72",
+      "col": 1
+    },
+    {
+      "id": "DO_CS",
+      "t": "제곱합으로 바꾸기",
+      "f": "$\\|\\prod_j a_j-\\prod_j b_j\\|_N^2\\le s\\sum_j\\|a_j-b_j\\|_N^2$",
+      "body": "<p>각 좌표에 대해 $(\\sum_j|a_j-b_j|)^2\\le s\\sum_j|a_j-b_j|^2$를 적용한다. 이것이 오른쪽의 계수 $s$가 생기는 이유다. 좌표별 부등식을 평균하면 표시된 정규화 제곱 norm 부등식이 된다.</p>",
+      "src": "decorrelation.tex 185–191",
+      "tag": "eq decor:one-vertex-shift",
+      "g": "s72",
+      "col": 2
+    },
+    {
+      "id": "DO_JEN",
+      "t": "조건부 Jensen으로 결론",
+      "f": "$\\mathbb E\\|A-B\\|_N^2\\le s\\sum_j\\mathbb E\\|a_j-b_j\\|_N^2$",
+      "body": "<p>$A$가 $\\mathscr F_q$에 관해 가측이므로 $A-B=\\mathbb E[\\prod_j a_j-\\prod_j b_j\\mid\\mathscr F_q]$다. 제곱 norm의 볼록성을 이용한 조건부 Jensen으로 $\\|A-B\\|_N^2\\le\\mathbb E[\\|\\prod_j a_j-\\prod_j b_j\\|_N^2\\mid\\mathscr F_q]$. DO_CS의 상계를 넣고 바깥 기대값을 취하면 DC_ONE의 식이다. 이때 $b_j$들은 같은 한 단계 continuation에서 평가한다.</p>",
+      "src": "decorrelation.tex 179–193",
+      "tag": "eq decor:one-vertex-shift",
+      "g": "s72",
+      "col": 3
+    }
+  ],
+  "edges": [
+    [
+      "DO_SETUP",
+      "DO_TELE",
+      "같은 continuation에서 곱 차이"
+    ],
+    [
+      "DO_TELE",
+      "DO_CS",
+      "곱 차이를 제곱합으로"
+    ],
+    [
+      "DO_CS",
+      "DO_JEN",
+      "조건부 Jensen과 기대값"
+    ]
+  ],
+  "positions": {
+    "DO_SETUP": [
+      0,
+      0
+    ],
+    "DO_TELE": [
+      0,
+      1
+    ],
+    "DO_CS": [
+      0,
+      2
+    ],
+    "DO_JEN": [
+      0,
+      3
+    ]
+  },
+  "subgraphs": {}
+}

@@ -55,7 +55,13 @@
       "src": "decorrelation.tex 185–193",
       "col": 2,
       "g": "s72",
-      "tag": "eq decor:one-vertex-shift"
+      "tag": "eq decor:one-vertex-shift",
+      "links": [
+        {
+          "label": "곱 차이와 Jensen의 네 단계 보기 →",
+          "href": "dc-one-derivation.html"
+        }
+      ]
     },
     {
       "id": "DC_SUM",
@@ -79,19 +85,57 @@
     }
   ],
   "edges": [
-    ["DC_ME", "DC_EVAL", "깊이 평균"],
-    ["DC_PROD", "DC_ONE", "곱 차이와 Jensen"],
-    ["DC_ONE", "DC_SUM", "갈라짐 깊이마다 더함"],
-    ["DC_ME", "DC_SUM", "자식마다 energy"],
-    ["DC_SUM", "DC_ALL", "위쪽 전파와 여러 이동"]
+    [
+      "DC_ME",
+      "DC_EVAL",
+      "깊이 평균"
+    ],
+    [
+      "DC_PROD",
+      "DC_ONE",
+      "곱 차이와 Jensen"
+    ],
+    [
+      "DC_ONE",
+      "DC_SUM",
+      "갈라짐 깊이마다 더함"
+    ],
+    [
+      "DC_ME",
+      "DC_SUM",
+      "자식마다 energy"
+    ],
+    [
+      "DC_SUM",
+      "DC_ALL",
+      "위쪽 전파와 여러 이동"
+    ]
   ],
   "positions": {
-    "DC_ME": [0, 0],
-    "DC_EVAL": [0, 1],
-    "DC_PROD": [0, 1],
-    "DC_ONE": [0, 2],
-    "DC_SUM": [0, 3],
-    "DC_ALL": [0, 4]
+    "DC_ME": [
+      0,
+      0
+    ],
+    "DC_EVAL": [
+      0,
+      1
+    ],
+    "DC_PROD": [
+      0,
+      1
+    ],
+    "DC_ONE": [
+      0,
+      2
+    ],
+    "DC_SUM": [
+      0,
+      3
+    ],
+    "DC_ALL": [
+      0,
+      4
+    ]
   },
   "subgraphs": {}
 }
