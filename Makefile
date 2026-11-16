@@ -1,4 +1,4 @@
-.PHONY: check
+.PHONY: check check-workflow-review
 check:
 	node redesign/proofmap/tools/check_decor.cjs
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/check_graph.cjs redesign/proofmap/graphs/b-con.json -
@@ -10,3 +10,9 @@ check:
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/b-dc.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/B-DC-NODES.md
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/dc-one.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/DC-ONE-NODES.md
 	@echo '오류 0 · 빌드와 표 갱신 완료'
+
+check-workflow-review:
+	node workflow-review/tools/check.cjs
+	node workflow-review/tools/test.cjs
+	node --check workflow-review/viewer/app.js
+	node workflow-review/tools/build.cjs

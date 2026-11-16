@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>AI 업무 검토 지도</title>
+<style>/*__STYLE__*/</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><a href="index.html">WORK REVIEW <span>업무 검토 지도</span></a><a class="progress-link" href="progress.html">개발 진행 상황 ↗</a></div>
+    <div class="heading"><div><div id="eyebrow" class="eyebrow"></div><h1 id="title"></h1></div><label class="case-label">검토 대상<select id="case" aria-label="검토 대상"></select></label></div>
+    <nav id="breadcrumbs" aria-label="그래프 계층"></nav>
+    <p id="description"></p>
+  </header>
+  <div class="toolbar">
+    <div class="tools"><button id="fit">전체 보기</button><button id="zoom-in" aria-label="확대">＋</button><button id="zoom-out" aria-label="축소">−</button><span id="zoom-level"></span><button id="clear">선택 해제</button></div>
+    <label class="jump-label">노드 이동 <select id="jump" aria-label="노드 이동"><option value="">선택하세요</option></select></label>
+  </div>
+  <div class="main">
+    <section id="viewport" tabindex="0" aria-label="업무 그래프. 끌어서 이동하고 확대 버튼으로 크기를 바꿉니다.">
+      <div id="world"><svg id="edges" aria-hidden="true"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/></marker></defs></svg><div id="nodes"></div></div>
+      <div class="canvas-hint">끌어서 이동 · 휠로 확대 · 노드를 선택해 근거 확인</div>
+    </section>
+    <aside id="panel" aria-label="선택한 단계의 설명과 근거"></aside>
+  </div>
+  <footer><span id="context"></span><span>실선: 절차 연결 · 점선: 주석 관계 · <a href="progress.html">범위와 한계</a></span></footer>
+</div>
+<div id="toast" role="status" hidden></div>
+<dialog id="copy-dialog"><h2>복사할 내용</h2><p>자동 복사가 제한되어 있습니다. 아래 내용을 선택해 복사하세요.</p><textarea id="copy-content" readonly aria-label="복사할 내용"></textarea><button id="copy-close">닫기</button></dialog>
+<script>/*__DATA__*/</script>
+<script>/*__APP__*/</script>
+</body>
+</html>
