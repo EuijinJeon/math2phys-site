@@ -17,7 +17,7 @@
 | A_CMP | §7.1 깊이 평균 | [0,2] | 보통 | §7.1 두 비교 | 쓰지 않는 좌표, 정수 이동 | 이동: $\eta$-regular $\hookrightarrow$ $\eta/2$-regular | decorrelation.tex 44–47 |
 | A_ERR | §7.1 깊이 평균 | [0,1] | 보통 | eq decor:identity-error | 항등식 오차의 유한 최대 | $\varepsilon_{N,L,k}\to0\quad(N\to\infty;\ L,k\ \text{고정})$ | decorrelation.tex 48–58 |
 | B_DEF | §7.2 조건부 공분산과 깊이 연속성 | [1,1] | 보통 | eq decor:covariance-definition | 조건부 평균과 제곱 공분산 | $\mu_{d,S}=\mathbb E[A_S\mid\mathscr F_d]$ $v_N(S,d)=\frac1{N^2}\mathbb E\sum_{i,j}\mathrm{Cov}(A_{S,i},A_{S,j}\mid\mathscr F_d)^2$ | decorrelation.tex 86–106 |
-| B_CON | §7.2 조건부 공분산과 깊이 연속성 | [1,2] | 보통 | Lemma decor:contractions | 축약과 세 사본 | $\\|(A_S-\mu_{d,S})\cdot B\\|_{L^2}\le v_N(S,d)^{1/4}$ | decorrelation.tex 108–140 |
+| B_CON | §7.2 조건부 공분산과 깊이 연속성 | [1,2] | 보통 | Lemma decor:contractions | 축약과 세 사본 | $B\in[-1,1]^N,\quad B\mathrel{\perp\!\!\!\perp}A_S\mid\mathscr F_d$ $\\|(A_S-\mu_{d,S})\cdot B\\|_{L^2}\le v_N(S,d)^{1/4}$ | decorrelation.tex 108–140 |
 | B_ME | §7.2 조건부 공분산과 깊이 연속성 | [1,2] | 보통 | eq decor:martingale-energy | Martingale energy | $\sum_t\mathbb E\\|\mu_{t+1,T}-\mu_{t,T}\\|_N^2\le1$ | decorrelation.tex 168–175 |
 | B_DC | §7.2 조건부 공분산과 깊이 연속성 | [1,3] | 보통 | Lemma decor:depth-continuity | 깊이에 대한 평균 연속성 | $\mathcal A_{L,\eta}\mathbb E\\|\mu_{d,S^U}-\mu_{d,S}\\|_N^2\le C/L$ | decorrelation.tex 142–230 |
 | B_PB | §7.2 조건부 공분산과 깊이 연속성 | [1,3] | 보통 | eq decor:projection-bound | 자식을 평균으로 바꾸는 사영 | $\\|(A_S-a_{S,e})\cdot B\\|_{L^2}\le p_N(S,e)$ | decorrelation.tex 205–230 |

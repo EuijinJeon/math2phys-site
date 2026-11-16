@@ -138,8 +138,8 @@
       "g": "s72",
       "tag": "Lemma decor:contractions",
       "t": "축약과 세 사본",
-      "f": "$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$",
-      "body": "<p>이 lemma에는 서로 다른 두 용도가 있다. 첫째, prefix $\\mathscr F_d$를 알고도 남는 $A_S-\\mu_{d,S}$를 조건부 독립인 유계 vector $B$와 곱하면 $L^2$ 크기가 $v_N(S,d)^{1/4}$ 이하이다. 이는 자식 $A_{T_j}$를 조건부 평균으로 바꿀 때 쓴다.</p><p>둘째, 조건부 독립인 세 사본 $X,Y,Z$에서 $Y-Z$는 조건부 평균이 0이고 공분산이 $2C$다. 따라서 $X\\cdot Y-X\\cdot Z$의 제곱 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$이고, 공분산 행렬 $C\\succeq0$이므로 $2N^{-2}\\operatorname{tr}(C^2)$ 이상이다. 이는 Proposition의 singleton 기저에서 쓴다. 연결된 세부 유도 지도로 들어가면 각 계산을 독립 node로 볼 수 있다.</p>",
+      "f": "$B\\in[-1,1]^N,\\quad B\\mathrel{\\perp\\!\\!\\!\\perp}A_S\\mid\\mathscr F_d$<br>$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$",
+      "body": "<p>첫째 진술의 가정: $B$는 $[-1,1]^N$ 값의 임의의 random vector이며, prefix $\\mathscr F_d$가 주어졌을 때 $A_S$와 조건부 독립이다. $B$를 이 lemma에서 새로 도입하며 특정한 하나의 벡터로 고정하지 않는다. 이 조건 아래 prefix를 알고도 남는 $A_S-\\mu_{d,S}$와 $B$의 내적의 $L^2$ 크기가 $v_N(S,d)^{1/4}$ 이하이다. 이후 $B=\\mathbf1$이나 분리된 다른 가지의 벡터 등을 대입해 자식 $A_{T_j}$를 조건부 평균으로 바꾼다.</p><p>둘째, 조건부 독립인 세 사본 $X,Y,Z$에서 $Y-Z$는 조건부 평균이 0이고 공분산이 $2C$다. 따라서 $X\\cdot Y-X\\cdot Z$의 제곱 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$이고, 공분산 행렬 $C\\succeq0$이므로 $2N^{-2}\\operatorname{tr}(C^2)$ 이상이다. 이는 Proposition의 singleton 기저에서 쓴다. 연결된 세부 유도 지도로 들어가면 각 계산을 독립 node로 볼 수 있다.</p>",
       "src": "decorrelation.tex 108–140",
       "links": [
         {
