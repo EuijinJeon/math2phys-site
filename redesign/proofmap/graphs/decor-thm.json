@@ -139,7 +139,7 @@
       "tag": "Lemma decor:contractions",
       "t": "축약과 세 사본",
       "f": "$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$",
-      "body": "<p>이 lemma에는 서로 다른 두 용도가 있다. 첫째, prefix $\\mathscr F_d$를 알고도 남는 $A_S-\\mu_{d,S}$를 조건부 독립인 유계 vector $B$와 곱하면 $L^2$ 크기가 $v_N(S,d)^{1/4}$ 이하이다. 이는 자식 $A_{T_j}$를 조건부 평균으로 바꿀 때 쓴다.</p><p>둘째, 조건부 독립인 세 사본 $X,Y,Z$에서 $Y-Z$는 조건부 평균이 0이고 공분산이 $2C$다. 따라서 $X\\cdot Y-X\\cdot Z$의 제곱 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$이고, 공분산 행렬 $C\\succeq0$이므로 $2N^{-2}\\operatorname{tr}(C^2)$ 이상이다. 이는 Proposition의 singleton 기저에서 쓴다. 아래 하위 유도의 각 node를 누르면 계산이 나온다.</p>",
+      "body": "<p>이 lemma에는 서로 다른 두 용도가 있다. 첫째, prefix $\\mathscr F_d$를 알고도 남는 $A_S-\\mu_{d,S}$를 조건부 독립인 유계 vector $B$와 곱하면 $L^2$ 크기가 $v_N(S,d)^{1/4}$ 이하이다. 이는 자식 $A_{T_j}$를 조건부 평균으로 바꿀 때 쓴다.</p><p>둘째, 조건부 독립인 세 사본 $X,Y,Z$에서 $Y-Z$는 조건부 평균이 0이고 공분산이 $2C$다. 따라서 $X\\cdot Y-X\\cdot Z$의 제곱 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$이고, 공분산 행렬 $C\\succeq0$이므로 $2N^{-2}\\operatorname{tr}(C^2)$ 이상이다. 이는 Proposition의 singleton 기저에서 쓴다. 연결된 세부 유도 지도로 들어가면 각 계산을 독립 node로 볼 수 있다.</p>",
       "src": "decorrelation.tex 108–140",
       "links": [
         {
