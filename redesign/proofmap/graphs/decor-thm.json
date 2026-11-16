@@ -120,8 +120,9 @@
       "tag": "eq decor:identity-error",
       "t": "항등식 오차의 유한 최대",
       "f": "$\\varepsilon_{N,L,k}\\to0\\quad(N\\to\\infty;\\ L,k\\ \\text{고정})$",
-      "body": "<p>고정 $L$ 에서 크기가 유계인 topology와 깊이 배정은 유한개다. 그래서 $N\\to\\infty$ 전에 X_TI의 오차를 그 모음 전체에서 최대로 잡을 수 있다. 이 오차에 곱해지는 상수는 $L$ 에 마음대로 의존해도 된다.</p>",
-      "src": "decorrelation.tex 48–58"
+      "body": "<p>원문 48–55행의 ‘such a maximum’이 이 기호의 정의다. 고정 $L,k$에서 아래 증명에 실제로 쓰는 old tree·anchor·color·제약·깊이 배정의 유한 모음 $\\mathcal I_{L,k}$를 택하고, 각 경우 $\\alpha$에서 X_TI 항등식의 왼쪽 두 항의 차이를 $D_{N,\\alpha}$라 놓는다. 그러면 $\\varepsilon_{N,L,k}=\\max_{\\alpha\\in\\mathcal I_{L,k}}|D_{N,\\alpha}|$로 잡을 수 있다. 이 유한 모음은 임의의 모든 tree나 제약 전체가 아니라 해당 증명에 필요한 사례들이다.</p><p>X_TI는 각 고정 사례의 $D_{N,\\alpha}\\to0$을 준다. 유한개의 최대도 0으로 가므로 고정 $L,k$에서 $\\varepsilon_{N,L,k}\\to0$이다. 이 오차에 곱하는 상수는 $L$에 의존해도 된다.</p>",
+      "src": "decorrelation.tex 48–58",
+      "sourceUrl": "https://github.com/EuijinJeon/math2phys-site/blob/ccr-9aa9b310-d8u9tb/redesign/source/sections/decorrelation.tex#L48-L58"
     },
     {
       "id": "B_DEF",

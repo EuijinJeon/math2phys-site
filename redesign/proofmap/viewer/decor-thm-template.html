@@ -60,6 +60,7 @@ button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--acc
 .node .tag{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em;display:flex;gap:8px;justify-content:space-between}
 .node.supplement{border-color:var(--warn)}
 #panel .node-id{font-family:var(--font-mono);font-weight:600;color:var(--accent)}
+#panel .node-id:focus{outline:2px solid var(--accent)}
 #panel .supplement-badge{color:var(--warn);font-weight:600}
 #panel .subgraph{position:relative;overflow-x:auto;padding:12px;border:1px solid var(--line);border-radius:8px}
 #panel .subgraph-grid{display:flex;gap:34px;position:relative;min-width:max-content}
@@ -365,9 +366,12 @@ function ancestors(id){
 }
 let selected=null;
 function select(id){
+  if(id&&!byId[id])return;
   selected=id;
   document.querySelectorAll('.node.sel').forEach(x=>x.classList.remove('sel'));
   document.querySelectorAll('.lit').forEach(x=>x.classList.remove('lit'));
+  const hash=id?'node='+encodeURIComponent(id):'';
+  if(location.hash.slice(1)!==hash)location.hash=hash;
   if(!id){world.classList.remove('dim');renderPanel(null);return}
   const A=ancestors(id);
   world.classList.add('dim');
@@ -394,20 +398,43 @@ function renderPanel(id,nAnc){
     const n=byId[id];
     const ins=E.filter(e=>e[1]===id), outs=E.filter(e=>e[0]===id);
     panel.innerHTML=`<div class="ptag">${n.tag} · ${n.g?GROUPS[n.g].label:'§8'}</div>
-      <div><span class="node-id">${n.id}</span> <button type="button" id="copy-ref">참조 복사</button>${n.supplement?'<span class="supplement-badge"> · 원문 밖 보충</span>':''}</div><h2>${n.t}</h2>
+      <div><span class="node-id" tabindex="0">${n.id}</span> <button type="button" id="copy-ref">참조 복사</button> <button type="button" id="copy-link">링크 복사</button>${n.supplement?'<span class="supplement-badge"> · 원문 밖 보충</span>':''}</div><h2>${n.t}</h2>
       <div class="stmt">${n.f}</div>${n.body||''}
-      <div class="src">원문: ${n.src}</div>
+      <div class="src">원문: ${n.sourceUrl?`<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.src}</a>`:n.src}</div>
       ${SUBGRAPHS[id]?'<h3>하위 유도</h3><div class="subgraph"><div class="subgraph-grid"></div><div class="subgraph-detail"></div></div>':''}
+      ${n.links?.length?`<h3>다른 스케일</h3><ul>${n.links.map(l=>`<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>`:''}
       ${ins.length?`<h3>받는 것 ${ins.length}</h3><ul>${ins.map(e=>edgeItem(e,e[0],'←')).join('')}</ul>`:''}
       ${outs.length?`<h3>보내는 것 ${outs.length}</h3><ul>${outs.map(e=>edgeItem(e,e[1],'→')).join('')}</ul>`:''}
       <p class="src" style="margin-top:14px">이 결과에 쓰인 앞선 node: ${nAnc}개</p>`;
   }
-  const copy=panel.querySelector('#copy-ref');
-  if(copy)copy.onclick=async()=>{try{await navigator.clipboard.writeText(id);copy.textContent='복사됨'}catch{copy.textContent='복사 실패: '+id}};
+  const copy=panel.querySelector('#copy-ref'), link=panel.querySelector('#copy-link');
+  if(copy)copy.onclick=()=>copyText(id,copy);
+  if(link)link.onclick=()=>copyText(location.href,link);
   if(id&&SUBGRAPHS[id])renderSubgraph(SUBGRAPHS[id]);
   panel.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{const t=b.dataset.go;select(t);zoomToNode(t)});
   if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([panel]).catch(()=>{});
 }
+async function copyText(value,button){
+  try{
+    if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(value);
+    else throw Error('Clipboard API unavailable');
+  }catch{
+    // file:// on mobile may deny Clipboard API even after a click.
+    const input=document.createElement('textarea');input.value=value;input.style.position='fixed';input.style.left='-9999px';
+    document.body.appendChild(input);input.focus();input.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch{}input.remove();
+    if(!ok){const id=panel.querySelector('.node-id');id?.focus();const selection=window.getSelection();
+      if(id&&selection){const range=document.createRange();range.selectNodeContents(id);selection.removeAllRanges();selection.addRange(range)}
+      button.textContent='ID를 길게 눌러 복사';return}
+  }
+  button.textContent='복사됨';
+}
+function selectFromHash(){
+  const id=new URLSearchParams(location.hash.slice(1)).get('node');
+  if(id&&byId[id]&&id!==selected){select(id);zoomToNode(id)}
+  else if(!id&&selected)select(null);
+}
+window.addEventListener('hashchange',selectFromHash);
 function renderSubgraph(g){
   const box=panel.querySelector('.subgraph'), grid=box.querySelector('.subgraph-grid');
   const cols=new Map();for(const n of g.nodes){const c=n.col||0;if(!cols.has(c))cols.set(c,[]);cols.get(c).push(n)}
@@ -438,7 +465,7 @@ function start(){
   try{layout()}catch(err){document.getElementById('loading').textContent='배치를 만들지 못했다: '+err.message;return}
   document.getElementById('loading').hidden=true;
   renderPanel(null);
-  requestAnimationFrame(()=>{Object.assign(view,fitRect(0,0,bounds.w,bounds.h)); apply()});
+  requestAnimationFrame(()=>{Object.assign(view,fitRect(0,0,bounds.w,bounds.h)); apply();selectFromHash()});
 }
 build();
 const ready=(window.MathJax&&MathJax.startup&&MathJax.startup.promise)?MathJax.startup.promise.then(()=>MathJax.typesetPromise([world])):Promise.resolve();

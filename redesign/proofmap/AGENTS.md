@@ -17,5 +17,6 @@ ID는 화면 node와 선택 패널에서 보이며 패널의 **참조 복사**�
 - 원문 밖 보충은 해당 node에 `"supplement": true`와 `body`의 `<p class="warn">작성자 보충: …</p>`를 함께 둔다. 화면에서 경고색으로 보인다. 원문이 증명하지 않은 RPC, Ghirlanda–Guerra, ultrametricity, pure state와의 동일시는 쓰지 않는다.
 - 극한은 고정 $L$에서 $N\to\infty$ 먼저, 다음 깊이 평균과 $L\to\infty$. 하한은 $\liminf$/$\limsup$로 쓴다. anchor, prefix, fresh, extension, multioverlap은 영어 그대로 두고 한국어 평서문으로 쓴다.
 - JSON의 TeX 백슬래시는 `\\`로 적는다. `make check`가 JSON 문법, node/edge 참조, 열 방향, 순환, 수식 사고를 검사한다. JSON만 편집한다.
+- 선택한 node는 `#node=ID` 주소로 다시 열 수 있다. 다른 스케일의 지도가 생기면 해당 node의 `links`에 `{ "label": "…", "href": "상대경로#node=…" }`를 추가하고 양쪽 방향을 연결한다. 공개 URL에서는 링크 복사를 쓴다.
 
 저장소 뿌리에서 `make check`를 실행한다. 검사 오류 0이면 HTML 빌드와 `NODES.md` 표 갱신까지 끝난다. 화면 확인은 선택 사항이며 CDN이 막히면 로컬 MathJax가 필요하다. 요청 한 건마다 `CHANGELOG.md`에 날짜 · 요청 원문 · 바꾼 ID · 원문 밖 보충 여부를 한 줄 추가한다.
