@@ -4,7 +4,7 @@
     "description": "평가 깊이와 갈라짐 깊이의 한 칸 이동을 따로 증명하고 여러 이동으로 확장한다.",
     "parent": {
       "label": "← B_DC로 돌아가기",
-      "href": "decor-thm-derivation.html#node=B_DC"
+      "href": "decor-thm-derivation.html?v=b-dc-20261116#node=B_DC"
     },
     "focusGroup": "s72"
   },
