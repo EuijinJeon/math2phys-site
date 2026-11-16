@@ -8,7 +8,7 @@
 |---|---|---|---|---|---|---|---|
 | DC_ME | B_DC · 세부 유도 | [0,0] | 보통 | eq decor:martingale-energy | 한 path의 martingale energy | $\sum_t\mathbb E\\|\mu_{t+1,T}-\mu_{t,T}\\|_N^2\le1$ | decorrelation.tex 168–175 |
 | DC_EVAL | B_DC · 세부 유도 | [0,1] | 보통 | eq decor:evaluation-depth-continuity | 평가 깊이의 이동 | $\mathcal A_{L,\eta}\mathbb E\\|\mu_{d+1,S}-\mu_{d,S}\\|_N^2\le1/L$ | decorrelation.tex 154–163, 168–177 |
-| DC_PROD | B_DC · 세부 유도 | [0,1] | 보통 | Lemma decor:depth-continuity | 갈라짐 한 칸 지연 | $\prod_j\mu_{q,T_j}\quad\longleftrightarrow\quad\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$ | decorrelation.tex 179–185 |
+| DC_PROD | B_DC · 세부 유도 | [0,1] | 보통 | Lemma decor:depth-continuity | 갈라짐 한 칸 지연 | $\prod_j\mu_{q,T_j}\quad\longleftrightarrow\quad\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]$ | trees.tex 20–39; decorrelation.tex 179–185 |
 | DC_ONE | B_DC · 세부 유도 | [0,2] | 보통 | eq decor:one-vertex-shift | 곱 차이의 제곱 경계 | $\mathbb E\\|\prod_j\mu_{q,T_j}-\mathbb E[\prod_j\mu_{q+1,T_j}\mid\mathscr F_q]\\|_N^2\le s\sum_j\mathbb E\\|\mu_{q+1,T_j}-\mu_{q,T_j}\\|_N^2$ | decorrelation.tex 185–193 |
 | DC_SUM | B_DC · 세부 유도 | [0,3] | 보통 | Lemma decor:depth-continuity | 갈라짐 깊이 평균 | $L^{-1}\sum_q s\sum_j\mathbb E\\|\mu_{q+1,T_j}-\mu_{q,T_j}\\|_N^2\le s^2/L$ | decorrelation.tex 194–195 |
 | DC_ALL | B_DC · 세부 유도 | [0,4] | 보통 | Lemma decor:depth-continuity | 상위 prefix와 여러 이동 | $\mathcal A_{L,\eta}\mathbb E\\|\mu_{d,S^U}-\mu_{d,S}\\|_N^2\le C/L$ | decorrelation.tex 195–205 |

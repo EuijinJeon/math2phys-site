@@ -40,8 +40,9 @@
       "id": "DC_PROD",
       "t": "갈라짐 한 칸 지연",
       "f": "$\\prod_j\\mu_{q,T_j}\\quad\\longleftrightarrow\\quad\\mathbb E[\\prod_j\\mu_{q+1,T_j}\\mid\\mathscr F_q]$",
-      "body": "<p>깊이 $q$에서 $s$개 자식으로 갈라지면 원래 조건부 평균은 자식 평균의 좌표별 곱이다. 갈라짐을 $q+1$로 미룰 때는 모두 같은 한 단계 continuation을 거친 뒤 그 곱을 prefix $\\mathscr F_q$에서 다시 평균한다. 각 자식의 나중 깊이는 고정한다.</p>",
-      "src": "decorrelation.tex 179–185",
+      "body": "<p>먼저 $q$까지의 prefix $\\mathscr F_q$를 고정한다. 자식 $T_j$의 $q+1$ 변수 $Z$를 하나 뽑았을 때, 그 뒤 subtree 전체의 좌표별 평균을 $m_j(Z)=\\mu_{q+1,T_j}(Z)$라고 쓰자. 자식의 나중 갈라짐 깊이는 계속 고정한다. 한 자식만 보면 $\\mu_{q,T_j}=\\mathbb E[m_j(Z)\\mid\\mathscr F_q]$이다.</p><p>원래 $q$에서 갈라진 두 자식은 다음 변수를 각각 독립적으로 $Z_1,Z_2$로 뽑는다. 따라서 두 자식의 곱의 조건부 평균은 $\\mathbb E[m_1(Z_1)m_2(Z_2)\\mid\\mathscr F_q]=\\mathbb E[m_1(Z_1)\\mid\\mathscr F_q]\\,\\mathbb E[m_2(Z_2)\\mid\\mathscr F_q]=\\mu_{q,T_1}\\mu_{q,T_2}$이다. 갈라짐을 $q+1$로 미루면 두 자식이 먼저 같은 $Z$를 공유하고 그 뒤에 독립적으로 진행하므로 $\\mathbb E[m_1(Z)m_2(Z)\\mid\\mathscr F_q]$가 된다. 원문의 $\\prod_j$는 이 계산을 $s$개 자식에 적용한 좌표별 곱이다.</p><p class=\"warn\">작성자 보충: 두 자식의 경우 ‘미룬 값 − 원래 값’은 $\\operatorname{Cov}(m_1(Z),m_2(Z)\\mid\\mathscr F_q)$이다. 예를 들어 조건부로 $Z=\\pm1$이 반씩 나오고 $m_1(Z)=m_2(Z)=Z$라면 원래 곱은 0, 공유한 뒤의 평균 곱은 1이다. 이는 표본 방식의 차이를 보여 주는 예시이며 원문의 추가 가정은 아니다.</p>",
+      "supplement": true,
+      "src": "trees.tex 20–39; decorrelation.tex 179–185",
       "col": 1,
       "g": "s72",
       "tag": "Lemma decor:depth-continuity"
