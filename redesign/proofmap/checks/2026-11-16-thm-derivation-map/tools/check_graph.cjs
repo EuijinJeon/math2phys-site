@@ -1,7 +1,7 @@
 // 구조 검사. 쓰임: node check_graph.cjs <지도.html> [목표 node id, 기본 THM]
 const load=require('./load_graph.cjs');
 const [,,html,goal='THM']=process.argv;
-const {GROUPS,N,E,POS}=load(html);
+const {GROUPS,N,E,POS,SUBGRAPHS}=load(html);
 const ids=new Set(N.map(n=>n.id)); let bad=0;
 const err=m=>{bad++;console.log('오류  '+m)};
 const warn=m=>console.log('경고  '+m);
@@ -12,6 +12,8 @@ for(const n of N){
   for(const k of ['tag','t','f','src']) if(!n[k]) err(`${n.id}: ${k} 비어 있음`);
   if(n.g && !GROUPS[n.g]) err(`${n.id}: 없는 묶음 ${n.g}`);
   if(!POS[n.id]) err(`${n.id}: POS에 자리 없음`);
+  if(typeof n.supplement!=='undefined' && typeof n.supplement!=='boolean') err(`${n.id}: supplement는 boolean`);
+  if(/class=["']warn["']/.test(n.body||'') && n.supplement!==true) err(`${n.id}: 원문 밖 보충에 supplement: true 필요`);
 }
 for(const k in POS) if(!ids.has(k)) err(`POS의 ${k}: node 없음`);
 // 3. edge 양끝
@@ -37,6 +39,19 @@ E.forEach((e,i)=>scan(`edge ${e[0]}→${e[1]}`,e[2]));
 const odd=str=>typeof str==='string'&&((str.match(/(?<!\\)\$/g)||[]).length%2===1);
 for(const n of N) for(const k of ['t','f','body']) if(odd(n[k])) err(`${n.id}.${k}: $ 짝이 맞지 않음`);
 E.forEach(e=>{if(odd(e[2])) err(`edge ${e[0]}→${e[1]}: $ 짝이 맞지 않음`)});
+// A nested graph is local to its parent. Its IDs and edges must be valid.
+for(const [parent,g] of Object.entries(SUBGRAPHS||{})){
+  if(!ids.has(parent)) err(`하위 그래프 ${parent}: 부모 node 없음`);
+  if(!Array.isArray(g.nodes)||!Array.isArray(g.edges)) {err(`하위 그래프 ${parent}: nodes/edges 필요`);continue}
+  const local=new Set(g.nodes.map(n=>n.id));
+  if(local.size!==g.nodes.length) err(`하위 그래프 ${parent}: id 중복`);
+  for(const n of g.nodes){
+    if(!n.id||!n.t||!n.f||!n.src) err(`${parent}/${n.id}: 필수 칸 누락`);
+    if(/class=["']warn["']/.test(n.body||'')&&n.supplement!==true) err(`${parent}/${n.id}: supplement: true 필요`);
+    for(const k of ['t','f','body']) {scan(`${parent}/${n.id}.${k}`,n[k]);if(odd(n[k]))err(`${parent}/${n.id}.${k}: $ 짝`)}
+  }
+  for(const e of g.edges) if(!local.has(e[0])||!local.has(e[1])) err(`${parent}: 하위 edge의 node 없음`);
+}
 console.log(`node ${N.length}, edge ${E.length}, key edge ${E.filter(e=>e[3]==='key').length}, ${goal}의 조상 ${anc.size-1}`);
 console.log(bad?`오류 ${bad}`:'오류 0');
 process.exit(bad?1:0);

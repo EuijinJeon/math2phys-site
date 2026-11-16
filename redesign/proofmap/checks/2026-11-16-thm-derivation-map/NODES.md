@@ -1,6 +1,6 @@
 # node·edge 표 (생성물)
 
-`tools/dump_table.cjs` 가 지도 HTML에서 만든다. 직접 고치지 말고 HTML을 고친 뒤 다시 만든다.
+`make check`가 JSON에서 만든다. 직접 고치지 않는다.
 
 ## node
 
