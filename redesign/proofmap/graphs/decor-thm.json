@@ -139,7 +139,7 @@
       "tag": "Lemma decor:contractions",
       "t": "축약과 세 사본",
       "f": "$\\|(A_S-\\mu_{d,S})\\cdot B\\|_{L^2}\\le v_N(S,d)^{1/4}$",
-      "body": "<p>$B\\in[-1,1]^N$ 가 $\\mathscr F_d$ 에 대해 $A_S$ 와 조건부 독립일 때. 둘째 주장: 조건부 독립 사본 $X,Y,Z$ 와 조건부 공분산 $C$ 에 대해 $\\mathbb E(X\\cdot Y-X\\cdot Z)^2\\ge\\frac2{N^2}\\mathbb E\\sum_{ij}C_{ij}^2$ (decor:three-copy-bound).</p>",
+      "body": "<p>이 lemma에는 서로 다른 두 용도가 있다. 첫째, prefix $\\mathscr F_d$를 알고도 남는 $A_S-\\mu_{d,S}$를 조건부 독립인 유계 vector $B$와 곱하면 $L^2$ 크기가 $v_N(S,d)^{1/4}$ 이하이다. 이는 자식 $A_{T_j}$를 조건부 평균으로 바꿀 때 쓴다.</p><p>둘째, 조건부 독립인 세 사본 $X,Y,Z$에서 $Y-Z$는 조건부 평균이 0이고 공분산이 $2C$다. 따라서 $X\\cdot Y-X\\cdot Z$의 제곱 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$이고, 공분산 행렬 $C\\succeq0$이므로 $2N^{-2}\\operatorname{tr}(C^2)$ 이상이다. 이는 Proposition의 singleton 기저에서 쓴다. 아래 하위 유도의 각 node를 누르면 계산이 나온다.</p>",
       "src": "decorrelation.tex 108–140"
     },
     {
@@ -820,5 +820,72 @@
       10
     ]
   },
-  "subgraphs": {}
+  "subgraphs": {
+    "B_CON": {
+      "nodes": [
+        {
+          "id": "BC_C",
+          "t": "조건부 공분산",
+          "f": "$C_{ij}=\\operatorname{Cov}(A_{S,i},A_{S,j}\\mid\\mathscr F_d)$",
+          "body": "<p>$C$는 조건부 공분산 행렬이라 양의 준정부호이고 $v_N=N^{-2}\\mathbb E\\sum_{ij}C_{ij}^2$다. 내적은 $x\\cdot y=N^{-1}\\sum_i x_i y_i$다.</p>",
+          "src": "decorrelation.tex 86–106",
+          "col": 0
+        },
+        {
+          "id": "BC_Q",
+          "t": "조건부 제곱",
+          "f": "$\\mathbb E[((A_S-\\mu)\\cdot B)^2\\mid\\mathscr F_d,B]=N^{-2}B^{\\mathsf T}CB$",
+          "body": "<p>$B$가 $A_S$와 prefix를 조건으로 독립이므로 $B$까지 고정해도 $A_S-\\mu$의 조건부 평균은 0, 공분산은 $C$다. $|B_i|\\le1$이므로 오른쪽은 $N^{-2}\\sum_{ij}|C_{ij}|$ 이하이다.</p>",
+          "src": "decorrelation.tex 108–115, 127–130",
+          "col": 1
+        },
+        {
+          "id": "BC_CS",
+          "t": "Cauchy–Schwarz 두 번",
+          "f": "$\\|(A_S-\\mu)\\cdot B\\|_{L^2}^2\\le\\sqrt{v_N}$",
+          "body": "<p>좌표에서 $N^{-2}\\sum_{ij}|C_{ij}|\\le(N^{-2}\\sum_{ij}C_{ij}^2)^{1/2}$. prefix에 대해 기대하고 Cauchy–Schwarz를 다시 쓰면 $\\mathbb E(N^{-2}\\sum C_{ij}^2)^{1/2}\\le v_N^{1/2}$이다. 이것은 $L^2$ norm의 제곱이므로 제곱근을 취하면 $v_N^{1/4}$가 된다.</p>",
+          "src": "decorrelation.tex 127–131",
+          "col": 2
+        },
+        {
+          "id": "BC_DIFF",
+          "t": "세 사본의 차",
+          "f": "$\\mathbb E[(Y-Z)(Y-Z)^{\\mathsf T}\\mid\\mathscr G]=2C$",
+          "body": "<p>$Y,Z$는 조건부 독립이고 평균이 모두 $\\mu$다. 따라서 $Y-Z$는 조건부 평균 0, 공분산 $2C$이며 $X$와도 조건부 독립이다.</p>",
+          "src": "decorrelation.tex 117–123, 132–136",
+          "col": 1
+        },
+        {
+          "id": "BC_TRACE",
+          "t": "trace의 양의 항",
+          "f": "$\\mathbb E[(X\\cdot(Y-Z))^2]\\ge 2N^{-2}\\mathbb E\\operatorname{tr}(C^2)$",
+          "body": "<p>조건부로 $\\mathbb E[XX^{\\mathsf T}\\mid\\mathscr G]=C+\\mu\\mu^{\\mathsf T}$이므로 제곱의 조건부 평균은 $2N^{-2}\\operatorname{tr}((C+\\mu\\mu^{\\mathsf T})C)$다. $\\mu^{\\mathsf T}C\\mu\\ge0$을 버리면 $2N^{-2}\\operatorname{tr}(C^2)=2N^{-2}\\sum_{ij}C_{ij}^2$가 남는다.</p>",
+          "src": "decorrelation.tex 132–139",
+          "col": 2
+        }
+      ],
+      "edges": [
+        [
+          "BC_C",
+          "BC_Q",
+          "공분산을 곱에 적용"
+        ],
+        [
+          "BC_Q",
+          "BC_CS",
+          "좌표·prefix에서 Cauchy–Schwarz"
+        ],
+        [
+          "BC_C",
+          "BC_DIFF",
+          "조건부 iid 세 사본"
+        ],
+        [
+          "BC_DIFF",
+          "BC_TRACE",
+          "제곱 전개와 양의 항"
+        ]
+      ]
+    }
+  }
 }

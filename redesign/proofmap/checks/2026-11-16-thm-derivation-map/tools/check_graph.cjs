@@ -44,13 +44,17 @@ for(const [parent,g] of Object.entries(SUBGRAPHS||{})){
   if(!ids.has(parent)) err(`하위 그래프 ${parent}: 부모 node 없음`);
   if(!Array.isArray(g.nodes)||!Array.isArray(g.edges)) {err(`하위 그래프 ${parent}: nodes/edges 필요`);continue}
   const local=new Set(g.nodes.map(n=>n.id));
+  const byLocal=Object.fromEntries(g.nodes.map(n=>[n.id,n]));
   if(local.size!==g.nodes.length) err(`하위 그래프 ${parent}: id 중복`);
   for(const n of g.nodes){
-    if(!n.id||!n.t||!n.f||!n.src) err(`${parent}/${n.id}: 필수 칸 누락`);
+    if(!n.id||!n.t||!n.f||!n.src||!Number.isInteger(n.col)||n.col<0) err(`${parent}/${n.id}: 필수 칸 또는 col 누락`);
     if(/class=["']warn["']/.test(n.body||'')&&n.supplement!==true) err(`${parent}/${n.id}: supplement: true 필요`);
     for(const k of ['t','f','body']) {scan(`${parent}/${n.id}.${k}`,n[k]);if(odd(n[k]))err(`${parent}/${n.id}.${k}: $ 짝`)}
   }
-  for(const e of g.edges) if(!local.has(e[0])||!local.has(e[1])) err(`${parent}: 하위 edge의 node 없음`);
+  for(const e of g.edges){
+    if(!local.has(e[0])||!local.has(e[1])) err(`${parent}: 하위 edge의 node 없음`);
+    else if(byLocal[e[0]].col>=byLocal[e[1]].col) err(`${parent}: ${e[0]}→${e[1]} 열이 오른쪽으로 가지 않음`);
+  }
 }
 console.log(`node ${N.length}, edge ${E.length}, key edge ${E.filter(e=>e[3]==='key').length}, ${goal}의 조상 ${anc.size-1}`);
 console.log(bad?`오류 ${bad}`:'오류 0');
