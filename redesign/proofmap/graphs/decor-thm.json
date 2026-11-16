@@ -163,7 +163,13 @@
       "tag": "Lemma decor:depth-continuity",
       "t": "깊이에 대한 평균 연속성",
       "f": "$\\mathcal A_{L,\\eta}\\mathbb E\\|\\mu_{d,S^U}-\\mu_{d,S}\\|_N^2\\le C/L$",
-      "body": "<p>갈라짐 깊이 일부를 한 칸 늦춘 $S^U$ 와 원래 $S$ 의 평균 차이. 평가 깊이를 한 칸 옮기는 것도 같은 꼴 (decor:evaluation-depth-continuity). 상수는 vertex 수와 이동 수에만 의존한다. Proposition의 귀납 단계가 쓴다.</p>",
+      "body": "<p>두 이동을 구분한다. 평가 깊이 $d$를 한 칸 옮기면 B_ME의 martingale 제곱 증분을 $d$에 대해 평균하므로 $1/L$이 나온다. 갈라짐 깊이 $q$를 늦추면 자식 평균들의 곱을 같은 prefix에서 비교하고, 곱 차이의 제곱을 자식의 martingale 증분 제곱합으로 상계한다. $q$ 평균, 상위 prefix로의 전파, 유한개의 vertex 이동을 거쳐 $C/L$을 얻는다. 아래 링크에서 각 걸음의 식을 볼 수 있다.</p>",
+      "links": [
+        {
+          "label": "B_DC의 세부 유도 →",
+          "href": "b-dc-derivation.html"
+        }
+      ],
       "src": "decorrelation.tex 142–230"
     },
     {
