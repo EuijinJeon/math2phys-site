@@ -8,6 +8,7 @@ if(!query){console.error('사용법: node redesign/proofmap/tools/show_node.cjs 
 let parent=null;
 let n=g.nodes.find(n=>n.id===query);
 let edges=g.edges;
+if(!n){const fine=JSON.parse(fs.readFileSync(path.join(root,'graphs/b-con.json'),'utf8'));const hit=fine.nodes.find(n=>n.id===query||`B_CON/${n.id}`===query);if(hit){n=hit;parent='B_CON';edges=fine.edges}}
 if(!n) for(const [id,sub] of Object.entries(g.subgraphs||{})){
   const hit=sub.nodes.find(n=>n.id===query||`${id}/${n.id}`===query);
   if(hit){n=hit;parent=id;edges=sub.edges;break}

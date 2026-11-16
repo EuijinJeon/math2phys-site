@@ -26,9 +26,9 @@ const st={};const dfs=v=>{st[v]=1;for(const w of adj[v]||[]){if(st[w]===1){err('
 ids.forEach(v=>{if(!st[v])dfs(v)});
 // 6. 모든 node가 목표에 닿는가 (목표 뒤의 받는 곳은 예외)
 const radj={};E.forEach(e=>(radj[e[1]]=radj[e[1]]||[]).push(e[0]));
-const anc=new Set([goal]),q=[goal];while(q.length){const v=q.pop();for(const u of radj[v]||[]) if(!anc.has(u)){anc.add(u);q.push(u)}}
+const anc=new Set(goal==='-'?[]:[goal]),q=goal==='-'?[]:[goal];while(q.length){const v=q.pop();for(const u of radj[v]||[]) if(!anc.has(u)){anc.add(u);q.push(u)}}
 const after=new Set();(adj[goal]||[]).forEach(v=>after.add(v));
-for(const n of N) if(!anc.has(n.id)&&!after.has(n.id)) warn(`${n.id}: ${goal}에 닿지 않음`);
+if(goal!=='-')for(const n of N) if(!anc.has(n.id)&&!after.has(n.id)) warn(`${n.id}: ${goal}에 닿지 않음`);
 // 7. 백슬래시 사고: R`` 대신 '...' 에 TeX를 쓰면 \t,\b,\f,\v 가 제어문자가 되고 \e,\l,\d 등은 사라진다
 const ctl=/[\t\b\f\v]/;
 const scan=(where,str)=>{if(typeof str!=='string')return;if(ctl.test(str))err(`${where}: 제어문자 (TeX 백슬래시가 이스케이프로 먹힘)`);
@@ -56,6 +56,6 @@ for(const [parent,g] of Object.entries(SUBGRAPHS||{})){
     else if(byLocal[e[0]].col>=byLocal[e[1]].col) err(`${parent}: ${e[0]}→${e[1]} 열이 오른쪽으로 가지 않음`);
   }
 }
-console.log(`node ${N.length}, edge ${E.length}, key edge ${E.filter(e=>e[3]==='key').length}, ${goal}의 조상 ${anc.size-1}`);
+console.log(`node ${N.length}, edge ${E.length}, key edge ${E.filter(e=>e[3]==='key').length}`+(goal==='-'?'':`, ${goal}의 조상 ${anc.size-1}`));
 console.log(bad?`오류 ${bad}`:'오류 0');
 process.exit(bad?1:0);
