@@ -118,4 +118,8 @@ function fromHash(){const id=new URLSearchParams(location.hash.slice(1)).get('no
 draw();fit();fromHash();
 window.addEventListener('popstate',fromHash);window.addEventListener('hashchange',fromHash);
 new ResizeObserver(()=>selected?select(selected,true,false):fit()).observe($('viewport'));
-if(params.get('v')&&params.get('v')!==DATA.version){$('description').textContent=`요청한 버전 ${params.get('v')} 대신 현재 버전 ${DATA.version}을 표시합니다. `+graph.description;}
+if(params.get('v')&&params.get('v')!==DATA.version){
+  const notice=`요청 버전 ${params.get('v')} → 현재 버전 ${DATA.version}`;
+  $('eyebrow').textContent+=' · '+notice;
+  $('description').textContent=notice+'. '+graph.description;
+}
