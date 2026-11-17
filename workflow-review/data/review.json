@@ -300,7 +300,8 @@
             0
           ],
           "evidence": [
-            "scope"
+            "scope",
+            "scope-existing-artifact"
           ],
           "body": "목적은 “7장의 multioverlap 깊이 평균 집중”이라는 요청을 읽을 파일·정리 라벨·증명 위치로 바꾸는 것입니다. 문서는 main.tex의 포함 순서와 section 유무로 decorrelation을 §7로 식별하고, decor:overlap-concentration의 진술(63–76행)과 떨어진 증명(532–611행)을 찾았다고 보고합니다. 기존 move5의 thm 지도는 18개 노드의 sketch였으며, 상세 내용 재사용과 노드 이름 대조 없이 원문에서 새로 만들었다고 기록합니다. 아래 세부 지도는 이 보고를 다섯 단계로 풀어 쓴 설명입니다. 당시 도구 실행을 재현하거나 로그를 확인한 것은 아닙니다. 추가 이력 대조: “모두 sketch”라는 회고와 달리 제작 직전 파일의 상태 값은 sketch 16개·complete 1개·미지정 1개였습니다. 상세 지도에서 보고와 파일 근거를 함께 확인할 수 있습니다.",
           "inputs": [
