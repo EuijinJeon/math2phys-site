@@ -25,3 +25,7 @@ PROCEDURE.md의 과거 제작 보고와 UPDATE-PROCEDURE.md의 운영 규칙을 
 ## 게시
 
 GitHub Pages의 최신 `origin/gh-pages`에서 별도 작업 디렉터리를 만들고 `build/index.html`과 `build/progress.html`만 `workflow-review/`에 복사합니다. 기존 페이지를 대체하지 않습니다. 공개 페이지는 공개된 저장소 자료만 포함합니다. 배포 성공과 직접 URL을 확인한 뒤 진행 상황을 완료로 갱신합니다.
+
+## 그래프 작업 기록 하네스 설계
+
+[설계안 0.1](harness/DESIGN.md)은 그래프 생성·수정 시 남길 단계별 기록, 자동 수집과 작성자 보고의 구분, 검토 그래프 생성 및 피드백 처리를 정의합니다. 현재는 설계 제안이며 자동 수집·기록 강제 기능은 아직 구현하지 않았습니다.
