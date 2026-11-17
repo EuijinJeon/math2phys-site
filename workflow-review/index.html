@@ -70,7 +70,7 @@ function scaleLink(child, title) {
 function evidence(node) {
   return node.evidence.map(id => {
     const e = DATA.evidence[id], d = DATA.documents[e.document];
-    return `<div class="evidence"><a href="${esc(sourceUrl(e))}" target="_blank" rel="noopener">${esc(d.title)} · ${e.lines[0]}–${e.lines[1]}행 ↗</a><small>원문 버전 ${esc(d.revision.slice(0,7))} · ${e.kind === 'specification' ? '운영 규칙' : '작성자의 보고'}</small><details><summary>근거 원문 펼치기</summary><pre>${esc(e.excerpt)}</pre></details></div>`;
+    return `<div class="evidence"><a href="${esc(sourceUrl(e))}" target="_blank" rel="noopener">${esc(d.title)} · ${e.lines[0]}–${e.lines[1]}행 ↗</a><small>원문 버전 ${esc(d.revision.slice(0,7))} · ${({specification:'운영 규칙',report:'작성자의 보고',artifact:'저장된 산출물',tool_result:'도구 실행 결과'})[e.kind]}</small><details><summary>근거 원문 펼치기</summary><pre>${esc(e.excerpt)}</pre></details></div>`;
   }).join('');
 }
 function related(node, incoming) {
@@ -87,7 +87,7 @@ function panel(node) {
     return;
   }
   const state = status(node);
-  const statement = state === 'mixed' ? '하위 단계에 수행 보고와 미수행 보고가 섞여 있습니다. 상위 단계를 완료로 단정하지 않습니다.' : state === 'specified' ? '절차에 적힌 요구입니다. 실제 수행 여부를 확인할 실행 기록은 연결되어 있지 않습니다.' : state === 'not_done' ? '작성자가 하지 않았다고 명시한 항목입니다.' : state === 'reported' ? '작성자가 수행했다고 보고했습니다. 원래 실행 로그·산출물과의 대조는 아직 하지 않았습니다.' : '근거와 확인 범위를 확인하세요.';
+  const statement = state === 'mixed' ? '하위 단계에 수행 보고와 미수행 보고가 섞여 있습니다. 상위 단계를 완료로 단정하지 않습니다.' : state === 'specified' ? '절차에 적힌 요구입니다. 실제 수행 여부를 확인할 실행 기록은 연결되어 있지 않습니다.' : state === 'not_done' ? '작성자가 하지 않았다고 명시한 항목입니다.' : state === 'reported' ? (node.evidence.some(id=>DATA.evidence[id].kind==='artifact') ? '당시 수행 행동은 작성자의 보고입니다. 저장된 파일과의 대조 결과를 아래에 함께 표시하며, 당시 실행 로그를 확인했다는 뜻은 아닙니다.' : '작성자가 수행했다고 보고했습니다. 원래 실행 로그·산출물과의 대조는 아직 하지 않았습니다.') : '근거와 확인 범위를 확인하세요.';
   $('panel').innerHTML = `<div class="node-ref">${esc(graph.id)} / ${esc(node.id)}</div><h2>${esc(node.title)}</h2>${badge(node)}<p>${esc(node.body)}</p><div class="callout">${esc(statement)}</div>${node.detail ? scaleLink(graphs[node.detail],node.title) : ''}${graph.parent ? `<a class="scale-link" href="${esc(url(graph.parent.graph,graph.parent.node))}">← 상위 지도 · ${esc(graphs[graph.parent.graph].title)}</a>` : ''}<h3>입력과 산출물</h3><dl class="io"><dt>입력</dt><dd>${esc(node.inputs.join(' · '))}</dd><dt>산출물</dt><dd>${esc(node.outputs.join(' · '))}</dd></dl><h3>판단 근거</h3>${evidence(node)}<div class="panel-actions"><button id="copy-link">링크 복사</button><button id="copy-question">질문 복사</button></div><h3>앞 단계</h3>${related(node,true)}<h3>다음 단계</h3>${related(node,false)}`;
   $('panel').querySelectorAll('[data-select]').forEach(b => b.onclick = () => select(b.dataset.select,true,true));
   $('copy-link').onclick = () => copy(url(graph.id,node.id));
