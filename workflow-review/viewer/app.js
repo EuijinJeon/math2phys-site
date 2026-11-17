@@ -1,7 +1,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const labels = {reported:'수행 보고', specified:'절차에 명시', unknown:'확인 불가', not_done:'미수행 보고', mixed:'보고·미수행 혼재', observed:'실행 기록 있음', verified:'결과 확인됨'};
+const labels = {reported:'수행 보고', specified:'절차에 명시', unknown:'확인 불가', not_done:'미수행 보고', mixed:'확인 수준 혼재', observed:'실행 기록 있음', verified:'결과 확인됨'};
 const graphs = Object.fromEntries(DATA.graphs.map(g => [g.id, g]));
 const params = new URLSearchParams(location.search);
 let currentCase = DATA.cases.find(c => c.id === params.get('case')) || DATA.cases[0];
@@ -45,11 +45,11 @@ function related(node, incoming) {
 }
 function panel(node) {
   if (!node) {
-    $('panel').innerHTML = `<span class="node-ref">${esc(DATA.version)} · ${esc(currentCase.title)}</span><h2>어떤 과정을 거쳤을까요?</h2><p>노드를 선택하면 목적, 입력과 산출물, 판단 근거를 확인할 수 있습니다.</p><div class="callout">${currentCase.kind === 'report' ? '이 사례는 작성자의 회고 기록입니다. 수행 보고는 당시 실행 로그나 결과를 독립적으로 확인했다는 뜻이 아닙니다.' : '이 지도는 문서가 정한 절차입니다. 특정 작업이 실제로 수행했다는 뜻이 아닙니다.'}</div><h3>더 세밀하게 살펴보기</h3>${graph.nodes.filter(n=>n.detail).map(n=>scaleLink(graphs[n.detail],n.title)).join('') || '<p class="muted">현재 가장 세밀한 지도입니다.</p>'}${graph.parent ? `<h3>상위 지도</h3><a class="scale-link" href="${esc(url(graph.parent.graph,graph.parent.node))}">← ${esc(graphs[graph.parent.graph].title)}</a>` : ''}<h3>질문과 피드백</h3><p>노드를 선택한 뒤 ‘질문 복사’를 눌러 대화에 붙여 넣으세요. 대상·버전·근거 링크가 함께 복사됩니다.</p><h3>현재 검토 범위</h3><p class="muted">${esc(currentCase.description)}</p>`;
+    $('panel').innerHTML = `<span class="node-ref">${esc(DATA.version)} · ${esc(currentCase.title)}</span><h2>어떤 과정을 거쳤을까요?</h2><p>노드를 선택하면 목적, 입력과 산출물, 판단 근거를 확인할 수 있습니다.</p><div class="callout">${currentCase.kind === 'report' ? 'R_SCOPE 관련 호출·반환을 실행 로그와 대조했습니다. 다른 단계의 수행 보고까지 검증했다는 뜻은 아닙니다.' : '이 지도는 문서가 정한 절차입니다. 특정 작업이 실제로 수행했다는 뜻이 아닙니다.'}</div><h3>더 세밀하게 살펴보기</h3>${graph.nodes.filter(n=>n.detail).map(n=>scaleLink(graphs[n.detail],n.title)).join('') || '<p class="muted">현재 가장 세밀한 지도입니다.</p>'}${graph.parent ? `<h3>상위 지도</h3><a class="scale-link" href="${esc(url(graph.parent.graph,graph.parent.node))}">← ${esc(graphs[graph.parent.graph].title)}</a>` : ''}<h3>질문과 피드백</h3><p>노드를 선택한 뒤 ‘질문 복사’를 눌러 대화에 붙여 넣으세요. 대상·버전·근거 링크가 함께 복사됩니다.</p><h3>현재 검토 범위</h3><p class="muted">${esc(currentCase.description)}</p>`;
     return;
   }
   const state = status(node);
-  const statement = state === 'mixed' ? '하위 단계에 수행 보고와 미수행 보고가 섞여 있습니다. 상위 단계를 완료로 단정하지 않습니다.' : state === 'specified' ? '절차에 적힌 요구입니다. 실제 수행 여부를 확인할 실행 기록은 연결되어 있지 않습니다.' : state === 'not_done' ? '작성자가 하지 않았다고 명시한 항목입니다.' : state === 'reported' ? (node.evidence.some(id=>DATA.evidence[id].kind==='artifact') ? '당시 수행 행동은 작성자의 보고입니다. 저장된 파일과의 대조 결과를 아래에 함께 표시하며, 당시 실행 로그를 확인했다는 뜻은 아닙니다.' : '작성자가 수행했다고 보고했습니다. 원래 실행 로그·산출물과의 대조는 아직 하지 않았습니다.') : '근거와 확인 범위를 확인하세요.';
+  const statement = state === 'mixed' ? '이 단계와 하위 단계의 확인 수준이 다릅니다. 실행 기록과 사후 보고를 각각 확인하세요.' : state === 'specified' ? '절차에 적힌 요구입니다. 실제 수행 여부를 확인할 실행 기록은 연결되어 있지 않습니다.' : state === 'not_done' ? '작성자가 하지 않았다고 명시한 항목입니다.' : state === 'reported' ? (node.evidence.some(id=>DATA.evidence[id].kind==='artifact') ? '당시 수행 행동은 작성자의 보고입니다. 저장된 파일과의 대조 결과를 아래에 함께 표시하며, 당시 실행 로그를 확인했다는 뜻은 아닙니다.' : '작성자의 회고 주장입니다. 관련 호출 기록이 있더라도 이 판단 자체가 직접 관찰됐다는 뜻은 아닙니다.') : state === 'observed' ? '연결된 로그에서 호출·반환을 대조했습니다. 출력 내용의 정확성이나 판단의 타당성까지 보증하지 않습니다.' : '근거와 확인 범위를 확인하세요.';
   $('panel').innerHTML = `<div class="node-ref">${esc(graph.id)} / ${esc(node.id)}</div><h2>${esc(node.title)}</h2>${badge(node)}<p>${esc(node.body)}</p><div class="callout">${esc(statement)}</div>${node.detail ? scaleLink(graphs[node.detail],node.title) : ''}${graph.parent ? `<a class="scale-link" href="${esc(url(graph.parent.graph,graph.parent.node))}">← 상위 지도 · ${esc(graphs[graph.parent.graph].title)}</a>` : ''}<h3>입력과 산출물</h3><dl class="io"><dt>입력</dt><dd>${esc(node.inputs.join(' · '))}</dd><dt>산출물</dt><dd>${esc(node.outputs.join(' · '))}</dd></dl><h3>판단 근거</h3>${evidence(node)}<div class="panel-actions"><button id="copy-link">링크 복사</button><button id="copy-question">질문 복사</button></div><h3>앞 단계</h3>${related(node,true)}<h3>다음 단계</h3>${related(node,false)}`;
   $('panel').querySelectorAll('[data-select]').forEach(b => b.onclick = () => select(b.dataset.select,true,true));
   $('copy-link').onclick = () => copy(url(graph.id,node.id));
@@ -101,7 +101,7 @@ function draw() {
 async function copy(text) {try{await navigator.clipboard.writeText(text);$('toast').textContent='복사했습니다. 대화에 붙여 넣어 주세요.';$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,2600);}catch{$('copy-content').value=text;$('copy-dialog').showModal();$('copy-content').select();}}
 $('copy-close').onclick=()=>$('copy-dialog').close();
 $('title').textContent=graph.title;document.title=graph.title+' · 업무 검토 지도';$('description').textContent=graph.description;
-$('eyebrow').textContent=currentCase.kind==='report'?'사후 검토 · 문서 기반 재구성':'절차 이해 · 수행 기록 미연결';
+$('eyebrow').textContent=currentCase.kind==='report'?'사후 검토 · 문서와 실행 근거':'절차 이해 · 수행 기록 미연결';
 $('context').textContent=`v${DATA.version} · ${currentCase.title} · ${DATA.updated}`;
 for(const c of DATA.cases){const o=document.createElement('option');o.value=c.id;o.textContent=c.title;$('case').appendChild(o);}$('case').value=currentCase.id;
 $('case').onchange=()=>{const c=DATA.cases.find(c=>c.id===$('case').value);location.href=url(c.root,null,c.id);};

@@ -12,7 +12,7 @@
 - `parent`: graph와 node. 부모의 detail과 양방향으로 일치해야 한다. 계층 자체에는 순환이 없어야 한다.
 - `changes`: date, kind, request, affected[], description. 요청 원문과 변경 의미를 기록한다.
 
-상태: reported(수행 보고), not_done(미수행 명시 보고), specified(규칙에 명시), unknown(확인 불가), observed(직접 실행 기록), verified(결과 직접 확인). 현재 사례에는 observed/verified를 사용하지 않는다. 검사기는 직접 근거 없는 승격을 거부하지만 근거 내용의 의미는 별도로 검토해야 한다.
+상태: reported(수행 보고), not_done(미수행 명시 보고), specified(규칙에 명시), unknown(확인 불가), observed(직접 실행 기록), verified(결과 직접 확인). v0.1.2에서는 R_SCOPE 관련 호출·반환을 대조한 노드에 observed를 사용한다. 판단 이유에 대한 회고는 reported로 유지한다. 검사기는 직접 근거 없는 승격을 거부하지만 근거 내용의 의미는 별도로 검토해야 한다.
 
 상위 노드와 자식의 상태가 다르면 화면은 mixed로 표시한다. 세부 표현 추가는 상태를 승격시키지 않는다. 원문·근거를 HTML로 실행하지 않고 텍스트로 표시한다.
 
