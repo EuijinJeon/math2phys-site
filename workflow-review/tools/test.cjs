@@ -5,7 +5,7 @@ const {validate}=require('./check.cjs');
 const baseline=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/review.json'),'utf8'));
 assert.deepEqual(validate(baseline),[]);
 const tests=[
- ['보고를 검증 완료로 승격',d=>d.graphs[0].nodes[0].status='verified',/직접 증거 없음/],
+ ['보고만으로 검증 완료로 승격',d=>{d.graphs[0].nodes[0].status='verified';d.graphs[0].nodes[0].evidence=['scope'];},/직접 증거 없음/],
  ['상위 복귀 대상 불일치',d=>d.graphs[1].parent.node='MISSING',/왕복 연결 오류/],
  ['다른 실행 맥락 연결',d=>d.graphs[1].case='update-procedure',/왕복 연결 오류/],
  ['원문 발췌 변경',d=>d.evidence.scope.excerpt='잘못된 근거',/발췌 불일치/],
