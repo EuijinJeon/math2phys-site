@@ -40,7 +40,7 @@ function related(node, incoming) {
   if (!edges.length) return '<p class="muted">없음</p>';
   return `<div class="neighbors">${edges.map(e => {
     const other = byId[incoming ? e.source : e.target];
-    return `<button data-select="${esc(other.id)}">${esc(other.title)}<small>${esc(e.label)}</small></button>`;
+    return `<button data-select="${esc(other.id)}">${esc(other.title)}<small>${esc(e.label)}<br>출력: ${esc(e.output)}<br>입력: ${esc(e.input)}</small></button>`;
   }).join('')}</div>`;
 }
 function panel(node) {
@@ -68,8 +68,8 @@ function select(id, focus = false, push = false) {
   if (focus && selected) {
     const n = byId[selected], r = $('viewport').getBoundingClientRect();
     scale = Math.min(1.15, (r.width-40)/238, (r.height-35)/160);
-    tx = r.width/2-(n.position[0]*350+40+119)*scale;
-    ty = r.height/2-(n.position[1]*230+60+80)*scale;
+    tx = r.width/2-(n.position[0]*470+40+119)*scale;
+    ty = r.height/2-(n.position[1]*310+105+80)*scale;
     transform();
   }
 }
@@ -79,7 +79,7 @@ function zoom(factor,x,y) {const r=$('viewport').getBoundingClientRect();x??=r.w
 function svgEl(tag,attrs,text) {const el=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));if(text)el.textContent=text;return el;}
 function draw() {
   for(const n of graph.nodes) {
-    const el=document.createElement('button');el.className='node';el.dataset.id=n.id;el.style.left=(40+n.position[0]*350)+'px';el.style.top=(60+n.position[1]*230)+'px';
+    const el=document.createElement('button');el.className='node';el.dataset.id=n.id;el.style.left=(40+n.position[0]*470)+'px';el.style.top=(105+n.position[1]*310)+'px';
     el.setAttribute('aria-label',`${n.id} ${n.title} · ${labels[status(n)]}`);
     el.innerHTML=`<span class="id">${esc(n.id)}</span><h2>${esc(n.title)}</h2><span class="summary">${esc(n.summary)}</span><span class="node-bottom">${badge(n)}${n.detail?'<span class="detail-mark">세부 지도 ↗</span>':''}</span>`;
     el.onclick=()=>{if(!dragMoved)select(n.id,false,true);};el.ondblclick=()=>select(n.id,true,false);$('nodes').appendChild(el);
@@ -91,11 +91,13 @@ function draw() {
   graph.edges.forEach((e,i)=>{
     const a=dims[e.source],b=dims[e.target],long=b.x-a.x>750;
     let path,labelX,labelY;
-    if(a.x===b.x){const x=a.x+a.w/2,y1=a.y+a.h,y2=b.y;path=`M ${x},${y1} V ${y2}`;labelX=x+40;labelY=(y1+y2)/2;}
-    else if(long){const rail=25;path=`M ${a.x+a.w/2},${a.y} V ${rail} H ${b.x+b.w/2} V ${b.y}`;labelX=(a.x+b.x+a.w)/2;labelY=rail-9;}
+    if(a.x===b.x){const x=a.x+a.w/2,y1=a.y+a.h,y2=b.y;path=`M ${x},${y1} V ${y2}`;labelX=x;labelY=(y1+y2)/2-18;}
+    else if(long){const rail=65;path=`M ${a.x+a.w/2},${a.y} V ${rail} H ${b.x+b.w/2} V ${b.y}`;labelX=(a.x+b.x+a.w)/2;labelY=rail-42;}
     else {const x1=a.x+a.w,y1=a.y+a.h/2,x2=b.x,y2=b.y+b.h/2,m=(x1+x2)/2;path=`M ${x1},${y1} C ${m},${y1} ${m},${y2} ${x2},${y2}`;labelX=m;labelY=(y1+y2)/2-12;}
     $('edges').appendChild(svgEl('path',{d:path,class:'edge '+e.kind,'marker-end':'url(#arrow)'}));
-    $('edges').appendChild(svgEl('text',{x:labelX,y:labelY,'text-anchor':'middle',class:'edge-label'},e.label));
+    const label=svgEl('text',{x:labelX,y:labelY-22,'text-anchor':'middle',class:'edge-label'});
+    [e.label, '출력: '+e.output, '입력: '+e.input].forEach((line,j)=>label.appendChild(svgEl('tspan',{x:labelX,dy:j?16:0},line)));
+    $('edges').appendChild(label);
   });
 }
 async function copy(text) {try{await navigator.clipboard.writeText(text);$('toast').textContent='복사했습니다. 대화에 붙여 넣어 주세요.';$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,2600);}catch{$('copy-content').value=text;$('copy-dialog').showModal();$('copy-content').select();}}

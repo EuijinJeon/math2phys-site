@@ -41,6 +41,7 @@ function validate(data) {
       if(!nodes.has(e.source)||!nodes.has(e.target))fail('없는 edge 끝: '+g.id);
       if(!['sequence','data','note'].includes(e.kind))fail('edge 유형 오류: '+g.id);
       if(!e.label)fail('edge 설명 누락: '+g.id);
+      if(!e.output || !e.input)fail('edge 입출력 누락: '+g.id);
     }
     if(g.parent){const p=graphs.get(g.parent.graph);if(!p||p.case!==g.case||!p.nodes.some(n=>n.id===g.parent.node&&n.detail===g.id))fail('상위 지도 왕복 연결 오류: '+g.id);}
     const seen=new Set();let cursor=g;

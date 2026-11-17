@@ -1,6 +1,6 @@
 {
   "schema": "workflow-review/0.1",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "updated": "2026-11-17",
   "title": "AI 업무 검토 지도",
   "cases": [
@@ -504,32 +504,42 @@
         {
           "source": "R_SCOPE",
           "target": "R_READ",
-          "label": "다음 단계",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "정리·증명 위치와 원문",
+          "input": "대상 정리와 참조 원문"
         },
         {
           "source": "R_READ",
           "target": "R_MODEL",
-          "label": "다음 단계",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "정의·선행 결과·생략 범위",
+          "input": "구조화할 원문과 참조"
         },
         {
           "source": "R_MODEL",
           "target": "R_BUILD",
-          "label": "다음 단계",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "노드·선의 의존 구조",
+          "input": "구현할 의존 구조"
         },
         {
           "source": "R_BUILD",
           "target": "R_CHECK",
-          "label": "다음 단계",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "당시 HTML 지도",
+          "input": "검사할 HTML 지도"
         },
         {
           "source": "R_CHECK",
           "target": "R_PUBLISH",
-          "label": "다음 단계",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "검사 보고·남은 한계",
+          "input": "지도와 검사 보고"
         }
       ]
     },
@@ -710,44 +720,58 @@
         {
           "source": "SC_DISCOVER",
           "target": "SC_SECTION",
-          "label": "11:57:23",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "원문 폴더·기준 이력",
+          "input": "HANDOFF.md·main.tex"
         },
         {
           "source": "SC_SECTION",
           "target": "SC_CONTEXT",
-          "label": "11:57:28",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "포함 순서·지도 폴더 목록",
+          "input": "proofmap 문서·폴더"
         },
         {
           "source": "SC_CONTEXT",
           "target": "SC_TARGET",
-          "label": "11:57:34",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "기존 빌드 파일 정보",
+          "input": "decorrelation.tex"
         },
         {
           "source": "SC_TARGET",
           "target": "SC_EXISTING",
-          "label": "같은 호출의 다른 출력",
-          "kind": "note"
+          "label": "동일 호출 · 전달 아님",
+          "kind": "note",
+          "output": "정리·증명 라벨 위치",
+          "input": "move5.json (별도 입력)"
         },
         {
           "source": "SC_TARGET",
           "target": "SC_PROOF",
-          "label": "11:57:40",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "정리 63행·증명 532행",
+          "input": "원문 1–84 / 526–623행"
         },
         {
           "source": "SC_EXISTING",
           "target": "SC_CHOICE",
-          "label": "후속 문서에서 설명",
-          "kind": "note"
+          "label": "후속 회고 · 직접 전달 미확인",
+          "kind": "note",
+          "output": "기존 노드·선 목록",
+          "input": "제작 후 회고·문서 요청"
         },
         {
           "source": "SC_PROOF",
           "target": "SC_CHOICE",
-          "label": "후속 회고",
-          "kind": "note"
+          "label": "후속 회고 · 직접 전달 미확인",
+          "kind": "note",
+          "output": "정리·증명 원문 텍스트",
+          "input": "제작 후 회고·문서 요청"
         }
       ]
     },
@@ -843,20 +867,26 @@
         {
           "source": "C_STRUCTURE",
           "target": "C_FAULTS",
-          "label": "검사기 확인",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "구조 검사 결과 보고",
+          "input": "결함을 넣은 사본"
         },
         {
           "source": "C_FAULTS",
           "target": "C_SCREEN",
-          "label": "화면 확인",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "검사기 반응 보고",
+          "input": "렌더링 가능한 사본"
         },
         {
           "source": "C_SCREEN",
           "target": "C_LIVE",
-          "label": "검토 범위의 한계",
-          "kind": "note"
+          "label": "검토 범위 · 전달 아님",
+          "kind": "note",
+          "output": "로컬 화면 검사 보고",
+          "input": "게시본·내용 (미검사)"
         }
       ],
       "parent": {
@@ -935,14 +965,18 @@
         {
           "source": "S_PREP",
           "target": "S_SIZES",
-          "label": "준비된 사본",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "로컬 검사 사본",
+          "input": "로컬 검사 사본"
         },
         {
           "source": "S_SIZES",
           "target": "S_RESULT",
-          "label": "출력과 화면",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "검사 출력·스크린샷",
+          "input": "검사 출력·스크린샷"
         }
       ],
       "parent": {
@@ -1162,74 +1196,98 @@
         {
           "source": "U01",
           "target": "U02",
-          "label": "대상 확정",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "대상·설명 목표",
+          "input": "대상 노드와 원문"
         },
         {
           "source": "U02",
           "target": "U03",
-          "label": "근거",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "근거·조건",
+          "input": "검산할 근거·조건"
         },
         {
           "source": "U03",
           "target": "U05",
-          "label": "짧은 설명",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "검산·설명 보강 방식",
+          "input": "검산한 설명"
         },
         {
           "source": "U03",
           "target": "U06",
-          "label": "단계 분해",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "검산·단계 분해 방식",
+          "input": "새 추론 단계"
         },
         {
           "source": "U03",
           "target": "U07",
-          "label": "연결 수정",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "검산·연결 수정 방식",
+          "input": "양끝 노드와 원문"
         },
         {
           "source": "U05",
           "target": "U08",
-          "label": "변경 자료",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "수정 JSON",
+          "input": "검사할 수정 자료"
         },
         {
           "source": "U06",
           "target": "U08",
-          "label": "변경 자료",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "세부 JSON·왕복 연결",
+          "input": "검사할 수정 자료"
         },
         {
           "source": "U07",
           "target": "U08",
-          "label": "변경 자료",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "수정된 선",
+          "input": "검사할 수정 자료"
         },
         {
           "source": "U08",
           "target": "U09",
-          "label": "검사 후",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "생성물·검사 결과",
+          "input": "검사한 변경"
         },
         {
           "source": "U09",
           "target": "U10",
-          "label": "저장 후",
-          "kind": "sequence"
+          "label": "절차 순서 · 별도 입력",
+          "kind": "sequence",
+          "output": "변경 이력·커밋",
+          "input": "게시할 HTML"
         },
         {
           "source": "U10",
           "target": "U11",
-          "label": "공개 확인 후",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "공개 결과",
+          "input": "설명과 확인 결과"
         },
         {
           "source": "U03",
           "target": "U11",
-          "label": "대화로만 설명 / 근거 부족",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "설명 또는 근거 부족",
+          "input": "사용자에게 답할 내용"
         }
       ]
     },
@@ -1324,20 +1382,26 @@
         {
           "source": "V_CHECK",
           "target": "V_BUILD",
-          "label": "오류 0",
-          "kind": "sequence"
+          "label": "절차 순서 · 별도 입력",
+          "kind": "sequence",
+          "output": "구조 검사: 오류 0",
+          "input": "검사한 JSON"
         },
         {
           "source": "V_BUILD",
           "target": "V_DIFF",
-          "label": "생성물",
-          "kind": "sequence"
+          "label": "출력 → 다음 입력",
+          "kind": "data",
+          "output": "HTML·노드 표",
+          "input": "생성 결과"
         },
         {
           "source": "V_DIFF",
           "target": "V_SCREEN",
-          "label": "검토한 화면",
-          "kind": "sequence"
+          "label": "절차 순서 · 별도 입력",
+          "kind": "sequence",
+          "output": "검토한 변경",
+          "input": "생성 화면"
         }
       ],
       "parent": {
@@ -1403,8 +1467,10 @@
         {
           "source": "DOC_SECTION",
           "target": "DOC_WRITE",
-          "label": "절차 문서 작성",
-          "kind": "sequence"
+          "label": "순서 연결 · 직접 전달 미확인",
+          "kind": "sequence",
+          "output": "section 목록·포함 순서",
+          "input": "PROCEDURE.md 작성 텍스트"
         }
       ]
     }
@@ -1457,6 +1523,21 @@
         "scope-retrospective"
       ],
       "description": "사용자 제공 JSONL의 호출·반환을 대조. 동시 조회와 후속 문서화를 분리하고 관련 발췌만 공개. 기존 설명은 Git 이력에 보존. 실제 업무 실행 규칙은 변경하지 않음."
+    },
+    {
+      "date": "2026-11-17",
+      "kind": "explanation",
+      "request": "각각의 노드의 입출력이 뭔지 확인해서 화살표에 표시해줘.",
+      "affected": [
+        "creation",
+        "creation-scope",
+        "creation-checks",
+        "creation-screen",
+        "update",
+        "update-checks",
+        "scope-retrospective"
+      ],
+      "description": "모든 연결에 출발 노드 출력과 도착 노드 입력을 표시. 데이터 연결·순서 연결·동일 호출·후속 회고를 구별. 로그 미대조 단계의 확인 수준은 유지. 실행 규칙 변경 없음."
     }
   ]
 }

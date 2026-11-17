@@ -8,7 +8,7 @@
 - `cases`: id, title, root, kind, description. 사례 간 상세 링크를 금지한다.
 - `graphs`: id, case, title, description, nodes, edges, 선택적 parent.
 - `nodes`: id, title, summary, body, inputs[], outputs[], position [열, 행], evidence[], status, 선택적 detail(graph ID).
-- `edges`: source, target, label, kind(sequence/data/note). 문서에 나타난 서술 순서의 재구성이 실제 타임스탬프를 뜻하지 않는다. v0.1 배치는 왼쪽→오른쪽 그래프에 맞춰져 있다. 순환 실행 시각화는 후속 범위다.
+- `edges`: source, target, label, output, input, kind(sequence/data/note). output/input은 출발 노드 출력·도착 노드 입력의 연결별 요약이다. 순서·주석 연결은 직접 데이터 전달을 뜻하지 않는다. 문서에 나타난 서술 순서의 재구성이 실제 타임스탬프를 뜻하지 않는다. v0.1 배치는 왼쪽→오른쪽 그래프에 맞춰져 있다. 순환 실행 시각화는 후속 범위다.
 - `parent`: graph와 node. 부모의 detail과 양방향으로 일치해야 한다. 계층 자체에는 순환이 없어야 한다.
 - `changes`: date, kind, request, affected[], description. 요청 원문과 변경 의미를 기록한다.
 
