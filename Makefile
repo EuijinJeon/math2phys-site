@@ -16,3 +16,9 @@ check-workflow-review:
 	node workflow-review/tools/test.cjs
 	node --check workflow-review/viewer/app.js
 	node workflow-review/tools/build.cjs
+
+.PHONY: check-graph-harness
+check-graph-harness:
+	node --check workflow-review/harness/tools/record.cjs
+	node --check workflow-review/harness/tools/review.cjs
+	node workflow-review/harness/tools/test.cjs

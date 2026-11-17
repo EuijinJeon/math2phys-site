@@ -1,0 +1,19 @@
+'use strict';
+// Scripted synthetic fixture: real commands/results, predefined reports, no autonomous LLM decisions.
+const fs=require('node:fs'),path=require('node:path'),r=require('./record.cjs'),{render}=require('./review.cjs');
+function pilot(base){fs.mkdirSync(base,{recursive:true});const cwd=path.resolve(base),tool=path.resolve(__dirname,'../fixtures/graph-tool.cjs'),source=path.resolve(__dirname,'../fixtures/source.md');const graph='graph.json';const runs=[];
+ function run(name,mode,request){const dir=path.join(cwd,name);r.init(dir,{id:name,mode,request,cwd,files:[source,tool,graph],fixture:true,domain_rules:'synthetic three-node graph; no scientific claims'});runs.push(dir);return dir;}
+ function step(dir,id,title,inputs,argv,files=[],status='completed',affected=[],retry_of=null){r.start(dir,{id,title,purpose:title,done_when:status==='failed'?'의도한 구조 오류가 검출됨':'지정한 결과를 반환하고 산출물이 확보됨',inputs,retry_of,attempt:retry_of?2:1});const e=r.execute(dir,{step:id,argv,files});r.finish(dir,{id,status,summary:status==='failed'?'파일럿 결함의 실패 반환을 보존함. 다음 단계에서 복구한다.':'사전에 작성한 파일럿 계획대로 실행됨. 이 판단은 자동 검증과 별개다.',outputs:[{id:'result',label:title+' 반환',kind:'artifact',event:e.id,channel:status==='failed'?'stderr':'stdout'},...files.map((f,i)=>({id:'file'+i,label:f+' 스냅샷',kind:'artifact',event:e.id,file:f}))],evidence:[e.id],affected});return e;}
+ const a=run('create','create','예제 원문으로 A → B → C 그래프 생성');
+ step(a,'READ','예제 원문 읽기',[{label:'예제 원문',file:source}],[process.execPath,'-e','process.stdout.write(require("fs").readFileSync(process.argv[1],"utf8"))',source]);
+ r.start(a,{id:'DESIGN',title:'세 노드와 전달 항목 설계',purpose:'예제의 각 결과를 node와 edge에 대응',done_when:'A/B/C와 AB/BC 전달 내용을 명시',inputs:[{label:'예제 본문',from:{step:'READ',output:'result'}}]});r.finish(a,{id:'DESIGN',status:'completed',summary:'A는 대상 ID, B는 원문 위치, C는 텍스트를 출력한다. AB는 대상 ID, BC는 원문 위치를 전달한다. 파일럿의 사전 작성 계획이다.',outputs:[{id:'plan',label:'A/B/C 및 AB/BC 설계',kind:'agent_report'}],evidence:[r.events(a).find(e=>e.type==='step.finished').id],affected:[]});
+ step(a,'EDIT','세 노드 그래프 저장',[{label:'설계',from:{step:'DESIGN',output:'plan'}},{label:'생성 도구',file:tool}],[process.execPath,tool,'create',graph],[graph],'completed',['A','B','C','AB','BC']);
+ step(a,'CHECK','생성 그래프 구조 검사',[{label:'생성 JSON',from:{step:'EDIT',output:'file0'}}],[process.execPath,tool,'check',graph]);r.close(a,{summary:'예제 그래프 생성과 구조 검사 완료',delivery:{published:false,graph,content_review:'fixture only',screen_review:'not performed by pilot'}});render(a);
+ const b=run('update','update','BC 전달 항목을 파일 경로와 행 범위로 구체화; 검출 시험을 위한 결함 삽입과 복구 포함');
+ step(b,'BASE','수정 전 그래프 읽기',[{label:'생성 run의 최종 그래프',file:graph}],[process.execPath,'-e','process.stdout.write(require("fs").readFileSync(process.argv[1],"utf8"))',graph]);
+ step(b,'EDIT_BAD','검출 시험용 잘못된 edge 저장',[{label:'기존 그래프',from:{step:'BASE',output:'result'}},{label:'수정 도구',file:tool}],[process.execPath,tool,'break',graph],[graph],'completed',['BC']);
+ step(b,'CHECK_BAD','없는 node 참조 검출',[{label:'결함 JSON',from:{step:'EDIT_BAD',output:'file0'}}],[process.execPath,tool,'check',graph],[],'failed');
+ step(b,'EDIT_FIX','edge 복구와 전달 내용 구체화',[{label:'실패 검사 반환',from:{step:'CHECK_BAD',output:'result'}},{label:'수정할 JSON',from:{step:'EDIT_BAD',output:'file0'}}],[process.execPath,tool,'fix',graph],[graph],'completed',['B','C','BC'],'EDIT_BAD');
+ step(b,'CHECK_OK','수정 후 구조 재검사',[{label:'복구한 JSON',from:{step:'EDIT_FIX',output:'file0'}}],[process.execPath,tool,'check',graph],[],'completed',[],'CHECK_BAD');r.close(b,{summary:'구조 실패·복구·재검사 보존. B/C 입출력과 BC 라벨을 함께 수정.',delivery:{published:false,graph,content_review:'fixture only',screen_review:'not performed by pilot'}});render(b);
+ return runs;}
+module.exports={pilot};if(require.main===module){const base=path.resolve(process.argv[2]||path.join(__dirname,'../.local/pilot-'+Date.now()));console.log(JSON.stringify(pilot(base).map(dir=>({dir,...r.validate(dir),review:path.join(dir,'review.html')})),null,2));}
