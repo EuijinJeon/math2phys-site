@@ -1,6 +1,6 @@
 # 증명 지도 작업 입구
 
-현재 지도: `build/decor-thm-derivation.html` (§7, `decor:overlap-concentration`). `B_CON`, `B_DC`, `DC_ONE`, `X_CH`의 세부 지도는 각각 `build/b-con-derivation.html`, `build/b-dc-derivation.html`, `build/dc-one-derivation.html`, `build/x-ch-derivation.html`(§3 Lemma tree:charging). 자료 원본은 같은 이름의 `graphs/*.json`이고, 다섯 페이지는 같은 `viewer/decor-thm-template.html`에서 만든다. 모든 수정은 **proposed**이며 확정은 사용자만 한다.
+현재 지도: `build/decor-thm-derivation.html` (§7, `decor:overlap-concentration`). `B_CON`, `B_DC`, `DC_ONE`, `X_CH`, `X_SAMP`의 세부 지도는 각각 `build/b-con-derivation.html`, `build/b-dc-derivation.html`, `build/dc-one-derivation.html`, `build/x-ch-derivation.html`(§3 Lemma tree:charging), `build/x-samp-derivation.html`(§3 표본 규칙). 자료 원본은 같은 이름의 `graphs/*.json`이고, 여섯 페이지는 같은 `viewer/decor-thm-template.html`에서 만든다. 모든 수정은 **proposed**이며 확정은 사용자만 한다.
 
 | 요청 | 읽을 것 | 고칠 것 | 끝낼 때 |
 |---|---|---|---|

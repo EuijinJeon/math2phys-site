@@ -80,7 +80,13 @@
       "tag": "§3 tree 표본 규칙",
       "t": "잎 제거와 조건부 독립",
       "f": "갈라진 뒤 자식들은 prefix가 주어지면 조건부 독립",
-      "body": "<p>잎 일부와 그 경로를 지워도 남은 tree의 표본 법칙은 그대로다. 갈라짐 뒤의 자식 continuation은 prefix에 대해 조건부 독립이다.</p>",
+      "body": "<p>잎 일부와 그 경로를 지워도 남은 tree의 표본 법칙은 그대로다. 갈라짐 뒤의 자식 continuation은 prefix에 대해 조건부 독립이다. 둘 다 tree law가 edge마다 probability kernel 하나의 곱이라는 데서 나온다. 지울 변수는 자기 kernel에만 나타나 1로 적분되고, 갈라짐 아래 factor는 subtree별로 나뉜다. 아래 링크에서 유도와 §7의 세 쓰임을 볼 수 있다.</p>",
+      "links": [
+        {
+          "label": "X_SAMP의 세부 유도 (§3) →",
+          "href": "x-samp-derivation.html"
+        }
+      ],
       "src": "trees.tex 38–40"
     },
     {
