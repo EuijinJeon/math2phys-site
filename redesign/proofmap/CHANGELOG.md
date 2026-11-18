@@ -1,5 +1,6 @@
 # 증명 지도 변경 기록
 
+- 2026-11-19 · “X_CH는 논문 §3에서 나오는거야? 그러면 그쪽 노드들 만들고 이어서 X_CH 유도과정 그래프로 보여줘.” · X_CH(f·body·links), 새 지도 x-ch: XC_GAMMA, XC_TEL, XC_EXT, XC_HYP, XC_UNIT, XC_STEP, XC_UNARY, XC_CREATE, XC_J, XC_ABS, XC_REL · 원문 밖 보충 없음 · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json의 meta.parent 부재로 실패, 이번 변경과 무관)
 - 2026-11-16 · “근데 B 조건이 statement에 있었던가?” · B_CON · 원문 밖 보충 없음(원문의 조건을 대표식에 복원) · 검사 오류 0
 - 2026-11-16 · “이 내용 DC_ONE 노드에서 링크하도록 해줘” · DC_ONE, DO_SETUP, DO_TELE, DO_CS, DO_JEN · 원문 밖 보충 없음 · 검사 오류 0
 - 2026-11-16 · “DC_PROD 이게 뭔지 이해 안돼” · DC_PROD · 원문 밖 보충 있음(두 자식 조건부 공분산 예시) · 검사 오류 0

@@ -1,0 +1,456 @@
+<title>Multioverlap 집중 유도 지도</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@600;700&display=swap">
+<style>
+/* Layout: 화면 전체가 모눈 캔버스(이동·확대). 위에 얇은 도구 막대, 오른쪽(휴대폰에서는 아래)에 선택한 node의 상세. */
+:root{
+  --bg:#eef1f5; --paper:#ffffff; --ink:#18202d; --muted:#5a6578; --line:#b9c2d0; --grid:#dfe4eb;
+  --accent:#0d6b72; --accent-soft:#d5ecec; --warn:#9a5b00;
+  --g-ext:#f6efe2; --g-ext-b:#cdb68a;
+  --g-71:#eef2f9; --g-71-b:#a9b8d3;
+  --g-72:#f1eef8; --g-72-b:#b6a9d3;
+  --g-73:#eef6f0; --g-73-b:#9fc6ab;
+  --g-74:#e4f2f2; --g-74-b:#6fb3b6;
+  --font-body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-head:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141b; --paper:#18202b; --ink:#e3e8f0; --muted:#97a2b4; --line:#3b4556; --grid:#1a212c;
+  --accent:#55c3c6; --accent-soft:#163a3d; --warn:#e0a54a;
+  --g-ext:#2a2518; --g-ext-b:#7a6640;
+  --g-71:#1b2230; --g-71-b:#4a5a78;
+  --g-72:#211d2e; --g-72-b:#5d5180;
+  --g-73:#18261e; --g-73-b:#3f6b4e;
+  --g-74:#142a2b; --g-74-b:#2f7275;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141b; --paper:#18202b; --ink:#e3e8f0; --muted:#97a2b4; --line:#3b4556; --grid:#1a212c;
+  --accent:#55c3c6; --accent-soft:#163a3d; --warn:#e0a54a;
+  --g-ext:#2a2518; --g-ext-b:#7a6640;
+  --g-71:#1b2230; --g-71-b:#4a5a78;
+  --g-72:#211d2e; --g-72-b:#5d5180;
+  --g-73:#18261e; --g-73-b:#3f6b4e;
+  --g-74:#142a2b; --g-74-b:#2f7275;
+  color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.5;overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:10px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:5}
+header h1{font-family:var(--font-head);font-size:17px;margin:0;font-weight:700;text-wrap:balance}
+header .sub{color:var(--muted);font-size:12.5px;flex:1 1 260px;min-width:0}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.main{flex:1;display:flex;min-height:0;position:relative}
+#viewport{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px)}
+#viewport.dragging{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+#edges{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.cluster{position:absolute;border:1.5px solid;border-radius:14px;pointer-events:none}
+.cluster .cl{position:absolute;left:12px;top:-11px;padding:0 8px;font-size:12px;font-weight:600;letter-spacing:.04em;background:var(--bg);color:var(--muted);white-space:nowrap}
+.node{position:absolute;width:max-content;max-width:340px;padding:9px 12px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;transition:opacity .15s}
+.node .tag{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em;display:flex;gap:8px;justify-content:space-between}
+.node.supplement{border-color:var(--warn)}
+#panel .node-id{font-family:var(--font-mono);font-weight:600;color:var(--accent)}
+#panel .node-id:focus{outline:2px solid var(--accent)}
+#panel .supplement-badge{color:var(--warn);font-weight:600}
+.back-link{color:var(--accent);font-weight:600;text-decoration:none;padding:5px 0}
+.back-link:hover{text-decoration:underline}
+#panel .scale-link{display:block;padding:10px 12px;border:1px solid var(--accent);border-radius:7px;color:var(--accent);font-weight:600;text-decoration:none}
+#panel .scale-link:hover{background:var(--accent-soft)}
+.node .t{font-weight:600;font-size:13.5px;margin-top:1px}
+.node .f{margin-top:5px;font-size:13px;line-height:1.9}
+.node .f mjx-container{margin:0!important}
+.node.ext{background:var(--g-ext);border-color:var(--g-ext-b);border-style:dashed}
+.node.key{border-color:var(--accent);border-width:2px}
+.node.goal{border-color:var(--accent);border-width:3px;box-shadow:0 0 0 4px var(--accent-soft)}
+.node.note{border-style:dotted;background:transparent}
+.node.sel{outline:3px solid var(--accent);outline-offset:3px}
+.dim .node:not(.lit){opacity:.22}
+.dim .elabel:not(.lit){opacity:.15}
+.elabel{position:absolute;font-size:11px;line-height:1.35;color:var(--muted);background:var(--bg);padding:1px 5px;border-radius:4px;max-width:150px;width:max-content;text-align:center;pointer-events:none;transition:opacity .15s}
+.elabel.key{color:var(--accent);font-weight:500}
+.elabel.minor{display:none}
+.dim .elabel.minor.lit{display:block}
+path.e{fill:none;stroke:var(--line);stroke-width:1.4;transition:opacity .15s}
+path.e.key{stroke:var(--accent);stroke-width:2.2}
+path.e.note{stroke-dasharray:3 4}
+.dim path.e:not(.lit){opacity:.12}
+#panel{width:380px;max-width:42%;border-left:1px solid var(--line);background:var(--paper);overflow-y:auto;padding:16px 18px 24px;padding-right:max(18px,env(safe-area-inset-right,0px))}
+#panel h2{font-family:var(--font-head);font-size:16px;margin:4px 0 8px;text-wrap:balance}
+#panel .ptag{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+#panel .stmt{margin:10px 0;padding:10px 12px;background:var(--bg);border-radius:8px;overflow-x:auto}
+#panel .stmt mjx-container{max-width:none}
+#panel h3{font-size:12px;letter-spacing:.06em;color:var(--muted);margin:16px 0 6px;font-weight:600}
+#panel ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+#panel li button{width:100%;text-align:left;display:block;padding:6px 9px}
+#panel li button small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+#panel .src{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+#panel .warn{color:var(--warn);font-size:12.5px;margin-top:8px}
+#panel p{margin:8px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:22px;height:0;border-top:2px solid var(--line);vertical-align:middle;margin-right:5px}
+.legend i.k{border-color:var(--accent);border-top-width:2.5px}
+.legend i.n{border-top-style:dotted}
+.legend b{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px;border:1.5px dashed var(--g-ext-b);background:var(--g-ext)}
+#hint{position:absolute;left:calc(12px + env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:12px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 9px;pointer-events:none}
+#zoomlvl{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted);min-width:44px;text-align:right;align-self:center}
+#loading[hidden]{display:none}
+#loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+@media (max-width:760px){
+  .main{flex-direction:column}
+  #panel{width:auto;max-width:none;max-height:42%;border-left:0;border-top:1px solid var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  header .sub{display:none}
+  #hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){.node,path.e,.elabel{transition:none}}
+</style>
+
+<div class="app">
+<header>
+  <a id="back" class="back-link" hidden></a>
+  <h1 id="title">§7 정리: 모든 multioverlap의 깊이 평균 집중</h1>
+  <div id="subtitle" class="sub">원문 <span style="font-family:var(--font-mono)">decorrelation.tex</span> Theorem <span style="font-family:var(--font-mono)">decor:overlap-concentration</span> 의 유도. 왼쪽에서 오른쪽으로 흐른다. node를 누르면 그 결과까지 쓰인 것만 밝아진다.</div>
+  <div class="tools">
+    <button id="zin" type="button" aria-label="확대">＋</button>
+    <button id="zout" type="button" aria-label="축소">－</button>
+    <span id="zoomlvl">100%</span>
+    <button id="fit" type="button">전체 보기</button>
+    <button id="focus" type="button">정리의 증명으로</button>
+    <button id="clear" type="button">선택 해제</button>
+  </div>
+</header>
+<div class="main">
+  <div id="viewport" tabindex="0" aria-label="유도 그래프. 끌어서 이동, 휠이나 두 손가락으로 확대">
+    <div id="world"><svg id="edges"><defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--line)"/></marker>
+      <marker id="ark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+    </defs></svg></div>
+    <div id="loading">수식과 배치를 준비하는 중…</div>
+    <div id="hint">끌어서 이동 · 휠/두 손가락으로 확대 · node를 두 번 누르면 그곳으로 확대</div>
+  </div>
+  <aside id="panel" aria-live="polite"></aside>
+</div>
+</div>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:false}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<script>
+const R=String.raw;
+const GRAPH={"meta":{"title":"X_CH: Charging fresh splits의 유도","description":"§3 Lemma tree:charging. 빈 깊이의 branching vertex 하나마다 unary fresh split의 계수 −δ 하나를 청구해 absolute sum과 |J|가 같은 차수 δ^b임을 보인다.","parent":{"label":"← X_CH로 돌아가기","href":"decor-thm-derivation.html?v=x-ch-20261118#node=X_CH"},"focusGroup":"s3ch"},"groups":{"s3in":{"label":"§3 앞부분에서 받는 것","fill":"--g-ext","b":"--g-ext-b"},"s3ch":{"label":"§3 Lemma tree:charging · 증명","fill":"--g-73","b":"--g-73-b"}},"nodes":[{"id":"XC_GAMMA","g":"s3in","cls":"ext","tag":"Lemma tree:insertion","t":"Internal vertex의 지수 $\\gamma_\\beta$","f":"$\\gamma_\\beta=m_{d_\\beta}-n_\\beta m_{d_\\beta+1}$","body":"\u003cp>Insertion 뒤 tree law의 density는 $W_{\\mathcal T}(A)=\\prod_a A^a\\prod_\\beta Y_\\beta^{\\gamma_\\beta}$이다. 깊이 $d_\\beta$의 internal vertex $\\beta$는 들어오는 edge에서 지수 $m_{d_\\beta}$를 받고, 나가는 $n_\\beta$개 edge에서 $-n_\\beta m_{d_\\beta+1}$을 받는다. 그 합이 $\\gamma_\\beta$다. 미분하면 vertex 항마다 $\\gamma_\\beta$가 계수로 나오고, 이것이 아래 extension rule의 fresh 계수가 된다.\u003c/p>","src":"trees.tex 92–104, 126–131"},{"id":"XC_TEL","g":"s3in","cls":"ext","tag":"eq tree:telescoping","t":"Telescoping","f":"$\\sum_{\\beta\\in\\mathrm{Int}(\\mathcal T)}(n_\\beta m_{d_\\beta+1}-m_{d_\\beta})=n$","body":"\u003cp>잎이 $n$개인 tree에서 성립하며 모든 항이 양수다. 즉 모든 $\\gamma_\\beta$가 음수이고 $\\sum_\\beta|\\gamma_\\beta|=n$이다. 근을 지나 깊이별로 더하면 $m_d$ 항이 위아래로 상쇄되고 $m_0=0$, $m_L=1$만 남는다. §3은 이 식으로 $Q_k$의 정규화도 확인한다.\u003c/p>","src":"trees.tex 204–208"},{"id":"XC_EXT","g":"s3in","cls":"ext","tag":"§3 extension 규칙","t":"Canceled-anchor extension rule","f":"old leaf $+1$, fresh at $\\beta$: $\\gamma_\\beta$, $\\ c_E=\\prod(\\text{coefficients})$","body":"\u003cp>Anchor $a_*$가 있는 old tree에 color $1,\\dots,k$를 차례로 붙인다. 각 color는 (i) anchor가 아닌 unused old leaf를 계수 $1$로 고르거나, (ii) 현재 tree의 internal vertex $\\beta$에서 fresh path를 계수 $\\gamma_\\beta$로 만든다. Fresh path는 $\\beta$에서 새 child 하나를 열고 그 아래를 모두 새 vertex로 채운다. 그래서 fresh path 하나가 새로 만드는 branching vertex는 $\\beta$ 하나뿐이다. Extension history $E$의 계수 $c_E$는 고른 계수들의 곱이다. Lemma tree:extension-expansion이 $\\partial_{t_1}\\cdots\\partial_{t_k}$ 를 $\\sum_E c_E\\,E_{\\mathcal T_E}[\\cdots]$로 바꾼다. 부모 지도의 X_EXT와 같은 내용이다.\u003c/p>","src":"trees.tex 259–296"},{"id":"XC_HYP","g":"s3ch","tag":"Lemma tree:charging 가정","t":"가정: uniform mesh와 빈 깊이의 target","f":"$m_d=d/L,\\ \\delta=L^{-1}$; target $b$개의 깊이 $\\notin$ old branching depths","body":"\u003cp>Old tree는 잎이 $q$개다. Color $k$개를 canceled-anchor extension rule로 붙인다. Anchor와 color가 이루는 reference shape를 prescribe하고, allowed extension에 추가 제한을 둘 수도 있다. 그 shape의 branching vertex 가운데 $b$개는 old tree 어디에서도 branching depth가 아닌 깊이에 있다. 이 $b$개를 target vertex라 부른다. 상대 경계에는 target에서 $m_{d_v}\\ge\\eta>0$를 더 가정한다.\u003c/p>","src":"trees.tex 393–399, 408–410"},{"id":"XC_UNIT","g":"s3ch","tag":"증명 계산","t":"Uniform mesh에서의 계수 크기","f":"$n=1:\\ \\gamma=-\\delta;\\qquad j\\ge2:\\ |m_d-jm_{d+1}|=(j-1)m_d+j\\delta$","body":"\u003cp>$m_d=d/L$이면 $m_d-jm_{d+1}=-\\big((j-1)d+j\\big)/L$이다. $j=1$은 unary vertex($n_\\beta=1$)에서의 fresh 계수 $\\gamma=m_d-m_{d+1}=-\\delta$로, $L$과 함께 작아진다. $j\\ge2$이면 절대값이 $(j-1)m_d+j\\delta\\ge m_d$이고, $m_d\\ge\\eta$에서는 $\\eta$ 이상으로 작지 않다. 작은 인자는 unary 쪽에서만 나온다는 점이 증명 전체의 요점이다.\u003c/p>","src":"trees.tex 428–430, 449–453"},{"id":"XC_STEP","g":"s3ch","tag":"증명 1","t":"제약 없는 한 걸음의 absolute sum","f":"$\\sum_{\\text{choices}}|\\text{coef}|\\le 2s\\le2(q+k)$","body":"\u003cp>현재 tree의 잎이 $s$개라 하자. Telescoping에서 fresh 선택의 계수 절대값을 모두 더하면 정확히 $s$다. Old 선택은 계수 $1$이고 많아야 $s$개다. 따라서 한 걸음의 absolute sum은 $2s$ 이하다. Color를 붙여도 잎은 많아야 $k$개 늘므로 $s\\le q+k$다.\u003c/p>","src":"trees.tex 423–427"},{"id":"XC_UNARY","g":"s3ch","tag":"증명 1","t":"정해진 깊이의 unary fresh split만 허용한 걸음","f":"$\\sum|\\text{coef}|\\le s\\,\\delta\\le(q+k)\\delta$","body":"\u003cp>한 걸음을 정해진 깊이 $d$의 unary vertex에서 갈라지는 fresh path로 제한한다. 한 깊이에 있는 vertex는 많아야 $s$개(잎 수)이고, 각 계수는 $-\\delta$다. 그래서 그 걸음의 absolute sum은 $s\\delta$ 이하다. 같은 걸음을 제한하지 않으면 $O(1)$인데, 여기서는 $\\delta$배로 줄어든다.\u003c/p>","src":"trees.tex 427–430"},{"id":"XC_CREATE","g":"s3ch","tag":"증명 2","t":"Target vertex마다 자기 생성 걸음","f":"target $v\\mapsto$ 서로 다른 step; 배정 수 $\\le k!/(k-b)!$","body":"\u003cp>Allowed history 하나와 target vertex $v$ 하나를 보자. $v$의 깊이는 old branching depth가 아니므로 $v$는 old tree에서 branching이 아니다. 그러면 $v$가 처음 branching이 되는 걸음에서 fresh path가 unary였던 $v$에서 갈라져야 한다. $v$가 그 전에 새 unary path의 일부로 생겼어도 결론은 같다. Fresh path 하나는 branching vertex를 하나만 만들므로, 서로 다른 target은 서로 다른 걸음에 배정된다. 따라서 $b\\le k$이고, 배정 방법은 많아야 $k!/(k-b)!$개다.\u003c/p>","src":"trees.tex 432–442"},{"id":"XC_J","g":"s3ch","tag":"증명 4","t":"Reference 계수 $J$의 하한","f":"$|J|\\ge\\delta^b\\,\\eta^{\\sum_v(a_v-2)}$","body":"\u003cp>$J=\\prod_v\\prod_{j=1}^{a_v-1}(m_{d_v}-jm_{d_v+1})$는 target vertex들에서의 reference 계수 곱이다(X_RT의 $\\kappa$와 같은 꼴). 각 target의 $j=1$ 인자는 절대값이 정확히 $\\delta$다. $j\\ge2$ 인자는 $m_{d_v}\\ge\\eta$이므로 절대값이 $\\eta$ 이상이고, 그런 인자는 vertex마다 $a_v-2$개다. 그래서 $J\\neq0$이고 표시한 하한이 나온다. 인자 수는 shape의 크기, 곧 $q,k$로 정해진다.\u003c/p>","src":"trees.tex 403–411, 448–453"},{"id":"XC_ABS","g":"s3ch","tag":"eq tree:charging-bound","t":"Absolute sum의 $\\delta^b$ 경계","f":"$\\sum_{E\\text{ allowed}}|c_E|\\le\\frac{k!}{(k-b)!}(q+k)^b\\big(2(q+k)\\big)^{k-b}\\delta^b$","body":"\u003cp>배정 하나를 고정하고, 지정된 걸음이 그 깊이에서 unary split을 만든다는 것만 남기고 나머지 제약을 모두 버린다. 절대값을 더하므로 family를 넓혀도 합은 커지기만 한다. 넓힌 family에서 $c_E$는 걸음별 계수의 곱이다. 한 걸음의 absolute sum 경계는 앞의 선택과 무관하므로, 차례로 합하면 경계들의 곱이 된다. 지정된 $b$개 걸음은 $(q+k)\\delta$씩, 나머지 $k-b$개는 $2(q+k)$씩이다. 배정 수를 곱하면 표시한 식이다. 같은 깊이에 target이 여러 개여도 지정 걸음은 서로 다르므로 그대로 성립한다. 상수 $C_{q,k}$는 $L$, 정해진 깊이, 깊이의 겹침과 무관하다.\u003c/p>","src":"trees.tex 400–406, 443–447"},{"id":"XC_REL","g":"s3ch","tag":"eq tree:relative-charging","t":"상대 경계: absolute sum $/|J|$","f":"$\\frac1{|J|}\\sum_{E\\text{ allowed}}|c_E|\\le C_{q,k,\\eta}$","body":"\u003cp>XC_ABS의 분자는 $C_{q,k}\\delta^b$, XC_J의 분모는 $\\delta^b\\eta^{\\sum_v(a_v-2)}$ 이상이다. $\\delta^b$가 약분되어 $C_{q,k,\\eta}=C_{q,k}\\,\\eta^{-\\sum_v(a_v-2)}$가 되고, 이는 $L$과 무관하다. 대조할 예는 원문 315–332다. Target 깊이가 old branching depth $d$와 겹치면 old leaf $(+1)$와 $d$에서의 fresh $(\\approx-1)$가 상쇄되어 signed total은 $-\\delta$이지만 absolute sum은 $2+\\delta$다. 이때 비율은 $\\sim L$로 커진다. 빈 깊이 가정이 이 상쇄를 막는다. 부모 지도에서는 P_IND가 이 결과를 decor:relative-absolute-cost로 쓴다.\u003c/p>","src":"trees.tex 408–413, 315–332, 448–454"}],"edges":[["XC_GAMMA","XC_UNIT","$n_\\beta=1$이면 $-\\delta$"],["XC_HYP","XC_UNIT","$m_d=d/L$"],["XC_TEL","XC_STEP","fresh 절대합 $=s$"],["XC_EXT","XC_STEP","old 선택 $\\le s$개, 계수 $1$"],["XC_UNIT","XC_UNARY","unary 계수 $-\\delta$"],["XC_EXT","XC_CREATE","fresh path는 branching 하나"],["XC_HYP","XC_CREATE","target 깊이가 old에서 비어 있음"],["XC_UNIT","XC_J","$j=1$: $\\delta$, $j\\ge2$: $\\ge\\eta$"],["XC_HYP","XC_J","$m_{d_v}\\ge\\eta$"],["XC_STEP","XC_ABS","나머지 $k-b$ 걸음","key"],["XC_UNARY","XC_ABS","지정된 $b$ 걸음","key"],["XC_CREATE","XC_ABS","배정 $\\le k!/(k-b)!$","key"],["XC_ABS","XC_REL","분자 $C_{q,k}\\delta^b$","key"],["XC_J","XC_REL","분모 $\\ge\\delta^b\\eta^{(\\cdot)}$","key"]],"positions":{"XC_GAMMA":[0,0],"XC_HYP":[2,1],"XC_TEL":[1,0],"XC_EXT":[1,0],"XC_UNIT":[0,2],"XC_STEP":[1,2],"XC_UNARY":[0,3],"XC_J":[0,3],"XC_CREATE":[1,3],"XC_ABS":[2,4],"XC_REL":[2,5]},"subgraphs":{}};
+const {groups:GROUPS,nodes:N,edges:E,positions:POS,subgraphs:SUBGRAPHS}=GRAPH;
+const META=GRAPH.meta||{};
+if(META.title){document.title=META.title;document.getElementById('title').textContent=META.title}
+if(META.description)document.getElementById('subtitle').textContent=META.description;
+if(META.parent){const back=document.getElementById('back');back.href=META.parent.href;back.textContent=META.parent.label;back.hidden=false;document.getElementById('focus').hidden=true}
+const byId=Object.fromEntries(N.map(n=>[n.id,n]));
+const world=document.getElementById('world'), vp=document.getElementById('viewport'), svg=document.getElementById('edges'), panel=document.getElementById('panel');
+const nodeEl={}, labelEl=[], pathEl=[];
+
+function build(){
+  for(const n of N){
+    const d=document.createElement('div');
+    d.className='node '+(n.cls||'')+(n.supplement?' supplement':'');
+    d.dataset.id=n.id;
+    d.innerHTML=`<div class="tag"><span>${n.tag}</span><span>${n.id}</span></div><div class="t">${n.t}</div><div class="f">${n.f}</div>`;
+    world.appendChild(d); nodeEl[n.id]=d;
+  }
+  E.forEach((e,i)=>{
+    const l=document.createElement('div');
+    l.className='elabel '+(e[3]||'');
+    l.innerHTML=e[2]||'';
+    if(!e[2]) l.style.display='none';
+    world.appendChild(l); labelEl[i]=l;
+  });
+}
+
+// 배치: 왼쪽에서 오른쪽으로. 위 띠 = §7.1, §7.3 / 아래 띠 = §7.2, §7.4. 0열은 밖에서 받는 것.
+const COLGAP=170, ROWGAP=26, BANDGAP=90, M=60;
+function layout(){
+  const NC=1+Math.max(...Object.values(POS).map(p=>p[1])), cell={};
+  for(const n of N){const [b,c]=POS[n.id];(cell[b+','+c]=cell[b+','+c]||[]).push(n.id)}
+  const colW=Array(NC).fill(0), bandH=[0,0], cellH={};
+  for(const k in cell){
+    const [b,c]=k.split(',').map(Number);
+    let h=0; for(const id of cell[k]){colW[c]=Math.max(colW[c],nodeEl[id].offsetWidth);h+=nodeEl[id].offsetHeight+ROWGAP}
+    h-=ROWGAP; cellH[k]=h; if(b<2) bandH[b]=Math.max(bandH[b],h);
+  }
+  const colX=[]; let x=M; for(let c=0;c<NC;c++){colX[c]=x;x+=colW[c]+COLGAP}
+  const W=x-COLGAP+M;
+  const bandY=[M+30,M+30+bandH[0]+BANDGAP];
+  const H=Math.max(bandY[0]+bandH[0],bandY[1]+bandH[1])+M;
+  const pos={};
+  for(const k in cell){
+    const [b,c]=k.split(',').map(Number);
+    let y = b===2 ? (H-cellH[k])/2 : bandY[b]+(bandH[b]-cellH[k])/2;
+    for(const id of cell[k]){
+      const el=nodeEl[id],w=el.offsetWidth,h=el.offsetHeight;
+      const px=colX[c]+(colW[c]-w)/2;
+      el.style.left=px+'px'; el.style.top=y+'px';
+      pos[id]={x:px,y,w,h}; y+=h+ROWGAP;
+    }
+  }
+  for(const k in GROUPS){
+    const ids=N.filter(n=>n.g===k).map(n=>n.id); if(!ids.length) continue;
+    const pad=18;
+    let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+    for(const id of ids){const p=pos[id];x0=Math.min(x0,p.x);y0=Math.min(y0,p.y);x1=Math.max(x1,p.x+p.w);y1=Math.max(y1,p.y+p.h)}
+    const c={x:x0-pad,y:y0-pad-8,w:x1-x0+2*pad,h:y1-y0+2*pad+8};
+    const box=document.createElement('div');
+    box.className='cluster';
+    Object.assign(box.style,{left:c.x+'px',top:c.y+'px',width:c.w+'px',height:c.h+'px',background:`var(${GROUPS[k].fill})`,borderColor:`var(${GROUPS[k].b})`});
+    if(k==='ext'){box.style.background='transparent';box.style.borderStyle='dashed'}
+    box.innerHTML=`<span class="cl">${GROUPS[k].label}</span>`;
+    world.insertBefore(box,svg);
+    clusters[k]=c;
+  }
+  // 같은 node에서 나가거나 들어오는 선의 끝점을 위아래로 나눠 겹치지 않게 한다
+  const outs={},ins={};
+  E.forEach((e,i)=>{(outs[e[0]]=outs[e[0]]||[]).push(i);(ins[e[1]]=ins[e[1]]||[]).push(i)});
+  const cy=id=>pos[id].y+pos[id].h/2;
+  for(const id in outs) outs[id].sort((a,b)=>cy(E[a][1])-cy(E[b][1]));
+  for(const id in ins) ins[id].sort((a,b)=>cy(E[a][0])-cy(E[b][0]));
+  const port=(id,list,i)=>{const p=pos[id],n=list.length,j=list.indexOf(i);return p.y+p.h*(n===1?0.5:0.2+0.6*j/(n-1))};
+  E.forEach((e,i)=>{
+    const a=pos[e[0]],b=pos[e[1]];
+    const x1=a.x+a.w, y1=port(e[0],outs[e[0]],i), x2=b.x-4, y2=port(e[1],ins[e[1]],i);
+    const dx=Math.max(50,(x2-x1)*0.5);
+    const d=`M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',d);
+    p.setAttribute('class','e '+(e[3]||''));
+    p.setAttribute('marker-end',e[3]==='key'?'url(#ark)':'url(#ar)');
+    svg.appendChild(p); pathEl[i]=p;
+    const l=labelEl[i];
+    if(e[2]){
+      // 받는 node 바로 앞의 빈 열 가운데에 둔다 (긴 선도 다른 node 위에 놓이지 않게)
+      const L=p.getTotalLength(), tx=x2-COLGAP/2;
+      let lo=0,hi=L; for(let it=0;it<24;it++){const m=(lo+hi)/2; if(p.getPointAtLength(m).x<tx) lo=m; else hi=m}
+      const pt=p.getPointAtLength(lo);
+      l.style.left=(pt.x-l.offsetWidth/2)+'px'; l.style.top=(pt.y-l.offsetHeight/2)+'px';
+      if(e[3]!=='key') l.classList.add('minor');
+    }
+  });
+  svg.setAttribute('width',W);svg.setAttribute('height',H);
+  world.style.width=W+'px';world.style.height=H+'px';
+  bounds={w:W,h:H};
+}
+const clusters={}; let bounds={w:1000,h:1000};
+
+// ---------- pan / zoom
+const view={x:0,y:0,k:1};
+const KMIN=0.12,KMAX=4;
+function apply(){
+  world.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.k})`;
+  const s=28*view.k;
+  vp.style.backgroundSize=`${s}px ${s}px`;
+  vp.style.backgroundPosition=`${view.x}px ${view.y}px`;
+  document.getElementById('zoomlvl').textContent=Math.round(view.k*100)+'%';
+}
+function zoomAt(cx,cy,f){
+  const k=Math.min(KMAX,Math.max(KMIN,view.k*f));
+  const r=k/view.k;
+  view.x=cx-(cx-view.x)*r; view.y=cy-(cy-view.y)*r; view.k=k; apply();
+}
+let anim=null;
+function animateTo(t){
+  cancelAnimationFrame(anim);
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){Object.assign(view,t);apply();return}
+  const s={...view},t0=performance.now(),dur=380;
+  const step=now=>{
+    const u=Math.min(1,(now-t0)/dur),q=1-Math.pow(1-u,3);
+    view.x=s.x+(t.x-s.x)*q;view.y=s.y+(t.y-s.y)*q;view.k=s.k+(t.k-s.k)*q;apply();
+    if(u<1) anim=requestAnimationFrame(step);
+  };
+  anim=requestAnimationFrame(step);
+}
+function fitRect(x,y,w,h,maxK=1.6){
+  const W=vp.clientWidth,H=vp.clientHeight,m=24;
+  const k=Math.min(maxK,Math.max(KMIN,Math.min((W-2*m)/w,(H-2*m)/h)));
+  return {k,x:(W-w*k)/2-x*k,y:(H-h*k)/2-y*k};
+}
+const fitAll=()=>animateTo(fitRect(0,0,bounds.w,bounds.h));
+const focusProof=()=>{const c=clusters[META.focusGroup||'s74']; if(c) animateTo(fitRect(c.x,c.y-20,c.w,c.h+20,1.2))};
+
+vp.addEventListener('wheel',ev=>{
+  ev.preventDefault();
+  const r=vp.getBoundingClientRect();
+  const dy=ev.deltaMode===1?ev.deltaY*16:ev.deltaY;
+  if(ev.shiftKey){view.x-=ev.deltaX||dy;view.y-=ev.deltaX?dy:0;apply()}
+  else zoomAt(ev.clientX-r.left,ev.clientY-r.top,Math.exp(-Math.max(-60,Math.min(60,dy))*(ev.ctrlKey?0.01:0.0025)));
+},{passive:false});
+
+const ptrs=new Map(); let moved=0, pinch=null, downNode=null;
+vp.addEventListener('pointerdown',ev=>{
+  cancelAnimationFrame(anim);
+  vp.setPointerCapture(ev.pointerId);
+  ptrs.set(ev.pointerId,{x:ev.clientX,y:ev.clientY});
+  moved=0;
+  const n=ev.target.closest('.node'); downNode=n?n.dataset.id:null;
+  if(ptrs.size===2){
+    const [a,b]=[...ptrs.values()];
+    pinch={d:Math.hypot(a.x-b.x,a.y-b.y),k:view.k};
+  }
+  vp.classList.add('dragging');
+});
+vp.addEventListener('pointermove',ev=>{
+  if(!ptrs.has(ev.pointerId)) return;
+  const prev=ptrs.get(ev.pointerId), cur={x:ev.clientX,y:ev.clientY};
+  ptrs.set(ev.pointerId,cur);
+  if(ptrs.size===1){
+    view.x+=cur.x-prev.x; view.y+=cur.y-prev.y; moved+=Math.abs(cur.x-prev.x)+Math.abs(cur.y-prev.y); apply();
+  }else if(ptrs.size===2&&pinch){
+    const [a,b]=[...ptrs.values()];
+    const d=Math.hypot(a.x-b.x,a.y-b.y);
+    const r=vp.getBoundingClientRect();
+    const cx=(a.x+b.x)/2-r.left, cy=(a.y+b.y)/2-r.top;
+    zoomAt(cx,cy,(pinch.k*d/pinch.d)/view.k);
+    // 두 손가락 중심 이동도 따라간다
+    const pc={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+    if(pinch.c){view.x+=pc.x-pinch.c.x;view.y+=pc.y-pinch.c.y;apply()}
+    pinch.c=pc; moved+=99;
+  }
+});
+let lastTap={id:null,t:0};
+function up(ev){
+  if(!ptrs.has(ev.pointerId)) return;
+  ptrs.delete(ev.pointerId);
+  if(ptrs.size<2) pinch=null;
+  if(ptrs.size===0){
+    vp.classList.remove('dragging');
+    if(moved<6){
+      if(downNode){
+        const now=performance.now();
+        if(lastTap.id===downNode&&now-lastTap.t<350) zoomToNode(downNode);
+        lastTap={id:downNode,t:now};
+        select(downNode);
+      }else if(ev.type==='pointerup') select(null);
+    }
+  }
+}
+vp.addEventListener('pointerup',up); vp.addEventListener('pointercancel',up);
+
+function zoomToNode(id){
+  const el=nodeEl[id];
+  const x=parseFloat(el.style.left),y=parseFloat(el.style.top);
+  animateTo(fitRect(x-60,y-60,el.offsetWidth+120,el.offsetHeight+120,2.2));
+}
+const center=()=>({x:vp.clientWidth/2,y:vp.clientHeight/2});
+document.getElementById('zin').onclick=()=>{const c=center();zoomAt(c.x,c.y,1.3)};
+document.getElementById('zout').onclick=()=>{const c=center();zoomAt(c.x,c.y,1/1.3)};
+document.getElementById('fit').onclick=fitAll;
+document.getElementById('focus').onclick=focusProof;
+document.getElementById('clear').onclick=()=>select(null);
+vp.addEventListener('keydown',ev=>{
+  const c=center();
+  if(ev.key==='+'||ev.key==='=') zoomAt(c.x,c.y,1.25);
+  else if(ev.key==='-') zoomAt(c.x,c.y,0.8);
+  else if(ev.key==='0') fitAll();
+  else if(ev.key.startsWith('Arrow')){const s=60;if(ev.key==='ArrowLeft')view.x+=s;if(ev.key==='ArrowRight')view.x-=s;if(ev.key==='ArrowUp')view.y+=s;if(ev.key==='ArrowDown')view.y-=s;apply()}
+  else if(ev.key==='Escape') select(null);
+  else return;
+  ev.preventDefault();
+});
+
+// ---------- 선택과 조상 강조
+function ancestors(id){
+  const seen=new Set([id]),st=[id];
+  while(st.length){const v=st.pop();for(const e of E) if(e[1]===v&&!seen.has(e[0])){seen.add(e[0]);st.push(e[0])}}
+  return seen;
+}
+let selected=null;
+function select(id){
+  if(id&&!byId[id])return;
+  selected=id;
+  document.querySelectorAll('.node.sel').forEach(x=>x.classList.remove('sel'));
+  document.querySelectorAll('.lit').forEach(x=>x.classList.remove('lit'));
+  const hash=id?'node='+encodeURIComponent(id):'';
+  if(location.hash.slice(1)!==hash)location.hash=hash;
+  if(!id){world.classList.remove('dim');renderPanel(null);return}
+  const A=ancestors(id);
+  world.classList.add('dim');
+  A.forEach(a=>nodeEl[a].classList.add('lit'));
+  E.forEach((e,i)=>{if(A.has(e[0])&&A.has(e[1])){pathEl[i].classList.add('lit');labelEl[i].classList.add('lit')}});
+  nodeEl[id].classList.add('sel');
+  renderPanel(id,A.size-1);
+}
+function edgeItem(e,other,dir){
+  const n=byId[other];
+  return `<li><button type="button" data-go="${other}">${dir} ${n.t}<small>${e[2]?e[2]:'&nbsp;'}</small></button></li>`;
+}
+function renderPanel(id,nAnc){
+  if(!id){
+    if(META.parent){panel.innerHTML=`<div class="ptag">세부 유도 지도</div><h2>${META.title}</h2><p>${META.description}</p><a class="scale-link" href="${META.parent.href}">${META.parent.label}</a><p>node를 누르면 진술, 계산, 원문 행이 나온다.</p>`}
+    else panel.innerHTML=R`<div class="ptag">읽는 법</div><h2>정리까지의 유도 지도</h2>
+    <p>오른쪽 끝의 굵은 테두리 node가 정리다. 청록 선은 정리 증명(§7.4)의 주된 사슬, 회색 선은 정의나 보조 결과를 넘기는 선이다. 선 위의 글은 그 선이 싣는 내용이다.</p>
+    <div class="legend"><span><i class="k"></i>정리 증명의 사슬</span><span><i></i>입력</span><span><i class="n"></i>주석</span><span><b></b>밖에서 받는 결과</span></div>
+    <h3>증명의 두 부분</h3>
+    <p>(1) Proposition: 표본 prefix 아래의 무작위성을 조건부 공분산 $v_N$ 으로 누른다. 잎 수에 대한 귀납이고, 갈라짐을 한 칸 늦추어 부호 있는 계수를 다룬다.</p>
+    <p>(2) 정리: marker anchor로 남은 조건부 평균 $M$ 을 고정 깊이에서 집중시키고, 둘을 깊이 평균으로 묶는다.</p>
+    <h3>극한 순서</h3><p>고정 $L$ 에서 $N\to\infty$ 를 먼저 보내고, 그다음 깊이 평균과 $L\to\infty$.</p>
+    <p class="src">node를 누르면 그 결과에 쓰인 것만 밝아지고 여기에 진술과 원문 줄이 나온다. 두 번 누르면 확대한다.</p>`;
+  }else{
+    const n=byId[id];
+    const ins=E.filter(e=>e[1]===id), outs=E.filter(e=>e[0]===id);
+    panel.innerHTML=`<div class="ptag">${n.tag} · ${n.g?GROUPS[n.g].label:'§8'}</div>
+      <div><span class="node-id" tabindex="0">${n.id}</span> <button type="button" id="copy-ref">참조 복사</button> <button type="button" id="copy-link">링크 복사</button>${n.supplement?'<span class="supplement-badge"> · 원문 밖 보충</span>':''}</div><h2>${n.t}</h2>
+      <div class="stmt">${n.f}</div>${n.body||''}
+      <div class="src">원문: ${n.sourceUrl?`<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.src}</a>`:n.src}</div>
+      ${n.links?.length?`<h3>더 세밀한 지도</h3>${n.links.map(l=>`<a class="scale-link" href="${l.href}">${l.label}</a>`).join('')}`:''}
+      ${META.parent?`<h3>상위 지도</h3><a class="scale-link" href="${META.parent.href}">${META.parent.label}</a>`:''}
+      ${ins.length?`<h3>받는 것 ${ins.length}</h3><ul>${ins.map(e=>edgeItem(e,e[0],'←')).join('')}</ul>`:''}
+      ${outs.length?`<h3>보내는 것 ${outs.length}</h3><ul>${outs.map(e=>edgeItem(e,e[1],'→')).join('')}</ul>`:''}
+      <p class="src" style="margin-top:14px">이 결과에 쓰인 앞선 node: ${nAnc}개</p>`;
+  }
+  const copy=panel.querySelector('#copy-ref'), link=panel.querySelector('#copy-link');
+  if(copy)copy.onclick=()=>copyText(id,copy);
+  if(link)link.onclick=()=>copyText(location.href,link);
+  panel.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{const t=b.dataset.go;select(t);zoomToNode(t)});
+  if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([panel]).catch(()=>{});
+}
+async function copyText(value,button){
+  try{
+    if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(value);
+    else throw Error('Clipboard API unavailable');
+  }catch{
+    // file:// on mobile may deny Clipboard API even after a click.
+    const input=document.createElement('textarea');input.value=value;input.style.position='fixed';input.style.left='-9999px';
+    document.body.appendChild(input);input.focus();input.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch{}input.remove();
+    if(!ok){const id=panel.querySelector('.node-id');id?.focus();const selection=window.getSelection();
+      if(id&&selection){const range=document.createRange();range.selectNodeContents(id);selection.removeAllRanges();selection.addRange(range)}
+      button.textContent='ID를 길게 눌러 복사';return}
+  }
+  button.textContent='복사됨';
+}
+function selectFromHash(){
+  const id=new URLSearchParams(location.hash.slice(1)).get('node');
+  if(id&&byId[id]&&id!==selected){select(id);zoomToNode(id)}
+  else if(!id&&selected)select(null);
+}
+window.addEventListener('hashchange',selectFromHash);
+// ---------- 시작
+let started=false;
+function start(){
+  if(started) return; started=true;
+  try{layout()}catch(err){document.getElementById('loading').textContent='배치를 만들지 못했다: '+err.message;return}
+  document.getElementById('loading').hidden=true;
+  renderPanel(null);
+  requestAnimationFrame(()=>{Object.assign(view,fitRect(0,0,bounds.w,bounds.h)); apply();selectFromHash()});
+}
+build();
+const ready=(window.MathJax&&MathJax.startup&&MathJax.startup.promise)?MathJax.startup.promise.then(()=>MathJax.typesetPromise([world])):Promise.resolve();
+const fontsReady=document.fonts?document.fonts.ready:Promise.resolve();
+Promise.race([Promise.all([ready,fontsReady]),new Promise(r=>setTimeout(r,9000))]).then(start,start);
+</script>

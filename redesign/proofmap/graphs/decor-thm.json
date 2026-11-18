@@ -63,8 +63,14 @@
       "cls": "ext",
       "tag": "Lemma tree:charging",
       "t": "Fresh split의 상대 비용",
-      "f": "계수 절대합 $\\le C\\cdot$ 순 계수",
-      "body": "<p>Proposition의 귀납 단계에서 상대 절대 비용 경계 (decor:relative-absolute-cost)로 쓰인다. 정리 증명 본문은 직접 쓰지 않는다.</p>",
+      "f": "$\\sum_E|c_E|\\le C_{q,k,\\eta}\\,|J|$",
+      "body": "<p>Extension coefficient $c_E$의 absolute sum $\\sum_E|c_E|$를 reference 계수 $J$(signed total 쪽의 양)와 비교한다. Target branching depth가 old branching depth를 피하면 target마다 unary fresh split이 하나씩 필요하다. 그 계수가 $-\\delta$이므로 absolute sum도 $\\delta^b$로 줄고, $|J|\\ge\\delta^b\\eta^{(\\cdot)}$와 약분되어 비율이 $L$과 무관하게 유계다. Proposition의 귀납 단계에서 decor:relative-absolute-cost로 쓰이며, 정리 증명 본문은 직접 쓰지 않는다. 아래 링크에서 §3 입력부터 유도를 볼 수 있다.</p>",
+      "links": [
+        {
+          "label": "X_CH의 세부 유도 (§3) →",
+          "href": "x-ch-derivation.html"
+        }
+      ],
       "src": "trees.tex 393–"
     },
     {

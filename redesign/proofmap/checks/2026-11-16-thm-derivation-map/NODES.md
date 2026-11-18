@@ -9,7 +9,7 @@
 | X_TI | 밖에서 받는 것 (§3·§6) | [2,0] | ext | Thm pert:tree-identity | Prescribed tree 위의 항등식 | $\sum_{E}c_E\,\mathbb E[fR_E]$ $\quad-\,\mathbb E f\sum_{E\,\text{(anchor만)}}c_E\,\mathbb E[R_E]\to0$ | perturbations.tex 450–465 |
 | X_EXT | 밖에서 받는 것 (§3·§6) | [2,0] | ext | §3 extension 규칙 | Extension 계수 $c_E$ | old leaf 재사용 $+1$, fresh 갈라짐 $-c_\ell$ | trees.tex (extension rule), perturbations.tex |
 | X_RT | 밖에서 받는 것 (§3·§6) | [2,0] | ext | Lemma tree:reference-total | Reference 계수의 총합 $\kappa(S)$ | $\kappa(S)=\prod_{v\in\mathrm{Br}(S)}\prod_{j=1}^{a_v-1}(m_{d_v}-j\,m_{d_v+1})$ | trees.tex 337–355 |
-| X_CH | 밖에서 받는 것 (§3·§6) | [2,0] | ext | Lemma tree:charging | Fresh split의 상대 비용 | 계수 절대합 $\le C\cdot$ 순 계수 | trees.tex 393– |
+| X_CH | 밖에서 받는 것 (§3·§6) | [2,0] | ext | Lemma tree:charging | Fresh split의 상대 비용 | $\sum_E\|c_E\|\le C_{q,k,\eta}\,\|J\|$ | trees.tex 393– |
 | X_SAMP | 밖에서 받는 것 (§3·§6) | [2,0] | ext | §3 tree 표본 규칙 | 잎 제거와 조건부 독립 | 갈라진 뒤 자식들은 prefix가 주어지면 조건부 독립 | trees.tex 38–40 |
 | X_MO | 밖에서 받는 것 (§3·§6) | [2,0] | ext | eq tree:multioverlap | Multioverlap | $R_S=\frac1N\sum_{i=1}^N\prod_{a\in S}\sigma_i^a$ | trees.tex 44–47 |
 | A_DEF | §7.1 깊이 평균 | [0,1] | 보통 | eq decor:average-definition | 깊이 평균 $\mathcal A_{L,\eta}$ | $\mathcal A_{L,\eta}z=L^{-a}\!\!\sum_{\mathbf q\ \eta\text{-regular}}\! z(\mathbf q)$ | decorrelation.tex 15–37 |
