@@ -39,7 +39,7 @@
 | T_VAR | §7.4 정리의 증명 | [1,8] | key | eq decor:variance-estimate | 분산 추정 | $\limsup_{N}\mathcal A_{L,\eta}\mathrm{Var}(R_S)$ $\quad\le C_k\big(L^{-1}+V_{k-1,L}(\eta/2)^{1/2}\big)$ | decorrelation.tex 597–603 |
 | THM | §7.4 정리의 증명 | [1,9] | goal | Thm decor:overlap-concentration | 모든 multioverlap의 집중 | $\lim_{L\to\infty}\limsup_{N\to\infty}\mathcal A_{L,\eta}\mathrm{Var}(R_S)=0$ 모든 $\eta>0$, 모든 고정 $S$ | decorrelation.tex 63–76, 609–611 |
 | REM | §7.4 정리의 증명 | [1,8] | note | Remark decor:order-of-limits | 극한 순서 | $N\to\infty$ 먼저, 그 뒤 평균과 $L\to\infty$ | decorrelation.tex 613–623 |
-| OUT | (묶음 없음) | [1,10] | ext | §8 comp:section | 받는 곳: 독립 message 비교 | 이 깊이 평균들이 §8의 비교에 필요하다 | decorrelation.tex 11–13 |
+| OUT | (묶음 없음) | [1,10] | ext | §8 comp:section | 받는 곳: 독립 message 비교 | 이 깊이 평균들이 §8의 비교에 필요하다 | decorrelation.tex 11–13; comparison.tex 123–156 |
 
 ## edge
 

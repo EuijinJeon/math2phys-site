@@ -1,5 +1,6 @@
 # 증명 지도 변경 기록
 
+- 2026-11-20 · “§8 지도 새 세션에서 그려줘” · OUT(body·links·src), 새 지도 comp-thm(§8 comparison.tex): X_SEL, X_INC, X_Y, X_LOG, X_REG, X_B, X_TB, X_DECOR, SET, ENC_CON, ENC, PAT_PI, PAT, SH_B, SH, P_TR, P_ID, P_CUT, P_EXP, P_TAIL, P_ORD, PROP, COR, OUT · 원문 밖 보충 없음 · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
 - 2026-11-20 · “X_TI 유도하는 그래프… 새 세션에서 x-ti 지도 만들어줘” · X_TI(body·links), 새 지도 x-ti: XT_FAM, XT_ERR, XT_POIS, XT_INS, XT_EXP, XT_SEL, XT_DEF, XT_SCORE, XT_HDEF, XT_PALM, XT_ANA, XT_VAN, XT_K0, XT_POL, XT_MSEL, XT_SHAPE, XT_ASM, XT_EQ, XT_U · 원문 밖 보충 있음(XT_POIS: add-one 식의 꼴; XT_K0: $k=0$ 경우의 풀이) · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
 - 2026-11-20 · “T_SIDE의 상세 그래프가 필요할거같은데” · T_SIDES(body·links), 새 지도 t-sides: TS_TI, TS_SET, TS_C, TS_SAMP, TS_APPLY, TS_LSHAPE, TS_RSHAPE, TS_CI, TS_DEL, TS_SUB, TS_VAR, TS_U_VM · 원문 밖 보충 있음(TS_LSHAPE: 허용 history가 모두 같은 결합 tree를 준다는 것; TS_VAR: tower property) · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
 - 2026-11-20 · “T_VAR derivation 상세그래프 써줘. 입력이 많아서 절차를 그래프로 보여주면 도움이 될듯” · T_VAR(body·links), 새 지도 t-var: TV_SET, TV_L2, TV_ADJ, TV_FIB, TV_VM, TV_ERR, TV_ADEF, TV_DEC, TV_BND, TV_AVG, TV_T1, TV_SUM · 원문 밖 보충 없음 · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
