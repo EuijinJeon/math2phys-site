@@ -346,7 +346,13 @@
       "tag": "eq decor:variance-estimate",
       "t": "분산 추정",
       "f": "$\\limsup_{N}\\mathcal A_{L,\\eta}\\mathrm{Var}(R_S)$<br>$\\quad\\le C_k\\big(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2}\\big)$",
-      "body": "<p>분산 분해 $\\mathrm{Var}(R_S)=\\mathrm{Var}(M)+\\mathbb E(R_S-M)^2$. 첫 항은 고정 $L$ 에서 유한개 배정의 합이라 $\\limsup_N$ 에서 사라진다. 둘째 항은 $L^2$ 최적성, 이웃 prefix 오차, $p_N^2$ 의 평균으로 누른다. 충분히 큰 $L$ 에서.</p>",
+      "body": "<p>분산 분해 $\\mathrm{Var}(R_S)=\\mathrm{Var}(M)+\\mathbb E(R_S-M)^2$. 첫 항은 고정 $L$ 에서 유한개 배정의 합이라 $\\limsup_N$ 에서 사라진다. 둘째 항은 $L^2$ 최적성, 이웃 prefix 오차, $p_N^2$ 의 평균으로 누른다. 충분히 큰 $L$ 에서. 아래 링크에서 받는 다섯 입력이 어느 단계에 들어가는지 순서대로 볼 수 있다.</p>",
+      "links": [
+        {
+          "label": "T_VAR의 조립 순서 →",
+          "href": "t-var-derivation.html"
+        }
+      ],
       "src": "decorrelation.tex 597–603"
     },
     {

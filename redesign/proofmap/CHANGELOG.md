@@ -1,5 +1,6 @@
 # 증명 지도 변경 기록
 
+- 2026-11-20 · “T_VAR derivation 상세그래프 써줘. 입력이 많아서 절차를 그래프로 보여주면 도움이 될듯” · T_VAR(body·links), 새 지도 t-var: TV_SET, TV_L2, TV_ADJ, TV_FIB, TV_VM, TV_ERR, TV_ADEF, TV_DEC, TV_BND, TV_AVG, TV_T1, TV_SUM · 원문 밖 보충 없음 · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
 - 2026-11-19 · “X_SAMP 이것도 상세 유도 그려줘” · X_SAMP(body·links), 새 지도 x-samp: XS_KER, XS_TREE, XS_JOINT, XS_PROJ, XS_CI, XS_U_DC, XS_U_PB, XS_U_SIDES · 원문 밖 보충 있음(XS_JOINT·XS_PROJ·XS_CI의 유도; 원문 trees.tex 32–39는 진술만 한다) · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json 때문에 실패)
 - 2026-11-19 · “X_CH는 논문 §3에서 나오는거야? 그러면 그쪽 노드들 만들고 이어서 X_CH 유도과정 그래프로 보여줘.” · X_CH(f·body·links), 새 지도 x-ch: XC_GAMMA, XC_TEL, XC_EXT, XC_HYP, XC_UNIT, XC_STEP, XC_UNARY, XC_CREATE, XC_J, XC_ABS, XC_REL · 원문 밖 보충 없음 · 각 지도 검사 오류 0 (check_decor.cjs는 기존 move4.json의 meta.parent 부재로 실패, 이번 변경과 무관)
 - 2026-11-16 · “근데 B 조건이 statement에 있었던가?” · B_CON · 원문 밖 보충 없음(원문의 조건을 대표식에 복원) · 검사 오류 0

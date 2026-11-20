@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "title": "T_VAR: 분산 추정의 조립",
+    "description": "분산 분해로 Var(R_S)를 세 항으로 나누고, 깊이 평균과 N 극한을 취한 뒤 각 항에 받은 경계를 넣는다.",
+    "parent": {
+      "label": "← T_VAR로 돌아가기",
+      "href": "decor-thm-derivation.html?v=t-var-20261120#node=T_VAR"
+    },
+    "focusGroup": "tvar"
+  },
+  "groups": {
+    "tvin": {
+      "label": "부모 지도에서 받는 것",
+      "fill": "--g-ext",
+      "b": "--g-ext-b"
+    },
+    "tvar": {
+      "label": "T_VAR · 조립 순서",
+      "fill": "--g-74",
+      "b": "--g-74-b"
+    }
+  },
+  "nodes": [
+    {
+      "id": "TV_SET",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "T_SET (증명 2)",
+      "t": "$M$의 정의",
+      "f": "$M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$",
+      "body": "<p>$S$는 깊이 $e$에서 처음 자식 $T_1,\\dots,T_s$로 갈라진다. $M$은 갈라짐 한 칸 앞 prefix $\\mathscr F_{e-1}$에 대한 $R_S$의 조건부 기대값이다. 부모 지도의 T_SET이 marker anchor 구성과 함께 정의한다.</p>",
+      "src": "decorrelation.tex 537–552"
+    },
+    {
+      "id": "TV_L2",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "T_L2 (증명 4)",
+      "t": "$M$ 아래 잔여의 경계",
+      "f": "$\\mathbb E(R_S-M)^2\\le2p_N(S,e)^2+2\\,\\mathbb E(G-G_-)^2$",
+      "body": "<p>$M$은 $\\mathscr F_{e-1}$-가측 함수 가운데 $R_S$에 대한 최적 $L^2$ 사영이고, $G_-$도 그런 함수다. 그래서 $\\mathbb E(R_S-M)^2\\le\\mathbb E(R_S-G_-)^2$이다. 여기에 $(x+y)^2\\le2x^2+2y^2$을 쓰고 T_G의 $\\mathbb E(R_S-G)^2\\le p_N^2$를 넣는다. 깊이 배정 하나, 고정 $N$에서의 부등식이다.</p>",
+      "src": "decorrelation.tex 590–595"
+    },
+    {
+      "id": "TV_ADJ",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "T_ADJ · eq decor:adjacent-prefix-error",
+      "t": "이웃 prefix 오차",
+      "f": "$\\mathcal A_{L,\\eta}\\,\\mathbb E(G-G_-)^2\\le C_k/L$",
+      "body": "<p>자식의 깊이를 고정하고 곱 차이 부등식과 martingale energy를 쓴다. $e$ 자체가 평균되는 좌표라 한 칸 증분을 $e$에 대해 더한 뒤 $L$로 나눈다. 경계가 $N$에 의존하지 않으므로 $\\limsup_N$을 취해도 그대로다.</p>",
+      "src": "decorrelation.tex 582–589"
+    },
+    {
+      "id": "TV_FIB",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "T_FIB (증명 5)",
+      "t": "$p_N^2$ 평균의 경계",
+      "f": "$\\limsup_N\\mathcal A_{L,\\eta}\\,p_N(S,e)^2\\le C\\,V_{k-1,L}(\\eta/2)^{1/2}$",
+      "body": "<p>먼저 $p_N^2=(\\sum_jv_N(T_j,e)^{1/4})^2\\le s\\sum_jv_N(T_j,e)^{1/2}$ (Cauchy–Schwarz). Fiber 경계를 $\\gamma=1/2$, $D=b(S)$, $D_j=b(T_j)+1$로 쓰면 각 자식 항의 평균이 $\\eta/2$-regular 평균의 $1/2$ 거듭제곱으로 눌린다. $|T_j|\\le k-1$이므로 $\\limsup_N$ 뒤에 $V_{k-1,L}(\\eta/2)^{1/2}$ 이하가 된다. $\\eta/2$-regular로의 포함은 충분히 큰 $L$에서 성립한다.</p>",
+      "src": "decorrelation.tex 605–609"
+    },
+    {
+      "id": "TV_VM",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "T_VM · eq decor:prefix-projection-concentration",
+      "t": "Prefix 사영의 집중",
+      "f": "$\\mathrm{Var}(M)\\to0\\quad(N\\to\\infty;\\ L,S,e\\ \\text{고정})$",
+      "body": "<p>Marker anchor 항등식 $C(S,e)\\,\\mathrm{Var}(M)=o_N(1)$을 고정 $L$에서 0이 아닌 $C(S,e)$로 나눈다. 깊이 배정 $\\mathbf q$ 하나마다의 결론이며, $L$에 대해 균일한 속도는 없다.</p>",
+      "src": "decorrelation.tex 556–569"
+    },
+    {
+      "id": "TV_ERR",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "A_ERR · eq decor:identity-error",
+      "t": "항등식 오차의 유한 최대",
+      "f": "$\\varepsilon_{N,L,k}\\to0\\quad(N\\to\\infty;\\ L,k\\ \\text{고정})$",
+      "body": "<p>고정 $L,k$에서 증명에 쓰는 항등식 사례는 유한개다. 그 오차의 최대도 $N\\to\\infty$에서 0으로 간다. 그래서 TV_VM의 $o_N(1)$을 깊이 배정마다 따로 받아도 고정 $L$에서는 한꺼번에 다룰 수 있다.</p>",
+      "src": "decorrelation.tex 48–58"
+    },
+    {
+      "id": "TV_ADEF",
+      "g": "tvin",
+      "cls": "ext",
+      "tag": "A_DEF · eq decor:average-definition",
+      "t": "깊이 평균 $\\mathcal A_{L,\\eta}$",
+      "f": "$\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$",
+      "body": "<p>정규화하지 않은 유한 합이다. 고정 $L$에서 항의 수가 유한하고, 계수가 양수이며, 선형이다. 여기서 평균하는 좌표는 $S$의 갈라짐 깊이 $b(S)$개이고, $e$도 그중 하나다.</p>",
+      "src": "decorrelation.tex 15–37"
+    },
+    {
+      "id": "TV_DEC",
+      "g": "tvar",
+      "tag": "증명 6 · 분산 분해",
+      "t": "1. 분산을 prefix 사영과 잔여로 나눔",
+      "f": "$\\mathrm{Var}(R_S)=\\mathrm{Var}(M)+\\mathbb E(R_S-M)^2$",
+      "body": "<p>$\\mathbb EM=\\mathbb ER_S$ (tower property)이고, $R_S-M$은 모든 $\\mathscr F_{e-1}$-가측 함수와 직교한다. 그래서 $\\mathbb E(R_S-\\mathbb ER_S)^2=\\mathbb E(M-\\mathbb ER_S)^2+\\mathbb E(R_S-M)^2$이다. 첫 항은 prefix가 흔들리는 정도, 둘째 항은 prefix 아래의 흔들림이다. 원문은 \"Variance decomposition\" 한 마디로 쓴다.</p>",
+      "src": "decorrelation.tex 596"
+    },
+    {
+      "id": "TV_BND",
+      "g": "tvar",
+      "tag": "증명 6",
+      "t": "2. 잔여에 사영 경계를 넣음",
+      "f": "$\\mathrm{Var}(R_S)\\le\\mathrm{Var}(M)+2p_N(S,e)^2+2\\,\\mathbb E(G-G_-)^2$",
+      "body": "<p>TV_DEC의 둘째 항에 TV_L2를 넣는다. 깊이 배정 $\\mathbf q$ 하나, 고정 $N$, 고정 $L$에서 성립하는 점별 부등식이다. 이제 세 항이 각각 다른 이유로 작다: 첫 항은 marker 항등식, 둘째 항은 아래 차수의 공분산, 셋째 항은 깊이 연속성.</p>",
+      "src": "decorrelation.tex 590–597"
+    },
+    {
+      "id": "TV_AVG",
+      "g": "tvar",
+      "tag": "증명 6",
+      "t": "3. 깊이 평균과 $\\limsup_N$을 항별로",
+      "f": "$\\limsup_N\\mathcal A\\,\\mathrm{Var}(R_S)\\le\\limsup_N\\mathcal A\\,\\mathrm{Var}(M)+2\\limsup_N\\mathcal A\\,p_N^2+2\\sup_N\\mathcal A\\,\\mathbb E(G-G_-)^2$",
+      "body": "<p>$\\mathcal A=\\mathcal A_{L,\\eta}$는 양의 선형 연산이라 점별 부등식을 보존하고 항별로 나뉜다. $\\limsup$은 합에 대해 준가법적이다. 극한 순서는 고정 $L$에서 $N\\to\\infty$가 먼저이고, $L$은 아직 움직이지 않는다.</p>",
+      "src": "decorrelation.tex 596–603"
+    },
+    {
+      "id": "TV_T1",
+      "g": "tvar",
+      "tag": "증명 6",
+      "t": "첫 항: 고정 $L$에서 0",
+      "f": "$\\limsup_N\\mathcal A_{L,\\eta}\\mathrm{Var}(M)=0$",
+      "body": "<p>깊이 배정 $\\mathbf q$마다 TV_VM이 $\\mathrm{Var}(M)\\to0$을 준다. 고정 $L$에서 $\\mathcal A_{L,\\eta}$는 유한개 항의 합이므로 합도 0으로 간다. 그 유한 모음 안의 항등식 오차를 한꺼번에 다루는 근거가 TV_ERR이다. 이 단계는 $L$에 대한 균일성을 쓰지 않으므로, $C(S,e)=-\\delta\\kappa(S)$가 $L\\to\\infty$에서 작아져도 상관없다.</p>",
+      "src": "decorrelation.tex 562–569, 596–597"
+    },
+    {
+      "id": "TV_SUM",
+      "g": "tvar",
+      "tag": "eq decor:variance-estimate",
+      "t": "4. 세 경계를 모음",
+      "f": "$\\limsup_N\\mathcal A_{L,\\eta}\\mathrm{Var}(R_S)\\le C_k\\big(L^{-1}+V_{k-1,L}(\\eta/2)^{1/2}\\big)$",
+      "body": "<p>TV_AVG의 세 항에 차례로 0 (TV_T1), $2C\\,V_{k-1,L}(\\eta/2)^{1/2}$ (TV_FIB), $2C_k/L$ (TV_ADJ)을 넣고 상수를 $C_k$로 합친다. TV_FIB의 $\\eta/2$-regular 포함 때문에 \"충분히 큰 $L$\"에서 성립한다. 부모 지도에서 THM은 여기서 $L\\to\\infty$를 보내 $L^{-1}\\to0$을 쓰고, Proposition으로 $V_{k-1,L}(\\eta/2)\\to0$을 쓴다.</p>",
+      "src": "decorrelation.tex 597–611"
+    }
+  ],
+  "edges": [
+    ["TV_SET", "TV_DEC", "$M=\\mathbb E[R_S\\mid\\mathscr F_{e-1}]$"],
+    ["TV_DEC", "TV_BND", "둘째 항 $\\mathbb E(R_S-M)^2$", "key"],
+    ["TV_L2", "TV_BND", "$\\le2p_N^2+2\\mathbb E(G-G_-)^2$", "key"],
+    ["TV_BND", "TV_AVG", "점별 부등식", "key"],
+    ["TV_ADEF", "TV_AVG", "양의 선형"],
+    ["TV_VM", "TV_T1", "배정마다 $\\to0$", "key"],
+    ["TV_ERR", "TV_T1", "유한 모음"],
+    ["TV_ADEF", "TV_T1", "고정 $L$: 유한 합"],
+    ["TV_AVG", "TV_SUM", "세 항", "key"],
+    ["TV_T1", "TV_SUM", "첫 항 $=0$", "key"],
+    ["TV_FIB", "TV_SUM", "둘째 항 $\\le CV^{1/2}$", "key"],
+    ["TV_ADJ", "TV_SUM", "셋째 항 $\\le C_k/L$", "key"]
+  ],
+  "positions": {
+    "TV_SET": [0, 0],
+    "TV_L2": [0, 0],
+    "TV_FIB": [0, 0],
+    "TV_ADJ": [0, 0],
+    "TV_ADEF": [1, 0],
+    "TV_VM": [1, 0],
+    "TV_ERR": [1, 0],
+    "TV_DEC": [0, 1],
+    "TV_BND": [0, 2],
+    "TV_AVG": [0, 3],
+    "TV_T1": [1, 3],
+    "TV_SUM": [2, 4]
+  },
+  "subgraphs": {}
+}
