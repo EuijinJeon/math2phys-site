@@ -286,8 +286,14 @@
       "tag": "eq decor:marker-variance-identity",
       "t": "항등식의 두 쪽",
       "f": "$C(S,e)\\big(\\mathbb EM^2-(\\mathbb ER_S)^2\\big)$<br>$\\quad=C(S,e)\\,\\mathrm{Var}(M)=o_N(1)$",
-      "body": "<p>목표 사본과 old 사본은 $\\mathscr F_{e-1}$ 아래에서 조건부 iid이므로 $f=R_S$ 와의 곱의 조건부 기대값은 $M^2$. anchor만 있는 쪽에서는 marker의 $e-1$ 아래 continuation을 지우면 확률 kernel이 1로 적분되어 보통의 $S$ 법칙, 평균 $\\mathbb ER_S$ 가 남는다.</p>",
-      "src": "decorrelation.tex 550–561"
+      "body": "<p>목표 사본과 old 사본은 $\\mathscr F_{e-1}$ 아래에서 조건부 iid이므로 $f=R_S$ 와의 곱의 조건부 기대값은 $M^2$. anchor만 있는 쪽에서는 marker의 $e-1$ 아래 continuation을 지우면 확률 kernel이 1로 적분되어 보통의 $S$ 법칙, 평균 $\\mathbb ER_S$ 가 남는다.</p><p>두 쪽을 각각 계산하는 순서는 아래 링크의 세부 지도에 있다.</p>",
+      "src": "decorrelation.tex 550–561",
+      "links": [
+        {
+          "label": "T_SIDES의 두 쪽 계산 →",
+          "href": "t-sides-derivation.html"
+        }
+      ]
     },
     {
       "id": "T_VM",
