@@ -34,7 +34,13 @@
       "tag": "Thm pert:tree-identity",
       "t": "Prescribed tree 위의 항등식",
       "f": "$\\sum_{E}c_E\\,\\mathbb E[fR_E]$<br>$\\quad-\\,\\mathbb E f\\sum_{E\\,\\text{(anchor만)}}c_E\\,\\mathbb E[R_E]\\to0$",
-      "body": "<p>pert:selection 이 준 수열을 따라, 고정 $L$·고정 old tree·고정 제약에서 $N\\to\\infty$ 일 때 0으로 간다. spin anchor와 marker anchor 둘 다, 추가 color가 없는 경우도 허용.</p>",
+      "body": "<p>pert:selection 이 준 수열을 따라, 고정 $L$·고정 old tree·고정 제약에서 $N\\to\\infty$ 일 때 0으로 간다. spin anchor와 marker anchor 둘 다, 추가 color가 없는 경우도 허용. 아래 링크에서 score 집중, Palm, Taylor 계수 소거, polarization, mark selector로 이어지는 유도를 볼 수 있다.</p>",
+      "links": [
+        {
+          "label": "X_TI의 유도 →",
+          "href": "x-ti-derivation.html"
+        }
+      ],
       "src": "perturbations.tex 450–465"
     },
     {
