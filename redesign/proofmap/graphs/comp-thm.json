@@ -147,8 +147,14 @@
       "tag": "Lemma comp:encoding · eq comp:single-label-moments",
       "t": "Recursive law encoding",
       "f": "$\\zeta_{L,N}\\in\\mathcal M_L$ (결정론적), $\\ \\mathbb E\\prod_{a\\in S}\\tau^a=\\frac1N\\sum_i\\mathbb E\\prod_{a\\in S}\\sigma_i^a=\\mathbb ER_S$",
-      "body": "<p><b>진술.</b> 고정 $N$, $L\\ge2$, 선택된 parameter에서 reservoir root disorder를 평균하면, 한 label의 spin process가 모든 prescribed tree 위에서 reservoir의 uniform site와 같은 spin 곱 기댓값을 갖는 결정론적 trial law $\\zeta_{L,N}\\in\\mathcal M_L$이 있다. 서로 다른 trial label은 독립으로 고를 수 있다.</p><p><b>확인.</b> Descendant tree $T$와 terminal leaf의 spin $e_a$를 정한다. 깊이 $r$에서 조건부 확률은 $G_T(x)=\\prod_aq_x(e_a)$. 깊이 $d\\lt r$에서 자식 subtree $T_1,\\dots,T_j$에 대해 자식의 조건부 독립성으로</p><p>$G_T(\\eta_d)=\\prod_{\\ell=1}^j\\int G_{T_\\ell}(\\nu)\\,\\eta_d(d\\nu)$.</p><p>귀납으로 이 확률은 prefix에 $\\eta_d$를 통해서만 의존한다. 따라서 중첩 measure는 unary stretch와 임의 개수의 자식을 포함한 모든 descendant tree의 출력 law를 보존한다. 이 recursion이 바로 model:chain의 branching 판이다. $\\zeta_{L,N}=\\operatorname{Law}(\\eta_0)$로 root mixture도 보존되어 위 moment 등식(모든 잎 부분집합 $S$)을 얻는다. 서로 다른 label에는 reservoir root와 uniform site까지 포함한 구성 전체의 독립 사본을 쓴다. 이 message들은 cavity insertion의 새 physical disorder와 독립이다.</p>",
-      "src": "comparison.tex 19–25, 58–83"
+      "body": "<p><b>진술.</b> 고정 $N$, $L\\ge2$, 선택된 parameter에서 reservoir root disorder를 평균하면, 한 label의 spin process가 모든 prescribed tree 위에서 reservoir의 uniform site와 같은 spin 곱 기댓값을 갖는 결정론적 trial law $\\zeta_{L,N}\\in\\mathcal M_L$이 있다. 서로 다른 trial label은 독립으로 고를 수 있다.</p><p><b>확인.</b> Descendant tree $T$와 terminal leaf의 spin $e_a$를 정한다. 깊이 $r$에서 조건부 확률은 $G_T(x)=\\prod_aq_x(e_a)$. 깊이 $d\\lt r$에서 자식 subtree $T_1,\\dots,T_j$에 대해 자식의 조건부 독립성으로</p><p>$G_T(\\eta_d)=\\prod_{\\ell=1}^j\\int G_{T_\\ell}(\\nu)\\,\\eta_d(d\\nu)$.</p><p>귀납으로 이 확률은 prefix에 $\\eta_d$를 통해서만 의존한다. 따라서 중첩 measure는 unary stretch와 임의 개수의 자식을 포함한 모든 descendant tree의 출력 law를 보존한다. 이 recursion이 바로 model:chain의 branching 판이다. $\\zeta_{L,N}=\\operatorname{Law}(\\eta_0)$로 root mixture도 보존되어 위 moment 등식(모든 잎 부분집합 $S$)을 얻는다. 서로 다른 label에는 reservoir root와 uniform site까지 포함한 구성 전체의 독립 사본을 쓴다. 이 message들은 cavity insertion의 새 physical disorder와 독립이다.</p><p>구성에서 moment 등식까지의 단계는 아래 링크의 세부 지도에 있다.</p>",
+      "src": "comparison.tex 19–25, 58–83",
+      "links": [
+        {
+          "label": "ENC의 세부 유도 →",
+          "href": "comp-enc-derivation.html"
+        }
+      ]
     },
     {
       "id": "PAT_PI",

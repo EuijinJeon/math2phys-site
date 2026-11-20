@@ -11,6 +11,7 @@ check:
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/check_graph.cjs redesign/proofmap/graphs/x-ti.json -
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/check_graph.cjs redesign/proofmap/graphs/comp-thm.json PROP
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/check_graph.cjs redesign/proofmap/graphs/comp-prop.json -
+	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/check_graph.cjs redesign/proofmap/graphs/comp-enc.json -
 	node redesign/proofmap/tools/build_decor.cjs
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs > redesign/proofmap/checks/2026-11-16-thm-derivation-map/NODES.md
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/b-con.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/B-CON-NODES.md
@@ -23,6 +24,7 @@ check:
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/x-ti.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/X-TI-NODES.md
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/comp-thm.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/COMP-THM-NODES.md
 	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/comp-prop.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/COMP-PROP-NODES.md
+	node redesign/proofmap/checks/2026-11-16-thm-derivation-map/tools/dump_table.cjs redesign/proofmap/graphs/comp-enc.json > redesign/proofmap/checks/2026-11-16-thm-derivation-map/COMP-ENC-NODES.md
 	@echo '오류 0 · 빌드와 표 갱신 완료'
 
 check-workflow-review:
