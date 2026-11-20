@@ -388,8 +388,14 @@
       "tag": "§8 comp:section",
       "t": "받는 곳: 독립 message 비교",
       "f": "이 깊이 평균들이 §8의 비교에 필요하다",
-      "body": "<p>원문 §7 첫 문단: \"These are the averages needed for the comparison with independent messages.\"</p>",
-      "src": "decorrelation.tex 11–13"
+      "body": "<p>원문 §7 첫 문단: \"These are the averages needed for the comparison with independent messages.\" §8에서는 comp:shape-error를 거쳐 이 정리가 쓰인다.</p>",
+      "src": "decorrelation.tex 11–13; comparison.tex 123–156",
+      "links": [
+        {
+          "label": "§8 비교 지도로 →",
+          "href": "comp-thm-derivation.html#node=X_DECOR"
+        }
+      ]
     }
   ],
   "edges": [
