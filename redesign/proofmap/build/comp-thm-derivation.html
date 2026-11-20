@@ -1,0 +1,456 @@
+<title>Multioverlap 집중 유도 지도</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@600;700&display=swap">
+<style>
+/* Layout: 화면 전체가 모눈 캔버스(이동·확대). 위에 얇은 도구 막대, 오른쪽(휴대폰에서는 아래)에 선택한 node의 상세. */
+:root{
+  --bg:#eef1f5; --paper:#ffffff; --ink:#18202d; --muted:#5a6578; --line:#b9c2d0; --grid:#dfe4eb;
+  --accent:#0d6b72; --accent-soft:#d5ecec; --warn:#9a5b00;
+  --g-ext:#f6efe2; --g-ext-b:#cdb68a;
+  --g-71:#eef2f9; --g-71-b:#a9b8d3;
+  --g-72:#f1eef8; --g-72-b:#b6a9d3;
+  --g-73:#eef6f0; --g-73-b:#9fc6ab;
+  --g-74:#e4f2f2; --g-74-b:#6fb3b6;
+  --font-body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-head:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141b; --paper:#18202b; --ink:#e3e8f0; --muted:#97a2b4; --line:#3b4556; --grid:#1a212c;
+  --accent:#55c3c6; --accent-soft:#163a3d; --warn:#e0a54a;
+  --g-ext:#2a2518; --g-ext-b:#7a6640;
+  --g-71:#1b2230; --g-71-b:#4a5a78;
+  --g-72:#211d2e; --g-72-b:#5d5180;
+  --g-73:#18261e; --g-73-b:#3f6b4e;
+  --g-74:#142a2b; --g-74-b:#2f7275;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141b; --paper:#18202b; --ink:#e3e8f0; --muted:#97a2b4; --line:#3b4556; --grid:#1a212c;
+  --accent:#55c3c6; --accent-soft:#163a3d; --warn:#e0a54a;
+  --g-ext:#2a2518; --g-ext-b:#7a6640;
+  --g-71:#1b2230; --g-71-b:#4a5a78;
+  --g-72:#211d2e; --g-72-b:#5d5180;
+  --g-73:#18261e; --g-73-b:#3f6b4e;
+  --g-74:#142a2b; --g-74-b:#2f7275;
+  color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.5;overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:10px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:5}
+header h1{font-family:var(--font-head);font-size:17px;margin:0;font-weight:700;text-wrap:balance}
+header .sub{color:var(--muted);font-size:12.5px;flex:1 1 260px;min-width:0}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.main{flex:1;display:flex;min-height:0;position:relative}
+#viewport{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px)}
+#viewport.dragging{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+#edges{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.cluster{position:absolute;border:1.5px solid;border-radius:14px;pointer-events:none}
+.cluster .cl{position:absolute;left:12px;top:-11px;padding:0 8px;font-size:12px;font-weight:600;letter-spacing:.04em;background:var(--bg);color:var(--muted);white-space:nowrap}
+.node{position:absolute;width:max-content;max-width:340px;padding:9px 12px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;transition:opacity .15s}
+.node .tag{font-family:var(--font-mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em;display:flex;gap:8px;justify-content:space-between}
+.node.supplement{border-color:var(--warn)}
+#panel .node-id{font-family:var(--font-mono);font-weight:600;color:var(--accent)}
+#panel .node-id:focus{outline:2px solid var(--accent)}
+#panel .supplement-badge{color:var(--warn);font-weight:600}
+.back-link{color:var(--accent);font-weight:600;text-decoration:none;padding:5px 0}
+.back-link:hover{text-decoration:underline}
+#panel .scale-link{display:block;padding:10px 12px;border:1px solid var(--accent);border-radius:7px;color:var(--accent);font-weight:600;text-decoration:none}
+#panel .scale-link:hover{background:var(--accent-soft)}
+.node .t{font-weight:600;font-size:13.5px;margin-top:1px}
+.node .f{margin-top:5px;font-size:13px;line-height:1.9}
+.node .f mjx-container{margin:0!important}
+.node.ext{background:var(--g-ext);border-color:var(--g-ext-b);border-style:dashed}
+.node.key{border-color:var(--accent);border-width:2px}
+.node.goal{border-color:var(--accent);border-width:3px;box-shadow:0 0 0 4px var(--accent-soft)}
+.node.note{border-style:dotted;background:transparent}
+.node.sel{outline:3px solid var(--accent);outline-offset:3px}
+.dim .node:not(.lit){opacity:.22}
+.dim .elabel:not(.lit){opacity:.15}
+.elabel{position:absolute;font-size:11px;line-height:1.35;color:var(--muted);background:var(--bg);padding:1px 5px;border-radius:4px;max-width:150px;width:max-content;text-align:center;pointer-events:none;transition:opacity .15s}
+.elabel.key{color:var(--accent);font-weight:500}
+.elabel.minor{display:none}
+.dim .elabel.minor.lit{display:block}
+path.e{fill:none;stroke:var(--line);stroke-width:1.4;transition:opacity .15s}
+path.e.key{stroke:var(--accent);stroke-width:2.2}
+path.e.note{stroke-dasharray:3 4}
+.dim path.e:not(.lit){opacity:.12}
+#panel{width:380px;max-width:42%;border-left:1px solid var(--line);background:var(--paper);overflow-y:auto;padding:16px 18px 24px;padding-right:max(18px,env(safe-area-inset-right,0px))}
+#panel h2{font-family:var(--font-head);font-size:16px;margin:4px 0 8px;text-wrap:balance}
+#panel .ptag{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+#panel .stmt{margin:10px 0;padding:10px 12px;background:var(--bg);border-radius:8px;overflow-x:auto}
+#panel .stmt mjx-container{max-width:none}
+#panel h3{font-size:12px;letter-spacing:.06em;color:var(--muted);margin:16px 0 6px;font-weight:600}
+#panel ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+#panel li button{width:100%;text-align:left;display:block;padding:6px 9px}
+#panel li button small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+#panel .src{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+#panel .warn{color:var(--warn);font-size:12.5px;margin-top:8px}
+#panel p{margin:8px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:22px;height:0;border-top:2px solid var(--line);vertical-align:middle;margin-right:5px}
+.legend i.k{border-color:var(--accent);border-top-width:2.5px}
+.legend i.n{border-top-style:dotted}
+.legend b{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px;border:1.5px dashed var(--g-ext-b);background:var(--g-ext)}
+#hint{position:absolute;left:calc(12px + env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:12px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 9px;pointer-events:none}
+#zoomlvl{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted);min-width:44px;text-align:right;align-self:center}
+#loading[hidden]{display:none}
+#loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+@media (max-width:760px){
+  .main{flex-direction:column}
+  #panel{width:auto;max-width:none;max-height:42%;border-left:0;border-top:1px solid var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  header .sub{display:none}
+  #hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){.node,path.e,.elabel{transition:none}}
+</style>
+
+<div class="app">
+<header>
+  <a id="back" class="back-link" hidden></a>
+  <h1 id="title">§7 정리: 모든 multioverlap의 깊이 평균 집중</h1>
+  <div id="subtitle" class="sub">원문 <span style="font-family:var(--font-mono)">decorrelation.tex</span> Theorem <span style="font-family:var(--font-mono)">decor:overlap-concentration</span> 의 유도. 왼쪽에서 오른쪽으로 흐른다. node를 누르면 그 결과까지 쓰인 것만 밝아진다.</div>
+  <div class="tools">
+    <button id="zin" type="button" aria-label="확대">＋</button>
+    <button id="zout" type="button" aria-label="축소">－</button>
+    <span id="zoomlvl">100%</span>
+    <button id="fit" type="button">전체 보기</button>
+    <button id="focus" type="button">정리의 증명으로</button>
+    <button id="clear" type="button">선택 해제</button>
+  </div>
+</header>
+<div class="main">
+  <div id="viewport" tabindex="0" aria-label="유도 그래프. 끌어서 이동, 휠이나 두 손가락으로 확대">
+    <div id="world"><svg id="edges"><defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--line)"/></marker>
+      <marker id="ark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+    </defs></svg></div>
+    <div id="loading">수식과 배치를 준비하는 중…</div>
+    <div id="hint">끌어서 이동 · 휠/두 손가락으로 확대 · node를 두 번 누르면 그곳으로 확대</div>
+  </div>
+  <aside id="panel" aria-live="polite"></aside>
+</div>
+</div>
+
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:false}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<script>
+const R=String.raw;
+const GRAPH={"meta":{"title":"§8 Proposition: cavity increment와 RSB functional의 비교","description":"원문 comparison.tex. Reservoir의 한 site branching law를 trial law ζ로 encoding하고(comp:encoding), multioverlap 집중으로 site pattern을 독립 trial pattern으로 바꾸어(comp:patterns, comp:shape-error), cavity increment가 B_{L−1}(ζ_{L,N}, m^(L))과 극한에서 같음을 보인다(comp:insertion-comparison). 왼쪽에서 오른쪽으로 흐른다.","parent":{"label":"← §7 지도로 (받는 곳 OUT)","href":"decor-thm-derivation.html#node=OUT"},"focusGroup":"s83"},"groups":{"ext":{"label":"밖에서 받는 것 (§2·§3·§5·§6·§7)","fill":"--g-ext","b":"--g-ext-b"},"s81":{"label":"§8.1 한 site tree의 encoding","fill":"--g-71","b":"--g-71-b"},"s82":{"label":"§8.2 Multioverlap에서 spin pattern으로","fill":"--g-72","b":"--g-72-b"},"s83":{"label":"§8.3 Insertion 로그의 비교","fill":"--g-73","b":"--g-73-b"},"s84":{"label":"§8 Corollary: 유계 모형의 하한","fill":"--g-74","b":"--g-74-b"}},"nodes":[{"id":"X_SEL","g":"ext","cls":"ext","tag":"Lemma pert:selection","t":"결정론적 parameter 선택","f":"고정 $L,\\varepsilon$: $N_j\\uparrow\\infty$, $\\mathbf u_j$ 로\u003cbr>$\\Delta_{N_j}(\\mathbf u_j)\\le\\underline F+2\\varepsilon$","body":"\u003cp>고정 $L\\ge2$, $\\varepsilon>0$마다 크기 $N_j\\uparrow\\infty$와 결정론적 parameter 벡터 $\\mathbf u_j$가 있어 (i) cavity increment가 낮고 $\\Delta_{N_j}(\\mathbf u_j)\\le\\underline F+2\\varepsilon$, (ii) 모든 고정 type $\\nu$에서 reservoir의 $e_{\\nu,N_j}(\\mathbf u_j)\\to0$, (iii) reservoir에서 깊이 $L$의 고정 prescribed tree 위 multioverlap 유한 곱의 기댓값이 수렴한다. $\\underline F=\\liminf_NF_N$은 \u003cem>모든\u003c/em> 크기에 대한 liminf다. §7의 집중 정리도 이 수열 위에서 성립한다.\u003c/p>","src":"perturbations.tex 246–266"},{"id":"X_INC","g":"ext","cls":"ext","tag":"Lemma cavity:increment · eq cavity:identity","t":"Cavity increment와 두 insertion","f":"$\\Delta_N^{L,\\mathbf u}=\\log2+\\mathbb E\\log Y_{0,\\rm s}-\\mathbb E\\log Y_{0,\\rm b}+o_N(1)$","body":"\u003cp>$\\Delta_N^{L,\\mathbf u}=P_{N+1}^{L,\\mathbf u}-P_N^{L,\\mathbf u}$는 $N,L,\\mathbf u$에 대해 균일하게 유계이고, $N$-spin reservoir를 써서 위 항등식으로 쓰인다. 오차는 $L,\\mathbf u$에 균일하다. Insertion recursion은 tilted reservoir kernel과 독립인 새 root disorder를 쓰고, terminal insertion은\u003c/p>\u003cp>$A_{\\rm s}(\\sigma)=\\frac12\\sum_{\\varepsilon=\\pm1}\\exp\\bigl(h\\varepsilon+\\sum_{j=1}^{K_{\\rm s}}\\theta_j(\\sigma_{i_{1,j}},\\dots,\\sigma_{i_{p-1,j}},\\varepsilon)\\bigr)$, $A_{\\rm b}(\\sigma)=\\exp\\bigl(\\sum_{j=1}^{K_{\\rm b}}\\theta_j(\\sigma_{i_{1,j}},\\dots,\\sigma_{i_{p,j}})\\bigr)$\u003c/p>\u003cp>이다. $K_{\\rm s}\\sim\\mathrm{Pois}(\\alpha p)$, $K_{\\rm b}\\sim\\mathrm{Pois}(\\alpha(p-1))$, 모든 index는 $[N]$의 독립 uniform index다. §8 내내 유계 모형 가정 $B(\\theta)\\le B$, $|h|\\le H$ (cavity.tex 11–12)가 걸려 있다.\u003c/p>","src":"cavity.tex 11–12, 43–69"},{"id":"X_Y","g":"ext","cls":"ext","tag":"eq tree:Y-recursion · tree:original-tilt","t":"Tilted kernel 위의 power-mean recursion","f":"$Y_L=A,\\quad Y_{d-1}=\\bigl(K_dY_d^{m_d}\\bigr)^{1/m_d}$","body":"\u003cp>양의 path 함수 $A$에서 깊이 $L$부터 거꾸로 $Y_0$까지 올라간다. $K_d$ ($1\\le d\\lt L$)는 tilted auxiliary kernel이고 마지막 $K_L$은 auxiliary prefix가 주어진 spin 배치의 Gibbs 분포다. §8에서는 reservoir kernel을 쓴 $Y_{0,\\rm s},Y_{0,\\rm b}$와 trial kernel을 쓴 $\\widetilde Y_{0,\\rm s},\\widetilde Y_{0,\\rm b}$ 두 쌍이 나온다.\u003c/p>","src":"trees.tex 55–72"},{"id":"X_LOG","g":"ext","cls":"ext","tag":"Lemma tree:log-expansion · law $Q_k$","t":"로그 전개와 tree law $Q_k$","f":"$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}t^k}{k}\\,\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_{a=1}^kD^a$","body":"\u003cp>$A=1+tD$, $|t|\\|D\\|_\\infty\\lt 1$에서 root 조건부로 성립한다. $Q_k$는 잎 $1,\\dots,k$를 가진 random tree의 law로, 잎이 $n$개일 때 internal vertex $\\beta$를 확률 $(n_\\beta m_{d_\\beta+1}-m_{d_\\beta})/n$로 골라 fresh path를 붙여 만든다. $|t|\\|D\\|_\\infty\\le c\\lt 1$이면 차수 $q$ 뒤의 나머지는 $\\sum_{k>q}c^k/k$ 이하다.\u003c/p>","src":"trees.tex 205–252"},{"id":"X_REG","g":"ext","cls":"ext","tag":"Lemma tree:regular-shapes","t":"Regular shape","f":"$Q_k\\{\\text{nonregular}\\}\\le C_k(\\eta+L^{-1})$\u003cbr>한 depth 배정의 확률 $\\le C_kL^{-a}$","body":"\u003cp>$m_d=d/L$, $0\\lt \\eta\\lt 1/2$. 모든 branching depth$/L$이 $(\\eta,1-\\eta)$에 있고 서로 다른 branching vertex의 normalized depth가 $\\eta$보다 더 떨어져 있으면 regular다. $a$개의 branching vertex를 가진 topology의 depth 배정 하나는 확률 $C_kL^{-a}$ 이하다. Regular tree에서 잎을 지우면 (unary가 된 branching vertex를 버린 뒤) 다시 regular다.\u003c/p>","src":"trees.tex 457–486"},{"id":"X_B","g":"ext","cls":"ext","tag":"§2 model:chain · model:power-means · model:functional","t":"Trial law와 RSB functional $\\mathcal B_r$","f":"$\\zeta\\in\\mathcal M_{r+1}$, $\\mathcal B_r(\\zeta,\\mathbf m)=\\log2+\\mathbb E\\log T_0V_{\\rm s}-\\alpha(p-1)\\mathbb E\\log T_0V_{\\rm e}$","body":"\u003cp>$\\mathcal M_1=\\mathcal P(\\mathbb R)$, $\\mathcal M_{j+1}=\\mathcal P(\\mathcal M_j)$. 각 message label은 독립으로 $\\eta_0\\sim\\zeta$, $\\eta_{d+1}\\mid\\eta_d\\sim\\eta_d$, $x\\mid\\eta_{r-1}\\sim\\eta_{r-1}$을 뽑는다 (model:chain). $V_{\\rm s}$는 site, $V_{\\rm e}=C_\\theta(x_1,\\dots,x_p)$는 edge 쪽 양이고, $T_rV=V$, $T_dV=(\\mathbb E[(T_{d+1}V)^{m_{d+1}}\\mid\\mathscr F_d])^{1/m_{d+1}}$는 auxiliary message만 적분하는 power mean이다. $\\Phi_r=\\inf_{\\zeta,\\mathbf m}\\mathcal B_r$. 여기서는 $r=L-1$, $\\zeta\\in\\mathcal M_L$이다.\u003c/p>","src":"model.tex 54–118"},{"id":"X_TB","g":"ext","cls":"ext","tag":"eq model:trial-bounds","t":"Trial 값의 유계성","f":"$|\\log T_0V_{\\rm s}|\\le|h|+\\sum_{j\\le k}B(\\theta_j)$, $|\\log T_0V_{\\rm e}|\\le B(\\theta)$","body":"\u003cp>Power-mean 연산자가 점별 곱셈 bound를 보존하므로 trial message에 moment 가정 없이 $\\mathcal B_r$이 유한하다. Corollary에서 $\\inf_r\\Phi_r$이 유한하다는 데 쓰인다.\u003c/p>","src":"model.tex 120–127"},{"id":"X_DECOR","g":"ext","cls":"ext","tag":"Thm decor:overlap-concentration (§7)","t":"모든 multioverlap의 깊이 평균 집중","f":"$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathcal A_{L,\\eta}\\mathrm{Var}(R_S)=0$\u003cbr>모든 $\\eta>0$, 모든 고정 $S$","body":"\u003cp>§7의 정리. $\\mathcal A_{L,\\eta}z=L^{-a}\\sum_{\\mathbf q\\ \\eta\\text{-regular}}z(\\mathbf q)$는 topology $S$의 $a=b(S)$개 branching depth에 대한 비정규화 평균이다(질량 $\\le1$). 극한은 선택된 고정-$L$ 수열에서 $N$ 먼저, 다음 $L\\to\\infty$. 유도 전체는 아래 링크의 §7 지도에 있다.\u003c/p>","src":"decorrelation.tex 14–37, 63–76","links":[{"label":"§7 정리의 유도 지도 →","href":"decor-thm-derivation.html#node=THM"}]},{"id":"SET","g":null,"tag":"§8 설정 · eq comp:low-increments","t":"선택된 수열과 낮은 increment","f":"고정 $\\varepsilon$, 각 $L$의 선택 수열 위에서\u003cbr>$\\Delta_N^{L,\\mathbf u_{L,N}}\\le\\underline F+2\\varepsilon$","body":"\u003cp>$\\varepsilon>0$을 고정한다. 각 깊이 $L\\ge2$에서 pert:selection이 준 크기와 결정론적 parameter를 쓰고, 이 수열 위의 크기를 $N$이라 쓴다. 선택은 $L$에 의존해도 된다. $\\underline F$는 선택 전 유계 모형의 \u003cem>모든\u003c/em> 크기에 대한 liminf로 남겨 둔다. 이하 §8의 $\\limsup_N$은 모두 이 고정-$L$ 수열을 따른다.\u003c/p>","src":"comparison.tex 8–15"},{"id":"ENC_CON","g":"s81","tag":"comp:encoding 증명 (구성)","t":"Site 하나의 branching law를 중첩 measure로","f":"$x=\\operatorname{arctanh}\\langle\\sigma_i\\rangle$, $\\eta_{r-1}=\\operatorname{Law}(x\\mid\\mathscr G_{r-1})$, $\\eta_d=\\operatorname{Law}(\\eta_{d+1}\\mid\\mathscr G_d)$","body":"\u003cp>Root 변수에 독립 uniform site $i\\in[N]$를 reservoir root disorder와 함께 넣는다. 각 path를 따라 tilted reservoir auxiliary kernel을 표본하고, $\\mathscr G_d$를 이 확대된 root와 깊이 $d$까지의 auxiliary prefix 전체가 생성하는 sigma-field로 둔다.\u003c/p>\u003cp>깊이 $r=L-1$에서 $x=\\operatorname{arctanh}\\langle\\sigma_i\\rangle$ (leaf Gibbs 기댓값). 유한 $N$에서 모든 배치의 무게가 양수라 $-1\\lt \\langle\\sigma_i\\rangle\\lt 1$이므로 유한하다. $x$는 깊이 $L$의 terminal spin transition 전에 정해지고, terminal replica leaf마다 law $q_x$로 spin을 뽑으면 prefix가 주어졌을 때 독립이며 독립 terminal Gibbs replica의 한 site law와 정확히 같다.\u003c/p>\u003cp>거꾸로 정의한 $\\eta_d\\in\\mathcal M_{r-d}$에서 $\\zeta_{L,N}=\\operatorname{Law}(\\eta_0)\\in\\mathcal M_L$. 상태공간이 standard Borel이라 조건부 kernel의 가측 version이 있고, auxiliary prior가 유한 mark 공간의 유한곱이면 root count 조건부 유한합으로도 된다.\u003c/p>","src":"comparison.tex 27–57"},{"id":"ENC","g":"s81","cls":"key","tag":"Lemma comp:encoding · eq comp:single-label-moments","t":"Recursive law encoding","f":"$\\zeta_{L,N}\\in\\mathcal M_L$ (결정론적), $\\ \\mathbb E\\prod_{a\\in S}\\tau^a=\\frac1N\\sum_i\\mathbb E\\prod_{a\\in S}\\sigma_i^a=\\mathbb ER_S$","body":"\u003cp>\u003cb>진술.\u003c/b> 고정 $N$, $L\\ge2$, 선택된 parameter에서 reservoir root disorder를 평균하면, 한 label의 spin process가 모든 prescribed tree 위에서 reservoir의 uniform site와 같은 spin 곱 기댓값을 갖는 결정론적 trial law $\\zeta_{L,N}\\in\\mathcal M_L$이 있다. 서로 다른 trial label은 독립으로 고를 수 있다.\u003c/p>\u003cp>\u003cb>확인.\u003c/b> Descendant tree $T$와 terminal leaf의 spin $e_a$를 정한다. 깊이 $r$에서 조건부 확률은 $G_T(x)=\\prod_aq_x(e_a)$. 깊이 $d\\lt r$에서 자식 subtree $T_1,\\dots,T_j$에 대해 자식의 조건부 독립성으로\u003c/p>\u003cp>$G_T(\\eta_d)=\\prod_{\\ell=1}^j\\int G_{T_\\ell}(\\nu)\\,\\eta_d(d\\nu)$.\u003c/p>\u003cp>귀납으로 이 확률은 prefix에 $\\eta_d$를 통해서만 의존한다. 따라서 중첩 measure는 unary stretch와 임의 개수의 자식을 포함한 모든 descendant tree의 출력 law를 보존한다. 이 recursion이 바로 model:chain의 branching 판이다. $\\zeta_{L,N}=\\operatorname{Law}(\\eta_0)$로 root mixture도 보존되어 위 moment 등식(모든 잎 부분집합 $S$)을 얻는다. 서로 다른 label에는 reservoir root와 uniform site까지 포함한 구성 전체의 독립 사본을 쓴다. 이 message들은 cavity insertion의 새 physical disorder와 독립이다.\u003c/p>","src":"comparison.tex 19–25, 58–83"},{"id":"PAT_PI","g":"s82","tag":"comp:patterns 증명 (경험 분포)","t":"Site pattern의 경험 분포","f":"$\\pi(\\boldsymbol e)=2^{-k}\\sum_{S\\subseteq[k]}R_S\\prod_{b\\in S}e_b$, $\\ \\bar\\pi=\\mathbb E\\pi$","body":"\u003cp>표본된 reservoir 배치가 주어지면 uniform site의 pattern $\\boldsymbol\\sigma_i=(\\sigma_i^1,\\dots,\\sigma_i^k)$는 경험 분포 $\\pi(\\boldsymbol e)=\\frac1N\\sum_i\\prod_{b=1}^k\\frac{1+e_b\\sigma_i^b}2$를 갖는다. 곱을 전개하면 multioverlap $R_S$의 선형결합이 된다. Trial label의 분포는 comp:single-label-moments로 $\\bar\\pi=\\mathbb E\\pi$다. 복원추출 독립 uniform site $a$개는 reservoir 조건부로 $\\pi^{\\otimes a}$, trial label $a$개는 $\\bar\\pi^{\\otimes a}$를 준다.\u003c/p>","src":"comparison.tex 99–112"},{"id":"PAT","g":"s82","cls":"key","tag":"Lemma comp:patterns · eq comp:pattern-error","t":"Empirical-pattern comparison","f":"오차 $\\le a\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|$","body":"\u003cp>\u003cb>진술.\u003c/b> 잎 $k$개의 prescribed tree를 고정한다. 절댓값 1 이하의 observable이 독립 uniform site label $a$개의 replica-spin pattern을 쓴다. 이 pattern을 comp:encoding의 독립 trial-label pattern $a$개로 바꾸면 기댓값이 위 양 이하로 변한다. Observable은 reservoir와 독립인 새 insertion disorder에도 의존해도 된다.\u003c/p>\u003cp>\u003cb>증명.\u003c/b> 곱 measure의 telescoping bound로\u003c/p>\u003cp>$\\|\\pi^{\\otimes a}-\\bar\\pi^{\\otimes a}\\|_{\\rm TV}\\le a\\|\\pi-\\bar\\pi\\|_{\\rm TV}\\le\\frac a2\\sum_{S\\ne\\varnothing}|R_S-\\mathbb ER_S|$.\u003c/p>\u003cp>1로 유계인 함수의 적분 차이는 total variation의 두 배 이하다. 독립 insertion disorder에 조건부로 하면 마지막 주장이 나온다.\u003c/p>","src":"comparison.tex 87–97, 110–121"},{"id":"SH_B","g":"s82","tag":"eq comp:shape-error-bound","t":"모양 오차를 깊이 평균 분산으로","f":"$\\mathbb E_{Q_k}\\sum_{S\\ne\\varnothing}\\mathbb E|R_S-\\mathbb ER_S|$\u003cbr>$\\quad\\le C_k\\bigl(\\eta+L^{-1}+\\sum_{U\\in\\mathfrak S_k}(\\mathcal A_{L,\\eta}\\mathrm{Var}(R_U))^{1/2}\\bigr)$","body":"\u003cp>$0\\lt \\eta\\lt 1/2$, $\\mathfrak S_k$는 $[k]$의 비지 않은 부분집합 위 labeled topology의 유한 모음. Singleton의 평균에는 depth 좌표가 없다.\u003c/p>\u003cp>(1) tree:regular-shapes로 nonregular tree의 확률은 $C_k(\\eta+L^{-1})$ 이하이고, 거기서는 각 편차를 2로 막는다. (2) Regular tree에서는 모든 induced subtree가 branching depth의 interior·separation 조건을 유지한다. (3) $a$개 branching vertex의 topology에서 depth 배정 하나의 확률은 $C_kL^{-a}$ 이하. Induced subtree가 $a'$개를 남기면 그 depth 배정 하나는 전체 tree로 $L^{a-a'}$개 이하로 확장된다. 쓰지 않는 좌표를 합해 없애면 정확히 $\\mathcal A_{L,\\eta}$의 정규화 $L^{-a'}$가 남는다. (4) Cauchy–Schwarz로 평균 절대편차의 평균을 $(\\mathcal A_{L,\\eta}\\mathrm{Var}(R_U))^{1/2}$로 막는다. 유한 개의 topology와 부분집합을 합한다.\u003c/p>","src":"comparison.tex 131–153"},{"id":"SH","g":"s82","cls":"key","tag":"eq comp:shape-error","t":"모양 오차의 소멸","f":"$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathbb E_{Q_k}\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|=0$ ($k$ 고정)","body":"\u003cp>집중 정리의 귀결로 §8이 필요로 하는 형태다. $Q_k$는 tree:log-expansion의 tree law이고, 안쪽 극한은 선택된 고정-$L$ 수열을 따른다.\u003c/p>\u003cp>순서: 고정 $\\eta$에서 bound의 오른쪽에 decor:overlap-concentration을 적용한다 — 고정 $L$에서 $N$ 먼저, 다음 $L\\to\\infty$. 그러면 $\\limsup$이 $C_k\\eta$ 이하이고, 마지막으로 $\\eta\\downarrow0$.\u003c/p>","src":"comparison.tex 123–130, 153–156"},{"id":"P_TR","g":"s83","tag":"증명 1 · trial insertion","t":"Reservoir spin을 trial spin process로","f":"$A_{\\rm s},A_{\\rm b}\\ \\mapsto\\ \\widetilde A_{\\rm s},\\widetilde A_{\\rm b}$; $\\ \\widetilde Y_{0,\\rm s},\\widetilde Y_{0,\\rm b}$","body":"\u003cp>cavity:increment의 각 insertion에서 site label의 reservoir spin을 comp:encoding의 독립 spin process로 바꾼다. 그 결과가 trial insertion $\\widetilde A_{\\rm s},\\widetilde A_{\\rm b}$이고, tree:Y-recursion을 trial kernel로 돌린 값이 $\\widetilde Y_{0,\\rm s},\\widetilde Y_{0,\\rm b}$다.\u003c/p>","src":"comparison.tex 171–176"},{"id":"P_ID","g":"s83","cls":"key","tag":"증명 2 · trial 항등식","t":"Trial 쪽은 정확히 $\\mathcal B_{L-1}$","f":"$\\mathbb E\\log\\widetilde Y_{0,\\rm b}=\\alpha(p-1)\\mathbb E\\log T_0V_{\\rm e}$\u003cbr>$\\log2+\\mathbb E\\log\\widetilde Y_{0,\\rm s}-\\mathbb E\\log\\widetilde Y_{0,\\rm b}=\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})$","body":"\u003cp>Site: terminal spin transition에서 $\\widetilde A_{\\rm s}$를 그 독립 trial spin에 대해 평균하면 정확히 model:vs의 $V_{\\rm s}$이므로 $\\widetilde Y_{0,\\rm s}=T_0V_{\\rm s}$.\u003c/p>\u003cp>Bond: 같은 transition이 message label이 서로 겹치지 않는 $K_{\\rm b}$개 edge factor의 곱을 준다. 한 깊이에서 physical disorder와 모든 message prefix가 주어지면 이 label 묶음들은 독립으로 남는다. 그래서 곱이 각 조건부 power mean을 마지막 level부터 첫 level까지 차례로 통과해 인수분해된다.\u003c/p>\u003cp>남은 일은 cavity:identity에 따라 reservoir와 trial의 insertion 로그를 정해진 극한에서 비교하는 것이다.\u003c/p>","src":"comparison.tex 178–196"},{"id":"P_CUT","g":"s83","tag":"증명 3 · count cutoff","t":"Poisson count를 $K\\le M$으로 자름","f":"$C=H+BM$, $z=\\cosh C$, $c=\\tanh C\\lt 1$: $\\ A=z(1+D)$, $|D|\\le c$","body":"\u003cp>어느 insertion이든 Poisson count $K$를 고정 $M$ 이하로 제한한다. 이 사건 위에서 reservoir insertion과 trial 판 모두 모든 disorder와 path 변수에 균일하게 $A=z(1+D)$, $|D|\\le c$로 쓸 수 있다. 결정론적 항 $\\log z$는 비교에서 상쇄된다.\u003c/p>","src":"comparison.tex 198–203"},{"id":"P_EXP","g":"s83","cls":"key","tag":"증명 4 · 전개 항별 비교","t":"로그 전개의 각 차수 비교","f":"차수 $k$ 오차(고정 tree) $\\le pM\\sum_{S\\ne\\varnothing}\\mathbb E|R_S-\\mathbb ER_S|$\u003cbr>꼬리 $\\le\\sum_{k>q}c^k/k$","body":"\u003cp>tree:log-expansion의 각 차수 $k$에서 $D$의 $k$개 사본의 곱은 많아야 $pM$개 label의 replica-spin pattern과 독립 insertion disorder의 유계 함수다. comp:patterns로 고정 tree 위 평가 오차는 위 양 이하이고, comp:shape-error로 $Q_k$에 대한 tree 평균 오차가 정해진 극한 순서에서 0으로 간다. 고정 $M$마다 $q$항 뒤에서 자르면 양쪽 모두 $N,L$에 균일하게 $\\sum_{k>q}c^k/k$ 이하의 오차가 남는다.\u003c/p>","src":"comparison.tex 205–213"},{"id":"P_TAIL","g":"s83","tag":"증명 5 · Poisson 꼬리","t":"Cutoff 밖의 기여","f":"$\\le2\\,\\mathbb E[(H+BK)\\mathbf 1_{\\{K>M\\}}]\\to0\\ (M\\to\\infty)$","body":"\u003cp>Count cutoff 밖에서 원래 insertion 로그는 양쪽 모두 $H+BK$로 유계다. 그래서 기대 기여는 위 양 이하이고 $M\\to\\infty$에서 0으로 간다.\u003c/p>","src":"comparison.tex 215–217"},{"id":"P_ORD","g":"s83","cls":"key","tag":"증명 6 · 극한 순서","t":"Insertion 로그 기댓값의 수렴","f":"$M$ (Poisson 꼬리) $\\to$ $q$ (기하 꼬리) $\\to$ 고정 $L$에서 $N$ $\\to$ $L\\to\\infty$","body":"\u003cp>먼저 $M$을 골라 Poisson 꼬리를 막고, 다음 $q$를 골라 기하 꼬리를 막고, 남은 유한 개의 전개 항에 대해 고정 $L$에서 $N$의 극한, 다음 $L\\to\\infty$를 취한다. 이로써 reservoir와 trial의 기대 insertion 로그 차이가 이 순서의 극한에서 0이 된다.\u003c/p>","src":"comparison.tex 218–221"},{"id":"PROP","g":"s83","cls":"goal","tag":"Proposition comp:insertion-comparison","t":"Cavity increment = RSB functional (극한에서)","f":"$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\bigl|\\Delta_N^{L,\\mathbf u_{L,N}}-\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\bigr|=0$","body":"\u003cp>comp:encoding의 trial law와 $\\mathbf m^{(L)}=(1/L,\\dots,(L-1)/L)$에 대해. 안쪽 $\\limsup_N$은 각 $L$의 선택 수열을 따른다.\u003c/p>\u003cp>마지막 걸음: trial 항등식(증명 2)과 cavity:identity를 함께 쓰면, 기대 insertion 로그의 수렴(증명 6)이 곧 이 등식이다.\u003c/p>","src":"comparison.tex 160–167, 221–222"},{"id":"COR","g":"s84","cls":"key","tag":"Corollary comp:bounded-lower","t":"유계 모형의 하한","f":"$\\liminf_{N\\to\\infty}F_N\\ge\\inf_{r\\ge0}\\Phi_r$","body":"\u003cp>유계 permutation-invariant interaction law와 유계 field law에 대해.\u003c/p>\u003cp>\u003cb>증명.\u003c/b> $A=\\inf_r\\Phi_r$은 model:trial-bounds로 유한하다. Encoding된 trial 값은 모두 $A$ 이상이므로 comp:low-increments가 각 고정 $L$에서\u003c/p>\u003cp>$A\\le\\underline F+2\\varepsilon+\\limsup_N\\bigl|\\Delta_N^{L,\\mathbf u_{L,N}}-\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\bigr|$\u003c/p>\u003cp>를 준다(안쪽 극한은 그 깊이의 선택 수열). Proposition에서 $L\\to\\infty$로 $A\\le\\underline F+2\\varepsilon$, 마지막으로 $\\varepsilon\\downarrow0$.\u003c/p>","src":"comparison.tex 225–246"},{"id":"OUT","g":null,"cls":"ext","tag":"§9 reduction:section → Thm main:theorem","t":"받는 곳: 정규화·truncation과 주정리","f":"truncation $K\\to\\infty$로 $\\liminf_N F_N\\ge\\inf_r\\Phi_r$; upper:bound와 합쳐 main:formula","body":"\u003cp>§9는 이 유계 모형 하한을 constant shift와 truncation $\\widehat\\theta^{(K)},h^{(K)}$에 적용하고 $K\\to\\infty$로 일반 적분가능 모형의 하한을 얻는다. 그리고 upper:bound의 $\\limsup_NF_N\\le\\inf_r\\Phi_r$과 합쳐 주정리 $\\lim_NF_N=\\inf_{r\\ge0}\\Phi_r$ (model.tex 129–135)를 완성한다.\u003c/p>","src":"reduction.tex 4–6, 60–85"}],"edges":[["X_SEL","SET","선택 수열, (i) 낮은 increment","key"],["X_Y","ENC_CON","tilted reservoir kernel"],["X_B","ENC_CON","$\\mathcal M_j$ 계층"],["ENC_CON","ENC","중첩 measure $\\eta_d$","key"],["X_B","ENC","model:chain의 branching 판"],["ENC","PAT_PI","$\\bar\\pi=\\mathbb E\\pi$","key"],["PAT_PI","PAT","$\\pi^{\\otimes a}$ 대 $\\bar\\pi^{\\otimes a}$","key"],["X_LOG","SH_B","tree law $Q_k$"],["X_REG","SH_B","nonregular 확률, 배정 확률","key"],["X_DECOR","SH_B","$\\mathcal A_{L,\\eta}$ 정의"],["SH_B","SH","bound","key"],["X_DECOR","SH","$N$, $L$, 그다음 $\\eta\\downarrow0$","key"],["X_INC","P_TR","$A_{\\rm s}$, $A_{\\rm b}$","key"],["ENC","P_TR","독립 trial spin process","key"],["X_Y","P_TR","trial kernel의 recursion"],["P_TR","P_ID","$\\widetilde Y_{0,\\rm s}$, $\\widetilde Y_{0,\\rm b}$","key"],["X_B","P_ID","$V_{\\rm s}$, $V_{\\rm e}$, $T_0$, $\\mathcal B_r$"],["P_TR","P_CUT","두 insertion 쌍","key"],["X_INC","P_CUT","$B(\\theta)\\le B$, $|h|\\le H$"],["P_CUT","P_EXP","$A=z(1+D)$, $|D|\\le c$","key"],["X_LOG","P_EXP","전개와 꼬리 $\\sum_{k>q}c^k/k$"],["PAT","P_EXP","고정 tree 위 오차","key"],["SH","P_EXP","tree 평균 오차 $\\to0$","key"],["P_CUT","P_TAIL","$K>M$ 쪽"],["P_EXP","P_ORD","$q$항과 꼬리","key"],["P_TAIL","P_ORD","$M\\to\\infty$","key"],["P_ID","PROP","trial 쪽 $=\\mathcal B_{L-1}$","key"],["P_ORD","PROP","로그 기댓값 수렴","key"],["X_INC","PROP","cavity:identity"],["SET","PROP","선택 수열 위의 $\\Delta_N^{L,\\mathbf u_{L,N}}$"],["PROP","COR","$L\\to\\infty$","key"],["SET","COR","comp:low-increments","key"],["X_TB","COR","$\\inf_r\\Phi_r$ 유한"],["COR","OUT",""]],"positions":{"X_Y":[0,0],"X_B":[0,0],"X_LOG":[0,0],"X_REG":[0,0],"X_DECOR":[0,0],"X_SEL":[1,0],"X_INC":[1,0],"X_TB":[1,0],"ENC_CON":[0,1],"SET":[1,1],"ENC":[0,2],"PAT_PI":[0,3],"SH_B":[0,3],"P_TR":[1,3],"PAT":[0,4],"SH":[0,4],"P_CUT":[1,4],"P_ID":[1,4],"P_EXP":[1,5],"P_TAIL":[1,5],"P_ORD":[1,6],"PROP":[1,7],"COR":[1,8],"OUT":[1,9]},"subgraphs":{}};
+const {groups:GROUPS,nodes:N,edges:E,positions:POS,subgraphs:SUBGRAPHS}=GRAPH;
+const META=GRAPH.meta||{};
+if(META.title){document.title=META.title;document.getElementById('title').textContent=META.title}
+if(META.description)document.getElementById('subtitle').textContent=META.description;
+if(META.parent){const back=document.getElementById('back');back.href=META.parent.href;back.textContent=META.parent.label;back.hidden=false;document.getElementById('focus').hidden=true}
+const byId=Object.fromEntries(N.map(n=>[n.id,n]));
+const world=document.getElementById('world'), vp=document.getElementById('viewport'), svg=document.getElementById('edges'), panel=document.getElementById('panel');
+const nodeEl={}, labelEl=[], pathEl=[];
+
+function build(){
+  for(const n of N){
+    const d=document.createElement('div');
+    d.className='node '+(n.cls||'')+(n.supplement?' supplement':'');
+    d.dataset.id=n.id;
+    d.innerHTML=`<div class="tag"><span>${n.tag}</span><span>${n.id}</span></div><div class="t">${n.t}</div><div class="f">${n.f}</div>`;
+    world.appendChild(d); nodeEl[n.id]=d;
+  }
+  E.forEach((e,i)=>{
+    const l=document.createElement('div');
+    l.className='elabel '+(e[3]||'');
+    l.innerHTML=e[2]||'';
+    if(!e[2]) l.style.display='none';
+    world.appendChild(l); labelEl[i]=l;
+  });
+}
+
+// 배치: 왼쪽에서 오른쪽으로. 위 띠 = §7.1, §7.3 / 아래 띠 = §7.2, §7.4. 0열은 밖에서 받는 것.
+const COLGAP=170, ROWGAP=26, BANDGAP=90, M=60;
+function layout(){
+  const NC=1+Math.max(...Object.values(POS).map(p=>p[1])), cell={};
+  for(const n of N){const [b,c]=POS[n.id];(cell[b+','+c]=cell[b+','+c]||[]).push(n.id)}
+  const colW=Array(NC).fill(0), bandH=[0,0], cellH={};
+  for(const k in cell){
+    const [b,c]=k.split(',').map(Number);
+    let h=0; for(const id of cell[k]){colW[c]=Math.max(colW[c],nodeEl[id].offsetWidth);h+=nodeEl[id].offsetHeight+ROWGAP}
+    h-=ROWGAP; cellH[k]=h; if(b<2) bandH[b]=Math.max(bandH[b],h);
+  }
+  const colX=[]; let x=M; for(let c=0;c<NC;c++){colX[c]=x;x+=colW[c]+COLGAP}
+  const W=x-COLGAP+M;
+  const bandY=[M+30,M+30+bandH[0]+BANDGAP];
+  const H=Math.max(bandY[0]+bandH[0],bandY[1]+bandH[1])+M;
+  const pos={};
+  for(const k in cell){
+    const [b,c]=k.split(',').map(Number);
+    let y = b===2 ? (H-cellH[k])/2 : bandY[b]+(bandH[b]-cellH[k])/2;
+    for(const id of cell[k]){
+      const el=nodeEl[id],w=el.offsetWidth,h=el.offsetHeight;
+      const px=colX[c]+(colW[c]-w)/2;
+      el.style.left=px+'px'; el.style.top=y+'px';
+      pos[id]={x:px,y,w,h}; y+=h+ROWGAP;
+    }
+  }
+  for(const k in GROUPS){
+    const ids=N.filter(n=>n.g===k).map(n=>n.id); if(!ids.length) continue;
+    const pad=18;
+    let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+    for(const id of ids){const p=pos[id];x0=Math.min(x0,p.x);y0=Math.min(y0,p.y);x1=Math.max(x1,p.x+p.w);y1=Math.max(y1,p.y+p.h)}
+    const c={x:x0-pad,y:y0-pad-8,w:x1-x0+2*pad,h:y1-y0+2*pad+8};
+    const box=document.createElement('div');
+    box.className='cluster';
+    Object.assign(box.style,{left:c.x+'px',top:c.y+'px',width:c.w+'px',height:c.h+'px',background:`var(${GROUPS[k].fill})`,borderColor:`var(${GROUPS[k].b})`});
+    if(k==='ext'){box.style.background='transparent';box.style.borderStyle='dashed'}
+    box.innerHTML=`<span class="cl">${GROUPS[k].label}</span>`;
+    world.insertBefore(box,svg);
+    clusters[k]=c;
+  }
+  // 같은 node에서 나가거나 들어오는 선의 끝점을 위아래로 나눠 겹치지 않게 한다
+  const outs={},ins={};
+  E.forEach((e,i)=>{(outs[e[0]]=outs[e[0]]||[]).push(i);(ins[e[1]]=ins[e[1]]||[]).push(i)});
+  const cy=id=>pos[id].y+pos[id].h/2;
+  for(const id in outs) outs[id].sort((a,b)=>cy(E[a][1])-cy(E[b][1]));
+  for(const id in ins) ins[id].sort((a,b)=>cy(E[a][0])-cy(E[b][0]));
+  const port=(id,list,i)=>{const p=pos[id],n=list.length,j=list.indexOf(i);return p.y+p.h*(n===1?0.5:0.2+0.6*j/(n-1))};
+  E.forEach((e,i)=>{
+    const a=pos[e[0]],b=pos[e[1]];
+    const x1=a.x+a.w, y1=port(e[0],outs[e[0]],i), x2=b.x-4, y2=port(e[1],ins[e[1]],i);
+    const dx=Math.max(50,(x2-x1)*0.5);
+    const d=`M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',d);
+    p.setAttribute('class','e '+(e[3]||''));
+    p.setAttribute('marker-end',e[3]==='key'?'url(#ark)':'url(#ar)');
+    svg.appendChild(p); pathEl[i]=p;
+    const l=labelEl[i];
+    if(e[2]){
+      // 받는 node 바로 앞의 빈 열 가운데에 둔다 (긴 선도 다른 node 위에 놓이지 않게)
+      const L=p.getTotalLength(), tx=x2-COLGAP/2;
+      let lo=0,hi=L; for(let it=0;it<24;it++){const m=(lo+hi)/2; if(p.getPointAtLength(m).x<tx) lo=m; else hi=m}
+      const pt=p.getPointAtLength(lo);
+      l.style.left=(pt.x-l.offsetWidth/2)+'px'; l.style.top=(pt.y-l.offsetHeight/2)+'px';
+      if(e[3]!=='key') l.classList.add('minor');
+    }
+  });
+  svg.setAttribute('width',W);svg.setAttribute('height',H);
+  world.style.width=W+'px';world.style.height=H+'px';
+  bounds={w:W,h:H};
+}
+const clusters={}; let bounds={w:1000,h:1000};
+
+// ---------- pan / zoom
+const view={x:0,y:0,k:1};
+const KMIN=0.12,KMAX=4;
+function apply(){
+  world.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.k})`;
+  const s=28*view.k;
+  vp.style.backgroundSize=`${s}px ${s}px`;
+  vp.style.backgroundPosition=`${view.x}px ${view.y}px`;
+  document.getElementById('zoomlvl').textContent=Math.round(view.k*100)+'%';
+}
+function zoomAt(cx,cy,f){
+  const k=Math.min(KMAX,Math.max(KMIN,view.k*f));
+  const r=k/view.k;
+  view.x=cx-(cx-view.x)*r; view.y=cy-(cy-view.y)*r; view.k=k; apply();
+}
+let anim=null;
+function animateTo(t){
+  cancelAnimationFrame(anim);
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){Object.assign(view,t);apply();return}
+  const s={...view},t0=performance.now(),dur=380;
+  const step=now=>{
+    const u=Math.min(1,(now-t0)/dur),q=1-Math.pow(1-u,3);
+    view.x=s.x+(t.x-s.x)*q;view.y=s.y+(t.y-s.y)*q;view.k=s.k+(t.k-s.k)*q;apply();
+    if(u<1) anim=requestAnimationFrame(step);
+  };
+  anim=requestAnimationFrame(step);
+}
+function fitRect(x,y,w,h,maxK=1.6){
+  const W=vp.clientWidth,H=vp.clientHeight,m=24;
+  const k=Math.min(maxK,Math.max(KMIN,Math.min((W-2*m)/w,(H-2*m)/h)));
+  return {k,x:(W-w*k)/2-x*k,y:(H-h*k)/2-y*k};
+}
+const fitAll=()=>animateTo(fitRect(0,0,bounds.w,bounds.h));
+const focusProof=()=>{const c=clusters[META.focusGroup||'s74']; if(c) animateTo(fitRect(c.x,c.y-20,c.w,c.h+20,1.2))};
+
+vp.addEventListener('wheel',ev=>{
+  ev.preventDefault();
+  const r=vp.getBoundingClientRect();
+  const dy=ev.deltaMode===1?ev.deltaY*16:ev.deltaY;
+  if(ev.shiftKey){view.x-=ev.deltaX||dy;view.y-=ev.deltaX?dy:0;apply()}
+  else zoomAt(ev.clientX-r.left,ev.clientY-r.top,Math.exp(-Math.max(-60,Math.min(60,dy))*(ev.ctrlKey?0.01:0.0025)));
+},{passive:false});
+
+const ptrs=new Map(); let moved=0, pinch=null, downNode=null;
+vp.addEventListener('pointerdown',ev=>{
+  cancelAnimationFrame(anim);
+  vp.setPointerCapture(ev.pointerId);
+  ptrs.set(ev.pointerId,{x:ev.clientX,y:ev.clientY});
+  moved=0;
+  const n=ev.target.closest('.node'); downNode=n?n.dataset.id:null;
+  if(ptrs.size===2){
+    const [a,b]=[...ptrs.values()];
+    pinch={d:Math.hypot(a.x-b.x,a.y-b.y),k:view.k};
+  }
+  vp.classList.add('dragging');
+});
+vp.addEventListener('pointermove',ev=>{
+  if(!ptrs.has(ev.pointerId)) return;
+  const prev=ptrs.get(ev.pointerId), cur={x:ev.clientX,y:ev.clientY};
+  ptrs.set(ev.pointerId,cur);
+  if(ptrs.size===1){
+    view.x+=cur.x-prev.x; view.y+=cur.y-prev.y; moved+=Math.abs(cur.x-prev.x)+Math.abs(cur.y-prev.y); apply();
+  }else if(ptrs.size===2&&pinch){
+    const [a,b]=[...ptrs.values()];
+    const d=Math.hypot(a.x-b.x,a.y-b.y);
+    const r=vp.getBoundingClientRect();
+    const cx=(a.x+b.x)/2-r.left, cy=(a.y+b.y)/2-r.top;
+    zoomAt(cx,cy,(pinch.k*d/pinch.d)/view.k);
+    // 두 손가락 중심 이동도 따라간다
+    const pc={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+    if(pinch.c){view.x+=pc.x-pinch.c.x;view.y+=pc.y-pinch.c.y;apply()}
+    pinch.c=pc; moved+=99;
+  }
+});
+let lastTap={id:null,t:0};
+function up(ev){
+  if(!ptrs.has(ev.pointerId)) return;
+  ptrs.delete(ev.pointerId);
+  if(ptrs.size<2) pinch=null;
+  if(ptrs.size===0){
+    vp.classList.remove('dragging');
+    if(moved<6){
+      if(downNode){
+        const now=performance.now();
+        if(lastTap.id===downNode&&now-lastTap.t<350) zoomToNode(downNode);
+        lastTap={id:downNode,t:now};
+        select(downNode);
+      }else if(ev.type==='pointerup') select(null);
+    }
+  }
+}
+vp.addEventListener('pointerup',up); vp.addEventListener('pointercancel',up);
+
+function zoomToNode(id){
+  const el=nodeEl[id];
+  const x=parseFloat(el.style.left),y=parseFloat(el.style.top);
+  animateTo(fitRect(x-60,y-60,el.offsetWidth+120,el.offsetHeight+120,2.2));
+}
+const center=()=>({x:vp.clientWidth/2,y:vp.clientHeight/2});
+document.getElementById('zin').onclick=()=>{const c=center();zoomAt(c.x,c.y,1.3)};
+document.getElementById('zout').onclick=()=>{const c=center();zoomAt(c.x,c.y,1/1.3)};
+document.getElementById('fit').onclick=fitAll;
+document.getElementById('focus').onclick=focusProof;
+document.getElementById('clear').onclick=()=>select(null);
+vp.addEventListener('keydown',ev=>{
+  const c=center();
+  if(ev.key==='+'||ev.key==='=') zoomAt(c.x,c.y,1.25);
+  else if(ev.key==='-') zoomAt(c.x,c.y,0.8);
+  else if(ev.key==='0') fitAll();
+  else if(ev.key.startsWith('Arrow')){const s=60;if(ev.key==='ArrowLeft')view.x+=s;if(ev.key==='ArrowRight')view.x-=s;if(ev.key==='ArrowUp')view.y+=s;if(ev.key==='ArrowDown')view.y-=s;apply()}
+  else if(ev.key==='Escape') select(null);
+  else return;
+  ev.preventDefault();
+});
+
+// ---------- 선택과 조상 강조
+function ancestors(id){
+  const seen=new Set([id]),st=[id];
+  while(st.length){const v=st.pop();for(const e of E) if(e[1]===v&&!seen.has(e[0])){seen.add(e[0]);st.push(e[0])}}
+  return seen;
+}
+let selected=null;
+function select(id){
+  if(id&&!byId[id])return;
+  selected=id;
+  document.querySelectorAll('.node.sel').forEach(x=>x.classList.remove('sel'));
+  document.querySelectorAll('.lit').forEach(x=>x.classList.remove('lit'));
+  const hash=id?'node='+encodeURIComponent(id):'';
+  if(location.hash.slice(1)!==hash)location.hash=hash;
+  if(!id){world.classList.remove('dim');renderPanel(null);return}
+  const A=ancestors(id);
+  world.classList.add('dim');
+  A.forEach(a=>nodeEl[a].classList.add('lit'));
+  E.forEach((e,i)=>{if(A.has(e[0])&&A.has(e[1])){pathEl[i].classList.add('lit');labelEl[i].classList.add('lit')}});
+  nodeEl[id].classList.add('sel');
+  renderPanel(id,A.size-1);
+}
+function edgeItem(e,other,dir){
+  const n=byId[other];
+  return `<li><button type="button" data-go="${other}">${dir} ${n.t}<small>${e[2]?e[2]:'&nbsp;'}</small></button></li>`;
+}
+function renderPanel(id,nAnc){
+  if(!id){
+    if(META.parent){panel.innerHTML=`<div class="ptag">세부 유도 지도</div><h2>${META.title}</h2><p>${META.description}</p><a class="scale-link" href="${META.parent.href}">${META.parent.label}</a><p>node를 누르면 진술, 계산, 원문 행이 나온다.</p>`}
+    else panel.innerHTML=R`<div class="ptag">읽는 법</div><h2>정리까지의 유도 지도</h2>
+    <p>오른쪽 끝의 굵은 테두리 node가 정리다. 청록 선은 정리 증명(§7.4)의 주된 사슬, 회색 선은 정의나 보조 결과를 넘기는 선이다. 선 위의 글은 그 선이 싣는 내용이다.</p>
+    <div class="legend"><span><i class="k"></i>정리 증명의 사슬</span><span><i></i>입력</span><span><i class="n"></i>주석</span><span><b></b>밖에서 받는 결과</span></div>
+    <h3>증명의 두 부분</h3>
+    <p>(1) Proposition: 표본 prefix 아래의 무작위성을 조건부 공분산 $v_N$ 으로 누른다. 잎 수에 대한 귀납이고, 갈라짐을 한 칸 늦추어 부호 있는 계수를 다룬다.</p>
+    <p>(2) 정리: marker anchor로 남은 조건부 평균 $M$ 을 고정 깊이에서 집중시키고, 둘을 깊이 평균으로 묶는다.</p>
+    <h3>극한 순서</h3><p>고정 $L$ 에서 $N\to\infty$ 를 먼저 보내고, 그다음 깊이 평균과 $L\to\infty$.</p>
+    <p class="src">node를 누르면 그 결과에 쓰인 것만 밝아지고 여기에 진술과 원문 줄이 나온다. 두 번 누르면 확대한다.</p>`;
+  }else{
+    const n=byId[id];
+    const ins=E.filter(e=>e[1]===id), outs=E.filter(e=>e[0]===id);
+    panel.innerHTML=`<div class="ptag">${n.tag} · ${n.g?GROUPS[n.g].label:'§8'}</div>
+      <div><span class="node-id" tabindex="0">${n.id}</span> <button type="button" id="copy-ref">참조 복사</button> <button type="button" id="copy-link">링크 복사</button>${n.supplement?'<span class="supplement-badge"> · 원문 밖 보충</span>':''}</div><h2>${n.t}</h2>
+      <div class="stmt">${n.f}</div>${n.body||''}
+      <div class="src">원문: ${n.sourceUrl?`<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.src}</a>`:n.src}</div>
+      ${n.links?.length?`<h3>더 세밀한 지도</h3>${n.links.map(l=>`<a class="scale-link" href="${l.href}">${l.label}</a>`).join('')}`:''}
+      ${META.parent?`<h3>상위 지도</h3><a class="scale-link" href="${META.parent.href}">${META.parent.label}</a>`:''}
+      ${ins.length?`<h3>받는 것 ${ins.length}</h3><ul>${ins.map(e=>edgeItem(e,e[0],'←')).join('')}</ul>`:''}
+      ${outs.length?`<h3>보내는 것 ${outs.length}</h3><ul>${outs.map(e=>edgeItem(e,e[1],'→')).join('')}</ul>`:''}
+      <p class="src" style="margin-top:14px">이 결과에 쓰인 앞선 node: ${nAnc}개</p>`;
+  }
+  const copy=panel.querySelector('#copy-ref'), link=panel.querySelector('#copy-link');
+  if(copy)copy.onclick=()=>copyText(id,copy);
+  if(link)link.onclick=()=>copyText(location.href,link);
+  panel.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{const t=b.dataset.go;select(t);zoomToNode(t)});
+  if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([panel]).catch(()=>{});
+}
+async function copyText(value,button){
+  try{
+    if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(value);
+    else throw Error('Clipboard API unavailable');
+  }catch{
+    // file:// on mobile may deny Clipboard API even after a click.
+    const input=document.createElement('textarea');input.value=value;input.style.position='fixed';input.style.left='-9999px';
+    document.body.appendChild(input);input.focus();input.select();
+    let ok=false;try{ok=document.execCommand('copy')}catch{}input.remove();
+    if(!ok){const id=panel.querySelector('.node-id');id?.focus();const selection=window.getSelection();
+      if(id&&selection){const range=document.createRange();range.selectNodeContents(id);selection.removeAllRanges();selection.addRange(range)}
+      button.textContent='ID를 길게 눌러 복사';return}
+  }
+  button.textContent='복사됨';
+}
+function selectFromHash(){
+  const id=new URLSearchParams(location.hash.slice(1)).get('node');
+  if(id&&byId[id]&&id!==selected){select(id);zoomToNode(id)}
+  else if(!id&&selected)select(null);
+}
+window.addEventListener('hashchange',selectFromHash);
+// ---------- 시작
+let started=false;
+function start(){
+  if(started) return; started=true;
+  try{layout()}catch(err){document.getElementById('loading').textContent='배치를 만들지 못했다: '+err.message;return}
+  document.getElementById('loading').hidden=true;
+  renderPanel(null);
+  requestAnimationFrame(()=>{Object.assign(view,fitRect(0,0,bounds.w,bounds.h)); apply();selectFromHash()});
+}
+build();
+const ready=(window.MathJax&&MathJax.startup&&MathJax.startup.promise)?MathJax.startup.promise.then(()=>MathJax.typesetPromise([world])):Promise.resolve();
+const fontsReady=document.fonts?document.fonts.ready:Promise.resolve();
+Promise.race([Promise.all([ready,fontsReady]),new Promise(r=>setTimeout(r,9000))]).then(start,start);
+</script>
