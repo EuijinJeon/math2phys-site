@@ -407,7 +407,8 @@ function renderPanel(id,nAnc){
       <div><span class="node-id" tabindex="0">${n.id}</span> <button type="button" id="copy-ref">참조 복사</button> <button type="button" id="copy-link">링크 복사</button>${n.supplement?'<span class="supplement-badge"> · 원문 밖 보충</span>':''}</div><h2>${n.t}</h2>
       <div class="stmt">${n.f}</div>${n.body||''}
       <div class="src">원문: ${n.sourceUrl?`<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.src}</a>`:n.src}</div>
-      ${n.links?.length?`<h3>이어지는 지도</h3>${n.links.map(l=>`<a class="scale-link" href="${l.href}">${l.label}</a>`).join('')}`:''}
+      ${n.links?.length?`<h3>더 세밀한 지도</h3>${n.links.map(l=>`<a class="scale-link" href="${l.href}">${l.label}</a>`).join('')}`:''}
+      ${META.parent?`<h3>상위 지도</h3><a class="scale-link" href="${META.parent.href}">${META.parent.label}</a>`:''}
       ${ins.length?`<h3>받는 것 ${ins.length}</h3><ul>${ins.map(e=>edgeItem(e,e[0],'←')).join('')}</ul>`:''}
       ${outs.length?`<h3>보내는 것 ${outs.length}</h3><ul>${outs.map(e=>edgeItem(e,e[1],'→')).join('')}</ul>`:''}
       <p class="src" style="margin-top:14px">이 결과에 쓰인 앞선 node: ${nAnc}개</p>`;
