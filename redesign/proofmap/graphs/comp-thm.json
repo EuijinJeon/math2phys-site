@@ -252,8 +252,14 @@
       "tag": "Proposition comp:insertion-comparison",
       "t": "Cavity increment = RSB functional (극한에서)",
       "f": "$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\bigl|\\Delta_N^{L,\\mathbf u_{L,N}}-\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\bigr|=0$",
-      "body": "<p>comp:encoding의 trial law와 $\\mathbf m^{(L)}=(1/L,\\dots,(L-1)/L)$에 대해. 안쪽 $\\limsup_N$은 각 $L$의 선택 수열을 따른다.</p><p>마지막 걸음: trial 항등식(증명 2)과 cavity:identity를 함께 쓰면, 기대 insertion 로그의 수렴(증명 6)이 곧 이 등식이다.</p>",
-      "src": "comparison.tex 160–167, 221–222"
+      "body": "<p>comp:encoding의 trial law와 $\\mathbf m^{(L)}=(1/L,\\dots,(L-1)/L)$에 대해. 안쪽 $\\limsup_N$은 각 $L$의 선택 수열을 따른다.</p><p>마지막 걸음: trial 항등식(증명 2)과 cavity:identity를 함께 쓰면, 기대 insertion 로그의 수렴(증명 6)이 곧 이 등식이다.</p><p>입력들이 어떻게 이 등식을 내는지는 아래 링크의 세부 지도에 있다: 위 줄은 trial 항등식, 아래 줄은 reservoir와 trial의 로그 비교다.</p>",
+      "src": "comparison.tex 160–167, 221–222",
+      "links": [
+        {
+          "label": "PROP의 세부 유도 →",
+          "href": "comp-prop-derivation.html"
+        }
+      ]
     },
     {
       "id": "COR",

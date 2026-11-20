@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "title": "PROP: insertion 로그 비교의 유도",
+    "description": "Reservoir spin을 trial spin으로 바꾼 뒤, trial 쪽은 정확히 B_{L-1}임을 보이고(위 줄), reservoir와 trial의 insertion 로그 차이가 cutoff·로그 전개·pattern 비교로 0이 됨을 보인다(아래 줄). 두 줄을 cavity:identity로 합치면 Proposition이다.",
+    "parent": {
+      "label": "← PROP으로 돌아가기",
+      "href": "comp-thm-derivation.html?v=comp-prop-20261120#node=PROP"
+    },
+    "focusGroup": "prop"
+  },
+  "groups": {
+    "prin": {
+      "label": "§8 지도에서 받는 것",
+      "fill": "--g-ext",
+      "b": "--g-ext-b"
+    },
+    "prop": {
+      "label": "PROP · trial 항등식(위)과 로그 비교(아래)",
+      "fill": "--g-73",
+      "b": "--g-73-b"
+    }
+  },
+  "nodes": [
+    {
+      "id": "PR_INC",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "X_INC · Lemma cavity:increment",
+      "t": "Cavity increment와 두 insertion",
+      "f": "$\\Delta_N^{L,\\mathbf u}=\\log2+\\mathbb E\\log Y_{0,\\rm s}-\\mathbb E\\log Y_{0,\\rm b}+o_N(1)$",
+      "body": "<p>$N$-spin reservoir의 tilted kernel 위에서 site insertion $A_{\\rm s}$와 bond insertion $A_{\\rm b}$를 power-mean recursion으로 올린 값이 $Y_{0,\\rm s},Y_{0,\\rm b}$다.</p><p>$A_{\\rm s}=\\frac12\\sum_{\\varepsilon}\\exp\\big(h\\varepsilon+\\sum_{j\\le K_{\\rm s}}\\theta_j(\\sigma_{i_{1,j}},\\dots,\\sigma_{i_{p-1,j}},\\varepsilon)\\big)$, $A_{\\rm b}=\\exp\\big(\\sum_{j\\le K_{\\rm b}}\\theta_j(\\sigma_{i_{1,j}},\\dots,\\sigma_{i_{p,j}})\\big)$이고, $K_{\\rm s}\\sim\\mathrm{Pois}(\\alpha p)$, $K_{\\rm b}\\sim\\mathrm{Pois}(\\alpha(p-1))$, index는 $[N]$의 독립 uniform이다. 오차 $o_N(1)$은 $L,\\mathbf u$에 균일하다. §8에서는 각 $L$의 선택 수열 위의 $\\mathbf u_{L,N}$을 쓴다.</p>",
+      "src": "cavity.tex 43–69; comparison.tex 8–15"
+    },
+    {
+      "id": "PR_Y",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "X_Y · eq tree:Y-recursion",
+      "t": "Power-mean recursion",
+      "f": "$Y_L=A,\\quad Y_{d-1}=\\big(K_dY_d^{m_d}\\big)^{1/m_d}$",
+      "body": "<p>양의 path 함수 $A$에서 깊이 $L$부터 거꾸로 $Y_0$까지 올라간다. 같은 recursion을 reservoir kernel로 돌리면 $Y_0$, trial kernel로 돌리면 $\\widetilde Y_0$이다. 각 단계는 양의 상수배에 대해 homogeneous하다: $A$를 $zA$로 바꾸면 $Y_0$도 $zY_0$가 된다.</p>",
+      "src": "trees.tex 55–72"
+    },
+    {
+      "id": "PR_ENC",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "ENC · Lemma comp:encoding",
+      "t": "Trial law $\\zeta_{L,N}$과 독립 trial label",
+      "f": "$\\zeta_{L,N}\\in\\mathcal M_L$: 한 label의 spin process가 reservoir uniform site와 같은 spin 곱 기대값",
+      "body": "<p>모든 prescribed tree 위에서 한 trial label의 spin 곱 기대값이 $\\mathbb ER_S$와 같다. 서로 다른 trial label은 독립으로 뽑을 수 있고, insertion의 새 physical disorder와도 독립이다. 각 label은 model:chain대로 $\\eta_0\\sim\\zeta$, $\\eta_{d+1}\\mid\\eta_d\\sim\\eta_d$, $x\\mid\\eta_{L-2}$를 뽑고, 마지막 spin은 $q_x$로 뽑는다.</p>",
+      "src": "comparison.tex 19–25, 58–83"
+    },
+    {
+      "id": "PR_B",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "X_B · §2 model:vs · model:ve · model:functional",
+      "t": "$V_{\\rm s}$, $V_{\\rm e}$, $T_0$와 $\\mathcal B_{L-1}$",
+      "f": "$\\mathcal B_{L-1}(\\zeta,\\mathbf m)=\\log2+\\mathbb E\\log T_0V_{\\rm s}-\\alpha(p-1)\\,\\mathbb E\\log T_0V_{\\rm e}$",
+      "body": "<p>$V_{\\rm s}=\\frac12\\sum_\\varepsilon\\exp\\big(h\\varepsilon+\\sum_{j\\le k}U_{\\theta_j}(x_1^j,\\dots,x_{p-1}^j;\\varepsilon)\\big)$, $k\\sim\\mathrm{Pois}(\\alpha p)$, $U_\\theta=\\log\\sum_s e^{\\theta(s,\\varepsilon)}\\prod_\\ell q_{x_\\ell}(s_\\ell)$이고 $V_{\\rm e}=C_\\theta(x_1,\\dots,x_p)$다. 서로 다른 $x$에는 서로 다른 message label을 쓴다. $T_0$는 auxiliary message만 적분하는 power mean의 사슬이다.</p>",
+      "src": "model.tex 54–118"
+    },
+    {
+      "id": "PR_BD",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "§5 유계 모형 가정",
+      "t": "$B(\\theta)\\le B$, $|h|\\le H$",
+      "f": "$B(\\theta)=\\max_s|\\theta(s)|\\le B,\\quad |h|\\le H$ (a.s.)",
+      "body": "<p>§9 전까지 걸린 가정이다. 그래서 Poisson count가 $K$인 insertion의 로그는 $H+BK$로 유계다.</p>",
+      "src": "cavity.tex 11–14; model.tex 5"
+    },
+    {
+      "id": "PR_LOG",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "X_LOG · Lemma tree:log-expansion",
+      "t": "로그 전개와 tree law $Q_k$",
+      "f": "$\\log Y_0=\\sum_{k\\ge1}\\frac{(-1)^{k-1}}{k}\\,\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_{a=1}^kD^a$ ($A=1+D$)",
+      "body": "<p>$\\|D\\|_\\infty\\le c\\lt1$이면 root 조건부로 성립하고, 차수 $q$ 뒤의 나머지는 $\\sum_{k\\gt q}c^k/k$ 이하다. $Q_k$는 잎 $1,\\dots,k$를 가진 random tree의 law로 kernel에 의존하지 않는다.</p>",
+      "src": "trees.tex 205–252"
+    },
+    {
+      "id": "PR_PAT",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "PAT · Lemma comp:patterns",
+      "t": "Empirical-pattern comparison",
+      "f": "오차 $\\le a\\sum_{\\varnothing\\ne S\\subseteq[k]}\\mathbb E|R_S-\\mathbb ER_S|$",
+      "body": "<p>잎 $k$개의 고정 tree 위에서, 절댓값 1 이하의 observable이 독립 uniform site label $a$개의 replica-spin pattern과 독립 insertion disorder를 쓸 때, pattern을 독립 trial-label pattern $a$개로 바꾸면 기대값이 위 양 이하로 변한다.</p>",
+      "src": "comparison.tex 87–97"
+    },
+    {
+      "id": "PR_SH",
+      "g": "prin",
+      "cls": "ext",
+      "tag": "SH · eq comp:shape-error",
+      "t": "모양 오차의 소멸 (§7 집중의 귀결)",
+      "f": "$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\mathbb E_{Q_k}\\sum_{S\\ne\\varnothing}\\mathbb E|R_S-\\mathbb ER_S|=0$ ($k$ 고정)",
+      "body": "<p>decor:overlap-concentration에서 나온다. 안쪽 극한은 각 $L$의 선택 수열을 따르고, 순서는 고정 $L$에서 $N$ 먼저, 다음 $L\\to\\infty$다.</p>",
+      "src": "comparison.tex 123–130, 153–156"
+    },
+    {
+      "id": "PR_TR",
+      "g": "prop",
+      "tag": "증명 1 · trial insertion",
+      "t": "Reservoir spin을 trial spin process로 바꿈",
+      "f": "$A_{\\rm s},A_{\\rm b}\\mapsto\\widetilde A_{\\rm s},\\widetilde A_{\\rm b}$, $\\quad Y_{0,\\cdot}\\mapsto\\widetilde Y_{0,\\cdot}$",
+      "body": "<p>각 insertion에서 site label $i_{\\ell,j}$의 reservoir spin $\\sigma_{i_{\\ell,j}}$를 comp:encoding의 독립 trial spin process로 바꾼다. Label마다 독립 사본을 쓴다. 그 결과가 $\\widetilde A_{\\rm s},\\widetilde A_{\\rm b}$이고, tree:Y-recursion을 trial kernel로 돌린 값이 $\\widetilde Y_{0,\\rm s},\\widetilde Y_{0,\\rm b}$다. 이제 할 일은 두 가지다: trial 쪽의 값을 정확히 계산하는 것(위 줄)과, reservoir 쪽과 trial 쪽의 기대 로그가 가까움을 보이는 것(아래 줄).</p>",
+      "src": "comparison.tex 171–176"
+    },
+    {
+      "id": "PR_SITE",
+      "g": "prop",
+      "tag": "증명 2a · site 쪽",
+      "t": "$\\widetilde Y_{0,\\rm s}=T_0V_{\\rm s}$",
+      "f": "마지막 spin transition에서 $\\widetilde A_{\\rm s}$를 trial spin으로 평균 $=V_{\\rm s}$",
+      "body": "<p>마지막 transition에서 각 trial label의 spin $s_\\ell$은 message $x_\\ell$이 주어지면 $q_{x_\\ell}$로 독립하게 뽑힌다. $\\widetilde A_{\\rm s}$를 이 spin들에 대해 평균하면 factor $j$마다 $\\sum_s e^{\\theta_j(s,\\varepsilon)}\\prod_\\ell q_{x_\\ell^j}(s_\\ell)=e^{U_{\\theta_j}}$가 나와 정확히 model:vs의 $V_{\\rm s}$가 된다. 나머지 recursion은 auxiliary message에 대한 power mean이므로 $\\widetilde Y_{0,\\rm s}=T_0V_{\\rm s}$다.</p>",
+      "src": "comparison.tex 178–180"
+    },
+    {
+      "id": "PR_BOND",
+      "g": "prop",
+      "supplement": true,
+      "tag": "증명 2b · bond 쪽",
+      "t": "$\\mathbb E\\log\\widetilde Y_{0,\\rm b}=\\alpha(p-1)\\,\\mathbb E\\log T_0V_{\\rm e}$",
+      "f": "$\\widetilde Y_{0,\\rm b}=\\prod_{j\\le K_{\\rm b}}T_0V_{\\rm e}^{(j)}$",
+      "body": "<p>같은 transition에서 $\\widetilde A_{\\rm b}$는 $K_{\\rm b}$개 edge factor $V_{\\rm e}^{(j)}=C_{\\theta_j}(x^j_1,\\dots,x^j_p)$의 곱이 되고, factor마다 message label이 겹치지 않는다. 한 깊이에서 physical disorder와 모든 message prefix가 주어지면 이 label 묶음들은 독립으로 남는다. 그래서 곱의 조건부 power mean은 power mean의 곱이 되고, 이를 마지막 level부터 첫 level까지 반복하면 위 인수분해가 나온다.</p><p class=\"warn\">작성자 보충: 기대값 단계. 로그를 취하면 $\\log\\widetilde Y_{0,\\rm b}=\\sum_{j\\le K_{\\rm b}}\\log T_0V_{\\rm e}^{(j)}$이고, 각 항은 같은 분포를 가지며 $K_{\\rm b}\\sim\\mathrm{Pois}(\\alpha(p-1))$와 독립이다. 따라서 기대값은 $\\mathbb EK_{\\rm b}\\cdot\\mathbb E\\log T_0V_{\\rm e}=\\alpha(p-1)\\mathbb E\\log T_0V_{\\rm e}$다(Wald 항등식; $|\\log T_0V_{\\rm e}|\\le B$라 적분 가능). 원문은 결과 식만 적는다.</p>",
+      "src": "comparison.tex 180–189"
+    },
+    {
+      "id": "PR_TID",
+      "g": "prop",
+      "cls": "key",
+      "tag": "증명 2 · trial 항등식",
+      "t": "Trial 쪽은 정확히 $\\mathcal B_{L-1}$",
+      "f": "$\\log2+\\mathbb E\\log\\widetilde Y_{0,\\rm s}-\\mathbb E\\log\\widetilde Y_{0,\\rm b}=\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})$",
+      "body": "<p>PR_SITE와 PR_BOND를 $\\mathcal B_{L-1}$의 정의에 넣으면 등식이다. 오차가 없는 정확한 항등식이고, $\\mathbf m^{(L)}=(1/L,\\dots,(L-1)/L)$은 tree 깊이 $m_d=d/L$에서 온다.</p>",
+      "src": "comparison.tex 189–196"
+    },
+    {
+      "id": "PR_CUT",
+      "g": "prop",
+      "supplement": true,
+      "tag": "증명 3 · count cutoff",
+      "t": "$K\\le M$에서 $A=z(1+D)$, $|D|\\le c$",
+      "f": "$C=H+BM,\\quad z=\\cosh C,\\quad c=\\tanh C\\lt1$",
+      "body": "<p>어느 insertion이든 Poisson count $K$를 고정 $M$ 이하로 제한한다. 이 사건 위에서 reservoir insertion과 trial 판 모두, 모든 disorder와 path 변수에 균일하게 $A=z(1+D)$, $|D|\\le c$로 쓸 수 있다. 결정론적 항 $\\log z$는 비교에서 상쇄된다.</p><p class=\"warn\">작성자 보충: $K\\le M$이면 $|\\log A|\\le H+BK\\le C$이므로 $A\\in[e^{-C},e^{C}]$다. $e^{\\pm C}/\\cosh C=1\\pm\\tanh C$이므로 $D=A/z-1\\in[-c,c]$다. 상쇄는 recursion의 homogeneity에서 온다: $Y_0(zA')=z\\,Y_0(A')$라 $\\log Y_0=\\log z+\\log Y_0(1+D)$이고, 같은 $\\log z$가 reservoir 쪽과 trial 쪽에 함께 있다.</p>",
+      "src": "comparison.tex 198–203"
+    },
+    {
+      "id": "PR_POIS",
+      "g": "prop",
+      "tag": "증명 5 · Poisson 꼬리",
+      "t": "Cutoff 밖의 기여",
+      "f": "$\\le2\\,\\mathbb E\\big[(H+BK)\\mathbf 1_{\\{K\\gt M\\}}\\big]\\xrightarrow{M\\to\\infty}0$",
+      "body": "<p>$K\\gt M$에서는 양쪽 모두 원래 insertion 로그가 $H+BK$로 유계다. 그래서 두 쪽 차이에 대한 기여는 위 양 이하이고, Poisson 분포의 꼬리라 $M\\to\\infty$에서 0이다. 이 bound는 $N,L$에 의존하지 않는다.</p>",
+      "src": "comparison.tex 215–217"
+    },
+    {
+      "id": "PR_TERM",
+      "g": "prop",
+      "tag": "증명 4a · 차수 $k$ 항",
+      "t": "차수 $k$ 항은 유계 pattern 함수",
+      "f": "$\\prod_{a=1}^kD^a$: 많아야 $pM$개 label의 replica-spin pattern과 독립 insertion disorder의 함수, $|\\cdot|\\le1$",
+      "body": "<p>$1+D$에 tree:log-expansion을 쓰면 차수 $k$ 항은 $\\mathbb E_{Q_k}E_{\\mathcal T}\\prod_aD^a$다. $K\\le M$이고 factor 하나가 많아야 $p$개 site label을 쓰므로, 한 고정 tree $\\mathcal T$ 위에서 이 곱은 많아야 $pM$개 label에서의 replica-spin pattern(잎 $k$개의 spin)과 독립 insertion disorder의 함수다. $|D|\\le c\\lt1$이라 절댓값은 1 이하다. Reservoir 쪽은 이 label에 uniform site를, trial 쪽은 독립 trial label을 넣은 것이다.</p>",
+      "src": "comparison.tex 205–207"
+    },
+    {
+      "id": "PR_PERR",
+      "g": "prop",
+      "tag": "증명 4b · 고정 tree 오차",
+      "t": "comp:patterns를 $a=pM$으로",
+      "f": "고정 $\\mathcal T$: $\\big|\\text{reservoir}-\\text{trial}\\big|\\le pM\\sum_{S\\ne\\varnothing}\\mathbb E|R_S-\\mathbb ER_S|$",
+      "body": "<p>PR_TERM의 observable은 comp:patterns의 조건을 만족하므로, 고정 tree 위에서 reservoir 쪽과 trial 쪽 값의 차이가 위 양 이하다.</p>",
+      "src": "comparison.tex 207–209"
+    },
+    {
+      "id": "PR_GEO",
+      "g": "prop",
+      "tag": "증명 4d · 기하 꼬리",
+      "t": "전개를 $q$항에서 자름",
+      "f": "양쪽 각각 오차 $\\le\\sum_{k\\gt q}c^k/k$ ($N,L$에 균일)",
+      "body": "<p>$|D|\\le c\\lt1$이므로 tree:log-expansion의 나머지 bound가 reservoir 쪽과 trial 쪽 모두에 성립한다. $c$는 $M$에만 의존하므로 고정 $M$마다 $q$를 크게 잡으면 이 오차를 작게 할 수 있다.</p>",
+      "src": "comparison.tex 211–213"
+    },
+    {
+      "id": "PR_AVG",
+      "g": "prop",
+      "tag": "증명 4c · tree 평균",
+      "t": "차수 $k$ 항의 차이가 0으로",
+      "f": "$\\lim_{L}\\limsup_{N}\\ pM\\,\\mathbb E_{Q_k}\\sum_{S\\ne\\varnothing}\\mathbb E|R_S-\\mathbb ER_S|=0$ ($k,M$ 고정)",
+      "body": "<p>PR_PERR의 bound를 $Q_k$로 평균하면 comp:shape-error의 양에 $pM$을 곱한 것이다. 그래서 고정 $k,M$마다 정해진 극한 순서(고정 $L$에서 $N$, 다음 $L$)에서 차수 $k$ 항의 reservoir–trial 차이가 0으로 간다.</p>",
+      "src": "comparison.tex 209–211"
+    },
+    {
+      "id": "PR_CONV",
+      "g": "prop",
+      "cls": "key",
+      "tag": "증명 6 · 극한 순서",
+      "t": "기대 insertion 로그의 수렴",
+      "f": "$\\lim_{L}\\limsup_{N}\\big|\\mathbb E\\log Y_{0,\\cdot}-\\mathbb E\\log\\widetilde Y_{0,\\cdot}\\big|=0$ (site, bond 각각)",
+      "body": "<p>차이를 세 조각으로 나눈다: Poisson 꼬리(PR_POIS), 차수 $q$ 뒤의 기하 꼬리(PR_GEO), 남은 유한 개의 전개 항(PR_AVG). 먼저 $M$을 골라 Poisson 꼬리를 작게, 다음 $q$를 골라 기하 꼬리를 작게 한다. 이 둘은 $N,L$에 균일하다. 남은 $q$개 항에 고정 $L$에서 $N$의 극한, 다음 $L\\to\\infty$를 취하면 0이다. $M,q$를 임의로 잡을 수 있으니 차이의 $\\lim_L\\limsup_N$은 0이다.</p>",
+      "src": "comparison.tex 217–221"
+    },
+    {
+      "id": "PR_EQ",
+      "g": "prop",
+      "cls": "key",
+      "tag": "Proposition comp:insertion-comparison",
+      "t": "Cavity increment = $\\mathcal B_{L-1}$ (극한에서)",
+      "f": "$\\lim_{L\\to\\infty}\\limsup_{N\\to\\infty}\\big|\\Delta_N^{L,\\mathbf u_{L,N}}-\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\big|=0$",
+      "body": "<p>cavity:identity로 $\\Delta_N=\\log2+\\mathbb E\\log Y_{0,\\rm s}-\\mathbb E\\log Y_{0,\\rm b}+o_N(1)$. Trial 항등식으로 $\\mathcal B_{L-1}=\\log2+\\mathbb E\\log\\widetilde Y_{0,\\rm s}-\\mathbb E\\log\\widetilde Y_{0,\\rm b}$. 빼면 차이는 site와 bond 각각의 reservoir–trial 기대 로그 차이와 $o_N(1)$의 합이고, PR_CONV로 모두 0이 된다. $o_N(1)$은 $L$에 균일하므로 순서와 충돌하지 않는다.</p>",
+      "src": "comparison.tex 160–167, 196–197, 221–222"
+    },
+    {
+      "id": "PR_U",
+      "g": "prop",
+      "tag": "→ COR (comparison.tex 225–246)",
+      "t": "쓰임: 유계 모형의 하한",
+      "f": "$\\inf_r\\Phi_r\\le\\underline F+2\\varepsilon+\\limsup_N|\\Delta_N-\\mathcal B_{L-1}|\\ \\xrightarrow{L\\to\\infty}\\ \\underline F+2\\varepsilon$",
+      "body": "<p>Corollary comp:bounded-lower는 trial 값 $\\mathcal B_{L-1}(\\zeta_{L,N},\\mathbf m^{(L)})\\ge\\inf_r\\Phi_r$과 comp:low-increments를 이 Proposition과 합쳐 $\\liminf_NF_N\\ge\\inf_r\\Phi_r$을 얻는다.</p>",
+      "src": "comparison.tex 225–246"
+    }
+  ],
+  "edges": [
+    ["PR_INC", "PR_TR", "insertion $A_{\\rm s},A_{\\rm b}$"],
+    ["PR_ENC", "PR_TR", "독립 trial spin process"],
+    ["PR_Y", "PR_TR", "trial kernel로 recursion"],
+    ["PR_TR", "PR_SITE", "$\\widetilde A_{\\rm s}$", "key"],
+    ["PR_B", "PR_SITE", "$V_{\\rm s}$, $U_\\theta$"],
+    ["PR_TR", "PR_BOND", "$\\widetilde A_{\\rm b}$", "key"],
+    ["PR_ENC", "PR_BOND", "label 묶음의 독립"],
+    ["PR_B", "PR_BOND", "$V_{\\rm e}=C_\\theta$, $T_0$"],
+    ["PR_SITE", "PR_TID", "$\\mathbb E\\log T_0V_{\\rm s}$", "key"],
+    ["PR_BOND", "PR_TID", "$\\alpha(p-1)\\mathbb E\\log T_0V_{\\rm e}$", "key"],
+    ["PR_B", "PR_TID", "$\\mathcal B_{L-1}$의 정의"],
+    ["PR_TR", "PR_CUT", "reservoir 쪽과 trial 쪽", "key"],
+    ["PR_BD", "PR_CUT", "$|\\log A|\\le H+BK$"],
+    ["PR_Y", "PR_CUT", "homogeneity: $\\log z$ 상쇄"],
+    ["PR_BD", "PR_POIS", "$H+BK$"],
+    ["PR_CUT", "PR_POIS", "$K\\gt M$ 쪽"],
+    ["PR_CUT", "PR_TERM", "$A=z(1+D)$", "key"],
+    ["PR_LOG", "PR_TERM", "차수 $k$ 항"],
+    ["PR_TERM", "PR_PERR", "$\\le pM$ label, $|\\cdot|\\le1$", "key"],
+    ["PR_PAT", "PR_PERR", "$a=pM$"],
+    ["PR_CUT", "PR_GEO", "$|D|\\le c\\lt1$"],
+    ["PR_LOG", "PR_GEO", "나머지 bound"],
+    ["PR_PERR", "PR_AVG", "$Q_k$ 평균", "key"],
+    ["PR_SH", "PR_AVG", "comp:shape-error"],
+    ["PR_AVG", "PR_CONV", "유한 개 항 → 0", "key"],
+    ["PR_GEO", "PR_CONV", "$q$ 선택"],
+    ["PR_POIS", "PR_CONV", "$M$ 선택"],
+    ["PR_TID", "PR_EQ", "trial 쪽 $=\\mathcal B_{L-1}$", "key"],
+    ["PR_CONV", "PR_EQ", "reservoir $\\approx$ trial", "key"],
+    ["PR_INC", "PR_EQ", "cavity:identity"],
+    ["PR_EQ", "PR_U", "$L\\to\\infty$", "key"]
+  ],
+  "positions": {
+    "PR_INC": [0, 0],
+    "PR_Y": [0, 0],
+    "PR_ENC": [0, 0],
+    "PR_B": [0, 0],
+    "PR_BD": [1, 0],
+    "PR_LOG": [1, 0],
+    "PR_PAT": [1, 0],
+    "PR_SH": [1, 0],
+    "PR_TR": [2, 1],
+    "PR_SITE": [0, 2],
+    "PR_BOND": [0, 2],
+    "PR_CUT": [1, 2],
+    "PR_TID": [0, 3],
+    "PR_POIS": [1, 3],
+    "PR_TERM": [1, 3],
+    "PR_PERR": [1, 4],
+    "PR_GEO": [1, 4],
+    "PR_AVG": [1, 5],
+    "PR_CONV": [1, 6],
+    "PR_EQ": [2, 7],
+    "PR_U": [2, 8]
+  },
+  "subgraphs": {}
+}
