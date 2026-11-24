@@ -1,0 +1,5 @@
+{
+  "name": "mezard-parisi-sentence-reader",
+  "private": true,
+  "dependencies": { "katex": "0.16.22" }
+}

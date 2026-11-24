@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문장번호 원문 · The Mézard–Parisi formula for diluted spin glasses</title>
+<style>
+*{box-sizing:border-box}html{scroll-padding-top:5rem}body{margin:0;background:#f6f7f4;color:#222e28;font:1rem/1.6 system-ui,sans-serif}
+header,main,nav,footer{max-width:61rem;margin:auto}header{padding:2.5rem 1.5rem 1rem}h1{font:normal clamp(2rem,4vw,3.3rem)/1.08 Georgia,serif;max-width:45rem;margin:1rem 0}
+nav{position:sticky;top:0;z-index:2;display:flex;gap:.6rem;background:#f6f7f4;padding:.65rem 1rem;border-bottom:1px solid #cbd5cc}
+select,button{font:inherit;color:inherit;background:white;border:1px solid #a8b8af;border-radius:.35rem;padding:.35rem .55rem}select{max-width:65%}button{cursor:pointer}button:disabled{color:#68766f}
+main{background:white;padding:1rem clamp(.65rem,3vw,2.5rem) 2.5rem}h2,h3{line-height:1.25;margin:2em 0 .7em}h4{margin:1.25em 0 .35em}
+article{display:grid;grid-template-columns:4rem minmax(0,1fr);gap:0 .6rem;padding:.4rem 0;align-items:baseline}
+.number{color:#516d5e;font: .86rem/1.5 ui-monospace,monospace}.sentence,main ol{font:1.13rem/1.65 Georgia,serif;overflow-wrap:break-word}
+article:target{background:#f0f6ee}.number[aria-expanded=true],.number.marked{font-weight:bold;color:#154c35}
+a{color:#245d47}aside{grid-column:2;background:#f2f6f0;border-left:3px solid #698d73;margin:.5rem 0;padding:.7rem 1rem;overflow-x:auto}aside p{white-space:pre-wrap}.formula{display:flex;gap:1rem;align-items:center;padding:.5rem 0;overflow-x:auto}.formula .katex{margin:auto}.formula i{width:0}.formula span:last-child{flex-shrink:0}math[display=block]{margin:.35em 0}.sentence{min-width:0;overflow-x:auto}figure img{max-width:100%;width:27rem}figure{text-align:center}footer{padding:1rem}
+@media(max-width:600px){article{grid-template-columns:3rem minmax(0,1fr);gap:.35rem}.number{font-size:.73rem}.sentence{font-size:1.02rem}header{padding:1.2rem .8rem}nav{font-size:.9rem}}
+</style>
+<header><a href="../mezard-parisi-diluted.html">논문 안내</a>
+<h1 lang="en">The Mézard–Parisi formula for diluted spin glasses</h1>
+<p>OpenAI · September 23, 2026</p><p>문장번호를 누르면 그 문장 아래에서 주석을 펼치거나 접을 수 있습니다.</p></header>
+<nav aria-label="원문 탐색"><select aria-label="목차"><option value="">목차에서 이동</option><!--TOC--></select><button id="all" type="button">주석 모두 펼치기</button></nav>
+<main><!--BODY--></main>
+<footer><a href="../../redesign/source/NOTICE.md">원문 출처 및 라이선스</a></footer>
+<script>
+const all = document.getElementById('all');
+const noted = [...document.querySelectorAll('aside[data-noted]')];
+function toggle(panel, show) {
+  panel.hidden = !show;
+  panel.parentElement.querySelector('.number').setAttribute('aria-expanded', String(show));
+}
+function update() {
+  all.disabled = !noted.length;
+  all.textContent = !noted.length ? '작성된 주석 0개' : noted.some(p => !p.hidden) ? '주석 모두 접기' : '주석 모두 펼치기';
+}
+for (const p of noted) p.parentElement.querySelector('.number').classList.add('marked');
+all.onclick = () => {
+  const show = !noted.some(p => !p.hidden);
+  for (const p of noted) toggle(p,show);
+  update();
+};
+document.querySelector('main').addEventListener('click',e => {
+  const a = e.target.closest('.number');
+  if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault();
+  const panel = a.parentElement.querySelector('aside');
+  history.replaceState(null,'',a.hash);
+  toggle(panel,panel.hidden); update();
+});
+function openHash(){
+  const row = document.getElementById(location.hash.slice(1));
+  if (row?.matches('article')) toggle(row.querySelector('aside'),true);
+  update();
+}
+addEventListener('hashchange',openHash); openHash();
+document.querySelector('select').onchange = e => {
+  if (e.target.value) location.hash = e.target.value;
+  e.target.selectedIndex = 0;
+};
+</script></html>
